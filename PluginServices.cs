@@ -5,7 +5,7 @@ using Dalamud.Plugin.Services;
 namespace PvPAnnouncer;
 
 #pragma warning disable 8618
-internal class Service {
+internal class PluginServices {
 
     [PluginService]
     internal static IDataManager DataManager { get; private set; }
@@ -42,7 +42,7 @@ internal class Service {
     internal static IPluginLog PluginLog { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
-        pluginInterface.Create<Service>();
+        pluginInterface.Create<PluginServices>();
     }
 }
 #pragma warning restore 8618

@@ -11,9 +11,9 @@ namespace PvPAnnouncer
 
         public PvPAnnouncer(IDalamudPluginInterface pluginInterface)
         {
-            Service.Initialize(pluginInterface);
+            PluginServices.Initialize(pluginInterface);
             PluginInterface = pluginInterface;
-            Service.CommandManager.AddHandler(MainCommand, new CommandInfo(OnCommand)
+            PluginServices.CommandManager.AddHandler(MainCommand, new CommandInfo(OnCommand)
             {
                 HelpMessage = "To Be Replaced!"
             });
@@ -22,11 +22,11 @@ namespace PvPAnnouncer
         }
         public void Dispose()
         {
-            Service.CommandManager.RemoveHandler(MainCommand);
+            PluginServices.CommandManager.RemoveHandler(MainCommand);
         }
         private void OnCommand(string command, string args)
         {
-            Service.PluginLog.Info("Hello World!");
+            PluginServices.PluginLog.Info("Hello World!");
         }
     }
 }
