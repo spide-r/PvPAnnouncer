@@ -2,10 +2,10 @@
 
 public interface IPvPMatchManager
 {
-    ulong Self {get; set;}
-    ulong[] LightParty { get; set; }
-    ulong[] AllianceMembers { get; set; }
-    ulong[] GrandCompanyMembers { get; set; }
+    uint Self {get; set;}
+    uint[] LightParty { get; set; }
+    uint[] AllianceMembers { get; set; }
+    uint[] GrandCompanyMembers { get; set; }
 
     void MatchEntered();
     void MatchStarted();
@@ -17,6 +17,10 @@ public interface IPvPMatchManager
     void PopulateLightParty(ulong[] party);
     void PopulateAllianceMembers(ulong[] allianceMembers);
     void PopulateGrandCompany(ulong[] grandCompany);
+    
+    bool IsMonitoredUser(int userId);
+    
+    bool IsMonitoredUser(uint entityId);
 
 
 

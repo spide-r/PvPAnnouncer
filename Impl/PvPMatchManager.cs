@@ -4,16 +4,21 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPMatchManager: IPvPMatchManager
 {
-    public ulong Self { get; set; }
-    public ulong[] LightParty { get; set; } = [];
-    public ulong[] AllianceMembers { get; set; } = [];
-    public ulong[] GrandCompanyMembers { get; set; } = [];
+    public uint Self { get; set; }
+    public uint[] LightParty { get; set; } = [];
+    public uint[] AllianceMembers { get; set; } = [];
+    public uint[] GrandCompanyMembers { get; set; } = [];
 
-    public bool IsMonitoredUser(uint userId)
+    public bool IsMonitoredUser(int userId)
     {
         throw new System.NotImplementedException();
     }
-    
+
+    public bool IsMonitoredUser(uint entityId)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void MatchEntered()
     {
         throw new System.NotImplementedException();

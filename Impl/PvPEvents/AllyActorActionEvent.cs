@@ -25,7 +25,11 @@ public class AllyActionEvent : IPvPActorActionEvent
         if (arg is ActionEffectPacket)
         {
             ActionEffectPacket packet = (ActionEffectPacket)arg;
-            return packet.ActionId == ActionId;
+            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(packet.SourceId))
+            {
+                return packet.ActionId == ActionId;
+
+            }
         }
         return false;
     }

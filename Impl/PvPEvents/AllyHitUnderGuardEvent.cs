@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Linq;
+using Dalamud.Game.ClientState.Objects.SubKinds;
+using Dalamud.Game.ClientState.Objects.Types;
+using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -19,9 +23,30 @@ public class AllyHitUnderGuardEvent: IPvPActorActionEvent
     {
         if (arg is ActionEffectPacket)
         {
-            ActionEffectPacket packet = (ActionEffectPacket)arg;
 
-            uint[] ids = packet.GetTargetIds();
+            ActionEffectPacket pp = (ActionEffectPacket)arg;
+            foreach (var target in pp.GetTargetIds())
+            {
+                if (PvPAnnouncerPlugin.PvPMatchManager.IsMonitoredUser(target))
+                {
+                    IGameObject? obj = pp.GetGameObject(target);
+                    if (obj is IPlayerCharacter)
+                    {
+                        IPlayerCharacter? player = obj as IPlayerCharacter;
+                        if (false) //todo pull status list and check for guard
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            foreach (var allianceMember in PvPAnnouncerPlugin.PvPMatchManager!.AllianceMembers)
+            {
+                if (pp.GetTargetIds().Contains(allianceMember))
+                {
+                    return pp.CritsOrDirectHits();
+                }
+            }
             
         }
 

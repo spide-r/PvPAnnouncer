@@ -22,7 +22,7 @@ public unsafe class ActionEffectPacket(
     public ActionEffectHeader* EffectHeader { get; set; } = effectHeader;
     public ActionEffect* EffectArray { get; set; } = effectArray;
     public ulong* EffectTrail { get; set; } = effectTrail;
-    public uint Targets = effectHeader->EffectCount;
+    public readonly uint Targets = effectHeader->EffectCount;
     public readonly uint ActionId = effectHeader->EffectDisplayType switch {
         ActionEffectDisplayType.MountName => 0xD000000 + effectHeader->ActionId,
         ActionEffectDisplayType.ShowItemName => 0x2000000 + effectHeader->ActionId,
@@ -54,7 +54,7 @@ public unsafe class ActionEffectPacket(
         uint[] targetIds = new uint[Targets];
         for (var i = 0; i < Targets; i++)
         {
-            var actionTargetId = (uint) (effectTrail[i] * uint.MaxValue);
+            var actionTargetId = (uint) (EffectTrail[i] * uint.MaxValue);
             targetIds[i] = actionTargetId;
         }
         return targetIds;
@@ -65,12 +65,12 @@ public unsafe class ActionEffectPacket(
         List<ActionEffectType> types = new List<ActionEffectType>();
         for (var i = 0; i < Targets; i++)
         {
-            var targetId = (uint) (effectTrail[i] * uint.MaxValue);
+            var targetId = (uint) (EffectTrail[i] * uint.MaxValue);
             if (actionTargetIds.Contains(targetId))
             {
                 for (var j = 0; j < 8; j++)
                 {
-                    var actionEffect = effectArray[i * 8 + j];
+                    var actionEffect = EffectArray[i * 8 + j];
                     types.Add(actionEffect.EffectType);
                 }
             }
@@ -85,7 +85,7 @@ public unsafe class ActionEffectPacket(
         {
                 for (var j = 0; j < 8; j++)
                 {
-                    ref var actionEffect = ref effectArray[i * 8 + j];
+                    ref var actionEffect = ref EffectArray[i * 8 + j];
                     if((actionEffect.Param0 & 0x20) == 0x20)
                     {
                         return true;
@@ -108,12 +108,12 @@ public unsafe class ActionEffectPacket(
         List<uint> damage = new List<uint>();
         for (var i = 0; i < Targets; i++)
         {
-            var targetId = (uint) (effectTrail[i] * uint.MaxValue);
+            var targetId = (uint) (EffectTrail[i] * uint.MaxValue);
             if (actionTargetIds.Contains(targetId))
             {
                 for (var j = 0; j < 8; j++)
                 {
-                    var actionEffect = effectArray[i * 8 + j];
+                    var actionEffect = EffectArray[i * 8 + j];
                     if (actionEffect.EffectType == ActionEffectType.Damage)
                     {
                         uint amount = actionEffect.Value;

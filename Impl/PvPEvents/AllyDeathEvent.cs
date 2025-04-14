@@ -14,7 +14,11 @@ public class AllyDeathEvent() : IPvPActorControlEvent
     {
         if (packet is ActorControlPacket)
         {
-            return ((ActorControlPacket) packet).GetCategory() == ActorControlCategory.Death;
+            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(((ActorControlPacket) packet).EntityId))
+            {
+                return ((ActorControlPacket) packet).GetCategory() == ActorControlCategory.Death;
+
+            }
         }
 
         return false;
