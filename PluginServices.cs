@@ -1,4 +1,5 @@
-﻿using Dalamud.IoC;
+﻿using Dalamud.Game;
+using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 
@@ -9,6 +10,9 @@ internal class PluginServices {
 
     [PluginService]
     internal static IDataManager DataManager { get; private set; }
+    
+    [PluginService]
+    internal static ISigScanner SigScanner { get; private set; }
     
     [PluginService]
     internal static ICommandManager CommandManager { get; private set; }

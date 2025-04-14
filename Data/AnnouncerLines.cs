@@ -5,11 +5,16 @@ namespace PvPAnnouncer.Data;
 public static class AnnouncerLines
 {
     //Announcer sound path: sound/voice/vo_line/INSERT_NUMBER_HERE_en.scd
-    // en, de, fr work - havent found where jp went
+    // en, de, fr, ja work
 
     public static String GetPath(String announcement, String lang)
     {
         return "sound/voice/vo_line/" + announcement + "_" + lang + ".scd";
+    }
+
+    public static String GetPath(String announcement)
+    {
+        return GetPath(announcement, "en");
     }
     
     // === Generic ===
@@ -82,40 +87,7 @@ public static class AnnouncerLines
     public const String ThrillingBattle = "8205815";
     
     // === Howling Blade 
-    public const String SuchSpeed = "8205817";
+    public const String SuchSpeedMasc = "8205817";
     public const String ColossalThing = "8205818";
     public const String ColossalThingSwordMasc = "8205819";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
- 
-    const String EH_GADS = "example/egads.ogg";
 }
