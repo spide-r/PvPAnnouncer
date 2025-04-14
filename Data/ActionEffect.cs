@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace PvPAnnouncer.Data;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-internal struct ActionEffect {
+public struct ActionEffect {
     public ActionEffectType EffectType;
     public byte Param0;
     public byte Param1;

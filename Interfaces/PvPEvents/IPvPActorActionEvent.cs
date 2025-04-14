@@ -2,5 +2,4 @@
 
 public interface IPvPActorActionEvent: IPvPActorEvent
 {
-    uint ActionId { get; init; } 
 }

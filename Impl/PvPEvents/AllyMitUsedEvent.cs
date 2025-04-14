@@ -1,11 +1,30 @@
-﻿using PvPAnnouncer.Interfaces.PvPEvents;
+﻿using System;
+using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Interfaces;
+using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyMitUsedEvent(ulong playerId, uint actionId): IPvPActorActionEvent
+public class AllyMitUsedEvent: IPvPActorActionEvent
 {
-    public string[]? SoundPaths { get; init; } = [IroncladDefense, WhatAClash, BattleElectrifying, ThrillingBattle];
-    public ulong PlayerId { get; init; } = playerId;
+    public AllyMitUsedEvent()
+    {
+        InvokeRule = ShouldInvoke;
+    }
+
+    public string[]? SoundPaths { get; init; } = [IroncladDefense, WhatAClash, ThrillingBattle];
+    public Func<IPacket, bool> InvokeRule { get; init; }
     public ulong? PlayerTarget { get; init; }
-    public uint ActionId { get; init; } = actionId;
+
+    private bool ShouldInvoke(IPacket packet)
+    {
+        if (packet is ActionEffectPacket)
+        {
+            ActionEffectPacket aa = (ActionEffectPacket) packet;
+
+            ulong actionId = aa.ActionId;
+            //todo add mits
+        }
+        return false;
+    }
 }

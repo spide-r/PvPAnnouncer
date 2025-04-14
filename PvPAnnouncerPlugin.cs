@@ -11,19 +11,21 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer
 {
-    public sealed class PvPAnnouncer: IDalamudPlugin
+    public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private const string MainCommand = "/ppa";
         private IDalamudPluginInterface PluginInterface { get; init; }
         
         public static ISoundManager? SoundManager { get; set; }
+        public static IPvPAnnouncer? PvPAnnouncer { get; set; }
         
 
-        public PvPAnnouncer(IDalamudPluginInterface pluginInterface)
+        public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
             PluginServices.Initialize(pluginInterface);
             PluginInterface = pluginInterface;
             SoundManager = new SoundManager();
+            PvPAnnouncer = new Impl.PvPAnnouncer();
 
             PluginServices.CommandManager.AddHandler("/playsound", new PlaySound().CommandInfo);
 

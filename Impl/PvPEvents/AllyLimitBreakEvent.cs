@@ -1,11 +1,21 @@
-﻿using PvPAnnouncer.Interfaces.PvPEvents;
+﻿using System;
+using PvPAnnouncer.Interfaces;
+using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyLimitBreakEvent(ulong playerId, uint actionId): IPvPActorActionEvent
+public class AllyLimitBreakEvent: IPvPActorActionEvent
 {
+    public AllyLimitBreakEvent(Func<IPacket, bool> invokeRule)
+    {
+        InvokeRule = ShouldInvoke;
+    }
+
+    private bool ShouldInvoke(IPacket arg)
+    {
+        throw new NotImplementedException();
+    }
+
     public string[]? SoundPaths { get; init; } = [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying];
-    public ulong PlayerId { get; init; } = playerId;
-    public ulong? PlayerTarget { get; init; }
-    public uint ActionId { get; init; } = actionId;
+    public Func<IPacket, bool> InvokeRule { get; init; }
 }

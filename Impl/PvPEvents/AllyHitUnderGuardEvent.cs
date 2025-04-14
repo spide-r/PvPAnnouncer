@@ -1,11 +1,30 @@
-﻿using PvPAnnouncer.Interfaces.PvPEvents;
+﻿using System;
+using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Interfaces;
+using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyHitUnderGuardEvent(ulong playerId, ulong playerTarget, uint actionId): IPvPActorActionEvent
+public class AllyHitUnderGuardEvent: IPvPActorActionEvent
 {
+    public AllyHitUnderGuardEvent(Func<IPacket, bool> invokeRule)
+    {
+        InvokeRule = ShouldInvoke;
+    }
+
     public string[]? SoundPaths { get; init; } = [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash, BattleElectrifying, ThrillingBattle];
-    public ulong PlayerId { get; init; } = playerId;
-    public ulong? PlayerTarget { get; init; } = playerTarget;
-    public uint ActionId { get; init; } = actionId;
+    public Func<IPacket, bool> InvokeRule { get; init; } 
+
+    private bool ShouldInvoke(IPacket arg)
+    {
+        if (arg is ActionEffectPacket)
+        {
+            ActionEffectPacket packet = (ActionEffectPacket)arg;
+
+            uint[] ids = packet.GetTargetIds();
+            
+        }
+
+        return false;
+    }
 }

@@ -5,14 +5,15 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public unsafe class SoundManager: ISoundManager
+public class SoundManager: ISoundManager
 {
-    public const string PlaySoundSig = "E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? FE C2";
-    public delegate IntPtr PlaySoundDelegate( IntPtr path, byte play );
+    private const string PlaySoundSig = "E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? FE C2";
+
+    private delegate IntPtr PlaySoundDelegate( IntPtr path, byte play );
 
     private readonly PlaySoundDelegate PlaySoundPath;
 
-    private bool muted = false;
+    private bool _muted = false;
 
     public SoundManager()
     {
@@ -25,7 +26,7 @@ public unsafe class SoundManager: ISoundManager
     // Attributed to VFXEditor: https://github.com/0ceal0t/Dalamud-VFXEditor/blob/main/VFXEditor/Interop/ResourceLoader.Sound.cs
     public void PlaySound(string path)
     {
-        if (muted)
+        if (_muted)
         {
             return;
         }
@@ -41,11 +42,11 @@ public unsafe class SoundManager: ISoundManager
 
     public void ToggleMute()
     {
-        muted = !muted;
+        _muted = !_muted;
     }
 
     public void SetMute(bool mute)
     {
-        muted = mute;
+        _muted = mute;
     }
 }

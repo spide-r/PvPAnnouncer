@@ -1,11 +1,30 @@
-﻿using PvPAnnouncer.Interfaces.PvPEvents;
+﻿using System;
+using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Interfaces;
+using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyPulledDrkEvent(ulong playerId, ulong playerTarget): IPvPActorActionEvent
+public class AllyPulledDrkEvent: IPvPActorActionEvent
 {
+    
+    public AllyPulledDrkEvent()
+    {
+        InvokeRule = ShouldInvoke;
+    }
     public string[]? SoundPaths { get; init; } = [SuckedIn, WhatAClash, BattleElectrifying, ThrillingBattle];
-    public ulong PlayerId { get; init; } = playerId;
-    public ulong? PlayerTarget { get; init; } = playerTarget;
-    public uint ActionId { get; init; } //todo drk pull action id
+    public Func<IPacket, bool> InvokeRule { get; init; }
+    
+    private bool ShouldInvoke(IPacket packet)
+    {
+        if (packet is ActionEffectPacket)
+        {
+            ActionEffectPacket aa = (ActionEffectPacket) packet;
+
+            ulong actionId = aa.ActionId;
+            return actionId == 0; //todo drk suck id
+      
+        }
+        return false;
+    }
 }

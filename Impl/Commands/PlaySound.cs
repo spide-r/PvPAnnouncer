@@ -22,7 +22,7 @@ public class PlaySound: ICommand
 
     public void OnCommand(string command, string args)
     {
-        PvPAnnouncer.SoundManager?.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.IroncladDefense));
+        PvPAnnouncerPlugin.SoundManager?.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.IroncladDefense));
 
     }
     
