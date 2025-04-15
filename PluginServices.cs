@@ -1,5 +1,6 @@
 ﻿using Dalamud.Configuration;
 using Dalamud.Game;
+using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -54,6 +55,7 @@ internal class PluginServices {
     internal static IPvPEventPublisher PvPEventHooksPublisher { get; private set; }
     internal static ISoundManager SoundManager { get; private set; }
     internal static Configuration Config { get; private set; }
+    internal static IEventListenerLoader ListenerLoader { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<PluginServices>();
@@ -64,6 +66,7 @@ internal class PluginServices {
         Announcer = new Announcer();
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
+        ListenerLoader = new EventListenerLoader();
 
     }
 }

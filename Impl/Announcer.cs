@@ -39,8 +39,7 @@ public class Announcer: IAnnouncer
         
         
         // == Objective 1 ==
-        //todo config
-        if (rand > 30) // Is a commentary on 30% of events too much? - This may need to be configured
+        if (rand < PluginServices.Config.Percent) 
         {
             return;
         }
