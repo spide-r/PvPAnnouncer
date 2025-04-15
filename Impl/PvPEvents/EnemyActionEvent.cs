@@ -4,11 +4,11 @@ using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class EnemyActorActionEvent : PvPActorActionEvent
+public class EnemyActionEvent : PvPActionEvent
 {
     private static uint _actionId;
 
-    public EnemyActorActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem, string name = "Enemy Actions")
+    public EnemyActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem, string name = "Enemy Actions")
     {
         _actionId = actionId;
         SoundPathsList = soundPaths;

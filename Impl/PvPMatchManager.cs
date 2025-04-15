@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Game.ClientState.Party;
+using Lumina.Excel.Sheets;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 
@@ -15,6 +17,25 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public PvPMatchManager()
     {
         //todo: subscribe the below functions to the correct things
+        PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
+        PluginServices.ClientState.CfPop += ClientStateOnCfPop;
+    }
+
+    private void ClientStateOnCfPop(ContentFinderCondition obj)
+    {
+        MatchQueued();
+    }
+
+    private void ClientStateOnTerritoryChanged(ushort obj)
+    {
+        if (InternalConstants.pvpTerritories.Contains(obj))
+        {
+            MatchEntered(obj);
+        }
+        else
+        {
+            MatchLeft();
+        }
     }
 
     public bool IsMonitoredUser(int userId)
@@ -52,7 +73,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         PopulateFullParty(partyMembers.ToArray());
     }
 
-    public void MatchEntered(uint territory)
+    public void MatchEntered(ushort territory)
     {
         
         //todo: check to make sure the user has their voice bgm at not-zero and also not muted

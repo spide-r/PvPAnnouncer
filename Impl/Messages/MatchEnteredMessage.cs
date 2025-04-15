@@ -2,7 +2,7 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class MatchEnteredMessage(uint territoryId): IMessage
+public class MatchEnteredMessage(ushort territoryId): IMessage
 {
-    public uint TerritoryId = territoryId;
+    public ushort TerritoryId = territoryId;
 }

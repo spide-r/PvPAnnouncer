@@ -6,7 +6,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyMitUsedEvent: PvPActorActionEvent
+public class AllyMitUsedEvent: PvPActionEvent
 {
     public AllyMitUsedEvent()
     {

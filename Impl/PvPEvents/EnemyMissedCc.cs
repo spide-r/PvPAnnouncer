@@ -6,7 +6,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class EnemyMissedCc: PvPActorActionEvent
+public class EnemyMissedCc: PvPActionEvent
 {
     public EnemyMissedCc()
     {

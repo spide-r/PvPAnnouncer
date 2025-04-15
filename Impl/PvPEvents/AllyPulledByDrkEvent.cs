@@ -7,7 +7,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyPulledByDrkEvent: PvPActorActionEvent
+public class AllyPulledByDrkEvent: PvPActionEvent
 {
     public AllyPulledByDrkEvent()
     {

@@ -7,7 +7,7 @@ using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 
-public class AllyHitEnemyHardEvent : PvPActorActionEvent
+public class AllyHitEnemyHardEvent : PvPActionEvent
 {
     public AllyHitEnemyHardEvent()
     {

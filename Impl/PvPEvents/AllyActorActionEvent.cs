@@ -5,7 +5,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyActionEvent : PvPActorActionEvent
+public class AllyActionEvent : PvPActionEvent
 {
     public AllyActionEvent(uint actionId,
         List<string> soundPaths,

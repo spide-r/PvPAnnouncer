@@ -6,7 +6,7 @@ public interface IPvPMatchManager
     uint[] LightParty { get; set; }
     uint[] FullParty { get; set; }
 
-    void MatchEntered(uint territory);
+    void MatchEntered(ushort territory);
     void MatchStarted();
     void MatchEnded();
     void MatchLeft();
