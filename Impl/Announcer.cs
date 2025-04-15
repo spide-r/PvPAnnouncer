@@ -4,8 +4,17 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPAnnouncer: IPvPAnnouncer
+public class Announcer: IAnnouncer
 {
+    /*
+     * Objectives:
+     * Comment a Reasonable amount
+     * Dont repeat voice lines
+     * Don't comment on the same thing twice
+     * Don't say more than one thing at a time
+     * Dont't comment too quickly
+     * Use the appropriate gender for the challenger
+     */
     public void ReceivePvPEvent(IPvPEvent pvpEvent)
     {
         //todo implement actual logic

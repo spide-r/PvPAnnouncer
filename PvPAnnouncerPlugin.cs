@@ -17,7 +17,7 @@ namespace PvPAnnouncer
         private IDalamudPluginInterface PluginInterface { get; init; }
         
         public static ISoundManager? SoundManager { get; private set; }
-        public static IPvPAnnouncer? PvPAnnouncer { get; private set; }
+        public static IAnnouncer? PvPAnnouncer { get; private set; }
         public static IPvPMatchManager? PvPMatchManager { get; private set; }
         
 
@@ -26,7 +26,7 @@ namespace PvPAnnouncer
             PluginServices.Initialize(pluginInterface);
             PluginInterface = pluginInterface;
             SoundManager = new SoundManager();
-            PvPAnnouncer = new Impl.PvPAnnouncer();
+            PvPAnnouncer = new Impl.Announcer();
             PvPMatchManager = new PvPMatchManager();
 
             PluginServices.CommandManager.AddHandler("/playsound", new PlaySound().CommandInfo);
