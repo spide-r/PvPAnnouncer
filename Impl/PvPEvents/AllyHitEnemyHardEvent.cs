@@ -1,4 +1,5 @@
 ﻿using System;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -20,7 +21,7 @@ public class AllyHitEnemyHardEvent : IPvPActorActionEvent
             ActionEffectPacket pp = (ActionEffectPacket)packet;
             if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(pp.SourceId))
             {
-                return pp.CritsOrDirectHits();
+                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
             }
         }
         return false;

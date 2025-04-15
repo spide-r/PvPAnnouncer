@@ -27,7 +27,7 @@ public class AllyHitHardEvent : IPvPActorActionEvent
             {
                 if (pp.GetTargetIds().Contains(allianceMember))
                 {
-                    return pp.CritsOrDirectHits();
+                    return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
                 }
             }
             

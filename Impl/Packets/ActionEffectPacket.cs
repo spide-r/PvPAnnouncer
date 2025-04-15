@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -60,7 +61,7 @@ public unsafe class ActionEffectPacket(
         return targetIds;
     }
 
-    public List<ActionEffectType> GetEffectTypes(List<uint> actionTargetIds)
+    public List<ActionEffectType> GetEffectTypes(uint[] actionTargetIds)
     {
         List<ActionEffectType> types = new List<ActionEffectType>();
         for (var i = 0; i < Targets; i++)

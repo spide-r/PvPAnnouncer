@@ -6,7 +6,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyDeathEvent() : IPvPActorControlEvent
+public class AllyDeathEvent : IPvPActorControlEvent
 { 
     public string[]? SoundPaths { get; init; } = [TheyreDownIsItOver, TheyreDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid];
 
@@ -24,7 +24,5 @@ public class AllyDeathEvent() : IPvPActorControlEvent
         return false;
     };
     
-
     public ActorControlCategory ActorControlCategory { get; init; } = ActorControlCategory.Death;
-    //todo special implementation for PvPDeathEvent - need to get the actual source of whoever killed a person - I dont think I can just work off of the actor control packet 
 }

@@ -7,5 +7,5 @@ namespace PvPAnnouncer.impl.PvPEvents;
 public class AllyZoneOutEvent: IPvPActorEvent
 {
     public string[]? SoundPaths { get; init; } = [Fallen, TheyreDownIsItOver, TheyreDownIsThisEnd, TooMuch];
-    public Func<IPacket, bool> InvokeRule { get; init; } = _ => false;
+    public Func<IPacket, bool> InvokeRule { get; init; } = _ => false; //todo determine how a fall damage death is logged
 }

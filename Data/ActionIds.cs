@@ -1,4 +1,6 @@
-﻿namespace PvPAnnouncer.Data;
+﻿using System;
+
+namespace PvPAnnouncer.Data;
 
 public class ActionIds
 {
@@ -66,7 +68,42 @@ public class ActionIds
         Comet = 43252,
         
     }
+
+    public static bool IsLimitBreak(uint id)
+    {
+        foreach (var value in Enum.GetValues(typeof (LimitBreaksEnum)))
+        {
+            if (id == (uint) value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
+    public static bool IsBigHit(uint id)
+    {
+        foreach (var value in Enum.GetValues(typeof (BigHitsEnum)))
+        {
+            if (id == (uint) value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static bool IsMitigation(uint id)
+    {
+        foreach (var value in Enum.GetValues(typeof (MitigationEnum)))
+        {
+            if (id == (uint) value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
     public static readonly LimitBreaksEnum[] LimitBreaks = [LimitBreaksEnum.Eventide];
     public static readonly uint[] Mitigation = [];

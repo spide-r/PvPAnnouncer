@@ -26,7 +26,6 @@ public class EnemyActorActionEvent : IPvPActorActionEvent
             if (!PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(packet.SourceId))
             {
                 return packet.ActionId == _actionId;
-
             }
         }
         return false;

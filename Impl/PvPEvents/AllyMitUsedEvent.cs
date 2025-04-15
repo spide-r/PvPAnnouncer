@@ -1,4 +1,5 @@
 ﻿using System;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -20,11 +21,13 @@ public class AllyMitUsedEvent: IPvPActorActionEvent
     {
         if (packet is ActionEffectPacket)
         {
-            ActionEffectPacket aa = (ActionEffectPacket) packet;
-
-            ulong actionId = aa.ActionId;
-            //todo add mits
+            ActionEffectPacket pp = (ActionEffectPacket)packet;
+            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(pp.SourceId))
+            {
+                return ActionIds.IsMitigation(pp.ActionId);
+            }
         }
-        return false;
+        return false;    
     }
+
 }

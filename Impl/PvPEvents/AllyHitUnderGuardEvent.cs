@@ -46,14 +46,6 @@ public class AllyHitUnderGuardEvent: IPvPActorActionEvent
                     }
                 }
             }
-            foreach (var allianceMember in PvPAnnouncerPlugin.PvPMatchManager!.AllianceMembers)
-            {
-                if (pp.GetTargetIds().Contains(allianceMember))
-                {
-                    return pp.CritsOrDirectHits();
-                }
-            }
-            
         }
 
         return false;

@@ -1,4 +1,5 @@
 ﻿using System;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -22,7 +23,7 @@ public class AllyPulledByDrkEvent: IPvPActorActionEvent
             ActionEffectPacket aa = (ActionEffectPacket) packet;
 
             ulong actionId = aa.ActionId;
-            return actionId == 0; //todo drk suck id
+            return actionId == ActionIds.SaltedEarth;
       
         }
         return false;
