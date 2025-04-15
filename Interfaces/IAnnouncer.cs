@@ -5,7 +5,7 @@ namespace PvPAnnouncer.Interfaces;
 
 public interface IAnnouncer
 {
-    void ReceivePvPEvent(IPvPEvent pvpEvent);
+    void ReceivePvPEvent(PvPEvent pvpEvent);
     
-    void PlaySound(IPvPEvent pvpEvent);
+    void PlaySound(string sound);
 }

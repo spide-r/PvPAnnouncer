@@ -1,12 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class MatchConditionsEvent(string[] soundPaths): IPvPEvent
+public class MatchConditionsEvent(List<string> soundPathsList): PvPEvent
 {
     // Weather, Match Obstacles, Conditions Changing
-    public string[]? SoundPaths { get; init; } = soundPaths;
-    public Func<IPacket, bool> InvokeRule { get; init; } = _ => false;
+    private List<string> SoundPathsList { get; init; } = soundPathsList;
+    public override List<string> SoundPaths()
+    {
+        return SoundPathsList;
+    }
+
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
+
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket packet)
+    {
+        return false;
+    }
 }

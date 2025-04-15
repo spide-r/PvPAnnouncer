@@ -14,9 +14,9 @@ public interface IPvPMatchManager
     void MatchQueued();
 
     void ClearLists();
-    void PopulateLightParty(ulong[] party);
-    void PopulateAllianceMembers(ulong[] allianceMembers);
-    void PopulateGrandCompany(ulong[] grandCompany);
+    void PopulateLightParty(uint[] party);
+    void PopulateAllianceMembers(uint[] allianceMembers);
+    void PopulateGrandCompany(uint[] grandCompany);
     
     bool IsMonitoredUser(int userId);
     

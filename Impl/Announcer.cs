@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -8,27 +11,114 @@ public class Announcer: IAnnouncer
 {
     /*
      * Objectives:
-     * Comment a Reasonable amount
-     * Dont repeat voice lines
-     * Don't comment on the same thing twice
-     * Don't say more than one thing at a time
-     * Dont't comment too quickly
-     * Use the appropriate gender for the challenger
+     * 1. Comment a Reasonable amount
+     * 2. Dont repeat voice lines
+     * 3. Don't comment on the same thing twice
+     * 4. Don't say more than one thing at a time or comment too quickly
+     * 5. Use the appropriate gender for the challenger
      */
-    public void ReceivePvPEvent(IPvPEvent pvpEvent)
+    
+    private readonly Queue<string> _lastThreeVoiceLines = new();
+    private PvPEvent _lastEvent = new AllyDeathEvent();
+    private long _timestamp;
+    public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
-        //todo implement actual logic
+        long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+        long diff = newTimestamp - _timestamp;
+        
+        // == Objective 4 ==
+        if (diff < 6) //todo: config stuff
+        {
+            return;
+        }
+
+        _timestamp = newTimestamp;
+        
+        int rand = Random.Shared.Next(100);
+        
+        
+        // == Objective 1 ==
+        //todo config
+        if (rand > 30) // Is a commentary on 30% of events too much? - This may need to be configured
+        {
+            return;
+        }
+        // == Objective 3 == 
+        if (!PassesRepeatCommentaryCheck(pvpEvent))
+        {
+            return;
+        }
+        
         PlaySound(pvpEvent);
     }
+    
 
-    public void PlaySound(IPvPEvent pvpEvent)
+    private void AddToRecentCommentary(String e)
     {
-        string[]? sounds = pvpEvent.SoundPaths;
-        if (sounds != null)
+        if (_lastThreeVoiceLines.Count > 2) // maximum 3 
         {
-            int rand = Random.Shared.Next(sounds.Length);
-        
-            PvPAnnouncerPlugin.SoundManager?.PlaySound(sounds[rand]);
+            _lastThreeVoiceLines.Dequeue();
         }
+        
+        _lastThreeVoiceLines.Enqueue(e);
+
+    }
+
+    private bool PassesRepeatCommentaryCheck(PvPEvent pvpEvent)
+    {
+        return pvpEvent == _lastEvent;
+    }
+
+    public void PlaySound(string sound)
+    {
+        PluginServices.SoundManager.PlaySound(sound);
+
+    }
+
+    public void PlaySound(PvPEvent pvpEvent)
+    {
+        _lastEvent = pvpEvent;
+        List<string> sounds = new List<string>(pvpEvent.SoundPaths());
+        
+        // == Objective 5 == 
+        if (pvpEvent.SoundPathsFem().Count > 0 || pvpEvent.SoundPathsMasc().Count > 0)
+        {
+            bool userWantsFem = false; //todo: config
+            bool userWantsMasc = false;
+
+            if (userWantsFem || userWantsMasc)
+            {
+                
+                if (userWantsFem)
+                {
+                    sounds.AddRange(pvpEvent.SoundPathsFem());
+                }
+
+                if (userWantsMasc)
+                {
+                    sounds.AddRange(pvpEvent.SoundPathsMasc());
+                }
+            }
+        }
+        
+        
+        // == Objective 2 == 
+        foreach (var line in _lastThreeVoiceLines)
+        {
+            if (sounds.Contains(line))
+            {
+                sounds.Remove(line);
+            }
+        }
+
+        if (sounds.Count < 1)
+        {
+            return;
+        }
+        
+        int rand = Random.Shared.Next(sounds.Count);
+        string s = sounds[rand];
+        AddToRecentCommentary(s);
+        PlaySound(s);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
@@ -6,23 +7,37 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyDeathEvent : IPvPActorControlEvent
-{ 
-    public string[]? SoundPaths { get; init; } = [TheyreDownIsItOver, TheyreDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid];
+public class AllyDeathEvent : PvPActorControlEvent
+{
+    public override List<string> SoundPaths()
+    {
+        return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid];
+    }
 
-    public Func<IPacket, bool> InvokeRule { get; init; } = packet =>
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
+
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket packet)
     {
         if (packet is ActorControlPacket)
         {
-            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(((ActorControlPacket) packet).EntityId))
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(((ActorControlPacket) packet).EntityId))
             {
                 return ((ActorControlPacket) packet).GetCategory() == ActorControlCategory.Death;
 
             }
         }
 
-        return false;
-    };
-    
-    public ActorControlCategory ActorControlCategory { get; init; } = ActorControlCategory.Death;
+        return false;   
+    }
+
+
+    public override ActorControlCategory ActorControlCategory { get; init; } = ActorControlCategory.Death;
 }

@@ -1,6 +1,5 @@
 ﻿namespace PvPAnnouncer.Interfaces.PvPEvents;
 
-public interface IPvPMatchEvent: IPvPEvent
+public abstract class PvPMatchEvent: PvPEvent
 {
-    
 }

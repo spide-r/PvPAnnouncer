@@ -1,29 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class EnemyActorActionEvent : IPvPActorActionEvent
+public class EnemyActorActionEvent : PvPActorActionEvent
 {
     private static uint _actionId;
 
-    public EnemyActorActionEvent(uint actionId, string[] soundPaths)
+    public EnemyActorActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem)
     {
         _actionId = actionId;
-        SoundPaths = soundPaths;
-        InvokeRule = ShouldEmit;
+        SoundPathsList = soundPaths;
+        SoundPathsM = soundPathsMasc;
+        SoundPathsF = soundPathsFem;
     }
 
-    public string[]? SoundPaths { get; init; }
-    public Func<IPacket, bool> InvokeRule { get; init; } 
-    
-    private static bool ShouldEmit(IPacket arg)
+    public List<string> SoundPathsList { get; init; }
+    public List<string> SoundPathsM { get; init; }
+    public List<string> SoundPathsF { get; init; }
+
+    public override List<string> SoundPaths()
+    {
+        return SoundPathsList;
+    }
+
+    public override List<string> SoundPathsMasc()
+    {
+        return SoundPathsM; 
+    }
+
+    public override List<string> SoundPathsFem()
+    {
+        return SoundPathsF; 
+    }
+    public override bool InvokeRule(IPacket arg)
     {
         if (arg is ActionEffectPacket)
         {
             ActionEffectPacket packet = (ActionEffectPacket)arg;
-            if (!PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(packet.SourceId))
+            if (!PluginServices.PvPMatchManager.IsMonitoredUser(packet.SourceId))
             {
                 return packet.ActionId == _actionId;
             }

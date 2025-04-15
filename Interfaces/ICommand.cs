@@ -3,12 +3,20 @@ using Dalamud.Game.Command;
 
 namespace PvPAnnouncer.Interfaces;
 
-public interface ICommand
+public abstract class Command
 { 
-    String Name { get; init; }
-    String HelpText { get; init; }
+    string Name { get; init; }
+    string HelpText { get; init; }
 
-    public void OnCommand(string command, string args);
+    public void OnCommand(string command, string args)
+    {
+        
+    }
+
+    public string GetFullCommandName()
+    {
+        return "/" + Name;
+    }
 
     CommandInfo CommandInfo { get; init; }
     

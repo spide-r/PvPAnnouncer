@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
@@ -6,19 +7,29 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyLimitBreakEvent: IPvPActorActionEvent
+public class AllyLimitBreakEvent: PvPActorActionEvent
 {
-    public AllyLimitBreakEvent()
+    public override List<string> SoundPaths()
     {
-        InvokeRule = ShouldInvoke;
+        return [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying];
     }
 
-    private bool ShouldInvoke(IPacket packet)
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
+
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket packet)
     {
         if (packet is ActionEffectPacket)
         {
             ActionEffectPacket pp = (ActionEffectPacket)packet;
-            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(pp.SourceId))
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
                 return ActionIds.IsLimitBreak(pp.ActionId);
             }
@@ -26,6 +37,4 @@ public class AllyLimitBreakEvent: IPvPActorActionEvent
         return false;    
     }
 
-    public string[]? SoundPaths { get; init; } = [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying];
-    public Func<IPacket, bool> InvokeRule { get; init; }
 }

@@ -3,7 +3,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl.Commands;
 
-public class TestCommand: ICommand
+public class TestCommand: Command
 {
     public string Name { get; init; }
     public string HelpText { get; init; }
@@ -11,7 +11,7 @@ public class TestCommand: ICommand
 
     public TestCommand()
     {
-        Name = "/testcommanddddd";
+        Name = "testcommand";
         HelpText = "Test command";
         CommandInfo = new CommandInfo(OnCommand)
         {
@@ -19,7 +19,7 @@ public class TestCommand: ICommand
         };
     }
     
-    public void OnCommand(string command, string args)
+    public new void OnCommand(string command, string args)
     {
         PluginServices.PluginLog.Info("Hello World!");
     }

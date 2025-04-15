@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
@@ -6,26 +7,43 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyActionEvent : IPvPActorActionEvent
+public class AllyActionEvent : PvPActorActionEvent
 {
     //generic event for specific action and sound pairings
-    public AllyActionEvent(uint actionId, string[] soundPaths)
+    public AllyActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem)
     {
-        SoundPaths = soundPaths;
+        SoundPathsList = soundPaths;
+        SoundPathsF = soundPathsFem;
+        SoundPathsM = soundPathsMasc;
         ActionId = actionId;
-        InvokeRule = ShouldEmit;
     }
 
-    public string[]? SoundPaths { get; init; }
-    public Func<IPacket, bool> InvokeRule { get; init; }
+    public List<string> SoundPathsList { get; init; }
+    public List<string> SoundPathsM { get; init; }
+    public List<string> SoundPathsF { get; init; }
     public uint ActionId { get; init; }
-    
-    private bool ShouldEmit(IPacket arg)
+
+    public override List<string> SoundPaths()
     {
-        if (arg is ActionEffectPacket)
+        return SoundPathsList;
+    }
+
+    public override List<string> SoundPathsMasc()
+    {
+        return SoundPathsM;
+    }
+
+    public override List<string> SoundPathsFem()
+    {
+        return SoundPathsF;
+    }
+
+    public override bool InvokeRule(IPacket p)
+    {
+        if (p is ActionEffectPacket)
         {
-            ActionEffectPacket packet = (ActionEffectPacket)arg;
-            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(packet.SourceId))
+            ActionEffectPacket packet = (ActionEffectPacket)p;
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(packet.SourceId))
             {
                 return packet.ActionId == ActionId;
 

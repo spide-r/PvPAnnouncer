@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
@@ -6,23 +7,31 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyMitUsedEvent: IPvPActorActionEvent
+public class AllyMitUsedEvent: PvPActorActionEvent
 {
-    public AllyMitUsedEvent()
+
+
+    public override List<string> SoundPaths()
     {
-        InvokeRule = ShouldInvoke;
+        return  [IroncladDefense, WhatAClash, ThrillingBattle];
     }
 
-    public string[]? SoundPaths { get; init; } = [IroncladDefense, WhatAClash, ThrillingBattle];
-    public Func<IPacket, bool> InvokeRule { get; init; }
-    public ulong? PlayerTarget { get; init; }
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
 
-    private bool ShouldInvoke(IPacket packet)
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket packet)
     {
         if (packet is ActionEffectPacket)
         {
             ActionEffectPacket pp = (ActionEffectPacket)packet;
-            if (PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(pp.SourceId))
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
                 return ActionIds.IsMitigation(pp.ActionId);
             }

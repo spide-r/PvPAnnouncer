@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using PvPAnnouncer.Data;
@@ -8,22 +9,30 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyHitHardEvent : IPvPActorActionEvent
+public class AllyHitHardEvent : PvPActorActionEvent
 {
-    public AllyHitHardEvent()
+    
+    public override List<string> SoundPaths()
     {
-        InvokeRule = Invoke;
+        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, ThrillingBattle, BrutalBlow, StillInIt];
     }
 
-    public string[]? SoundPaths { get; init; } = [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, ThrillingBattle, BrutalBlow, StillInIt];
-    public Func<IPacket, bool> InvokeRule { get; init; }
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
 
-    public bool Invoke(IPacket packet)
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket packet)
     {
         if (packet is ActionEffectPacket)
         {
             ActionEffectPacket pp = (ActionEffectPacket)packet;
-            foreach (var allianceMember in PvPAnnouncerPlugin.PvPMatchManager!.AllianceMembers)
+            foreach (var allianceMember in PluginServices.PvPMatchManager.AllianceMembers)
             {
                 if (pp.GetTargetIds().Contains(allianceMember))
                 {

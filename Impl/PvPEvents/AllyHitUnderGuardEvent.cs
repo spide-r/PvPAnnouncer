@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -10,17 +11,25 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyHitUnderGuardEvent: IPvPActorActionEvent
+public class AllyHitUnderGuardEvent: PvPActorActionEvent
 {
-    public AllyHitUnderGuardEvent(Func<IPacket, bool> invokeRule)
+
+    public override List<string> SoundPaths()
     {
-        InvokeRule = ShouldInvoke;
+        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash, BattleElectrifying, ThrillingBattle];
     }
 
-    public string[]? SoundPaths { get; init; } = [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash, BattleElectrifying, ThrillingBattle];
-    public Func<IPacket, bool> InvokeRule { get; init; } 
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
 
-    private bool ShouldInvoke(IPacket arg)
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket arg)
     {
         if (arg is ActionEffectPacket)
         {
@@ -28,7 +37,7 @@ public class AllyHitUnderGuardEvent: IPvPActorActionEvent
             ActionEffectPacket pp = (ActionEffectPacket)arg;
             foreach (var target in pp.GetTargetIds())
             {
-                if (PvPAnnouncerPlugin.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
                     IGameObject? obj = pp.GetGameObject(target);
                     if (obj is IPlayerCharacter)

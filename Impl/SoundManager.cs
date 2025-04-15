@@ -13,13 +13,14 @@ public class SoundManager: ISoundManager
 
     private readonly PlaySoundDelegate _playSoundPath;
 
-    private bool _muted = false;
+    private bool _muted;
 
     public SoundManager()
     {
         PluginServices.GameInteropProvider.InitializeFromAttributes(this);
         _playSoundPath = Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>( PluginServices.SigScanner.ScanText(PlaySoundSig ) );
-
+        //todo: determine mute status from config
+        SetMute(false);
         PluginServices.PluginLog.Info("Initializing Sound Manager");
     }
     

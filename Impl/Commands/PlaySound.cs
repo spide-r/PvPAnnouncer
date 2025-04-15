@@ -1,10 +1,10 @@
 ﻿using Dalamud.Game.Command;
 using PvPAnnouncer.Data;
-using ICommand = PvPAnnouncer.Interfaces.ICommand;
+using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl.Commands;
 
-public class PlaySound: ICommand
+public class PlaySound: Command
 {
     public string Name { get; init; }
     public string HelpText  { get; init; }
@@ -12,7 +12,7 @@ public class PlaySound: ICommand
 
     public PlaySound()
     {
-        Name = "/playsound";
+        Name = "playsound";
         HelpText = "Plays a sound.";
         CommandInfo = new CommandInfo(OnCommand)
         {
@@ -22,7 +22,7 @@ public class PlaySound: ICommand
 
     public void OnCommand(string command, string args)
     {
-        PvPAnnouncerPlugin.SoundManager?.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.IroncladDefense));
+        PluginServices.Announcer.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.IroncladDefense));
 
     }
     

@@ -46,9 +46,9 @@ public class PvPEventHooksPublisher: IPvPEventPublisher
         processPacketActionEffectHook.Enable();
         processPacketActorControlHook.Enable();
     }
-    
-    //todo disabling
-    //todo checking if pvp or not
+    //todo 
+    //disabling
+    //checking if pvp or not
 
     public void EmitToBroker(IPacket pvpEvent)
     {

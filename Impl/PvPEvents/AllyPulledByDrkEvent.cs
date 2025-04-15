@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
@@ -6,17 +7,26 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyPulledByDrkEvent: IPvPActorActionEvent
+public class AllyPulledByDrkEvent: PvPActorActionEvent
 {
     
-    public AllyPulledByDrkEvent()
+
+    public override List<string> SoundPaths()
     {
-        InvokeRule = ShouldInvoke;
+        return [SuckedIn, BattleElectrifying, ThrillingBattle];
     }
-    public string[]? SoundPaths { get; init; } = [SuckedIn, BattleElectrifying, ThrillingBattle];
-    public Func<IPacket, bool> InvokeRule { get; init; }
-    
-    private bool ShouldInvoke(IPacket packet)
+
+    public override List<string> SoundPathsMasc()
+    {
+        return [];
+    }
+
+    public override List<string> SoundPathsFem()
+    {
+        return [];
+    }
+
+    public override bool InvokeRule(IPacket packet)
     {
         if (packet is ActionEffectPacket)
         {
