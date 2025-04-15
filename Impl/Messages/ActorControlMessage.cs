@@ -1,9 +1,9 @@
 ﻿using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
-namespace PvPAnnouncer.Impl.Packets;
+namespace PvPAnnouncer.Impl.Messages;
 
-public class ActorControlPacket(
+public class ActorControlMessage(
     uint entityId,
     uint type,
     uint statusId,

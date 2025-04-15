@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
-using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -31,10 +28,10 @@ public class AllyHitUnderGuardEvent: PvPActorActionEvent
 
     public override bool InvokeRule(IPacket arg)
     {
-        if (arg is ActionEffectPacket)
+        if (arg is ActionEffectMessage)
         {
 
-            ActionEffectPacket pp = (ActionEffectPacket)arg;
+            ActionEffectMessage pp = (ActionEffectMessage)arg;
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
@@ -43,15 +40,15 @@ public class AllyHitUnderGuardEvent: PvPActorActionEvent
                     if (obj is IPlayerCharacter)
                     {
                         IPlayerCharacter? player = obj as IPlayerCharacter;
-                        var list = player.StatusList;
-                        foreach(var status in list)
-                        {
-                            if (status.StatusId == BuffIds.Guard) 
+                        var list = player?.StatusList;
+                        if (list != null)
+                            foreach (var status in list)
                             {
-                                return true;
+                                if (status.StatusId == BuffIds.Guard)
+                                {
+                                    return true;
+                                }
                             }
-                        }
-                       
                     }
                 }
             }

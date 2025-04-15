@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchConditionsEvent(List<string> soundPathsList): PvPEvent

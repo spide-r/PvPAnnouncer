@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -26,11 +25,11 @@ public class AllyDeathEvent : PvPActorControlEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActorControlPacket)
+        if (packet is ActorControlMessage)
         {
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(((ActorControlPacket) packet).EntityId))
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(((ActorControlMessage) packet).EntityId))
             {
-                return ((ActorControlPacket) packet).GetCategory() == ActorControlCategory.Death;
+                return ((ActorControlMessage) packet).GetCategory() == ActorControlCategory.Death;
 
             }
         }

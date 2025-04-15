@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using PvPAnnouncer.Impl.Packets;
+﻿using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 namespace PvPAnnouncer.impl.PvPEvents;
@@ -37,12 +36,12 @@ public class EnemyActorActionEvent : PvPActorActionEvent
     }
     public override bool InvokeRule(IPacket arg)
     {
-        if (arg is ActionEffectPacket)
+        if (arg is ActionEffectMessage)
         {
-            ActionEffectPacket packet = (ActionEffectPacket)arg;
-            if (!PluginServices.PvPMatchManager.IsMonitoredUser(packet.SourceId))
+            ActionEffectMessage message = (ActionEffectMessage)arg;
+            if (!PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
             {
-                return packet.ActionId == _actionId;
+                return message.ActionId == _actionId;
             }
         }
         return false;

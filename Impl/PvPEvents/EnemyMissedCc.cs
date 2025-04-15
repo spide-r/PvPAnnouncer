@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -29,14 +28,15 @@ public class EnemyMissedCc: PvPActorActionEvent
     }
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActorControlPacket)
+        if (packet is ActorControlMessage)
         {
-            ActionEffectPacket pp = (ActionEffectPacket)packet;
+            ActionEffectMessage pp = (ActionEffectMessage)packet;
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
-                    if (pp.GetEffectTypes(pp.GetTargetIds()).Contains(ActionEffectType.NoEffectText)) //todo this is nasty double looping and No Effect might not be the same as a miss - need to check
+                    if (pp.GetEffectTypes(pp.GetTargetIds()).Contains(ActionEffectType.NoEffectText)) 
+                        //todo: this is nasty double looping, also No Effect might not be the same as a miss - need to check
                     {
                         return true;
                     }

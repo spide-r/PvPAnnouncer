@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -26,9 +25,9 @@ public class AllyLimitBreakEvent: PvPActorActionEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActionEffectPacket)
+        if (packet is ActionEffectMessage)
         {
-            ActionEffectPacket pp = (ActionEffectPacket)packet;
+            ActionEffectMessage pp = (ActionEffectMessage)packet;
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
                 return ActionIds.IsLimitBreak(pp.ActionId);

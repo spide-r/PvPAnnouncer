@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -28,9 +28,9 @@ public class AllyPulledByDrkEvent: PvPActorActionEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActionEffectPacket)
+        if (packet is ActionEffectMessage)
         {
-            ActionEffectPacket aa = (ActionEffectPacket) packet;
+            ActionEffectMessage aa = (ActionEffectMessage) packet;
 
             ulong actionId = aa.ActionId;
             return actionId == ActionIds.SaltedEarth;

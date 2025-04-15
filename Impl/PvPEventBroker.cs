@@ -13,6 +13,7 @@ public class PvPEventBroker: IPvPEventBroker
     private readonly Dictionary<PvPEvent, Func<IPacket, bool>> _registeredListeners = new();
     public void ReceivePacket(IPacket packet)
     {
+        //todo: disable plugin toggle here 
         foreach (var keyValuePair in _registeredListeners.AsEnumerable())
         {
             PvPEvent ee = keyValuePair.Key;

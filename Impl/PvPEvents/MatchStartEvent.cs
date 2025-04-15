@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -24,7 +25,11 @@ public class MatchStartEvent: PvPMatchEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        throw new NotImplementedException();
+        if (packet is MatchEnteredMessage)
+        {
+            return true;
+        }
+        return false;
     }
 
 }

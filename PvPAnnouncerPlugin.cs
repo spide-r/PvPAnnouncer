@@ -22,7 +22,8 @@ namespace PvPAnnouncer
         {
             PluginServices.Initialize(pluginInterface);
             PluginInterface = pluginInterface;
-            PluginServices.CommandManager.AddHandler("/playsound", new PlaySound().CommandInfo);
+            PlaySound sdfs = new PlaySound();
+            PluginServices.CommandManager.AddHandler(sdfs.Name, sdfs.Info);
 
         }
 

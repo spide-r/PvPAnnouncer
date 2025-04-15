@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -22,9 +23,17 @@ public class AllyResurrectEvent: PvPActorEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet) //todo: determine how a resurrection is logged/sent to the client
+    public override bool InvokeRule(IPacket packet) 
     {
-        throw new NotImplementedException();
+        if (packet is UserResurrectedMessage)
+        {
+            UserResurrectedMessage p = (UserResurrectedMessage)packet;
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(p.UserId))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

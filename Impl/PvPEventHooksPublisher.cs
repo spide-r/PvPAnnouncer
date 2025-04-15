@@ -2,13 +2,13 @@
 using Dalamud.Hooking;
 using Dalamud.Utility.Signatures;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPEventHooksPublisher: IPvPEventPublisher
+public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
 {
     
     private unsafe delegate void ProcessPacketActionEffectDelegate(
@@ -27,7 +27,7 @@ public class PvPEventHooksPublisher: IPvPEventPublisher
      private unsafe void ProcessPacketActionEffectDetour(int sourceId, IntPtr sourceCharacter, IntPtr pos, ActionEffectHeader* effectHeader, 
          ActionEffect* effectArray, ulong* effectTrail) { 
          processPacketActionEffectHook.Original(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTrail);
-         ActionEffectPacket actionEffect = new ActionEffectPacket(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTrail);
+         ActionEffectMessage actionEffect = new ActionEffectMessage(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTrail);
          EmitToBroker(actionEffect);
      }
 
@@ -35,9 +35,9 @@ public class PvPEventHooksPublisher: IPvPEventPublisher
          uint source, uint a7, uint a8, ulong a9, byte flag)
      {
          processPacketActorControlHook.Original(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
-         ActorControlPacket actorControlPacket =
-             new ActorControlPacket(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
-         EmitToBroker(actorControlPacket);
+         ActorControlMessage actorControlMessage =
+             new ActorControlMessage(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
+         EmitToBroker(actorControlMessage);
      }
 
     public PvPEventHooksPublisher()
@@ -46,12 +46,19 @@ public class PvPEventHooksPublisher: IPvPEventPublisher
         processPacketActionEffectHook.Enable();
         processPacketActorControlHook.Enable();
     }
-    //todo 
-    //disabling
-    //checking if pvp or not
+    //todo: don't send if user isnt in pvp
 
     public void EmitToBroker(IPacket pvpEvent)
     {
-        throw new System.NotImplementedException();
+        PluginServices.PvPEventBroker.ReceivePacket(pvpEvent);
+    }
+
+    public void Dispose()
+    {
+        processPacketActionEffectHook.Disable();
+        processPacketActorControlHook.Disable();
+        
+        processPacketActionEffectHook.Dispose();
+        processPacketActorControlHook.Dispose();
     }
 }

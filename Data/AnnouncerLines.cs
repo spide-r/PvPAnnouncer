@@ -16,7 +16,7 @@ public static class AnnouncerLines
 
     public static String GetPath(String announcement)
     {
-        return GetPath(announcement, "en");
+        return GetPath(announcement, "en"); //todo: config
     }
     
     // === Generic ===

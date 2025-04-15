@@ -4,10 +4,9 @@ public interface IPvPMatchManager
 {
     uint Self {get; set;}
     uint[] LightParty { get; set; }
-    uint[] AllianceMembers { get; set; }
-    uint[] GrandCompanyMembers { get; set; }
+    uint[] FullParty { get; set; }
 
-    void MatchEntered();
+    void MatchEntered(uint territory);
     void MatchStarted();
     void MatchEnded();
     void MatchLeft();
@@ -15,8 +14,7 @@ public interface IPvPMatchManager
 
     void ClearLists();
     void PopulateLightParty(uint[] party);
-    void PopulateAllianceMembers(uint[] allianceMembers);
-    void PopulateGrandCompany(uint[] grandCompany);
+    void PopulateFullParty(uint[] party);
     
     bool IsMonitoredUser(int userId);
     

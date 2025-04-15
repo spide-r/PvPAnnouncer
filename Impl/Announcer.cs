@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -27,7 +28,7 @@ public class Announcer: IAnnouncer
         long diff = newTimestamp - _timestamp;
         
         // == Objective 4 ==
-        if (diff < 6) //todo: config stuff
+        if (diff < 6) //todo: config
         {
             return;
         }
@@ -119,6 +120,6 @@ public class Announcer: IAnnouncer
         int rand = Random.Shared.Next(sounds.Count);
         string s = sounds[rand];
         AddToRecentCommentary(s);
-        PlaySound(s);
+        PlaySound(AnnouncerLines.GetPath(s));
     }
 }

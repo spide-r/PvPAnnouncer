@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Game.ClientState.Party;
-using PvPAnnouncer.impl.PvPEvents;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
@@ -10,8 +10,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
     public uint Self { get; set; }
     public uint[] LightParty { get; set; } = [];
-    public uint[] AllianceMembers { get; set; } = [];
-    public uint[] GrandCompanyMembers { get; set; } = [];
+    public uint[] FullParty { get; set; } = [];
 
     public bool IsMonitoredUser(int userId)
     {
@@ -22,47 +21,54 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         
         //todo: all the config stuff
-        bool wantsGC = false;
-        bool wantsAlliance = false;
-        bool wantsLP = false;
-        if (wantsGC)
+        bool wantsFullParty = false;
+        bool wantsLightParty = false;
+        if (wantsFullParty)
         {
-            return GrandCompanyMembers.Contains(entityId);
+            return FullParty.Contains(entityId);
         }
 
-        if (wantsAlliance)
-        {
-            return AllianceMembers.Contains(entityId);
-        }
-
-        if (wantsLP)
+        if (wantsLightParty)
         {
             return LightParty.Contains(entityId);
         }
         
-        return entityId == Self;
+        return entityId == PluginServices.ClientState.LocalPlayer!.EntityId;
     }
 
     public void MatchEntered()
     {
-        throw new System.NotImplementedException();
+        List<uint> partyMembers = [];
+        foreach(IPartyMember member in PluginServices.PartyList)
+        {
+            uint id = member.ObjectId;
+            partyMembers.Add(id);
+        }
+
+        PopulateFullParty(partyMembers.ToArray());
+    }
+
+    public void MatchEntered(uint territory)
+    {
+        MatchEntered();
+        EmitToBroker(new MatchEnteredMessage(territory));
     }
 
     public void MatchStarted()
     {
-        //send match started
-        throw new System.NotImplementedException();
-    }
+        EmitToBroker(new MatchStartedMessage());    }
 
     public void MatchEnded()
     {
-        //send match ended
-        throw new System.NotImplementedException();
+        EmitToBroker(new MatchEndMessage());
+
     }
 
     public void MatchLeft()
     {
         ClearLists();
+        EmitToBroker(new MatchLeftMessage());
+
     }
 
     public void MatchQueued()
@@ -81,8 +87,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public void ClearLists()
     {
         LightParty = [];
-        AllianceMembers = [];
-        GrandCompanyMembers = [];
+        FullParty = [];
     }
 
     public void PopulateLightParty(uint[] party)
@@ -90,18 +95,14 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         LightParty = party;
     }
 
-    public void PopulateAllianceMembers(uint[] allianceMembers)
+    public void PopulateFullParty(uint[] party)
     {
-        AllianceMembers = allianceMembers;
+        FullParty = party;
     }
-
-    public void PopulateGrandCompany(uint[] grandCompany)
-    {
-        GrandCompanyMembers = grandCompany;
-    }
+    
 
     public void EmitToBroker(IPacket pvpEvent)
     {
-        throw new System.NotImplementedException();
+        PluginServices.PvPEventBroker.ReceivePacket(pvpEvent);
     }
 }

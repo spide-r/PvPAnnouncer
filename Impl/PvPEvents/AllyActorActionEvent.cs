@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using PvPAnnouncer.Impl;
-using PvPAnnouncer.Impl.Packets;
+﻿using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -40,12 +38,12 @@ public class AllyActionEvent : PvPActorActionEvent
 
     public override bool InvokeRule(IPacket p)
     {
-        if (p is ActionEffectPacket)
+        if (p is ActionEffectMessage)
         {
-            ActionEffectPacket packet = (ActionEffectPacket)p;
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(packet.SourceId))
+            ActionEffectMessage message = (ActionEffectMessage)p;
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
             {
-                return packet.ActionId == ActionId;
+                return message.ActionId == ActionId;
 
             }
         }

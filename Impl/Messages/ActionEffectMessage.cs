@@ -6,9 +6,9 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 using Action = Lumina.Excel.Sheets.Action;
 
-namespace PvPAnnouncer.Impl.Packets;
+namespace PvPAnnouncer.Impl.Messages;
 
-public unsafe class ActionEffectPacket(
+public unsafe class ActionEffectMessage(
     int sourceId,
     IntPtr sourceCharacter,
     IntPtr pos,

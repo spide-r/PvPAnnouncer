@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -22,9 +22,17 @@ public class AllyZoneOutEvent: PvPActorEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet) //todo: determine how a fall damage death is logged
+    public override bool InvokeRule(IPacket packet) 
     {
-        throw new NotImplementedException();
+        if (packet is UserZoneOutMessage)
+        {
+            UserZoneOutMessage p = (UserZoneOutMessage)packet;
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(p.UserId))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

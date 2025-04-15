@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Packets;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -29,10 +27,10 @@ public class AllyHitHardEvent : PvPActorActionEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActionEffectPacket)
+        if (packet is ActionEffectMessage)
         {
-            ActionEffectPacket pp = (ActionEffectPacket)packet;
-            foreach (var allianceMember in PluginServices.PvPMatchManager.AllianceMembers)
+            ActionEffectMessage pp = (ActionEffectMessage)packet;
+            foreach (var allianceMember in PluginServices.PvPMatchManager.FullParty)
             {
                 if (pp.GetTargetIds().Contains(allianceMember))
                 {
