@@ -5,14 +5,14 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyPulledDrkEvent: IPvPActorActionEvent
+public class AllyPulledByDrkEvent: IPvPActorActionEvent
 {
     
-    public AllyPulledDrkEvent()
+    public AllyPulledByDrkEvent()
     {
         InvokeRule = ShouldInvoke;
     }
-    public string[]? SoundPaths { get; init; } = [SuckedIn, WhatAClash, BattleElectrifying, ThrillingBattle];
+    public string[]? SoundPaths { get; init; } = [SuckedIn, BattleElectrifying, ThrillingBattle];
     public Func<IPacket, bool> InvokeRule { get; init; }
     
     private bool ShouldInvoke(IPacket packet)

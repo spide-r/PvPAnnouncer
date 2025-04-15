@@ -6,7 +6,7 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyLimitBreakEvent: IPvPActorActionEvent
 {
-    public AllyLimitBreakEvent(Func<IPacket, bool> invokeRule)
+    public AllyLimitBreakEvent()
     {
         InvokeRule = ShouldInvoke;
     }

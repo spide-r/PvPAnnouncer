@@ -1,13 +1,34 @@
 ﻿using System;
+using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class EnemyActorActionEvent(ulong playerId, ulong playerTarget, uint actionId, string[] soundPaths): IPvPActorActionEvent
+public class EnemyActorActionEvent : IPvPActorActionEvent
 {
-    public string[]? SoundPaths { get; init; } = soundPaths;
-    public Func<IPacket, bool> InvokeRule { get; init; } = _ => false;
-    public ulong PlayerId { get; init; } = playerId;
-    public ulong? PlayerTarget { get; init; } = playerTarget;
-    public uint ActionId { get; init; } = actionId;
+    private static uint _actionId;
+
+    public EnemyActorActionEvent(uint actionId, string[] soundPaths)
+    {
+        _actionId = actionId;
+        SoundPaths = soundPaths;
+        InvokeRule = ShouldEmit;
+    }
+
+    public string[]? SoundPaths { get; init; }
+    public Func<IPacket, bool> InvokeRule { get; init; } 
+    
+    private static bool ShouldEmit(IPacket arg)
+    {
+        if (arg is ActionEffectPacket)
+        {
+            ActionEffectPacket packet = (ActionEffectPacket)arg;
+            if (!PvPAnnouncerPlugin.PvPMatchManager!.IsMonitoredUser(packet.SourceId))
+            {
+                return packet.ActionId == _actionId;
+
+            }
+        }
+        return false;
+    }
 }

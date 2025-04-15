@@ -8,6 +8,7 @@ public class PvPAnnouncer: IPvPAnnouncer
 {
     public void ReceivePvPEvent(IPvPEvent pvpEvent)
     {
+        //todo implement actual logic
         PlaySound(pvpEvent);
     }
 

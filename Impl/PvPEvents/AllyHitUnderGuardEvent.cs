@@ -3,6 +3,7 @@ using System.Linq;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Packets;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -33,10 +34,15 @@ public class AllyHitUnderGuardEvent: IPvPActorActionEvent
                     if (obj is IPlayerCharacter)
                     {
                         IPlayerCharacter? player = obj as IPlayerCharacter;
-                        if (false) //todo pull status list and check for guard
+                        var list = player.StatusList;
+                        foreach(var status in list)
                         {
-                            return true;
+                            if (status.StatusId == BuffIds.Guard) 
+                            {
+                                return true;
+                            }
                         }
+                       
                     }
                 }
             }

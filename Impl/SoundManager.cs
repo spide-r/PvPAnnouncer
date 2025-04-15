@@ -11,14 +11,14 @@ public class SoundManager: ISoundManager
 
     private delegate IntPtr PlaySoundDelegate( IntPtr path, byte play );
 
-    private readonly PlaySoundDelegate PlaySoundPath;
+    private readonly PlaySoundDelegate _playSoundPath;
 
     private bool _muted = false;
 
     public SoundManager()
     {
         PluginServices.GameInteropProvider.InitializeFromAttributes(this);
-        PlaySoundPath = Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>( PluginServices.SigScanner.ScanText(PlaySoundSig ) );
+        _playSoundPath = Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>( PluginServices.SigScanner.ScanText(PlaySoundSig ) );
 
         PluginServices.PluginLog.Info("Initializing Sound Manager");
     }
@@ -34,7 +34,7 @@ public class SoundManager: ISoundManager
         var ptr = Marshal.AllocHGlobal( bytes.Length + 1 );
         Marshal.Copy( bytes, 0, ptr, bytes.Length );
         Marshal.WriteByte( ptr + bytes.Length, 0 );
-        PlaySoundPath( ptr, 1);
+        _playSoundPath( ptr, 1);
         Marshal.FreeHGlobal( ptr );
 
     }
