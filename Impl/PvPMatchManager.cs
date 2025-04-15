@@ -25,9 +25,8 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public bool IsMonitoredUser(uint entityId)
     {
         
-        //todo: all the config stuff
-        bool wantsFullParty = false;
-        bool wantsLightParty = false;
+        bool wantsFullParty = PluginServices.Config.WantsFullParty;
+        bool wantsLightParty = PluginServices.Config.WantsLightParty;
         if (wantsFullParty)
         {
             return FullParty.Contains(entityId);

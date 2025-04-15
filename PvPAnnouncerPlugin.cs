@@ -13,31 +13,36 @@ namespace PvPAnnouncer
 {
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
-        private const string MainCommand = "/ppa";
-        private IDalamudPluginInterface PluginInterface { get; init; }
         
-        
+        private readonly Command[] _commands = [new PlaySound(), new Config(), new MuteMetem(), new TestCommand()];
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
             PluginServices.Initialize(pluginInterface);
-            PluginInterface = pluginInterface;
-            PlaySound sdfs = new PlaySound();
-            PluginServices.CommandManager.AddHandler(sdfs.Name, sdfs.Info!);
+            LoadCommands();
 
         }
 
         private void LoadCommands()
         {
-            //todo: load commands
+            foreach (var command in _commands)
+            {
+                PluginServices.CommandManager.AddHandler(command.Name, command.Info!);
+
+            }
         }
 
         private void UnloadCommands()
         {
-            //todo: unload commands
+            foreach (var command in _commands)
+            {
+                PluginServices.CommandManager.RemoveHandler(command.Name);
+
+            }
         }
         public void Dispose()
         {
+            UnloadCommands();
             PluginServices.CommandManager.RemoveHandler("/playsound");
         }
     }

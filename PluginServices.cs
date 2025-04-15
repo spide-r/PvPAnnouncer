@@ -1,7 +1,9 @@
-﻿using Dalamud.Game;
+﻿using Dalamud.Configuration;
+using Dalamud.Game;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using PvpAnnouncer;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
 
@@ -51,14 +53,18 @@ internal class PluginServices {
     internal static IAnnouncer Announcer { get; private set; }
     internal static IPvPEventPublisher PvPEventHooksPublisher { get; private set; }
     internal static ISoundManager SoundManager { get; private set; }
+    internal static Configuration Config { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<PluginServices>();
+        Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
+        Config.Initialize(pluginInterface);
         PvPEventBroker = new PvPEventBroker();
         PvPMatchManager = new PvPMatchManager();
         Announcer = new Announcer();
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
+
     }
 }
 #pragma warning restore 8618

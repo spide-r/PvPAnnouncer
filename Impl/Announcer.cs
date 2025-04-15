@@ -28,7 +28,7 @@ public class Announcer: IAnnouncer
         long diff = newTimestamp - _timestamp;
         
         // == Objective 4 ==
-        if (diff < 6) //todo: config
+        if (diff < PluginServices.Config.CooldownSeconds)
         {
             return;
         }
@@ -84,8 +84,8 @@ public class Announcer: IAnnouncer
         // == Objective 5 == 
         if (pvpEvent.SoundPathsFem().Count > 0 || pvpEvent.SoundPathsMasc().Count > 0)
         {
-            bool userWantsFem = false; //todo: config
-            bool userWantsMasc = false;
+            bool userWantsFem = PluginServices.Config.WantsFem;
+            bool userWantsMasc = PluginServices.Config.WantsMasc;
 
             if (userWantsFem || userWantsMasc)
             {

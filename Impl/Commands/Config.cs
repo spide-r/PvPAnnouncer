@@ -3,21 +3,22 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl.Commands;
 
-public class TestCommand: Command
+public class Config: Command
 {
-
-    public TestCommand()
+    public Config()
     {
-        Name = "testcommand";
-        HelpText = "Test command Remove me!";
+        Name = "pvpannouncer";
+        HelpText = "Open The announcer config.";
         Info = new CommandInfo(OnCommand)
         {
             HelpMessage = HelpText
         };
     }
-    
+
+
     public override void OnCommand(string command, string args)
     {
-        PluginServices.PluginLog.Info("Hello World!");
+        PluginServices.PluginLog.Info("Opening config!");
+        //todo: open config window
     }
 }

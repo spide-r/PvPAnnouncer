@@ -13,7 +13,11 @@ public class PvPEventBroker: IPvPEventBroker
     private readonly Dictionary<PvPEvent, Func<IMessage, bool>> _registeredListeners = new();
     public void IngestPacket(IMessage message)
     {
-        //todo: disable plugin toggle goes here 
+        if (PluginServices.Config.Disabled)
+        {
+            return;
+        }
+        
         foreach (var keyValuePair in _registeredListeners.AsEnumerable())
         {
             PvPEvent ee = keyValuePair.Key;
@@ -32,7 +36,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     private bool IsBlacklistedEvent(PvPEvent ee)
     {
-        bool eventIsBlacklisted = ee.Name.Equals("dummy value"); //todo: config
+        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.Name);
         return eventIsBlacklisted;
     }
 

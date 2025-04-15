@@ -19,8 +19,7 @@ public class SoundManager: ISoundManager
     {
         PluginServices.GameInteropProvider.InitializeFromAttributes(this);
         _playSoundPath = Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>( PluginServices.SigScanner.ScanText(PlaySoundSig ) );
-        //todo: determine mute status from config
-        SetMute(false);
+        SetMute(PluginServices.Config.Muted);
         PluginServices.PluginLog.Info("Initializing Sound Manager");
     }
     
@@ -44,10 +43,13 @@ public class SoundManager: ISoundManager
     public void ToggleMute()
     {
         _muted = !_muted;
+        PluginServices.Config.Muted = _muted;
     }
 
     public void SetMute(bool mute)
     {
         _muted = mute;
+        PluginServices.Config.Muted = _muted;
+
     }
 }

@@ -9,7 +9,7 @@ public class PlaySound: Command
     public PlaySound()
     {
         Name = "playsound";
-        HelpText = "Plays a sound.";
+        HelpText = "Plays a sound. Remove me!";
         Info = new CommandInfo(OnCommand)
         {
             HelpMessage = HelpText
