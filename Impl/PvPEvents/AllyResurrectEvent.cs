@@ -28,9 +28,9 @@ public class AllyResurrectEvent: PvPActorEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet) 
+    public override bool InvokeRule(IMessage m) 
     {
-        if (packet is UserResurrectedMessage message)
+        if (m is UserResurrectedMessage message)
         {
             if (PluginServices.PvPMatchManager.IsMonitoredUser(message.UserId))
             {

@@ -1,6 +1,6 @@
 ﻿namespace PvPAnnouncer.Interfaces;
 
-public interface IPacket
+public interface IMessage
 {
     
 }

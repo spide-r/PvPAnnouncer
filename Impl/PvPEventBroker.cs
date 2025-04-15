@@ -10,8 +10,8 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPEventBroker: IPvPEventBroker
 {
-    private readonly Dictionary<PvPEvent, Func<IPacket, bool>> _registeredListeners = new();
-    public void IngestPacket(IPacket packet)
+    private readonly Dictionary<PvPEvent, Func<IMessage, bool>> _registeredListeners = new();
+    public void IngestPacket(IMessage message)
     {
         //todo: disable plugin toggle goes here 
         foreach (var keyValuePair in _registeredListeners.AsEnumerable())
@@ -21,8 +21,8 @@ public class PvPEventBroker: IPvPEventBroker
             {
                 continue;
             }
-            Func<IPacket, bool> shouldEmit = keyValuePair.Value;
-            bool emit = shouldEmit.Invoke(packet);
+            Func<IMessage, bool> shouldEmit = keyValuePair.Value;
+            bool emit = shouldEmit.Invoke(message);
             if (emit)
             {
                 EmitToSubscribers(ee);

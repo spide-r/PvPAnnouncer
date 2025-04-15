@@ -27,9 +27,9 @@ public class AllyZoneOutEvent: PvPActorEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet) 
+    public override bool InvokeRule(IMessage m) 
     {
-        if (packet is UserZoneOutMessage message)
+        if (m is UserZoneOutMessage message)
         {
             if (PluginServices.PvPMatchManager.IsMonitoredUser(message.UserId))
             {

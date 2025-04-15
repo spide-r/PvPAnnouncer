@@ -30,7 +30,7 @@ public class MatchConditionsEvent : PvPEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet)
+    public override bool InvokeRule(IMessage message)
     {
         return false;
     }

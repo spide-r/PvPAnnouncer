@@ -4,6 +4,6 @@ namespace PvPAnnouncer.Interfaces;
 
 public interface IPvPEventPublisher
 {
-    void EmitToBroker(IPacket pvpEvent);
+    void EmitToBroker(IMessage pvpEvent);
     
 }

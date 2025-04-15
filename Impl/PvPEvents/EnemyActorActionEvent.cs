@@ -35,7 +35,7 @@ public class EnemyActorActionEvent : PvPActorActionEvent
     {
         return SoundPathsF; 
     }
-    public override bool InvokeRule(IPacket arg)
+    public override bool InvokeRule(IMessage arg)
     {
         if (arg is ActionEffectMessage message)
         {

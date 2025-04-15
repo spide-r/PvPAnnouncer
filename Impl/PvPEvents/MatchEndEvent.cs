@@ -27,7 +27,7 @@ public class MatchEndEvent: PvPMatchEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet)
+    public override bool InvokeRule(IMessage message)
     {
         return false;
     }

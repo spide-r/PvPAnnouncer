@@ -28,9 +28,9 @@ public class MatchStartEvent: PvPMatchEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet)
+    public override bool InvokeRule(IMessage message)
     {
-        if (packet is MatchEnteredMessage)
+        if (message is MatchEnteredMessage)
         {
             return true;
         }

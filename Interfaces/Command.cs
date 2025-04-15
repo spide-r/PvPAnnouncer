@@ -8,7 +8,7 @@ public abstract class Command
 {
 
     public string Name { get; init; } = "default";
-    public string HelpText { get; init; } = "Default Help";
+    protected string HelpText { get; init; } = "Default Help";
 
     public abstract void OnCommand(string command, string args);
 
@@ -17,7 +17,7 @@ public abstract class Command
         return "/" + Name;
     }
 
-    public CommandInfo Info { get; init; }
+    public CommandInfo? Info { get; protected init; }
     
     
 }

@@ -7,7 +7,7 @@ public static class AnnouncerLines
     //Announcer sound path: sound/voice/vo_line/INSERT_NUMBER_HERE_en.scd
     // en, de, fr, ja work
     
-    //Lines are found in ContentDirectorTalk as well as InstanceContentTextData
+    //Lines are found in ContentDirectorTalk as well as InstanceContentTextData - Use AlphaAOT 
 
     public static String GetPath(String announcement, String lang)
     {

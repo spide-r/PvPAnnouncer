@@ -2,7 +2,7 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class MatchLeftMessage: IPacket
+public class MatchLeftMessage: IMessage
 {
     
 }

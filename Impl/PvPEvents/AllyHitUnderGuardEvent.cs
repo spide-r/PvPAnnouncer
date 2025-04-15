@@ -30,7 +30,7 @@ public class AllyHitUnderGuardEvent: PvPActorActionEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket arg)
+    public override bool InvokeRule(IMessage arg)
     {
         if (arg is ActionEffectMessage pp)
         {

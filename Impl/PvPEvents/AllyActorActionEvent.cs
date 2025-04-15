@@ -42,7 +42,7 @@ public class AllyActionEvent : PvPActorActionEvent
         return SoundPathsF;
     }
 
-    public override bool InvokeRule(IPacket p)
+    public override bool InvokeRule(IMessage p)
     {
         if (p is ActionEffectMessage)
         {

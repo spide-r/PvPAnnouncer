@@ -1,5 +1,8 @@
 ﻿namespace PvPAnnouncer.Data;
-
+/*
+ * Attributed to Kouzukii/ffxiv-deathrecap
+ * https://github.com/Kouzukii/ffxiv-deathrecap/blob/master/Game/ActionEffect.cs
+ */
 public enum ActorControlCategory : ushort {
     Death = 0x6,
     CancelAbility = 0xF,

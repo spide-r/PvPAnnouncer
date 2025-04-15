@@ -27,9 +27,9 @@ public class AllyDeathEvent : PvPActorControlEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet)
+    public override bool InvokeRule(IMessage m)
     {
-        if (packet is ActorControlMessage message)
+        if (m is ActorControlMessage message)
         {
             if (PluginServices.PvPMatchManager.IsMonitoredUser(message.EntityId))
             {

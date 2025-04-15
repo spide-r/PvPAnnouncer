@@ -29,9 +29,9 @@ public class AllyPulledByDrkEvent: PvPActorActionEvent
         return [];
     }
 
-    public override bool InvokeRule(IPacket packet)
+    public override bool InvokeRule(IMessage message)
     {
-        if (packet is ActionEffectMessage pp)
+        if (message is ActionEffectMessage pp)
         {
             ulong actionId = pp.ActionId;
             return actionId == ActionIds.SaltedEarth;

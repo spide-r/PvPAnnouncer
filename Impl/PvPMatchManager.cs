@@ -55,6 +55,8 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEntered(uint territory)
     {
+        
+        //todo: check to make sure the user has their voice bgm at not-zero and also not muted
         MatchEntered();
         EmitToBroker(new MatchEnteredMessage(territory));
     }
@@ -106,7 +108,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     }
     
 
-    public void EmitToBroker(IPacket pvpEvent)
+    public void EmitToBroker(IMessage pvpEvent)
     {
         PluginServices.PvPEventBroker.IngestPacket(pvpEvent);
     }

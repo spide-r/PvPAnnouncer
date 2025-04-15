@@ -8,6 +8,6 @@ public abstract class PvPEvent(string name = "PvP Event")
     public abstract List<string> SoundPaths();
     public abstract List<string> SoundPathsMasc();
     public abstract List<string> SoundPathsFem();
-    public abstract bool InvokeRule(IPacket packet);
+    public abstract bool InvokeRule(IMessage message);
     public string Name = name;
 }

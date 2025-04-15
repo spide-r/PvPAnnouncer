@@ -46,7 +46,7 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
         processPacketActionEffectHook.Enable();
         processPacketActorControlHook.Enable();
     }
-    public void EmitToBroker(IPacket pvpEvent)
+    public void EmitToBroker(IMessage pvpEvent)
     {
         if (PluginServices.ClientState.IsPvP)
         {
