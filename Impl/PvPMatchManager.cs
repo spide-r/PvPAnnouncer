@@ -12,6 +12,11 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public uint[] LightParty { get; set; } = [];
     public uint[] FullParty { get; set; } = [];
 
+    public PvPMatchManager()
+    {
+        //todo: subscribe the below functions to the correct things
+    }
+
     public bool IsMonitoredUser(int userId)
     {
         return IsMonitoredUser((uint)userId);
@@ -103,6 +108,6 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void EmitToBroker(IPacket pvpEvent)
     {
-        PluginServices.PvPEventBroker.ReceivePacket(pvpEvent);
+        PluginServices.PvPEventBroker.IngestPacket(pvpEvent);
     }
 }

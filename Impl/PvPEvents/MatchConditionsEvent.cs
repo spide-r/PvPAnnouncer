@@ -4,10 +4,17 @@ using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class MatchConditionsEvent(List<string> soundPathsList): PvPEvent
+public class MatchConditionsEvent : PvPEvent
 {
+    public MatchConditionsEvent(List<string> soundPathsList, string name = "Match Conditions")
+    {
+        SoundPathsList = soundPathsList;
+        Name = name;
+    }
     // Weather, Match Obstacles, Conditions Changing
-    private List<string> SoundPathsList { get; init; } = soundPathsList;
+    
+    
+    private List<string> SoundPathsList { get; }
     public override List<string> SoundPaths()
     {
         return SoundPathsList;

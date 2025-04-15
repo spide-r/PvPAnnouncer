@@ -8,6 +8,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyLimitBreakEvent: PvPActorActionEvent
 {
+    public AllyLimitBreakEvent()
+    {
+        Name = "Limit Breaks";
+    }
+
     public override List<string> SoundPaths()
     {
         return [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying];
@@ -25,9 +30,8 @@ public class AllyLimitBreakEvent: PvPActorActionEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActionEffectMessage)
+        if (packet is ActionEffectMessage pp)
         {
-            ActionEffectMessage pp = (ActionEffectMessage)packet;
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
                 return ActionIds.IsLimitBreak(pp.ActionId);

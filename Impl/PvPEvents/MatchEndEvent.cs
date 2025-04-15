@@ -7,6 +7,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchEndEvent: PvPMatchEvent
 {
+    public MatchEndEvent()
+    {
+        Name = "Matches Ending";
+    }
+
     public override List<string> SoundPaths()
     {
         return [AllOverUntilNextTime, BattleElectrifying];

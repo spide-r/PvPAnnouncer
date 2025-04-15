@@ -7,6 +7,10 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MechKilledEvent: PvPEvent
 {
+    public MechKilledEvent()
+    {
+        Name = "Mech Killed";
+    }
     public override List<string> SoundPaths()
     {
         return [];

@@ -9,7 +9,10 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyPulledByDrkEvent: PvPActorActionEvent
 {
-    
+    public AllyPulledByDrkEvent()
+    {
+        Name = "Pulled By Dark Knight";
+    }
 
     public override List<string> SoundPaths()
     {
@@ -28,11 +31,9 @@ public class AllyPulledByDrkEvent: PvPActorActionEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActionEffectMessage)
+        if (packet is ActionEffectMessage pp)
         {
-            ActionEffectMessage aa = (ActionEffectMessage) packet;
-
-            ulong actionId = aa.ActionId;
+            ulong actionId = pp.ActionId;
             return actionId == ActionIds.SaltedEarth;
       
         }

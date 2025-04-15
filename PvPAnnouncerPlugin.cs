@@ -29,12 +29,12 @@ namespace PvPAnnouncer
 
         private void LoadCommands()
         {
-            //todo 
+            //todo: load commands
         }
 
         private void UnloadCommands()
         {
-            //todo
+            //todo: unload commands
         }
         public void Dispose()
         {

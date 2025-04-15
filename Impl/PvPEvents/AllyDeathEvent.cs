@@ -8,6 +8,10 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyDeathEvent : PvPActorControlEvent
 {
+    public AllyDeathEvent()
+    {
+        Name = "Deaths";
+    }
     public override List<string> SoundPaths()
     {
         return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid];
@@ -25,11 +29,11 @@ public class AllyDeathEvent : PvPActorControlEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActorControlMessage)
+        if (packet is ActorControlMessage message)
         {
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(((ActorControlMessage) packet).EntityId))
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(message.EntityId))
             {
-                return ((ActorControlMessage) packet).GetCategory() == ActorControlCategory.Death;
+                return message.GetCategory() == ActorControlCategory.Death;
 
             }
         }

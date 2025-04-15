@@ -8,6 +8,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchStartEvent: PvPMatchEvent
 {
+    public MatchStartEvent()
+    {
+        Name = "Matches Started";
+    }
+
     public override List<string> SoundPaths()
     {
         return [SendingCameras, UpstartBegins];

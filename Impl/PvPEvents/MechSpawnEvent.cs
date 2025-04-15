@@ -7,6 +7,10 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MechSpawnEvent: PvPEvent
 {
+    public MechSpawnEvent()
+    {
+        Name = "Mech Spawn";
+    }
     public override List<string> SoundPaths()
     {
         return [ColossalThing];

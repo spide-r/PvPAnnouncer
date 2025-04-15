@@ -46,11 +46,12 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
         processPacketActionEffectHook.Enable();
         processPacketActorControlHook.Enable();
     }
-    //todo: don't send if user isnt in pvp
-
     public void EmitToBroker(IPacket pvpEvent)
     {
-        PluginServices.PvPEventBroker.ReceivePacket(pvpEvent);
+        if (PluginServices.ClientState.IsPvP)
+        {
+            PluginServices.PvPEventBroker.IngestPacket(pvpEvent);
+        }
     }
 
     public void Dispose()

@@ -8,6 +8,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyResurrectEvent: PvPActorEvent
 {
+    public AllyResurrectEvent()
+    {
+        Name = "Resurrection";
+    }
+
     public override List<string> SoundPaths()
     {
         return [BackUpGrit, BackOnFeet, RisesAgain];
@@ -25,10 +30,9 @@ public class AllyResurrectEvent: PvPActorEvent
 
     public override bool InvokeRule(IPacket packet) 
     {
-        if (packet is UserResurrectedMessage)
+        if (packet is UserResurrectedMessage message)
         {
-            UserResurrectedMessage p = (UserResurrectedMessage)packet;
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(p.UserId))
+            if (PluginServices.PvPMatchManager.IsMonitoredUser(message.UserId))
             {
                 return true;
             }

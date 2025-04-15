@@ -7,19 +7,25 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyActionEvent : PvPActorActionEvent
 {
-    //generic event for specific action and sound pairings
-    public AllyActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem)
+    public AllyActionEvent(uint actionId,
+        List<string> soundPaths,
+        List<string> soundPathsMasc,
+        List<string> soundPathsFem, string name = "Action")
     {
         SoundPathsList = soundPaths;
-        SoundPathsF = soundPathsFem;
         SoundPathsM = soundPathsMasc;
+        SoundPathsF = soundPathsFem;
         ActionId = actionId;
+        Name = name;
     }
 
-    public List<string> SoundPathsList { get; init; }
-    public List<string> SoundPathsM { get; init; }
-    public List<string> SoundPathsF { get; init; }
-    public uint ActionId { get; init; }
+
+    //generic event for specific action and sound pairings
+
+    private List<string> SoundPathsList { get; }
+    private List<string> SoundPathsM { get; }
+    private List<string> SoundPathsF { get; }
+    private uint ActionId { get; }
 
     public override List<string> SoundPaths()
     {

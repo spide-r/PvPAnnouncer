@@ -10,6 +10,10 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyHitUnderGuardEvent: PvPActorActionEvent
 {
+    public AllyHitUnderGuardEvent()
+    {
+        Name = "Hit while under guard";
+    }
 
     public override List<string> SoundPaths()
     {
@@ -28,10 +32,8 @@ public class AllyHitUnderGuardEvent: PvPActorActionEvent
 
     public override bool InvokeRule(IPacket arg)
     {
-        if (arg is ActionEffectMessage)
+        if (arg is ActionEffectMessage pp)
         {
-
-            ActionEffectMessage pp = (ActionEffectMessage)arg;
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))

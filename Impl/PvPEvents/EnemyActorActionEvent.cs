@@ -8,12 +8,13 @@ public class EnemyActorActionEvent : PvPActorActionEvent
 {
     private static uint _actionId;
 
-    public EnemyActorActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem)
+    public EnemyActorActionEvent(uint actionId, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem, string name = "Enemy Actions")
     {
         _actionId = actionId;
         SoundPathsList = soundPaths;
         SoundPathsM = soundPathsMasc;
         SoundPathsF = soundPathsFem;
+        Name = name;
     }
 
     public List<string> SoundPathsList { get; init; }
@@ -36,9 +37,8 @@ public class EnemyActorActionEvent : PvPActorActionEvent
     }
     public override bool InvokeRule(IPacket arg)
     {
-        if (arg is ActionEffectMessage)
+        if (arg is ActionEffectMessage message)
         {
-            ActionEffectMessage message = (ActionEffectMessage)arg;
             if (!PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
             {
                 return message.ActionId == _actionId;

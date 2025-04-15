@@ -8,6 +8,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class EnemyMissedCc: PvPActorActionEvent
 {
+    public EnemyMissedCc()
+    {
+        Name = "Enemies Fail to hit CC";
+    }
+
     public override List<string> SoundPaths()
     {
         return
@@ -28,9 +33,8 @@ public class EnemyMissedCc: PvPActorActionEvent
     }
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActorControlMessage)
+        if (packet is ActionEffectMessage pp)
         {
-            ActionEffectMessage pp = (ActionEffectMessage)packet;
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))

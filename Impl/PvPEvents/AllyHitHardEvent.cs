@@ -9,7 +9,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyHitHardEvent : PvPActorActionEvent
 {
-    
+    public AllyHitHardEvent()
+    {
+        Name = "Hit hard by enemy";
+    }
+
     public override List<string> SoundPaths()
     {
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, ThrillingBattle, BrutalBlow, StillInIt];
@@ -27,9 +31,8 @@ public class AllyHitHardEvent : PvPActorActionEvent
 
     public override bool InvokeRule(IPacket packet)
     {
-        if (packet is ActionEffectMessage)
+        if (packet is ActionEffectMessage pp)
         {
-            ActionEffectMessage pp = (ActionEffectMessage)packet;
             foreach (var allianceMember in PluginServices.PvPMatchManager.FullParty)
             {
                 if (pp.GetTargetIds().Contains(allianceMember))
