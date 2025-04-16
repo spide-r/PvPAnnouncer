@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PvPAnnouncer", "PvPAnnouncer.csproj", "{1C2496FA-7647-45A9-89FA-114A6DE99DE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PvPAnnouncer", "PvPAnnouncer\PvPAnnouncer.csproj", "{1C2496FA-7647-45A9-89FA-114A6DE99DE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
