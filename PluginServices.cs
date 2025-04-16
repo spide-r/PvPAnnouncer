@@ -66,6 +66,7 @@ internal class PluginServices {
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
         ListenerLoader = new EventListenerLoader();
+        ListenerLoader.LoadEventListeners();
     }
 }
 #pragma warning restore 8618

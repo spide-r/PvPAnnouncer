@@ -39,9 +39,16 @@ public class EnemyActionEvent : PvPActionEvent
     {
         if (arg is ActionEffectMessage message)
         {
-            if (!PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
+            if (_actionId != message.ActionId)
             {
-                return message.ActionId == _actionId;
+                return false;
+            }
+            foreach (var target in message.GetTargetIds())
+            {
+                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                {
+                    return true;
+                }
             }
         }
         return false;

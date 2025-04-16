@@ -15,7 +15,7 @@ namespace PvpAnnouncer
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 1;
         
-        public int CooldownSeconds { get; set; } = 6;
+        public int CooldownSeconds { get; set; } = 5;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
         public bool WantsLightParty { get; set; } = true;
@@ -26,7 +26,7 @@ namespace PvpAnnouncer
         public bool Disabled { get; set; } = false;
         public bool Muted { get; set; } = false;
 
-        public int Percent { get; set; } = 30; 
+        public int Percent { get; set; } = 50; 
  
         public string Language { get; set; } = "en";
 
@@ -40,7 +40,7 @@ namespace PvpAnnouncer
 
         public void Save()
         {
-            _pluginInterface!.SavePluginConfig(this);
+            _pluginInterface?.SavePluginConfig(this);
         }
     }
 }

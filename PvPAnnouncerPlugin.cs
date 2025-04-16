@@ -15,20 +15,32 @@ namespace PvPAnnouncer
 {
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
-        public WindowSystem WindowSystem = new("PvPAnnouncer");
-        public ConfigWindow ConfigWindow { get; init; }
+        private WindowSystem WindowSystem = new("PvPAnnouncer");
+        private ConfigWindow ConfigWindow { get; init; }
+        private MainWindow MainWindow { get; init; }
 
-        private readonly Command[] _commands = [new PlaySound(), new MuteMetem(), new TestCommand()];
+        private readonly Command[] _commands = [new PlaySound(), new MuteAnnouncer(), new TestCommand()];
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
             PluginServices.Initialize(pluginInterface);
             LoadCommands();
             ConfigWindow = new ConfigWindow();
+            MainWindow = new MainWindow();
             WindowSystem.AddWindow(ConfigWindow);
+            WindowSystem.AddWindow(MainWindow);
+            pluginInterface.UiBuilder.Draw += DrawUi;
+            pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
+            pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
             
           
         }
+
+        private void DrawUi()
+        {
+            WindowSystem.Draw();
+        }
+
         private void OnCommand(string command, string args)
         {
             ToggleConfigWindow();
@@ -37,6 +49,11 @@ namespace PvPAnnouncer
         private void ToggleConfigWindow()
         {
             ConfigWindow.Toggle();
+        }
+        
+        private void ToggleMainUI()
+        {
+            MainWindow.Toggle();
         }
 
         private void LoadCommands()

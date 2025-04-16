@@ -31,10 +31,21 @@ public class AllyPulledByDrkEvent: PvPActionEvent
 
     public override bool InvokeRule(IMessage message)
     {
+        
         if (message is ActionEffectMessage pp)
         {
-            ulong actionId = pp.ActionId;
-            return actionId == ActionIds.SaltedEarth;
+            if (pp.ActionId != ActionIds.SaltedEarth)
+            {
+                return false;
+            }
+            foreach (var target in pp.GetTargetIds())
+            {
+                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                {
+                    return true;
+                }
+            }
+            return false;
       
         }
         return false;

@@ -21,35 +21,37 @@ public class Announcer: IAnnouncer
     
     private readonly Queue<string> _lastVoiceLines = new();
     private readonly Queue<string> _lastEvents = new();
-    private long _timestamp;
+    private long _timestamp = 0;
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
+        PluginServices.PluginLog.Info($"PvP Event {pvpEvent.Name} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
         
         // == Objective 4 ==
         if (diff < PluginServices.Config.CooldownSeconds)
         {
+            PluginServices.PluginLog.Verbose($"Cooldown not finished");
             return;
         }
 
-        _timestamp = newTimestamp;
         
         int rand = Random.Shared.Next(100);
         
         
         // == Objective 1 ==
-        if (rand > PluginServices.Config.Percent) 
+        if (rand < (100 - PluginServices.Config.Percent)) 
         {
+            PluginServices.PluginLog.Verbose($"Percent not hit. is {rand} when it should be greater than {100 - PluginServices.Config.Percent}");
+
             return;
         }
         // == Objective 3 == 
-        if (!PassesRepeatCommentaryCheck(pvpEvent))
+        if (FailsRepeatCommentaryCheck(pvpEvent))
         {
+            //PluginServices.PluginLog.Verbose($"Repeat commentary check failed");
             return;
         }
-        
-        AddEventToRecentList(pvpEvent);
         
         PlaySound(pvpEvent);
     }
@@ -57,8 +59,11 @@ public class Announcer: IAnnouncer
 
     private void AddEventToRecentList(PvPEvent e)
     {
+        PluginServices.PluginLog.Verbose("Adding Event to history");
         if (_lastEvents.Count > PluginServices.Config.RepeatEventCommentaryQueue - 1) 
         {
+            PluginServices.PluginLog.Verbose($"Dequeuing Event from history");
+
             _lastEvents.Dequeue();
         }
         
@@ -69,8 +74,12 @@ public class Announcer: IAnnouncer
     
     private void AddVoiceLineToRecentList(String e)
     {
+        PluginServices.PluginLog.Verbose("Adding Voice line to history");
+
         if (_lastVoiceLines.Count > PluginServices.Config.RepeatVoiceLineQueue - 1) 
         {
+            PluginServices.PluginLog.Verbose($"Dequeuing Voice Line from history");
+
             _lastVoiceLines.Dequeue();
         }
         
@@ -78,20 +87,26 @@ public class Announcer: IAnnouncer
 
     }
 
-    private bool PassesRepeatCommentaryCheck(PvPEvent pvpEvent)
+    private bool FailsRepeatCommentaryCheck(PvPEvent pvpEvent)
     {
-        return !_lastEvents.Contains(pvpEvent.Name);
+        bool b = _lastEvents.Contains(pvpEvent.Name);
+        foreach (var lastEvent in _lastEvents)
+        {
+            PluginServices.PluginLog.Verbose($"Last Event: {lastEvent}");
+        }
+        PluginServices.PluginLog.Verbose($"Repeat commentary check triggered - value is {b}");
+        return b;
     }
 
     public void PlaySound(string sound)
     {
+        PluginServices.PluginLog.Info($"Playing sound: {sound}");
         PluginServices.SoundManager.PlaySound(sound);
 
     }
 
     public void PlaySound(PvPEvent pvpEvent)
     {
-        _lastEvents.Enqueue(pvpEvent.Name);
         List<string> sounds = new List<string>(pvpEvent.SoundPaths());
         
         // == Objective 5 == 
@@ -132,7 +147,14 @@ public class Announcer: IAnnouncer
         
         int rand = Random.Shared.Next(sounds.Count);
         string s = sounds[rand];
-        AddVoiceLineToRecentList(s);
+        WrapUp(pvpEvent, s);
         PlaySound(AnnouncerLines.GetPath(s));
+    }
+
+    private void WrapUp(PvPEvent pvpEvent, string chosenLine)
+    {
+        AddEventToRecentList(pvpEvent);
+        AddVoiceLineToRecentList(chosenLine);
+        _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
     }
 }

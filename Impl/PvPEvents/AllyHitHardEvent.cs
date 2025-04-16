@@ -35,9 +35,12 @@ public class AllyHitHardEvent : PvPActionEvent
         {
             foreach (var allianceMember in PluginServices.PvPMatchManager.FullParty)
             {
-                if (pp.GetTargetIds().Contains(allianceMember))
+                foreach (var target in pp.GetTargetIds())
                 {
-                    return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
+                    if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                    {
+                        return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
+                    }
                 }
             }
             

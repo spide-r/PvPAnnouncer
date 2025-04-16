@@ -18,10 +18,18 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
+        PluginServices.ClientState.Login += OnLogin;
+        
+    }
+
+    private void OnLogin()
+    {
+        
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
     {
+        PluginServices.PluginLog.Information("OnCfPop");
         MatchQueued();
     }
 
@@ -44,20 +52,24 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public bool IsMonitoredUser(uint entityId)
     {
-        
+        if (PluginServices.ClientState.LocalPlayer != null && entityId == PluginServices.ClientState.LocalPlayer.EntityId)
+        {
+            return true;
+        }
         bool wantsFullParty = PluginServices.Config.WantsFullParty;
         bool wantsLightParty = PluginServices.Config.WantsLightParty;
+        if (wantsLightParty)
+        {
+            return LightParty.Contains(entityId);
+        }
         if (wantsFullParty)
         {
             return FullParty.Contains(entityId);
         }
 
-        if (wantsLightParty)
-        {
-            return LightParty.Contains(entityId);
-        }
+       
         
-        return entityId == PluginServices.ClientState.LocalPlayer!.EntityId;
+        return false;
     }
 
     public void MatchEntered()
@@ -65,6 +77,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         List<uint> partyMembers = [];
         foreach(IPartyMember member in PluginServices.PartyList)
         {
+            PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the full party");
             uint id = member.ObjectId;
             partyMembers.Add(id);
         }
@@ -102,11 +115,12 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         List<uint> members = [];
         foreach(IPartyMember member in PluginServices.PartyList)
         {
+            PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the light party");
+
             uint id = member.ObjectId;
             members.Add(id);
         }
 
-        Self = PluginServices.ClientState.LocalPlayer!.EntityId;
         PopulateLightParty(members.ToArray());
     }
 

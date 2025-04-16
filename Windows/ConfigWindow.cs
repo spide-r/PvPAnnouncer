@@ -25,7 +25,7 @@ public class ConfigWindow : Window, IDisposable
         SizeCondition = ImGuiCond.Always;
 
         _configuration = PluginServices.Config;
-        allEvents = PluginServices.ListenerLoader.GetPvPEvents();
+        _allEvents = PluginServices.ListenerLoader.GetPvPEvents();
     }
 
     public void Dispose() { }
@@ -34,7 +34,7 @@ public class ConfigWindow : Window, IDisposable
     private int _disabledEventsSelectedItem = 0;
     private String[] _activeEventsArr;
     private String[] _disabledEventsArr;
-    private PvPEvent[] allEvents;
+    private readonly PvPEvent[] _allEvents;
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
@@ -56,7 +56,7 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if (ImGui.Checkbox("Metem Muted", ref muted))
+        if (ImGui.Checkbox("Announcer Muted", ref muted))
         {
             _configuration.Muted = muted;
             _configuration.Save();
@@ -80,13 +80,14 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
+        /*
         if (ImGui.Checkbox("The Announcer should comment on people in my Full party", ref fullParty))
         {
             _configuration.WantsFullParty = fullParty;
             _configuration.Save();
-        }
+        }*/
         
-        if (ImGui.SliderInt("What is the minimum amount of seconds to wait between announcements?", ref cooldown, 6, 30))
+        if (ImGui.SliderInt("What is the minimum amount of seconds to wait between announcements?", ref cooldown, 1, 30))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
@@ -110,24 +111,24 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
 
-        if (ImGui.RadioButton("English Announcer Lines", lang.Equals("en")))
+        if (ImGui.RadioButton("English Announcer", lang.Equals("en")))
         {
             _configuration.Language = "en";
             _configuration.Save();
         }
-        if (ImGui.RadioButton("German Announcer Lines", lang.Equals("de")))
+        if (ImGui.RadioButton("German Announcer", lang.Equals("de")))
         {
             _configuration.Language = "de";
             _configuration.Save();
         }
         
-        if (ImGui.RadioButton("French Language", lang.Equals("fr")))
+        if (ImGui.RadioButton("French Announcer", lang.Equals("fr")))
         {
             _configuration.Language = "fr";
             _configuration.Save();
         }
         
-        if (ImGui.RadioButton("Japanese Language", lang.Equals("ja")))
+        if (ImGui.RadioButton("Japanese Announcer", lang.Equals("ja")))
         {
             _configuration.Language = "ja";
             _configuration.Save();
@@ -135,7 +136,7 @@ public class ConfigWindow : Window, IDisposable
         
         
         List<String> list = new List<string>();
-        foreach (var ee in allEvents)
+        foreach (var ee in _allEvents)
         {
             string name = ee.Name;
             if (!blEvents.Contains(name))

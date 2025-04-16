@@ -4,12 +4,12 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl.Commands;
 
-public class MuteMetem: Command
+public class MuteAnnouncer: Command
 {
-    public MuteMetem()
+    public MuteAnnouncer()
     {
-        Name = "mutemetem";
-        HelpText = "Toggle Mute metem";
+        Name = "muteannouncer";
+        HelpText = "Toggle Mute Announcer";
         Info = new CommandInfo(OnCommand)
         {
             HelpMessage = HelpText
@@ -23,6 +23,6 @@ public class MuteMetem: Command
         {
             un = "un-";
         }
-        PluginServices.ChatGui.Print("Metem Has been " + un + "muted!", InternalConstants.MessageTag, InternalConstants.MessageColor);
+        PluginServices.ChatGui.Print("Announcer Has been " + un + "muted!", InternalConstants.MessageTag, InternalConstants.MessageColor);
     }
 }
