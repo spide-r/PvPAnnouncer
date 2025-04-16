@@ -89,7 +89,7 @@ public class ConfigWindow : Window, IDisposable
         
         
         ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
-        if (ImGui.SliderInt("", ref cooldown, 1, 30))
+        if (ImGui.SliderInt("(S)", ref cooldown, 1, 30))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
@@ -97,7 +97,7 @@ public class ConfigWindow : Window, IDisposable
         
         
         ImGui.TextWrapped("What percent of events should have an announcement?");
-        if (ImGui.SliderInt("", ref percent, 1, 100))
+        if (ImGui.SliderInt("%", ref percent, 1, 100))
         {
             _configuration.Percent = percent;
             _configuration.Save();
@@ -105,7 +105,7 @@ public class ConfigWindow : Window, IDisposable
         
         
         ImGui.TextWrapped("How Many Unique voice lines should be said before a potential repeat?");
-        if (ImGui.SliderInt("", ref repeatVoiceLine, 1, 25))
+        if (ImGui.SliderInt("# Of Voice lines", ref repeatVoiceLine, 1, 25))
         {
             _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
             _configuration.Save();
@@ -113,7 +113,7 @@ public class ConfigWindow : Window, IDisposable
         
 
         ImGui.TextWrapped("How Many Unique events should be commented on before a duplicate happens?");
-        if (ImGui.SliderInt("", ref repeatEventCommentary, 1, 10))
+        if (ImGui.SliderInt("# Of Events", ref repeatEventCommentary, 1, 10))
         {
             _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;
             _configuration.Save();
