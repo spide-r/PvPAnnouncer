@@ -46,8 +46,6 @@ public static class AnnouncerLines
     public const string RisesAgain = "8205782"; // The challenger rises again! Can they turn this around!?
     public const string BackOnFeet = "8205783"; // They're back on their feet! Let's see if they can stay standing!
     
-    //todo: put ALL voice lines
-    
     // === Black Cat ===
     public const string FirstOpponent = "8205353";// Our challenger's first opponent: Black Cat!
     public const string FelineFerocity = "8205354";// Can they hold their own against her feline ferocity!?
@@ -70,7 +68,7 @@ public static class AnnouncerLines
     // === Brute Bomber ===
     public const string BBMuscled = "8205369"; // The Brute Bomber has muscled his way into the ring!
     public const string BBEmbiggening = "8205371"; // The Brute Bomber is embiggening himself!
-    public const string NoRespectUnknown = ""; // This man has absolutely no respect for the rules! todo: find this
+    public const string NoRespectUnknown = ""; // This man has absolutely no respect for the rules! todo: find this, it might be unused?
     public const string KaboomBBSpecial = "8205375";// Kaboom! The Bombarian Special!
     public const string BBDesprate = "8205378"; // The Brute Bomber is desperate!
     public const string BannedCompoundRobot = "8205440"; // Banned compound detected. Combatant disqualified.

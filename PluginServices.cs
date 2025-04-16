@@ -1,6 +1,5 @@
 ﻿using Dalamud.Configuration;
 using Dalamud.Game;
-using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -67,7 +66,6 @@ internal class PluginServices {
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
         ListenerLoader = new EventListenerLoader();
-
     }
 }
 #pragma warning restore 8618

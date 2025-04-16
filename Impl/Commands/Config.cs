@@ -19,5 +19,6 @@ public class Config: Command
     public override void OnCommand(string command, string args)
     {
         PluginServices.PluginLog.Info("Opening config!");
+        //todo: maybe make the command stuff clearer
     }
 }

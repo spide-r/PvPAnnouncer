@@ -16,7 +16,6 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public PvPMatchManager()
     {
-        //todo: subscribe the below functions to the correct things
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
     }

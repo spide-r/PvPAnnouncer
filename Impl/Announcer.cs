@@ -19,8 +19,8 @@ public class Announcer: IAnnouncer
      * 5. Use the appropriate gender for the challenger
      */
     
-    private readonly Queue<string> _lastThreeVoiceLines = new();
-    private PvPEvent _lastEvent = new AllyDeathEvent();
+    private readonly Queue<string> _lastVoiceLines = new();
+    private readonly Queue<string> _lastEvents = new();
     private long _timestamp;
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
@@ -39,7 +39,7 @@ public class Announcer: IAnnouncer
         
         
         // == Objective 1 ==
-        if (rand < PluginServices.Config.Percent) 
+        if (rand > PluginServices.Config.Percent) 
         {
             return;
         }
@@ -49,24 +49,38 @@ public class Announcer: IAnnouncer
             return;
         }
         
+        AddEventToRecentList(pvpEvent);
+        
         PlaySound(pvpEvent);
     }
     
 
-    private void AddToRecentCommentary(String e)
+    private void AddEventToRecentList(PvPEvent e)
     {
-        if (_lastThreeVoiceLines.Count > 2) // maximum 3 
+        if (_lastEvents.Count > PluginServices.Config.RepeatEventCommentaryQueue - 1) 
         {
-            _lastThreeVoiceLines.Dequeue();
+            _lastEvents.Dequeue();
         }
         
-        _lastThreeVoiceLines.Enqueue(e);
+        _lastEvents.Enqueue(e.Name);
+
+    }
+
+    
+    private void AddVoiceLineToRecentList(String e)
+    {
+        if (_lastVoiceLines.Count > PluginServices.Config.RepeatVoiceLineQueue - 1) 
+        {
+            _lastVoiceLines.Dequeue();
+        }
+        
+        _lastVoiceLines.Enqueue(e);
 
     }
 
     private bool PassesRepeatCommentaryCheck(PvPEvent pvpEvent)
     {
-        return pvpEvent == _lastEvent;
+        return !_lastEvents.Contains(pvpEvent.Name);
     }
 
     public void PlaySound(string sound)
@@ -77,7 +91,7 @@ public class Announcer: IAnnouncer
 
     public void PlaySound(PvPEvent pvpEvent)
     {
-        _lastEvent = pvpEvent;
+        _lastEvents.Enqueue(pvpEvent.Name);
         List<string> sounds = new List<string>(pvpEvent.SoundPaths());
         
         // == Objective 5 == 
@@ -103,7 +117,7 @@ public class Announcer: IAnnouncer
         
         
         // == Objective 2 == 
-        foreach (var line in _lastThreeVoiceLines)
+        foreach (var line in _lastVoiceLines)
         {
             if (sounds.Contains(line))
             {
@@ -118,7 +132,7 @@ public class Announcer: IAnnouncer
         
         int rand = Random.Shared.Next(sounds.Count);
         string s = sounds[rand];
-        AddToRecentCommentary(s);
+        AddVoiceLineToRecentList(s);
         PlaySound(AnnouncerLines.GetPath(s));
     }
 }

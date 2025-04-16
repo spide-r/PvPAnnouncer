@@ -33,9 +33,9 @@ public class EventListenerLoader: IEventListenerLoader
         //new AllyActionEvent(ActionIds.Blota, [ChainDeathmatch], [], [], "Blota"),
         //new AllyActionEvent(ActionIds.RisingPhoenix, [StartedFire], [], [], "Rising Phoenix"),
         //new AllyActionEvent(ActionIds.FullSwing, [], [SentRivalFlyingMasc], [], "Full Swing (Brute Bomber)"),
+        //new AllyActionEvent(ActionIds.Swift, [], [SuchSpeedMasc], [], "Swift (Howling Blade)"),
 
         new AllyActionEvent(ActionIds.Biolysis, [], [], [VenomStrikeFem], "Biolysis (Honey B. Lovely)"),
-        new AllyActionEvent(ActionIds.Swift, [], [SuchSpeedMasc], [], "Swift (Howling Blade)"),
         new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.Contradance, [], [],
             [FeelingLoveFem, HerCharmsNotDeniedFem], "Contradance (Honey B. Lovely)"),
         new EnemyActionEvent((uint) ActionIds.LimitBreaksEnum.Contradance, [ResistTheIrresistible, InvitationToDance],

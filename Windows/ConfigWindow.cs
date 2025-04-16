@@ -5,6 +5,7 @@ using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using ImGuiNET;
 using PvpAnnouncer;
+using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Windows;
 
@@ -24,6 +25,7 @@ public class ConfigWindow : Window, IDisposable
         SizeCondition = ImGuiCond.Always;
 
         _configuration = PluginServices.Config;
+        allEvents = PluginServices.ListenerLoader.GetPvPEvents();
     }
 
     public void Dispose() { }
@@ -32,6 +34,7 @@ public class ConfigWindow : Window, IDisposable
     private int _disabledEventsSelectedItem = 0;
     private String[] _activeEventsArr;
     private String[] _disabledEventsArr;
+    private PvPEvent[] allEvents;
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
@@ -44,6 +47,8 @@ public class ConfigWindow : Window, IDisposable
         var masc = _configuration.WantsMasc;
         var fullParty = _configuration.WantsFullParty;
         var lightParty = _configuration.WantsLightParty;
+        var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
+        var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
         
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
@@ -93,9 +98,44 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        //todo: lang
+        if (ImGui.SliderInt("How Many Unique voice lines should be said before a potential repeat?", ref repeatVoiceLine, 1, 25))
+        {
+            _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
+            _configuration.Save();
+        }
+        
+        if (ImGui.SliderInt("How Many Unique events should be commented on before its commented on again?", ref repeatEventCommentary, 1, 10))
+        {
+            _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;
+            _configuration.Save();
+        }
+
+        if (ImGui.RadioButton("English Announcer Lines", lang.Equals("en")))
+        {
+            _configuration.Language = "en";
+            _configuration.Save();
+        }
+        if (ImGui.RadioButton("German Announcer Lines", lang.Equals("de")))
+        {
+            _configuration.Language = "de";
+            _configuration.Save();
+        }
+        
+        if (ImGui.RadioButton("French Language", lang.Equals("fr")))
+        {
+            _configuration.Language = "fr";
+            _configuration.Save();
+        }
+        
+        if (ImGui.RadioButton("Japanese Language", lang.Equals("ja")))
+        {
+            _configuration.Language = "ja";
+            _configuration.Save();
+        }
+        
+        
         List<String> list = new List<string>();
-        foreach (var ee in PluginServices.ListenerLoader.GetPvPEvents())
+        foreach (var ee in allEvents)
         {
             string name = ee.Name;
             if (!blEvents.Contains(name))

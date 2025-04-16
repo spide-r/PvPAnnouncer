@@ -10,7 +10,10 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
+        //todo: The default config values will need to be adjusted. Especially depending on how many people tracked.
         public int Version { get; set; } = 0;
+        public int RepeatVoiceLineQueue { get; set; } = 3;
+        public int RepeatEventCommentaryQueue { get; set; } = 1;
         
         public int CooldownSeconds { get; set; } = 6;
         public bool WantsFem { get; set; } = false;
@@ -23,7 +26,7 @@ namespace PvpAnnouncer
         public bool Disabled { get; set; } = false;
         public bool Muted { get; set; } = false;
 
-        public int Percent { get; set; } = 30; // Is a commentary on 30% of events too much? - This may need to be configured
+        public int Percent { get; set; } = 30; 
  
         public string Language { get; set; } = "en";
 
