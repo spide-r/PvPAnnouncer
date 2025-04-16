@@ -87,48 +87,58 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }*/
         
-        if (ImGui.SliderInt("What is the minimum amount of seconds to wait between announcements?", ref cooldown, 1, 30))
+        
+        ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
+        if (ImGui.SliderInt("", ref cooldown, 1, 30))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
         }
         
-        if (ImGui.SliderInt("What percent of events should have an announcement?", ref percent, 1, 100))
+        
+        ImGui.TextWrapped("What percent of events should have an announcement?");
+        if (ImGui.SliderInt("", ref percent, 1, 100))
         {
             _configuration.Percent = percent;
             _configuration.Save();
         }
         
-        if (ImGui.SliderInt("How Many Unique voice lines should be said before a potential repeat?", ref repeatVoiceLine, 1, 25))
+        
+        ImGui.TextWrapped("How Many Unique voice lines should be said before a potential repeat?");
+        if (ImGui.SliderInt("", ref repeatVoiceLine, 1, 25))
         {
             _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
             _configuration.Save();
         }
         
-        if (ImGui.SliderInt("How Many Unique events should be commented on before its commented on again?", ref repeatEventCommentary, 1, 10))
+
+        ImGui.TextWrapped("How Many Unique events should be commented on before its commented on again?");
+        if (ImGui.SliderInt("", ref repeatEventCommentary, 1, 10))
         {
             _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;
             _configuration.Save();
         }
 
-        if (ImGui.RadioButton("English Announcer", lang.Equals("en")))
+        ImGui.Text("Announcer Language:");
+        if (ImGui.RadioButton("English", lang.Equals("en")))
         {
             _configuration.Language = "en";
             _configuration.Save();
         }
-        if (ImGui.RadioButton("German Announcer", lang.Equals("de")))
+        ImGui.SameLine();
+        if (ImGui.RadioButton("German", lang.Equals("de")))
         {
             _configuration.Language = "de";
             _configuration.Save();
         }
-        
-        if (ImGui.RadioButton("French Announcer", lang.Equals("fr")))
+        ImGui.SameLine();
+        if (ImGui.RadioButton("French", lang.Equals("fr")))
         {
             _configuration.Language = "fr";
             _configuration.Save();
         }
-        
-        if (ImGui.RadioButton("Japanese Announcer", lang.Equals("ja")))
+        ImGui.SameLine();
+        if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
         {
             _configuration.Language = "ja";
             _configuration.Save();
@@ -146,8 +156,8 @@ public class ConfigWindow : Window, IDisposable
             }
         }
         _activeEventsArr = list.ToArray();
-        ImGui.ListBox("Active Events", ref _activeEventsSelectedItem, _activeEventsArr, _activeEventsArr.Length);
-        if (ImGui.Button("Prevent Event from Being Announced"))
+        ImGui.ListBox("Enabled Events", ref _activeEventsSelectedItem, _activeEventsArr, _activeEventsArr.Length);
+        if (ImGui.Button("Disable"))
         {
             _configuration.BlacklistedEvents.Add(_activeEventsArr[_activeEventsSelectedItem]);
             _configuration.Save();
@@ -160,7 +170,7 @@ public class ConfigWindow : Window, IDisposable
         }
         _disabledEventsArr = listDisabled.ToArray();
         ImGui.ListBox("Disabled Events", ref _disabledEventsSelectedItem, _disabledEventsArr, _disabledEventsArr.Length);
-        if (ImGui.Button("Allow Event to be Announced"))
+        if (ImGui.Button("Enable"))
         {
             _configuration.BlacklistedEvents.Remove(_disabledEventsArr[_disabledEventsSelectedItem]);
             _configuration.Save();

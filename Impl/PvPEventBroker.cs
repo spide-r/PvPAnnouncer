@@ -72,7 +72,9 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void DeregisterListener(PvPEvent e)
     {
-        //todo
-        //_registeredListeners.Remove(e);
+        _registeredListeners.RemoveAll(aa =>
+        {
+            return aa.Item1.Name.Equals(e.Name);
+        });
     }
 }

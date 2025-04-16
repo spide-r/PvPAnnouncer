@@ -116,9 +116,11 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         foreach(IPartyMember member in PluginServices.PartyList)
         {
             PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the light party");
-
             uint id = member.ObjectId;
-            members.Add(id);
+            if (id != 0)
+            {
+                members.Add(id);
+            }
         }
 
         PopulateLightParty(members.ToArray());
