@@ -149,7 +149,7 @@ public class ConfigWindow : Window, IDisposable
         foreach (var ee in _allEvents)
         {
             string name = ee.Name;
-            if (!blEvents.Contains(name))
+            if (!blEvents.Contains(name) && !name.Contains("Not Implemented"))
             {
                 list.Add(ee.Name);
 
@@ -168,12 +168,26 @@ public class ConfigWindow : Window, IDisposable
         {
             listDisabled.Add(ee);
         }
+
+        foreach (var ee in _allEvents)
+        {
+            string name = ee.Name;
+            if (name.Contains("Not Implemented"))
+            {
+                listDisabled.Add(ee.Name);
+
+            }
+        }
         _disabledEventsArr = listDisabled.ToArray();
         ImGui.ListBox("Disabled Events", ref _disabledEventsSelectedItem, _disabledEventsArr, _disabledEventsArr.Length);
         if (ImGui.Button("Enable"))
         {
-            _configuration.BlacklistedEvents.Remove(_disabledEventsArr[_disabledEventsSelectedItem]);
-            _configuration.Save();
+            if (!_disabledEventsArr[_disabledEventsSelectedItem].Contains("Not Implemented"))
+            {
+                _configuration.BlacklistedEvents.Remove(_disabledEventsArr[_disabledEventsSelectedItem]);
+                _configuration.Save();
+            }
+            
         }
         
         

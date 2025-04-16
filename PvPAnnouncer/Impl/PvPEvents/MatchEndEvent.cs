@@ -9,7 +9,7 @@ public class MatchEndEvent: PvPMatchEvent
 {
     public MatchEndEvent()
     {
-        Name = "Matches Ending";
+        Name = "Matches Ending (Not Implemented Yet)";
     }
 
     public override List<string> SoundPaths()

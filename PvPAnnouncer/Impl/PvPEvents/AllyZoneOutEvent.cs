@@ -9,7 +9,7 @@ public class AllyZoneOutEvent: PvPActorEvent
 {
     public AllyZoneOutEvent()
     {
-        Name = "Deaths from Fall Damage";
+        Name = "Deaths from Fall Damage (Not Implemented Yet)";
     }
 
     public override List<string> SoundPaths()

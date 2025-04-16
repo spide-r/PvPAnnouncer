@@ -9,7 +9,7 @@ public class MechSpawnEvent: PvPEvent
 {
     public MechSpawnEvent()
     {
-        Name = "Mech Spawn";
+        Name = "Mech Spawn (Not Implemented Yet)";
     }
     public override List<string> SoundPaths()
     {

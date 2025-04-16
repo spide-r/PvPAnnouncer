@@ -9,7 +9,7 @@ public class MechKilledEvent: PvPEvent
 {
     public MechKilledEvent()
     {
-        Name = "Mech Killed";
+        Name = "Mech Killed (Not Implemented Yet)";
     }
     public override List<string> SoundPaths()
     {
