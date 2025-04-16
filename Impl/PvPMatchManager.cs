@@ -29,7 +29,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
     {
-        PluginServices.PluginLog.Information("OnCfPop");
+        PluginServices.PluginLog.Verbose("OnCfPop");
         MatchQueued();
     }
 

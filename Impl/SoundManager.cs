@@ -20,7 +20,7 @@ public class SoundManager: ISoundManager
         PluginServices.GameInteropProvider.InitializeFromAttributes(this);
         _playSoundPath = Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>( PluginServices.SigScanner.ScanText(PlaySoundSig ) );
         SetMute(PluginServices.Config.Muted);
-        PluginServices.PluginLog.Info("Initializing Sound Manager");
+        PluginServices.PluginLog.Verbose("Initializing Sound Manager");
     }
     
     // Attributed to VFXEditor: https://github.com/0ceal0t/Dalamud-VFXEditor/blob/main/VFXEditor/Interop/ResourceLoader.Sound.cs

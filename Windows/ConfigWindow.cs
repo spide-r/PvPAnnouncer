@@ -112,7 +112,7 @@ public class ConfigWindow : Window, IDisposable
         }
         
 
-        ImGui.TextWrapped("How Many Unique events should be commented on before its commented on again?");
+        ImGui.TextWrapped("How Many Unique events should be commented on before a duplicate happens?");
         if (ImGui.SliderInt("", ref repeatEventCommentary, 1, 10))
         {
             _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;

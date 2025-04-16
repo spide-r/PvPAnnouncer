@@ -22,17 +22,14 @@ public class PvPEventBroker: IPvPEventBroker
         if (message is ActionEffectMessage aaa)
         {
             string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " + aaa.GetAction()?.Name.ToString();
-            bool shouldEmitttt = PluginServices.PvPMatchManager.IsMonitoredUser(aaa.SourceId);
-            if (shouldEmitttt)
+            bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(aaa.SourceId);
+            if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
  
             }
-            //PluginServices.PluginLog.Verbose(shouldEmitttt.ToString());
         }
         
-        //PluginServices.PluginLog.Logger.Debug("Injesting packet " + message.GetType().Name);
-        //PluginServices.PluginLog.Debug("asdasd" + _registeredListeners.Count);
         foreach (var keyValuePair in _registeredListeners)
         {
             PvPEvent ee = keyValuePair.Item1;
@@ -44,7 +41,7 @@ public class PvPEventBroker: IPvPEventBroker
             bool emit = shouldEmit.Invoke(message);
             if (emit)
             {
-                PluginServices.PluginLog.Debug("Emitted: " + ee.Name);
+                PluginServices.PluginLog.Verbose("Emitted: " + ee.Name);
 
                 EmitToSubscribers(ee);
             }

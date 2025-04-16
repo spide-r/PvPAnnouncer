@@ -45,7 +45,7 @@ public class EventListenerLoader: IEventListenerLoader
     public PvPEvent[] GetPvPEvents() => PvpEvents;
     public void LoadEventListeners()
     {
-        PluginServices.PluginLog.Logger.Debug("Loading event listeners");
+        PluginServices.PluginLog.Verbose("Loading event listeners");
         foreach (var ee in PvpEvents)
         {
             PluginServices.PvPEventBroker.RegisterListener(ee);

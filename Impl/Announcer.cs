@@ -24,7 +24,7 @@ public class Announcer: IAnnouncer
     private long _timestamp = 0;
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
-        PluginServices.PluginLog.Info($"PvP Event {pvpEvent.Name} received");
+        PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.Name} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
         
@@ -100,7 +100,7 @@ public class Announcer: IAnnouncer
 
     public void PlaySound(string sound)
     {
-        PluginServices.PluginLog.Info($"Playing sound: {sound}");
+        PluginServices.PluginLog.Verbose($"Playing sound: {sound}");
         PluginServices.SoundManager.PlaySound(sound);
 
     }
