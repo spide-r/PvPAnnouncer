@@ -22,7 +22,7 @@ public class MainWindow: Window, IDisposable
     {
         ImGui.TextWrapped("Welcome to PvP Announcer! This plugin will take Metem from the Arcadion and put him into your PvP match! " +
                           "\nPlease provide lots of feedback. " +
-                          "\nYou can use the feedback button or contact `.spider` in the Dalamud Discord! View the config with /pvpannouncer");
+                          "\nYou can use the feedback button or contact .spider in the Dalamud Discord! View the config with /pvpannouncer");
         ImGui.Spacing();
         ImGui.Text("Attributions");
         ImGui.BulletText("DeathRecap, VFXEditor");
