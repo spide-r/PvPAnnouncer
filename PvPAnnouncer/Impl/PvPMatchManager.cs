@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Game.ClientState.Party;
+using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
@@ -112,18 +113,26 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchQueued()
     {
-        List<uint> members = [];
-        foreach(IPartyMember member in PluginServices.PartyList)
+        unsafe
         {
-            PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the light party");
-            uint id = member.ObjectId;
-            if (id != 0)
+            List<uint> members = [];
+            //todo: this doesnt happen in a crossworld party, need to check if in crossrealm
+            /*if (InfoProxyCrossRealm.Instance()->IsInCrossRealmParty == 0)
             {
-                members.Add(id);
+                
+            }*/
+            foreach(IPartyMember member in PluginServices.PartyList)
+            {
+                PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the light party");
+                uint id = member.ObjectId;
+                if (id != 0)
+                {
+                    members.Add(id);
+                }
             }
-        }
 
-        PopulateLightParty(members.ToArray());
+            PopulateLightParty(members.ToArray());
+        }
     }
 
     public void ClearLists()

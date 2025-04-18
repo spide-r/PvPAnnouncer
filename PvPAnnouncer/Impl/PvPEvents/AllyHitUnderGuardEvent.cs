@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using PvPAnnouncer.Data;
@@ -34,6 +35,11 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
     {
         if (arg is ActionEffectMessage pp)
         {
+            if (pp.GetTargetIds().Contains((uint) pp.SourceId))
+            {
+                // we dont want self bubble triggering this
+                return false;
+            }
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))

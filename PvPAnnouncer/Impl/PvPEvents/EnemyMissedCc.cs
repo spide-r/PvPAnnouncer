@@ -39,8 +39,7 @@ public class EnemyMissedCc: PvPActionEvent
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
-                    if (pp.GetEffectTypes(pp.GetTargetIds()).Contains(ActionEffectType.NoEffectText)) 
-                        //todo: this is nasty double looping, also No Effect might not be the same as a miss - need to check
+                    if (pp.GetEffectTypes(target).Contains(ActionEffectType.StatusNoEffect)) // whats the difference between StatusNoEffect and NoEffectText 
                     {
                         return true;
                     }

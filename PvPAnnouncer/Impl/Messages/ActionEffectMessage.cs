@@ -55,19 +55,19 @@ public unsafe class ActionEffectMessage(
         uint[] targetIds = new uint[Targets];
         for (var i = 0; i < Targets; i++)
         {
-            var actionTargetId = (uint) (EffectTrail[i] * uint.MaxValue);
+            var actionTargetId = (uint) (EffectTrail[i] & uint.MaxValue);
             targetIds[i] = actionTargetId;
         }
         return targetIds;
     }
-
-    public List<ActionEffectType> GetEffectTypes(uint[] actionTargetIds)
+    
+    public List<ActionEffectType> GetEffectTypes(uint actionTargetId)
     {
         List<ActionEffectType> types = new List<ActionEffectType>();
         for (var i = 0; i < Targets; i++)
         {
-            var targetId = (uint) (EffectTrail[i] * uint.MaxValue);
-            if (actionTargetIds.Contains(targetId))
+            var targetId = (uint) (EffectTrail[i] & uint.MaxValue);
+            if (actionTargetId == targetId)
             {
                 for (var j = 0; j < 8; j++)
                 {
