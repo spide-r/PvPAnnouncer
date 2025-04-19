@@ -73,14 +73,14 @@ public class ConfigWindow : Window, IDisposable
             _configuration.WantsMasc = masc;
             _configuration.Save();
         }
-        
+        /*
         if (ImGui.Checkbox("The Announcer should comment on people in my pre-made party", ref lightParty))
         {
             _configuration.WantsLightParty = lightParty;
             _configuration.Save();
         }
         
-        /*
+        
         if (ImGui.Checkbox("The Announcer should comment on people in my party when I enter the match", ref fullParty))
         {
             _configuration.WantsFullParty = fullParty;

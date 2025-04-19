@@ -18,7 +18,7 @@ namespace PvpAnnouncer
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
-        public bool WantsLightParty { get; set; } = true;
+        public bool WantsLightParty { get; set; } = false;
         public bool WantsFullParty { get; set; } = false;
 
         public List<string> BlacklistedEvents { get; set; } = [];
