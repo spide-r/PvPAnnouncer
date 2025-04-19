@@ -10,7 +10,7 @@ public class AllyResurrectEvent: PvPActorEvent
 {
     public AllyResurrectEvent()
     {
-        Name = "Resurrection (Not Implemented Yet)";
+        Name = "Resurrection";
     }
 
     public override List<string> SoundPaths()
