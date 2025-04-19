@@ -10,7 +10,7 @@ public class MatchStartEvent: PvPMatchEvent
 {
     public MatchStartEvent()
     {
-        Name = "Matches Started (Not Implemented Yet)";
+        Name = "Matches Started";
     }
 
     public override List<string> SoundPaths()
@@ -30,11 +30,7 @@ public class MatchStartEvent: PvPMatchEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        if (message is MatchEnteredMessage)
-        {
-            return true;
-        }
-        return false;
+        return message is MatchStartedMessage;
     }
 
 }

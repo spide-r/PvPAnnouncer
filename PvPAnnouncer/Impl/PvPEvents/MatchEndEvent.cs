@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
@@ -9,12 +10,12 @@ public class MatchEndEvent: PvPMatchEvent
 {
     public MatchEndEvent()
     {
-        Name = "Matches Ending (Not Implemented Yet)";
+        Name = "Matches Ending";
     }
 
     public override List<string> SoundPaths()
     {
-        return [AllOverUntilNextTime, BattleElectrifying];
+        return [AllOverUntilNextTime];
     }
 
     public override List<string> SoundPathsMasc()
@@ -29,6 +30,6 @@ public class MatchEndEvent: PvPMatchEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        return false;
+        return message is MatchEndMessage;
     }
 }

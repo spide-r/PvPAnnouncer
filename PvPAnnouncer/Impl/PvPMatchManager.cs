@@ -22,6 +22,8 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
         PluginServices.ClientState.Login += OnLogin;
+        PluginServices.DutyState.DutyStarted += MatchStarted;
+        PluginServices.DutyState.DutyCompleted += MatchEnded;
     }
 
     private void OnLogin()
@@ -110,11 +112,11 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         EmitToBroker(new MatchEnteredMessage(territory));
     }
 
-    public void MatchStarted()
+    public void MatchStarted(object? sender, ushort @ushort)
     {
         EmitToBroker(new MatchStartedMessage());    }
 
-    public void MatchEnded()
+    public void MatchEnded(object? sender, ushort @ushort)
     {
         EmitToBroker(new MatchEndMessage());
 

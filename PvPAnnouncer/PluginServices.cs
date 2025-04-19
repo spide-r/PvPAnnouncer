@@ -3,6 +3,7 @@ using Dalamud.Game;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 using PvpAnnouncer;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
@@ -47,6 +48,9 @@ internal class PluginServices {
     
     [PluginService]
     internal static IPluginLog PluginLog { get; private set; }
+    
+    [PluginService]
+    internal static IDutyState DutyState { get; private set; }
     
     internal static IPvPEventBroker PvPEventBroker { get; private set; }
     internal static IPvPMatchManager PvPMatchManager { get; private set; }

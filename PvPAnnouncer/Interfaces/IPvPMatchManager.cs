@@ -8,8 +8,8 @@ public interface IPvPMatchManager
     uint[] FullParty { get; set; }
 
     void MatchEntered(ushort territory);
-    void MatchStarted();
-    void MatchEnded();
+    void MatchStarted(object? sender, ushort @ushort);
+    void MatchEnded(object? sender, ushort @ushort);
     void MatchLeft();
     void MatchQueued();
 
