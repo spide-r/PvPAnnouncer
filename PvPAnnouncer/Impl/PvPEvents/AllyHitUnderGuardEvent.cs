@@ -37,7 +37,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
         {
             if (pp.GetTargetIds().Contains((uint) pp.SourceId))
             {
-                // we dont want self bubble triggering this
+                // we dont want self bubble triggering this todo: code duplication
                 return false;
             }
             foreach (var target in pp.GetTargetIds())
@@ -52,7 +52,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
                         if (list != null)
                             foreach (var status in list)
                             {
-                                if (status.StatusId == BuffIds.Guard)
+                                if (status.StatusId == StatusIds.Guard)
                                 {
                                     return true;
                                 }

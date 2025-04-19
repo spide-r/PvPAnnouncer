@@ -5,6 +5,6 @@ namespace PvPAnnouncer.Interfaces;
 
 public interface IPvPEventBroker
 {
-    void IngestPacket(IMessage message);
+    void IngestMessage(IMessage message);
     void RegisterListener(PvPEvent e);
 }

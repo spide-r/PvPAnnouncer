@@ -4,6 +4,6 @@ namespace PvPAnnouncer.Impl.Messages;
 
 public class UserResurrectedMessage(uint userId): IMessage
 {
-    //todo: determine how resurrection is logged/sent to the client
+    //todo: determine if there is a better way to determine ressurection status 
     public readonly uint UserId = userId;
 }

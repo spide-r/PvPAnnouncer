@@ -9,6 +9,7 @@ public class EventListenerLoader: IEventListenerLoader
 {
     public PvPEvent[] PvpEvents { get; } =
     [
+        //todo: gain battle high event
         // == Standard Events ==
         new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.MarksmansSpite, [], [], [MassiveCannonFem],
             "Marksman's Spite (Wicked Thunder)"),

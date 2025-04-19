@@ -33,13 +33,19 @@ public class AllyHitHardEvent : PvPActionEvent
     {
         if (message is ActionEffectMessage pp)
         {
+            if (pp.GetTargetIds().Contains((uint) pp.SourceId))
+            {
+                // we dont want self attacks triggering this todo: code duplication
+                return false;
+            }
             foreach (var allianceMember in PluginServices.PvPMatchManager.FullParty)
             {
                 foreach (var target in pp.GetTargetIds())
                 {
                     if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                     {
-                        return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
+                        //todo: maybe crits or direct hits are a bit too much? - test with this removed for a bit
+                        return /*pp.CritsOrDirectHits() ||*/ ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
                     }
                 }
             }

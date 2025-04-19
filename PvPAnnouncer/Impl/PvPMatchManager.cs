@@ -14,13 +14,14 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public uint Self { get; set; }
     public uint[] LightParty { get; set; } = [];
     public uint[] FullParty { get; set; } = [];
+    
+    private readonly HashSet<uint> _deadMembers = [];
 
     public PvPMatchManager()
     {
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
         PluginServices.ClientState.Login += OnLogin;
-        
     }
 
     private void OnLogin()
@@ -71,6 +72,21 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
        
         
         return false;
+    }
+
+    public void RegisterDeath(uint userId)
+    {
+        _deadMembers.Add(userId);
+    }
+
+    public void UnregisterDeath(uint userId)
+    {
+        _deadMembers.Remove(userId);
+    }
+
+    public bool IsDead(uint userId)
+    {
+        return _deadMembers.Contains(userId);
     }
 
     public void MatchEntered()
@@ -154,6 +170,6 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void EmitToBroker(IMessage pvpEvent)
     {
-        PluginServices.PvPEventBroker.IngestPacket(pvpEvent);
+        PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
     }
 }

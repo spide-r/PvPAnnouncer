@@ -10,12 +10,12 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        //todo: The default config values will need to be adjusted. Especially depending on how many people tracked.
+        //todo: The default config values will need to be adjusted. Especially depending on how many people are tracked.
         public int Version { get; set; } = 0;
         public int RepeatVoiceLineQueue { get; set; } = 3;
-        public int RepeatEventCommentaryQueue { get; set; } = 1;
+        public int RepeatEventCommentaryQueue { get; set; } = 3;
         
-        public int CooldownSeconds { get; set; } = 5;
+        public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
         public bool WantsLightParty { get; set; } = true;
@@ -26,7 +26,7 @@ namespace PvpAnnouncer
         public bool Disabled { get; set; } = false;
         public bool Muted { get; set; } = false;
 
-        public int Percent { get; set; } = 50; 
+        public int Percent { get; set; } = 70; 
  
         public string Language { get; set; } = "en";
 
