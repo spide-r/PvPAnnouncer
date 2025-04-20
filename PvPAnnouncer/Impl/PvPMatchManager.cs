@@ -108,18 +108,28 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         
         //todo: check to make sure the user has their voice bgm at not-zero and also not muted
-        MatchEntered();
-        EmitToBroker(new MatchEnteredMessage(territory));
+        if (PluginServices.ClientState.IsPvP)
+        {
+            MatchEntered();
+            EmitToBroker(new MatchEnteredMessage(territory));
+        }
+        
     }
 
     public void MatchStarted(object? sender, ushort @ushort)
     {
-        EmitToBroker(new MatchStartedMessage());    }
+        if (PluginServices.ClientState.IsPvP)
+        {
+            EmitToBroker(new MatchStartedMessage());    
+        }
+    }
 
     public void MatchEnded(object? sender, ushort @ushort)
     {
-        EmitToBroker(new MatchEndMessage());
-
+        if (PluginServices.ClientState.IsPvP)
+        {
+            EmitToBroker(new MatchEndMessage());
+        }
     }
 
     public void MatchLeft()
