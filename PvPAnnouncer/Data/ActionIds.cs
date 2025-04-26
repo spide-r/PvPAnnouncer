@@ -111,11 +111,10 @@ public class ActionIds
     public static readonly uint SaltedEarth = 29094;
     public static readonly uint Smite = 43248;
     public static readonly uint Biolysis = 29233;
-    //todo: find these values
-    public static readonly uint Blota = UInt32.MaxValue;
-    public static readonly uint RisingPhoenix = UInt32.MaxValue;
-    public static readonly uint Swift = UInt32.MaxValue;
-    public static readonly uint FullSwing = UInt32.MaxValue;
+    public static readonly uint Blota = 29081;
+    public static readonly uint RisingPhoenix = 29481;
+    public static readonly uint Swift = 43247;
+    public static readonly uint FullSwing = 43245;
     
     
 }

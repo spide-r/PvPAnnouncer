@@ -45,8 +45,6 @@ public class ConfigWindow : Window, IDisposable
         var percent = _configuration.Percent;
         var fem = _configuration.WantsFem;
         var masc = _configuration.WantsMasc;
-        var fullParty = _configuration.WantsFullParty;
-        var lightParty = _configuration.WantsLightParty;
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
         var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
         
@@ -73,20 +71,6 @@ public class ConfigWindow : Window, IDisposable
             _configuration.WantsMasc = masc;
             _configuration.Save();
         }
-        /*
-        if (ImGui.Checkbox("The Announcer should comment on people in my pre-made party", ref lightParty))
-        {
-            _configuration.WantsLightParty = lightParty;
-            _configuration.Save();
-        }
-        
-        
-        if (ImGui.Checkbox("The Announcer should comment on people in my party when I enter the match", ref fullParty))
-        {
-            _configuration.WantsFullParty = fullParty;
-            _configuration.Save();
-        }*/
-        
         
         ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
         if (ImGui.SliderInt("(S)", ref cooldown, 1, 30))
@@ -144,7 +128,6 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        
         List<String> list = new List<string>();
         foreach (var ee in _allEvents)
         {
@@ -190,11 +173,6 @@ public class ConfigWindow : Window, IDisposable
             
         }
         
-        
-        
-       
-        
-        
-        
+        ImGui.TextWrapped("More events will be added! (Plus maybe a custom event maker in the near future - we'll see!)");
     }
 }

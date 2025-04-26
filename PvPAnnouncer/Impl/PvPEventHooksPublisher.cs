@@ -27,33 +27,49 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
      private unsafe void ProcessPacketActionEffectDetour(int sourceId, IntPtr sourceCharacter, IntPtr pos, ActionEffectHeader* effectHeader, 
          ActionEffect* effectArray, ulong* effectTrail) { 
          processPacketActionEffectHook.Original(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTrail);
-         ActionEffectMessage actionEffect = new ActionEffectMessage(sourceId, sourceCharacter, pos, effectHeader, effectArray, effectTrail);
-         EmitToBroker(actionEffect);
+         try
+         {
+             ActionEffectMessage actionEffect = new ActionEffectMessage(sourceId, sourceCharacter, pos, effectHeader,
+                 effectArray, effectTrail);
+             EmitToBroker(actionEffect);
+         }
+         catch (Exception e)
+         {
+             PluginServices.PluginLog.Error(e, "Problem when Processing Action Effect");
+ 
+         }
      }
 
      private void ProcessPacketActorControlDetour(uint entityId, uint type, uint statusId, uint amount, uint a5,
          uint source, uint a7, uint a8, ulong a9, byte flag)
      {
          processPacketActorControlHook.Original(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
-         ActorControlMessage actorControlMessage =
-             new ActorControlMessage(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
-         if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
-         { //dodgy impl - I will have to find an actual way to determine ressurection
-             if (statusId == StatusIds.Invincibility && PluginServices.PvPMatchManager.IsDead(entityId))
+         try
+         {
+             ActorControlMessage actorControlMessage =
+                 new ActorControlMessage(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
+             if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
+             { //dodgy impl - I will have to find an actual way to determine ressurection
+                 if (statusId == StatusIds.Invincibility && PluginServices.PvPMatchManager.IsDead(entityId))
+                 {
+                     EmitToBroker(new UserResurrectedMessage(entityId));
+                     PluginServices.PvPMatchManager.UnregisterDeath(entityId);
+                 } 
+             }
+             else
              {
-                 EmitToBroker(new UserResurrectedMessage(entityId));
-                 PluginServices.PvPMatchManager.UnregisterDeath(entityId);
-             } 
-         }
-         else
-         {
-             EmitToBroker(actorControlMessage);
-         }
+                 EmitToBroker(actorControlMessage);
+             }
          
-         if (actorControlMessage.GetCategory() == ActorControlCategory.Death &&
-                  PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
+             if (actorControlMessage.GetCategory() == ActorControlCategory.Death &&
+                 PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
+             {
+                 PluginServices.PvPMatchManager.RegisterDeath(entityId);
+             }
+         }
+         catch (Exception e)
          {
-             PluginServices.PvPMatchManager.RegisterDeath(entityId);
+             PluginServices.PluginLog.Error(e, "Problem when Processing Actor Control");
          }
      }
 

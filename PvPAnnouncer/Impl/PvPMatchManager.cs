@@ -12,8 +12,6 @@ namespace PvPAnnouncer.Impl;
 public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
     public uint Self { get; set; }
-    public uint[] LightParty { get; set; } = [];
-    public uint[] FullParty { get; set; } = [];
     
     private readonly HashSet<uint> _deadMembers = [];
 
@@ -28,7 +26,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     private void OnLogin()
     {
-        
+        //todo: check for bgm volume here?
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
@@ -56,24 +54,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public bool IsMonitoredUser(uint entityId)
     {
-        if (PluginServices.ClientState.LocalPlayer != null && entityId == PluginServices.ClientState.LocalPlayer.EntityId)
-        {
-            return true;
-        }
-        bool wantsFullParty = PluginServices.Config.WantsFullParty;
-        bool wantsLightParty = PluginServices.Config.WantsLightParty;
-        if (wantsLightParty)
-        {
-            return LightParty.Contains(entityId);
-        }
-        if (wantsFullParty)
-        {
-            return FullParty.Contains(entityId);
-        }
-
-       
-        
-        return false;
+        return PluginServices.ClientState.LocalPlayer != null && entityId == PluginServices.ClientState.LocalPlayer.EntityId;
     }
 
     public void RegisterDeath(uint userId)
@@ -91,26 +72,12 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         return _deadMembers.Contains(userId);
     }
 
-    public void MatchEntered()
-    {
-        List<uint> partyMembers = [];
-        foreach(IPartyMember member in PluginServices.PartyList)
-        {
-            PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the full party");
-            uint id = member.ObjectId;
-            partyMembers.Add(id);
-        }
-
-        PopulateFullParty(partyMembers.ToArray());
-    }
-
     public void MatchEntered(ushort territory)
     {
         
         //todo: check to make sure the user has their voice bgm at not-zero and also not muted
         if (PluginServices.ClientState.IsPvP)
         {
-            MatchEntered();
             EmitToBroker(new MatchEnteredMessage(territory));
         }
         
@@ -134,51 +101,14 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchLeft()
     {
-        ClearLists();
         EmitToBroker(new MatchLeftMessage());
 
     }
 
     public void MatchQueued()
     {
-        unsafe
-        {
-            List<uint> members = [];
-            //todo: this doesnt happen in a crossworld party, need to check if in crossrealm
-            /*if (InfoProxyCrossRealm.Instance()->IsInCrossRealmParty == 0)
-            {
-                
-            }*/
-            foreach(IPartyMember member in PluginServices.PartyList)
-            {
-                PluginServices.PluginLog.Verbose($"Registering {member.ObjectId} to the light party");
-                uint id = member.ObjectId;
-                if (id != 0)
-                {
-                    members.Add(id);
-                }
-            }
 
-            PopulateLightParty(members.ToArray());
-        }
     }
-
-    public void ClearLists()
-    {
-        LightParty = [];
-        FullParty = [];
-    }
-
-    public void PopulateLightParty(uint[] party)
-    {
-        LightParty = party;
-    }
-
-    public void PopulateFullParty(uint[] party)
-    {
-        FullParty = party;
-    }
-    
 
     public void EmitToBroker(IMessage pvpEvent)
     {

@@ -8,7 +8,7 @@ namespace PvPAnnouncer.Windows;
 public class MainWindow: Window, IDisposable
 {
     public MainWindow() : base(
-        "PvPAnnouncer", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)
+        "PvPAnnouncer", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         this.SizeConstraints = new WindowSizeConstraints
         {
