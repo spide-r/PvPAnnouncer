@@ -52,6 +52,12 @@ internal class PluginServices {
     [PluginService]
     internal static IDutyState DutyState { get; private set; }
     
+    [PluginService]
+    internal static IGameConfig GameConfig { get; private set; }
+    
+    [PluginService]
+    internal static INotificationManager NotificationManager { get; private set; }
+    
     
     internal static IPvPEventBroker PvPEventBroker { get; private set; }
     internal static IPvPMatchManager PvPMatchManager { get; private set; }

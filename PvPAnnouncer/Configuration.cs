@@ -19,6 +19,7 @@ namespace PvpAnnouncer
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
         public bool WolvesDen { get; set; } = false;
+        public bool Notify { get; set; } = true;
 
         public List<string> BlacklistedEvents { get; set; } = [];
         

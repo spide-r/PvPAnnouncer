@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.ClientState.Party;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using Lumina.Excel.Sheets;
-using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 
@@ -12,7 +8,6 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
-    public uint Self { get; set; }
     
     private readonly HashSet<uint> _deadMembers = [];
 
@@ -20,14 +15,8 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
-        PluginServices.ClientState.Login += OnLogin;
         PluginServices.DutyState.DutyStarted += MatchStarted;
         PluginServices.DutyState.DutyCompleted += MatchEnded;
-    }
-
-    private void OnLogin()
-    {
-        //todo: check for bgm volume here?
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
@@ -79,9 +68,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEntered(ushort territory)
     {
-        
-        //todo: check to make sure the user has their voice bgm at not-zero and also not muted
-     
+        PluginServices.PlayerStateTracker.CheckSoundState(); // sloppy - need to make this class not rely on PlayerStateTracker being loaded
         EmitToBroker(new MatchEnteredMessage(territory));
         unsafe
         {

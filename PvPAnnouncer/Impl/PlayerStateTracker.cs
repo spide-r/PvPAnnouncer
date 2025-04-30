@@ -1,4 +1,6 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.Config;
+using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
@@ -71,6 +73,24 @@ public class PlayerStateTracker: IPlayerStateTracker
         }
         return PluginServices.ClientState.IsPvPExcludingDen;
 
+    }
+
+    public void CheckSoundState()
+    {
+        if (!PluginServices.Config.Notify)
+        {
+            return;
+        }
+        uint voiceVolume = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.SoundVoice.ToString());   
+        uint voiceMuted = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSndBgm.ToString());
+        if (voiceMuted == 1 || voiceVolume < 1)
+        {
+            Notification n = new Notification();
+            n.Title = "PvPAnnouncer";
+            n.Type = NotificationType.Error;
+            n.Content = "Your voice volume is either muted or set to zero! You will be unable to hear the announcer until this is fixed!";
+            PluginServices.NotificationManager.AddNotification(n);
+        }
     }
 
     public void EmitToBroker(IMessage pvpEvent)

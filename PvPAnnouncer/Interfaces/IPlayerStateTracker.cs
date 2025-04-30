@@ -3,4 +3,5 @@
 public interface IPlayerStateTracker: IPvPEventPublisher
 {
     bool IsPvP();
+    void CheckSoundState();
 }

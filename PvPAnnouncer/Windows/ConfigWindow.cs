@@ -48,6 +48,7 @@ public class ConfigWindow : Window, IDisposable
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
         var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
         var wolvesDen = _configuration.WolvesDen;
+        var notify = _configuration.Notify;
         
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
@@ -76,6 +77,12 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
         {
             _configuration.WolvesDen = wolvesDen;
+            _configuration.Save();
+        }
+        
+        if (ImGui.Checkbox("Notify me when my Voice sounds are muted", ref notify))
+        {
+            _configuration.Notify = notify;
             _configuration.Save();
         }
         
