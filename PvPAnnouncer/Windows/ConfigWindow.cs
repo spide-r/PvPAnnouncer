@@ -47,6 +47,7 @@ public class ConfigWindow : Window, IDisposable
         var masc = _configuration.WantsMasc;
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
         var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
+        var wolvesDen = _configuration.WolvesDen;
         
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
@@ -69,6 +70,12 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Use Voice Lines with Masculine Pronouns", ref masc))
         {
             _configuration.WantsMasc = masc;
+            _configuration.Save();
+        }
+        
+        if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
+        {
+            _configuration.WolvesDen = wolvesDen;
             _configuration.Save();
         }
         

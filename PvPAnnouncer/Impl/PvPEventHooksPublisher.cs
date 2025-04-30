@@ -81,7 +81,7 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
     }
     public void EmitToBroker(IMessage pvpEvent)
     {
-        if (PluginServices.ClientState.IsPvP)
+        if (PluginServices.PvPMatchManager.IsInPvP())
         {
             PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
         }

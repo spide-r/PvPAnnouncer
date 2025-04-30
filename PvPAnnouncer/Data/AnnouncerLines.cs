@@ -115,8 +115,8 @@ public static class AnnouncerLines
     public const string CamerasPetrified = "8205804"; // Oh my! Even the cameras have been petrified─and now they're crashing down all around!
     public const string BAHanging = "8205806"; // Goodness me! The Brute Abominator is hanging on the building!
     public const string BBLariat = "8205811"; // A lariat! The Brute Bomber must still be in there somewhere!
-    public const string PunishingAttackFusion = "8205812";// A punishing attack! The true power of this monstrous fusion!
-    public const string SentRivalFlyingMasc = "8205805";
+    public const string PunishingAttackFusion = "8205812"; // A punishing attack! The true power of this monstrous fusion!
+    public const string SentRivalFlyingMasc = "8205805"; // He's sent his rival flying! What fearsome strength!
     public const string BoundingFromWallToWallMasc = "8205807"; // He's bounding from wall to wall!
     public const string RoofCavedSuchDevastation = "8205808"; // The rooftop has caved in! Such devastation!
     public const string SendingCameras = "8205809"; // We'll send cameras in there at once!

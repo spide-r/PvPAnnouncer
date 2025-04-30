@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Game.ClientState.Party;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
@@ -35,15 +36,17 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         MatchQueued();
     }
 
-    private void ClientStateOnTerritoryChanged(ushort obj)
+    private void ClientStateOnTerritoryChanged(ushort territory)
     {
-        if (InternalConstants.pvpTerritories.Contains(obj))
+        var t = PluginServices.DataManager.GetExcelSheet<TerritoryType>().GetRow(territory);
+        if (t.IsPvpZone && PluginServices.PvPMatchManager.IsInPvP())
         {
-            MatchEntered(obj);
+            MatchEntered(territory);
         }
         else
         {
             MatchLeft();
+  
         }
     }
 
@@ -72,20 +75,35 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         return _deadMembers.Contains(userId);
     }
 
+    public bool IsInPvP()
+    {
+        if (PluginServices.Config.WolvesDen)
+        {
+            return PluginServices.ClientState.IsPvP;
+        }
+        return PluginServices.ClientState.IsPvPExcludingDen;
+
+    }
+
     public void MatchEntered(ushort territory)
     {
         
         //todo: check to make sure the user has their voice bgm at not-zero and also not muted
-        if (PluginServices.ClientState.IsPvP)
+        if (PluginServices.PvPMatchManager.IsInPvP())
         {
             EmitToBroker(new MatchEnteredMessage(territory));
+            unsafe
+            {
+                var weatherId = WeatherManager.Instance()->GetCurrentWeather();
+                PluginServices.PluginLog.Verbose($"Match Weather: {weatherId}");
+                EmitToBroker(new MatchWeatherMessage(weatherId));
+            }
         }
-        
     }
 
     public void MatchStarted(object? sender, ushort @ushort)
     {
-        if (PluginServices.ClientState.IsPvP)
+        if (PluginServices.PvPMatchManager.IsInPvP())
         {
             EmitToBroker(new MatchStartedMessage());    
         }
@@ -93,7 +111,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEnded(object? sender, ushort @ushort)
     {
-        if (PluginServices.ClientState.IsPvP)
+        if (PluginServices.PvPMatchManager.IsInPvP())
         {
             EmitToBroker(new MatchEndMessage());
         }

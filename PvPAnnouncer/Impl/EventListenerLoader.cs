@@ -44,6 +44,7 @@ public class EventListenerLoader: IEventListenerLoader
         new MatchStartEvent(),
         new MechKilledEvent(),
         new MechSpawnEvent(),
+        new MatchStormyWeatherEvent()
     ];
 
     public PvPEvent[] GetPvPEvents() => PvpEvents;

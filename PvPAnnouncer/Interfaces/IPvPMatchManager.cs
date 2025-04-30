@@ -12,10 +12,12 @@ public interface IPvPMatchManager
     
     bool IsMonitoredUser(uint entityId);
 
-    void RegisterDeath(uint userId); //todo: current implementation only works with the self-user, not teammates
+    void RegisterDeath(uint userId);
     
     void UnregisterDeath(uint userId);
     bool IsDead(uint userId);
+
+    bool IsInPvP();
 
 
 
