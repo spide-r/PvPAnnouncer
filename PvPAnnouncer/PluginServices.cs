@@ -60,6 +60,7 @@ internal class PluginServices {
     internal static ISoundManager SoundManager { get; private set; }
     internal static Configuration Config { get; private set; }
     internal static IEventListenerLoader ListenerLoader { get; private set; }
+    internal static IPlayerStateTracker PlayerStateTracker { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<PluginServices>();
@@ -70,6 +71,7 @@ internal class PluginServices {
         Announcer = new Announcer();
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
+        PlayerStateTracker = new PlayerStateTracker();
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }

@@ -25,7 +25,7 @@ public class MainWindow: Window, IDisposable
                           "\nYou can use the feedback button or contact .spider in the Dalamud Discord! View the config with /pvpannouncer");
         ImGui.Spacing();
         ImGui.Text("Attributions");
-        ImGui.BulletText("DeathRecap, VFXEditor");
+        ImGui.BulletText("DeathRecap, VFXEditor, OofPlugin");
         ImGui.BulletText("Mutant Standard for the plugin icon (CC BY-NC-SA) - https://mutant.tech");
     }
 

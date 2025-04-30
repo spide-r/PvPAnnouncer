@@ -17,9 +17,6 @@ public interface IPvPMatchManager
     void UnregisterDeath(uint userId);
     bool IsDead(uint userId);
 
-    bool IsInPvP();
-
-
 
 
 

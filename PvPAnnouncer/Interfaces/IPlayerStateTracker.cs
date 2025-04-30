@@ -1,0 +1,6 @@
+﻿namespace PvPAnnouncer.Interfaces;
+
+public interface IPlayerStateTracker: IPvPEventPublisher
+{
+    bool IsPvP();
+}

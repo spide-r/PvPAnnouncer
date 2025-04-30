@@ -81,10 +81,7 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
     }
     public void EmitToBroker(IMessage pvpEvent)
     {
-        if (PluginServices.PvPMatchManager.IsInPvP())
-        {
-            PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
-        }
+        PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
     }
 
     public void Dispose()

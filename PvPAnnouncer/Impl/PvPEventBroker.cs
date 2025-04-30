@@ -17,6 +17,11 @@ public class PvPEventBroker: IPvPEventBroker
             return;
         }
 
+        if (!PluginServices.PlayerStateTracker.IsPvP())
+        {
+            return;
+        }
+
         if (message is ActionEffectMessage aaa)
         {
             string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " + aaa.GetAction()?.Name.ToString();
@@ -33,7 +38,7 @@ public class PvPEventBroker: IPvPEventBroker
                 if (ac.GetCategory() != ActorControlCategory.DirectorUpdate)
                 {
                     PluginServices.PluginLog.Verbose($"Actor control: {ac.EntityId}, " +
-                                                     $"type: {(ActorControlCategory)ac.GetCategory()} source: {ac.Source}, statusId: {ac.StatusId}" +
+                                                     $"type: {ac.GetCategory()} source: {ac.Source}, statusId: {ac.StatusId}" +
                                                      $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}"); 
 
                 }

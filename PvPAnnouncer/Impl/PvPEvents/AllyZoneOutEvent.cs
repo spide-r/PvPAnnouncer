@@ -9,12 +9,12 @@ public class AllyZoneOutEvent: PvPActorEvent
 {
     public AllyZoneOutEvent()
     {
-        Name = "Deaths from Fall Damage (Not Implemented Yet)";
+        Name = "Fall Damage";
     }
 
     public override List<string> SoundPaths()
     {
-        return [Fallen, TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch];
+        return [Fallen];
     }
 
     public override List<string> SoundPathsMasc()
@@ -29,12 +29,9 @@ public class AllyZoneOutEvent: PvPActorEvent
 
     public override bool InvokeRule(IMessage m) 
     {
-        if (m is UserZoneOutMessage message)
+        if (m is UserZoneOutMessage)
         {
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(message.UserId))
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

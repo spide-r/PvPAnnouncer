@@ -2,8 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class UserZoneOutMessage(uint userId): IMessage
+public class UserZoneOutMessage: IMessage
 {
-    //todo: determine how fall damage death is logged
-    public uint UserId = userId;
 }
