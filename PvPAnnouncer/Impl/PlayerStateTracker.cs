@@ -82,15 +82,11 @@ public class PlayerStateTracker: IPlayerStateTracker
         {
             return;
         }
-
-        if (!IsPvP())
-        {
-            return;
-        }
         uint voiceVolume = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.SoundVoice.ToString());   
         uint voiceMuted = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSoundVoiceAlways.ToString());
-        PluginServices.PluginLog.Verbose($"VoiceVolume: {voiceVolume}, VoiceMuted: {voiceMuted}");
-        if (voiceMuted == 1 || voiceVolume < 1)
+        uint sndVoice = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSndVoice.ToString());
+        PluginServices.PluginLog.Verbose($"VoiceVolume: {voiceVolume}, VoiceMuted: {voiceMuted}, SndVoice {sndVoice}");
+        if (sndVoice == 1 || voiceVolume < 1)
         {
             Notification n = new Notification();
             n.Title = "Voice Volume Error!";

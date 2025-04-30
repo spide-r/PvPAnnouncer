@@ -40,6 +40,7 @@ public class MainWindow: Window, IDisposable
         {
             PluginServices.ChatGui.Print("Playing Voiceline!", InternalConstants.MessageTag);
             PluginServices.SoundManager.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.GetRandomAnnouncement()));
+            PluginServices.PlayerStateTracker.CheckSoundState();
             if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
             {
                 Notification n = new Notification();
