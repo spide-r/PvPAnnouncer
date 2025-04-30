@@ -1,12 +1,6 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Dalamud.Game.Command;
+﻿using Dalamud.Game.Command;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
-using FFXIVClientStructs.FFXIV.Client.System.Resource;
-using FFXIVClientStructs.FFXIV.Client.System.Resource.Handle;
-using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl;
 using PvPAnnouncer.Impl.Commands;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Windows;

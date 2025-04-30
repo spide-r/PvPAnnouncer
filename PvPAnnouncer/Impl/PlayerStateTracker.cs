@@ -81,13 +81,21 @@ public class PlayerStateTracker: IPlayerStateTracker
         {
             return;
         }
+
+        if (!IsPvP())
+        {
+            return;
+        }
         uint voiceVolume = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.SoundVoice.ToString());   
-        uint voiceMuted = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSndBgm.ToString());
+        uint voiceMuted = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSoundVoiceAlways.ToString());
+        PluginServices.PluginLog.Verbose($"VoiceVolume: {voiceVolume}, VoiceMuted: {voiceMuted}");
         if (voiceMuted == 1 || voiceVolume < 1)
         {
             Notification n = new Notification();
-            n.Title = "PvPAnnouncer";
+            n.Title = "Voice Volume Error!";
             n.Type = NotificationType.Error;
+            n.Minimized = false;
+            n.MinimizedText = "Voice Volume is muted!";
             n.Content = "Your voice volume is either muted or set to zero! You will be unable to hear the announcer until this is fixed!";
             PluginServices.NotificationManager.AddNotification(n);
         }

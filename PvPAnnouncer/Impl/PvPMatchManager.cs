@@ -8,15 +8,22 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
-    
+    //todo: bug where the territory + pvp status + match weather isnt updating as I would expect
+
     private readonly HashSet<uint> _deadMembers = [];
 
     public PvPMatchManager()
     {
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
+        PluginServices.ClientState.EnterPvP += EnterPvP;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
         PluginServices.DutyState.DutyStarted += MatchStarted;
         PluginServices.DutyState.DutyCompleted += MatchEnded;
+    }
+
+    private void EnterPvP()
+    {
+        PluginServices.PlayerStateTracker.CheckSoundState(); // sloppy - need to make this class not rely on PlayerStateTracker being loaded
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
@@ -28,8 +35,10 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private void ClientStateOnTerritoryChanged(ushort territory)
     {
         var t = PluginServices.DataManager.GetExcelSheet<TerritoryType>().GetRow(territory);
-        if (t.IsPvpZone && PluginServices.PlayerStateTracker.IsPvP())
+        
+        if (PluginServices.PlayerStateTracker.IsPvP())
         {
+            EnterPvP();
             MatchEntered(territory);
         }
         else
@@ -68,7 +77,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEntered(ushort territory)
     {
-        PluginServices.PlayerStateTracker.CheckSoundState(); // sloppy - need to make this class not rely on PlayerStateTracker being loaded
+        PluginServices.PluginLog.Verbose($"OnMatchEntered {territory}");
         EmitToBroker(new MatchEnteredMessage(territory));
         unsafe
         {
