@@ -50,6 +50,13 @@ public class ConfigWindow : Window, IDisposable
         var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
         
+        if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
+        {
+            ImGui.Separator();
+            ImGui.Text("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
+            ImGui.Separator();
+        }
+        
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
             _configuration.Disabled = disabled;

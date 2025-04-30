@@ -24,6 +24,12 @@ public class Announcer: IAnnouncer
     private long _timestamp = 0;
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
+        if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
+        {
+            PluginServices.PluginLog.Error("Dawntrail is not installed! Plugin will do nothing until this is fixed!");
+            return;
+        }
+        
         PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.Name} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;

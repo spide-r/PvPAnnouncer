@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PvPAnnouncer.Data;
 
@@ -18,7 +19,14 @@ public static class AnnouncerLines
     {
         return GetPath(announcement, PluginServices.Config.Language);
     }
+
+    public static string GetRandomAnnouncement()
+    {
+        List<string> list = [ViciousBlow, FeltThatOneStillStanding, BeautifullyDodged, SawThroughIt, WentDownHard, SuckedIn, StruckSquare, AllOverUntilNextTime, Fallen, WhatPower];
+        return list[Random.Shared.Next(list.Count)];
+    }
     
+    public const String InvalidPath = "4444444444444"; // testing purposes
     // === Generic ===
     public const string ViciousBlow = "8205341"; // A vicious blow! That'll leave a mark!
     public const string FeltThatOneStillStanding = "8205342"; // Even I felt that one! But the challenger's still standing!

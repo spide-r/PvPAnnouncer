@@ -23,6 +23,6 @@ public class MuteAnnouncer: Command
         {
             un = "un-";
         }
-        PluginServices.ChatGui.Print("Announcer Has been " + un + "muted!", InternalConstants.MessageTag, InternalConstants.MessageColor);
+        PluginServices.ChatGui.Print("Announcer Has been " + un + "muted!", InternalConstants.MessageTag);
     }
 }

@@ -2,6 +2,7 @@
 using Dalamud.Game.Config;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 
@@ -99,6 +100,11 @@ public class PlayerStateTracker: IPlayerStateTracker
             n.Content = "Your voice volume is either muted or set to zero! You will be unable to hear the announcer until this is fixed!";
             PluginServices.NotificationManager.AddNotification(n);
         }
+    }
+
+    public bool IsDawntrailInstalled()
+    {
+        return PluginServices.DataManager.FileExists(AnnouncerLines.GetPath(AnnouncerLines.Fallen));
     }
 
     public void EmitToBroker(IMessage pvpEvent)
