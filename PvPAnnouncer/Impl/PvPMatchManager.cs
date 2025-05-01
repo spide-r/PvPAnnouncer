@@ -8,8 +8,6 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
-    //todo: bug where the territory + pvp status + match weather isnt updating as I would expect
-
     private readonly HashSet<uint> _deadMembers = [];
 
     public PvPMatchManager()
@@ -23,6 +21,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     private void EnterPvP()
     {
+        PluginServices.PluginLog.Verbose("EnterPvP");
         PluginServices.PlayerStateTracker.CheckSoundState(); // sloppy - need to make this class not rely on PlayerStateTracker being loaded
     }
 
@@ -35,16 +34,31 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private void ClientStateOnTerritoryChanged(ushort territory)
     {
         var t = PluginServices.DataManager.GetExcelSheet<TerritoryType>().GetRow(territory);
-        
-        if (PluginServices.PlayerStateTracker.IsPvP())
+        PluginServices.PluginLog.Verbose("OnTerritoryChanged " + territory);
+        if (t.IsPvpZone) 
         {
-            EnterPvP();
-            MatchEntered(territory);
+            if (territory == 250) // entering the wolves den
+            { 
+                if (PluginServices.PlayerStateTracker.IsPvP()) // Went from pvp area to wolves den 
+                {
+                    PluginServices.PluginLog.Verbose("Territory Change: PvP -> WD");
+                    MatchLeft();
+                }
+            }
+            else
+            {
+                PluginServices.PluginLog.Verbose("Territory Change: NoPvP->PvP");
+                MatchEntered(territory); // entered a pvp zone that isnt the wolves den
+                
+            }
         }
         else
         {
-            MatchLeft();
-  
+            if (PluginServices.PlayerStateTracker.IsPvP()) // was in pvp zone before warp and then warped to a non-pvp zone
+            {
+                PluginServices.PluginLog.Verbose("Territory Change: PvP -> NoPvP");
+                MatchLeft();
+            }
         }
     }
 
@@ -81,7 +95,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         EmitToBroker(new MatchEnteredMessage(territory));
         unsafe
         {
-            var weatherId = WeatherManager.Instance()->GetCurrentWeather();
+            var weatherId = WeatherManager.Instance()->GetWeatherForDaytime(territory, 0);
             PluginServices.PluginLog.Verbose($"Match Weather: {weatherId}");
             EmitToBroker(new MatchWeatherMessage(weatherId));
         }

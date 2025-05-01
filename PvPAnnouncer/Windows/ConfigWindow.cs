@@ -87,7 +87,7 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if (ImGui.Checkbox("Notify me when my Voice sounds are muted", ref notify))
+        if (ImGui.Checkbox("Notify me when my Voice volume is muted", ref notify))
         {
             _configuration.Notify = notify;
             _configuration.Save();
