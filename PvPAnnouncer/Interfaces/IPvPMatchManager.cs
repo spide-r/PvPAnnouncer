@@ -1,6 +1,8 @@
-﻿namespace PvPAnnouncer.Interfaces;
+﻿using System;
 
-public interface IPvPMatchManager
+namespace PvPAnnouncer.Interfaces;
+
+public interface IPvPMatchManager: IDisposable
 {
     void MatchEntered(ushort territory);
     void MatchStarted(object? sender, ushort @ushort);

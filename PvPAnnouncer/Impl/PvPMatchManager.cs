@@ -131,4 +131,13 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
     }
+
+    public void Dispose()
+    {
+        PluginServices.ClientState.TerritoryChanged -= ClientStateOnTerritoryChanged;
+        PluginServices.ClientState.EnterPvP -= EnterPvP;
+        PluginServices.ClientState.CfPop -= ClientStateOnCfPop;
+        PluginServices.DutyState.DutyStarted -= MatchStarted;
+        PluginServices.DutyState.DutyCompleted -= MatchEnded;
+    }
 }

@@ -77,6 +77,12 @@ namespace PvPAnnouncer
         }
         public void Dispose()
         {
+            PluginServices.DalamudPluginInterface.UiBuilder.Draw -= DrawUi;
+            PluginServices.DalamudPluginInterface.UiBuilder.OpenMainUi -= ToggleMainUI;
+            PluginServices.DalamudPluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigWindow;
+            PluginServices.PvPEventHooksPublisher.Dispose();
+            PluginServices.PlayerStateTracker.Dispose();
+            PluginServices.PvPMatchManager.Dispose();
             UnloadCommands();
         }
     }

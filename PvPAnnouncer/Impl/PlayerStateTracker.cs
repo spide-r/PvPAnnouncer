@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Config;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
@@ -106,5 +107,11 @@ public class PlayerStateTracker: IPlayerStateTracker
     public void EmitToBroker(IMessage pvpEvent)
     {
         PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
+    }
+
+    public void Dispose()
+    {
+        PluginServices.Framework.Update -= OnUpdate;   
+
     }
 }
