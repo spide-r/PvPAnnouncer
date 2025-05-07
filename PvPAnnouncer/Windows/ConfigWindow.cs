@@ -39,7 +39,9 @@ public class ConfigWindow : Window, IDisposable
     {
         var disabled = _configuration.Disabled;
         var muted = _configuration.Muted;
+        var hideBattleText = _configuration.HideBattleText;
         var lang = _configuration.Language;
+        //var battleTalkLang = _configuration.BattleTalkLang;
         var blEvents = _configuration.BlacklistedEvents;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
@@ -53,7 +55,7 @@ public class ConfigWindow : Window, IDisposable
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
             ImGui.Separator();
-            ImGui.Text("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
+            ImGui.TextWrapped("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
             ImGui.Separator();
         }
         
@@ -62,25 +64,23 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
-        
-        if (ImGui.Checkbox("Announcer Muted", ref muted))
-        {
-            _configuration.Muted = muted;
-            _configuration.Save();
-        }
-        
-        if (ImGui.Checkbox("Use Voice Lines with Feminine Pronouns", ref fem))
+        ImGui.TextWrapped("Use Voice Lines with: ");
+        ImGui.SameLine();
+        if (ImGui.Checkbox("Feminine Pronouns", ref fem))
         {
             _configuration.WantsFem = fem;
             _configuration.Save();
         }
-        
-        if (ImGui.Checkbox("Use Voice Lines with Masculine Pronouns", ref masc))
+        ImGui.SameLine();
+        if (ImGui.Checkbox("Masculine Pronouns", ref masc))
         {
             _configuration.WantsMasc = masc;
             _configuration.Save();
         }
+        ImGui.Indent();
         
+        ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nFor example: Metem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
+        ImGui.Unindent();
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
         {
             _configuration.WolvesDen = wolvesDen;
@@ -92,62 +92,114 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Notify = notify;
             _configuration.Save();
         }
-        
+        ImGui.Separator();
         ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
+        ImGui.Indent();
         if (ImGui.SliderInt("(S)", ref cooldown, 1, 30))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
         }
+        ImGui.Unindent();
         
         
-        ImGui.TextWrapped("What percent of events should have an announcement?");
+        ImGui.TextWrapped("What percent of Events should have an announcement?");
+        ImGui.Indent();
         if (ImGui.SliderInt("%", ref percent, 1, 100))
         {
             _configuration.Percent = percent;
             _configuration.Save();
         }
+        ImGui.Unindent();
         
         
-        ImGui.TextWrapped("How Many Unique voice lines should be said before a potential repeat?");
+        ImGui.TextWrapped("How many unique Voice Lines should be said before a potential repeat?");
+        ImGui.Indent();
         if (ImGui.SliderInt("# Of Voice lines", ref repeatVoiceLine, 1, 25))
         {
             _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
             _configuration.Save();
         }
+        ImGui.Unindent();
         
 
-        ImGui.TextWrapped("How Many Unique events should be commented on before a duplicate happens?");
+        ImGui.TextWrapped("How many unique Events should be commented on before a duplicate happens?");
+        ImGui.Indent();
         if (ImGui.SliderInt("# Of Events", ref repeatEventCommentary, 1, 10))
         {
             _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;
             _configuration.Save();
         }
+        ImGui.Unindent();
+        ImGui.Separator();
+        if (!muted)
+        {
+            ImGui.Text("Announcer Language:");
+            if (ImGui.RadioButton("English", lang.Equals("en")))
+            {
+                _configuration.Language = "en";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("German", lang.Equals("de")))
+            {
+                _configuration.Language = "de";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("French", lang.Equals("fr")))
+            {
+                _configuration.Language = "fr";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
+            {
+                _configuration.Language = "ja";
+                _configuration.Save();
+            }
+        }
 
-        ImGui.Text("Announcer Language:");
-        if (ImGui.RadioButton("English", lang.Equals("en")))
+        /*if (!hideBattleText)
         {
-            _configuration.Language = "en";
+            ImGui.Text("Battle Text Language:");
+            if (ImGui.RadioButton("English Text", battleTalkLang.Equals("en")))
+            {
+                _configuration.BattleTalkLang = "en";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("German Text", battleTalkLang.Equals("de")))
+            {
+                _configuration.BattleTalkLang = "de";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("French Text", battleTalkLang.Equals("fr")))
+            {
+                _configuration.BattleTalkLang = "fr";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("Japanese Text", battleTalkLang.Equals("ja")))
+            {
+                _configuration.BattleTalkLang = "ja";
+                _configuration.Save();
+            }
+        }*/
+   
+        if (ImGui.Checkbox("Mute Announcer", ref muted))
+        {
+            _configuration.Muted = muted;
             _configuration.Save();
         }
         ImGui.SameLine();
-        if (ImGui.RadioButton("German", lang.Equals("de")))
+        if (ImGui.Checkbox("Hide Battle Text", ref hideBattleText))
         {
-            _configuration.Language = "de";
+            _configuration.HideBattleText = hideBattleText;
             _configuration.Save();
         }
-        ImGui.SameLine();
-        if (ImGui.RadioButton("French", lang.Equals("fr")))
-        {
-            _configuration.Language = "fr";
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
-        {
-            _configuration.Language = "ja";
-            _configuration.Save();
-        }
+        ImGui.Separator();
         
         List<String> list = new List<string>();
         foreach (var ee in _allEvents)
@@ -194,6 +246,6 @@ public class ConfigWindow : Window, IDisposable
             
         }
         
-        ImGui.TextWrapped("More events will be added! (Plus maybe a custom event maker in the near future - we'll see!)");
+        ImGui.TextWrapped("More events will be added! I may also let you create custom events. Please let me know if this is something you would like to see!");
     }
 }

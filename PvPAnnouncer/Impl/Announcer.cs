@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using FFXIVClientStructs.FFXIV.Client.UI;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -155,6 +154,7 @@ public class Announcer: IAnnouncer
         string s = sounds[rand];
         WrapUp(pvpEvent, s);
         PlaySound(AnnouncerLines.GetPath(s));
+        SendBattleTalk(s);
     }
 
     private void WrapUp(PvPEvent pvpEvent, string chosenLine)
@@ -162,5 +162,39 @@ public class Announcer: IAnnouncer
         AddEventToRecentList(pvpEvent);
         AddVoiceLineToRecentList(chosenLine);
         _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+    }
+
+    private void SendBattleTalk(string voiceLine) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
+    {
+        if (PluginServices.Config.HideBattleText)
+        {
+            return;
+        }
+        unsafe
+        {
+            try
+            {
+                BattleTalk battleTalk = new BattleTalk(voiceLine);
+                var name = "Metem";
+                var text = battleTalk.Text.ToString();
+                var duration = battleTalk.Duration;
+                var icon = battleTalk.Icon;
+                var style = battleTalk.Style;
+                if (icon != 0)
+                {
+                    UIModule.Instance()->ShowBattleTalkImage(name, text, icon, duration, style);
+                }
+                else
+                {
+                    UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
+
+                }
+            }
+            catch (Exception e)
+            {
+                PluginServices.PluginLog.Error(e, "Issue sending Battle Talk!");
+            }
+            
+        }
     }
 }

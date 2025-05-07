@@ -2,6 +2,7 @@
 using System.Numerics;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
+using FFXIVClientStructs.FFXIV.Client.UI;
 using ImGuiNET;
 using PvPAnnouncer.Data;
 
@@ -25,7 +26,7 @@ public class MainWindow: Window, IDisposable
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
             ImGui.Separator();
-            ImGui.Text("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
+            ImGui.TextWrapped("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
             ImGui.Separator();
         }
         ImGui.TextWrapped("Welcome to PvP Announcer! This plugin will take Metem from the Arcadion and put him into your PvP match! " +
@@ -39,8 +40,10 @@ public class MainWindow: Window, IDisposable
         if (ImGui.Button("Test The Announcer"))
         {
             PluginServices.ChatGui.Print("Playing Voiceline!", InternalConstants.MessageTag);
-            PluginServices.SoundManager.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.GetRandomAnnouncement()));
+            var line = AnnouncerLines.GetRandomAnnouncement();
+            PluginServices.SoundManager.PlaySound(AnnouncerLines.GetPath(line));
             PluginServices.PlayerStateTracker.CheckSoundState();
+            SendBattleTalk(line);
             if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
             {
                 Notification n = new Notification();
@@ -50,6 +53,31 @@ public class MainWindow: Window, IDisposable
                 n.MinimizedText = "Dawntrail is not installed!";
                 n.Content = "You must install Dawntrail for this plugin to work!";
                 PluginServices.NotificationManager.AddNotification(n);
+            }
+        }
+    }
+    
+    
+    private void SendBattleTalk(string line)
+    {
+        BattleTalk battleTalk = new BattleTalk(line);
+        var name = "Metem";
+        var text = battleTalk.Text.ToString();
+        var duration = battleTalk.Duration;
+        var icon = battleTalk.Icon;
+        var style = battleTalk.Style;
+        if (icon != 0)
+        {
+            unsafe
+            {
+                UIModule.Instance()->ShowBattleTalkImage(name, text, icon, duration, style);
+            }
+        }
+        else
+        {
+            unsafe
+            {
+                UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
             }
         }
     }

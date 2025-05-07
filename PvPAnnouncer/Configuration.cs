@@ -26,9 +26,12 @@ namespace PvpAnnouncer
         public bool Disabled { get; set; } = false;
         public bool Muted { get; set; } = false;
 
+        public bool HideBattleText { get; set; } = false;
+
         public int Percent { get; set; } = 70; 
  
         public string Language { get; set; } = "en";
+        //public string BattleTalkLang { get; set; } = "en"; //not shown to the end-user until i figure out why i'm unable to get other languages
 
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
