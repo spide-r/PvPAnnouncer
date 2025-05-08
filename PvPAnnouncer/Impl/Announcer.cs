@@ -176,7 +176,7 @@ public class Announcer: IAnnouncer
             {
                 BattleTalk battleTalk = new BattleTalk(voiceLine);
                 var name = "Metem";
-                var text = battleTalk.Text.ToString();
+                var text = battleTalk.Text.ExtractText();
                 var duration = battleTalk.Duration;
                 var icon = battleTalk.Icon;
                 var style = battleTalk.Style;
