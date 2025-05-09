@@ -115,6 +115,7 @@ public class ActionIds
     public static readonly uint RisingPhoenix = 29481;
     public static readonly uint Swift = 43247;
     public static readonly uint FullSwing = 43245;
-    
-    
+    public static readonly uint WindsReply = 41509;
+
+
 }

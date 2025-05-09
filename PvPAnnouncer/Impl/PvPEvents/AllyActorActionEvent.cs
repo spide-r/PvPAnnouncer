@@ -7,6 +7,7 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyActionEvent : PvPActionEvent
 {
+    //todo: this needs to take a list of actionids, not just 1 actionid
     public AllyActionEvent(uint actionId,
         List<string> soundPaths,
         List<string> soundPathsMasc,

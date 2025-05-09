@@ -7,9 +7,10 @@ namespace PvPAnnouncer.Impl;
 
 public class EventListenerLoader: IEventListenerLoader
 {
+    //todo: gain battle high event
+
     public PvPEvent[] PvpEvents { get; } =
     [
-        //todo: gain battle high event
 
         // == Custom Events ==
 
@@ -17,11 +18,13 @@ public class EventListenerLoader: IEventListenerLoader
             "Marksman's Spite (Wicked Thunder)"),
         new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.Seraphism, [], [], [GrownWingsFem],
             "Seraphism (Wicked Thunder)"),
-        new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.TenebraeLemurum, [], [], [UnleashedANewFeralSoul],
+        new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.TenebraeLemurum, [], [], [UnleashedANewFeralSoul, ConvertAetherFem],
             "Tenebrae Lemurum (Wicked Thunder)"),
         new AllyActionEvent(ActionIds.Blota, [ChainDeathmatch], [], [], "Blota"),
         new AllyActionEvent(ActionIds.RisingPhoenix, [StartedFire], [], [], "Rising Phoenix"),
+        new AllyActionEvent((uint) ActionIds.BigHitsEnum.FlareStar, [StartedFire], [], [], "Flare Star"),
         new AllyActionEvent(ActionIds.FullSwing, [], [SentRivalFlyingMasc], [], "Full Swing (Brute Bomber)"),
+        new AllyActionEvent(ActionIds.FullSwing, [], [SentRivalFlyingMasc], [], "Wind's Reply (Brute Bomber)"),
         new AllyActionEvent(ActionIds.Swift, [], [SuchSpeedMasc], [], "Swift (Howling Blade)"),
         new AllyActionEvent(ActionIds.Biolysis, [], [], [VenomStrikeFem], "Biolysis (Honey B. Lovely)"),
         new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.Contradance, [..InternalConstants.LimitBreakList], [],
