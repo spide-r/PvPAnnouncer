@@ -13,12 +13,7 @@ public interface IPvPMatchManager: IDisposable
     bool IsMonitoredUser(int userId);
     
     bool IsMonitoredUser(uint entityId);
-
-    void RegisterDeath(uint userId);
     
-    void UnregisterDeath(uint userId);
-    bool IsDead(uint userId);
-
 
 
 

@@ -49,22 +49,21 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
              ActorControlMessage actorControlMessage =
                  new ActorControlMessage(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
              if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
-             { //dodgy impl - I will have to find an actual way to determine ressurection
-                 if (statusId == StatusIds.Invincibility && PluginServices.PvPMatchManager.IsDead(entityId))
-                 {
-                     EmitToBroker(new UserResurrectedMessage(entityId));
-                     PluginServices.PvPMatchManager.UnregisterDeath(entityId);
-                 } 
+             {
+              if (statusId == StatusIds.BH5)
+              {
+                  EmitToBroker(new BattleHighMessage(5));
+              } else if (statusId == StatusIds.FlyingHigh)
+              {
+                  EmitToBroker(new FlyingHighMessage());
+              } else if (statusId == StatusIds.Soaring)
+              {
+                  EmitToBroker(new SoaringMessage((int) amount));
+              }
              }
              else
              {
                  EmitToBroker(actorControlMessage);
-             }
-         
-             if (actorControlMessage.GetCategory() == ActorControlCategory.Death &&
-                 PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
-             {
-                 PluginServices.PvPMatchManager.RegisterDeath(entityId);
              }
          }
          catch (Exception e)

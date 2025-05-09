@@ -2,7 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class UserResurrectedMessage(uint userId): IMessage
+public class UserResurrectedMessage: IMessage
 {
-    public readonly uint UserId = userId;
 }

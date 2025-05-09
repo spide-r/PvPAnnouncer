@@ -8,8 +8,6 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
-    private readonly HashSet<uint> _deadMembers = [];
-
     public PvPMatchManager()
     {
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
@@ -70,21 +68,6 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public bool IsMonitoredUser(uint entityId)
     {
         return PluginServices.ClientState.LocalPlayer != null && entityId == PluginServices.ClientState.LocalPlayer.EntityId;
-    }
-
-    public void RegisterDeath(uint userId)
-    {
-        _deadMembers.Add(userId);
-    }
-
-    public void UnregisterDeath(uint userId)
-    {
-        _deadMembers.Remove(userId);
-    }
-
-    public bool IsDead(uint userId)
-    {
-        return _deadMembers.Contains(userId);
     }
 
 

@@ -6,11 +6,11 @@ using static PvPAnnouncer.Data.AnnouncerLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class MaxBattleHighFlyingHighEvent: PvPEvent
+public class MaxBattleFeverEvent: PvPEvent
 {
-    public MaxBattleHighFlyingHighEvent()
+    public MaxBattleFeverEvent()
     {
-        Name = "Battle High 5 / Flying High Gained";
+        Name = "Battle High V / Flying High Gained";
     }
 
     public override List<string> SoundPaths()
