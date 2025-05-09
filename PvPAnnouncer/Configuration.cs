@@ -10,7 +10,6 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        //todo: The default config values will need to be adjusted.
         public int Version { get; set; } = 0;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;

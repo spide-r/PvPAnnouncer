@@ -37,8 +37,7 @@ public class AllyDeathEvent : PvPActorControlEvent
 
             }
         }
-
-        return false;   
+        return m is UserDiedMessage;
     }
 
 

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class MechSpawnEvent: PvPEvent
+public class EnteredMechEvent: PvPEvent
 {
-    public MechSpawnEvent()
+    //todo: Test in a RW match
+    public EnteredMechEvent()
     {
-        Name = "Mech Spawn (Not Implemented Yet)";
+        Name = "Entered Mech (Not Implemented Yet)";
     }
     public override List<string> SoundPaths()
     {
@@ -28,6 +30,6 @@ public class MechSpawnEvent: PvPEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        return false;
+        return message is UserEnteredMechMessage;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -7,8 +8,14 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyActionEvent : PvPActionEvent
 {
-    //todo: this needs to take a list of actionids, not just 1 actionid
-    public AllyActionEvent(uint actionId,
+    //generic event for specific action and sound pairings
+
+    private List<string> SoundPathsList { get; }
+    private List<string> SoundPathsM { get; }
+    private List<string> SoundPathsF { get; }
+    private uint[] ActionIds { get; }
+    
+    public AllyActionEvent(uint[] actionIds,
         List<string> soundPaths,
         List<string> soundPathsMasc,
         List<string> soundPathsFem, string name = "Action")
@@ -16,17 +23,9 @@ public class AllyActionEvent : PvPActionEvent
         SoundPathsList = soundPaths;
         SoundPathsM = soundPathsMasc;
         SoundPathsF = soundPathsFem;
-        ActionId = actionId;
+        ActionIds = actionIds;
         Name = name;
     }
-
-
-    //generic event for specific action and sound pairings
-
-    private List<string> SoundPathsList { get; }
-    private List<string> SoundPathsM { get; }
-    private List<string> SoundPathsF { get; }
-    private uint ActionId { get; }
 
     public override List<string> SoundPaths()
     {
@@ -50,7 +49,7 @@ public class AllyActionEvent : PvPActionEvent
             ActionEffectMessage message = (ActionEffectMessage)p;
             if (PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
             {
-                return message.ActionId == ActionId;
+                return ActionIds.Contains(message.ActionId);
 
             }
         }

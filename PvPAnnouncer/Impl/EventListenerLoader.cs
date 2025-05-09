@@ -7,29 +7,25 @@ namespace PvPAnnouncer.Impl;
 
 public class EventListenerLoader: IEventListenerLoader
 {
-    //todo: gain battle high event
-
     public PvPEvent[] PvpEvents { get; } =
     [
 
         // == Custom Events ==
 
-        new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.MarksmansSpite, [], [], [MassiveCannonFem],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.MarksmansSpite], [], [], [MassiveCannonFem],
             "Marksman's Spite (Wicked Thunder)"),
-        new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.Seraphism, [], [], [GrownWingsFem],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.Seraphism], [..InternalConstants.LimitBreakList], [], [GrownWingsFem],
             "Seraphism (Wicked Thunder)"),
-        new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.TenebraeLemurum, [], [], [UnleashedANewFeralSoul, ConvertAetherFem],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.TenebraeLemurum], [], [], [UnleashedANewFeralSoul, ConvertAetherFem],
             "Tenebrae Lemurum (Wicked Thunder)"),
-        new AllyActionEvent(ActionIds.Blota, [ChainDeathmatch], [], [], "Blota"),
-        new AllyActionEvent(ActionIds.RisingPhoenix, [StartedFire], [], [], "Rising Phoenix"),
-        new AllyActionEvent((uint) ActionIds.BigHitsEnum.FlareStar, [StartedFire], [], [], "Flare Star"),
-        new AllyActionEvent(ActionIds.FullSwing, [], [SentRivalFlyingMasc], [], "Full Swing (Brute Bomber)"),
-        new AllyActionEvent(ActionIds.FullSwing, [], [SentRivalFlyingMasc], [], "Wind's Reply (Brute Bomber)"),
-        new AllyActionEvent(ActionIds.Swift, [], [SuchSpeedMasc], [], "Swift (Howling Blade)"),
-        new AllyActionEvent(ActionIds.Biolysis, [], [], [VenomStrikeFem], "Biolysis (Honey B. Lovely)"),
-        new AllyActionEvent((uint) ActionIds.LimitBreaksEnum.Contradance, [..InternalConstants.LimitBreakList], [],
+        new AllyActionEvent([ActionIds.Blota], [ChainDeathmatch], [], [], "Blota"),
+        new AllyActionEvent([ActionIds.RisingPhoenix, (uint) ActionIds.BigHitsEnum.FlareStar], [StartedFire], [], [], "Rising Phoenix & Flare Star"),
+        new AllyActionEvent([ActionIds.FullSwing, ActionIds.WindsReply], [], [SentRivalFlyingMasc], [], "Full Swing, Wind's Reply (Brute Bomber)"),
+        new AllyActionEvent([ActionIds.Swift], [], [SuchSpeedMasc], [], "Swift (Howling Blade)"),
+        new AllyActionEvent([ActionIds.Biolysis], [], [], [VenomStrikeFem], "Biolysis (Honey B. Lovely)"),
+        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.Contradance], [..InternalConstants.LimitBreakList], [],
             [FeelingLoveFem, HerCharmsNotDeniedFem], "Contradance (Honey B. Lovely)"),
-        new EnemyActionEvent((uint) ActionIds.LimitBreaksEnum.Contradance, [ResistTheIrresistible, InvitationToDance],
+        new EnemyActionEvent([(uint) ActionIds.LimitBreaksEnum.Contradance], [ResistTheIrresistible, InvitationToDance],
             [], [], "Contradance from enemies."),
         
         // == Standard Events ==
@@ -46,8 +42,9 @@ public class EventListenerLoader: IEventListenerLoader
         new MatchEndEvent(),
         new MatchStartEvent(),
         new MechKilledEvent(),
-        new MechSpawnEvent(),
-        new MatchStormyWeatherEvent()
+        new EnteredMechEvent(),
+        new MatchStormyWeatherEvent(),
+        new MaxBattleHighFlyingHighEvent()
     ];
 
     public PvPEvent[] GetPvPEvents() => PvpEvents;

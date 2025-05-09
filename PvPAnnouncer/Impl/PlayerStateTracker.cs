@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Config;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
+using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
@@ -15,20 +17,57 @@ public class PlayerStateTracker: IPlayerStateTracker
     private float PrevVel { get; set; }
     private float DistJump { get; set; }
     private bool WasFalling { get; set; }
+
+    private int _battleHigh;
+    private int _soaring;
+    private bool _flyingHigh;
     public PlayerStateTracker()
     {
      PluginServices.Framework.Update += OnUpdate;   
+     PluginServices.Condition.ConditionChange += OnConditionChange;
     }
 
-    
-    // Attributed to Oof Plugin
+    private void OnConditionChange(ConditionFlag flag, bool value)
+    {
+        if (flag == ConditionFlag.Unconscious)
+        {
+            if (value)
+            {
+                PluginServices.PluginLog.Info("Player Resurrected!!!!!");
+                if (PluginServices.ClientState.LocalPlayer != null)
+                {
+                    EmitToBroker(new UserResurrectedMessage(PluginServices.ClientState.LocalPlayer.EntityId));
+
+                }
+            } else {
+                PluginServices.PluginLog.Info("Player Died!!!!!");
+                EmitToBroker(new UserDiedMessage());
+
+            }
+        }
+
+        if (flag == ConditionFlag.OperatingSiegeMachine && value)
+        {
+            EmitToBroker(new UserEnteredMechMessage());
+        }
+    }
+
+
     private void OnUpdate(IFramework framework)
     {
         if (PluginServices.ClientState.LocalPlayer == null)
         {
             return;
         }
+
+        if (!PluginServices.ClientState.IsPvP)
+        {
+            return;
+        }
         
+        CheckAndEmitBattleFever();
+        
+        // Attributed to Oof Plugin
         if (PluginServices.Condition[ConditionFlag.BetweenAreas] ||
             PluginServices.Condition[ConditionFlag.BetweenAreas51] ||
             PluginServices.Condition[ConditionFlag.BeingMoved])
@@ -64,6 +103,83 @@ public class PlayerStateTracker: IPlayerStateTracker
         PrevVel = velocity;
         WasFalling = isFalling;
         
+
+    }
+
+    private void CheckAndEmitBattleFever() //both Battle High and Soaring/Flying High
+    {
+        if (PluginServices.ClientState.LocalPlayer != null)
+        {
+            bool noBattleFever = PluginServices.ClientState.LocalPlayer.StatusList.Any(ss => 
+                StatusIds.BH1 == ss.StatusId || 
+                StatusIds.BH2 == ss.StatusId || 
+                StatusIds.BH3 == ss.StatusId || 
+                StatusIds.BH4 == ss.StatusId || 
+                StatusIds.BH5 == ss.StatusId || 
+                StatusIds.Soaring == ss.StatusId || 
+                StatusIds.FlyingHigh == ss.StatusId);
+            if (noBattleFever)
+            {
+                _battleHigh = 0;
+                _soaring = 0;
+                _flyingHigh = false;
+                return;
+            }
+
+            var newBattleHigh = 0;
+            var newSoaring = 0;
+            var newFlyingHigh = false;
+            foreach (var s in PluginServices.ClientState.LocalPlayer.StatusList)
+            {
+                if (s.StatusId == StatusIds.BH1)
+                {
+                    newBattleHigh = 1;
+                } else if (s.StatusId == StatusIds.BH2)
+                {
+                    newBattleHigh = 2;
+                } else if (s.StatusId == StatusIds.BH3)
+                {
+                    newBattleHigh = 3;
+                } else if (s.StatusId == StatusIds.BH4)
+                {
+                    newBattleHigh = 4;
+                } else if (s.StatusId == StatusIds.BH5)
+                {
+                    newBattleHigh = 5;
+                } else if (s.StatusId == StatusIds.Soaring)
+                {
+                    newSoaring = s.Param;
+                } else if (s.StatusId == StatusIds.FlyingHigh)
+                {
+                    newFlyingHigh = true;
+                }
+            }
+
+            if (newBattleHigh != _battleHigh)
+            {
+                if (newBattleHigh > _battleHigh)
+                {
+                    // Do not emit a BH decreased message
+                    EmitToBroker(new BattleHighMessage(newBattleHigh));
+                }
+                _battleHigh = newBattleHigh;
+            }
+
+            if (newFlyingHigh != _flyingHigh)
+            {
+                EmitToBroker(new FlyingHighMessage());
+            }
+
+            if (newSoaring != _soaring)
+            {
+                if (!_flyingHigh && newSoaring > 0) 
+                    // Soaring is not preserved when a user becomes flying high. We dont want to emit a soaring decreased message 
+                {
+                    EmitToBroker(new SoaringMessage(newSoaring));
+                }
+                _soaring = newSoaring;
+            }
+        }
 
     }
 
@@ -112,6 +228,7 @@ public class PlayerStateTracker: IPlayerStateTracker
     public void Dispose()
     {
         PluginServices.Framework.Update -= OnUpdate;   
+        PluginServices.Condition.ConditionChange -= OnConditionChange;
 
     }
 }

@@ -6,11 +6,11 @@ using static PvPAnnouncer.Data.AnnouncerLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class BattleHighEvent: PvPEvent
+public class MaxBattleHighFlyingHighEvent: PvPEvent
 {
-    public BattleHighEvent()
+    public MaxBattleHighFlyingHighEvent()
     {
-        Name = "Battle High Gained (Not Implemented)";
+        Name = "Battle High 5 / Flying High Gained";
     }
 
     public override List<string> SoundPaths()
@@ -30,6 +30,10 @@ public class BattleHighEvent: PvPEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        return message is BattleHighMessage;
+        if (message is BattleHighMessage bhm)
+        {
+            return bhm.Level == 5;
+        } 
+        return message is SoaringMessage;
     }
 }
