@@ -18,7 +18,8 @@ public class PlaySound: Command
 
     public override void OnCommand(string command, string args)
     {
-        PluginServices.Announcer.PlaySound(AnnouncerLines.GetPath(AnnouncerLines.IroncladDefense));
+        PluginServices.Announcer.PlaySound(AnnouncerLines.GetPath(args));
+        PluginServices.Announcer.SendBattleTalk(args);
 
     }
     

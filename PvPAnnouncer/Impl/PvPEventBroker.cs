@@ -37,9 +37,9 @@ public class PvPEventBroker: IPvPEventBroker
             {
                 if (ac.GetCategory() != ActorControlCategory.DirectorUpdate)
                 {
-                    PluginServices.PluginLog.Verbose($"Actor control: {ac.EntityId}, " +
+                    /*PluginServices.PluginLog.Verbose($"Actor control: {ac.EntityId}, " +
                                                      $"type: {ac.GetCategory()} source: {ac.Source}, statusId: {ac.StatusId}" +
-                                                     $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}"); 
+                                                     $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}");*/ 
 
                 }
                 

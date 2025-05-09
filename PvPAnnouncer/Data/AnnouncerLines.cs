@@ -8,7 +8,7 @@ public static class AnnouncerLines
     //Announcer sound path: sound/voice/vo_line/INSERT_NUMBER_HERE_en.scd
     // en, de, fr, ja work
     
-    //Lines are found in ContentDirectorTalk as well as InstanceContentTextData - Use AlphaAOT 
+    //Lines are found in ContentDirectorBattleTalk as well as InstanceContentTextData - Use AlphaAOT 
 
     private static string GetPath(string announcement, string lang)
     {
@@ -24,6 +24,30 @@ public static class AnnouncerLines
     {
         List<string> list = [ViciousBlow, FeltThatOneStillStanding, BeautifullyDodged, SawThroughIt, WentDownHard, SuckedIn, StruckSquare, AllOverUntilNextTime, Fallen, WhatPower];
         return list[Random.Shared.Next(list.Count)];
+    }
+
+    public static string GetAnnouncementStringFromUnusedVo(string id)
+    {
+        return id switch
+        {
+            UnusedBombarianPress => InternalConstants.BombarianPressText,
+            UnusedNoRespectMasc => InternalConstants.NoRespectText,
+            UnusedUpOnThePost => InternalConstants.UpOnThePostText,
+            UnusedOhMercyFem => InternalConstants.OhMercyText,
+            _ => "Uh oh! You shouldn't see this! Please report this to the PvPAnnouncer Dev!"
+        };
+    }
+    
+    public static int GetAnnouncementLengthFromUnusedVo(string id)
+    {
+        return id switch
+        {
+            UnusedBombarianPress => 3,
+            UnusedNoRespectMasc => 4,
+            UnusedUpOnThePost => 3,
+            UnusedOhMercyFem => 4,
+            _ => 5
+        };
     }
     
     public const String InvalidPath = "4444444444444"; // testing purposes
@@ -59,7 +83,7 @@ public static class AnnouncerLines
     public const string FelineFerocity = "8205354";// Can they hold their own against her feline ferocity!?
     public const string LitheAndLethal = "8205355";// Here it comes! Black Cat's lithe and lethal maneuver! 
     public const string NineLives = "8205358";// Look alive, folks, because this cat has nine.
-    public const string FeralOnslaught = "8205360";// It begins─Black Cat's feral onslaught! 
+    public const string FeralOnslaught = "8205360"; // It begins─Black Cat's feral onslaught! 
     public const string MyRing = "8205356"; // My riiing!
     public const string RepairRing = "8205357"; // Ahem. Please bear with us while we repair the ring.
     
@@ -76,7 +100,6 @@ public static class AnnouncerLines
     // === Brute Bomber ===
     public const string BBMuscled = "8205369"; // The Brute Bomber has muscled his way into the ring!
     public const string BBEmbiggening = "8205371"; // The Brute Bomber is embiggening himself!
-    public const string NoRespectUnknown = ""; // This man has absolutely no respect for the rules! todo: find this, it might be unused?
     public const string KaboomBBSpecial = "8205375";// Kaboom! The Bombarian Special!
     public const string BBDesprate = "8205378"; // The Brute Bomber is desperate!
     public const string BannedCompoundRobot = "8205440"; // Banned compound detected. Combatant disqualified.
@@ -113,6 +136,7 @@ public static class AnnouncerLines
     public const string StormOfNeedles = "8205792"; // Watch out, it's a veritable storm of needles!
     public const string SuckedIn = "8205794"; // Oh no! The challenger's been sucked in!
     public const string Thunderstorm = "8205796"; // A thunderstorm has turned the waters muddy! How frightening!
+    public const string TransformativePiece = "8205799"; // A Transformative Piece! The fiend has been completely remade!
     
     
     // === Brute Abominator ===
@@ -138,4 +162,13 @@ public static class AnnouncerLines
     public const string SuchSpeedMasc = "8205817"; // Such speed─it's as if there's a pack of him!
     public const string ColossalThing = "8205818"; // Where did that colossal thing come from!?
     public const string ColossalThingSwordMasc = "8205819"; // He's put the colossus to the sword!
+    
+    // == 
+    // NOTE: The following voice lines are unused but the audio remains in the game
+    public const string UnusedNoRespectMasc = "8205372"; // This man has absolutely no respect for the rules! - 
+    public const string UnusedUpOnThePost = "8205373"; // He's up on the post! You know what that means... 
+    public const string UnusedBombarianPress = "8205374"; // It's the Bombarian press! 
+    public const string UnusedOhMercyFem = "8205359"; // Oh mercy is she doing what I think she's doing?
+    // ==
+
 }

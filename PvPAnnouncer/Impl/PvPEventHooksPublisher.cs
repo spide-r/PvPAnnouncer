@@ -50,16 +50,33 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
                  new ActorControlMessage(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
              if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
              {
-              if (statusId == StatusIds.BH5)
-              {
-                  EmitToBroker(new BattleHighMessage(5));
-              } else if (statusId == StatusIds.FlyingHigh)
-              {
-                  EmitToBroker(new FlyingHighMessage());
-              } else if (statusId == StatusIds.Soaring)
-              {
-                  EmitToBroker(new SoaringMessage((int) amount));
-              }
+                 if (!PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
+                 {
+                     return;
+                 }
+                 if (statusId == StatusIds.BH5)
+                 {
+                     EmitToBroker(new BattleHighMessage(5));
+                 } else if (statusId == StatusIds.BH4)
+                 {
+                     EmitToBroker(new BattleHighMessage(4));
+                 } 
+                 else if (statusId == StatusIds.BH3)
+                 {
+                     EmitToBroker(new BattleHighMessage(3));
+                 } else if (statusId == StatusIds.BH2)
+                 {
+                     EmitToBroker(new BattleHighMessage(2));
+                 }else if (statusId == StatusIds.BH1)
+                 {
+                     EmitToBroker(new BattleHighMessage(1));
+                 } else if (statusId == StatusIds.FlyingHigh)
+                 {
+                     EmitToBroker(new FlyingHighMessage());
+                 } else if (statusId == StatusIds.Soaring)
+                 {
+                     EmitToBroker(new SoaringMessage((int) amount));
+                 }
              }
              else
              {

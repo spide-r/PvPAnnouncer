@@ -164,7 +164,7 @@ public class Announcer: IAnnouncer
         _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
     }
 
-    private void SendBattleTalk(string voiceLine) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
+    public void SendBattleTalk(string voiceLine) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
     {
         if (PluginServices.Config.HideBattleText)
         {
@@ -187,8 +187,11 @@ public class Announcer: IAnnouncer
                 else
                 {
                     UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
-
                 }
+            }
+            catch (InvalidOperationException e)
+            {
+                UIModule.Instance()->ShowBattleTalk("Metem", AnnouncerLines.GetAnnouncementStringFromUnusedVo(voiceLine), AnnouncerLines.GetAnnouncementLengthFromUnusedVo(voiceLine), 6);
             }
             catch (Exception e)
             {

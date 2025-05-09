@@ -8,4 +8,5 @@ public interface IAnnouncer
     void ReceivePvPEvent(PvPEvent pvpEvent);
     
     void PlaySound(string sound);
+    void SendBattleTalk(string sound);
 }
