@@ -116,6 +116,7 @@ public class ActionIds
     public static readonly uint Swift = 43247;
     public static readonly uint FullSwing = 43245;
     public static readonly uint WindsReply = 41509;
+    public static readonly uint Perfectio = 41458;
 
 
 }
