@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -11,12 +12,12 @@ public class AllyActionEvent : PvPActionEvent
     //generic event for specific action and sound pairings
 
     private List<string> SoundPathsList { get; }
-    private Dictionary<uint, List<string>> PersonalizedSoundPathsList;
+    private Dictionary<Personalization, List<string>> PersonalizedSoundPathsList;
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,
         List<string> soundPaths,
-        Dictionary<uint, List<string>> personalizedSoundPaths, string name = "Action")
+        Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Action")
     {
         SoundPathsList = soundPaths;
         PersonalizedSoundPathsList = personalizedSoundPaths;
@@ -29,7 +30,7 @@ public class AllyActionEvent : PvPActionEvent
         return SoundPathsList;
     }
 
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
         return PersonalizedSoundPathsList;
     }

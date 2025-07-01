@@ -115,23 +115,15 @@ public class Announcer: IAnnouncer
         List<string> sounds = new List<string>(pvpEvent.SoundPaths());
         
         // == Objective 5 == 
-        if (pvpEvent.SoundPathsFem().Count > 0 || pvpEvent.SoundPathsMasc().Count > 0)
+
+        var personalizedVoicelines = PluginServices.Config.PersonalizedVoicelines;
+        foreach (var personalizedSoundPath in pvpEvent.PersonalizedSoundPaths())
         {
-            bool userWantsFem = PluginServices.Config.WantsFem;
-            bool userWantsMasc = PluginServices.Config.WantsMasc;
-
-            if (userWantsFem || userWantsMasc)
+            var key = personalizedSoundPath.Key;
+            var personalSounds = personalizedSoundPath.Value;
+            if (PluginServices.Config.WantsPersonalization(key))
             {
-                
-                if (userWantsFem)
-                {
-                    sounds.AddRange(pvpEvent.SoundPathsFem());
-                }
-
-                if (userWantsMasc)
-                {
-                    sounds.AddRange(pvpEvent.SoundPathsMasc());
-                }
+                sounds.AddRange(personalSounds);
             }
         }
         

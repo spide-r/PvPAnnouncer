@@ -13,14 +13,5 @@ public abstract class InternalConstants
     public const string BombarianPressText = "It's the Bombarian press!";
     public const string OhMercyText = "Oh mercy is she doing what I think she's doing?";
     // For Bitwise settings
-    public const int FemPronouns = 1;
-    public const int MascPronouns = 2;
-    public const int BlackCat = 3;
-    public const int HoneyBLovely = 4;
-    public const int BruteBomber = 5;
-    public const int WickedThunder = 6;
-    public const int DancingGreen = 7;
-    public const int SugarRiot = 8;
-    public const int BruteAbominator = 9;
-    public const int HowlingBlade = 10;
+
 }

@@ -18,9 +18,19 @@ public class AllyLimitBreakEvent: PvPActionEvent
         return [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying];
     }
 
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<uint, List<string>>();
+        return new Dictionary<Personalization, List<string>>{
+            {Personalization.MascPronouns, [BoundingFromWallToWallMasc]}, 
+            {Personalization.BlackCat, [FeralOnslaught, FelineFerocity, LitheAndLethal]}, 
+            {Personalization.HoneyBLovely, [ChangedRoutine, VenomStrikeFem]},
+            {Personalization.BruteBomber, [BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress]},
+            {Personalization.WickedThunder, [DischargeAether]},
+            {Personalization.DancingGreen, [DGSteps]},
+            {Personalization.SugarRiot, [SRBringsWorkToLife]},
+            {Personalization.BruteAbominator, [ChimericalFoe, FeralPowersWeapon, PunishingAttackFusion]},
+            
+        };
     }
 
     public override bool InvokeRule(IMessage message)

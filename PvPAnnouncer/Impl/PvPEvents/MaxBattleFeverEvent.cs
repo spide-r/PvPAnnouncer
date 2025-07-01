@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -17,20 +18,14 @@ public class MaxBattleFeverEvent: PvPEvent
     {
         return [WhatPower];
     }
-
-    /*public override List<string> SoundPathsMasc()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return [RoofCavedSuchDevastation];
-    }
-
-    public override List<string> SoundPathsFem()
-    {
-        return [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem];
-    }*/
-    
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<uint, List<string>>();
+        return new Dictionary<Personalization, List<string>>
+        {
+            {Personalization.MascPronouns, [RoofCavedSuchDevastation]}, 
+            { Personalization.FemPronouns, [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem]},
+            {Personalization.DancingGreen, [DGFeverPich]}
+        };
     }
 
     public override bool InvokeRule(IMessage message)

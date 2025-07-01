@@ -19,9 +19,9 @@ public class AllyHitHardEvent : PvPActionEvent
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt];
     }
 
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<uint, List<string>>();
+        return new Dictionary<Personalization, List<string>>{{Personalization.BruteBomber, [BBDesprate]}};
     }
 
     public override bool InvokeRule(IMessage message)

@@ -19,9 +19,9 @@ public class AllyPulledByDrkEvent: PvPActionEvent
         return [SuckedIn, BattleElectrifying, ThrillingBattle, Quicksand];
     }
 
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<uint, List<string>>();
+        return new Dictionary<Personalization, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)

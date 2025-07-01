@@ -5,6 +5,7 @@ using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using ImGuiNET;
 using PvpAnnouncer;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Windows;
@@ -32,8 +33,8 @@ public class ConfigWindow : Window, IDisposable
 
     private int _activeEventsSelectedItem;
     private int _disabledEventsSelectedItem = 0;
-    private String[] _activeEventsArr;
-    private String[] _disabledEventsArr;
+    private string[] _activeEventsArr;
+    private string[] _disabledEventsArr;
     private readonly PvPEvent[] _allEvents;
     public override void Draw()
     {
@@ -45,12 +46,25 @@ public class ConfigWindow : Window, IDisposable
         var blEvents = _configuration.BlacklistedEvents;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
-        var fem = _configuration.WantsFem;
-        var masc = _configuration.WantsMasc;
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
         var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
         var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
+        
+        
+        var personalization = _configuration.WantsPersonalizedVoiceLines;
+        
+        //personalization 
+        var fem = _configuration.WantsPersonalization(Personalization.FemPronouns);
+        var masc = _configuration.WantsPersonalization(Personalization.MascPronouns);
+        var bc = _configuration.WantsPersonalization(Personalization.BlackCat);
+        var bb = _configuration.WantsPersonalization(Personalization.BruteBomber);
+        var hbl = _configuration.WantsPersonalization(Personalization.HoneyBLovely);
+        var wt = _configuration.WantsPersonalization(Personalization.WickedThunder);
+        var dg = _configuration.WantsPersonalization(Personalization.DancingGreen);
+        var sr = _configuration.WantsPersonalization(Personalization.SugarRiot);
+        var ba = _configuration.WantsPersonalization(Personalization.BruteAbominator);
+        var hb = _configuration.WantsPersonalization(Personalization.HowlingBlade);
         
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
@@ -64,23 +78,83 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
-        ImGui.TextWrapped("Use Voice Lines with: ");
-        ImGui.SameLine();
-        if (ImGui.Checkbox("Feminine Pronouns", ref fem))
-        {
-            _configuration.WantsFem = fem;
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        if (ImGui.Checkbox("Masculine Pronouns", ref masc))
-        {
-            _configuration.WantsMasc = masc;
-            _configuration.Save();
-        }
-        ImGui.Indent();
         
-        ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nFor example: Metem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
-        ImGui.Unindent();
+        ImGui.Checkbox("Do you want to personalize announcer voicelines?", ref personalization);
+
+        if (personalization)
+        {
+            ImGui.TextWrapped("Use Voice Lines with: ");
+            ImGui.SameLine();
+            if (ImGui.Checkbox("Feminine Pronouns", ref fem))
+            {
+                SetPersonalization(masc, Personalization.FemPronouns);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.Checkbox("Masculine Pronouns", ref masc))
+            {
+                SetPersonalization(masc, Personalization.MascPronouns);
+                _configuration.Save();
+            }
+            ImGui.Indent();
+        
+            ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nFor example: Metem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
+            ImGui.Unindent();
+            
+            ImGui.TextWrapped("Use voice lines mentioning the following competitors names:");
+            
+            if (ImGui.Checkbox("Black Cat", ref bc))
+            {
+                SetPersonalization(bc, Personalization.BlackCat);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.Checkbox("Honey B. Lovely", ref hbl))
+            {
+                SetPersonalization(hbl, Personalization.HoneyBLovely);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+
+            if (ImGui.Checkbox("Brute Bomber", ref bb))
+            {
+                SetPersonalization(bb, Personalization.BruteBomber);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+
+            if (ImGui.Checkbox("Wicked Thunder", ref wt))
+            {
+                SetPersonalization(wt, Personalization.WickedThunder);
+                _configuration.Save();
+            }
+            
+            if (ImGui.Checkbox("Dancing Green", ref dg))
+            {
+                SetPersonalization(dg, Personalization.DancingGreen);
+                _configuration.Save();
+            }
+            
+            if (ImGui.Checkbox("Sugar Riot", ref sr))
+            {
+                SetPersonalization(sr, Personalization.SugarRiot);
+                _configuration.Save();
+            }
+            
+            if (ImGui.Checkbox("Brute Abominator", ref ba))
+            {
+                SetPersonalization(ba, Personalization.BruteAbominator);
+                _configuration.Save();
+            }
+            
+            if (ImGui.Checkbox("Howling Blade", ref hb))
+            {
+                SetPersonalization(hb, Personalization.WickedThunder);
+                _configuration.Save();
+            }
+            
+        }
+
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
         {
             _configuration.WolvesDen = wolvesDen;
@@ -247,5 +321,17 @@ public class ConfigWindow : Window, IDisposable
         }
         
         ImGui.TextWrapped("More events will be added! I may also let you create custom events. Please let me know if this is something you would like to see!");
+    }
+
+    private void SetPersonalization(bool b, Personalization p)
+    {
+        if (b)
+        {
+            _configuration.SetPersonalization(p);
+        }
+        else
+        {
+            _configuration.UnSetPersonalization(p);
+        }
     }
 }

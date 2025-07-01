@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.Command;
+﻿using System.Collections.Generic;
+using Dalamud.Game.Command;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using PvPAnnouncer.Impl.Commands;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Lumina.Excel.Sheets;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -20,9 +21,9 @@ public class MatchStormyWeatherEvent: PvPEvent
         return [StormParasols, Thunderstorm];
     }
 
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<uint, List<string>>();
+        return new Dictionary<Personalization, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)

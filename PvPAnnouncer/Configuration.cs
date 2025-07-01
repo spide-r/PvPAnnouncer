@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dalamud.Configuration;
 using Dalamud.Game.Text;
 using Dalamud.Plugin;
+using PvPAnnouncer.Data;
 
 
 namespace PvpAnnouncer
@@ -10,14 +11,14 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        public int Version { get; set; } = 0;
+        public int Version { get; set; } = 1;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
-        public bool WantsFighters { get; set; } = false;
+        public bool WantsPersonalizedVoiceLines { get; set; } = false;
         
         public int PersonalizedVoicelines {get; set;} = 0; 
         
@@ -44,21 +45,44 @@ namespace PvpAnnouncer
         public void Initialize(IDalamudPluginInterface pluginInterface)
         {
             _pluginInterface = pluginInterface;
+            MigrateOldPluginConfig();
         }
 
-        public bool UserWantsPersonalizedVoiceLine(int custom)
+        private void MigrateOldPluginConfig()
         {
-            return ((1 << custom) & PersonalizedVoicelines) == (1 << custom);
+            if (Version == 0) //porting due to changes in voice line personalization system
+            {
+                if (WantsFem)
+                {
+                    SetPersonalization(Personalization.FemPronouns);
+                    WantsPersonalizedVoiceLines = true;
+                }
+
+                if (WantsMasc)
+                {
+                    SetPersonalization(Personalization.MascPronouns);
+                    WantsPersonalizedVoiceLines = true;
+                }
+                Version++;
+            }
+            
+            _pluginInterface?.SavePluginConfig(this);
         }
 
-        public void SetPersonalizedVoiceLine(int voiceLine)
+        public bool WantsPersonalization(Personalization p)
         {
-            PersonalizedVoicelines = PersonalizedVoicelines | (1 << voiceLine);
+            var personalization = (int) p;
+            return ((1 << personalization) & PersonalizedVoicelines) == (1 << personalization);
+        }
+
+        public void SetPersonalization(Personalization p)
+        {
+            PersonalizedVoicelines = PersonalizedVoicelines | (1 << (int) p);
         }
         
-        public void UnSetPersonalizedVoiceLine(int voiceLine) //todo: CHECK THIS
+        public void UnSetPersonalization(Personalization p)
         {
-            PersonalizedVoicelines = PersonalizedVoicelines | (1 >> voiceLine);
+            PersonalizedVoicelines = PersonalizedVoicelines | (1 >> (int) p);
         }
 
         public void Save()

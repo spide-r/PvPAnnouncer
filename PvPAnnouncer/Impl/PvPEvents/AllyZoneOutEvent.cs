@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -17,9 +18,9 @@ public class AllyZoneOutEvent: PvPActorEvent
         return [Fallen];
     }
 
-    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<uint, List<string>>();
+        return new Dictionary<Personalization, List<string>>();
     }
 
     public override bool InvokeRule(IMessage m) 

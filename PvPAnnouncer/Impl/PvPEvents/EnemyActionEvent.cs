@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -9,33 +10,26 @@ public class EnemyActionEvent : PvPActionEvent
 {
     private static uint[] _actionIds = [];
 
-    public EnemyActionEvent(uint[] actionIds, List<string> soundPaths, List<string> soundPathsMasc, List<string> soundPathsFem, string name = "Enemy Actions")
+    public EnemyActionEvent(uint[] actionIds, List<string> soundPaths, Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Enemy Actions")
     {
         _actionIds = actionIds;
         SoundPathsList = soundPaths;
-        SoundPathsM = soundPathsMasc;
-        SoundPathsF = soundPathsFem;
+        PersonalizedSoundPathsList = personalizedSoundPaths;
         Name = name;
     }
 
     public List<string> SoundPathsList { get; init; }
-    public List<string> SoundPathsM { get; init; }
-    public List<string> SoundPathsF { get; init; }
-
+    public Dictionary<Personalization, List<string>> PersonalizedSoundPathsList { get; init; }
     public override List<string> SoundPaths()
     {
         return SoundPathsList;
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return SoundPathsM; 
+        return PersonalizedSoundPathsList;
     }
-
-    public override List<string> SoundPathsFem()
-    {
-        return SoundPathsF; 
-    }
+    
     public override bool InvokeRule(IMessage arg)
     {
         if (arg is ActionEffectMessage message)
