@@ -89,7 +89,6 @@ public class ConfigWindow : Window, IDisposable
         if (personalization)
         {
             ImGui.Separator();
-            ImGui.TextWrapped(_configuration.PersonalizedVoicelines.ToString());
             ImGui.TextWrapped("Use Voice Lines with: ");
             ImGui.SameLine();
             if (ImGui.Checkbox("Feminine Pronouns", ref fem))

@@ -29,7 +29,6 @@ public class AllyLimitBreakEvent: PvPActionEvent
             {Personalization.DancingGreen, [DGSteps]},
             {Personalization.SugarRiot, [SRBringsWorkToLife]},
             {Personalization.BruteAbominator, [ChimericalFoe, FeralPowersWeapon, PunishingAttackFusion]},
-            
         };
     }
 
