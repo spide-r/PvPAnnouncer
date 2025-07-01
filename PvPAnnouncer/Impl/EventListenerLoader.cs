@@ -12,21 +12,28 @@ public class EventListenerLoader: IEventListenerLoader
 
         // == Custom Events ==
 
-        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.MarksmansSpite], [], [], [MassiveCannonFem],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.MarksmansSpite], [], [], [MassiveCannonFem],
             "Marksman's Spite (Wicked Thunder)"),
-        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.Seraphism], [..InternalConstants.LimitBreakList], [], [GrownWingsFem],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.Seraphism], [..InternalConstants.LimitBreakList], [], [GrownWingsFem],
             "Seraphism (Wicked Thunder)"),
-        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.TenebraeLemurum], [..InternalConstants.LimitBreakList], [], [UnleashedANewFeralSoul, ConvertAetherFem],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.TenebraeLemurum], [..InternalConstants.LimitBreakList], [], [UnleashedANewFeralSoul, ConvertAetherFem],
             "Tenebrae Lemurum (Wicked Thunder)"),
         new AllyActionEvent([ActionIds.Blota], [ChainDeathmatch], [], [], "Blota"),
-        new AllyActionEvent([ActionIds.RisingPhoenix, (uint) ActionIds.BigHitsEnum.FlareStar], [StartedFire], [], [], "Rising Phoenix & Flare Star"),
+        new AllyActionEvent([ActionIds.RisingPhoenix, (uint) ActionIds.BigHits.FlareStar], [StartedFire], [], [], "Rising Phoenix & Flare Star"),
         new AllyActionEvent([ActionIds.FullSwing, ActionIds.WindsReply], [], [SentRivalFlyingMasc], [], "Full Swing, Wind's Reply (Brute Bomber)"),
         new AllyActionEvent([ActionIds.Swift], [], [SuchSpeedMasc], [], "Swift (Howling Blade)"),
         new AllyActionEvent([ActionIds.Biolysis], [], [], [VenomStrikeFem], "Biolysis (Honey B. Lovely)"),
-        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.Zantetsuken, (uint) ActionIds.LimitBreaksEnum.SeitonTenchu, (uint) ActionIds.LimitBreaksEnum.SeitonTenchu2, ActionIds.Perfectio], [], [UnusedNoRespectMasc], [UnusedOhMercyFem], "Instant Kills (Brute Bomber + Black Cat)"),
-        new AllyActionEvent([(uint) ActionIds.LimitBreaksEnum.Contradance], [..InternalConstants.LimitBreakList], [],
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.Zantetsuken, (uint) ActionIds.LimitBreaks.SeitonTenchu, (uint) ActionIds.LimitBreaks.SeitonTenchu2, ActionIds.Perfectio], [], [UnusedNoRespectMasc], [UnusedOhMercyFem], "Instant Kills (Brute Bomber + Black Cat)"),
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.Contradance], [..InternalConstants.LimitBreakList], [],
             [FeelingLoveFem, HerCharmsNotDeniedFem], "Contradance (Honey B. Lovely)"),
-        new EnemyActionEvent([(uint) ActionIds.LimitBreaksEnum.Contradance], [ResistTheIrresistible, InvitationToDance],
+        
+        new AllyActionEvent([(uint) ActionIds.MechActions.Flarethrower], [StartedFire], [],
+            [], "Flarethrower (Rival Wings)"),
+        
+        new EnemyActionEvent([(uint) ActionIds.MechActions.Flarethrower], [StartedFire], [],
+            [], "Flarethrower from Enemies (Rival Wings)"),
+        
+        new EnemyActionEvent([(uint) ActionIds.LimitBreaks.Contradance], [ResistTheIrresistible, InvitationToDance],
             [], [], "Contradance from enemies."),
         
         // == Standard Events ==
@@ -42,7 +49,6 @@ public class EventListenerLoader: IEventListenerLoader
         new EnemyMissedCc(),
         new MatchEndEvent(),
         new MatchStartEvent(),
-        new MechKilledEvent(),
         new EnteredMechEvent(),
         new MatchStormyWeatherEvent(),
         new MaxBattleFeverEvent()

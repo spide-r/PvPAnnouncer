@@ -20,14 +20,9 @@ public class MatchStormyWeatherEvent: PvPEvent
         return [StormParasols, Thunderstorm];
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
     {
-        return [];
-    }
-
-    public override List<string> SoundPathsFem()
-    {
-        return [];
+        return new Dictionary<uint, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)

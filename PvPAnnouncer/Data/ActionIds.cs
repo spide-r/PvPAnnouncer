@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 namespace PvPAnnouncer.Data;
 
 public class ActionIds
 {
-    public enum LimitBreaksEnum: uint
+    public enum LimitBreaks: uint
     {
         Phalanx = 29069,
         PrimalScream = 29083,
@@ -31,9 +32,25 @@ public class ActionIds
         SouthernCross = 41498,
         AdventOfChocobastion = 39215,
     }
+
+    public enum MechActions : uint
+    {
+        OpticalSight = 9971,
+        SpinCrusher = 9973,
+        LaserXSword = 9974,
+        
+        SteamRelease = 9977,
+        A3000TonzeMissile = 9975,
+        
+        DoubleRocketPunch = 9979,
+        MegaBeam = 9980,
+        Flarethrower = 9978 
+        
+    }
+        
     
     
-    public enum MitigationEnum: uint
+    public enum Mitigation: uint
     {
         Guard = 29054, 
         OtherGuard = 29735, // what??
@@ -47,7 +64,7 @@ public class ActionIds
         Stoneskin2 = 43256,
     }
     
-    public enum BigHitsEnum: uint
+    public enum BigHits: uint
     {
         ShieldSmite = 41430,
         BladeOfValor = 29073,
@@ -71,7 +88,7 @@ public class ActionIds
 
     public static bool IsLimitBreak(uint id)
     {
-        foreach (var value in Enum.GetValues(typeof (LimitBreaksEnum)))
+        foreach (var value in Enum.GetValues<LimitBreaks>())
         {
             if (id == (uint) value)
             {
@@ -83,9 +100,17 @@ public class ActionIds
     
     public static bool IsBigHit(uint id)
     {
-        foreach (var value in Enum.GetValues(typeof (BigHitsEnum)))
+        foreach (var value in Enum.GetValues<BigHits>())
         {
             if (id == (uint) value)
+            {
+                return true;
+            }
+        }
+
+        foreach (var action in Enum.GetValues<MechActions>().Except([MechActions.SteamRelease, MechActions.A3000TonzeMissile]))
+        {
+            if (id == (uint) action)
             {
                 return true;
             }
@@ -95,7 +120,7 @@ public class ActionIds
     
     public static bool IsMitigation(uint id)
     {
-        foreach (var value in Enum.GetValues(typeof (MitigationEnum)))
+        foreach (var value in Enum.GetValues(typeof (Mitigation)))
         {
             if (id == (uint) value)
             {
@@ -104,10 +129,6 @@ public class ActionIds
         }
         return false;
     }
-    
-    public static readonly LimitBreaksEnum[] LimitBreaks = [LimitBreaksEnum.Eventide];
-    public static readonly uint[] Mitigation = [];
-    
     public static readonly uint SaltedEarth = 29094;
     public static readonly uint Smite = 43248;
     public static readonly uint Biolysis = 29233;

@@ -18,14 +18,10 @@ public class MatchStartEvent: PvPMatchEvent
         return [SendingCameras, UpstartBegins];
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
     {
-        return [];
-    }
-
-    public override List<string> SoundPathsFem()
-    {
-        return [];
+        //todo: match start for all the other arcadion competitors
+        return new Dictionary<uint, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)

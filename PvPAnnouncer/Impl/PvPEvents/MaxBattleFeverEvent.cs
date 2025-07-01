@@ -18,7 +18,7 @@ public class MaxBattleFeverEvent: PvPEvent
         return [WhatPower];
     }
 
-    public override List<string> SoundPathsMasc()
+    /*public override List<string> SoundPathsMasc()
     {
         return [RoofCavedSuchDevastation];
     }
@@ -26,6 +26,11 @@ public class MaxBattleFeverEvent: PvPEvent
     public override List<string> SoundPathsFem()
     {
         return [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem];
+    }*/
+    
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
+    {
+        return new Dictionary<uint, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)

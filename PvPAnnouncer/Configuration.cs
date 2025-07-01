@@ -17,6 +17,11 @@ namespace PvpAnnouncer
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
+        public bool WantsFighters { get; set; } = false;
+        
+        public int PersonalizedVoicelines {get; set;} = 0; 
+        
+        
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
 
@@ -28,9 +33,10 @@ namespace PvpAnnouncer
         public bool HideBattleText { get; set; } = false;
 
         public int Percent { get; set; } = 70; 
+        
  
         public string Language { get; set; } = "en";
-        //public string BattleTalkLang { get; set; } = "en"; //not shown to the end-user until i figure out why i'm unable to get other languages
+        //public string BattleTalkLang { get; set; } = "en"; //not shown to the end-user until i figure out why i'm unable to get other languages to show up
 
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
@@ -38,6 +44,21 @@ namespace PvpAnnouncer
         public void Initialize(IDalamudPluginInterface pluginInterface)
         {
             _pluginInterface = pluginInterface;
+        }
+
+        public bool UserWantsPersonalizedVoiceLine(int custom)
+        {
+            return ((1 << custom) & PersonalizedVoicelines) == (1 << custom);
+        }
+
+        public void SetPersonalizedVoiceLine(int voiceLine)
+        {
+            PersonalizedVoicelines = PersonalizedVoicelines | (1 << voiceLine);
+        }
+        
+        public void UnSetPersonalizedVoiceLine(int voiceLine) //todo: CHECK THIS
+        {
+            PersonalizedVoicelines = PersonalizedVoicelines | (1 >> voiceLine);
         }
 
         public void Save()

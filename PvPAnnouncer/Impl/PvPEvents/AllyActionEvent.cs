@@ -11,18 +11,15 @@ public class AllyActionEvent : PvPActionEvent
     //generic event for specific action and sound pairings
 
     private List<string> SoundPathsList { get; }
-    private List<string> SoundPathsM { get; }
-    private List<string> SoundPathsF { get; }
+    private Dictionary<uint, List<string>> PersonalizedSoundPathsList;
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,
         List<string> soundPaths,
-        List<string> soundPathsMasc,
-        List<string> soundPathsFem, string name = "Action")
+        Dictionary<uint, List<string>> personalizedSoundPaths, string name = "Action")
     {
         SoundPathsList = soundPaths;
-        SoundPathsM = soundPathsMasc;
-        SoundPathsF = soundPathsFem;
+        PersonalizedSoundPathsList = personalizedSoundPaths;
         ActionIds = actionIds;
         Name = name;
     }
@@ -32,16 +29,10 @@ public class AllyActionEvent : PvPActionEvent
         return SoundPathsList;
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
     {
-        return SoundPathsM;
+        return PersonalizedSoundPathsList;
     }
-
-    public override List<string> SoundPathsFem()
-    {
-        return SoundPathsF;
-    }
-
     public override bool InvokeRule(IMessage p)
     {
         if (p is ActionEffectMessage)

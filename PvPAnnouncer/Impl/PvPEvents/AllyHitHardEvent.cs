@@ -16,17 +16,12 @@ public class AllyHitHardEvent : PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, ThrillingBattle, BrutalBlow, StillInIt];
+        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt];
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
     {
-        return [];
-    }
-
-    public override List<string> SoundPathsFem()
-    {
-        return [];
+        return new Dictionary<uint, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)

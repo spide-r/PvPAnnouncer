@@ -18,17 +18,12 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash, BattleElectrifying, ThrillingBattle];
+        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash];
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
     {
-        return [];
-    }
-
-    public override List<string> SoundPathsFem()
-    {
-        return [];
+        return new Dictionary<uint, List<string>>();
     }
 
     public override bool InvokeRule(IMessage arg)

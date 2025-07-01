@@ -8,24 +8,18 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class EnteredMechEvent: PvPEvent
 {
-    //todo: Test in a RW match
     public EnteredMechEvent()
     {
-        Name = "Entered Mech (Not Implemented Yet)";
+        Name = "Entered Rival Wings Mech";
     }
     public override List<string> SoundPaths()
     {
         return [ColossalThing];
     }
 
-    public override List<string> SoundPathsMasc()
+    public override Dictionary<uint, List<string>> PersonalizedSoundPaths()
     {
-        return [];
-    }
-
-    public override List<string> SoundPathsFem()
-    {
-        return [];
+        return new Dictionary<uint, List<string>>();
     }
 
     public override bool InvokeRule(IMessage message)
