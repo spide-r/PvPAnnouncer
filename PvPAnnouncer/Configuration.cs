@@ -22,7 +22,6 @@ namespace PvpAnnouncer
         
         public int PersonalizedVoicelines {get; set;} = 0; 
         
-        
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
 
@@ -72,17 +71,17 @@ namespace PvpAnnouncer
         public bool WantsPersonalization(Personalization p)
         {
             var personalization = (int) p;
-            return ((1 << personalization) & PersonalizedVoicelines) == (1 << personalization);
+            return WantsPersonalization(personalization);
+        }
+        
+        public bool WantsPersonalization(int p)
+        {
+            return ((1 << p) & PersonalizedVoicelines) == (1 << p);
         }
 
         public void SetPersonalization(Personalization p)
         {
             PersonalizedVoicelines = PersonalizedVoicelines | (1 << (int) p);
-        }
-        
-        public void UnSetPersonalization(Personalization p)
-        {
-            PersonalizedVoicelines = PersonalizedVoicelines | (1 >> (int) p);
         }
 
         public void Save()

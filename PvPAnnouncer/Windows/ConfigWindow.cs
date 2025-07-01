@@ -53,6 +53,8 @@ public class ConfigWindow : Window, IDisposable
         
         
         var personalization = _configuration.WantsPersonalizedVoiceLines;
+
+        var personalizationInt = _configuration.PersonalizedVoicelines;
         
         //personalization 
         var fem = _configuration.WantsPersonalization(Personalization.FemPronouns);
@@ -79,15 +81,20 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        ImGui.Checkbox("Do you want to personalize announcer voicelines?", ref personalization);
+        if(ImGui.Checkbox("Do you want to personalize announcer voicelines?", ref personalization)){
+            _configuration.WantsPersonalizedVoiceLines = personalization;
+            _configuration.Save();
+        };
 
         if (personalization)
         {
+            ImGui.Separator();
+            ImGui.TextWrapped(_configuration.PersonalizedVoicelines.ToString());
             ImGui.TextWrapped("Use Voice Lines with: ");
             ImGui.SameLine();
             if (ImGui.Checkbox("Feminine Pronouns", ref fem))
             {
-                SetPersonalization(masc, Personalization.FemPronouns);
+                SetPersonalization(fem, Personalization.FemPronouns);
                 _configuration.Save();
             }
             ImGui.SameLine();
@@ -134,25 +141,28 @@ public class ConfigWindow : Window, IDisposable
                 SetPersonalization(dg, Personalization.DancingGreen);
                 _configuration.Save();
             }
-            
+            ImGui.SameLine();
+
             if (ImGui.Checkbox("Sugar Riot", ref sr))
             {
                 SetPersonalization(sr, Personalization.SugarRiot);
                 _configuration.Save();
             }
-            
+            ImGui.SameLine();
+
             if (ImGui.Checkbox("Brute Abominator", ref ba))
             {
                 SetPersonalization(ba, Personalization.BruteAbominator);
                 _configuration.Save();
             }
-            
+            ImGui.SameLine();
+
             if (ImGui.Checkbox("Howling Blade", ref hb))
             {
-                SetPersonalization(hb, Personalization.WickedThunder);
+                SetPersonalization(hb, Personalization.HowlingBlade);
                 _configuration.Save();
             }
-            
+            ImGui.Separator();
         }
 
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
@@ -323,6 +333,22 @@ public class ConfigWindow : Window, IDisposable
         ImGui.TextWrapped("More events will be added! I may also let you create custom events. Please let me know if this is something you would like to see!");
     }
 
+    private void RemovePersonalization(Personalization toRemove)
+    {
+        var persInt = 0;
+        for (int i = 1; i < 11; i++) //todo: sloppy - hardcoded value of 11
+        {
+            if ((int) toRemove != i)
+            {
+                if (_configuration.WantsPersonalization(i))
+                {
+                    persInt = persInt | (1 << i);
+                }
+            }
+        }
+        _configuration.PersonalizedVoicelines = persInt;
+        
+    }
     private void SetPersonalization(bool b, Personalization p)
     {
         if (b)
@@ -331,7 +357,7 @@ public class ConfigWindow : Window, IDisposable
         }
         else
         {
-            _configuration.UnSetPersonalization(p);
+            RemovePersonalization(p);
         }
     }
 }
