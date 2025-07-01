@@ -61,7 +61,6 @@ namespace PvPAnnouncer
             foreach (var command in _commands)
             {
                 PluginServices.CommandManager.AddHandler(command.GetFullCommandName(), command.Info!);
-
             }
         }
 

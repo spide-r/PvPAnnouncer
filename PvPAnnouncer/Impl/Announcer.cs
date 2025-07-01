@@ -116,16 +116,19 @@ public class Announcer: IAnnouncer
         
         // == Objective 5 == 
 
-        var personalizedVoicelines = PluginServices.Config.PersonalizedVoicelines;
-        foreach (var personalizedSoundPath in pvpEvent.PersonalizedSoundPaths())
+        if (PluginServices.Config.WantsPersonalizedVoiceLines)
         {
-            var key = personalizedSoundPath.Key;
-            var personalSounds = personalizedSoundPath.Value;
-            if (PluginServices.Config.WantsPersonalization(key))
+            foreach (var personalizedSoundPath in pvpEvent.PersonalizedSoundPaths())
             {
-                sounds.AddRange(personalSounds);
+                var key = personalizedSoundPath.Key;
+                var personalSounds = personalizedSoundPath.Value;
+                if (PluginServices.Config.WantsPersonalization(key))
+                {
+                    sounds.AddRange(personalSounds);
+                }
             }
         }
+        
         
         
         // == Objective 2 == 

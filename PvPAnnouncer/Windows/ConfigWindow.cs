@@ -81,7 +81,10 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if(ImGui.Checkbox("Do you want to personalize announcer voicelines?", ref personalization)){
+        //todo personalized voice line toggle
+        
+        
+        if(ImGui.Checkbox("Do you want to personalize announcer voicelines? (Pronouns, Arcadion Competitors)", ref personalization)){
             _configuration.WantsPersonalizedVoiceLines = personalization;
             _configuration.Save();
         };
@@ -107,7 +110,7 @@ public class ConfigWindow : Window, IDisposable
             ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nFor example: Metem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
             ImGui.Unindent();
             
-            ImGui.TextWrapped("Use voice lines mentioning the following competitors names:");
+            ImGui.TextWrapped("Use announcer voice lines mentioning the following competitors names:");
             
             if (ImGui.Checkbox("Black Cat", ref bc))
             {
