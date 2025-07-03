@@ -81,9 +81,6 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        //todo personalized voice line toggle
-        
-        
         if(ImGui.Checkbox("Do you want to personalize announcer voicelines? (Pronouns, Arcadion Competitors)", ref personalization)){
             _configuration.WantsPersonalizedVoiceLines = personalization;
             _configuration.Save();
@@ -107,7 +104,7 @@ public class ConfigWindow : Window, IDisposable
             }
             ImGui.Indent();
         
-            ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nFor example: Metem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
+            ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nMetem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
             ImGui.Unindent();
             
             ImGui.TextWrapped("Use announcer voice lines mentioning the following competitors names:");
@@ -164,6 +161,11 @@ public class ConfigWindow : Window, IDisposable
                 SetPersonalization(hb, Personalization.HowlingBlade);
                 _configuration.Save();
             }
+            
+            ImGui.Indent();
+            ImGui.TextWrapped("This allows Metem to mention Arcadion fighters directly.\nFor example:\"The Honey B. Lovely show has begun!\"");
+            ImGui.Unindent();
+            
             ImGui.Separator();
         }
 
@@ -331,8 +333,6 @@ public class ConfigWindow : Window, IDisposable
             }
             
         }
-        
-        ImGui.TextWrapped("More events will be added! I may also let you create custom events. Please let me know if this is something you would like to see!");
     }
 
     private void RemovePersonalization(Personalization toRemove)
