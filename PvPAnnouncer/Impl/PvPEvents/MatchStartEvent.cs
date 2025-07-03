@@ -23,14 +23,14 @@ public class MatchStartEvent: PvPMatchEvent
     {
         return new Dictionary<Personalization, List<string>>()
         {
-            {Personalization.BlackCat, [FirstOpponent, NineLives]},
-            {Personalization.HoneyBLovely, [HoneyBShowBegun, SavorSting]},
-            {Personalization.BruteBomber, [BBMuscled]},
-            {Personalization.WickedThunder, [WTReturned]},
-            {Personalization.DancingGreen, [DGSteps]},
-            {Personalization.SugarRiot, [SRGallery]},
-            {Personalization.BruteAbominator, [BAMeansBusiness]},
-            {Personalization.HowlingBlade, [WolfLair]},
+            {Personalization.BlackCat, [FirstOpponent, NineLives, IntroBc]},
+            {Personalization.HoneyBLovely, [HoneyBShowBegun, SavorSting, IntroHbl]},
+            {Personalization.BruteBomber, [BBMuscled, IntroBb]},
+            {Personalization.WickedThunder, [WTReturned, IntroWt]},
+            {Personalization.DancingGreen, [DGSteps, IntroDg]},
+            {Personalization.SugarRiot, [SRGallery, IntroDg]},
+            {Personalization.BruteAbominator, [BAMeansBusiness, IntroBb]},
+            {Personalization.HowlingBlade, [WolfLair, IntroHb]},
         };
     }
 

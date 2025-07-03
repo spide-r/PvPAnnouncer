@@ -12,6 +12,4 @@ public abstract class InternalConstants
     public const string UpOnThePostText = "He's up on the post! You know what that means...";
     public const string BombarianPressText = "It's the Bombarian press!";
     public const string OhMercyText = "Oh mercy is she doing what I think she's doing?";
-    // For Bitwise settings
-
 }

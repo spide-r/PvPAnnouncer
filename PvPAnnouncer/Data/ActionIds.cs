@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace PvPAnnouncer.Data;
@@ -33,6 +33,17 @@ public class ActionIds
         AdventOfChocobastion = 39215,
     }
 
+    private static HashSet<LimitBreaks> _limitBreaksSet =
+    [
+        LimitBreaks.Phalanx, LimitBreaks.PrimalScream, LimitBreaks.Eventide, LimitBreaks.RelentlessRush,
+        LimitBreaks.AfflatusPurgation, LimitBreaks.Seraphism, LimitBreaks.CelestialRiver, LimitBreaks.Mesotes,
+        LimitBreaks.Mesotes2, LimitBreaks.Meteodrive, LimitBreaks.SkyHigh, LimitBreaks.SeitonTenchu,
+        LimitBreaks.SeitonTenchu2, LimitBreaks.Zantetsuken, LimitBreaks.TenebraeLemurum, LimitBreaks.WorldSwallower,
+        LimitBreaks.FinalFantasia, LimitBreaks.MarksmansSpite, LimitBreaks.Contradance, LimitBreaks.SoulResonance,
+        LimitBreaks.SummonBahamut, LimitBreaks.SummonPhoenix, LimitBreaks.SouthernCross,
+        LimitBreaks.AdventOfChocobastion
+    ];
+
     public enum MechActions : uint
     {
         OpticalSight = 9971,
@@ -47,7 +58,11 @@ public class ActionIds
         Flarethrower = 9978 
         
     }
-        
+    private static readonly HashSet<MechActions> MechActionsSet =
+    [
+        MechActions.OpticalSight, MechActions.SpinCrusher, MechActions.LaserXSword, MechActions.SteamRelease,
+        MechActions.A3000TonzeMissile, MechActions.DoubleRocketPunch, MechActions.MegaBeam, MechActions.Flarethrower
+    ];
     
     
     public enum Mitigation: uint
@@ -63,6 +78,11 @@ public class ActionIds
         Rampart = 43244,
         Stoneskin2 = 43256,
     }
+    
+    private static readonly HashSet<Mitigation> MitigationSet = [
+        Mitigation.Guard, Mitigation.OtherGuard, Mitigation.Phalanx, Mitigation.Guardian, Mitigation.TheBlackestNight,
+        Mitigation.Eventide, Mitigation.HeartOfCorundum, Mitigation.Expedient, Mitigation.Rampart,
+        Mitigation.Stoneskin2 ];
     
     public enum BigHits: uint
     {
@@ -83,51 +103,39 @@ public class ActionIds
         FlareStar = 41480,
         FrostStar = 41481,
         Comet = 43252,
-        
     }
+
+    private static readonly HashSet<BigHits> BigHitsSet =
+    [
+        BigHits.ShieldSmite, BigHits.BladeOfValor, BigHits.PrimalRend,
+        BigHits.TerminalTrigger, BigHits.TerminalTrigger2, BigHits.Macrocosmos, BigHits.Toxicon2,
+        BigHits.PhantomRush, BigHits.SkyShatter, BigHits.SkyShatter2, BigHits.Assassinate, BigHits.PlentifulHarvest,
+        BigHits.Communio, BigHits.SaberDance, BigHits.FlareStar, BigHits.FrostStar, BigHits.Comet
+    ];
 
     public static bool IsLimitBreak(uint id)
     {
-        foreach (var value in Enum.GetValues<LimitBreaks>())
-        {
-            if (id == (uint) value)
-            {
-                return true;
-            }
-        }
-        return false;
+        return _limitBreaksSet.Contains((LimitBreaks) id);
     }
     
     public static bool IsBigHit(uint id)
     {
-        foreach (var value in Enum.GetValues<BigHits>())
+        if (BigHitsSet.Contains((BigHits) id))
         {
-            if (id == (uint) value)
-            {
-                return true;
-            }
+            return true;
         }
 
-        foreach (var action in Enum.GetValues<MechActions>().Except([MechActions.SteamRelease, MechActions.A3000TonzeMissile]))
+        if (MechActionsSet.Except([MechActions.SteamRelease, MechActions.A3000TonzeMissile])
+            .Contains((MechActions) id))
         {
-            if (id == (uint) action)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }
     
     public static bool IsMitigation(uint id)
     {
-        foreach (var value in Enum.GetValues(typeof (Mitigation)))
-        {
-            if (id == (uint) value)
-            {
-                return true;
-            }
-        }
-        return false;
+        return MitigationSet.Contains((Mitigation) id);
     }
     public static readonly uint SaltedEarth = 29094;
     public static readonly uint Smite = 43248;

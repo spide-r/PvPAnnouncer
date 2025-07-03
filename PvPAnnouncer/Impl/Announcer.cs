@@ -107,7 +107,6 @@ public class Announcer: IAnnouncer
     {
         PluginServices.PluginLog.Verbose($"Playing sound: {sound}");
         PluginServices.SoundManager.PlaySound(sound);
-
     }
 
     public void PlaySound(PvPEvent pvpEvent)
@@ -161,7 +160,7 @@ public class Announcer: IAnnouncer
 
     public void SendBattleTalk(string voiceLine) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
     {
-        if (PluginServices.Config.HideBattleText)
+        if (PluginServices.Config.HideBattleText || voiceLine.StartsWith("cut")) //todo: sloppy
         {
             return;
         }

@@ -14,7 +14,7 @@ namespace PvPAnnouncer
         private ConfigWindow ConfigWindow { get; init; }
         private MainWindow MainWindow { get; init; }
 
-        private readonly Command[] _commands = [/*new PlaySound(),*/ new MuteAnnouncer()/*, new TestCommand()*/];
+        private readonly Command[] _commands = [ new MuteAnnouncer()/*, new PlaySound(), new TestCommand()*/];
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {

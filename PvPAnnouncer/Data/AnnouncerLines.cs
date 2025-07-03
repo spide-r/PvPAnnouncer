@@ -10,14 +10,31 @@ public static class AnnouncerLines
     
     //Lines are found in ContentDirectorBattleTalk as well as InstanceContentTextData - Use AlphaAOT 
 
-    private static string GetPath(string announcement, string lang)
+    private static string GetVoPath(string announcement, string lang)
     {
         return "sound/voice/vo_line/" + announcement + "_" + lang + ".scd";
     }
 
+    public const string IntroBc = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000010_m";
+    public const string IntroBb = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000050_m";
+    public const string IntroHbl = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000040_m";
+    public const string IntroWt = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000060_m";
+    public const string VictoryWt = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000080_m";
+    public const string IntroDg = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000010_m";
+    public const string IntroSr = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000020_m";
+    public const string IntroBa = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000030_m";
+    public const string IntroHb = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000040_m";
+    
+    public const string GenericVictory = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000030_m";
+    public const string RobotKo = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000050_m";
+
     public static string GetPath(string announcement)
     {
-        return GetPath(announcement, PluginServices.Config.Language);
+        if (announcement.StartsWith("cut"))
+        {
+            return announcement + "_" + PluginServices.Config.Language  + ".scd";
+        }
+        return GetVoPath(announcement, PluginServices.Config.Language);
     }
 
     public static string GetRandomAnnouncement()
@@ -50,7 +67,7 @@ public static class AnnouncerLines
         };
     }
     
-    public const String InvalidPath = "4444444444444"; // testing purposes
+    public const string InvalidPath = "4444444444444"; // testing purposes
     // === Generic ===
     public const string ViciousBlow = "8205341"; // A vicious blow! That'll leave a mark!
     public const string FeltThatOneStillStanding = "8205342"; // Even I felt that one! But the challenger's still standing!
