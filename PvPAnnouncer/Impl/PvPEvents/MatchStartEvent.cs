@@ -11,7 +11,7 @@ public class MatchStartEvent: PvPMatchEvent
 {
     public MatchStartEvent()
     {
-        Name = "Matches Started";
+        Name = "Matches Starting";
         InternalName = "MatchStartEvent";
     }
 
@@ -29,8 +29,8 @@ public class MatchStartEvent: PvPMatchEvent
             {Personalization.BruteBomber, [BBMuscled, IntroBb]},
             {Personalization.WickedThunder, [WTReturned, IntroWt]},
             {Personalization.DancingGreen, [DGSteps, IntroDg]},
-            {Personalization.SugarRiot, [SRGallery, IntroDg]},
-            {Personalization.BruteAbominator, [BAMeansBusiness, IntroBb]},
+            {Personalization.SugarRiot, [SRGallery, IntroSr]},
+            {Personalization.BruteAbominator, [BAMeansBusiness, IntroBa]},
             {Personalization.HowlingBlade, [WolfLair, IntroHb]},
         };
     }

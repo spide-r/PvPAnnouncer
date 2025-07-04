@@ -10,7 +10,7 @@ public class EnemyMissedCc: PvPActionEvent
 {
     public EnemyMissedCc()
     {
-        Name = "Enemies Fail to hit CC";
+        Name = "Cleansing & Dodging CC";
         InternalName = "EnemyMissedCcEvent";
     }
 

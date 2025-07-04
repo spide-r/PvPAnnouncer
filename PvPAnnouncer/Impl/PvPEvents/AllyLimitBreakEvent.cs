@@ -24,7 +24,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
         return new Dictionary<Personalization, List<string>>{
             {Personalization.MascPronouns, [BoundingFromWallToWallMasc]}, 
             {Personalization.BlackCat, [FeralOnslaught, FelineFerocity, LitheAndLethal]}, 
-            {Personalization.HoneyBLovely, [ChangedRoutine, VenomStrikeFem]},
+            {Personalization.HoneyBLovely, [ChangedRoutine]},
             {Personalization.BruteBomber, [BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress]},
             {Personalization.WickedThunder, [DischargeAether]},
             {Personalization.DancingGreen, [DGSteps]},

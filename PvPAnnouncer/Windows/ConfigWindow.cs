@@ -89,7 +89,7 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if(ImGui.Checkbox("Do you want to personalize announcer voicelines? (Pronouns, Arcadion Competitors)", ref personalization)){
+        if(ImGui.Checkbox("Do you want to personalize announcer voicelines? (Pronouns & Arcadion Competitors)", ref personalization)){
             _configuration.WantsPersonalizedVoiceLines = personalization;
             _configuration.Save();
         };
@@ -171,7 +171,7 @@ public class ConfigWindow : Window, IDisposable
             }
             
             ImGui.Indent();
-            ImGui.TextWrapped("This allows Metem to mention Arcadion fighters directly.\nFor example:\"The Honey B. Lovely show has begun!\"");
+            ImGui.TextWrapped("This allows Metem to mention Arcadion fighters directly.\nFor example: \"The Honey B. Lovely show has begun!\"");
             ImGui.Unindent();
             
             ImGui.Separator();

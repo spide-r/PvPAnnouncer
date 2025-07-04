@@ -10,7 +10,7 @@ public class AllyMitUsedEvent: PvPActionEvent
 {
     public AllyMitUsedEvent()
     {
-        Name = "Mitigation used";
+        Name = "Mitigation";
         InternalName = "AllyMitUsedEvent";
     }
 

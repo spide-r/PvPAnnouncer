@@ -11,7 +11,7 @@ public class MaxBattleFeverEvent: PvPEvent
 {
     public MaxBattleFeverEvent()
     {
-        Name = "Battle High V / Flying High Gained";
+        Name = "Gaining Battle High V / Flying High";
         InternalName = "MaxBattleFeverEvent";
     }
 

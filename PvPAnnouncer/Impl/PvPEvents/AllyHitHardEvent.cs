@@ -11,7 +11,7 @@ public class AllyHitHardEvent : PvPActionEvent
 {
     public AllyHitHardEvent()
     {
-        Name = "Hit hard by enemy";
+        Name = "Hit hard by an Enemy";
         InternalName = "AllyHitHardEvent";
     }
 
