@@ -22,10 +22,10 @@ public class AllyLimitBreakEvent: PvPActionEvent
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
         return new Dictionary<Personalization, List<string>>{
-            {Personalization.MascPronouns, [BoundingFromWallToWallMasc]}, 
+            {Personalization.MascPronouns, [BoundingFromWallToWallMasc, AssaultedRefMasc]}, 
             {Personalization.BlackCat, [FeralOnslaught, FelineFerocity, LitheAndLethal]}, 
             {Personalization.HoneyBLovely, [ChangedRoutine]},
-            {Personalization.BruteBomber, [BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress]},
+            {Personalization.BruteBomber, [BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress, BBDesprate]},
             {Personalization.WickedThunder, [DischargeAether]},
             {Personalization.DancingGreen, [DGSteps]},
             {Personalization.SugarRiot, [SRBringsWorkToLife]},

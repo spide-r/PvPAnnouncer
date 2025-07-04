@@ -141,6 +141,7 @@ public class ActionIds
     public static readonly uint Smite = 43248;
     public static readonly uint Biolysis = 29233;
     public static readonly uint Blota = 29081;
+    public static readonly uint Communio = 29554;
     public static readonly uint RisingPhoenix = 29481;
     public static readonly uint Swift = 43247;
     public static readonly uint FullSwing = 43245;
