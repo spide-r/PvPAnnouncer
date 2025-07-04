@@ -29,7 +29,7 @@ public class Announcer: IAnnouncer
             return;
         }
         
-        PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.Name} received");
+        PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.InternalName} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
         
@@ -72,7 +72,7 @@ public class Announcer: IAnnouncer
             _lastEvents.Dequeue();
         }
         
-        _lastEvents.Enqueue(e.Name);
+        _lastEvents.Enqueue(e.InternalName);
 
     }
 
@@ -94,7 +94,7 @@ public class Announcer: IAnnouncer
 
     private bool FailsRepeatCommentaryCheck(PvPEvent pvpEvent)
     {
-        bool b = _lastEvents.Contains(pvpEvent.Name);
+        bool b = _lastEvents.Contains(pvpEvent.InternalName);
         foreach (var lastEvent in _lastEvents)
         {
             PluginServices.PluginLog.Verbose($"Last Event: {lastEvent}");
