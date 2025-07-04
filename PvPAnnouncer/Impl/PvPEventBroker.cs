@@ -57,7 +57,7 @@ public class PvPEventBroker: IPvPEventBroker
             bool emit = shouldEmit.Invoke(message);
             if (emit)
             {
-                PluginServices.PluginLog.Verbose("Emitted: " + ee.Name);
+                PluginServices.PluginLog.Verbose("Emitted: " + ee.InternalName);
 
                 EmitToSubscribers(ee);
             }
@@ -66,7 +66,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     private bool IsBlacklistedEvent(PvPEvent ee)
     {
-        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.Name);
+        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.InternalName);
         return eventIsBlacklisted;
     }
 
@@ -79,7 +79,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void RegisterListener(PvPEvent e)
     {
-        PluginServices.PluginLog.Debug("Registered listener: " + e.Name);
+        PluginServices.PluginLog.Debug("Registered listener: " + e.InternalName);
         _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
     }
 
@@ -87,7 +87,7 @@ public class PvPEventBroker: IPvPEventBroker
     {
         _registeredListeners.RemoveAll(aa =>
         {
-            return aa.Item1.Name.Equals(e.Name);
+            return aa.Item1.InternalName.Equals(e.InternalName);
         });
     }
 }

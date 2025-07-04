@@ -14,6 +14,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
     public AllyHitUnderGuardEvent()
     {
         Name = "Hit while under guard";
+        InternalName = "AllyHitUnderGuardEvent";
     }
 
     public override List<string> SoundPaths()

@@ -12,6 +12,7 @@ public class EnteredMechEvent: PvPEvent
     public EnteredMechEvent()
     {
         Name = "Entered Rival Wings Mech";
+        InternalName = "EnteredMechEvent";
     }
     public override List<string> SoundPaths()
     {

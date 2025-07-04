@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
@@ -27,6 +28,10 @@ public class ConfigWindow : Window, IDisposable
 
         _configuration = PluginServices.Config;
         _allEvents = PluginServices.ListenerLoader.GetPvPEvents();
+        foreach (var pvPEvent in _allEvents)
+        {
+            _eventskv.Add(pvPEvent.InternalName, pvPEvent.Name);
+        }
     }
 
     public void Dispose() { }
@@ -34,8 +39,11 @@ public class ConfigWindow : Window, IDisposable
     private int _activeEventsSelectedItem;
     private int _disabledEventsSelectedItem = 0;
     private string[] _activeEventsArr;
+    private string[] _activeEventsArrInternal;
     private string[] _disabledEventsArr;
+    private string[] _disabledEventsArrInternal;
     private readonly PvPEvent[] _allEvents;
+    private readonly Dictionary<string, string> _eventskv = new Dictionary<string, string>();
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
@@ -289,49 +297,52 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Separator();
         
-        List<String> list = new List<string>();
-        foreach (var ee in _allEvents)
+        List<string> activeEvents = new List<string>();
+        List<string> activeEventsInternal = new List<string>();
+        foreach (var keyValuePair in _eventskv)
+        {
+            string internalName = keyValuePair.Key;
+            string publicName = keyValuePair.Value;
+            if (!blEvents.Contains(internalName))
+            {
+                activeEvents.Add(publicName);
+                activeEventsInternal.Add(internalName);
+            }
+        }
+        /*foreach (var ee in _allEvents)
         {
             string name = ee.Name;
             if (!blEvents.Contains(name) && !name.Contains("Not Implemented"))
             {
-                list.Add(ee.Name);
+                activeEvents.Add(ee.Name);
 
             }
-        }
-        _activeEventsArr = list.ToArray();
+        }*/
+        _activeEventsArr = activeEvents.ToArray();
+        _activeEventsArrInternal = activeEventsInternal.ToArray();
         ImGui.ListBox("Enabled Events", ref _activeEventsSelectedItem, _activeEventsArr, _activeEventsArr.Length);
         if (ImGui.Button("Disable"))
         {
-            _configuration.BlacklistedEvents.Add(_activeEventsArr[_activeEventsSelectedItem]);
+            _configuration.BlacklistedEvents.Add(_activeEventsArrInternal[_activeEventsSelectedItem]);
             _configuration.Save();
         }
         
-        List<String> listDisabled = new List<string>();
-        foreach (String ee in blEvents)
+        List<string> listDisabledInternal = [];
+        List<string> listDisabledPublic = [];
+        foreach (string internalName in blEvents)
         {
-            listDisabled.Add(ee);
+            listDisabledInternal.Add(internalName);
+            listDisabledPublic.Add(_eventskv.First(pair => pair.Key.Equals(internalName)).Value);
         }
 
-        foreach (var ee in _allEvents)
-        {
-            string name = ee.Name;
-            if (name.Contains("Not Implemented"))
-            {
-                listDisabled.Add(ee.Name);
-
-            }
-        }
-        _disabledEventsArr = listDisabled.ToArray();
+     
+        _disabledEventsArrInternal = listDisabledInternal.ToArray();
+        _disabledEventsArr = listDisabledPublic.ToArray();
         ImGui.ListBox("Disabled Events", ref _disabledEventsSelectedItem, _disabledEventsArr, _disabledEventsArr.Length);
         if (ImGui.Button("Enable"))
         {
-            if (!_disabledEventsArr[_disabledEventsSelectedItem].Contains("Not Implemented"))
-            {
-                _configuration.BlacklistedEvents.Remove(_disabledEventsArr[_disabledEventsSelectedItem]);
+                _configuration.BlacklistedEvents.Remove(_disabledEventsArrInternal[_disabledEventsSelectedItem]);
                 _configuration.Save();
-            }
-            
         }
     }
 

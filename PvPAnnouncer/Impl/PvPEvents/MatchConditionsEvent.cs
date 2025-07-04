@@ -7,10 +7,11 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchConditionsEvent : PvPEvent
 {
-    public MatchConditionsEvent(List<string> soundPathsList, string name = "Match Conditions")
+    public MatchConditionsEvent(List<string> soundPathsList, string name = "Match Conditions", string internalName = "MatchConditions")
     {
         SoundPathsList = soundPathsList;
         Name = name;
+        InternalName = internalName;
     }
     // Weather, Match Obstacles, Conditions Changing
     

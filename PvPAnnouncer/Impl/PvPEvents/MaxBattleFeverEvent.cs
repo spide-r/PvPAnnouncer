@@ -12,6 +12,7 @@ public class MaxBattleFeverEvent: PvPEvent
     public MaxBattleFeverEvent()
     {
         Name = "Battle High V / Flying High Gained";
+        InternalName = "MaxBattleFeverEvent";
     }
 
     public override List<string> SoundPaths()

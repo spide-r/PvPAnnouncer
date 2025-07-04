@@ -17,12 +17,13 @@ public class AllyActionEvent : PvPActionEvent
     
     public AllyActionEvent(uint[] actionIds,
         List<string> soundPaths,
-        Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Action")
+        Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Action", string internalName = "internal")
     {
         SoundPathsList = soundPaths;
         PersonalizedSoundPathsList = personalizedSoundPaths;
         ActionIds = actionIds;
         Name = name;
+        InternalName = internalName;
     }
 
     public override List<string> SoundPaths()

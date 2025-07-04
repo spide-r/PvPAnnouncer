@@ -11,6 +11,7 @@ public class AllyMitUsedEvent: PvPActionEvent
     public AllyMitUsedEvent()
     {
         Name = "Mitigation used";
+        InternalName = "AllyMitUsedEvent";
     }
 
     public override List<string> SoundPaths()

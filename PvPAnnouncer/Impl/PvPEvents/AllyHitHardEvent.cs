@@ -12,6 +12,7 @@ public class AllyHitHardEvent : PvPActionEvent
     public AllyHitHardEvent()
     {
         Name = "Hit hard by enemy";
+        InternalName = "AllyHitHardEvent";
     }
 
     public override List<string> SoundPaths()

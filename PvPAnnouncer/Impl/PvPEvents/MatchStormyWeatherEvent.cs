@@ -13,6 +13,7 @@ public class MatchStormyWeatherEvent: PvPEvent
     public MatchStormyWeatherEvent()
     {
         Name = "Stormy Weather";
+        InternalName = "MatchStormyWeatherEvent";
     }
 
 

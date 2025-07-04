@@ -11,6 +11,7 @@ public class AllyDeathEvent : PvPActorControlEvent
     public AllyDeathEvent()
     {
         Name = "Deaths";
+        InternalName = "AllyDeathEvent";
     }
     public override List<string> SoundPaths()
     {

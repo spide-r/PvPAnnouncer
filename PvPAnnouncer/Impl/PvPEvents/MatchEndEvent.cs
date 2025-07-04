@@ -12,6 +12,7 @@ public class MatchEndEvent: PvPMatchEvent
     public MatchEndEvent()
     {
         Name = "Matches Ending";
+        InternalName = "MatchEndEvent";
     }
 
     public override List<string> SoundPaths()

@@ -12,6 +12,7 @@ public class MatchStartEvent: PvPMatchEvent
     public MatchStartEvent()
     {
         Name = "Matches Started";
+        InternalName = "MatchStartEvent";
     }
 
     public override List<string> SoundPaths()

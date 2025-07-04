@@ -11,6 +11,7 @@ public class EnemyMissedCc: PvPActionEvent
     public EnemyMissedCc()
     {
         Name = "Enemies Fail to hit CC";
+        InternalName = "EnemyMissedCcEvent";
     }
 
     public override List<string> SoundPaths()

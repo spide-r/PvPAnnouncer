@@ -12,6 +12,7 @@ public class AllyPulledByDrkEvent: PvPActionEvent
     public AllyPulledByDrkEvent()
     {
         Name = "Pulled By Dark Knight";
+        InternalName = "AllyPulledByDrkEvent";
     }
 
     public override List<string> SoundPaths()

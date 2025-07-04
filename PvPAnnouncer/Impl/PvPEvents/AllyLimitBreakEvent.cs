@@ -11,6 +11,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
     public AllyLimitBreakEvent()
     {
         Name = "Limit Breaks";
+        InternalName = "AllyLimitBreakEvent";
     }
 
     public override List<string> SoundPaths()

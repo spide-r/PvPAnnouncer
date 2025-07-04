@@ -10,12 +10,13 @@ public class EnemyActionEvent : PvPActionEvent
 {
     private static uint[] _actionIds = [];
 
-    public EnemyActionEvent(uint[] actionIds, List<string> soundPaths, Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Enemy Actions")
+    public EnemyActionEvent(uint[] actionIds, List<string> soundPaths, Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Enemy Actions", string internalName = "EnemyActions")
     {
         _actionIds = actionIds;
         SoundPathsList = soundPaths;
         PersonalizedSoundPathsList = personalizedSoundPaths;
         Name = name;
+        InternalName = internalName;
     }
 
     public List<string> SoundPathsList { get; init; }

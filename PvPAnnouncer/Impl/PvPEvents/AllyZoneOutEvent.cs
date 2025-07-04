@@ -11,6 +11,7 @@ public class AllyZoneOutEvent: PvPActorEvent
     public AllyZoneOutEvent()
     {
         Name = "Fall Damage";
+        InternalName = "AllyZoneOutEvent";
     }
 
     public override List<string> SoundPaths()

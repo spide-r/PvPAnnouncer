@@ -12,6 +12,7 @@ public class AllyResurrectEvent: PvPActorEvent
     public AllyResurrectEvent()
     {
         Name = "Resurrection";
+        InternalName = "AllyResurrectEvent";
     }
 
     public override List<string> SoundPaths()
