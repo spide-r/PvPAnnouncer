@@ -14,10 +14,13 @@ namespace PvPAnnouncer
         private ConfigWindow ConfigWindow { get; init; }
         private MainWindow MainWindow { get; init; }
 
-        private readonly Command[] _commands = [ new MuteAnnouncer()/*, new PlaySound(), new TestCommand()*/];
+        private readonly Command[] _commands = [ new MuteAnnouncer()];
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
+#if DEBUG
+            _commands = [new PlaySound(), new MuteAnnouncer()];
+#endif
             PluginServices.Initialize(pluginInterface);
             LoadCommands();
             ConfigWindow = new ConfigWindow();
@@ -27,8 +30,7 @@ namespace PvPAnnouncer
             pluginInterface.UiBuilder.Draw += DrawUi;
             pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
-            
-          
+
         }
 
         private void DrawUi()

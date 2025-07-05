@@ -28,8 +28,12 @@
         <DalamudLibPath>$(DALAMUD_HOME)/</DalamudLibPath>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+      <DefineConstants>TRACE;DEBUG</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup>
-        <Content Include="PvPAnnouncer.yaml" />
+        <Content Include="PvPAnnouncer.json" />
         <Content Include="PvPAnnouncer\packages.lock.json" />
     </ItemGroup>
 
