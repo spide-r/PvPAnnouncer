@@ -191,7 +191,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Separator();
         ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
         ImGui.Indent();
-        if (ImGui.SliderInt("(S)", ref cooldown, 1, 30))
+        if (ImGui.SliderInt("(S)", ref cooldown, 1, 120))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();

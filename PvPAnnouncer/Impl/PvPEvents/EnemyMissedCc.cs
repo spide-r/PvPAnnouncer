@@ -19,7 +19,7 @@ public class EnemyMissedCc: PvPActionEvent
         return
         [
             BeautifullyDodged, SawThroughIt, EffortlesslyDodged, ClearlyAnticipated, StylishEvasion, AvoidedWithEase,
-            DodgedEverything, BattleElectrifying, ThrillingBattle
+            DodgedEverything
         ];
     }
 
