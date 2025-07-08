@@ -35,6 +35,6 @@ public class MaxBattleFeverEvent: PvPEvent
         {
             return bhm.Level == 5;
         } 
-        return message is SoaringMessage;
+        return message is FlyingHighMessage;
     }
 }

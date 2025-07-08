@@ -79,7 +79,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void RegisterListener(PvPEvent e)
     {
-        PluginServices.PluginLog.Debug("Registered listener: " + e.InternalName);
+        PluginServices.PluginLog.Verbose("Registered listener: " + e.InternalName);
         _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
     }
 

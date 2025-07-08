@@ -40,9 +40,9 @@ public class PlayerStateTracker: IPlayerStateTracker
             }
         }
 
-        if (flag == ConditionFlag.OperatingSiegeMachine && value)
+        if (flag == ConditionFlag.Transformed && value)
         {
-            PluginServices.PluginLog.Info("Operating Seige Machine");
+            PluginServices.PluginLog.Verbose("Transformed");
             EmitToBroker(new UserEnteredMechMessage());
         }
     }

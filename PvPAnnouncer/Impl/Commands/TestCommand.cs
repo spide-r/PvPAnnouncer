@@ -18,6 +18,6 @@ public class TestCommand: Command
     
     public override void OnCommand(string command, string args)
     {
-        PluginServices.PluginLog.Info("Hello World!");
+        PluginServices.PluginLog.Verbose("Hello World!");
     }
 }
