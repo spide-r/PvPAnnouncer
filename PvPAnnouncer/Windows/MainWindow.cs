@@ -3,7 +3,7 @@ using System.Numerics;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.UI;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Windows;
