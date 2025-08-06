@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.Command;
+﻿using System;
+using Dalamud.Game.Command;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
@@ -8,7 +9,7 @@ public class PlaySound: Command
 {
     public PlaySound()
     {
-        Name = "playsound";
+        Name = "ps";
         HelpText = "Plays a sound. Remove me!";
         Info = new CommandInfo(OnCommand)
         {
@@ -18,8 +19,16 @@ public class PlaySound: Command
 
     public override void OnCommand(string command, string args)
     {
-        PluginServices.Announcer.PlaySound(AnnouncerLines.GetPath(args));
-        PluginServices.Announcer.SendBattleTalk(args);
+        try
+        {
+            PluginServices.Announcer.PlaySound(args);
+            PluginServices.Announcer.SendBattleTalk(args);
+        }
+        catch (Exception e)
+        {
+            PluginServices.PluginLog.Error("oops!", e);
+        }
+
 
     }
     
