@@ -17,8 +17,7 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
     private delegate void ProcessPacketActorControlDelegate(
         uint entityId, uint type, uint statusId, uint amount, uint a5, uint source, uint a7, uint a8, ulong a9, byte flag);
     
-    
-    [Signature("40 55 53 56 41 54 41 55 41 56 41 57 48 8D AC 24 60 FF FF FF 48 81 EC A0 01 00 00", DetourName = nameof(ProcessPacketActionEffectDetour))]
+    [Signature("E8 ?? ?? ?? ?? 48 8B 8D ?? ?? ?? ?? 48 33 CC E8 ?? ?? ?? ?? 48 81 C4 00 05 00 00", DetourName = nameof(ProcessPacketActionEffectDetour))]
     private readonly Hook<ProcessPacketActionEffectDelegate> processPacketActionEffectHook = null!;
 
     [Signature("E8 ?? ?? ?? ?? 0F B7 0B 83 E9 64", DetourName = nameof(ProcessPacketActorControlDetour))]
