@@ -95,6 +95,20 @@ public static class AnnouncerLines
     public const string RisesAgain = "8205782"; // The challenger rises again! Can they turn this around!?
     public const string BackOnFeet = "8205783"; // They're back on their feet! Let's see if they can stay standing!
     
+    // === 7.4 Generic ===
+    public const string OofMustHaveHurt = "8206066";
+    public const string NotFastEnough = "8206067";
+    public const string CantBeCareless = "8206068";
+    public const string DirectHitStillStanding = "8206069";
+    public const string ImpressiveFootwork = "8206070";
+    public const string DancingAwayUnharmed = "8206071";
+    public const string AnotherAttackEvaded = "8206072";
+    public const string SlippedBeyondReach = "8206073";
+    public const string BeenFelled = "8206074";
+    public const string TheyreDownCanTheyRecover = "8206075";
+    public const string WhatFightingSpirit = "8206076";
+    public const string BackInAction = "8206077";
+    
     // === Black Cat ===
     public const string FirstOpponent = "8205353";// Our challenger's first opponent: Black Cat!
     public const string FelineFerocity = "8205354";// Can they hold their own against her feline ferocity!?
@@ -174,11 +188,73 @@ public static class AnnouncerLines
     public const string BrutalBlow = "8205814"; // A brutal blow! But the contender is standing firm!
     public const string ThrillingBattle = "8205815"; // What a thrilling battle this, and it rages on!
     
-    // === Howling Blade 
+    // === Howling Blade ===
     public const string WolfLair = "8205816"; // Can the challenger defeat the wolf in his own lair!?
     public const string SuchSpeedMasc = "8205817"; // Such speed─it's as if there's a pack of him!
     public const string ColossalThing = "8205818"; // Where did that colossal thing come from!?
     public const string ColossalThingSwordMasc = "8205819"; // He's put the colossus to the sword!
+    public const string RingDestroyedFallen = "8205821"; 
+    public const string MovedToFloatingDeathtraps = "8205822"; 
+    public const string DestroyedIsle = "8205823"; 
+    public const string NeitherSideHoldingBack = "8205824"; 
+    
+    //if you're reading this you cant complain about spoilers
+    
+    // === Vamp Fatale === 
+    public const string FeastEyes = "8206078";
+    public const string FallPreyCruelMistress = "8206079";
+    public const string VFWickedWeapon = "8206080";
+    public const string NowhereLeft = "8206081";
+    public const string DrainingAudience= "8206082";
+    public const string VFUnleashedAether = "8206083";
+    public const string SpectacleResumes = "8206084";
+    public const string RainOfDeath = "8206085";
+    public const string LightheadedFem = "8206088";
+
+    public const string SiphonedEather = "8206089";
+    // === Deep Blue & Red Hot ===
+    public const string TagTeam = "8206090";
+    public const string SuchScorn = "8206091";
+    public const string FearsomeFlamesMasc = "8206092";
+    public const string FlamesSpreading = "8206093";
+    public const string DBTaggingIn = "8206094";
+    public const string EnormousWave = "8206095";
+    public const string BothBrosEntered = "8206096";
+    public const string ExtremesFightAsOne = "8206167";
+    public const string DoubleTrouble = "8206097";
+    public const string Fuzion = "8206098";
+    public const string HoldingNothingBack = "8206099";
+    
+    // === The Tyrant === 
+    public const string GrandChampion = "8206100";
+    public const string TyrantThrone = "8206101";
+    public const string TyrranyTimeMasc = "8206102";
+    public const string HoldingTheirOwn = "8206103";
+    public const string AllTheseWeapons = "8206104";
+    public const string AbsoluteBrutality = "8206105";
+    public const string SuchFerocity = "8206106";
+    public const string TheTyrantAlteredForm = "8206107";
+    public const string UnleashedFullMight = "8206108";
+    public const string SplitRingHalf = "8206109";
+    public const string ThrownRing = "8206110";
+    public const string RingRestored = "8206111";
+    public const string EitherSide = "8206112";
+    
+    // === The Commissioner ===
+    public const string PresidentMustPay = "8206113";
+    public const string ArmLifeOwn = "8206114";
+    public const string ArmSlitheringOutDisgusting = "8206115";
+    public const string LindwurmScatteredGore = "8206116";
+    public const string CruelCoil = "8206117";
+    public const string ChampCrushed = "8206118";
+    public const string RoundRingMasc = "8206119";
+    public const string RingPieces = "8206120";
+    public const string GoreLatched = "8206121";
+    public const string CompletelyHealed = "8206122";
+    public const string HealingOutOfControl = "8206123";
+    public const string PowerRunAmokMasc = "8206124";
+    public const string RegenCapacityMasc = "8206125";
+    
     
     // == 
     // NOTE: The following voice lines are unused but the audio remains in the game

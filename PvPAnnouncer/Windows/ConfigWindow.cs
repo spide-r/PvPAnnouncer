@@ -47,6 +47,7 @@ public class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
+        var spoilers = _configuration.Spoilers;
         var muted = _configuration.Muted;
         var hideBattleText = _configuration.HideBattleText;
         var lang = _configuration.Language;
@@ -75,6 +76,10 @@ public class ConfigWindow : Window, IDisposable
         var sr = _configuration.WantsPersonalization(Personalization.SugarRiot);
         var ba = _configuration.WantsPersonalization(Personalization.BruteAbominator);
         var hb = _configuration.WantsPersonalization(Personalization.HowlingBlade);
+        var m9 = _configuration.WantsPersonalization(Personalization.M9);
+        var m10 = _configuration.WantsPersonalization(Personalization.M10);
+        var m11 = _configuration.WantsPersonalization(Personalization.M11);
+        var m12 = _configuration.WantsPersonalization(Personalization.M12);
         
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
@@ -86,6 +91,14 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
             _configuration.Disabled = disabled;
+            _configuration.Save();
+        }
+        
+        if (ImGui.Checkbox("7.4 Recently Released. Do you want to use Metem's voicelines from the new fights? (This option will be removed 2 weeks after this plugin is updated).", ref spoilers))
+        {
+            _configuration.Spoilers = spoilers;
+            SetPersonalization(spoilers, Personalization.Spoilers);
+            _configuration.Save();
             _configuration.Save();
         }
         
@@ -167,6 +180,33 @@ public class ConfigWindow : Window, IDisposable
             if (ImGui.Checkbox("Howling Blade", ref hb))
             {
                 SetPersonalization(hb, Personalization.HowlingBlade);
+                _configuration.Save();
+            }
+
+            if (ImGui.Checkbox("M9 Boss", ref m9))
+            {
+                SetPersonalization(m9, Personalization.M9);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+
+            if (ImGui.Checkbox("M10 Boss", ref m10))
+            {
+                SetPersonalization(m9, Personalization.M10);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+
+            if (ImGui.Checkbox("M11 Boss", ref m11))
+            {
+                SetPersonalization(m9, Personalization.M11);
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+
+            if (ImGui.Checkbox("M12 Boss", ref m12))
+            {
+                SetPersonalization(m9, Personalization.M12);
                 _configuration.Save();
             }
             

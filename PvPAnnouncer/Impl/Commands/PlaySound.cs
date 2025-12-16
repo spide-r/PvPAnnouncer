@@ -22,7 +22,7 @@ public class PlaySound: Command
         try
         {
             PluginServices.Announcer.PlaySound(args);
-            PluginServices.Announcer.SendBattleTalk(args);
+           // PluginServices.Announcer.SendBattleTalk(args);
         }
         catch (Exception e)
         {

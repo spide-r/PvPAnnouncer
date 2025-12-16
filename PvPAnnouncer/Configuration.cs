@@ -35,6 +35,8 @@ namespace PvpAnnouncer
 
         public int Percent { get; set; } = 70; 
         
+        public bool Spoilers { get; set; } = false;
+        
  
         public string Language { get; set; } = "en";
         //public string BattleTalkLang { get; set; } = "en"; //not shown to the end-user until i figure out why i'm unable to get other languages to show up
