@@ -22,8 +22,10 @@ public class AllyResurrectEvent: PvPActorEvent
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
-    }
+        return new Dictionary<Personalization, List<string>>
+        {
+            {Personalization.Spoilers, [WhatFightingSpirit, BackInAction]}
+        };    }
 
     public override bool InvokeRule(IMessage m)
     {

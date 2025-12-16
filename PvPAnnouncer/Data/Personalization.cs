@@ -12,9 +12,9 @@ public enum Personalization: int
  SugarRiot = 8,
  BruteAbominator = 9,
  HowlingBlade = 10,
- M9 = 11,
- M10 = 12,
- M11 = 13,
- M12 = 14,
+ VampFatale = 11,
+ DeepBlueRedHot = 12,
+ Tyrant = 13,
+ President = 14,
  Spoilers = 99
 }

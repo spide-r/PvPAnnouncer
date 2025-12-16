@@ -26,7 +26,11 @@ public class EnemyMissedCc: PvPActionEvent
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
+        return new Dictionary<Personalization, List<string>>
+        {
+            {Personalization.Spoilers, [ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, SlippedBeyondReach]}
+        };
+        
     }
     public override bool InvokeRule(IMessage message)
     {

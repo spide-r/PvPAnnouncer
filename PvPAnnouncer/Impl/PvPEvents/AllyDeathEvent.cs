@@ -20,7 +20,10 @@ public class AllyDeathEvent : PvPActorControlEvent
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
+        return new Dictionary<Personalization, List<string>>
+        {
+            {Personalization.Spoilers, [BeenFelled, TheyreDownCanTheyRecover]}
+        };
     }
 
     public override bool InvokeRule(IMessage m)

@@ -22,7 +22,11 @@ public class AllyHitHardEvent : PvPActionEvent
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>{{Personalization.BruteBomber, [BBDesprate]}};
+        return new Dictionary<Personalization, List<string>>
+        {
+            {Personalization.BruteBomber, [BBDesprate]},
+            {Personalization.Spoilers, [OofMustHaveHurt, NotFastEnough, CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack]}
+        };
     }
 
     public override bool InvokeRule(IMessage message)

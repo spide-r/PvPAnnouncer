@@ -9,6 +9,8 @@ public static class AnnouncerLines
     // en, de, fr, ja work
     
     //Lines are found in ContentDirectorBattleTalk as well as InstanceContentTextData - Use AlphaAOT 
+    
+    //todo mahjong
 
     private static string GetVoPath(string announcement, string lang)
     {
@@ -96,18 +98,18 @@ public static class AnnouncerLines
     public const string BackOnFeet = "8205783"; // They're back on their feet! Let's see if they can stay standing!
     
     // === 7.4 Generic ===
-    public const string OofMustHaveHurt = "8206066";
-    public const string NotFastEnough = "8206067";
-    public const string CantBeCareless = "8206068";
-    public const string DirectHitStillStanding = "8206069";
-    public const string ImpressiveFootwork = "8206070";
-    public const string DancingAwayUnharmed = "8206071";
-    public const string AnotherAttackEvaded = "8206072";
-    public const string SlippedBeyondReach = "8206073";
-    public const string BeenFelled = "8206074";
-    public const string TheyreDownCanTheyRecover = "8206075";
-    public const string WhatFightingSpirit = "8206076";
-    public const string BackInAction = "8206077";
+    public const string OofMustHaveHurt = "8206066"; // Oof, that must've hurt! Hang in there!
+    public const string NotFastEnough = "8206067"; // Not fast enough, I'm afraid!
+    public const string CantBeCareless = "8206068"; // Even I felt that! Can't afford to be careless, now!
+    public const string DirectHitStillStanding = "8206069"; // A direct hit! But they're still standing!
+    public const string ImpressiveFootwork = "8206070"; // Impressive footwork on display today!
+    public const string DancingAwayUnharmed = "8206071"; // And they dance out of the way unharmed! Unbelievable!
+    public const string AnotherAttackEvaded = "8206072"; // Another attack evaded with aplomb!
+    public const string SlippedBeyondReach = "8206073"; // Once again they slip beyond their opponent's reach!
+    public const string BeenFelled = "8206074"; // Oh no, they've been felled with a vengeance!
+    public const string TheyreDownCanTheyRecover = "8206075"; // And they're down! Can they recover from this?
+    public const string WhatFightingSpirit = "8206076"; // They're up! What fighting spirit!
+    public const string BackInAction = "8206077"; // And they're back in action! Can they turn the tide!?
     
     // === Black Cat ===
     public const string FirstOpponent = "8205353";// Our challenger's first opponent: Black Cat!
@@ -193,67 +195,76 @@ public static class AnnouncerLines
     public const string SuchSpeedMasc = "8205817"; // Such speed─it's as if there's a pack of him!
     public const string ColossalThing = "8205818"; // Where did that colossal thing come from!?
     public const string ColossalThingSwordMasc = "8205819"; // He's put the colossus to the sword!
-    public const string RingDestroyedFallen = "8205821"; 
-    public const string MovedToFloatingDeathtraps = "8205822"; 
-    public const string DestroyedIsle = "8205823"; 
-    public const string NeitherSideHoldingBack = "8205824"; 
+    public const string RingDestroyedFallen = "8205821";  // Egads! The ring's been destroyed, and they've fallen below!
+    public const string MovedToFloatingDeathtraps = "8205822"; // They've moved to floating deathtraps!<br>How will they fight with so little room?
+    public const string DestroyedIsle = "8205823"; // He's destroyed an isle! It'll take time to restore it!
+    public const string NeitherSideHoldingBack = "8205824"; // Neither side is holding back, but there can be only one champion!
+    
+    //todo: "Something's amiss... What does he intend to do!?"
+    // maybe this is a trashed voice line like the others
     
     //if you're reading this you cant complain about spoilers
     
     // === Vamp Fatale === 
-    public const string FeastEyes = "8206078";
-    public const string FallPreyCruelMistress = "8206079";
-    public const string VFWickedWeapon = "8206080";
-    public const string NowhereLeft = "8206081";
-    public const string DrainingAudience= "8206082";
-    public const string VFUnleashedAether = "8206083";
-    public const string SpectacleResumes = "8206084";
-    public const string RainOfDeath = "8206085";
-    public const string LightheadedFem = "8206088";
+    public const string VFFeastEyes = "8206078"; // Feast your eyes on the lovely─and lethal─Vamp Fatale!
+    public const string FallPreyCruelMistress = "8206079"; // Will the challenger fall prey to the cruel mistress?
+    public const string VFWickedWeapon = "8206080"; // A wicked weapon! Vamp Fatale's poised to execute a fatality!
+    public const string NowhereLeft = "8206081"; // The challenger has nowhere left to run!
+    public const string DrainingAudienceFem = "8206082"; // It's begun! She's draining the audience─of their aether!
+    public const string VFUnleashedAether = "8206083"; // Vamp Fatale's unleashed the aether! The challenger's in her realm now!
+    public const string SpectacleResumes = "8206084"; // The spectacle of slaughter resumes! How will the challenger adapt?
+    public const string RainOfDeath = "8206085"; // It's a veritable rain of death!
+    public const string DrainingCrowd = "8206086"; // She's draining the crowd's aether again! I hope our dear spectators are feeling alright...
+    public const string EvenMoreAether = "8206087"; // She's unleashed even more aether! How will this end!?
+    public const string LightheadedFem = "8206088"; // The seductress is at it again! I...I'm feeling a little lightheaded...
+    public const string SiphonedAether = "8206089"; // She's siphoned the challenger's aether!
 
-    public const string SiphonedEather = "8206089";
     // === Deep Blue & Red Hot ===
-    public const string TagTeam = "8206090";
-    public const string SuchScorn = "8206091";
-    public const string FearsomeFlamesMasc = "8206092";
-    public const string FlamesSpreading = "8206093";
-    public const string DBTaggingIn = "8206094";
-    public const string EnormousWave = "8206095";
-    public const string BothBrosEntered = "8206096";
-    public const string ExtremesFightAsOne = "8206167";
-    public const string DoubleTrouble = "8206097";
-    public const string Fuzion = "8206098";
-    public const string HoldingNothingBack = "8206099";
+    public const string TagTeam = "8206090"; // This will be a tag team match of extreme proportions!
+    public const string SuchScorn = "8206091"; // My word, such scorn for the challenger!
+    public const string FearsomeFlamesMasc = "8206092"; // What fearsome flames! He's set the ring ablaze!
+    public const string FlamesSpreading = "8206093"; // The flames are spreading! At this rate, the challenger will be trapped!
+    public const string DBTaggingIn = "8206094"; // Deep Blue's lost his cool! He's tagging in!
+    public const string EnormousWave = "8206095"; // Good gods, what an enormous wave!
+    public const string BothBrosEntered = "8206096"; // Both brothers have entered the ring! That's grounds for disqualification!
+    public const string ExtremesFightAsOne = "8206167"; // The Xtremes fight as one!
+    public const string DoubleTrouble = "8206097"; // Er, it seems the referee is allowing it... It's double trouble for the challenger!
+    public const string Fusion = "8206098"; // The brothers have triggered a fusion explosion! Truly, they're deadly when mixed!
+    public const string HoldingNothingBack = "8206099"; // Brace yourselves, folks! The Xtremes are holding nothing back!
     
     // === The Tyrant === 
-    public const string GrandChampion = "8206100";
-    public const string TyrantThrone = "8206101";
-    public const string TyrranyTimeMasc = "8206102";
-    public const string HoldingTheirOwn = "8206103";
-    public const string AllTheseWeapons = "8206104";
-    public const string AbsoluteBrutality = "8206105";
-    public const string SuchFerocity = "8206106";
-    public const string TheTyrantAlteredForm = "8206107";
-    public const string UnleashedFullMight = "8206108";
-    public const string SplitRingHalf = "8206109";
-    public const string ThrownRing = "8206110";
-    public const string RingRestored = "8206111";
-    public const string EitherSide = "8206112";
+    public const string GrandChampion = "8206100"; // At long last, the decisive match against the grand champion!
+    public const string TTThrone = "8206101"; // Will the challenger triumph and seize the Tyrant's throne?
+    public const string TyrannyTimeMasc = "8206102"; // It's Tyranny Time, folks! He knows no mercy, and he's never tasted defeat!
+    public const string HoldingTheirOwn = "8206103"; // The challenger's holding their own!
+    public const string AllTheseWeaponsMasc = "8206104"; // I beg your pardon? What is he going to do with all those weapons?
+    public const string AbsoluteBrutality = "8206105"; // Absolute brutality! The champion's power is unmatched!
+    public const string SuchFerocity = "8206106"; // Such ferocity! The champion is ruthless indeed!
+    public const string TTAlteredFormMasc = "8206107"; // The Tyrant's altered his form! He looks even more tyrannical than before!
+    public const string UnleashedFullMightMasc = "8206108"; // What a display of power! He's unleashed the full might of the behemoth!
+    public const string SplitRingHalfMasc = "8206109"; // Oh, he's split the ring in half! We're going to need urgent repairs!
+    public const string ThrownRingMasc = "8206110"; // And now he's thrown the ring! What absurd strength!
+    public const string RingRestored = "8206111"; // Ahem, the ring shall presently be restored.
+    public const string EitherSide = "8206112"; // 'Tis a clash between feral pride and mortal resolve! Either side could come out on top!
     
-    // === The Commissioner ===
-    public const string PresidentMustPay = "8206113";
-    public const string ArmLifeOwn = "8206114";
-    public const string ArmSlitheringOutDisgusting = "8206115";
-    public const string LindwurmScatteredGore = "8206116";
-    public const string CruelCoil = "8206117";
-    public const string ChampCrushed = "8206118";
-    public const string RoundRingMasc = "8206119";
-    public const string RingPieces = "8206120";
-    public const string GoreLatched = "8206121";
-    public const string CompletelyHealed = "8206122";
-    public const string HealingOutOfControl = "8206123";
-    public const string PowerRunAmokMasc = "8206124";
-    public const string RegenCapacityMasc = "8206125";
+    // === The President ===
+    public const string PresidentMustPay = "8206113"; // The president must pay for his crimes! Give him what for, Champion!
+    public const string ArmLifeOwnMasc = "8206114"; // His arm has a life of its own! Is this the power of the mythical Lindwurm?
+    public const string ArmSlitheringOutDisgustingMasc = "8206115"; // His arm is slithering out! That's disgusting!
+    public const string LWScatteredGore = "8206116"; // The Lindwurm's scattered gore is expanding!?
+    public const string CruelCoil = "8206117"; // Watch out! That is one cruel coil...
+    public const string ChampCrushed = "8206118"; // Oh no! The champion's been crushed!
+    public const string RoundRingMasc = "8206119"; // His arms are snaking 'round the ring! What's he planning!?
+    public const string RingPieces = "8206120"; // Dear me, the ring's in pieces!
+    public const string GoreLatched = "8206121"; // Oh no, the gore has latched onto the champion! Don't panic!
+    public const string LWCompletelyHealed = "8206122"; // The Lindwurm's completely healed! What outrageous regenerative power!
+    public const string LWOutOfControl = "8206123"; // What the─? Could the Lindwurm's regeneration be out of control!?
+    public const string PowerRunAmokMasc = "8206124"; // His power continues to run amok! Again and again he remakes his arms!
+    public const string RegenCapacityMasc = "8206125"; // Is there no limit to his regenerative capacity!?
+    public const string StruckWithVenon = "8206127"; // They've been struck with venom! But they can weather it─they must!
+    public const string SomethingRevolting = "8206128"; // Something revolting this way comes!
+    
+    //todo The battle is decided! Victory goes to the champion!
     
     
     // == 

@@ -25,7 +25,8 @@ public class MaxBattleFeverEvent: PvPEvent
         {
             {Personalization.MascPronouns, [RoofCavedSuchDevastation]}, 
             { Personalization.FemPronouns, [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem]},
-            {Personalization.DancingGreen, [DGFeverPich]}
+            {Personalization.DancingGreen, [DGFeverPich]},
+            {Personalization.Spoilers, [RainOfDeath, SpectacleResumes]}
         };
     }
 
