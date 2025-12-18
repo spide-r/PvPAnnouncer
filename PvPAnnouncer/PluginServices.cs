@@ -35,6 +35,9 @@ internal class PluginServices {
     internal static IClientState ClientState { get; private set; }
     
     [PluginService]
+    internal static IPlayerState PlayerState { get; private set; }
+    
+    [PluginService]
     internal static IDalamudPluginInterface DalamudPluginInterface { get; private set; }
     
     [PluginService]

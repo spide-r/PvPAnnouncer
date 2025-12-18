@@ -183,7 +183,7 @@ public class Announcer: IAnnouncer
                     UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
                 }
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException _)
             {
                 UIModule.Instance()->ShowBattleTalk("Metem", AnnouncerLines.GetAnnouncementStringFromUnusedVo(voiceLine), AnnouncerLines.GetAnnouncementLengthFromUnusedVo(voiceLine), 6);
             }

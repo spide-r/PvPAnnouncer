@@ -30,7 +30,14 @@ namespace PvPAnnouncer
             pluginInterface.UiBuilder.Draw += DrawUi;
             pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
+        }
 
+        public void PluginUpdateMessage()
+        {
+            PluginServices.ChatGui.Print(
+                "Welcome back! PvPAnnouncer has been updated. Metem's 7.4 voicelines have been added but are disabled by default. " +
+                                              "Check the settings to enable them. New Voicelines for each of the new Arcadion fighters " +
+                                              "& custom events will be added once the socially acceptable embargo of 2 weeks has elapsed.", "PvPAnnouncer");
         }
 
         private void DrawUi()
@@ -50,6 +57,7 @@ namespace PvPAnnouncer
         
         private void ToggleMainUI()
         {
+            PluginUpdateMessage();
             MainWindow.Toggle();
         }
 

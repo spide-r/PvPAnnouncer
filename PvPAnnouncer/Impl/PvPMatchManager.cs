@@ -67,7 +67,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public bool IsMonitoredUser(uint entityId)
     {
-        return PluginServices.ClientState.LocalPlayer != null && entityId == PluginServices.ClientState.LocalPlayer.EntityId;
+        return PluginServices.ObjectTable.LocalPlayer != null && entityId == PluginServices.PlayerState.EntityId;
     }
 
 

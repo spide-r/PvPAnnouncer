@@ -36,6 +36,8 @@ namespace PvpAnnouncer
         public int Percent { get; set; } = 70; 
         
         public bool Spoilers { get; set; } = false;
+
+        public bool WasShownNotification { get; set; } = false;
         
  
         public string Language { get; set; } = "en";

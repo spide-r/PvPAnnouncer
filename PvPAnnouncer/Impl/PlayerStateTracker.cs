@@ -33,7 +33,7 @@ public class PlayerStateTracker: IPlayerStateTracker
             }
             else
             {
-                if (PluginServices.ClientState.LocalPlayer != null)
+                if (PluginServices.ObjectTable.LocalPlayer != null)
                 {
                     EmitToBroker(new UserResurrectedMessage());
                 }
@@ -50,7 +50,7 @@ public class PlayerStateTracker: IPlayerStateTracker
 
     private void OnUpdate(IFramework framework)
     {
-        if (PluginServices.ClientState.LocalPlayer == null)
+        if (PluginServices.ObjectTable.LocalPlayer == null)
         {
             return;
         }
@@ -75,7 +75,7 @@ public class PlayerStateTracker: IPlayerStateTracker
         }
         
         var isFalling = PluginServices.Condition[ConditionFlag.Jumping];
-        var pos = PluginServices.ClientState.LocalPlayer.Position.Y;
+        var pos = PluginServices.ObjectTable.LocalPlayer.Position.Y;
         var velocity = PrevPos - pos;
 
         if (isFalling && !WasFalling)

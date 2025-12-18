@@ -38,10 +38,10 @@ public class ConfigWindow : Window, IDisposable
 
     private int _activeEventsSelectedItem;
     private int _disabledEventsSelectedItem = 0;
-    private string[] _activeEventsArr;
-    private string[] _activeEventsArrInternal;
-    private string[] _disabledEventsArr;
-    private string[] _disabledEventsArrInternal;
+    private string[] _activeEventsArr = [];
+    private string[] _activeEventsArrInternal = [];
+    private string[] _disabledEventsArr = [];
+    private string[] _disabledEventsArrInternal = [];
     private readonly PvPEvent[] _allEvents;
     private readonly Dictionary<string, string> _eventskv = new Dictionary<string, string>();
     public override void Draw()
@@ -76,10 +76,10 @@ public class ConfigWindow : Window, IDisposable
         var sr = _configuration.WantsPersonalization(Personalization.SugarRiot);
         var ba = _configuration.WantsPersonalization(Personalization.BruteAbominator);
         var hb = _configuration.WantsPersonalization(Personalization.HowlingBlade);
-        var m9 = _configuration.WantsPersonalization(Personalization.M9);
-        var m10 = _configuration.WantsPersonalization(Personalization.M10);
-        var m11 = _configuration.WantsPersonalization(Personalization.M11);
-        var m12 = _configuration.WantsPersonalization(Personalization.M12);
+        var m9 = _configuration.WantsPersonalization(Personalization.VampFatale);
+        var m10 = _configuration.WantsPersonalization(Personalization.DeepBlueRedHot);
+        var m11 = _configuration.WantsPersonalization(Personalization.Tyrant);
+        var m12 = _configuration.WantsPersonalization(Personalization.President);
         
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
@@ -94,7 +94,7 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if (ImGui.Checkbox("7.4 Recently Released. Do you want to use Metem's voicelines from the new fights? (This option will be removed 2 weeks after this plugin is updated).", ref spoilers))
+        if (ImGui.Checkbox("7.4 Recently Released. Do you want to use Metem's voicelines from the new fights?", ref spoilers))
         {
             _configuration.Spoilers = spoilers;
             SetPersonalization(spoilers, Personalization.Spoilers);
@@ -185,28 +185,28 @@ public class ConfigWindow : Window, IDisposable
 
             if (ImGui.Checkbox("M9 Boss", ref m9))
             {
-                SetPersonalization(m9, Personalization.M9);
+                SetPersonalization(m9, Personalization.VampFatale);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
             if (ImGui.Checkbox("M10 Boss", ref m10))
             {
-                SetPersonalization(m9, Personalization.M10);
+                SetPersonalization(m10, Personalization.DeepBlueRedHot);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
             if (ImGui.Checkbox("M11 Boss", ref m11))
             {
-                SetPersonalization(m9, Personalization.M11);
+                SetPersonalization(m11, Personalization.Tyrant);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
             if (ImGui.Checkbox("M12 Boss", ref m12))
             {
-                SetPersonalization(m9, Personalization.M12);
+                SetPersonalization(m12, Personalization.President);
                 _configuration.Save();
             }
             
