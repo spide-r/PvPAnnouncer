@@ -14,8 +14,9 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
     private unsafe delegate void ProcessPacketActionEffectDelegate(
         int sourceId, IntPtr sourceCharacter, IntPtr pos, ActionEffectHeader* effectHeader, ActionEffect* effectArray, ulong* effectTrail);
 
-    private delegate void ProcessPacketActorControlDelegate(
-        uint entityId, uint type, uint statusId, uint amount, uint a5, uint source, uint a7, uint a8, ulong a9, byte flag);
+    private delegate void ProcessPacketActorControlDelegate(uint entityId, uint type, uint statusId, uint amount, 
+        uint a5, uint source, uint a7, uint a8, uint param7New, uint param8New, ulong targetId, byte flag);
+    //uint category, uint eventId, uint param1, uint param2, uint param3, uint param4, uint param5, uint param6, uint param7, uint param8, ulong targetId, byte param9
     
     [Signature("E8 ?? ?? ?? ?? 48 8B 8D ?? ?? ?? ?? 48 33 CC E8 ?? ?? ?? ?? 48 81 C4 00 05 00 00", DetourName = nameof(ProcessPacketActionEffectDetour))]
     private readonly Hook<ProcessPacketActionEffectDelegate> processPacketActionEffectHook = null!;
@@ -39,14 +40,18 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
          }
      }
 
-     private void ProcessPacketActorControlDetour(uint entityId, uint type, uint statusId, uint amount, uint a5,
-         uint source, uint a7, uint a8, ulong a9, byte flag)
+     private void ProcessPacketActorControlDetour(uint entityId, uint type, uint statusId, uint amount, uint a5, uint source, uint a7, uint a8, uint param7New, uint param8New, ulong targetId, byte flag)
+     
+     //uint entityId, uint type, uint Statusid, uint amount, uint a5, uint source, uint a7, uint a8, uint param7New, uint param8New, ulong targetId, byte flag
+     //todo some of these are labeled incorrectly but we only care about entityid and type 
      {
-         processPacketActorControlHook.Original(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
+         processPacketActorControlHook.Original(entityId, type, statusId, amount, a5, source, a7, a8, param7New, param8New, targetId, flag);
          try
          {
-             ActorControlMessage actorControlMessage =
-                 new ActorControlMessage(entityId, type, statusId, amount, a5, source, a7, a8, a9, flag);
+             var actorControlMessage =
+                 new ActorControlMessage(entityId, type);
+             /*PluginServices.PluginLog.Debug($"Processing Actor Control entityId {entityId},  type {type}, statusId {statusId}, " +
+                                            $"amount {amount}, a5 {a5}, source {source}, a7 {a7}, a8 {a8}, param7 {param7New}, param8 {param8New}, targetId {targetId}, flag {flag}");*/
              if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
              {
                  if (!PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
