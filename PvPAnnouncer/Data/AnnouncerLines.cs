@@ -17,6 +17,8 @@ public static class AnnouncerLines
     // 8206104 pld
     // 8206080 instakill
     // 8206108 comet
+    
+    //todo match win&loss (cc,rw,fl)
         
 
     private static string GetVoPath(string announcement, string lang)
@@ -33,8 +35,14 @@ public static class AnnouncerLines
     public const string IntroSr = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000020_m";
     public const string IntroBa = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000030_m";
     public const string IntroHb = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000040_m";
+    public const string IntroVf = "cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000010_m";
+    public const string IntroDbRh = "cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000020_m";
+    public const string IntroTt = "cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000050_m";
+    public const string IntroLw = "cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000080_m";
     
     public const string GenericVictory = "cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000030_m";
+    public const string NewGcBornVictory = "cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000070_m";
+    public const string PresDefeated = "cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000090_m";
     public const string RobotKo = "cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000050_m";
 
     public static string GetPath(string announcement)
@@ -60,6 +68,31 @@ public static class AnnouncerLines
             UnusedNoRespectMasc => InternalConstants.NoRespectText,
             UnusedUpOnThePost => InternalConstants.UpOnThePostText,
             UnusedOhMercyFem => InternalConstants.OhMercyText,
+            UnusedBackTail => InternalConstants.BackTailText,
+            
+            MjGameChanger => InternalConstants.MjTextGameChanger,
+            MjBoldMove => InternalConstants.MjTextBoldMove,
+            MjChallengerRecover => InternalConstants.MjTextChallengerRecover,
+            MjRivalVying => InternalConstants.MjTextRivalVying,
+            MjHeatingUp => InternalConstants.MjTextHeatingUp,
+            MjHandDecided => InternalConstants.MjTextHandDecided,
+            MjKissLadyLuck => InternalConstants.MjTextKissLadyLuck,
+            MjGoodnessGracious => InternalConstants.MjTextGoodnessGracious,
+            MjOurTile => InternalConstants.MjTextOurTile,
+            MjPainfulToWatch => InternalConstants.MjTextPainfulToWatch,
+            MjClobberedWithTable => InternalConstants.MjTextClobberedTable,
+            MjBeautifullyPlayed => InternalConstants.MjTextBeautifullyPlayed,
+            MjMadeYourMark => InternalConstants.MjTextMadeYourMark,
+            MjDontStandAChance => InternalConstants.MjTextDontStandAChance,
+            MjChallengerDownHardGentle => InternalConstants.MjTextChallengerDownHard,
+            MjStillInItGentle => InternalConstants.MjTextStillInIt,
+            MjStillStandingGentle => InternalConstants.MjTextStillStanding,
+            MjDownNotOut => InternalConstants.MjTextDownNotOut,
+            MjTitanOfTable => InternalConstants.MjTextTitanOfTable,
+            MjCommendableEffort => InternalConstants.MjTextCommendableEffort,
+            MjReportingLive => InternalConstants.MjTextReportingLive,
+            MjCompetitionTooMuch => InternalConstants.MjTextCompetitionTooMuch,
+            MjUtterlyHumiliated => InternalConstants.MjTextUtterlyHumiliated,
             _ => "Uh oh! You shouldn't see this! Please report this to the PvPAnnouncer Dev!"
         };
     }
@@ -72,6 +105,7 @@ public static class AnnouncerLines
             UnusedNoRespectMasc => 4,
             UnusedUpOnThePost => 3,
             UnusedOhMercyFem => 4,
+            UnusedBackTail => 5,
             _ => 5
         };
     }
@@ -201,14 +235,12 @@ public static class AnnouncerLines
     public const string WolfLair = "8205816"; // Can the challenger defeat the wolf in his own lair!?
     public const string SuchSpeedMasc = "8205817"; // Such speed─it's as if there's a pack of him!
     public const string ColossalThing = "8205818"; // Where did that colossal thing come from!?
-    public const string ColossalThingSwordMasc = "8205819"; // He's put the colossus to the sword!
+    public const string ColossusSwordMasc = "8205819"; // He's put the colossus to the sword!
+    public const string SomethingsAmissMasc = "8205820"; // Something's amiss... What does he intend to do!?
     public const string RingDestroyedFallen = "8205821";  // Egads! The ring's been destroyed, and they've fallen below!
     public const string MovedToFloatingDeathtraps = "8205822"; // They've moved to floating deathtraps!<br>How will they fight with so little room?
     public const string DestroyedIsle = "8205823"; // He's destroyed an isle! It'll take time to restore it!
     public const string NeitherSideHoldingBack = "8205824"; // Neither side is holding back, but there can be only one champion!
-    
-    //todo: "Something's amiss... What does he intend to do!?"
-    // maybe this is a trashed voice line like the others
     
     //if you're reading this you cant complain about spoilers
     
@@ -234,7 +266,6 @@ public static class AnnouncerLines
     public const string DBTaggingIn = "8206094"; // Deep Blue's lost his cool! He's tagging in!
     public const string EnormousWave = "8206095"; // Good gods, what an enormous wave!
     public const string BothBrosEntered = "8206096"; // Both brothers have entered the ring! That's grounds for disqualification!
-    public const string ExtremesFightAsOne = "8206167"; // The Xtremes fight as one!
     public const string DoubleTrouble = "8206097"; // Er, it seems the referee is allowing it... It's double trouble for the challenger!
     public const string Fusion = "8206098"; // The brothers have triggered a fusion explosion! Truly, they're deadly when mixed!
     public const string HoldingNothingBack = "8206099"; // Brace yourselves, folks! The Xtremes are holding nothing back!
@@ -270,9 +301,7 @@ public static class AnnouncerLines
     public const string RegenCapacityMasc = "8206125"; // Is there no limit to his regenerative capacity!?
     public const string StruckWithVenon = "8206127"; // They've been struck with venom! But they can weather it─they must!
     public const string SomethingRevolting = "8206128"; // Something revolting this way comes!
-    
-    //todo The battle is decided! Victory goes to the champion!
-    
+    public const string VictoryChamp = "8206129"; // The battle is decided! Victory goes to the champion!
     
     // == 
     // NOTE: The following voice lines are unused but the audio remains in the game
@@ -280,6 +309,33 @@ public static class AnnouncerLines
     public const string UnusedUpOnThePost = "8205373"; // He's up on the post! You know what that means... 
     public const string UnusedBombarianPress = "8205374"; // It's the Bombarian press! 
     public const string UnusedOhMercyFem = "8205359"; // Oh mercy is she doing what I think she's doing?
+    public const string UnusedBackTail = "8206126"; // Yes! You've got the serpent on the back tail! Press the advantage and finish this!
     // ==
+    
+    // MAHJONG
+    
+    public const string MjGameChanger = "8291277"; // This could be a real game changer.
+    public const string MjBoldMove = "8291276"; // A bold move from our challenger, but will it pay off?
+    public const string MjChallengerRecover = "8291278"; // How will the challenger recover from this I wonder?
+    public const string MjRivalVying = "8291279"; // Whats this? A rival vying for victory? (probably misspelled)
+    public const string MjHeatingUp = "8291280"; // Things are really heating up. I can scarcely look away.
+    public const string MjHandDecided = "8291281"; // There it is. The hand is decided.
+    public const string MjKissLadyLuck = "8291282"; // And with a kiss from lady luck, we have our winner.
+    public const string MjGoodnessGracious = "8291283"; // Oh goodness gracious me.
+    public const string MjOurTile = "8291284"; // That should have been our tile, the scoundrel.
+    public const string MjPainfulToWatch = "8291285"; // Oh the horror! It was too painful to watch.
+    public const string MjClobberedWithTable = "8291286"; // Ha! You all but clobbered them with the table that round.
+    public const string MjBeautifullyPlayed = "8291287"; // Beautifully played my friend, beautifully played.
+    public const string MjMadeYourMark = "8291288"; // You certainly made your mark this round. Keep it up!
+    public const string MjDontStandAChance = "8291289"; // Mmm, letting them think they stand a chance. I like it.
+    public const string MjChallengerDownHardGentle = "8291290"; // Oh my, our challenger went down hard.
+    public const string MjStillInItGentle = "8291291"; // Our challenger is still in it! But for how long?  
+    public const string MjStillStandingGentle = "8291292"; // Ooh even I felt that one, but our challenger is still standing. 
+    public const string MjDownNotOut = "8291293"; // Our challenger is down, but not out.
+    public const string MjTitanOfTable = "8291294"; // The titan of the table, tactician of the tiles! Brilliantly Played.
+    public const string MjCommendableEffort = "8291295"; // A commendable effort! You should be proud.
+    public const string MjReportingLive = "8291296"; // This was Metem, reporting live from the Mahjong table. Thank you and good night.
+    public const string MjCompetitionTooMuch = "8291297"; // Was the competition simply too much for our challenger? I should hope not.
+    public const string MjUtterlyHumiliated = "8291298"; // Oh dear our challenger has been utterly humiliated! I fear this will haunt them...
 
 }

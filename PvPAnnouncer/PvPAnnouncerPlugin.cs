@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Dalamud.Game.Command;
+using Dalamud.Interface.Style;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
+using Lumina.Excel.Sheets;
 using PvPAnnouncer.Impl.Commands;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Windows;
@@ -30,14 +33,27 @@ namespace PvPAnnouncer
             pluginInterface.UiBuilder.Draw += DrawUi;
             pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
+            PluginServices.ClientState.Login += PluginUpdateMessage;
+            PluginUpdateMessage();
+                
         }
 
-        public void PluginUpdateMessage()
+        public static void PluginUpdateMessage()
         {
-            PluginServices.ChatGui.Print(
-                "Welcome back! PvPAnnouncer has been updated. Metem's 7.4 voicelines have been added but are disabled by default. " +
-                                              "Check the settings to enable them. New Voicelines for each of the new Arcadion fighters " +
-                                              "& custom events will be added once the socially acceptable embargo of 2 weeks has elapsed.", "PvPAnnouncer");
+            if (PluginServices.Config.ShowNotification)
+            {
+                if (PluginServices.ClientState.IsLoggedIn == false)
+                {
+                    return;
+                }
+                PluginServices.ChatGui.Print(
+                    "Welcome back! PvPAnnouncer has been updated. Metem's 7.4 voicelines have been added but are disabled by default. " +
+                    "Check the settings to enable them. New Events with the new Arcadion fighters " +
+                    "will be added once the socially acceptable embargo of 2 weeks has elapsed.", "PvPAnnouncer", 15);
+                PluginServices.Config.ShowNotification = false;
+                PluginServices.Config.Save();
+            }
+           
         }
 
         private void DrawUi()
@@ -87,6 +103,7 @@ namespace PvPAnnouncer
         }
         public void Dispose()
         {
+            PluginServices.ClientState.Login -= PluginUpdateMessage;
             PluginServices.DalamudPluginInterface.UiBuilder.Draw -= DrawUi;
             PluginServices.DalamudPluginInterface.UiBuilder.OpenMainUi -= ToggleMainUI;
             PluginServices.DalamudPluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigWindow;

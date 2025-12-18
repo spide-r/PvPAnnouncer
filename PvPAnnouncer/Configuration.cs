@@ -37,7 +37,7 @@ namespace PvpAnnouncer
         
         public bool Spoilers { get; set; } = false;
 
-        public bool WasShownNotification { get; set; } = false;
+        public bool ShowNotification { get; set; } = true;
         
  
         public string Language { get; set; } = "en";

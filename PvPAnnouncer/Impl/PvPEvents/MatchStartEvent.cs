@@ -32,10 +32,10 @@ public class MatchStartEvent: PvPMatchEvent
             {Personalization.SugarRiot, [SRGallery, IntroSr]},
             {Personalization.BruteAbominator, [BAMeansBusiness, IntroBa]},
             {Personalization.HowlingBlade, [WolfLair, IntroHb]},
-            {Personalization.VampFatale, [VFFeastEyes]},
-            {Personalization.DeepBlueRedHot, [TagTeam]},
-            {Personalization.Tyrant, [GrandChampion]},
-            {Personalization.President, [PresidentMustPay]},
+            {Personalization.VampFatale, [VFFeastEyes, IntroVf]},
+            {Personalization.DeepBlueRedHot, [TagTeam, IntroDbRh]},
+            {Personalization.Tyrant, [GrandChampion, IntroTt]},
+            {Personalization.President, [IntroLw]},
         };
     }
 

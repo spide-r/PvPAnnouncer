@@ -20,9 +20,9 @@ public class PlaySound: Command
     public override void OnCommand(string command, string args)
     {
         try
-        {
+        { 
             PluginServices.Announcer.PlaySound(args);
-           // PluginServices.Announcer.SendBattleTalk(args);
+           //PluginServices.Announcer.SendBattleTalk(args);
         }
         catch (Exception e)
         {
