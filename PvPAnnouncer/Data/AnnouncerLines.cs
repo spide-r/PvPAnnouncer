@@ -19,6 +19,7 @@ public static class AnnouncerLines
     // 8206108 comet
     
     //todo match win&loss (cc,rw,fl)
+    //TOdo refactor unused voicelines to be their own objects 
         
 
     private static string GetVoPath(string announcement, string lang)

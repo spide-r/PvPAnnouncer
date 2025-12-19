@@ -16,5 +16,5 @@ public enum Personalization: int
  DeepBlueRedHot = 12,
  Tyrant = 13,
  President = 14,
- Spoilers = 99
+ Spoilers = 15
 }

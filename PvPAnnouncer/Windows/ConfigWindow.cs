@@ -389,7 +389,7 @@ public class ConfigWindow : Window, IDisposable
     private void RemovePersonalization(Personalization toRemove)
     {
         var persInt = 0;
-        for (int i = 1; i < 11; i++) //todo: sloppy - hardcoded value of 11
+        for (int i = 1; i < 16; i++) //todo: sloppy - hardcoded value of 16
         {
             if ((int) toRemove != i)
             {

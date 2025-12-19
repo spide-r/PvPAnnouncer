@@ -24,7 +24,7 @@ public abstract class InternalConstants
     public const string MjTextGoodnessGracious = "Oh goodness gracious me.";
     public const string MjTextOurTile = "That should have been our tile, the scoundrel.";
     public const string MjTextPainfulToWatch = "Oh the horror! It was too painful to watch.";
-    public const string MjTextClobberedTable = "Ha! You all but clobbered them with the table that round.";
+    public const string MjTextClobberedTable = "Ha! You all but clobbered them with a table that round."; //NOTE: Metem actually says "the table" instead of "a table" but it sounds similar enough that it should pass i think 
     public const string MjTextBeautifullyPlayed = "Beautifully played my friend, beautifully played.";
     public const string MjTextMadeYourMark = "You certainly made your mark this round. Keep it up!";
     public const string MjTextDontStandAChance = "Mmm, letting them think they stand a chance. I like it.";

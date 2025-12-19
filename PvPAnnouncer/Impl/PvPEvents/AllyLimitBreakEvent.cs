@@ -30,9 +30,10 @@ public class AllyLimitBreakEvent: PvPActionEvent
             {Personalization.DancingGreen, [DGSteps]},
             {Personalization.SugarRiot, [SRBringsWorkToLife]},
             {Personalization.BruteAbominator, [ChimericalFoe, FeralPowersWeapon, PunishingAttackFusion]},
-            {Personalization.VampFatale, [VFWickedWeapon, DrainingAudienceFem, VFUnleashedAether, EvenMoreAether, DrainingCrowd, LightheadedFem]},
-            {Personalization.Tyrant, [TyrannyTimeMasc, TTAlteredFormMasc, UnleashedFullMightMasc]},
-            {Personalization.President, [ArmLifeOwnMasc, ArmSlitheringOutDisgustingMasc, LWScatteredGore, CruelCoil]},
+            {Personalization.VampFatale, [VFWickedWeapon, VFUnleashedAether, EvenMoreAether, LightheadedFem]},
+            {Personalization.DeepBlueRedHot, [DBTaggingIn, Fusion, HoldingNothingBack]},
+            {Personalization.Tyrant, [TyrannyTimeMasc, UnleashedFullMightMasc]},
+            {Personalization.President, [ArmLifeOwnMasc, ArmSlitheringOutDisgustingMasc, CruelCoil]},
             {Personalization.Spoilers, [NeitherSideHoldingBack, SuchFerocity, AbsoluteBrutality]},
         };
     }
