@@ -339,4 +339,28 @@ public static class AnnouncerLines
     public const string MjCompetitionTooMuch = "8291297"; // Was the competition simply too much for our challenger? I should hope not.
     public const string MjUtterlyHumiliated = "8291298"; // Oh dear our challenger has been utterly humiliated! I fear this will haunt them...
 
+    //todo: 8206130-8206150 
+    /*
+     Huh? Is it? The Lindwurm’s heart!? 
+    It’s pulsating… I’ve got a bad feeling about this! 
+    It’s contorted…transforming! 
+    It’s alive! It’s the birth of a new Lindwurm! 
+    Alas, the battle isn’t over yet, but don’t despair Champion! 
+    The Lindwurm is creating more of itself! 
+    The Lindwurm continues to multiply! We’ve gone well beyond mortal limits now! 
+    Some curious props have appeared… What would they possibly be? 
+    Egads! They’ve taken on the Champion’s form! This bodes ill! 
+    Ah-I’ve got a serious case of deja vu here. 
+    What destructiveness! The ring has been rend in two! 
+    The mutation is…corrupting the champion! Let’s hope they keep it together! 
+    Something’s coming! Stay on your toes! 
+    Woah! What is this place? Did the Lindwurm warp the very fabric of space and time? 
+    Is this another dimension? I must confess, I am utterly bewildered! 
+    A relentless assault! The Champion is hard-pressed! 
+    The battle has reached a fever pitch, but the Champion still stands! 
+    There’s so many of them! Stay strong, I beg you! 
+    I’m not sure I understand what’s going on anymore, folks! 
+    We appear to have completely left the realm of logic behind! 
+    Something that defies all comprehension is unfolding before our very eyes! 
+    */
 }

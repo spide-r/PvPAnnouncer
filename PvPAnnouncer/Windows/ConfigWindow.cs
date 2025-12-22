@@ -47,7 +47,6 @@ public class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
-        var spoilers = _configuration.Spoilers;
         var muted = _configuration.Muted;
         var hideBattleText = _configuration.HideBattleText;
         var lang = _configuration.Language;
@@ -91,14 +90,6 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
             _configuration.Disabled = disabled;
-            _configuration.Save();
-        }
-        
-        if (ImGui.Checkbox("7.4 Recently Released. Do you want to use Metem's voicelines from the new fights?", ref spoilers))
-        {
-            _configuration.Spoilers = spoilers;
-            SetPersonalization(spoilers, Personalization.Spoilers);
-            _configuration.Save();
             _configuration.Save();
         }
         
@@ -389,7 +380,9 @@ public class ConfigWindow : Window, IDisposable
     private void RemovePersonalization(Personalization toRemove)
     {
         var persInt = 0;
-        for (int i = 1; i < 16; i++) //todo: sloppy - hardcoded value of 16
+        var max = (int) Personalization.MaxValue;
+        max += 1;
+        for (int i = 1; i < max; i++) 
         {
             if ((int) toRemove != i)
             {

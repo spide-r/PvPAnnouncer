@@ -47,9 +47,7 @@ namespace PvPAnnouncer
                     return;
                 }
                 PluginServices.ChatGui.Print(
-                    "Welcome back! PvPAnnouncer has been updated. Metem's 7.4 voicelines have been added but are disabled by default. " +
-                    "Check the settings to enable them. New Events with the new Arcadion fighters " +
-                    "will be added once the socially acceptable embargo of 2 weeks has elapsed.", "PvPAnnouncer", 15);
+                    "Welcome back! PvPAnnouncer has been updated.", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }

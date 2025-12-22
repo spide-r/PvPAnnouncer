@@ -12,7 +12,7 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        public int Version { get; set; } = 2;
+        public int Version { get; set; } = 3;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         
@@ -35,9 +35,7 @@ namespace PvpAnnouncer
 
         public int Percent { get; set; } = 70; 
         
-        public bool Spoilers { get; set; } = false;
-
-        public bool ShowNotification { get; set; } = true;
+        public bool ShowNotification { get; set; } = false;
         
  
         public string Language { get; set; } = "en";
@@ -118,6 +116,19 @@ namespace PvpAnnouncer
                     }
                 }
                 Version++;
+            }
+
+            if (Version == 2) //2 week spoiler embargo had a personalization Spoiler value of 15 - to remove any wonkyness, remake the personalization int without 15
+            {
+                for (var i = 1; i < 15; i++)
+                {
+                    if (WantsPersonalization((Personalization) i))
+                    {
+                        SetPersonalization((Personalization) i);
+                    }
+                }
+                Version++;
+                ShowNotification = false;
             }
             _pluginInterface?.SavePluginConfig(this);
         }

@@ -20,7 +20,7 @@ public class EnemyMissedCc: PvPActionEvent
         return
         [
             BeautifullyDodged, SawThroughIt, EffortlesslyDodged, ClearlyAnticipated, StylishEvasion, AvoidedWithEase,
-            DodgedEverything
+            DodgedEverything, ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, SlippedBeyondReach
         ];
     }
 
@@ -28,7 +28,6 @@ public class EnemyMissedCc: PvPActionEvent
     {
         return new Dictionary<Personalization, List<string>>
         {
-            {Personalization.Spoilers, [ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, SlippedBeyondReach]}
         };
         
     }

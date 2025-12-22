@@ -19,15 +19,16 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash];
+        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash, DirectHitStillStanding, NotFastEnough];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
         return new Dictionary<Personalization, List<string>>
         {
-            {Personalization.Spoilers, [DirectHitStillStanding, NotFastEnough]}
-        };    }
+        };
+        
+    }
 
     public override bool InvokeRule(IMessage arg)
     {

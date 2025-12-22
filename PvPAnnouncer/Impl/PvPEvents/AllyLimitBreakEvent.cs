@@ -16,7 +16,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying];
+        return [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying, NeitherSideHoldingBack, SuchFerocity, AbsoluteBrutality];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
@@ -34,7 +34,6 @@ public class AllyLimitBreakEvent: PvPActionEvent
             {Personalization.DeepBlueRedHot, [DBTaggingIn, Fusion, HoldingNothingBack]},
             {Personalization.Tyrant, [TyrannyTimeMasc, UnleashedFullMightMasc]},
             {Personalization.President, [ArmLifeOwnMasc, ArmSlitheringOutDisgustingMasc, CruelCoil]},
-            {Personalization.Spoilers, [NeitherSideHoldingBack, SuchFerocity, AbsoluteBrutality]},
         };
     }
 

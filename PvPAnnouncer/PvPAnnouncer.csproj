@@ -2,7 +2,7 @@
 <Project Sdk="Dalamud.NET.Sdk/14.0.1">
     <PropertyGroup>
         <Authors>Spide-r</Authors>
-        <Version>1.3.2.0</Version>
+        <Version>1.3.3.0</Version>
         <Description>A PvP Announcer Plugin</Description>
         <PackageProjectUrl>https://github.com/spide-r/PvPAnnouncer</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>

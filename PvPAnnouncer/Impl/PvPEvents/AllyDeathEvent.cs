@@ -15,15 +15,12 @@ public class AllyDeathEvent : PvPActorControlEvent
     }
     public override List<string> SoundPaths()
     {
-        return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid];
+        return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid, BeenFelled, TheyreDownCanTheyRecover, ChampCrushed];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>
-        {
-            {Personalization.Spoilers, [BeenFelled, TheyreDownCanTheyRecover]}
-        };
+        return new Dictionary<Personalization, List<string>>();
     }
 
     public override bool InvokeRule(IMessage m)

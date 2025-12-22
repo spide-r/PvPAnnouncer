@@ -17,15 +17,15 @@ public class AllyResurrectEvent: PvPActorEvent
 
     public override List<string> SoundPaths()
     {
-        return [BackUpGrit, BackOnFeet, RisesAgain];
+        return [BackUpGrit, BackOnFeet, RisesAgain, WhatFightingSpirit, BackInAction];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
         return new Dictionary<Personalization, List<string>>
         {
-            {Personalization.Spoilers, [WhatFightingSpirit, BackInAction]}
-        };    }
+        };    
+    }
 
     public override bool InvokeRule(IMessage m)
     {

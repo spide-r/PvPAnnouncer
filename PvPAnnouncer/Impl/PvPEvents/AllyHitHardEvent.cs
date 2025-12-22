@@ -17,7 +17,8 @@ public class AllyHitHardEvent : PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt];
+        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
+            CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
@@ -25,7 +26,6 @@ public class AllyHitHardEvent : PvPActionEvent
         return new Dictionary<Personalization, List<string>>
         {
             {Personalization.BruteBomber, [BBDesprate]},
-            {Personalization.Spoilers, [OofMustHaveHurt, NotFastEnough, CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack]}
         };
     }
 

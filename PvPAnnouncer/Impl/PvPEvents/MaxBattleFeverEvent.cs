@@ -17,7 +17,7 @@ public class MaxBattleFeverEvent: PvPEvent
 
     public override List<string> SoundPaths()
     {
-        return [WhatPower];
+        return [WhatPower, RainOfDeath];
     }
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
@@ -26,7 +26,6 @@ public class MaxBattleFeverEvent: PvPEvent
             {Personalization.MascPronouns, [RoofCavedSuchDevastation]}, 
             { Personalization.FemPronouns, [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem]},
             {Personalization.DancingGreen, [DGFeverPich]},
-            {Personalization.Spoilers, [RainOfDeath, SpectacleResumes]}
         };
     }
 
