@@ -174,28 +174,28 @@ public class ConfigWindow : Window, IDisposable
                 _configuration.Save();
             }
 
-            if (ImGui.Checkbox("M9 Boss", ref m9))
+            if (ImGui.Checkbox("Vamp Fatale", ref m9))
             {
                 SetPersonalization(m9, Personalization.VampFatale);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
-            if (ImGui.Checkbox("M10 Boss", ref m10))
+            if (ImGui.Checkbox("Deep Blue & Red Hot", ref m10))
             {
                 SetPersonalization(m10, Personalization.DeepBlueRedHot);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
-            if (ImGui.Checkbox("M11 Boss", ref m11))
+            if (ImGui.Checkbox("The Tyrant", ref m11))
             {
                 SetPersonalization(m11, Personalization.Tyrant);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
-            if (ImGui.Checkbox("M12 Boss", ref m12))
+            if (ImGui.Checkbox("The President", ref m12))
             {
                 SetPersonalization(m12, Personalization.President);
                 _configuration.Save();
