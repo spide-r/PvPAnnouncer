@@ -3,7 +3,6 @@
     <PropertyGroup>
         <Authors>Spide-r</Authors>
         <Version>1.3.3.0</Version>
-        <Description>A PvP Announcer Plugin</Description>
         <PackageProjectUrl>https://github.com/spide-r/PvPAnnouncer</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
         <IsPackable>false</IsPackable>
