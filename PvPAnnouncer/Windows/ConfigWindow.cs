@@ -5,6 +5,7 @@ using System.Numerics;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Components;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -93,11 +94,11 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if(ImGui.Checkbox("Do you want to personalize announcer voicelines? (Pronouns & Arcadion Competitors)", ref personalization)){
+        if(ImGui.Checkbox("Do you want to personalize announcer voicelines?", ref personalization)){
             _configuration.WantsPersonalizedVoiceLines = personalization;
             _configuration.Save();
         };
-
+        ImGuiComponents.HelpMarker("Do you want to let metem use he/she, or directly mention Arcadion fighter names?");
         if (personalization)
         {
             ImGui.Separator();
@@ -114,13 +115,10 @@ public class ConfigWindow : Window, IDisposable
                 SetPersonalization(masc, Personalization.MascPronouns);
                 _configuration.Save();
             }
-            ImGui.Indent();
-        
-            ImGui.TextWrapped("Note: These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nMetem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
-            ImGui.Unindent();
+            ImGuiComponents.HelpMarker("These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nMetem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
             
             ImGui.TextWrapped("Use announcer voice lines mentioning the following competitors names:");
-            
+            ImGuiComponents.HelpMarker("This allows Metem to mention Arcadion fighters directly.\nFor example: \"The Honey B. Lovely show has begun!\"");
             if (ImGui.Checkbox("Black Cat", ref bc))
             {
                 SetPersonalization(bc, Personalization.BlackCat);
@@ -201,9 +199,6 @@ public class ConfigWindow : Window, IDisposable
                 _configuration.Save();
             }
             
-            ImGui.Indent();
-            ImGui.TextWrapped("This allows Metem to mention Arcadion fighters directly.\nFor example: \"The Honey B. Lovely show has begun!\"");
-            ImGui.Unindent();
             
             ImGui.Separator();
         }
@@ -222,7 +217,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Separator();
         ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
         ImGui.Indent();
-        if (ImGui.SliderInt("(S)", ref cooldown, 1, 120))
+        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
@@ -232,7 +227,7 @@ public class ConfigWindow : Window, IDisposable
         
         ImGui.TextWrapped("What percent of Events should have an announcement?");
         ImGui.Indent();
-        if (ImGui.SliderInt("%", ref percent, 1, 100))
+        if (ImGui.SliderInt("###SliderPercent", ref percent, 1, 100))
         {
             _configuration.Percent = percent;
             _configuration.Save();
@@ -242,7 +237,7 @@ public class ConfigWindow : Window, IDisposable
         
         ImGui.TextWrapped("How many unique Voice Lines should be said before a potential repeat?");
         ImGui.Indent();
-        if (ImGui.SliderInt("# Of Voice lines", ref repeatVoiceLine, 1, 25))
+        if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
         {
             _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
             _configuration.Save();
@@ -252,7 +247,7 @@ public class ConfigWindow : Window, IDisposable
 
         ImGui.TextWrapped("How many unique Events should be commented on before a duplicate happens?");
         ImGui.Indent();
-        if (ImGui.SliderInt("# Of Events", ref repeatEventCommentary, 1, 10))
+        if (ImGui.SliderInt("###SliderEvents", ref repeatEventCommentary, 1, 10))
         {
             _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;
             _configuration.Save();
@@ -336,6 +331,15 @@ public class ConfigWindow : Window, IDisposable
             string publicName = keyValuePair.Value;
             if (!blEvents.Contains(internalName))
             {
+                if (publicName.ToLower().Contains("masculine") && !masc)
+                {
+                    continue;
+                }
+
+                if (publicName.ToLower().Contains("feminine") && !fem)
+                {
+                    continue;
+                }
                 activeEvents.Add(publicName);
                 activeEventsInternal.Add(internalName);
             }
@@ -351,17 +355,33 @@ public class ConfigWindow : Window, IDisposable
         }*/
         _activeEventsArr = activeEvents.ToArray();
         _activeEventsArrInternal = activeEventsInternal.ToArray();
-        ImGui.ListBox("Enabled Events", ref _activeEventsSelectedItem, _activeEventsArr, _activeEventsArr.Length);
+        ImGui.Text("Enabled Events:");
+        ImGui.ListBox("###EnabledEvents", ref _activeEventsSelectedItem, _activeEventsArr);
         if (ImGui.Button("Disable"))
         {
-            _configuration.BlacklistedEvents.Add(_activeEventsArrInternal[_activeEventsSelectedItem]);
-            _configuration.Save();
+            if (_activeEventsSelectedItem < _activeEventsArrInternal.Length)
+            {
+                _configuration.BlacklistedEvents.Add(_activeEventsArrInternal[_activeEventsSelectedItem]);
+                _configuration.Save();
+                
+            }
+
         }
         
         List<string> listDisabledInternal = [];
         List<string> listDisabledPublic = [];
         foreach (string internalName in blEvents)
         {
+            var publicName = _eventskv[internalName];
+            if (publicName.ToLower().Contains("masculine") && !masc)
+            {
+                continue;
+            }
+
+            if (publicName.ToLower().Contains("feminine") && !fem)
+            {
+                continue;
+            }
             listDisabledInternal.Add(internalName);
             listDisabledPublic.Add(_eventskv.First(pair => pair.Key.Equals(internalName)).Value);
         }
@@ -369,11 +389,17 @@ public class ConfigWindow : Window, IDisposable
      
         _disabledEventsArrInternal = listDisabledInternal.ToArray();
         _disabledEventsArr = listDisabledPublic.ToArray();
-        ImGui.ListBox("Disabled Events", ref _disabledEventsSelectedItem, _disabledEventsArr, _disabledEventsArr.Length);
+        ImGui.Text("Disabled Events:");
+        ImGui.ListBox("###DisabledEvents", ref _disabledEventsSelectedItem, _disabledEventsArr);
         if (ImGui.Button("Enable"))
         {
+            if (_disabledEventsSelectedItem < _disabledEventsArrInternal.Length)
+            {
                 _configuration.BlacklistedEvents.Remove(_disabledEventsArrInternal[_disabledEventsSelectedItem]);
                 _configuration.Save();
+                
+            }
+    
         }
     }
 
