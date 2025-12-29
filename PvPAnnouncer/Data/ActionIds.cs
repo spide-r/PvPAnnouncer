@@ -147,6 +147,9 @@ public class ActionIds
     public static readonly uint FullSwing = 43245;
     public static readonly uint WindsReply = 41509;
     public static readonly uint Perfectio = 41458;
+    public static readonly uint Comet = 43252;
+    public static readonly uint Slither = 39184;
+    public static readonly uint Backlash = 39187;
 
 
 }

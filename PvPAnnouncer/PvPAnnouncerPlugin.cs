@@ -16,6 +16,7 @@ namespace PvPAnnouncer
         private WindowSystem WindowSystem = new("PvPAnnouncer");
         private ConfigWindow ConfigWindow { get; init; }
         private MainWindow MainWindow { get; init; }
+        private DevWindow DevWindow { get; init; }
 
         private readonly Command[] _commands = [ new MuteAnnouncer()];
 
@@ -28,8 +29,10 @@ namespace PvPAnnouncer
             LoadCommands();
             ConfigWindow = new ConfigWindow();
             MainWindow = new MainWindow();
+            DevWindow = new DevWindow();
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);
+            WindowSystem.AddWindow(DevWindow);
             pluginInterface.UiBuilder.Draw += DrawUi;
             pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
@@ -66,6 +69,9 @@ namespace PvPAnnouncer
 
         private void ToggleConfigWindow()
         {
+            #if DEBUG
+            DevWindow.Toggle();
+            #endif
             ConfigWindow.Toggle();
         }
         

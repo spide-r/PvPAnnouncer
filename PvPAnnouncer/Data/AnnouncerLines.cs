@@ -13,10 +13,6 @@ public static class AnnouncerLines
     //todo mahjong
     
     //todo: huge recovery from earths reply/microcosmos (regen voice lines) (8206125 for huge heal from others, 8206122 from pot?)
-    // 8206117 for viper
-    // 8206104 pld
-    // 8206080 instakill
-    // 8206108 comet
     
     //todo match win&loss (cc,rw,fl)
     //TOdo refactor unused voicelines to be their own objects 

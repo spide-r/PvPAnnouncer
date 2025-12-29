@@ -10,9 +10,17 @@ public class EventListenerLoader: IEventListenerLoader
 {
     public PvPEvent[] PvpEvents { get; } =
     [
-
+        
         // == Custom Events ==
-
+        
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.WorldSwallower], [..InternalConstants.LimitBreakList, CruelCoil, EitherSide, SomethingRevolting], [], "World Swallower", "AllyVprLBEvent"),
+        new AllyActionEvent([ActionIds.Backlash], [], new Dictionary<Personalization, List<string>>{
+            {Personalization.MascPronouns, [RegenCapacityMasc]}, {Personalization.President, [LWCompletelyHealed, LWOutOfControl]}}, "Backlash", "AllyBacklashEvent"),
+        new AllyActionEvent([ActionIds.Slither], [], new Dictionary<Personalization, List<string>>{
+            {Personalization.MascPronouns, [ArmSlitheringOutDisgustingMasc, RoundRingMasc]}}, "Slither (Masculine Pronouns)", "AllySlitherEvent"),
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.Phalanx], [..InternalConstants.LimitBreakList, AllTheseWeaponsMasc], [], "Phalanx (Masculine Pronouns)", "AllyPldLBEvent"),
+        new AllyActionEvent([ ActionIds.Comet], [], new Dictionary<Personalization, List<string>>{
+            {Personalization.MascPronouns, [UnleashedFullMightMasc]}}, "Comet (Masculine Pronouns)", "AllyCometEvent"),
         new AllyActionEvent([(uint) ActionIds.LimitBreaks.MarksmansSpite], [..InternalConstants.LimitBreakList], new Dictionary<Personalization, List<string>>{{ Personalization.FemPronouns, [MassiveCannonFem]}},
             "Marksman's Spite (Feminine Pronouns)", "AllyMchLBEvent"),
         new AllyActionEvent([(uint) ActionIds.LimitBreaks.SoulResonance], [..InternalConstants.LimitBreakList], new Dictionary<Personalization, List<string>>{{ Personalization.FemPronouns, [GatheringAetherFem, ConvertAetherFem, DischargeAether, UnleashedANewFeralSoul]}},
@@ -21,12 +29,13 @@ public class EventListenerLoader: IEventListenerLoader
         new AllyActionEvent([(uint) ActionIds.LimitBreaks.Seraphism], [..InternalConstants.LimitBreakList], 
             new Dictionary<Personalization, List<string>>{{Personalization.FemPronouns, [GrownWingsFem, SomethingGrowingFem]}},
             "Seraphism (Feminine Pronouns)", "AllySchLbEvent"),
-        new AllyActionEvent([(uint) ActionIds.LimitBreaks.TenebraeLemurum], [..InternalConstants.LimitBreakList], 
+        new AllyActionEvent([(uint) ActionIds.LimitBreaks.TenebraeLemurum], [..InternalConstants.LimitBreakList, EitherSide], 
             new Dictionary<Personalization, List<string>>
             {
-                {Personalization.FemPronouns, [UnleashedANewFeralSoul, ConvertAetherFem, SomethingGrowingFem]}
+                {Personalization.FemPronouns, [UnleashedANewFeralSoul, ConvertAetherFem, SomethingGrowingFem, EvenMoreAether]},
+                {Personalization.Tyrant, [TTAlteredFormMasc]}
             },
-            "Tenebrae Lemurum (Feminine Pronouns)", "AllyRprLBEvent"),
+            "Tenebrae Lemurum", "AllyRprLBEvent"),
         new AllyActionEvent([ActionIds.FullSwing, ActionIds.WindsReply], [], 
             new Dictionary<Personalization, List<string>>{
             { Personalization.MascPronouns, [SentRivalFlyingMasc]}
@@ -45,7 +54,8 @@ public class EventListenerLoader: IEventListenerLoader
                 (uint) ActionIds.LimitBreaks.SeitonTenchu2, ActionIds.Perfectio], 
             [BannedCompoundRobot], new Dictionary<Personalization, List<string>>
             {
-                {Personalization.MascPronouns, [UnusedNoRespectMasc]}, {Personalization.FemPronouns, [UnusedOhMercyFem]}
+                {Personalization.MascPronouns, [UnusedNoRespectMasc]}, {Personalization.FemPronouns, [UnusedOhMercyFem]},
+                {Personalization.VampFatale, [VFWickedWeapon]}
             }, "Instant Kills", "AllyInstantKillEvent"),
         new AllyActionEvent([ActionIds.RisingPhoenix, (uint) ActionIds.BigHits.FlareStar], [StartedFire], 
             [], "Rising Phoenix & Flare Star", "AllyFireEvent"),

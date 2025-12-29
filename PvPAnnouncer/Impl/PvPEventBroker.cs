@@ -4,12 +4,14 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
+using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer.Impl;
 
 public class PvPEventBroker: IPvPEventBroker
 {
     private readonly List<Tuple<PvPEvent, Func<IMessage, bool>>> _registeredListeners = new();
+    private string LastUsedAction = "";
     public void IngestMessage(IMessage message)
     {
         if (PluginServices.Config.Disabled)
@@ -29,7 +31,8 @@ public class PvPEventBroker: IPvPEventBroker
             if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
- 
+                LastUsedAction = aaa.ActionId.ToString();
+
             }
         } else if (message is ActorControlMessage ac) {
             bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(ac.EntityId);
@@ -81,6 +84,11 @@ public class PvPEventBroker: IPvPEventBroker
     {
         PluginServices.PluginLog.Verbose("Registered listener: " + e.InternalName);
         _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
+    }
+
+    public string GetLastAction()
+    {
+        return LastUsedAction;
     }
 
     public void DeregisterListener(PvPEvent e)

@@ -51,7 +51,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
                         if (list != null)
                             foreach (var status in list)
                             {
-                                if (status.StatusId == StatusIds.Guard)
+                                if (status.StatusId == StatusIds.Guard || status.StatusId == StatusIds.HardenedScales)
                                 {
                                     return true;
                                 }
