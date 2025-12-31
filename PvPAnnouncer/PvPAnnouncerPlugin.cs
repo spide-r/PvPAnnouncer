@@ -50,7 +50,7 @@ namespace PvPAnnouncer
                     return;
                 }
                 PluginServices.ChatGui.Print(
-                    "Welcome back! PvPAnnouncer has been updated. Enemy Hit Detection has been changed." +
+                    "Welcome back! PvPAnnouncer now has more events, and uses Metem's Mahjong voicelines!. Enemy Hit Detection has been changed." +
                     "Metem should now be less chatty when getting hit once or twice, and comment more reliably when in-game action warrants it." +
                     "(Being simply hit is no longer an event, Metem now checks if you're getting bursted, or if you've been hit with an LB)", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
