@@ -13,9 +13,6 @@ public static class AnnouncerLines
     //Lines are found in ContentDirectorBattleTalk as well as InstanceContentTextData - Use AlphaAOT 
     
     //todo: huge recovery from earths reply/microcosmos (regen voice lines) (8206125 for huge heal from others, 8206122 from pot?)
-    
-    //todo match win&loss (cc,rw,fl)
-        
 
     private static string GetVoPath(string announcement, string lang)
     {

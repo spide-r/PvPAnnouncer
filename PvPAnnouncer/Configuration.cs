@@ -12,7 +12,7 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        public int Version { get; set; } = 3;
+        public int Version { get; set; } = 4;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         
@@ -129,6 +129,17 @@ namespace PvpAnnouncer
                 }
                 Version++;
                 ShowNotification = false;
+            }
+
+            if (Version == 3)
+            {
+                if (BlacklistedEvents.Contains("AllyHitHardEvent"))
+                {
+                    BlacklistedEvents.Remove("AllyHitHardEvent");
+                    BlacklistedEvents.Add("AllyHitByLimitBreakEvent");
+                }
+                ShowNotification = true;
+                Version++;
             }
             _pluginInterface?.SavePluginConfig(this);
         }

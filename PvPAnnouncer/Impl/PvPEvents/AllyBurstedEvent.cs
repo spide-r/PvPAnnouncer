@@ -40,7 +40,6 @@ public class AllyBurstedEvent: PvPEvent
         {
             if (Enumerable.Contains(pp.GetTargetIds(), (uint) pp.SourceId))
             {
-                // we dont want self attacks triggering this todo: code duplication
                 return false;
             }
             

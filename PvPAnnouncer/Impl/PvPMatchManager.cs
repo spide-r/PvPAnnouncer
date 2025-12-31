@@ -17,9 +17,10 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private int _ourPoints = 0;
     private double _ourProgress = 0.0;
     private double _enemyProgress = 0.0;
-    public PvPMatchManager()
+    private readonly IPlayerStateTracker _playerState;
+    public PvPMatchManager(IPlayerStateTracker playerState) //todo: victory and loss detection for RW
     {
-        //todo: victory tracking for CC - RW later next mogtome event
+        _playerState = playerState;
         PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
         PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPMKSHeader", HandleCCHeaderPreDraw);
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
@@ -81,7 +82,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private void EnterPvP()
     {
         PluginServices.PluginLog.Verbose("EnterPvP");
-        PluginServices.PlayerStateTracker.CheckSoundState(); //todo sloppy - need to make this class not rely on PlayerStateTracker being loaded
+        _playerState.CheckSoundState(); 
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)

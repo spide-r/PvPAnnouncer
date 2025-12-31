@@ -32,7 +32,6 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
         {
             if (pp.GetTargetIds().Contains((uint) pp.SourceId))
             {
-                // we dont want self attacks triggering this todo: code duplication
                 return false;
             }
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))

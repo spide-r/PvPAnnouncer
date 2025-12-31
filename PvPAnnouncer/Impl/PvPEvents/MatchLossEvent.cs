@@ -9,7 +9,6 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchLossEvent: PvPMatchEvent
 {
-    //todo add both to events
     public MatchLossEvent()
     {
         Name = "Match Loss";

@@ -34,7 +34,6 @@ public class EnemyMissedCc: PvPActionEvent
     }
     public override bool InvokeRule(IMessage message)
     {
-        //todo - dont invoke when in mech
         if (message is ActionEffectMessage pp)
         {
             foreach (var target in pp.GetTargetIds())

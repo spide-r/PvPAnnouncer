@@ -40,10 +40,8 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
          }
      }
 
+     //GOTCHA: some of these are labeled incorrectly but we only care about entityid and type 
      private void ProcessPacketActorControlDetour(uint entityId, uint type, uint statusId, uint amount, uint a5, uint source, uint a7, uint a8, uint param7New, uint param8New, ulong targetId, byte flag)
-     
-     //uint entityId, uint type, uint Statusid, uint amount, uint a5, uint source, uint a7, uint a8, uint param7New, uint param8New, ulong targetId, byte flag
-     //todo some of these are labeled incorrectly but we only care about entityid and type 
      {
          processPacketActorControlHook.Original(entityId, type, statusId, amount, a5, source, a7, a8, param7New, param8New, targetId, flag);
          try

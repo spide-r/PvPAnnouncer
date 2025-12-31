@@ -37,7 +37,6 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
         {
             if (pp.GetTargetIds().Contains((uint) pp.SourceId))
             {
-                // we dont want self bubble triggering this todo: code duplication
                 return false;
             }
             foreach (var target in pp.GetTargetIds())
