@@ -156,8 +156,6 @@ public static class AnnouncerLines
     public const string ChallengerDownIsThisEnd = "8205781"; // The challenger's down! Is this the end!?
     public const string RisesAgain = "8205782"; // The challenger rises again! Can they turn this around!?
     public const string BackOnFeet = "8205783"; // They're back on their feet! Let's see if they can stay standing!
-    
-    // === 7.4 Generic ===
     public const string OofMustHaveHurt = "8206066"; // Oof, that must've hurt! Hang in there!
     public const string NotFastEnough = "8206067"; // Not fast enough, I'm afraid!
     public const string CantBeCareless = "8206068"; // Even I felt that! Can't afford to be careless, now!
@@ -215,8 +213,8 @@ public static class AnnouncerLines
     public const string DGSteps = "8205785";// Dancing Green is pulling out all the stops with these steps!
     public const string UpstartBegins = "8205784"; // The upstart's cruiserweight campaign begins!
     public const string InvitationToDance = "8205786"; // An invitation to dance! How will the challenger respond?
-    public const string DGFeverTakenHold = "8205787";// The fever's taken hold! Can the upstart keep up with Dancing Green?
-    public const string DGFeverPich = "8205788";// The night's reached a fever pitch! All eyes are on Dancing Green!
+    public const string DGFeverTakenHold = "8205787"; // The fever's taken hold! Can the upstart keep up with Dancing Green?
+    public const string DGFeverPich = "8205788"; // The night's reached a fever pitch! All eyes are on Dancing Green!
     
     // === Sugar Riot ===
     public const string SRGallery = "8205789"; // Welcome to Sugar Riot's gallery of glamours!
@@ -336,7 +334,7 @@ public static class AnnouncerLines
     public const string MjGameChanger = "8291277"; // This could be a real game changer.
     public const string MjBoldMove = "8291276"; // A bold move from our challenger, but will it pay off?
     public const string MjChallengerRecover = "8291278"; // How will the challenger recover from this I wonder?
-    public const string MjRivalVying = "8291279"; // Whats this? A rival vying for victory? (probably misspelled)
+    public const string MjRivalVying = "8291279"; // Whats this? A rival vying for victory? 
     public const string MjHeatingUp = "8291280"; // Things are really heating up. I can scarcely look away.
     public const string MjHandDecided = "8291281"; // There it is. The hand is decided.
     public const string MjKissLadyLuck = "8291282"; // And with a kiss from lady luck, we have our winner.
@@ -357,7 +355,7 @@ public static class AnnouncerLines
     public const string MjCompetitionTooMuch = "8291297"; // Was the competition simply too much for our challenger? I should hope not.
     public const string MjUtterlyHumiliated = "8291298"; // Oh dear our challenger has been utterly humiliated! I fear this will haunt them...
 
-    //todo: 8206130-8206150 
+    //todo: 8206130-8206150 when savage releases
     /*
      Huh? Is it? The Lindwurm’s heart!? 
     It’s pulsating… I’ve got a bad feeling about this! 

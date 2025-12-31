@@ -16,7 +16,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, BattleElectrifying, NeitherSideHoldingBack, SuchFerocity, AbsoluteBrutality];
+        return InternalConstants.LimitBreakList;
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

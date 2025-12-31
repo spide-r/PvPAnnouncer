@@ -7,18 +7,20 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyHitHardEvent : PvPActionEvent
+public class AllyHitByLimitBreakEvent : PvPActionEvent
 {
-    public AllyHitHardEvent()
+    public AllyHitByLimitBreakEvent()
     {
-        Name = "Hit hard by an Enemy";
-        InternalName = "AllyHitHardEvent";
+        Name = "Hit by an Enemy Limit Break";
+        InternalName = "AllyHitHardEvent"; //todo migrate
     }
 
     public override List<string> SoundPaths()
     {
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
-            CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack];
+            CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
+            CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
+            MjStillInItGentle, MjStillStandingGentle];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
@@ -42,7 +44,7 @@ public class AllyHitHardEvent : PvPActionEvent
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
-                    return ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
+                    return ActionIds.IsLimitBreakAttack(pp.ActionId); //todo mark this in the patch notes 
                 }
             }
         }

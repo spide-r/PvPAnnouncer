@@ -17,7 +17,7 @@ public class AllyPulledByDrkEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [SuckedIn, ThrillingBattle, Quicksand];
+        return [SuckedIn, ThrillingBattle, Quicksand, MjRivalVying];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

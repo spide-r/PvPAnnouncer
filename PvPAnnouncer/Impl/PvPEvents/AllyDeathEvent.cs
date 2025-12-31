@@ -15,7 +15,9 @@ public class AllyDeathEvent : PvPActorControlEvent
     }
     public override List<string> SoundPaths()
     {
-        return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, CouldntAvoid, BeenFelled, TheyreDownCanTheyRecover, ChampCrushed];
+        return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, 
+            CouldntAvoid, BeenFelled, TheyreDownCanTheyRecover, ChampCrushed, MjGoodnessGracious, MjPainfulToWatch, 
+            MjChallengerDownHardGentle, MjDownNotOut];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

@@ -15,14 +15,47 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private int _leftPoints = 0;
     private int _rightPoints = 0;
     private int _ourPoints = 0;
+    private double _ourProgress = 0.0;
+    private double _enemyProgress = 0.0;
     public PvPMatchManager()
     {
+        //todo: victory tracking for CC - RW later next mogtome event
         PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
+        PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPMKSHeader", HandleCCHeaderPreDraw);
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.EnterPvP += EnterPvP;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
         PluginServices.DutyState.DutyStarted += MatchStarted;
         PluginServices.DutyState.DutyCompleted += MatchEnded;
+    }
+
+    private void HandleCCHeaderPreDraw(AddonEvent type, AddonArgs args)
+    {
+        unsafe
+        {
+            var addon = (AtkUnitBase*)args.Addon.Address;
+            var astraPercent = addon->GetTextNodeById(51)->NodeText.ToString();
+            astraPercent = astraPercent.Substring(0, astraPercent.Length - 1);
+            var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
+            umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
+
+            var astraColor = addon->GetTextNodeById(49)->EdgeColor.RGBA;
+            var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
+            //4286996785
+            // astra was blue, umbra was red
+            //08:20:48.837 | VRB | [PvPAnnouncer] 0.0 (4286996785) - 0.0 (4281348230)
+            if (astraColor == 4286996785)
+            {
+             _ourProgress = double.Parse(astraPercent);
+             _enemyProgress = double.Parse(umbraPercent);
+            }
+            else
+            {
+                _ourProgress = double.Parse(astraPercent);
+                _enemyProgress = double.Parse(umbraPercent);   
+            }
+
+        }
     }
 
     private void HandleHeaderPreDraw(AddonEvent type, AddonArgs args)
@@ -98,14 +131,26 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         return PluginServices.ObjectTable.LocalPlayer != null && entityId == PluginServices.PlayerState.EntityId;
     }
 
-    private bool Winning()
+    private void CheckWin(bool w)
     {
-        return _ourPoints >= _leftPoints && _ourPoints >= _rightPoints;
+        if (w)
+        {
+            EmitToBroker(new MatchVictoryMessage());
+        }
+        else
+        {
+            EmitToBroker(new MatchLossMessage());
+        }
     }
     
 
     public void MatchEntered(ushort territory)
     {
+        _ourPoints = 0;
+        _rightPoints = 0;
+        _leftPoints = 0;
+        _ourProgress = 0.0;
+        _enemyProgress = 0.0;
         PluginServices.PluginLog.Verbose($"OnMatchEntered {territory}");
         EmitToBroker(new MatchEnteredMessage(territory));
         unsafe
@@ -126,18 +171,18 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEnded(object? sender, ushort @ushort)
     {
-
-        if (Winning())
+        if (_ourPoints > 0 || _rightPoints > 0 || _leftPoints > 0)
         {
-            EmitToBroker(new MatchVictoryMessage());
+            CheckWin(_ourPoints >= _leftPoints && _ourPoints >= _rightPoints);
+        } 
+        else if (_enemyProgress > 0.0 || _ourProgress > 0.0)
+        { 
+            CheckWin(_ourProgress >= _enemyProgress);
         }
         else
         {
-            EmitToBroker(new MatchLossMessage());
+            EmitToBroker(new MatchEndMessage());
         }
-        
-        EmitToBroker(new MatchEndMessage());
-        
     }
 
     public void MatchLeft()
@@ -164,6 +209,8 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         PluginServices.DutyState.DutyStarted -= MatchStarted;
         PluginServices.DutyState.DutyCompleted -= MatchEnded;
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
+        PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPMKSHeader", HandleCCHeaderPreDraw);
+
 
     }
 }

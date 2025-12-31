@@ -37,7 +37,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
             }
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
-                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBigHit(pp.ActionId);
+                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBurst(pp.ActionId);
             }
         }
         return false;

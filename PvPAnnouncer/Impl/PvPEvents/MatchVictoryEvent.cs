@@ -18,7 +18,7 @@ public class MatchVictoryEvent: PvPMatchEvent
     public override List<string> SoundPaths()
     {
         return [GenericVictory, NewGcBornVictory, RobotKo, VictoryChamp, MjBeautifullyPlayed, 
-            MjMadeYourMark, MjCommendableEffort, MjKissLadyLuck, MjClobberedWithTable];
+            MjMadeYourMark, MjKissLadyLuck, MjClobberedWithTable];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

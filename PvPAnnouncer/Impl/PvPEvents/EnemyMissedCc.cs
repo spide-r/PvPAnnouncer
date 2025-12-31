@@ -9,6 +9,7 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class EnemyMissedCc: PvPActionEvent
 {
+    //todo EnemyHitCC
     public EnemyMissedCc()
     {
         Name = "Cleansing & Dodging CC";

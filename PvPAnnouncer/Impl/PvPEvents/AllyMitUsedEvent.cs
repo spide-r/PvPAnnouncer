@@ -16,7 +16,7 @@ public class AllyMitUsedEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return  [IroncladDefense, WhatAClash, ThrillingBattle];
+        return  [IroncladDefense, WhatAClash, ThrillingBattle, MjDontStandAChance];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

@@ -19,7 +19,8 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, WhatAClash, DirectHitStillStanding, NotFastEnough];
+        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, 
+            WhatAClash, DirectHitStillStanding, NotFastEnough, MjHeatingUp, MjStillStandingGentle];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
