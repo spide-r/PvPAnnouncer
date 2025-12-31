@@ -61,6 +61,10 @@ internal class PluginServices {
     [PluginService]
     internal static INotificationManager NotificationManager { get; private set; }
     
+    [PluginService]
+    internal static IAddonLifecycle AddonLifecycle { get; private set; }
+
+    
     
     internal static IPvPEventBroker PvPEventBroker { get; private set; }
     internal static IPvPMatchManager PvPMatchManager { get; private set; }

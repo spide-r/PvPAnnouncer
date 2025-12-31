@@ -13,7 +13,6 @@ public abstract class InternalConstants
     public const string BombarianPressText = "It's the Bombarian press!";
     public const string OhMercyText = "Oh mercy is she doing what I think she's doing?";
     public const string BackTailText = "Yes! You've got the serpent on the back tail! Press the advantage and finish this!";
-    
     public const string MjTextGameChanger = "This could be a real game changer.";
     public const string MjTextBoldMove = "A bold move from our challenger, but will it pay off?";
     public const string MjTextChallengerRecover = "How will the challenger recover from this I wonder?";

@@ -5,17 +5,16 @@ namespace PvPAnnouncer.Data;
 
 public static class AnnouncerLines
 {
+    //todo maybe use the battle talk decorator for these voice lines
+    
     //Announcer sound path: sound/voice/vo_line/INSERT_NUMBER_HERE_en.scd
     // en, de, fr, ja work
     
     //Lines are found in ContentDirectorBattleTalk as well as InstanceContentTextData - Use AlphaAOT 
     
-    //todo mahjong
-    
     //todo: huge recovery from earths reply/microcosmos (regen voice lines) (8206125 for huge heal from others, 8206122 from pot?)
     
     //todo match win&loss (cc,rw,fl)
-    //TOdo refactor unused voicelines to be their own objects 
         
 
     private static string GetVoPath(string announcement, string lang)
@@ -103,6 +102,29 @@ public static class AnnouncerLines
             UnusedUpOnThePost => 3,
             UnusedOhMercyFem => 4,
             UnusedBackTail => 5,
+            MjGameChanger => 3,
+            MjBoldMove => 4,
+            MjChallengerRecover => 4,
+            MjRivalVying => 4,
+            MjHeatingUp => 5,
+            MjHandDecided => 3,
+            MjKissLadyLuck => 5,
+            MjGoodnessGracious => 2,
+            MjOurTile => 4,
+            MjPainfulToWatch => 4,
+            MjClobberedWithTable => 5,
+            MjBeautifullyPlayed => 4,
+            MjMadeYourMark => 4,
+            MjDontStandAChance => 5,
+            MjChallengerDownHardGentle => 4,
+            MjStillInItGentle => 4,
+            MjStillStandingGentle => 5,
+            MjDownNotOut => 4,
+            MjTitanOfTable => 6,
+            MjCommendableEffort => 4,
+            MjReportingLive => 6,
+            MjCompetitionTooMuch => 5,
+            MjUtterlyHumiliated => 6,
             _ => 5
         };
     }

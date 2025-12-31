@@ -51,6 +51,7 @@ public class DevWindow: Window, IDisposable
         if (ImGui.Button("Play###VoLineButton"))
         {
             PluginServices.SoundManager.PlaySound(AnnouncerLines.GetPath(l.ToString()));
+            PluginServices.Announcer.SendBattleTalk(l.ToString());
         }
 
         ImGui.Separator();

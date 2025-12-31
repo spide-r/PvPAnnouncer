@@ -11,10 +11,5 @@ public interface IPvPMatchManager: IDisposable
     void MatchQueued();
     
     bool IsMonitoredUser(int userId);
-    
     bool IsMonitoredUser(uint entityId);
-    
-
-
-
 }

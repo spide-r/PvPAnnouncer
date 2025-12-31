@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Dalamud.Game.Addon.Lifecycle;
+using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
@@ -8,8 +12,12 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 {
+    private int _leftPoints = 0;
+    private int _rightPoints = 0;
+    private int _ourPoints = 0;
     public PvPMatchManager()
     {
+        PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.EnterPvP += EnterPvP;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
@@ -17,10 +25,30 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         PluginServices.DutyState.DutyCompleted += MatchEnded;
     }
 
+    private void HandleHeaderPreDraw(AddonEvent type, AddonArgs args)
+    {
+        unsafe
+        {
+            var addon = (AtkUnitBase*)args.Addon.Address;
+            
+            _ourPoints = GetScore(9, addon);
+            _rightPoints = GetScore(13, addon);
+            _leftPoints = GetScore(12, addon);
+        }
+    }
+
+    private unsafe int GetScore(uint id, AtkUnitBase* addon)
+    {
+        var alliance = addon->GetComponentNodeById(id)->GetComponent();
+        var scoreNode = alliance->GetComponentById(8);
+        var currentScoreNode = scoreNode->GetTextNodeById(2)->GetText().ToString();
+        return Convert.ToInt32(currentScoreNode);
+    }
+
     private void EnterPvP()
     {
         PluginServices.PluginLog.Verbose("EnterPvP");
-        PluginServices.PlayerStateTracker.CheckSoundState(); // sloppy - need to make this class not rely on PlayerStateTracker being loaded
+        PluginServices.PlayerStateTracker.CheckSoundState(); //todo sloppy - need to make this class not rely on PlayerStateTracker being loaded
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
@@ -70,7 +98,11 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         return PluginServices.ObjectTable.LocalPlayer != null && entityId == PluginServices.PlayerState.EntityId;
     }
 
-
+    private bool Winning()
+    {
+        return _ourPoints >= _leftPoints && _ourPoints >= _rightPoints;
+    }
+    
 
     public void MatchEntered(ushort territory)
     {
@@ -94,7 +126,16 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEnded(object? sender, ushort @ushort)
     {
-      
+
+        if (Winning())
+        {
+            EmitToBroker(new MatchVictoryMessage());
+        }
+        else
+        {
+            EmitToBroker(new MatchLossMessage());
+        }
+        
         EmitToBroker(new MatchEndMessage());
         
     }
@@ -122,5 +163,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         PluginServices.ClientState.CfPop -= ClientStateOnCfPop;
         PluginServices.DutyState.DutyStarted -= MatchStarted;
         PluginServices.DutyState.DutyCompleted -= MatchEnded;
+        PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
+
     }
 }
