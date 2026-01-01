@@ -188,6 +188,11 @@ public static readonly uint Slither = 39184;
             return true;
         }
 
+        if (LimitBreaksHitSet.Contains(id))
+        {
+            return true;
+        }
+
         if (MechActionsSet.Except([SteamRelease, A3000TonzeMissile])
             .Contains(id))
         {

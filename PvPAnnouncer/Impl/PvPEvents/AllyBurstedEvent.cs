@@ -22,7 +22,10 @@ public class AllyBurstedEvent: PvPEvent
 
     public override List<string> SoundPaths()
     {
-        return [CantBeCareless, OofMustHaveHurt, NotFastEnough, NowhereLeft, RainOfDeath, SuchScorn];
+        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
+            CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
+            CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
+            MjStillInItGentle, MjStillStandingGentle, NowhereLeft, RainOfDeath,SuchScorn ];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
@@ -60,12 +63,12 @@ public class AllyBurstedEvent: PvPEvent
                         return false;
                     }
 
-                    if (!ActionIds.IsBurst(pp.ActionId))
+                    if (!ActionIds.IsBurst(pp.ActionId) && !pp.CritsOrDirectHits())
                     {
                         return false;
                     }
 
-                    if (_hitters.Count > 4)
+                    if (_hitters.Count > 3)
                     {
                         _hitters.Clear();
                         return true;

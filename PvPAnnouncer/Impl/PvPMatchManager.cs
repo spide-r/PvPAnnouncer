@@ -52,8 +52,8 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
             }
             else
             {
-                _ourProgress = double.Parse(astraPercent);
-                _enemyProgress = double.Parse(umbraPercent);   
+                _ourProgress = double.Parse(umbraPercent);
+                _enemyProgress = double.Parse(astraPercent);   
             }
 
         }
