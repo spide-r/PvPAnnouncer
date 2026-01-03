@@ -256,8 +256,6 @@ public static class AnnouncerLines
     public const string DestroyedIsle = "8205823"; // He's destroyed an isle! It'll take time to restore it!
     public const string NeitherSideHoldingBack = "8205824"; // Neither side is holding back, but there can be only one champion!
     
-    //if you're reading this you cant complain about spoilers
-    
     // === Vamp Fatale === 
     public const string VFFeastEyes = "8206078"; // Feast your eyes on the lovely─and lethal─Vamp Fatale!
     public const string FallPreyCruelMistress = "8206079"; // Will the challenger fall prey to the cruel mistress?

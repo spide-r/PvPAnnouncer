@@ -27,7 +27,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
             {Personalization.HoneyBLovely, [ChangedRoutine]},
             {Personalization.BruteBomber, [BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress, BBDesprate]},
             {Personalization.WickedThunder, [DischargeAether]},
-            {Personalization.DancingGreen, [DGSteps]},
+            {Personalization.DancingGreen, [DGSteps, DGFeverPich]},
             {Personalization.SugarRiot, [SRBringsWorkToLife]},
             {Personalization.BruteAbominator, [ChimericalFoe, FeralPowersWeapon, PunishingAttackFusion]},
             {Personalization.VampFatale, [VFWickedWeapon, VFUnleashedAether, EvenMoreAether, LightheadedFem]},

@@ -18,7 +18,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [StruckSquare, WhatAClash, BattleElectrifying];
+        return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
@@ -36,7 +36,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
             }
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
-                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreak(pp.ActionId) || ActionIds.IsBurst(pp.ActionId);
+                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreakAttack(pp.ActionId) || ActionIds.IsBurst(pp.ActionId);
             }
         }
         return false;
