@@ -7,7 +7,7 @@ public abstract class InternalConstants
     public const string MessageTag = "PvPAnnouncer";
     public static readonly List<string> LimitBreakList =
         [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, NeitherSideHoldingBack, 
-            BattleElectrifying, MjGameChanger, MjBoldMove, MjHeatingUp, AbsoluteBrutality, SuchFerocity];
+            BattleElectrifying, MjGameChanger, MjBoldMove, MjHeatingUp, AbsoluteBrutality, SuchFerocity, SomethingsComing];
 
     public const string NoRespectText = "This man has absolutely no respect for the rules!";
     public const string UpOnThePostText = "He's up on the post! You know what that means...";
@@ -37,4 +37,26 @@ public abstract class InternalConstants
     public const string MjTextReportingLive = "This was metem, reporting live from the Mahjong table. Thank you and good night.";
     public const string MjTextCompetitionTooMuch = "Was the competition simply too much for our challenger? I should hope not.";
     public const string MjTextUtterlyHumiliated = "Oh dear our challenger has been utterly humiliated! I fear this will haunt them...";
+    
+    public const string TextLindwurmsHeart = "Huh? Is it? The Lindwurm’s heart!?";
+    public const string TextBadFeeling = "It’s pulsating… I’ve got a bad feeling about this!";
+    public const string TextTransforming = "It’s contorted…transforming!";
+    public const string TextItsAliveLindwurm = "It’s alive! It’s the birth of a new Lindwurm!";
+    public const string TextBattleNotOverDontDespair = "Alas, the battle isn’t over yet, but don’t despair Champion!";
+    public const string TextCreatingMore = "The Lindwurm is creating more of itself!";
+    public const string TextContinuesToMultiply = "The Lindwurm continues to multiply! We’ve gone well beyond mortal limits now!";
+    public const string TextCuriousProps = "Some curious props have appeared… What would they possibly be?";
+    public const string TextTakenOnChampionForm = "Egads! They’ve taken on the Champion’s form! This bodes ill!";
+    public const string TextDejaVu = "Ah-I’ve got a serious case of deja vu here.";
+    public const string TextRingRendInTwo = "What destructiveness! The ring has been rend in two!";
+    public const string TextMutationCorrupting = "The mutation is…corrupting the champion! Let’s hope they keep it together!";
+    public const string TextSomethingsComing = "Something’s coming! Stay on your toes!";
+    public const string TextWarpedFabric = "Woah! What is this place? Did the Lindwurm warp the very fabric of space and time?";
+    public const string TextAnotherDimension = "Is this another dimension? I must confess, I am utterly bewildered!";
+    public const string TextHardPressed = "A relentless assault! The Champion is hard-pressed!";
+    public const string TextFeverPitch = "The battle has reached a fever pitch, but the Champion still stands!";
+    public const string TextStayStrong = "There’s so many of them! Stay strong, I beg you!";
+    public const string TextNotSureIUnderstand = "I’m not sure I understand what’s going on anymore, folks!";
+    public const string TextLeftRealmOfLogic = "We appear to have completely left the realm of logic behind!";
+    public const string TextDefiesComprehension = "Something that defies all comprehension is unfolding before our very eyes!";
 }

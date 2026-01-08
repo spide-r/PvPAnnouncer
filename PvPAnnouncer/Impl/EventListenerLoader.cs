@@ -33,7 +33,8 @@ public class EventListenerLoader: IEventListenerLoader
             new Dictionary<Personalization, List<string>>
             {
                 {Personalization.FemPronouns, [UnleashedANewFeralSoul, ConvertAetherFem, SomethingGrowingFem, EvenMoreAether]},
-                {Personalization.Tyrant, [TTAlteredFormMasc]}
+                {Personalization.Tyrant, [TTAlteredFormMasc]},
+                {Personalization.President, [BadFeeling, Transforming, ItsAliveLindwurm]}
             },
             "Tenebrae Lemurum", "AllyRprLBEvent"),
         new AllyActionEvent([ActionIds.FullSwing, ActionIds.WindsReply], [], 
@@ -44,7 +45,7 @@ public class EventListenerLoader: IEventListenerLoader
             List<string>>{{ Personalization.MascPronouns, [SuchSpeedMasc]}}, "Swift (Masculine Pronouns)", "AllySwiftEvent"),
         new AllyActionEvent([ActionIds.Biolysis], [], new Dictionary<Personalization, 
             List<string>>{{ Personalization.FemPronouns, [VenomStrikeFem]}}, "Biolysis (Feminine Pronouns)", "AllyBiolysisEvent"),
-        new EnemyActionEvent([ActionIds.Biolysis], [StruckWithVenon], [], "Biolysis From Enemies", "EnemyBiolysisEvent"),
+        new EnemyActionEvent([ActionIds.Biolysis], [StruckWithVenon, MutationCorrupting], [], "Biolysis From Enemies", "EnemyBiolysisEvent"),
         new AllyActionEvent([ ActionIds.Contradance], [..InternalConstants.LimitBreakList], 
             new Dictionary<Personalization, List<string>>{{Personalization.FemPronouns, [HerCharmsNotDeniedFem, FeelingLoveFem]}}, "Contradance (Feminine Pronouns)", "AllyDncLBEvent"),
         new AllyActionEvent([ ActionIds.Flarethrower], [StartedFire], [], "Flarethrower (Rival Wings)", "AllyFlarethrowerEvent"),

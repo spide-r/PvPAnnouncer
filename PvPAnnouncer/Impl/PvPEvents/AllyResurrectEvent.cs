@@ -17,13 +17,14 @@ public class AllyResurrectEvent: PvPActorEvent
 
     public override List<string> SoundPaths()
     {
-        return [BackUpGrit, BackOnFeet, RisesAgain, WhatFightingSpirit, BackInAction];
+        return [BackUpGrit, BackOnFeet, RisesAgain, WhatFightingSpirit, BackInAction, BattleNotOverDontDespair];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
     {
         return new Dictionary<Personalization, List<string>>
         {
+            {Personalization.President, [ItsAliveLindwurm, ContinuesToMultiply, LWCompletelyHealed, SomethingRevolting]}
         };    
     }
 

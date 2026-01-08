@@ -18,7 +18,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
 
     public override List<string> SoundPaths()
     {
-        return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath];
+        return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath, FeverPitch];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

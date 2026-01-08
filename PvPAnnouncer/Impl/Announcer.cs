@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using FFXIVClientStructs.FFXIV.Client.System.Threading;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -21,6 +23,7 @@ public class Announcer: IAnnouncer
     private readonly Queue<string> _lastVoiceLines = new();
     private readonly Queue<string> _lastEvents = new();
     private long _timestamp = 0;
+    private int _lastVoiceLineLength = 0; //todo change once battletalk decorator implemented 
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -34,7 +37,7 @@ public class Announcer: IAnnouncer
         long diff = newTimestamp - _timestamp;
         
         // == Objective 4 ==
-        if (diff < PluginServices.Config.CooldownSeconds)
+        if (diff < (PluginServices.Config.CooldownSeconds + _lastVoiceLineLength))
         {
             PluginServices.PluginLog.Verbose($"Cooldown not finished");
             return;
@@ -147,8 +150,16 @@ public class Announcer: IAnnouncer
         int rand = Random.Shared.Next(sounds.Count);
         string s = sounds[rand];
         WrapUp(pvpEvent, s);
-        PlaySound(AnnouncerLines.GetPath(s));
-        SendBattleTalk(s);
+        Task announceTask = Task.Factory.StartNew(async () =>
+        {
+            PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s} by {PluginServices.Config.AnimationDelayFactor}");
+            await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
+            PlaySound(AnnouncerLines.GetPath(s));
+            SendBattleTalk(s);
+            PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");
+
+        });
+        announceTask.WaitAsync(TimeSpan.FromSeconds(5));
     }
 
     private void WrapUp(PvPEvent pvpEvent, string chosenLine)
@@ -174,6 +185,11 @@ public class Announcer: IAnnouncer
                 var duration = battleTalk.Duration;
                 var icon = battleTalk.Icon;
                 var style = battleTalk.Style;
+                if (text.StartsWith('_'))
+                {
+                    text = AnnouncerLines.GetAnnouncementStringFromUnusedVo(voiceLine);
+                    duration = (byte) AnnouncerLines.GetAnnouncementLengthFromUnusedVo(voiceLine);
+                }
                 if (icon != 0)
                 {
                     UIModule.Instance()->ShowBattleTalkImage(name, text, icon, duration, style);
@@ -183,7 +199,7 @@ public class Announcer: IAnnouncer
                     UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
                 }
             }
-            catch (InvalidOperationException _)
+            catch (InvalidOperationException _) 
             {
                 UIModule.Instance()->ShowBattleTalk("Metem", AnnouncerLines.GetAnnouncementStringFromUnusedVo(voiceLine), AnnouncerLines.GetAnnouncementLengthFromUnusedVo(voiceLine), 6);
             }

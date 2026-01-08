@@ -20,7 +20,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
             CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
             CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
-            MjStillInItGentle, MjStillStandingGentle];
+            MjStillInItGentle, MjStillStandingGentle, HardPressed, SomethingsComing, FeverPitch];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()

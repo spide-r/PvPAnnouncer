@@ -57,6 +57,7 @@ public class ConfigWindow : Window, IDisposable
         var percent = _configuration.Percent;
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
         var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
+        var animationDelayFactor = _configuration.AnimationDelayFactor;
         var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
         
@@ -94,11 +95,11 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if(ImGui.Checkbox("Do you want to personalize announcer voicelines?", ref personalization)){
+        if(ImGui.Checkbox("Enable Personalized Voice Lines", ref personalization)){
             _configuration.WantsPersonalizedVoiceLines = personalization;
             _configuration.Save();
         };
-        ImGuiComponents.HelpMarker("Do you want to let metem use he/she, or directly mention Arcadion fighter names?");
+        ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names.");
         if (personalization)
         {
             ImGui.Separator();
@@ -215,9 +216,9 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         ImGui.Separator();
-        ImGui.TextWrapped("What is the minimum amount of seconds to wait between announcements?");
+        ImGui.TextWrapped("Minimum delay between announcements");
         ImGui.Indent();
-        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120))
+        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120,"%ds"))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
@@ -225,17 +226,30 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Unindent();
         
         
-        ImGui.TextWrapped("What percent of Events should have an announcement?");
+        ImGui.TextWrapped("Announcement Frequency");
+        ImGuiComponents.HelpMarker("This controlls the chance of Metem announcing any given event.");
         ImGui.Indent();
-        if (ImGui.SliderInt("###SliderPercent", ref percent, 1, 100))
+
+        if (ImGui.SliderInt("###SliderPercent", ref percent, 1, 100, "%d%%"))
         {
             _configuration.Percent = percent;
             _configuration.Save();
         }
         ImGui.Unindent();
         
+        ImGui.TextWrapped("Animation Delay Factor");
+        ImGuiComponents.HelpMarker("Sometimes Metem announces things a split-second too early. This allows one to remain fair and competitive while still enjoying this plugin.");
+        ImGui.Indent();
+
+        if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms"))
+        {
+            _configuration.AnimationDelayFactor = animationDelayFactor;
+            _configuration.Save();
+        }
+        ImGui.Unindent();
         
-        ImGui.TextWrapped("How many unique Voice Lines should be said before a potential repeat?");
+        
+        ImGui.TextWrapped("Minimum unique voice lines to play before a repeat is allowed.");
         ImGui.Indent();
         if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
         {
@@ -245,7 +259,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Unindent();
         
 
-        ImGui.TextWrapped("How many unique Events should be commented on before a duplicate happens?");
+        ImGui.TextWrapped("Minimum number of events to announce before a repeat is allowed.");
         ImGui.Indent();
         if (ImGui.SliderInt("###SliderEvents", ref repeatEventCommentary, 1, 10))
         {

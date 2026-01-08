@@ -25,7 +25,7 @@ public class AllyBurstedEvent: PvPEvent
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
             CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
             CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
-            MjStillInItGentle, MjStillStandingGentle, NowhereLeft, RainOfDeath,SuchScorn ];
+            MjStillInItGentle, MjStillStandingGentle, NowhereLeft, RainOfDeath, SuchScorn, HardPressed, StayStrong, FeverPitch];
     }
 
     public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
@@ -46,7 +46,7 @@ public class AllyBurstedEvent: PvPEvent
                 return false;
             }
             
-            PluginServices.PluginLog.Verbose($"{_lastHit}, {_hitters.Count}");
+            //PluginServices.PluginLog.Verbose($"{_lastHit}, {_hitters.Count}");
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))

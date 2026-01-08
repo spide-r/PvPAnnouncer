@@ -31,6 +31,23 @@ public class BattleTalk // decorator
     Duration = t.Unknown3;
     Style = t.Unknown4;
   }
+  
+  public BattleTalk(string voiceover, string text, byte duration)
+  {
+    uint vo = uint.Parse(voiceover);
+    var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
+    var t = sheet.Where(sc =>
+    {
+      return sc.Any(bt => bt.Unknown1.Equals(vo));
+    }).First().First(aa => aa.Unknown1.Equals(vo));
+    RowId = t.RowId;
+    SubRowId = t.SubrowId;
+    Icon = t.Unknown0;
+    Voiceover = t.Unknown1;
+    Text = text;
+    Duration = duration;
+    Style = t.Unknown4;
+  }
 
   private static ClientLanguage GetLanguage(string lang)
   {

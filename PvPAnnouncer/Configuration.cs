@@ -15,6 +15,7 @@ namespace PvpAnnouncer
         public int Version { get; set; } = 4;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
+        public int AnimationDelayFactor { get; set; } = 250;
         
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
