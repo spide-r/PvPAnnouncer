@@ -210,7 +210,7 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if (ImGui.Checkbox("Notify me when my Voice volume is muted", ref notify))
+        if (ImGui.Checkbox("Notify when Voice Volume is muted", ref notify))
         {
             _configuration.Notify = notify;
             _configuration.Save();
@@ -237,8 +237,8 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Unindent();
         
-        ImGui.TextWrapped("Animation Delay Factor");
-        ImGuiComponents.HelpMarker("Sometimes Metem announces things a split-second too early. This allows one to remain fair and competitive while still enjoying this plugin.");
+        ImGui.TextWrapped("Announcement Delay");
+        ImGuiComponents.HelpMarker("Sometimes Metem announces a split-second too early. This setting adds a very minor delay which should prevent announcements before an action finishes.");
         ImGui.Indent();
 
         if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms"))

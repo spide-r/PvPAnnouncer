@@ -23,7 +23,7 @@ public class MaxBattleFeverEvent: PvPEvent
     {
         return new Dictionary<Personalization, List<BattleTalk>>
         {
-            {Personalization.MascPronouns, [RoofCavedSuchDevastation]}, 
+            {Personalization.MascPronouns, [RoofCavedSuchDevastation, TyrannyTimeMasc]}, 
             { Personalization.FemPronouns, [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem]},
             {Personalization.DancingGreen, [DGFeverPich]},
         };

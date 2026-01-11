@@ -170,7 +170,7 @@ public class Announcer: IAnnouncer
         _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
     }
 
-    public void SendBattleTalk(BattleTalk battleTalk) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
+    public void SendBattleTalk(BattleTalk battleTalk) 
     {
         if (PluginServices.Config.HideBattleText || battleTalk is CutsceneTalk) 
         {
