@@ -15,13 +15,13 @@ public class MaxBattleFeverEvent: PvPEvent
         InternalName = "MaxBattleFeverEvent";
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return [WhatPower, RainOfDeath];
     }
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>
+        return new Dictionary<Personalization, List<BattleTalk>>
         {
             {Personalization.MascPronouns, [RoofCavedSuchDevastation]}, 
             { Personalization.FemPronouns, [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem]},

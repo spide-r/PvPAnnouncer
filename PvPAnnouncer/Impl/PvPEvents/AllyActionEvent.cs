@@ -11,13 +11,13 @@ public class AllyActionEvent : PvPActionEvent
 {
     //generic event for specific action and sound pairings
 
-    private List<string> SoundPathsList { get; }
-    private Dictionary<Personalization, List<string>> PersonalizedSoundPathsList;
+    private List<BattleTalk> SoundPathsList { get; }
+    private Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPathsList;
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,
-        List<string> soundPaths,
-        Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Action", string internalName = "internal")
+        List<BattleTalk> soundPaths,
+        Dictionary<Personalization, List<BattleTalk>> personalizedSoundPaths, string name = "Action", string internalName = "internal")
     {
         SoundPathsList = soundPaths;
         PersonalizedSoundPathsList = personalizedSoundPaths;
@@ -26,12 +26,12 @@ public class AllyActionEvent : PvPActionEvent
         InternalName = internalName;
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return SoundPathsList;
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
         return PersonalizedSoundPathsList;
     }

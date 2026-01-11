@@ -15,14 +15,14 @@ public class AllyResurrectEvent: PvPActorEvent
         InternalName = "AllyResurrectEvent";
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return [BackUpGrit, BackOnFeet, RisesAgain, WhatFightingSpirit, BackInAction, BattleNotOverDontDespair];
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>
+        return new Dictionary<Personalization, List<BattleTalk>>
         {
             {Personalization.President, [ItsAliveLindwurm, ContinuesToMultiply, LWCompletelyHealed, SomethingRevolting]}
         };    

@@ -6,7 +6,7 @@ namespace PvPAnnouncer.Interfaces;
 
 public interface ISoundManager
 {    
-    void PlaySound(String path);
+    void PlaySound(string path);
     void ToggleMute();
     void SetMute(bool mute);
     

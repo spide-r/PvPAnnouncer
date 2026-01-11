@@ -13,16 +13,16 @@ public class AllyDeathEvent : PvPActorControlEvent
         Name = "Deaths";
         InternalName = "AllyDeathEvent";
     }
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, 
             CouldntAvoid, BeenFelled, TheyreDownCanTheyRecover, ChampCrushed, MjGoodnessGracious, MjPainfulToWatch, 
             MjChallengerDownHardGentle, MjDownNotOut];
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
+        return new Dictionary<Personalization, List<BattleTalk>>();
     }
 
     public override bool InvokeRule(IMessage m)

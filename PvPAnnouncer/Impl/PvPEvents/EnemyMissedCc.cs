@@ -16,7 +16,7 @@ public class EnemyMissedCc: PvPActionEvent
         InternalName = "EnemyMissedCcEvent";
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return
         [
@@ -25,9 +25,9 @@ public class EnemyMissedCc: PvPActionEvent
         ];
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>
+        return new Dictionary<Personalization, List<BattleTalk>>
         {
         };
         

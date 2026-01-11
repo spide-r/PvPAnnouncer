@@ -25,6 +25,16 @@ public class DevWindow: Window, IDisposable
 
     private long ll = 0L;
     private string ss = "";
+    
+    public static string GetPath(string announcement)
+    {
+        if (announcement.StartsWith("cut"))
+        {
+            return announcement + "_en.scd";
+
+        }
+        return "sound/voice/vo_line/" + announcement + "_en.scd";
+    }
     public override void Draw()
     {
   
@@ -50,8 +60,8 @@ public class DevWindow: Window, IDisposable
         ImGui.SameLine();
         if (ImGui.Button("Play###VoLineButton"))
         {
-            PluginServices.SoundManager.PlaySound(AnnouncerLines.GetPath(l.ToString()));
-            PluginServices.Announcer.SendBattleTalk(l.ToString());
+            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
+            PluginServices.Announcer.SendBattleTalk(new BattleTalk(l.ToString()));
         }
 
         ImGui.Separator();

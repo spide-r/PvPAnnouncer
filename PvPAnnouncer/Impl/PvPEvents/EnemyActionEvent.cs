@@ -10,7 +10,7 @@ public class EnemyActionEvent : PvPActionEvent
 {
     private static uint[] _actionIds = [];
 
-    public EnemyActionEvent(uint[] actionIds, List<string> soundPaths, Dictionary<Personalization, List<string>> personalizedSoundPaths, string name = "Enemy Actions", string internalName = "EnemyActions")
+    public EnemyActionEvent(uint[] actionIds, List<BattleTalk> soundPaths, Dictionary<Personalization, List<BattleTalk>> personalizedSoundPaths, string name = "Enemy Actions", string internalName = "EnemyActions")
     {
         _actionIds = actionIds;
         SoundPathsList = soundPaths;
@@ -19,14 +19,14 @@ public class EnemyActionEvent : PvPActionEvent
         InternalName = internalName;
     }
 
-    public List<string> SoundPathsList { get; init; }
-    public Dictionary<Personalization, List<string>> PersonalizedSoundPathsList { get; init; }
-    public override List<string> SoundPaths()
+    public List<BattleTalk> SoundPathsList { get; init; }
+    public Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPathsList { get; init; }
+    public override List<BattleTalk> SoundPaths()
     {
         return SoundPathsList;
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
         return PersonalizedSoundPathsList;
     }

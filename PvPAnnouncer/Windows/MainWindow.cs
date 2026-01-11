@@ -20,7 +20,6 @@ public class MainWindow: Window, IDisposable
         };
 
     }
-
     public override void Draw()
     {
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -41,7 +40,7 @@ public class MainWindow: Window, IDisposable
         {
             PluginServices.ChatGui.Print("Playing Voiceline!", InternalConstants.MessageTag);
             var line = AnnouncerLines.GetRandomAnnouncement();
-            PluginServices.SoundManager.PlaySound(AnnouncerLines.GetPath(line));
+            PluginServices.SoundManager.PlaySound(line.GetPath(PluginServices.Config.Language));
             PluginServices.PlayerStateTracker.CheckSoundState();
             SendBattleTalk(line);
             if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -58,9 +57,8 @@ public class MainWindow: Window, IDisposable
     }
     
     
-    private void SendBattleTalk(string line)
+    private void SendBattleTalk(BattleTalk battleTalk)
     {
-        BattleTalk battleTalk = new BattleTalk(line);
         var name = "Metem";
         var text = battleTalk.Text.ToString();
         var duration = battleTalk.Duration;

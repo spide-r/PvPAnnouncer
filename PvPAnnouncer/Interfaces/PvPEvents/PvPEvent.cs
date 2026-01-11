@@ -6,9 +6,9 @@ namespace PvPAnnouncer.Interfaces.PvPEvents;
 
 public abstract class PvPEvent(string name = "PvP Event")
 {
-    public abstract List<string> SoundPaths();
+    public abstract List<BattleTalk> SoundPaths();
 
-    public abstract Dictionary<Personalization, List<string>> PersonalizedSoundPaths();
+    public abstract Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths();
     public abstract bool InvokeRule(IMessage message);
     public string Name = name;
     public string InternalName = "InternalName";

@@ -7,7 +7,7 @@ namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchConditionsEvent : PvPEvent
 {
-    public MatchConditionsEvent(List<string> soundPathsList, string name = "Match Conditions", string internalName = "MatchConditions")
+    public MatchConditionsEvent(List<BattleTalk> soundPathsList, string name = "Match Conditions", string internalName = "MatchConditions")
     {
         SoundPathsList = soundPathsList;
         Name = name;
@@ -16,15 +16,15 @@ public class MatchConditionsEvent : PvPEvent
     // Weather, Match Obstacles, Conditions Changing
     
     
-    private List<string> SoundPathsList { get; }
-    public override List<string> SoundPaths()
+    private List<BattleTalk> SoundPathsList { get; }
+    public override List<BattleTalk> SoundPaths()
     {
         return SoundPathsList;
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
+        return new Dictionary<Personalization, List<BattleTalk>>();
     }
 
     public override bool InvokeRule(IMessage message)

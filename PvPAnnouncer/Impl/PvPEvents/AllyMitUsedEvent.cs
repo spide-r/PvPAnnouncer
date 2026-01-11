@@ -14,14 +14,14 @@ public class AllyMitUsedEvent: PvPActionEvent
         InternalName = "AllyMitUsedEvent";
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return  [IroncladDefense, WhatAClash, ThrillingBattle, MjDontStandAChance];
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
+        return new Dictionary<Personalization, List<BattleTalk>>();
     }
 
     public override bool InvokeRule(IMessage message)

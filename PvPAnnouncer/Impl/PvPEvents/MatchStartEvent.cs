@@ -15,14 +15,14 @@ public class MatchStartEvent: PvPMatchEvent
         InternalName = "MatchStartEvent";
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return [SendingCameras, UpstartBegins];
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>()
+        return new Dictionary<Personalization, List<BattleTalk>>()
         {
             {Personalization.BlackCat, [FirstOpponent, NineLives, IntroBc]},
             {Personalization.HoneyBLovely, [HoneyBShowBegun, SavorSting, IntroHbl]},

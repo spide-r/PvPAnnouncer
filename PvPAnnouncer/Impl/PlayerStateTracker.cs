@@ -133,7 +133,7 @@ public class PlayerStateTracker: IPlayerStateTracker
 
     public bool IsDawntrailInstalled()
     {
-        return PluginServices.DataManager.FileExists(AnnouncerLines.GetPath(AnnouncerLines.Fallen));
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_en.scd");
     }
 
     public void EmitToBroker(IMessage pvpEvent)

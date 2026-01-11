@@ -20,10 +20,10 @@ public class Announcer: IAnnouncer
      * 5. Use the appropriate gender for the challenger
      */
     
-    private readonly Queue<string> _lastVoiceLines = new();
+    private readonly Queue<BattleTalk> _lastVoiceLines = new();
     private readonly Queue<string> _lastEvents = new();
     private long _timestamp = 0;
-    private int _lastVoiceLineLength = 0; //todo change once battletalk decorator implemented 
+    private int _lastVoiceLineLength = 0;
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -80,9 +80,9 @@ public class Announcer: IAnnouncer
     }
 
     
-    private void AddVoiceLineToRecentList(String e)
+    private void AddVoiceLineToRecentList(BattleTalk e)
     {
-        PluginServices.PluginLog.Verbose("Adding Voice line to history");
+        PluginServices.PluginLog.Verbose($"Adding Voice line {e.Voiceover} to history");
 
         if (_lastVoiceLines.Count > PluginServices.Config.RepeatVoiceLineQueue - 1) 
         {
@@ -114,7 +114,7 @@ public class Announcer: IAnnouncer
 
     public void PlaySound(PvPEvent pvpEvent)
     {
-        List<string> sounds = new List<string>(pvpEvent.SoundPaths());
+        List<BattleTalk> sounds = new List<BattleTalk>(pvpEvent.SoundPaths());
         
         // == Objective 5 == 
 
@@ -148,13 +148,13 @@ public class Announcer: IAnnouncer
         }
         
         int rand = Random.Shared.Next(sounds.Count);
-        string s = sounds[rand];
+        var s = sounds[rand];
         WrapUp(pvpEvent, s);
         Task announceTask = Task.Factory.StartNew(async () =>
         {
             PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
-            PlaySound(AnnouncerLines.GetPath(s));
+            PlaySound(s.GetPath(PluginServices.Config.Language));
             SendBattleTalk(s);
             PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");
 
@@ -162,16 +162,17 @@ public class Announcer: IAnnouncer
         announceTask.WaitAsync(TimeSpan.FromSeconds(5));
     }
 
-    private void WrapUp(PvPEvent pvpEvent, string chosenLine)
+    private void WrapUp(PvPEvent pvpEvent, BattleTalk chosenLine)
     {
         AddEventToRecentList(pvpEvent);
         AddVoiceLineToRecentList(chosenLine);
+        _lastVoiceLineLength = chosenLine.Duration;
         _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
     }
 
-    public void SendBattleTalk(string voiceLine) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
+    public void SendBattleTalk(BattleTalk battleTalk) //todo: when we eventually add the custom event creator it might be worth moving this to its own class
     {
-        if (PluginServices.Config.HideBattleText || voiceLine.StartsWith("cut")) //todo: sloppy
+        if (PluginServices.Config.HideBattleText || battleTalk is CutsceneTalk) 
         {
             return;
         }
@@ -179,7 +180,6 @@ public class Announcer: IAnnouncer
         {
             try
             {
-                BattleTalk battleTalk = new BattleTalk(voiceLine);
                 var name = "Metem";
                 var text = battleTalk.Text.ExtractText();
                 var duration = battleTalk.Duration;
@@ -187,8 +187,8 @@ public class Announcer: IAnnouncer
                 var style = battleTalk.Style;
                 if (text.StartsWith('_'))
                 {
-                    text = AnnouncerLines.GetAnnouncementStringFromUnusedVo(voiceLine);
-                    duration = (byte) AnnouncerLines.GetAnnouncementLengthFromUnusedVo(voiceLine);
+                    text = "Uh oh! You shouldn't see this! Contact the PvPannouncer dev!";
+                    duration = 5;
                 }
                 if (icon != 0)
                 {
@@ -201,7 +201,7 @@ public class Announcer: IAnnouncer
             }
             catch (InvalidOperationException _) 
             {
-                UIModule.Instance()->ShowBattleTalk("Metem", AnnouncerLines.GetAnnouncementStringFromUnusedVo(voiceLine), AnnouncerLines.GetAnnouncementLengthFromUnusedVo(voiceLine), 6);
+                UIModule.Instance()->ShowBattleTalk("Metem", "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!", 6, 6);
             }
             catch (Exception e)
             {

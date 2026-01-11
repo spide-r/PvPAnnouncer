@@ -14,14 +14,14 @@ public class EnteredMechEvent: PvPEvent
         Name = "Entering a RW Mech";
         InternalName = "EnteredMechEvent";
     }
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
         return [ColossalThing];
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>();
+        return new Dictionary<Personalization, List<BattleTalk>>();
     }
 
     public override bool InvokeRule(IMessage message)

@@ -14,14 +14,14 @@ public class AllyLimitBreakEvent: PvPActionEvent
         InternalName = "AllyLimitBreakEvent";
     }
 
-    public override List<string> SoundPaths()
+    public override List<BattleTalk> SoundPaths()
     {
-        return InternalConstants.LimitBreakList;
+        return LimitBreakList;
     }
 
-    public override Dictionary<Personalization, List<string>> PersonalizedSoundPaths()
+    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
     {
-        return new Dictionary<Personalization, List<string>>{
+        return new Dictionary<Personalization, List<BattleTalk>>{
             {Personalization.MascPronouns, [BoundingFromWallToWallMasc, AssaultedRefMasc]}, 
             {Personalization.BlackCat, [FeralOnslaught, FelineFerocity, LitheAndLethal]}, 
             {Personalization.HoneyBLovely, [ChangedRoutine]},

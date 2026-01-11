@@ -14,6 +14,17 @@ public class BattleTalk // decorator
   public readonly ReadOnlySeString Text;
   public readonly byte Duration;
   public readonly byte Style;
+  
+  public BattleTalk()
+  {
+    RowId = 0;
+    SubRowId = 0;
+    Icon = 0;
+    Voiceover = 0;
+    Text = new ReadOnlySeString();
+    Duration = 5;
+    Style = 6;
+  }
 
   public BattleTalk(string voiceover)
   {
@@ -32,21 +43,20 @@ public class BattleTalk // decorator
     Style = t.Unknown4;
   }
   
-  public BattleTalk(string voiceover, string text, byte duration)
+  public BattleTalk(string voiceover, int duration, string text)
   {
     uint vo = uint.Parse(voiceover);
-    var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
-    var t = sheet.Where(sc =>
-    {
-      return sc.Any(bt => bt.Unknown1.Equals(vo));
-    }).First().First(aa => aa.Unknown1.Equals(vo));
-    RowId = t.RowId;
-    SubRowId = t.SubrowId;
-    Icon = t.Unknown0;
-    Voiceover = t.Unknown1;
+    
+    
+    
+    
+    RowId = 0;
+    SubRowId = 0;
+    Icon = 0;
+    Voiceover = vo;
     Text = text;
-    Duration = duration;
-    Style = t.Unknown4;
+    Duration = (byte) duration;
+    Style = 6;
   }
 
   private static ClientLanguage GetLanguage(string lang)
@@ -71,6 +81,15 @@ public class BattleTalk // decorator
     Duration = t.Unknown3;
     Style = t.Unknown4;
   }
+
+  public string GetPath(string lang)
+  {
+    return "sound/voice/vo_line/" + Voiceover + "_" + lang + ".scd";
+
+  }
+
+
+
 
   /*
       name: ContentDirectorBattleTalk
