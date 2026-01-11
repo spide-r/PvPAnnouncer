@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Dalamud.Game;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
@@ -30,26 +31,35 @@ public class BattleTalk // decorator
   {
     uint vo = uint.Parse(voiceover);
     var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
-    var t = sheet.Where(sc =>
+    try
     {
-      return sc.Any(bt => bt.Unknown1.Equals(vo));
-    }).First().First(aa => aa.Unknown1.Equals(vo));
-    RowId = t.RowId;
-    SubRowId = t.SubrowId;
-    Icon = t.Unknown0;
-    Voiceover = t.Unknown1;
-    Text = t.Text.Value.Text;
-    Duration = t.Unknown3;
-    Style = t.Unknown4;
+      var t = sheet.Where(sc =>
+      {
+        return sc.Any(bt => bt.Unknown1.Equals(vo));
+      }).First().First(aa => aa.Unknown1.Equals(vo));
+      RowId = t.RowId;
+      SubRowId = t.SubrowId;
+      Icon = t.Unknown0;
+      Voiceover = t.Unknown1;
+      Text = t.Text.Value.Text;
+      Duration = t.Unknown3;
+      Style = t.Unknown4;
+    }
+    catch (InvalidOperationException _)
+    {
+      RowId = 0;
+      SubRowId = 0;
+      Icon = 0;
+      Voiceover = vo;
+      Text = "Unknown Text! You shouldn't be seeing this";
+      Duration = (byte) 3;
+      Style = 6;
+    }
   }
   
   public BattleTalk(string voiceover, int duration, string text)
   {
     uint vo = uint.Parse(voiceover);
-    
-    
-    
-    
     RowId = 0;
     SubRowId = 0;
     Icon = 0;
