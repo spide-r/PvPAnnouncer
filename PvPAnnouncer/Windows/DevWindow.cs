@@ -25,6 +25,10 @@ public class DevWindow: Window, IDisposable
 
     private long ll = 0L;
     private string ss = "";
+    private string nn = "";
+    private string vv = "";
+    private long dd = 0L;
+    private bool hide = false;
     
     public static string GetPath(string announcement)
     {
@@ -37,7 +41,8 @@ public class DevWindow: Window, IDisposable
     }
     public override void Draw()
     {
-  
+
+    
         var s = ss;
         ImGui.Text("Play A Sound path");
         if (ImGui.InputText("###SoundPath", ref s))
@@ -60,10 +65,19 @@ public class DevWindow: Window, IDisposable
         ImGui.SameLine();
         if (ImGui.Button("Play###VoLineButton"))
         {
-            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
-            PluginServices.Announcer.SendBattleTalk(new BattleTalk(l.ToString()));
+           play(ll);
         }
 
+        if (ImGui.Button("Play the weeb version"))
+        {
+            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_ja.scd");
+
+        }
+        var h = hide;
+        if (ImGui.Checkbox("Hide Battle Talk", ref h))
+        {
+            hide = h;
+        }
         ImGui.Separator();
         ImGui.Text("Last Action Used: " + PluginServices.PvPEventBroker.GetLastAction());
         if (ImGui.Button("Get Statuses"))
@@ -73,14 +87,59 @@ public class DevWindow: Window, IDisposable
                 PluginServices.PluginLog.Verbose(status.StatusId + " " + status.GameData.Value.Name.ToString());
             }
         }
+        ImGui.Separator();
+        var n = nn;
+        if (ImGui.InputText("Name", ref n))
+        {
+            nn = n;
+        }
+        
+        var v = vv;
+        if (ImGui.InputText("Voice Line", ref v))
+        {
+            vv = v;
+        }
+        var d = dd;
+
+        if (ImGui.Button("Go Back And Play"))
+        {
+            ll = l - 1;
+            play(ll);
+        }
+        ImGui.SameLine();
+        if (ImGui.Button("Go Forward And Play"))
+        {
+            ll = l + 1;
+            play(ll);
+            
+        }
+        if (ImGui.InputScalar("Duration", ref d, 1L, 1L))
+        {
+            dd = d;
+        }
+
+        if (ImGui.Button("Save This"))
+        {
+            PluginServices.Config.Dev_VoLineList.Add($" public static readonly BattleTalk VO{ll} new BattleTalk(\"{nn.Trim()}\", \"{ll}\", {dd}, \"{vv.Trim()}\"/, GetPersonalization([Personalization.{nn}Announcer])); // {vv}");
+            PluginServices.Config.Save();
+            vv = "";
+        }
         
     }
-    
+
+    private void play(long l)
+    {
+        PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
+        if (!hide)
+        {
+            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", l.ToString(), []));
+        }
+    }
     
     private void SendBattleTalk(string line)
     {
-        BattleTalk battleTalk = new BattleTalk(line);
-        var name = "Metem";
+        BattleTalk battleTalk = new BattleTalk("Metem", line, []);
+        var name = battleTalk.Name;
         var text = battleTalk.Text.ToString();
         var duration = battleTalk.Duration;
         var icon = battleTalk.Icon;
@@ -101,6 +160,16 @@ public class DevWindow: Window, IDisposable
         }
     }
 
+    private void SendBattleTalk(string name, string text, float duration, byte style, uint image)
+    {
+      
+            unsafe
+            {
+                UIModule.Instance()->ShowBattleTalkImage(name, text, duration, image, style);
+            }
+        
+ 
+    }
     public void Dispose()
     {
     }

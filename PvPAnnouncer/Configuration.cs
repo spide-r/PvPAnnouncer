@@ -12,7 +12,7 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        public int Version { get; set; } = 4;
+        public int Version { get; set; } = 5;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         public int AnimationDelayFactor { get; set; } = 250;
@@ -20,9 +20,11 @@ namespace PvpAnnouncer
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
-        public bool WantsPersonalizedVoiceLines { get; set; } = false;
+        public bool WantsPersonalizedVoiceLines { get; set; } = false; //todo: This variable needs to be changed or removed to reflect the new scion and announcer changes
         
-        public int PersonalizedVoicelines {get; set;} = 0; 
+        public int PersonalizedVoicelines {get; set;} = 0;
+
+        public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
         
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
@@ -37,6 +39,8 @@ namespace PvpAnnouncer
         public int Percent { get; set; } = 70; 
         
         public bool ShowNotification { get; set; } = false;
+
+        public HashSet<string> Dev_VoLineList { get; set; } = [];
         
  
         public string Language { get; set; } = "en";
@@ -142,25 +146,43 @@ namespace PvpAnnouncer
                 ShowNotification = true;
                 Version++;
             }
+
+            if (Version == 4)
+            {
+                //todo make sure the bitmath is migrated properly, then set personalization to metem
+                SetPersonalization(Personalization.MetemAnnouncer);
+                ShowNotification = true;
+                Version++;
+            }
             _pluginInterface?.SavePluginConfig(this);
         }
 
         public bool WantsPersonalization(Personalization p)
         {
-            var personalization = (int) p;
-            return WantsPersonalization(personalization);
+            return VoicelineSettings.HasFlag(p);
         }
-        
-        public bool WantsPersonalization(int p)
+
+        public bool WantsAllPersonalization(List<Personalization> ps)
         {
-            return ((1 << p) & PersonalizedVoicelines) == (1 << p);
+            foreach (var p in ps)
+            {
+                if (!WantsPersonalization(p))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public void SetPersonalization(Personalization p)
         {
-            PersonalizedVoicelines = PersonalizedVoicelines | (1 << (int) p);
+            VoicelineSettings = VoicelineSettings | p;
         }
 
+        public void RemovePersonalization(Personalization toRemove)
+        {
+            VoicelineSettings &= ~toRemove;
+        }
         public void Save()
         {
             _pluginInterface?.SavePluginConfig(this);

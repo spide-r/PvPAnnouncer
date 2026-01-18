@@ -63,8 +63,6 @@ public class ConfigWindow : Window, IDisposable
         
         
         var personalization = _configuration.WantsPersonalizedVoiceLines;
-
-        var personalizationInt = _configuration.PersonalizedVoicelines;
         
         //personalization 
         var fem = _configuration.WantsPersonalization(Personalization.FemPronouns);
@@ -77,10 +75,25 @@ public class ConfigWindow : Window, IDisposable
         var sr = _configuration.WantsPersonalization(Personalization.SugarRiot);
         var ba = _configuration.WantsPersonalization(Personalization.BruteAbominator);
         var hb = _configuration.WantsPersonalization(Personalization.HowlingBlade);
-        var m9 = _configuration.WantsPersonalization(Personalization.VampFatale);
-        var m10 = _configuration.WantsPersonalization(Personalization.DeepBlueRedHot);
-        var m11 = _configuration.WantsPersonalization(Personalization.Tyrant);
-        var m12 = _configuration.WantsPersonalization(Personalization.President);
+        var vf = _configuration.WantsPersonalization(Personalization.VampFatale);
+        var dbrh = _configuration.WantsPersonalization(Personalization.DeepBlueRedHot);
+        var tt = _configuration.WantsPersonalization(Personalization.Tyrant);
+        var pr = _configuration.WantsPersonalization(Personalization.President);
+        
+        // Announcers
+        var metem = _configuration.WantsPersonalization(Personalization.MetemAnnouncer);
+        var alphinaud = _configuration.WantsPersonalization(Personalization.AlphinaudAnnouncer);
+        var alisaie = _configuration.WantsPersonalization(Personalization.AlisaieAnnouncer);
+        var thancred = _configuration.WantsPersonalization(Personalization.ThancredAnnouncer);
+        var urianger = _configuration.WantsPersonalization(Personalization.UriangerAnnouncer);
+        var yshtola = _configuration.WantsPersonalization(Personalization.YshtolaAnnouncer);
+        var estinien = _configuration.WantsPersonalization(Personalization.EstinienAnnouncer);
+        var graha = _configuration.WantsPersonalization(Personalization.GrahaAnnouncer);
+        var krile = _configuration.WantsPersonalization(Personalization.KrileAnnouncer);
+        var wuk = _configuration.WantsPersonalization(Personalization.WukLamatAnnouncer);
+        var koana = _configuration.WantsPersonalization(Personalization.KoanaAnnouncer);
+        var bjj = _configuration.WantsPersonalization(Personalization.BakoolJaJaAnnouncer);
+        var erenville = _configuration.WantsPersonalization(Personalization.ErenvilleAnnouncer);
         
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
@@ -94,14 +107,11 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
-        
-        if(ImGui.Checkbox("Enable Personalized Voice Lines", ref personalization)){
-            _configuration.WantsPersonalizedVoiceLines = personalization;
-            _configuration.Save();
-        };
-        ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names.");
-        if (personalization)
+        if (metem)
         {
+            ImGui.Text("Personalized Voice Lines");
+            ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names. As of now, no other announcers use these features.");
+
             ImGui.Separator();
             ImGui.TextWrapped("Use Voice Lines with: ");
             ImGui.SameLine();
@@ -173,30 +183,30 @@ public class ConfigWindow : Window, IDisposable
                 _configuration.Save();
             }
 
-            if (ImGui.Checkbox("Vamp Fatale", ref m9))
+            if (ImGui.Checkbox("Vamp Fatale", ref vf))
             {
-                SetPersonalization(m9, Personalization.VampFatale);
+                SetPersonalization(vf, Personalization.VampFatale);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
-            if (ImGui.Checkbox("Deep Blue & Red Hot", ref m10))
+            if (ImGui.Checkbox("Deep Blue & Red Hot", ref dbrh))
             {
-                SetPersonalization(m10, Personalization.DeepBlueRedHot);
+                SetPersonalization(dbrh, Personalization.DeepBlueRedHot);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
-            if (ImGui.Checkbox("The Tyrant", ref m11))
+            if (ImGui.Checkbox("The Tyrant", ref tt))
             {
-                SetPersonalization(m11, Personalization.Tyrant);
+                SetPersonalization(tt, Personalization.Tyrant);
                 _configuration.Save();
             }
             ImGui.SameLine();
 
-            if (ImGui.Checkbox("The President", ref m12))
+            if (ImGui.Checkbox("The President", ref pr))
             {
-                SetPersonalization(m12, Personalization.President);
+                SetPersonalization(pr, Personalization.President);
                 _configuration.Save();
             }
             
@@ -416,25 +426,7 @@ public class ConfigWindow : Window, IDisposable
     
         }
     }
-
-    private void RemovePersonalization(Personalization toRemove)
-    {
-        var persInt = 0;
-        var max = (int) Personalization.MaxValue;
-        max += 1;
-        for (int i = 1; i < max; i++) 
-        {
-            if ((int) toRemove != i)
-            {
-                if (_configuration.WantsPersonalization(i))
-                {
-                    persInt = persInt | (1 << i);
-                }
-            }
-        }
-        _configuration.PersonalizedVoicelines = persInt;
-        
-    }
+    
     private void SetPersonalization(bool b, Personalization p)
     {
         if (b)
@@ -443,7 +435,7 @@ public class ConfigWindow : Window, IDisposable
         }
         else
         {
-            RemovePersonalization(p);
+            _configuration.RemovePersonalization(p);
         }
     }
 }
