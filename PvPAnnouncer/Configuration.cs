@@ -24,7 +24,7 @@ namespace PvpAnnouncer
         
         public int PersonalizedVoicelines {get; set;} = 0;
 
-        public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
+        public Personalization VoicelineSettings = Personalization.MetemAnnouncer; //todo does this work
         
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;

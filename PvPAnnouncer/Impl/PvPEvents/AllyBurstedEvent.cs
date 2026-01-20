@@ -6,6 +6,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
@@ -25,16 +26,12 @@ public class AllyBurstedEvent: PvPEvent
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
             CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
             CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
-            MjStillInItGentle, MjStillStandingGentle, NowhereLeft, RainOfDeath, SuchScorn, HardPressed, StayStrong, FeverPitch];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>
-        {
-            {Personalization.BruteBomber, [BBDesprate]},
-        };
-        
+            MjStillInItGentle, MjStillStandingGentle, NowhereLeft, RainOfDeath, SuchScorn, HardPressed, StayStrong, 
+            FeverPitch, BBDesprate, TreadWarily, ThaliakProtectUs, DoNotLoseHeart, PainfulThrashing, ScramblingToKeepUp, SevenHells,
+            AmidstGreatChaos, DangerousMomentIndeed, MakeReady, BeVigilant, LeaveAMark, TheyHaveUpperHand, WatchYourself, 
+            ThereIsNoEndToThem, HangInThere, Courage, StayStrongEstinien, FightHardNotHardEnough, StandFast, WeveComeTooFar, 
+            FindCoverEnergy, DontLoseNerveWuk, GettingInterestingWuk, StillWinWuk, StayAlert, GodsHelpUs, CarefulPlanning
+        ];
     }
 
     public override bool InvokeRule(IMessage message)

@@ -4,6 +4,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyDeathEvent : PvPActorControlEvent
@@ -17,12 +18,13 @@ public class AllyDeathEvent : PvPActorControlEvent
     {
         return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, 
             CouldntAvoid, BeenFelled, TheyreDownCanTheyRecover, ChampCrushed, MjGoodnessGracious, MjPainfulToWatch, 
-            MjChallengerDownHardGentle, MjDownNotOut];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
+            MjChallengerDownHardGentle, MjDownNotOut, HaveYouTheStrength, HydaelynsChosenMuster, LifesFireAlreadySpent, 
+            ConfoundIt, OutcomeWithHubris, WhatANuisance, WontLetThemGetAway, WinThisYet, WontSoonForget, 
+            NothingCantRecoverFrom, LittleSetback, ThisIsNotOver, ChanceWillCome, GainedOnUsWinInEnd, SomeCompetitionNow, ThatIsntGood, NotEasyRecovering,
+            SuchShouldBeFate, VicissitudesOfFortune, BodethIllTurnTide, ReviewOurStrategy, SimplyNoKnowing, UnfortunateSuchIsLife, BedWithoutSupper,
+            DontBeSoReckless, BeMoreCareful, LeftOurselvesOpen, TumultuousDespair, AreYouAlrightGraha, OhHowEmbarrassing, AreYouAlright, CantBeRightKrile,
+            HowDidThatHappenWuk, GonnaBeSickWuk, FeelYourPainWuk, DidntHoldBackWuk, CanDoBetterWuk, DamnItAll, CantBe, DammitAll, StepBehind, 
+            ErrorInCalculations, FallingBehind, LuckWontLast, Competition, Unfortunate, DontPlayGames];
     }
 
     public override bool InvokeRule(IMessage m)

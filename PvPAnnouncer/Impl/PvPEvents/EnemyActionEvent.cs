@@ -26,11 +26,6 @@ public class EnemyActionEvent : PvPActionEvent
         return SoundPathsList;
     }
 
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return PersonalizedSoundPathsList;
-    }
-    
     public override bool InvokeRule(IMessage arg)
     {
         if (arg is ActionEffectMessage message)

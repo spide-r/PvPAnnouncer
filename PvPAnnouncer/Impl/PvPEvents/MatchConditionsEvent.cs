@@ -22,11 +22,6 @@ public class MatchConditionsEvent : PvPEvent
         return SoundPathsList;
     }
 
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
-    }
-
     public override bool InvokeRule(IMessage message)
     {
         return false;

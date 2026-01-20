@@ -4,6 +4,7 @@ using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.Impl;
 
 public class EventListenerLoader: IEventListenerLoader
@@ -13,58 +14,38 @@ public class EventListenerLoader: IEventListenerLoader
         
         // == Custom Events ==
         
-        new AllyActionEvent([ ActionIds.WorldSwallower], [..LimitBreakList, CruelCoil, EitherSide, SomethingRevolting], [], "World Swallower", "AllyVprLBEvent"),
-        new AllyActionEvent([ActionIds.Backlash], [], new Dictionary<Personalization, List<BattleTalk>>{
-            {Personalization.MascPronouns, [RegenCapacityMasc]}, {Personalization.President, [LWCompletelyHealed, LWOutOfControl]}}, "Backlash", "AllyBacklashEvent"),
-        new AllyActionEvent([ActionIds.Slither], [], new Dictionary<Personalization, List<BattleTalk>>{
-            {Personalization.MascPronouns, [ArmSlitheringOutDisgustingMasc, RoundRingMasc]}}, "Slither (Masculine Pronouns)", "AllySlitherEvent"),
-        new AllyActionEvent([ ActionIds.Phalanx], [..LimitBreakList, AllTheseWeaponsMasc], [], "Phalanx (Masculine Pronouns)", "AllyPldLBEvent"),
-        new AllyActionEvent([ ActionIds.Comet], [], new Dictionary<Personalization, List<BattleTalk>>{
-            {Personalization.MascPronouns, [UnleashedFullMightMasc]}}, "Comet (Masculine Pronouns)", "AllyCometEvent"),
-        new AllyActionEvent([ ActionIds.MarksmansSpite], [..LimitBreakList], new Dictionary<Personalization, List<BattleTalk>>{{ Personalization.FemPronouns, [MassiveCannonFem]}},
+        new AllyActionEvent([ ActionIds.WorldSwallower], [..InternalConstants.LimitBreakList, CruelCoil, EitherSide, SomethingRevolting], "World Swallower", "AllyVprLBEvent"),
+        new AllyActionEvent([ActionIds.Backlash], [RegenCapacityMasc, LWCompletelyHealed, LWOutOfControl], "Backlash", "AllyBacklashEvent"),
+        new AllyActionEvent([ActionIds.Slither], [ArmSlitheringOutDisgustingMasc, RoundRingMasc], "Slither (Masculine Pronouns)", "AllySlitherEvent"),
+        new AllyActionEvent([ ActionIds.Phalanx], [..InternalConstants.LimitBreakList, AllTheseWeaponsMasc], "Phalanx (Masculine Pronouns)", "AllyPldLBEvent"),
+        new AllyActionEvent([ ActionIds.Comet], [UnleashedFullMightMasc], "Comet (Masculine Pronouns)", "AllyCometEvent"),
+        new AllyActionEvent([ ActionIds.MarksmansSpite], [..InternalConstants.LimitBreakList, MassiveCannonFem],
             "Marksman's Spite (Feminine Pronouns)", "AllyMchLBEvent"),
-        new AllyActionEvent([ ActionIds.SoulResonance], [..LimitBreakList], new Dictionary<Personalization, List<BattleTalk>>{{ Personalization.FemPronouns, [GatheringAetherFem, ConvertAetherFem, DischargeAether, UnleashedANewFeralSoul]}},
+        new AllyActionEvent([ ActionIds.SoulResonance], [..InternalConstants.LimitBreakList, GatheringAetherFem, ConvertAetherFem, DischargeAether, UnleashedANewFeralSoul],
             "Soul Resonance (Feminine Pronouns)", "AllyBlmLBEvent"),
-        new AllyActionEvent([ActionIds.Communio], [..LimitBreakList, BoundingFromWallToWallMasc], [], "Meteodrive (Masculine Pronouns)", "AllyMnkLbEvent"),
-        new AllyActionEvent([ ActionIds.Seraphism], [..LimitBreakList], 
-            new Dictionary<Personalization, List<BattleTalk>>{{Personalization.FemPronouns, [GrownWingsFem, SomethingGrowingFem]}},
+        new AllyActionEvent([ActionIds.Communio], [..InternalConstants.LimitBreakList, BoundingFromWallToWallMasc],"Meteodrive (Masculine Pronouns)", "AllyMnkLbEvent"),
+        new AllyActionEvent([ ActionIds.Seraphism], [..InternalConstants.LimitBreakList, GrownWingsFem, SomethingGrowingFem],
             "Seraphism (Feminine Pronouns)", "AllySchLbEvent"),
-        new AllyActionEvent([ ActionIds.TenebraeLemurum], [..LimitBreakList, EitherSide], 
-            new Dictionary<Personalization, List<BattleTalk>>
-            {
-                {Personalization.FemPronouns, [UnleashedANewFeralSoul, ConvertAetherFem, SomethingGrowingFem, EvenMoreAether]},
-                {Personalization.Tyrant, [TTAlteredFormMasc]},
-                {Personalization.President, [BadFeeling, Transforming, ItsAliveLindwurm]}
-            },
+        new AllyActionEvent([ ActionIds.TenebraeLemurum], [..InternalConstants.LimitBreakList, EitherSide, UnleashedANewFeralSoul, ConvertAetherFem, 
+                SomethingGrowingFem, EvenMoreAether, TTAlteredFormMasc, BadFeeling, Transforming, ItsAliveLindwurm], 
             "Tenebrae Lemurum", "AllyRprLBEvent"),
-        new AllyActionEvent([ActionIds.FullSwing, ActionIds.WindsReply], [], 
-            new Dictionary<Personalization, List<BattleTalk>>{
-            { Personalization.MascPronouns, [SentRivalFlyingMasc]}
-            }, "Full Swing, Wind's Reply (Masculine Pronouns)", "AllyKBActionEvent"),
-        new AllyActionEvent([ActionIds.Swift], [], new Dictionary<Personalization, 
-            List<BattleTalk>>{{ Personalization.MascPronouns, [SuchSpeedMasc]}}, "Swift (Masculine Pronouns)", "AllySwiftEvent"),
-        new AllyActionEvent([ActionIds.Biolysis], [], new Dictionary<Personalization, 
-            List<BattleTalk>>{{ Personalization.FemPronouns, [VenomStrikeFem]}}, "Biolysis (Feminine Pronouns)", "AllyBiolysisEvent"),
+        new AllyActionEvent([ActionIds.FullSwing, ActionIds.WindsReply], [SentRivalFlyingMasc], 
+            "Full Swing, Wind's Reply (Masculine Pronouns)", "AllyKBActionEvent"),
+        new AllyActionEvent([ActionIds.Swift], [SuchSpeedMasc], "Swift (Masculine Pronouns)", "AllySwiftEvent"),
+        new AllyActionEvent([ActionIds.Biolysis], [VenomStrikeFem], "Biolysis (Feminine Pronouns)", "AllyBiolysisEvent"),
         new EnemyActionEvent([ActionIds.Biolysis], [StruckWithVenon, MutationCorrupting], [], "Biolysis From Enemies", "EnemyBiolysisEvent"),
-        new AllyActionEvent([ ActionIds.Contradance], [..LimitBreakList], 
-            new Dictionary<Personalization, List<BattleTalk>>{{Personalization.FemPronouns, [HerCharmsNotDeniedFem, FeelingLoveFem]}}, "Contradance (Feminine Pronouns)", "AllyDncLBEvent"),
-        new AllyActionEvent([ ActionIds.Flarethrower], [StartedFire], [], "Flarethrower (Rival Wings)", "AllyFlarethrowerEvent"),
+        new AllyActionEvent([ ActionIds.Contradance], [..InternalConstants.LimitBreakList, HerCharmsNotDeniedFem, FeelingLoveFem],"Contradance (Feminine Pronouns)", "AllyDncLBEvent"),
+        new AllyActionEvent([ ActionIds.Flarethrower], [StartedFire], "Flarethrower (Rival Wings)", "AllyFlarethrowerEvent"),
         new EnemyActionEvent([ ActionIds.Flarethrower], [StartedFire], [], "Enemy Flarethrower (Rival Wings)", "EnemyFlarethrowerEvent"),
         new EnemyActionEvent([ ActionIds.Contradance], [ResistTheIrresistible, InvitationToDance],
             [], "Enemy Contradance", "EnemyDncLBEvent"),
         new AllyActionEvent([ ActionIds.Zantetsuken,  ActionIds.SeitonTenchu, 
                  ActionIds.SeitonTenchu2, ActionIds.Perfectio], 
-            [BannedCompoundRobot], new Dictionary<Personalization, List<BattleTalk>>
-            {
-                {Personalization.MascPronouns, [UnusedNoRespectMasc]}, {Personalization.FemPronouns, [UnusedOhMercyFem]},
-                {Personalization.VampFatale, [VFWickedWeapon]}
-            }, "Instant Kills", "AllyInstantKillEvent"),
-        new AllyActionEvent([ActionIds.RisingPhoenix,  ActionIds.FlareStar], [StartedFire], 
-            [], "Rising Phoenix & Flare Star", "AllyFireEvent"),
-        new AllyActionEvent([ActionIds.Blota], [ChainDeathmatch], [], "Blota", "AllyPullEvent"),
-        new AllyActionEvent([ActionIds.Communio], [PunishingAttackFusion], [], "Communio", "AllyCommunioEvent"),
-        new AllyActionEvent([ ActionIds.CelestialRiver], [..LimitBreakList, River], 
-            [],
+            [BannedCompoundRobot, VFWickedWeapon, UnusedOhMercyFem, UnusedNoRespectMasc], "Instant Kills", "AllyInstantKillEvent"),
+        new AllyActionEvent([ActionIds.RisingPhoenix,  ActionIds.FlareStar], [StartedFire], "Rising Phoenix & Flare Star", "AllyFireEvent"),
+        new AllyActionEvent([ActionIds.Blota], [ChainDeathmatch], "Blota", "AllyPullEvent"),
+        new AllyActionEvent([ActionIds.Communio], [PunishingAttackFusion], "Communio", "AllyCommunioEvent"),
+        new AllyActionEvent([ ActionIds.CelestialRiver], [..InternalConstants.LimitBreakList, River, StarsFavorUs, DanceOfTheStars],
             "Celestial River", "AllyAstLbEvent"),
 
         

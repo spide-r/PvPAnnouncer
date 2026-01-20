@@ -5,6 +5,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyHitByLimitBreakEvent : PvPActionEvent
@@ -20,15 +21,9 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
             CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
             CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
-            MjStillInItGentle, MjStillStandingGentle, HardPressed, SomethingsComing, FeverPitch];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>
-        {
-            {Personalization.BruteBomber, [BBDesprate]},
-        };
+            MjStillInItGentle, MjStillStandingGentle, HardPressed, SomethingsComing, FeverPitch, BeatenToThePunch, 
+            SevenHells, ContendWithThreat, SlowAndSteadyThancred, ThisBodethIll, LeaveAMark, BeStrong, TheyllPayForThatEstinien, HangInThere,
+            NotGoingDownWithoutFight, TestUsButPrevail, NoDownWithoutFight, BBDesprate];
     }
 
     public override bool InvokeRule(IMessage message)

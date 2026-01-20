@@ -5,6 +5,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class EnemyMissedCc: PvPActionEvent
@@ -21,17 +22,10 @@ public class EnemyMissedCc: PvPActionEvent
         return
         [
             BeautifullyDodged, SawThroughIt, EffortlesslyDodged, ClearlyAnticipated, StylishEvasion, AvoidedWithEase,
-            DodgedEverything, ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, SlippedBeyondReach
+            DodgedEverything, ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, SlippedBeyondReach, ThisIsGoingWell, NothingToWorryWuk
         ];
     }
 
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>
-        {
-        };
-        
-    }
     public override bool InvokeRule(IMessage message)
     {
         if (message is ActionEffectMessage pp)

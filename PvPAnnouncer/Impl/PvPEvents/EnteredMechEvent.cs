@@ -19,11 +19,6 @@ public class EnteredMechEvent: PvPEvent
         return [ColossalThing];
     }
 
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
-    }
-
     public override bool InvokeRule(IMessage message)
     {
         return message is UserEnteredMechMessage;

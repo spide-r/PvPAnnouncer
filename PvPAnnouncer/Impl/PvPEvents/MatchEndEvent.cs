@@ -5,6 +5,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchEndEvent: PvPMatchEvent
@@ -17,12 +18,8 @@ public class MatchEndEvent: PvPMatchEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return [AllOverUntilNextTime];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
+        return [AllOverUntilNextTime, HoldYourHeadHigh, OnlyPossibleOutcome, WellDone, CouldHaveBeenWorse,
+            RaiseAGlassVictory, QuiteTheStatement, HeartRacingKrile, AllRightYouDidGreat];
     }
 
     public override bool InvokeRule(IMessage message)

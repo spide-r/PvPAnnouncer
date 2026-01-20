@@ -354,7 +354,7 @@ public class ConfigWindow : Window, IDisposable
             string internalName = keyValuePair.Key;
             string publicName = keyValuePair.Value;
             if (!blEvents.Contains(internalName))
-            {
+            {//todo: before you update, this must be filtered based on the actual settings and not a stupid .contains 
                 if (publicName.ToLower().Contains("masculine") && !masc)
                 {
                     continue;

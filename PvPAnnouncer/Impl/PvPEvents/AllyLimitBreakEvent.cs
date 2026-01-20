@@ -16,25 +16,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return LimitBreakList;
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>{
-            {Personalization.MascPronouns, [BoundingFromWallToWallMasc, AssaultedRefMasc]}, 
-            {Personalization.BlackCat, [FeralOnslaught, FelineFerocity, LitheAndLethal]}, 
-            {Personalization.HoneyBLovely, [ChangedRoutine]},
-            {Personalization.BruteBomber, [BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress, BBDesprate]},
-            {Personalization.WickedThunder, [DischargeAether]},
-            {Personalization.DancingGreen, [DGSteps, DGFeverPich]},
-            {Personalization.SugarRiot, [SRBringsWorkToLife]},
-            {Personalization.BruteAbominator, [ChimericalFoe, FeralPowersWeapon, PunishingAttackFusion]},
-            {Personalization.VampFatale, [VFWickedWeapon, VFUnleashedAether, EvenMoreAether, LightheadedFem]},
-            {Personalization.DeepBlueRedHot, [DBTaggingIn, Fusion, HoldingNothingBack]},
-            {Personalization.Tyrant, [TyrannyTimeMasc, UnleashedFullMightMasc]},
-            {Personalization.President, [ArmLifeOwnMasc, ArmSlitheringOutDisgustingMasc, CruelCoil]},
-        };
+        return InternalConstants.LimitBreakList;
     }
 
     public override bool InvokeRule(IMessage message)

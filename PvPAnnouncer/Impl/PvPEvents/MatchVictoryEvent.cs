@@ -4,6 +4,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
@@ -18,12 +19,16 @@ public class MatchVictoryEvent: PvPMatchEvent
     public override List<BattleTalk> SoundPaths()
     {
         return [GenericVictory,  NewGcBornVictory, RobotKo, VictoryChamp, MjBeautifullyPlayed, 
-            MjMadeYourMark, MjKissLadyLuck, MjClobberedWithTable];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
+            MjMadeYourMark, MjKissLadyLuck, MjClobberedWithTable, Hahahahahaha, LetThisMomentLastForever, 
+            PlayedHandToPerfection, TriumphWorthyOfCelebration, VictoryGivesGreaterHope, CommendableResult, 
+            PerformanceForTheAges, HoldYourHeadHigh, WorthyOfGrandfather, OnlyPossibleOutcome, WellDone,
+            ToTheBoldGoTheSpoils, AllAccordingToPlan, VictoryIsOursThancred, PraiseOrPity, DecisiveVictoryThancred, RaiseAGlassVictory, CouldHaveBeenWorse,
+            FavoredByTheSpinner, MasterfulStrategy, SureStepForward, VictoriesPaveWayToRenown, UnequivocalVictory, ImpeccablePerformance, 
+            ExcellentRoundImpressed, NotRestOnLaurels, BestEffortWellDone, RefreshingDiversion, NoLessExpectedEstinien, AimForTheKill,
+            HonorToFightBySide, SplendidResultKeepUp, BefittingMyInspiration, AdventurerOfTalent, QuiteTheStatement, HeartRacingKrile, DelightVictoryKrile,
+            FeatOldManWuk, SmilingBecauseSmiling, AllRightYouDidGreat, TryMyOwnHandWuk, PapaChallengeMatch, 
+            StrategyKeyToVictory, GloryUponTuliyollal, DoneWell, FairPerformanceBetter, NotBadAtAll, HandWell, 
+            BefittingStature, GoodEnoughGuess, ManyTalents, ThatsTheWay, NotSurprised];
     }
 
     public override bool InvokeRule(IMessage message)

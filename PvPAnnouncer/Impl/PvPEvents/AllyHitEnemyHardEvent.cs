@@ -5,6 +5,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 
@@ -18,12 +19,11 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath, FeverPitch];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
+        return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath, FeverPitch, 
+            HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay, 
+            ThatWasUnbecoming, DragoonImpressed, LeaveAMark, AmidstGreatChaos, GiveItEverythingAlisaie, 
+            ShowThemWhatYoureMadeOf, GiveItEverything, FightHardNotHardEnough, GotThemNowWuk, CantPassChanceWuk, 
+            WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive];
     }
 
     public override bool InvokeRule(IMessage message) 

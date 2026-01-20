@@ -16,11 +16,9 @@ public class AllyActionEvent : PvPActionEvent
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,
-        List<BattleTalk> soundPaths,
-        Dictionary<Personalization, List<BattleTalk>> personalizedSoundPaths, string name = "Action", string internalName = "internal")
+        List<BattleTalk> soundPaths, string name = "Action", string internalName = "internal")
     {
         SoundPathsList = soundPaths;
-        PersonalizedSoundPathsList = personalizedSoundPaths;
         ActionIds = actionIds;
         Name = name;
         InternalName = internalName;
@@ -29,11 +27,6 @@ public class AllyActionEvent : PvPActionEvent
     public override List<BattleTalk> SoundPaths()
     {
         return SoundPathsList;
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return PersonalizedSoundPathsList;
     }
     public override bool InvokeRule(IMessage p)
     {

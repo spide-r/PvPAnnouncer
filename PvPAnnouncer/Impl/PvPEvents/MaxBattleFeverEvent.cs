@@ -4,6 +4,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
@@ -17,16 +18,12 @@ public class MaxBattleFeverEvent: PvPEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return [WhatPower, RainOfDeath];
-    }
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>
-        {
-            {Personalization.MascPronouns, [RoofCavedSuchDevastation, TyrannyTimeMasc]}, 
-            { Personalization.FemPronouns, [HerCharmsNotDeniedFem, GatheringAetherFem, UnusedOhMercyFem]},
-            {Personalization.DancingGreen, [DGFeverPich]},
-        };
+        return [WhatPower, RainOfDeath, DontStopNow, RoofCavedSuchDevastation, TyrannyTimeMasc, HerCharmsNotDeniedFem,
+            GatheringAetherFem, UnusedOhMercyFem, DGFeverPich, YesYesJustSo, More, LetThisMomentLastForever, Hahahahahaha,
+            Kill, Rend, KeepItUp, KeepUpTheOffensive, JustWhatWeNeeded, OnwardsAndUpwards, JustGettingStarted, AllAccordingToPlan, PraiseOrPity, KeepThemOnTheirHeels,
+            StarsFavorUs, TheHandIsOurs, LivingLegends, GiveItEverything, FightHardNotHardEnough, CourageAndZeal, BefittingMyInspiration,
+            GoodThingsWait, GettingInterestingWuk, YouReallyAreFamous, Impressive, NotHoldingAnythingBack, 
+            KeepItUpWuk, NeverFailToImpress, EnjoyingYourself, EnjoyingThisArentYou];
     }
 
     public override bool InvokeRule(IMessage message)

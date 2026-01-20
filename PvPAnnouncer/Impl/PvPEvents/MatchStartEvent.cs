@@ -5,6 +5,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class MatchStartEvent: PvPMatchEvent
@@ -17,26 +18,13 @@ public class MatchStartEvent: PvPMatchEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return [SendingCameras, UpstartBegins];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>()
-        {
-            {Personalization.BlackCat, [FirstOpponent, NineLives, IntroBc]},
-            {Personalization.HoneyBLovely, [HoneyBShowBegun, SavorSting, IntroHbl]},
-            {Personalization.BruteBomber, [BBMuscled, IntroBb]},
-            {Personalization.WickedThunder, [WTReturned, IntroWt]},
-            {Personalization.DancingGreen, [DGSteps, IntroDg]},
-            {Personalization.SugarRiot, [SRGallery, IntroSr]},
-            {Personalization.BruteAbominator, [BAMeansBusiness, IntroBa]},
-            {Personalization.HowlingBlade, [WolfLair, IntroHb]},
-            {Personalization.VampFatale, [VFFeastEyes, IntroVf]},
-            {Personalization.DeepBlueRedHot, [TagTeam, IntroDbRh]},
-            {Personalization.Tyrant, [GrandChampion, IntroTt]},
-            {Personalization.President, [IntroLw]},
-        };
+        return [SendingCameras, UpstartBegins, OurTurnThancred, FirstOpponent, NineLives, IntroBc,
+            HoneyBShowBegun, SavorSting, IntroHbl, BBMuscled, IntroBb, WTReturned, IntroWt,
+            DGSteps, IntroDg, SRGallery, IntroSr,BAMeansBusiness, IntroBa, WolfLair, IntroHb,
+            VFFeastEyes, IntroVf, TagTeam, IntroDbRh, GrandChampion, IntroTt, IntroLw, GiveItEverythingAlisaie, 
+            ShowThemWhatYoureMadeOf, VictoryWithinReach, ExplosivesInPlace, ToTheBoldGoTheSpoils, OvercomeTheOdds,
+            LooksPromising, AchievedWithoutRisk, VictoryAtHandIsItNot, WereCountingOnYou, MayTheTwelveGuideYou, FocusOnVictoryGraha, TaskAtHandVictoryOurs,
+            CanvasOfVictory, SkillsToTheProof, IntentionsKnown, StrategyKeyToVictory, VowOfReasonGuide, WorthyOfReputation, VictoryOurs, CouldBeChance];
     }
 
     public override bool InvokeRule(IMessage message)

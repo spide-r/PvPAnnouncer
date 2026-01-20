@@ -22,11 +22,6 @@ public class MatchStormyWeatherEvent: PvPEvent
         return [StormParasols, Thunderstorm];
     }
 
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
-    }
-
     public override bool InvokeRule(IMessage message)
     {
         return message is MatchWeatherMessage {WeatherId: 7 or 8 or 9 or 10};

@@ -101,7 +101,7 @@ public static class AnnouncerLines
     public static readonly BattleTalk BBEmbiggening = new BattleTalk("Metem", "8205371", [Personalization.MetemAnnouncer, Personalization.BruteBomber]); // The Brute Bomber is embiggening himself!
     public static readonly BattleTalk KaboomBBSpecial = new BattleTalk("Metem", "8205375", [Personalization.MetemAnnouncer, Personalization.BruteBomber]); // Kaboom! The Bombarian Special!
     public static readonly BattleTalk BBDesprate = new BattleTalk("Metem", "8205378", [Personalization.MetemAnnouncer, Personalization.BruteBomber]); // The Brute Bomber is desperate!
-    public static readonly BattleTalk BannedCompoundRobot = new BattleTalk("Metem", "8205440", [Personalization.MetemAnnouncer]); // Banned compound detected. Combatant disqualified.
+    public static readonly BattleTalk BannedCompoundRobot = new BattleTalk("Referee", "8205440", [Personalization.MetemAnnouncer]); // Banned compound detected. Combatant disqualified.
     public static readonly BattleTalk AssaultedRefMasc = new BattleTalk("Metem", "8205370", [Personalization.MascPronouns, Personalization.MetemAnnouncer]); // My word, he just assaulted the referee! The scoundrel!
     public static readonly BattleTalk FuseField = new BattleTalk("Metem", "8205376", [Personalization.MetemAnnouncer]); // The infernal Fusefield! How will the challenger respond!?
     public static readonly BattleTalk ChainDeathmatch = new BattleTalk("Metem", "8205377", [Personalization.MetemAnnouncer]); // Oho, Chain Deathmatch! There's no escaping those adamant links!
@@ -283,9 +283,6 @@ public static class AnnouncerLines
     public static readonly BattleTalk LeftRealmOfLogic = new BattleTalk("Metem", "8206149", 4, InternalConstants.TextLeftRealmOfLogic, [Personalization.MetemAnnouncer]); // We appear to have completely left the realm of logic behind!
     public static readonly BattleTalk DefiesComprehension = new BattleTalk("Metem", "8206150", 5, InternalConstants.TextDefiesComprehension, [Personalization.MetemAnnouncer]); // Something that defies all comprehension is unfolding before our very eyess!
 
-    public static readonly List<BattleTalk> LimitBreakList =
-    [WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, NeitherSideHoldingBack, 
-        BattleElectrifying, MjGameChanger, MjBoldMove, MjHeatingUp, AbsoluteBrutality, SuchFerocity, SomethingsComing];
     public static BattleTalk GetRandomAnnouncement()
     {
         List<BattleTalk> list = [ViciousBlow, FeltThatOneStillStanding, BeautifullyDodged, SawThroughIt, WentDownHard, SuckedIn, StruckSquare, AllOverUntilNextTime, Fallen, WhatPower];

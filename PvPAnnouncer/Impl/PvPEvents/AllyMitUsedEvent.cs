@@ -4,6 +4,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyMitUsedEvent: PvPActionEvent
@@ -16,12 +17,9 @@ public class AllyMitUsedEvent: PvPActionEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return  [IroncladDefense, WhatAClash, ThrillingBattle, MjDontStandAChance];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>();
+        return  [IroncladDefense, WhatAClash, ThrillingBattle, MjDontStandAChance, BestDefenceIsGoodDefence, 
+            DoYourWorst, KeepYourGuardUp, SoundDecision, SmallMerciesYshtola, MakeReady, UseConfidenceAgainstThem,
+            WontFallHereKrile, HaveFaithAllWell, MustStandStrongKrile, KeepYourGuardUpWuk];
     }
 
     public override bool InvokeRule(IMessage message)

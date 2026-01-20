@@ -7,6 +7,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyHitUnderGuardEvent: PvPActionEvent
@@ -20,15 +21,10 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
     public override List<BattleTalk> SoundPaths()
     {
         return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, 
-            WhatAClash, DirectHitStillStanding, NotFastEnough, MjHeatingUp, MjStillStandingGentle];
-    }
-
-    public override Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPaths()
-    {
-        return new Dictionary<Personalization, List<BattleTalk>>
-        {
-        };
-        
+            WhatAClash, DirectHitStillStanding, NotFastEnough, MjHeatingUp, MjStillStandingGentle, 
+            WhatANuisance, WontLetThemGetAway, DefeatIsNotAnOption, DoYourWorst, KeepYourGuardUp, ComeOn,
+            TreadCautiously, DangerousMomentIndeed, UseConfidenceAgainstThem, StandFast, WontFallHereKrile, HaveFaithAllWell, MustStandStrongKrile,
+            CloseOneWuk, NothingToFearYet, MuchToBeExpected];
     }
 
     public override bool InvokeRule(IMessage arg)
