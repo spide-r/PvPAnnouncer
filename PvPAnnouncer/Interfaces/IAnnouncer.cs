@@ -10,4 +10,5 @@ public interface IAnnouncer
     
     void PlaySound(string sound);
     void SendBattleTalk(BattleTalk battleTalk);
+    void ClearQueue();
 }

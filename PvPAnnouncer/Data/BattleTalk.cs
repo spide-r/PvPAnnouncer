@@ -42,9 +42,17 @@ public class  BattleTalk // decorator
       {
         return sc.Any(bt => bt.Unknown1.Equals(vo));
       }).First().First(aa => aa.Unknown1.Equals(vo));
+      Name = name;
       RowId = t.RowId;
       SubRowId = t.SubrowId;
-      Icon = t.Unknown0;
+      if (name == "Metem")
+      {
+        Icon = 073287; //todo bodge - fix!
+      }
+      else
+      {
+        Icon = t.Unknown0;
+      }
       Voiceover = t.Unknown1;
       Text = t.Text.Value.Text;
       Duration = t.Unknown3;
@@ -71,6 +79,21 @@ public class  BattleTalk // decorator
     RowId = 0;
     SubRowId = 0;
     Icon = 0;
+    Voiceover = vo;
+    Text = text;
+    Duration = (byte) duration;
+    Style = 6;
+    Personalization = personalization;
+  }
+  
+  public BattleTalk(string name, uint icon, string voiceover, int duration, string text, List<Personalization> personalization)
+  {
+    Name = name;
+
+    uint vo = uint.Parse(voiceover);
+    RowId = 0;
+    SubRowId = 0;
+    Icon = icon;
     Voiceover = vo;
     Text = text;
     Duration = (byte) duration;

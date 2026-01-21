@@ -20,11 +20,10 @@ namespace PvpAnnouncer
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
-        public bool WantsPersonalizedVoiceLines { get; set; } = false; //todo: This variable needs to be changed or removed to reflect the new scion and announcer changes
         
         public int PersonalizedVoicelines {get; set;} = 0;
 
-        public Personalization VoicelineSettings = Personalization.MetemAnnouncer; //todo does this work
+        public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
         
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
@@ -35,6 +34,7 @@ namespace PvpAnnouncer
         public bool Muted { get; set; } = false;
 
         public bool HideBattleText { get; set; } = false;
+        public bool WantsIcon { get; set; } = false;
 
         public int Percent { get; set; } = 70; 
         
@@ -62,13 +62,13 @@ namespace PvpAnnouncer
                 if (WantsFem)
                 {
                     SetPersonalization(Personalization.FemPronouns);
-                    WantsPersonalizedVoiceLines = true;
+                   // WantsPersonalizedVoiceLines = true;
                 }
 
                 if (WantsMasc)
                 {
                     SetPersonalization(Personalization.MascPronouns);
-                    WantsPersonalizedVoiceLines = true;
+                   // WantsPersonalizedVoiceLines = true;
                 }
                 Version++;
             }
@@ -137,7 +137,7 @@ namespace PvpAnnouncer
             }
 
             if (Version == 3)
-            {
+            { // Event Changes
                 if (BlacklistedEvents.Contains("AllyHitHardEvent"))
                 {
                     BlacklistedEvents.Remove("AllyHitHardEvent");
@@ -148,8 +148,14 @@ namespace PvpAnnouncer
             }
 
             if (Version == 4)
-            {
-                //todo make sure the bitmath is migrated properly, then set personalization to metem
+            { // Personalization rework
+                for (var i = 1; i < 15; i++)
+                {
+                    if (((1 << i) & PersonalizedVoicelines) == (1 << i))
+                    {
+                        SetPersonalization((Personalization) (i - 1));
+                    }
+                }
                 SetPersonalization(Personalization.MetemAnnouncer);
                 ShowNotification = true;
                 Version++;
@@ -182,6 +188,18 @@ namespace PvpAnnouncer
         public void RemovePersonalization(Personalization toRemove)
         {
             VoicelineSettings &= ~toRemove;
+        }
+
+        public void TogglePersonalization(Personalization toSet, bool set)
+        {
+            if (set)
+            {
+                SetPersonalization(toSet);
+            }
+            else
+            {
+                RemovePersonalization(toSet);
+            }
         }
         public void Save()
         {

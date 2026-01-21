@@ -32,5 +32,5 @@ public enum Personalization: int
  KoanaAnnouncer = 1 << 24,
  BakoolJaJaAnnouncer = 1 << 25,
  ErenvilleAnnouncer = 1 << 26,
- ZenosAnnouncer = 1 << 26,
+ ZenosAnnouncer = 1 << 27,
 }

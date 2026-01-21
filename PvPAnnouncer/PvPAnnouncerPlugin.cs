@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Dalamud.Game.Command;
-using Dalamud.Interface.Style;
+﻿using Dalamud.Game.Command;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
-using Lumina.Excel.Sheets;
-using PvPAnnouncer.Impl.Commands;
-using PvPAnnouncer.Interfaces;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer
 {
+    //todo: final check-through to make sure all announcers have at least 1 voice icon in each relevant event
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");
@@ -18,13 +14,9 @@ namespace PvPAnnouncer
         private MainWindow MainWindow { get; init; }
         private DevWindow DevWindow { get; init; }
 
-        private readonly Command[] _commands = [ new MuteAnnouncer()];
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
-#if DEBUG
-            _commands = [new PlaySound(), new MuteAnnouncer()];
-#endif
             PluginServices.Initialize(pluginInterface);
             LoadCommands();
             ConfigWindow = new ConfigWindow();
@@ -49,11 +41,9 @@ namespace PvPAnnouncer
                 {
                     return;
                 }
-                //todo change this so that people know other scions are supported
                 PluginServices.ChatGui.Print(
-                    "Welcome back! PvPAnnouncer now has more events, and uses Metem's Mahjong voicelines!. Enemy Hit Detection has been changed." +
-                    "Metem should now be less chatty when getting hit once or twice, and comment more reliably when in-game action warrants it." +
-                    "(Being simply hit is no longer an event, Metem now checks if you're getting bursted, or if you've been hit with an LB)", "PvPAnnouncer", 15);
+                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!!!! " +
+                    "Everyone is here! Let your favorite Scion enjoyer know!", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }
@@ -68,6 +58,17 @@ namespace PvPAnnouncer
         private void OnCommand(string command, string args)
         {
             ToggleConfigWindow();
+        }
+
+        private void OnToggleMuteCommand(string command, string args)
+        {
+            PluginServices.SoundManager.ToggleMute();
+            string un = "";
+            if (!PluginServices.Config.Muted)
+            {
+                un = "un-";
+            }
+            PluginServices.ChatGui.Print("Announcer Has been " + un + "muted!", InternalConstants.MessageTag);
         }
 
         private void ToggleConfigWindow()
@@ -86,26 +87,20 @@ namespace PvPAnnouncer
 
         private void LoadCommands()
         {
-            Config c = new Config();
-            PluginServices.CommandManager.AddHandler(c.GetFullCommandName(), new CommandInfo(OnCommand)
+            PluginServices.CommandManager.AddHandler("/pvpannouncer", new CommandInfo(OnCommand)
             {
                 HelpMessage = "Open the Config Window",
             });
-            foreach (var command in _commands)
+            PluginServices.CommandManager.AddHandler("/muteannouncer", new CommandInfo(OnToggleMuteCommand)
             {
-                PluginServices.CommandManager.AddHandler(command.GetFullCommandName(), command.Info!);
-            }
+                HelpMessage = "Toggle Mute Announcer"
+            });
         }
 
         private void UnloadCommands()
         {
-            Config c = new Config();
-            PluginServices.CommandManager.RemoveHandler(c.GetFullCommandName());
-            foreach (var command in _commands)
-            {
-                PluginServices.CommandManager.RemoveHandler(command.GetFullCommandName());
-
-            }
+            PluginServices.CommandManager.RemoveHandler("/pvpannouncer");
+            PluginServices.CommandManager.RemoveHandler("/muteannouncer");
             
         }
         public void Dispose()

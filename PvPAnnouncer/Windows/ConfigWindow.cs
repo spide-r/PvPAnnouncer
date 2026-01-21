@@ -6,6 +6,7 @@ using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
+using Dalamud.Interface.Utility;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -31,7 +32,7 @@ public class ConfigWindow : Window, IDisposable
         _allEvents = PluginServices.ListenerLoader.GetPvPEvents();
         foreach (var pvPEvent in _allEvents)
         {
-            _eventskv.Add(pvPEvent.InternalName, pvPEvent.Name);
+            _eventskv.Add(pvPEvent.InternalName, pvPEvent);
         }
     }
 
@@ -44,7 +45,7 @@ public class ConfigWindow : Window, IDisposable
     private string[] _disabledEventsArr = [];
     private string[] _disabledEventsArrInternal = [];
     private readonly PvPEvent[] _allEvents;
-    private readonly Dictionary<string, string> _eventskv = new Dictionary<string, string>();
+    private readonly Dictionary<string, PvPEvent> _eventskv = new Dictionary<string, PvPEvent>();
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
@@ -60,9 +61,7 @@ public class ConfigWindow : Window, IDisposable
         var animationDelayFactor = _configuration.AnimationDelayFactor;
         var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
-        
-        
-        var personalization = _configuration.WantsPersonalizedVoiceLines;
+        var icon = _configuration.WantsIcon;
         
         //personalization 
         var fem = _configuration.WantsPersonalization(Personalization.FemPronouns);
@@ -94,6 +93,7 @@ public class ConfigWindow : Window, IDisposable
         var koana = _configuration.WantsPersonalization(Personalization.KoanaAnnouncer);
         var bjj = _configuration.WantsPersonalization(Personalization.BakoolJaJaAnnouncer);
         var erenville = _configuration.WantsPersonalization(Personalization.ErenvilleAnnouncer);
+        var zenos = _configuration.WantsPersonalization(Personalization.ZenosAnnouncer);
         
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
@@ -102,15 +102,113 @@ public class ConfigWindow : Window, IDisposable
             ImGui.Separator();
         }
         
+        
+        
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
+        ImGui.Separator();
+        
+        ImGui.Text("Announcers: ");
+
+        if (ImGui.Checkbox("Alphinaud", ref alphinaud))
+        {
+            _configuration.TogglePersonalization(Personalization.AlphinaudAnnouncer, alphinaud);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Alisaie", ref alisaie))
+        {
+            _configuration.TogglePersonalization(Personalization.AlisaieAnnouncer, alisaie);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Thancred", ref thancred))
+        {
+            _configuration.TogglePersonalization(Personalization.ThancredAnnouncer, thancred);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Urianger", ref urianger))
+        {
+            _configuration.TogglePersonalization(Personalization.UriangerAnnouncer, urianger);
+            _configuration.Save();
+        }
+       
+        if (ImGui.Checkbox("Y'shtola", ref yshtola))
+        {
+            _configuration.TogglePersonalization(Personalization.YshtolaAnnouncer, yshtola);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Estinien", ref estinien))
+        {
+            _configuration.TogglePersonalization(Personalization.EstinienAnnouncer, estinien);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        if (ImGui.Checkbox("G'raha Tia", ref graha))
+        {
+            _configuration.TogglePersonalization(Personalization.GrahaAnnouncer, graha);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Krile", ref krile))
+        {
+            _configuration.TogglePersonalization(Personalization.KrileAnnouncer, krile);
+            _configuration.Save();
+        }
+        
+        if (ImGui.Checkbox("Wuk Lamat", ref wuk))
+        {
+            _configuration.TogglePersonalization(Personalization.WukLamatAnnouncer, wuk);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Koana", ref koana))
+        {
+            _configuration.TogglePersonalization(Personalization.KoanaAnnouncer, koana);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        if (ImGui.Checkbox("Bakool Ja Ja", ref bjj))
+        {
+            _configuration.TogglePersonalization(Personalization.BakoolJaJaAnnouncer, bjj);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        if (ImGui.Checkbox("Erenville", ref erenville))
+        {
+            _configuration.TogglePersonalization(Personalization.ErenvilleAnnouncer, erenville);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        if (ImGui.Checkbox("Zenos", ref zenos))
+        {
+            _configuration.TogglePersonalization(Personalization.ZenosAnnouncer, zenos);
+            _configuration.Save();
+        }
+        ImGui.SameLine();
+        
+        if (ImGui.Checkbox("Metem", ref metem))
+        {
+            _configuration.TogglePersonalization(Personalization.MetemAnnouncer, metem);
+            _configuration.Save();
+        }
+
+       
         if (metem)
         {
             ImGui.Text("Personalized Voice Lines");
-            ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names. As of now, no other announcers use these features.");
+            ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names. No other announcers use these features.");
 
             ImGui.Separator();
             ImGui.TextWrapped("Use Voice Lines with: ");
@@ -218,6 +316,13 @@ public class ConfigWindow : Window, IDisposable
         {
             _configuration.WolvesDen = wolvesDen;
             _configuration.Save();
+        }
+        
+        if (ImGui.Checkbox("Show Announcer Icon", ref icon))
+        {
+            _configuration.WantsIcon = icon;
+            _configuration.Save();
+
         }
         
         if (ImGui.Checkbox("Notify when Voice Volume is muted", ref notify))
@@ -349,34 +454,51 @@ public class ConfigWindow : Window, IDisposable
         
         List<string> activeEvents = new List<string>();
         List<string> activeEventsInternal = new List<string>();
+        bool modifiedList = false;
         foreach (var keyValuePair in _eventskv)
         {
-            string internalName = keyValuePair.Key;
-            string publicName = keyValuePair.Value;
+            var internalName = keyValuePair.Key;
+            var e = keyValuePair.Value;
             if (!blEvents.Contains(internalName))
-            {//todo: before you update, this must be filtered based on the actual settings and not a stupid .contains 
-                if (publicName.ToLower().Contains("masculine") && !masc)
+            {
+                if (WantsAnyInEvent(e))
                 {
-                    continue;
+                    activeEvents.Add(e.Name);
+                    activeEventsInternal.Add(internalName);
                 }
-
-                if (publicName.ToLower().Contains("feminine") && !fem)
+                else
                 {
-                    continue;
+                    modifiedList = true;
                 }
-                activeEvents.Add(publicName);
-                activeEventsInternal.Add(internalName);
+             
             }
         }
-        /*foreach (var ee in _allEvents)
+   
+        
+        List<string> listDisabledInternal = [];
+        List<string> listDisabledPublic = [];
+        foreach (string internalName in blEvents)
         {
-            string name = ee.Name;
-            if (!blEvents.Contains(name) && !name.Contains("Not Implemented"))
+            var e = _eventskv[internalName];
+            if (WantsAnyInEvent(e))
             {
-                activeEvents.Add(ee.Name);
-
+                listDisabledInternal.Add(internalName);
+                listDisabledPublic.Add(e.Name);
             }
-        }*/
+            else
+            {
+                modifiedList = true;
+            }
+           
+        }
+
+        if (modifiedList)
+        {
+            ImGui.Text("Event list looking a little empty?");
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker("Some events do not are hidden as they do not contain any voice lines that would match your settings. Enable some to see more!");
+        }
+
         _activeEventsArr = activeEvents.ToArray();
         _activeEventsArrInternal = activeEventsInternal.ToArray();
         ImGui.Text("Enabled Events:");
@@ -391,25 +513,6 @@ public class ConfigWindow : Window, IDisposable
             }
 
         }
-        
-        List<string> listDisabledInternal = [];
-        List<string> listDisabledPublic = [];
-        foreach (string internalName in blEvents)
-        {
-            var publicName = _eventskv[internalName];
-            if (publicName.ToLower().Contains("masculine") && !masc)
-            {
-                continue;
-            }
-
-            if (publicName.ToLower().Contains("feminine") && !fem)
-            {
-                continue;
-            }
-            listDisabledInternal.Add(internalName);
-            listDisabledPublic.Add(_eventskv.First(pair => pair.Key.Equals(internalName)).Value);
-        }
-
      
         _disabledEventsArrInternal = listDisabledInternal.ToArray();
         _disabledEventsArr = listDisabledPublic.ToArray();
@@ -425,6 +528,19 @@ public class ConfigWindow : Window, IDisposable
             }
     
         }
+    }
+
+    private bool WantsAnyInEvent(PvPEvent e)
+    {
+        foreach (var battleTalk in e.SoundPaths())
+        {
+            if (PluginServices.Config.WantsAllPersonalization(battleTalk.Personalization))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
     
     private void SetPersonalization(bool b, Personalization p)

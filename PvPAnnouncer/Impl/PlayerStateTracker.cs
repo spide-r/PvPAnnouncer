@@ -88,7 +88,7 @@ public class PlayerStateTracker: IPlayerStateTracker
         else if (WasFalling && !isFalling)
         {
             if (DistJump - pos > (9.60 * 3) ) // 9.6 is minimum for fall damage, due to worqor specifically having
-                                                 // some frequent inclines + fall damage becoming more common im increasing the threshold todo test threshold
+                                                 // some frequent inclines + fall damage becoming more common im increasing the threshold
             {
                 EmitToBroker(new UserZoneOutMessage());
             }

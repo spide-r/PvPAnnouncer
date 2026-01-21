@@ -14,7 +14,7 @@ public class DevWindow: Window, IDisposable
 {
     private string LastUsedAction = "";
     public DevWindow() : base(
-        "PvPAnnouncer Dev Window", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)
+        "PvPAnnouncer Dev Window")
     {
         this.SizeConstraints = new WindowSizeConstraints
         {
@@ -24,6 +24,7 @@ public class DevWindow: Window, IDisposable
     }
 
     private long ll = 0L;
+    private string icon = "";
     private string ss = "";
     private string nn = "";
     private string vv = "";
@@ -41,8 +42,19 @@ public class DevWindow: Window, IDisposable
     }
     public override void Draw()
     {
+        var l = ll;
 
-    
+        var ic = icon;
+        if(ImGui.InputText("Icon###Icon", ref ic))
+        {
+            icon = ic;
+        }
+
+        if (ImGui.Button("Test Icon"))
+        {
+            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", Convert.ToUInt32(icon), "8291265", 2, "Asdf", []));
+
+        }
         var s = ss;
         ImGui.Text("Play A Sound path");
         if (ImGui.InputText("###SoundPath", ref s))
@@ -56,7 +68,6 @@ public class DevWindow: Window, IDisposable
             PluginServices.Announcer.PlaySound(s);
         }
 
-        var l = ll;
         ImGui.Text("Play sound/voice/vo_line/"+ l + "_en.scd");
         if(ImGui.InputScalar("###SoundLong", ref l, 1L, 1L))
         {
@@ -123,6 +134,24 @@ public class DevWindow: Window, IDisposable
             PluginServices.Config.Dev_VoLineList.Add($" public static readonly BattleTalk VO{ll} new BattleTalk(\"{nn.Trim()}\", \"{ll}\", {dd}, \"{vv.Trim()}\"/, GetPersonalization([Personalization.{nn}Announcer])); // {vv}");
             PluginServices.Config.Save();
             vv = "";
+        }
+        
+        ImGui.Text("Events: ");
+        var i = 1;
+        foreach (var pvPEvent in PluginServices.ListenerLoader.GetPvPEvents())
+        {
+            if (ImGui.Button(pvPEvent.Name))
+            {
+                PluginServices.Announcer.ReceivePvPEvent(pvPEvent);
+                PluginServices.Announcer.ClearQueue();
+            }
+
+            if (i % 4 != 0)
+            {
+                ImGui.SameLine();
+            }
+
+            i++;
         }
         
     }

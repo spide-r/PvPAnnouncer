@@ -24,6 +24,12 @@ public class Announcer: IAnnouncer
     private readonly Queue<string> _lastEvents = new();
     private long _timestamp = 0;
     private int _lastVoiceLineLength = 0;
+
+    public void ClearQueue()
+    {
+        _lastVoiceLines.Clear();
+        _lastEvents.Clear();
+    }
     public void ReceivePvPEvent(PvPEvent pvpEvent)
     {
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -76,7 +82,6 @@ public class Announcer: IAnnouncer
         }
         
         _lastEvents.Enqueue(e.InternalName);
-
     }
 
     
@@ -174,7 +179,7 @@ public class Announcer: IAnnouncer
             try
             {
                 var name = battleTalk.Name;
-                var text = battleTalk.Text.ExtractText();
+                var text = battleTalk.Text.ExtractText(); 
                 var duration = battleTalk.Duration;
                 var icon = battleTalk.Icon;
                 var style = battleTalk.Style;
@@ -183,9 +188,9 @@ public class Announcer: IAnnouncer
                     text = "Uh oh! You shouldn't see this! Contact the PvPannouncer dev!";
                     duration = 5;
                 }
-                if (icon != 0)
+                if (icon != 0 && PluginServices.Config.WantsIcon)
                 {
-                    UIModule.Instance()->ShowBattleTalkImage(name, text, icon, duration, style);
+                    UIModule.Instance()->ShowBattleTalkImage(name, text, duration, icon, style);
                 }
                 else
                 {
@@ -203,6 +208,7 @@ public class Announcer: IAnnouncer
             
         }
     }
+ 
     //icon notes: 070000/073071,073265,073266, 073261, 073275, 
     // alphinaud: 73000/73008 - ew costume
     /*
@@ -245,7 +251,7 @@ ui/icon/073000/073071_hr1.tex
 ui/icon/073000/073265_hr1.tex
 ui/icon/073000/073266_hr1.tex
 ui/icon/073000/073261_hr1.tex
-ui/icon/073000/073275_hr1.tex
+ui/icon/073000/073275_hr1.texe
 ui/icon/073000/073287_hr1.tex
 ui/icon/073000/073210_hr1.tex
 ui/icon/073000/073034_hr1.tex
@@ -253,8 +259,6 @@ ui/icon/073000/073036_hr1.tex
 ui/icon/073000/073112_hr1.tex
 ui/icon/073000/073178_hr1.tex
 ui/icon/073000/073085_hr1.tex
-ui/icon/073000/073007_hr1.tex
-ui/icon/073000/073012_hr1.tex
 
      */
     // sound/voice/vo_line/8204254_en.scd

@@ -20,7 +20,7 @@ public class MatchStartEvent: PvPMatchEvent
     {
         return [SendingCameras, UpstartBegins, OurTurnThancred, FirstOpponent, NineLives, IntroBc,
             HoneyBShowBegun, SavorSting, IntroHbl, BBMuscled, IntroBb, WTReturned, IntroWt,
-            DGSteps, IntroDg, SRGallery, IntroSr,BAMeansBusiness, IntroBa, WolfLair, IntroHb,
+            DGSteps, IntroDg, SRGallery, IntroSr, BAMeansBusiness, IntroBa, WolfLair, IntroHb,
             VFFeastEyes, IntroVf, TagTeam, IntroDbRh, GrandChampion, IntroTt, IntroLw, GiveItEverythingAlisaie, 
             ShowThemWhatYoureMadeOf, VictoryWithinReach, ExplosivesInPlace, ToTheBoldGoTheSpoils, OvercomeTheOdds,
             LooksPromising, AchievedWithoutRisk, VictoryAtHandIsItNot, WereCountingOnYou, MayTheTwelveGuideYou, FocusOnVictoryGraha, TaskAtHandVictoryOurs,
