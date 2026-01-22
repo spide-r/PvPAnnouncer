@@ -11,7 +11,7 @@ public abstract class InternalConstants
     public const string MessageTag = "PvPAnnouncer";
 
     public const string NoRespectText = "This man has absolutely no respect for the rules!";
-    public const string UpOnThePostText = "He's up on the post! You know what that means...";
+    public const string UpOnThePostText = "He's up on the post! You know what that means.";
     public const string BombarianPressText = "It's the Bombarian press!";
     public const string OhMercyText = "Oh mercy is she doing what I think she's doing?";
     public const string BackTailText = "Yes! You've got the serpent on the back tail! Press the advantage and finish this!";
@@ -37,7 +37,7 @@ public abstract class InternalConstants
     public const string MjTextCommendableEffort = "A commendable effort! You should be proud.";
     public const string MjTextReportingLive = "This was metem, reporting live from the Mahjong table. Thank you and good night.";
     public const string MjTextCompetitionTooMuch = "Was the competition simply too much for our challenger? I should hope not.";
-    public const string MjTextUtterlyHumiliated = "Oh dear our challenger has been utterly humiliated! I fear this will haunt them...";
+    public const string MjTextUtterlyHumiliated = "Oh dear our challenger has been utterly humiliated! I fear this will haunt them.";
     
     public const string TextLindwurmsHeart = "Huh? Is it? The Lindwurm’s heart!?";
     public const string TextBadFeeling = "It’s pulsating… I’ve got a bad feeling about this!";
