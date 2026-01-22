@@ -414,11 +414,32 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Unindent();
         ImGui.Separator();
-        if (!PluginServices.PlayerStateTracker.CheckKRClient() || !PluginServices.PlayerStateTracker.CheckCNClient()) //todo change if it turns out CN and KR langs ship together
+        if (PluginServices.PlayerStateTracker.CheckKRClient() || PluginServices.PlayerStateTracker.CheckCNClient()) 
+        {
+            if (PluginServices.PlayerStateTracker.CheckCNClient())
+            {
+                if (!muted)
+                {
+                    ImGui.Text("Announcer Language:");
+
+                    if (ImGui.RadioButton("Chinese", lang.Equals("chs")))
+                    {
+                        _configuration.Language = "chs";
+                        _configuration.Save();
+                    }
+                    ImGui.SameLine();
+                    if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
+                    {
+                        _configuration.Language = "ja";
+                        _configuration.Save();
+                    }
+                }
+            }
+        }
+        else
         {
             if (!muted)
             {
-                ImGui.Text("Announcer Language:");
                 if (ImGui.RadioButton("English", lang.Equals("en")))
                 {
                     _configuration.Language = "en";

@@ -53,7 +53,7 @@ namespace PvpAnnouncer
         public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps)
         {
             _pluginInterface = pluginInterface;
-            if (ps.CheckCNClient()) //todo check if cn/kr can be on 2 clients, 
+            if (ps.CheckCNClient()) 
             {
                 Language = "cn";
             }
