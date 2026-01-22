@@ -52,7 +52,7 @@ public class DevWindow: Window, IDisposable
 
         if (ImGui.Button("Test Icon"))
         {
-            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", Convert.ToUInt32(icon), "8291265", 2, "Asdf", []));
+            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", 8291265, 2, "Asdf", [], Convert.ToUInt32(icon)));
 
         }
         var s = ss;
@@ -161,7 +161,7 @@ public class DevWindow: Window, IDisposable
         PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
         if (!hide)
         {
-            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", l.ToString(), []));
+            PluginServices.Announcer.SendBattleTalk(BattleTalk.CreateFromVoLine("Unknown", (uint) l, []));
         }
     }
     

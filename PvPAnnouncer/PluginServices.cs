@@ -78,12 +78,12 @@ internal class PluginServices {
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<PluginServices>();
         Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
-        Config.Initialize(pluginInterface);
         PvPEventBroker = new PvPEventBroker();
         Announcer = new Announcer();
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
+        Config.Initialize(pluginInterface, PlayerStateTracker);
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();

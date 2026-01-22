@@ -414,33 +414,37 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Unindent();
         ImGui.Separator();
-        if (!muted)
+        if (!PluginServices.PlayerStateTracker.CheckKRClient() || !PluginServices.PlayerStateTracker.CheckCNClient()) //todo change if it turns out CN and KR langs ship together
         {
-            ImGui.Text("Announcer Language:");
-            if (ImGui.RadioButton("English", lang.Equals("en")))
+            if (!muted)
             {
-                _configuration.Language = "en";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("German", lang.Equals("de")))
-            {
-                _configuration.Language = "de";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("French", lang.Equals("fr")))
-            {
-                _configuration.Language = "fr";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
-            {
-                _configuration.Language = "ja";
-                _configuration.Save();
+                ImGui.Text("Announcer Language:");
+                if (ImGui.RadioButton("English", lang.Equals("en")))
+                {
+                    _configuration.Language = "en";
+                    _configuration.Save();
+                }
+                ImGui.SameLine();
+                if (ImGui.RadioButton("German", lang.Equals("de")))
+                {
+                    _configuration.Language = "de";
+                    _configuration.Save();
+                }
+                ImGui.SameLine();
+                if (ImGui.RadioButton("French", lang.Equals("fr")))
+                {
+                    _configuration.Language = "fr";
+                    _configuration.Save();
+                }
+                ImGui.SameLine();
+                if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
+                {
+                    _configuration.Language = "ja";
+                    _configuration.Save();
+                }
             }
         }
+        
 
         /*if (!hideBattleText)
         {

@@ -5,4 +5,7 @@ public interface IPlayerStateTracker: IPvPEventPublisher
     bool IsPvP();
     void CheckSoundState();
     bool IsDawntrailInstalled();
+
+    bool CheckCNClient();
+    bool CheckKRClient();
 }

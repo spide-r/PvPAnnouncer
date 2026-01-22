@@ -17,10 +17,12 @@ public class PlayerStateTracker: IPlayerStateTracker
     private float PrevVel { get; set; }
     private float DistJump { get; set; }
     private bool WasFalling { get; set; }
+    public bool CNKRClient  {get; set;}
     public PlayerStateTracker()
     {
      PluginServices.Framework.Update += OnUpdate;   
      PluginServices.Condition.ConditionChange += OnConditionChange;
+     CNKRClient = CheckCNKRClient();
     }
 
     private void OnConditionChange(ConditionFlag flag, bool value)
@@ -132,9 +134,25 @@ public class PlayerStateTracker: IPlayerStateTracker
         }
     }
 
+    private bool CheckCNKRClient()
+    {
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_kr.scd") || PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_cn.scd");
+
+    }
+
+    public bool CheckKRClient()
+    {
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_kr.scd");
+    }
+
+    public bool CheckCNClient()
+    {
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_cn.scd");
+    }
+
     public bool IsDawntrailInstalled()
     {
-        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_en.scd");
+        return CNKRClient ? CheckCNKRClient() : PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_en.scd");
     }
 
     public void EmitToBroker(IMessage pvpEvent)

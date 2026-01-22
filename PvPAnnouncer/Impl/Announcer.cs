@@ -168,7 +168,16 @@ public class Announcer: IAnnouncer
         {
             PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
-            PlaySound(s.GetPath(PluginServices.Config.Language));
+            if (s is CutsceneTalk cs)
+            {
+                PlaySound(cs.GetPath(PluginServices.Config.Language));
+
+            }
+            else
+            {
+                PlaySound(s.GetPath(PluginServices.Config.Language));
+
+            }
             SendBattleTalk(s);
             PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");
 
@@ -228,59 +237,4 @@ public class Announcer: IAnnouncer
             
         }
     }
- 
-    //icon notes: 070000/073071,073265,073266, 073261, 073275, 
-    // alphinaud: 73000/73008 - ew costume
-    /*
-     * ui/icon/073000/073071_hr1.tex
-ui/icon/073000/073265_hr1.tex
-ui/icon/073000/073266_hr1.tex
-ui/icon/073000/073261_hr1.tex
-ui/icon/073000/073275_hr1.tex
-ui/icon/073000/073287_hr1.tex
-ui/icon/073000/073034_hr1.tex
-ui/icon/073000/073036_hr1.tex
-ui/icon/073000/073024_hr1.tex
-ui/icon/073000/073026_hr1.tex
-ui/icon/073000/073025_hr1.tex
-ui/icon/073000/073007_hr1.tex
-ui/icon/073000/073012_hr1.tex
-     */
-    /*
-     * ui/icon/073000/073071_hr1.tex
-ui/icon/073000/073265_hr1.tex
-ui/icon/073000/073266_hr1.tex
-ui/icon/073000/073261_hr1.tex
-ui/icon/073000/073275_hr1.tex
-ui/icon/073000/073287_hr1.tex
-ui/icon/073000/073034_hr1.tex
-ui/icon/073000/073036_hr1.tex
-ui/icon/073000/073024_hr1.tex
-ui/icon/073000/073026_hr1.tex
-ui/icon/073000/073025_hr1.tex
-ui/icon/073000/073007_hr1.tex
-ui/icon/073000/073012_hr1.tex
-ui/icon/073000/073112_hr1.tex
-
-     */
-    // guaranteed legit ones:
-    /*
-     * ui/icon/073000/073178_hr1.tex
-ui/icon/073000/073085_hr1.tex
-ui/icon/073000/073071_hr1.tex
-ui/icon/073000/073265_hr1.tex
-ui/icon/073000/073266_hr1.tex
-ui/icon/073000/073261_hr1.tex
-ui/icon/073000/073275_hr1.texe
-ui/icon/073000/073287_hr1.tex
-ui/icon/073000/073210_hr1.tex
-ui/icon/073000/073034_hr1.tex
-ui/icon/073000/073036_hr1.tex
-ui/icon/073000/073112_hr1.tex
-ui/icon/073000/073178_hr1.tex
-ui/icon/073000/073085_hr1.tex
-
-     */
-    // sound/voice/vo_line/8204254_en.scd
-
 }

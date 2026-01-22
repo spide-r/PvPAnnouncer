@@ -5,6 +5,7 @@ using Dalamud.Configuration;
 using Dalamud.Game.Text;
 using Dalamud.Plugin;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.Interfaces;
 
 
 namespace PvpAnnouncer
@@ -49,9 +50,20 @@ namespace PvpAnnouncer
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
 
-        public void Initialize(IDalamudPluginInterface pluginInterface)
+        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps)
         {
             _pluginInterface = pluginInterface;
+            if (ps.CheckCNClient()) //todo check if cn/kr can be on 2 clients, 
+            {
+                Language = "cn";
+            }
+
+            if (ps.CheckKRClient())
+            {
+                Language = "kr";
+            }
+            _pluginInterface?.SavePluginConfig(this);
+
             MigrateOldPluginConfig();
         }
 
