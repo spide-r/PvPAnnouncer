@@ -18,7 +18,7 @@ public class AllyPulledByDrkEvent: PvPActionEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return [SuckedIn, ThrillingBattle, Quicksand, MjRivalVying, WinThisYet, Hahahahahaha];
+        return [SuckedIn, ThrillingBattle, Quicksand, MjRivalVying, WinThisYet, Hahahahahaha, ATestOfYourReflexes];
     }
 
     public override bool InvokeRule(IMessage message)

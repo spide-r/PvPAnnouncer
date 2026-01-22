@@ -349,7 +349,7 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
         
-        if (ImGui.Checkbox("Show Announcer Icon", ref icon))
+        if (ImGui.Checkbox("Show Announcer Portrait", ref icon))
         {
             _configuration.WantsIcon = icon;
             _configuration.Save();
@@ -527,7 +527,7 @@ public class ConfigWindow : Window, IDisposable
         {
             ImGui.Text("Event list looking a little empty?");
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker("Some events do not are hidden as they do not contain any voice lines that would match your settings. Enable some to see more!");
+            ImGuiComponents.HelpMarker("Some events are hidden as they do not contain any voice lines that would match your settings.");
         }
 
         _activeEventsArr = activeEvents.ToArray();

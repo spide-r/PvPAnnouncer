@@ -24,7 +24,7 @@ public class AllyDeathEvent : PvPActorControlEvent
             SuchShouldBeFate, VicissitudesOfFortune, BodethIllTurnTide, ReviewOurStrategy, SimplyNoKnowing, UnfortunateSuchIsLife, BedWithoutSupper,
             DontBeSoReckless, BeMoreCareful, LeftOurselvesOpen, TumultuousDespair, AreYouAlrightGraha, OhHowEmbarrassing, AreYouAlright, CantBeRightKrile,
             HowDidThatHappenWuk, GonnaBeSickWuk, FeelYourPainWuk, DidntHoldBackWuk, CanDoBetterWuk, DamnItAll, CantBe, DammitAll, StepBehind, 
-            ErrorInCalculations, FallingBehind, LuckWontLast, Competition, Unfortunate, DontPlayGames];
+            ErrorInCalculations, FallingBehind, LuckWontLast, Competition, Unfortunate, DontPlayGames, OverestimatedPotential];
     }
 
     public override bool InvokeRule(IMessage m)

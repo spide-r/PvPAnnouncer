@@ -24,7 +24,8 @@ public class MatchStartEvent: PvPMatchEvent
             VFFeastEyes, IntroVf, TagTeam, IntroDbRh, GrandChampion, IntroTt, IntroLw, GiveItEverythingAlisaie, 
             ShowThemWhatYoureMadeOf, VictoryWithinReach, ExplosivesInPlace, ToTheBoldGoTheSpoils, OvercomeTheOdds,
             LooksPromising, AchievedWithoutRisk, VictoryAtHandIsItNot, WereCountingOnYou, MayTheTwelveGuideYou, FocusOnVictoryGraha, TaskAtHandVictoryOurs,
-            CanvasOfVictory, SkillsToTheProof, IntentionsKnown, StrategyKeyToVictory, VowOfReasonGuide, WorthyOfReputation, VictoryOurs, CouldBeChance];
+            CanvasOfVictory, SkillsToTheProof, IntentionsKnown, StrategyKeyToVictory, VowOfReasonGuide, WorthyOfReputation,
+            VictoryOurs, CouldBeChance, LetAllCreationBeConsumed];
     }
 
     public override bool InvokeRule(IMessage message)

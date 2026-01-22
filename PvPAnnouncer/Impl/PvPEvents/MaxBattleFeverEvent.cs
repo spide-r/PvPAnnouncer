@@ -23,7 +23,7 @@ public class MaxBattleFeverEvent: PvPEvent
             Kill, Rend, KeepItUp, KeepUpTheOffensive, JustWhatWeNeeded, OnwardsAndUpwards, JustGettingStarted, AllAccordingToPlan, PraiseOrPity, KeepThemOnTheirHeels,
             StarsFavorUs, TheHandIsOurs, LivingLegends, GiveItEverything, FightHardNotHardEnough, CourageAndZeal, BefittingMyInspiration,
             GoodThingsWait, GettingInterestingWuk, YouReallyAreFamous, Impressive, NotHoldingAnythingBack, 
-            KeepItUpWuk, NeverFailToImpress, EnjoyingYourself, EnjoyingThisArentYou];
+            KeepItUpWuk, NeverFailToImpress, EnjoyingYourself, EnjoyingThisArentYou, LetAllCreationBeConsumed, InfernoSwelling];
     }
 
     public override bool InvokeRule(IMessage message)
