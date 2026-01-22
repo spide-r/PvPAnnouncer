@@ -6,7 +6,6 @@ using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer
 {
-    //todo: final check-through to make sure all announcers have at least 1 voice icon in each relevant event
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");
@@ -39,11 +38,13 @@ namespace PvPAnnouncer
             {
                 if (PluginServices.ClientState.IsLoggedIn == false)
                 {
+                    
                     return;
                 }
                 PluginServices.ChatGui.Print(
-                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!!!! " +
-                    "Everyone is here! Let your favorite Scion enjoyer know!", "PvPAnnouncer", 15);
+                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!!!!\n" +
+                    "Tell your local scion enjoyer that their fav is now in PvP ;D \n" +
+                    "You can also enable the character portrait when an announcer speaks.", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }

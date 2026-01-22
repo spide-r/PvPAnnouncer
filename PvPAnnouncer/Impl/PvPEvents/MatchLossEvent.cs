@@ -28,7 +28,7 @@ public class MatchLossEvent: PvPMatchEvent
             ThrillingGameNextTime, ExploringIntricacies, PlayAgainWinOrLose, ToughLossLearnKrile, DidntHoldBackWuk, GonnaBeSickWuk, 
             WinSomeLoseSomeWuk, LearningExperienceWuk, FairPerformanceBetter, FaceLamatyi, HowCanThisBe, NoNo, ScoreIsntRight,
             ChangeOfStrategyInOrder, OccasionalLossInevitable, ProudOfYou, ProtectFromFutureDefeat, UnworthyVowOfReason, ThreeHeadsStupid, 
-            SmashTable, CouldHaveBeenWorseErenville, LifeGoYourWay, FairGo, DontPlayGames, PresenceDistraction, MerelyBadHand];
+            SmashTable, CouldHaveBeenWorseErenville, LifeGoYourWay, FairGo, DontPlayGames, PresenceDistraction, MerelyBadHand, Hahahahahaha, LifesFireAlreadySpent, HydaelynsChosenMuster];
     }
 
     public override bool InvokeRule(IMessage message)

@@ -6,17 +6,21 @@ using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
+using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Utility;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
-    private readonly Configuration _configuration;
-    public ConfigWindow() : base(
+    private IEventListenerLoader listenerLoader;
+    private BattleTalk[]? _allBattleTalks;
+
+    private readonly Configuration _configuration; public ConfigWindow() : base(
         "PvPAnnouncer Configuration")
     {
 
@@ -29,7 +33,11 @@ public class ConfigWindow : Window, IDisposable
         SizeCondition = ImGuiCond.Always;
 
         _configuration = PluginServices.Config;
-        _allEvents = PluginServices.ListenerLoader.GetPvPEvents();
+        listenerLoader = PluginServices.ListenerLoader;
+        _allEvents = listenerLoader.GetPvPEvents();
+        var v1 = InternalConstants.GetStaticReadOnlyFields<BattleTalk>(typeof(ScionLines));
+        var v2 = InternalConstants.GetStaticReadOnlyFields<BattleTalk>(typeof(AnnouncerLines));
+        _allBattleTalks = v1.Concat(v2).ToArray()!;
         foreach (var pvPEvent in _allEvents)
         {
             _eventskv.Add(pvPEvent.InternalName, pvPEvent);
@@ -102,6 +110,28 @@ public class ConfigWindow : Window, IDisposable
             ImGui.Separator();
         }
         
+        
+        if (ImGui.Button("Test The Announcer"))
+        {
+            PluginServices.PlayerStateTracker.CheckSoundState();
+            var bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
+
+            var e = bt[Random.Shared.Next(bt.Length)];
+            PluginServices.Announcer.PlaySound(e.GetPath(PluginServices.Config.Language));
+            PluginServices.Announcer.SendBattleTalk(e);
+            PluginServices.ChatGui.Print($"Playing Voiceline for {e.Name}", InternalConstants.MessageTag);
+
+            if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
+            {
+                Notification n = new Notification();
+                n.Title = "Dawntrail Not installed!";
+                n.Type = NotificationType.Error;
+                n.Minimized = false;
+                n.MinimizedText = "Dawntrail is not installed!";
+                n.Content = "You must install Dawntrail for this plugin to work!";
+                PluginServices.NotificationManager.AddNotification(n);
+            }
+        }
         
         
         if (ImGui.Checkbox("Disabled", ref disabled))
@@ -207,6 +237,7 @@ public class ConfigWindow : Window, IDisposable
        
         if (metem)
         {
+            ImGui.Spacing();
             ImGui.Text("Personalized Voice Lines");
             ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names. No other announcers use these features.");
 

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace PvPAnnouncer.Data;
 using static AnnouncerLines;
@@ -74,4 +77,17 @@ public abstract class InternalConstants
         FinishingTouchKrile, GotThemNowWuk, CantPassChanceWuk, WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive, IntentionsKnown, 
         EvenTheOdds, HaveThemStrike, ShowThemTheirPlace, ThereYouHaveThem
     ];
+    
+    public static readonly List<BattleTalk> BattleTalks = new List<BattleTalk>();
+    
+    
+    public static List<T?> GetStaticReadOnlyFields<T>(Type classType)
+    {
+        if (classType == null) throw new ArgumentNullException(nameof(classType));
+        return classType
+            .GetFields(BindingFlags.Public | BindingFlags.Static)
+            .Where(f => f.FieldType == typeof(T))
+            .Select(f => (T)f.GetValue(null))
+            .ToList();
+    }
 }

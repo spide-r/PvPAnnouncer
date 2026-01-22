@@ -24,7 +24,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
             WhatAClash, DirectHitStillStanding, NotFastEnough, MjHeatingUp, MjStillStandingGentle, 
             WhatANuisance, WontLetThemGetAway, DefeatIsNotAnOption, DoYourWorst, KeepYourGuardUp, ComeOn,
             TreadCautiously, DangerousMomentIndeed, UseConfidenceAgainstThem, StandFast, WontFallHereKrile, HaveFaithAllWell, MustStandStrongKrile,
-            CloseOneWuk, NothingToFearYet, MuchToBeExpected];
+            CloseOneWuk, NothingToFearYet, MuchToBeExpected, VauntedFortitude, DanceForMe, RunBeastRun, EasyNowDeepBreaths];
     }
 
     public override bool InvokeRule(IMessage arg)

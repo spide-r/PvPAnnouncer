@@ -142,7 +142,7 @@ public class DevWindow: Window, IDisposable
         {
             if (ImGui.Button(pvPEvent.Name))
             {
-                PluginServices.Announcer.ReceivePvPEvent(pvPEvent);
+                PluginServices.Announcer.ReceivePvPEvent(true, pvPEvent);
                 PluginServices.Announcer.ClearQueue();
             }
 
@@ -165,40 +165,6 @@ public class DevWindow: Window, IDisposable
         }
     }
     
-    private void SendBattleTalk(string line)
-    {
-        BattleTalk battleTalk = new BattleTalk("Metem", line, []);
-        var name = battleTalk.Name;
-        var text = battleTalk.Text.ToString();
-        var duration = battleTalk.Duration;
-        var icon = battleTalk.Icon;
-        var style = battleTalk.Style;
-        if (icon != 0)
-        {
-            unsafe
-            {
-                UIModule.Instance()->ShowBattleTalkImage(name, text, icon, duration, style);
-            }
-        }
-        else
-        {
-            unsafe
-            {
-                UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
-            }
-        }
-    }
-
-    private void SendBattleTalk(string name, string text, float duration, byte style, uint image)
-    {
-      
-            unsafe
-            {
-                UIModule.Instance()->ShowBattleTalkImage(name, text, duration, image, style);
-            }
-        
- 
-    }
     public void Dispose()
     {
     }

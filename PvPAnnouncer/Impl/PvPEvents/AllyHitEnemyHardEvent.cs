@@ -23,7 +23,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
             HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay, 
             ThatWasUnbecoming, DragoonImpressed, LeaveAMark, AmidstGreatChaos, GiveItEverythingAlisaie, 
             ShowThemWhatYoureMadeOf, GiveItEverything, FightHardNotHardEnough, GotThemNowWuk, CantPassChanceWuk, 
-            WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive];
+            WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive, Kill, Rend, More];
     }
 
     public override bool InvokeRule(IMessage message) 

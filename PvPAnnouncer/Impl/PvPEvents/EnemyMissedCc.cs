@@ -22,7 +22,8 @@ public class EnemyMissedCc: PvPActionEvent
         return
         [
             BeautifullyDodged, SawThroughIt, EffortlesslyDodged, ClearlyAnticipated, StylishEvasion, AvoidedWithEase,
-            DodgedEverything, ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, SlippedBeyondReach, ThisIsGoingWell, NothingToWorryWuk
+            DodgedEverything, ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, 
+            SlippedBeyondReach, ThisIsGoingWell, NothingToWorryWuk, RunBeastRun
         ];
     }
 

@@ -30,7 +30,8 @@ public class AllyBurstedEvent: PvPEvent
             FeverPitch, BBDesprate, TreadWarily, ThaliakProtectUs, DoNotLoseHeart, PainfulThrashing, ScramblingToKeepUp, SevenHells,
             AmidstGreatChaos, DangerousMomentIndeed, MakeReady, BeVigilant, LeaveAMark, TheyHaveUpperHand, WatchYourself, 
             ThereIsNoEndToThem, HangInThere, Courage, StayStrongEstinien, FightHardNotHardEnough, StandFast, WeveComeTooFar, 
-            FindCoverEnergy, DontLoseNerveWuk, GettingInterestingWuk, StillWinWuk, StayAlert, GodsHelpUs, CarefulPlanning
+            FindCoverEnergy, DontLoseNerveWuk, GettingInterestingWuk, StillWinWuk, StayAlert, GodsHelpUs, CarefulPlanning, 
+            RunBeastRun, HaveYouTheStrength, DanceForMe, VauntedFortitude
         ];
     }
 

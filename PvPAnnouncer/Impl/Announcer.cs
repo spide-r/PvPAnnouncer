@@ -30,7 +30,8 @@ public class Announcer: IAnnouncer
         _lastVoiceLines.Clear();
         _lastEvents.Clear();
     }
-    public void ReceivePvPEvent(PvPEvent pvpEvent)
+
+    public void ReceivePvPEvent(bool bypass, PvPEvent pvpEvent)
     {
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
@@ -46,6 +47,12 @@ public class Announcer: IAnnouncer
         if (diff < (PluginServices.Config.CooldownSeconds + _lastVoiceLineLength))
         {
             PluginServices.PluginLog.Verbose($"Cooldown not finished");
+            return;
+        }
+
+        if (bypass)
+        {
+            PlaySoundAndSendBattleTalk(true, pvpEvent);
             return;
         }
 
@@ -67,7 +74,12 @@ public class Announcer: IAnnouncer
             return;
         }
         
-        PlaySound(pvpEvent);
+        PlaySoundAndSendBattleTalk(pvpEvent);
+    }
+
+    public void ReceivePvPEvent(PvPEvent pvpEvent)
+    {
+        ReceivePvPEvent(false, pvpEvent);
     }
     
 
@@ -117,7 +129,8 @@ public class Announcer: IAnnouncer
         PluginServices.SoundManager.PlaySound(sound);
     }
 
-    public void PlaySound(PvPEvent pvpEvent)
+
+    private void PlaySoundAndSendBattleTalk(bool bypass, PvPEvent pvpEvent)
     {
         List<BattleTalk> sounds = new List<BattleTalk>();
 
@@ -132,11 +145,14 @@ public class Announcer: IAnnouncer
         }
         
         // == Objective 2 == 
-        foreach (var line in _lastVoiceLines)
+        if (!bypass)
         {
-            if (sounds.Contains(line))
+            foreach (var line in _lastVoiceLines)
             {
-                sounds.Remove(line);
+                if (sounds.Contains(line))
+                {
+                    sounds.Remove(line);
+                }
             }
         }
 
@@ -158,6 +174,10 @@ public class Announcer: IAnnouncer
 
         });
         announceTask.WaitAsync(TimeSpan.FromSeconds(5));
+    }
+    public void PlaySoundAndSendBattleTalk(PvPEvent pvpEvent)
+    {
+        PlaySoundAndSendBattleTalk(false, pvpEvent);
     }
 
     private void WrapUp(PvPEvent pvpEvent, BattleTalk chosenLine)

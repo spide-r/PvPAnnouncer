@@ -4,6 +4,7 @@ using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 using static PvPAnnouncer.Data.AnnouncerLines;
+using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyZoneOutEvent: PvPActorEvent
@@ -16,7 +17,8 @@ public class AllyZoneOutEvent: PvPActorEvent
 
     public override List<BattleTalk> SoundPaths()
     {
-        return [Fallen];
+        return [Fallen, Hahahahahaha, OutplayedClearMinds, TwelveGiveMeStrength, KeepChinUpPrettyLeast, 
+            SuchShouldBeFate, UnfortunateSuchIsLife, LeftOurselvesOpen, DoYouRequireHealing, ThatsTooBadKrile, GonnaBeSickWuk, CantBe, GodsHelpUs, Unfortunate];
     }
 
     public override bool InvokeRule(IMessage m) 
