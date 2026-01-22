@@ -136,7 +136,7 @@ public class PlayerStateTracker: IPlayerStateTracker
 
     private bool CheckCNKRClient()
     {
-        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_kr.scd") || PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_cn.scd");
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_kr.scd") || PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_chs.scd");
 
     }
 
@@ -147,7 +147,7 @@ public class PlayerStateTracker: IPlayerStateTracker
 
     public bool CheckCNClient()
     {
-        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_cn.scd");
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_chs.scd");
     }
 
     public bool IsDawntrailInstalled()
