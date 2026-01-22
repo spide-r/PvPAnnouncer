@@ -55,7 +55,7 @@ namespace PvpAnnouncer
             _pluginInterface = pluginInterface;
             if (ps.CheckCNClient()) 
             {
-                Language = "cn";
+                Language = "chs";
             }
 
             if (ps.CheckKRClient())
