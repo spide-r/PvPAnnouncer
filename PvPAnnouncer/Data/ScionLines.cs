@@ -11,8 +11,8 @@ public static class ScionLines
      private static readonly string Yshtola = "Y'shtola";
      private static readonly string Estinien = "Estinien";
      private static readonly string Graha = "G'raha Tia";
-     private static readonly string Krile = "Wuk Lamat";
-     private static readonly string WukLamat = "WukLamat";
+     private static readonly string Krile = "Krile";
+     private static readonly string WukLamat = "Wuk Lamat";
      private static readonly string Koana = "Koana";
      private static readonly string BakoolJaJa = "Bakool Ja Ja";
      private static readonly string Erenville = "Erenville";
