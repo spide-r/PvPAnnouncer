@@ -42,7 +42,7 @@ namespace PvPAnnouncer
                     return;
                 }
                 PluginServices.ChatGui.Print(
-                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!!!!\n" +
+                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!\n" +
                     "Tell your local scion enjoyer that their fav is now in PvP ;D \n" +
                     "You can also enable the character portrait when an announcer speaks.", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;

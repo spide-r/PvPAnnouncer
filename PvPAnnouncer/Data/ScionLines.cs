@@ -108,7 +108,6 @@ public static readonly BattleTalk OnlyPossibleOutcome = new BattleTalk(Alisaie, 
 public static readonly BattleTalk TakeFirstPlaceNextTime = new BattleTalk(Alisaie, 8291042, 4, "So close. Next time we'll take first place for sure.", [Personalization.AlisaieAnnouncer], AlisaieI); 
 public static readonly BattleTalk ScramblingToKeepUp = new BattleTalk(Alisaie, 8291044, 4, "I must say I'm not used to seeing you scrambling to keep up.", [Personalization.AlisaieAnnouncer], AlisaieI); 
 public static readonly BattleTalk LaughingInTheEnd = new BattleTalk(Alisaie, 8291044, 5, "We won't lose next time! keep at it and we'll be the ones laughing in the end.", [Personalization.AlisaieAnnouncer], AlisaieI); 
-public static readonly BattleTalk Fall = new BattleTalk(Alisaie, 8201098, 2, "Fall!", [Personalization.AlisaieAnnouncer], AlisaieI); 
 public static readonly BattleTalk ThisIsNotOver = new BattleTalk(Alisaie, 8201092, 2, "This is not over.", [Personalization.AlisaieAnnouncer], AlisaieI); 
 public static readonly BattleTalk ThereIsNoEscapeAlisaie = new BattleTalk(Alisaie, 8201108, 2, "There is no escape!", [Personalization.AlisaieAnnouncer], AlisaieI); 
 public static readonly BattleTalk BackInTheGame = new BattleTalk(Alisaie, 8202023, 2, "Back in the game!", [Personalization.AlisaieAnnouncer], AlisaieI); 
@@ -217,6 +216,7 @@ public static readonly BattleTalk BeMoreCareful = new BattleTalk(Yshtola, 820210
 public static readonly BattleTalk DontBeSoReckless = new BattleTalk(Yshtola, 8202109, 2, "Don't be so reckless.", [Personalization.YshtolaAnnouncer], YshtolaI); 
 public static readonly BattleTalk HoldNothingBack = new BattleTalk(Yshtola, 8202110, 2, "Hold nothing back!", [Personalization.YshtolaAnnouncer], YshtolaI); 
 public static readonly BattleTalk MayTheTwelveGuideYou = new BattleTalk(Yshtola, 8202111, 2, "May the twelve guide you.", [Personalization.YshtolaAnnouncer], YshtolaI); 
+public static readonly BattleTalk Fall = new BattleTalk(Yshtola, 8201098, 2, "Fall!", [Personalization.YshtolaAnnouncer], YshtolaI ); 
 
 public static readonly BattleTalk HaveThemNowEstinien = new BattleTalk(Estinien, 8291115, 3, "We have them now.", [Personalization.EstinienAnnouncer], EstinienI); 
 public static readonly BattleTalk UseConfidenceAgainstThem = new BattleTalk(Estinien, 8291116, 4, "Good, use their confidence against them.", [Personalization.EstinienAnnouncer], EstinienI); 
