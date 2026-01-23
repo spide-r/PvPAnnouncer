@@ -95,7 +95,7 @@ public class EventListenerLoader : IEventListenerLoader
 
     public PvPEvent[] GetPvPEvents()
     {
-        return [..StandardPvpEvents, ..CustomPvPEvents];
+        return [ ..CustomPvPEvents, ..StandardPvpEvents];
     }
     public void LoadEventListeners()
     {
