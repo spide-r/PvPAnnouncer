@@ -114,7 +114,10 @@ public class ConfigWindow : Window, IDisposable
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
             var bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
-
+            if (bt.Length == 0) // no announcers selected
+            {
+                return;
+            }
             var e = bt[Random.Shared.Next(bt.Length)];
             PluginServices.Announcer.PlaySound(e.GetPath(PluginServices.Config.Language));
             PluginServices.Announcer.SendBattleTalk(e);
