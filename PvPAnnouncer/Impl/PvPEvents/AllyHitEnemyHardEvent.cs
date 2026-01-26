@@ -20,8 +20,8 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
     public override List<BattleTalk> SoundPaths()
     {
         return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath, FeverPitch, 
-            HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay, 
-            ThatWasUnbecoming, DragoonImpressed, LeaveAMark, AmidstGreatChaos, GiveItEverythingAlisaie, 
+            HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay,
+            DragoonImpressed, LeaveAMark, AmidstGreatChaos, GiveItEverythingAlisaie, 
             ShowThemWhatYoureMadeOf, GiveItEverything, FightHardNotHardEnough, GotThemNowWuk, CantPassChanceWuk, 
             WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive, Kill, Rend, More];
     }

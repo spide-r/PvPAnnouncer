@@ -120,6 +120,7 @@ public static readonly uint FullSwing = 43245;
 public static readonly uint WindsReply = 41509;
 public static readonly uint Comet = 43252;
 public static readonly uint Slither = 39184;
+public static readonly uint HorridRoar = 29496;
 
 
 

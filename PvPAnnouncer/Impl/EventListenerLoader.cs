@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
@@ -11,6 +12,7 @@ public class EventListenerLoader : IEventListenerLoader
 {
     public PvPEvent[] CustomPvPEvents { get; } =
     [
+        new AllyActionEvent([ActionIds.HorridRoar], [RoarNidhogg], "Horrid Roar", "HorridRoarEvent"),
         new AllyActionEvent([ActionIds.WorldSwallower],
             [..InternalConstants.LimitBreakList, CruelCoil, EitherSide, SomethingRevolting], "World Swallower",
             "AllyVprLBEvent"),
@@ -60,8 +62,8 @@ public class EventListenerLoader : IEventListenerLoader
             ],
             [BannedCompoundRobot, VFWickedWeapon, UnusedOhMercyFem, UnusedNoRespectMasc, Hahahahahaha, Kill, More, Rend], "Instant Kills",
             "AllyInstantKillEvent"),
-        new AllyActionEvent([ActionIds.RisingPhoenix, ActionIds.FlareStar], [StartedFire, BurnBurn, InfernoSwelling],
-            "Rising Phoenix & Flare Star", "AllyFireEvent"),
+        new AllyActionEvent([ActionIds.RisingPhoenix, ActionIds.FlareStar, ActionIds.Scorch], [StartedFire, BurnBurn, InfernoSwelling],
+            "Rising Phoenix/Flare Star/Scorch", "AllyFireEvent"),
         new AllyActionEvent([ActionIds.Blota], [ChainDeathmatch], "Blota", "AllyPullEvent"),
         new AllyActionEvent([ActionIds.Communio], [PunishingAttackFusion], "Communio", "AllyCommunioEvent"),
         new AllyActionEvent([ActionIds.CelestialRiver],

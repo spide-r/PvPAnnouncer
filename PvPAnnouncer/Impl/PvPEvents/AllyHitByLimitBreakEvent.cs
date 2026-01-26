@@ -24,7 +24,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
             MjStillInItGentle, MjStillStandingGentle, HardPressed, SomethingsComing, FeverPitch, BeatenToThePunch, 
             SevenHells, ContendWithThreat, SlowAndSteadyThancred, ThisBodethIll, LeaveAMark, BeStrong, TheyllPayForThatEstinien, HangInThere,
             NotGoingDownWithoutFight, TestUsButPrevail, NoDownWithoutFight, BBDesprate,
-            RunBeastRun, HaveYouTheStrength, DanceForMe, VauntedFortitude];
+            RunBeastRun, HaveYouTheStrength, DanceForMe, VauntedFortitude, ThatWasUnbecoming];
     }
 
     public override bool InvokeRule(IMessage message)

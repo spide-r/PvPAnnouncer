@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Configuration;
+using Dalamud.Game.Config;
 using Dalamud.Game.Text;
 using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
@@ -50,17 +52,21 @@ namespace PvpAnnouncer
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
 
-        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps)
+        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)
         {
             _pluginInterface = pluginInterface;
             if (ps.CheckCNClient()) 
             {
                 Language = "chs";
-            }
-
-            if (ps.CheckKRClient())
+            } else if (ps.CheckKRClient())
             {
                 Language = "kr";
+            } else
+            {
+                //todo check and set language
+                uint configuredLang;
+                gameConfig.TryGet(SystemConfigOption.LangSelectSub,  out configuredLang);
+                
             }
             _pluginInterface?.SavePluginConfig(this);
 

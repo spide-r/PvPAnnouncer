@@ -28,7 +28,8 @@ public class MatchVictoryEvent: PvPMatchEvent
             HonorToFightBySide, SplendidResultKeepUp, BefittingMyInspiration, AdventurerOfTalent, QuiteTheStatement, HeartRacingKrile, DelightVictoryKrile,
             FeatOldManWuk, SmilingBecauseSmiling, AllRightYouDidGreat, TryMyOwnHandWuk, PapaChallengeMatch, 
             StrategyKeyToVictory, GloryUponTuliyollal, DoneWell, FairPerformanceBetter, NotBadAtAll, HandWell, 
-            BefittingStature, GoodEnoughGuess, ManyTalents, ThatsTheWay, NotSurprised, LetAllCreationBeConsumed, InfernoSwelling];
+            BefittingStature, GoodEnoughGuess, ManyTalents, ThatsTheWay, NotSurprised, 
+            LetAllCreationBeConsumed, InfernoSwelling, NotWalkAway, FunThanExpected];
     }
 
     public override bool InvokeRule(IMessage message)

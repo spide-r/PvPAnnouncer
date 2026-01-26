@@ -83,7 +83,7 @@ internal class PluginServices {
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
-        Config.Initialize(pluginInterface, PlayerStateTracker);
+        Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig);
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
