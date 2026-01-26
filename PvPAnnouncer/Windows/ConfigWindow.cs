@@ -419,41 +419,9 @@ public class ConfigWindow : Window, IDisposable
         {
             if (PluginServices.PlayerStateTracker.CheckCNClient())
             {
-                if (!muted)
+                if (ImGui.RadioButton("Chinese", lang.Equals("chs")))
                 {
-                    if (ImGui.RadioButton("Chinese", lang.Equals("chs")))
-                    {
-                        _configuration.Language = "chs";
-                        _configuration.Save();
-                    }
-                    ImGui.SameLine();
-                    if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
-                    {
-                        _configuration.Language = "ja";
-                        _configuration.Save();
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (!muted)
-            {
-                if (ImGui.RadioButton("English", lang.Equals("en")))
-                {
-                    _configuration.Language = "en";
-                    _configuration.Save();
-                }
-                ImGui.SameLine();
-                if (ImGui.RadioButton("German", lang.Equals("de")))
-                {
-                    _configuration.Language = "de";
-                    _configuration.Save();
-                }
-                ImGui.SameLine();
-                if (ImGui.RadioButton("French", lang.Equals("fr")))
-                {
-                    _configuration.Language = "fr";
+                    _configuration.Language = "chs";
                     _configuration.Save();
                 }
                 ImGui.SameLine();
@@ -464,36 +432,34 @@ public class ConfigWindow : Window, IDisposable
                 }
             }
         }
+        else
+        {
+            if (ImGui.RadioButton("English", lang.Equals("en")))
+            {
+                _configuration.Language = "en";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("German", lang.Equals("de")))
+            {
+                _configuration.Language = "de";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("French", lang.Equals("fr")))
+            {
+                _configuration.Language = "fr";
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+            if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
+            {
+                _configuration.Language = "ja";
+                _configuration.Save();
+            }
+        }
         ImGui.Separator();
         
-
-        /*if (!hideBattleText)
-        {
-            ImGui.Text("Battle Text Language:");
-            if (ImGui.RadioButton("English Text", battleTalkLang.Equals("en")))
-            {
-                _configuration.BattleTalkLang = "en";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("German Text", battleTalkLang.Equals("de")))
-            {
-                _configuration.BattleTalkLang = "de";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("French Text", battleTalkLang.Equals("fr")))
-            {
-                _configuration.BattleTalkLang = "fr";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("Japanese Text", battleTalkLang.Equals("ja")))
-            {
-                _configuration.BattleTalkLang = "ja";
-                _configuration.Save();
-            }
-        }*/
    
         if (ImGui.Checkbox("Mute Announcer", ref muted))
         {
