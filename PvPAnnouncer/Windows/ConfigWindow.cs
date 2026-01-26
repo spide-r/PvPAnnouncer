@@ -135,7 +135,7 @@ public class ConfigWindow : Window, IDisposable
             }
             else
             {
-                PluginServices.Announcer.SendBattleTalk(new BattleTalk("PvPAnnouncer Dev", 0, 5, "You don't have any announcers selected!", [], 73282));
+                PluginServices.Announcer.SendBattleTalk(new BattleTalk(InternalConstants.PvPAnnouncerDevName, 0, 5, "You don't have any announcers selected!", [], InternalConstants.PvPAnnouncerDevIcon));
             }
         }
         

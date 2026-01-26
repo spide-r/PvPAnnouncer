@@ -214,8 +214,10 @@ public class Announcer: IAnnouncer
                 var style = battleTalk.Style;
                 if (text.StartsWith('_'))
                 {
-                    text = "Uh oh! You shouldn't see this! Contact the PvPannouncer dev!";
+                    text = InternalConstants.ErrorContactDev;
+                    name = InternalConstants.PvPAnnouncerDevName;
                     duration = 5;
+                    icon = InternalConstants.PvPAnnouncerDevIcon;
                 }
                 if (icon != 0 && PluginServices.Config.WantsIcon)
                 {
@@ -228,7 +230,7 @@ public class Announcer: IAnnouncer
             }
             catch (InvalidOperationException _) 
             {
-                UIModule.Instance()->ShowBattleTalk("Metem", "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!", 6, 6);
+                UIModule.Instance()->ShowBattleTalk(InternalConstants.PvPAnnouncerDevName, InternalConstants.ErrorContactDev, 6, 6);
             }
             catch (Exception e)
             {

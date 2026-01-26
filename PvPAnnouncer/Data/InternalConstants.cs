@@ -9,6 +9,9 @@ using static ScionLines;
 public abstract class InternalConstants
 {
     public const string MessageTag = "PvPAnnouncer";
+    public const uint PvPAnnouncerDevIcon = 73282;
+    public const string PvPAnnouncerDevName = "PvPAnnouncer Dev";
+    public const string ErrorContactDev = "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!";
 
     public static readonly List<BattleTalk> LimitBreakList =
     [
