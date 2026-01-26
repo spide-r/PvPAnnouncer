@@ -114,24 +114,28 @@ public class ConfigWindow : Window, IDisposable
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
             var bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
-            if (bt.Length == 0) // no announcers selected
+            if (bt.Length != 0) // no announcers selected
             {
-                return;
-            }
-            var e = bt[Random.Shared.Next(bt.Length)];
-            PluginServices.Announcer.PlaySound(e.GetPath(PluginServices.Config.Language));
-            PluginServices.Announcer.SendBattleTalk(e);
-            PluginServices.ChatGui.Print($"Playing Voiceline for {e.Name}", InternalConstants.MessageTag);
+                
+                var e = bt[Random.Shared.Next(bt.Length)];
+                PluginServices.Announcer.PlaySound(e.GetPath(PluginServices.Config.Language));
+                PluginServices.Announcer.SendBattleTalk(e);
+                PluginServices.ChatGui.Print($"Playing Voiceline for {e.Name}", InternalConstants.MessageTag);
 
-            if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
+                if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
+                {
+                    Notification n = new Notification();
+                    n.Title = "Dawntrail Not installed!";
+                    n.Type = NotificationType.Error;
+                    n.Minimized = false;
+                    n.MinimizedText = "Dawntrail is not installed!";
+                    n.Content = "You must install Dawntrail for this plugin to work!";
+                    PluginServices.NotificationManager.AddNotification(n);
+                }
+            }
+            else
             {
-                Notification n = new Notification();
-                n.Title = "Dawntrail Not installed!";
-                n.Type = NotificationType.Error;
-                n.Minimized = false;
-                n.MinimizedText = "Dawntrail is not installed!";
-                n.Content = "You must install Dawntrail for this plugin to work!";
-                PluginServices.NotificationManager.AddNotification(n);
+                PluginServices.Announcer.SendBattleTalk(new BattleTalk("PvPAnnouncer Dev", 0, 5, "You don't have any announcers selected!", [], 73282));
             }
         }
         
