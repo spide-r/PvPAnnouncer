@@ -60,7 +60,6 @@ public class ConfigWindow : Window, IDisposable
         var muted = _configuration.Muted;
         var hideBattleText = _configuration.HideBattleText;
         var lang = _configuration.Language;
-        //var battleTalkLang = _configuration.BattleTalkLang;
         var blEvents = _configuration.BlacklistedEvents;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
