@@ -414,14 +414,13 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Unindent();
         ImGui.Separator();
+        ImGui.Text("Announcer Language:");
         if (PluginServices.PlayerStateTracker.CheckKRClient() || PluginServices.PlayerStateTracker.CheckCNClient()) 
         {
             if (PluginServices.PlayerStateTracker.CheckCNClient())
             {
                 if (!muted)
                 {
-                    ImGui.Text("Announcer Language:");
-
                     if (ImGui.RadioButton("Chinese", lang.Equals("chs")))
                     {
                         _configuration.Language = "chs";
@@ -465,6 +464,7 @@ public class ConfigWindow : Window, IDisposable
                 }
             }
         }
+        ImGui.Separator();
         
 
         /*if (!hideBattleText)
