@@ -63,10 +63,15 @@ namespace PvpAnnouncer
                 Language = "kr";
             } else
             {
-                //todo check and set language
-                uint configuredLang;
-                gameConfig.TryGet(SystemConfigOption.LangSelectSub,  out configuredLang);
-                
+                gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
+                Language = configuredLang switch
+                {
+                    0 => "jp",
+                    1 => "en",
+                    2 => "de",
+                    3 => "fr",
+                    _ => "en"
+                };
             }
             _pluginInterface?.SavePluginConfig(this);
 
