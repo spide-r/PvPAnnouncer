@@ -41,43 +41,52 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
      }
 
      //GOTCHA: some of these are labeled incorrectly but we only care about entityid and type 
-     private void ProcessPacketActorControlDetour(uint entityId, uint type, uint statusId, uint amount, uint a5, uint source, uint a7, uint a8, uint param7New, uint param8New, ulong targetId, byte flag)
+     //todo Actor Control is much much more complicated than previously thought, apparently theres 3 different ways each of these args can be used - yikes!
+     private void ProcessPacketActorControlDetour(uint entityId, uint category, uint arg1, uint arg2, uint arg3, uint arg4, uint arg5, uint arg6, uint arg7, uint arg8, ulong targetId, byte isRecorded)
      {
-         processPacketActorControlHook.Original(entityId, type, statusId, amount, a5, source, a7, a8, param7New, param8New, targetId, flag);
+         processPacketActorControlHook.Original(entityId, category, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, targetId, isRecorded);
          try
          {
              var actorControlMessage =
-                 new ActorControlMessage(entityId, type);
-             /*PluginServices.PluginLog.Debug($"Processing Actor Control entityId {entityId},  type {type}, statusId {statusId}, " +
-                                            $"amount {amount}, a5 {a5}, source {source}, a7 {a7}, a8 {a8}, param7 {param7New}, param8 {param8New}, targetId {targetId}, flag {flag}");*/
+                 new ActorControlMessage(entityId, category);
+
+             if (PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
+             {
+                 PluginServices.PluginLog.Verbose($"Processing Actor Control entityId {entityId},  category {(ActorControlCategory) category}, arg1 {arg1}, " +
+                                                  $"a2 {arg2}, a3 {arg3}, a4 {arg4}, a5 {arg5}, a6 {arg6}, a7 {arg7}, a8 {arg8}, targetId {targetId}, flag {isRecorded}");
+
+             }
+         
              if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
              {
+               
                  if (!PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
                  {
                      return;
                  }
-                 if (statusId == StatusIds.BH5)
+
+                 if (arg1 == StatusIds.BH5)
                  {
                      EmitToBroker(new BattleHighMessage(5));
-                 } else if (statusId == StatusIds.BH4)
+                 } else if (arg1 == StatusIds.BH4)
                  {
                      EmitToBroker(new BattleHighMessage(4));
                  } 
-                 else if (statusId == StatusIds.BH3)
+                 else if (arg1 == StatusIds.BH3)
                  {
                      EmitToBroker(new BattleHighMessage(3));
-                 } else if (statusId == StatusIds.BH2)
+                 } else if (arg1 == StatusIds.BH2)
                  {
                      EmitToBroker(new BattleHighMessage(2));
-                 }else if (statusId == StatusIds.BH1)
+                 }else if (arg1 == StatusIds.BH1)
                  {
                      EmitToBroker(new BattleHighMessage(1));
-                 } else if (statusId == StatusIds.FlyingHigh)
+                 } else if (arg1 == StatusIds.FlyingHigh)
                  {
                      EmitToBroker(new FlyingHighMessage());
-                 } else if (statusId == StatusIds.Soaring)
+                 } else if (arg1 == StatusIds.Soaring)
                  {
-                     EmitToBroker(new SoaringMessage((int) amount));
+                     EmitToBroker(new SoaringMessage((int) arg2));
                  }
              }
              else

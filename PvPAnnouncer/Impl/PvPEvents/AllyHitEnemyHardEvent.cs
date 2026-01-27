@@ -13,7 +13,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
 {
     public AllyHitEnemyHardEvent()
     {
-        Name = "Hit an Enemy Hard";
+        Name = "Hit an Enemy Hard/Used Burst on an enemy";
         InternalName = "AllyHitEnemyHardEvent";
     }
 
@@ -23,7 +23,8 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
             HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay,
             DragoonImpressed, LeaveAMark, AmidstGreatChaos, GiveItEverythingAlisaie, 
             ShowThemWhatYoureMadeOf, GiveItEverything, FightHardNotHardEnough, GotThemNowWuk, CantPassChanceWuk, 
-            WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive, Kill, Rend, More];
+            WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive, Kill, Rend, More,
+            Hahahahahaha, ATestOfYourReflexes];
     }
 
     public override bool InvokeRule(IMessage message) 

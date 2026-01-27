@@ -29,7 +29,7 @@ public enum ActionEffectType : byte {
     EnmityAmountUp = 25,
     EnmityAmountDown = 26,
     StartActionCombo = 27,
-    Knockback = 33,
+    KbAndDrawIn = 32,
     Mount = 40,
     FullResistStatus = 55,
     Vfx = 59,

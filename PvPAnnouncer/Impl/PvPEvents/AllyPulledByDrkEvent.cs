@@ -32,13 +32,19 @@ public class AllyPulledByDrkEvent: PvPActionEvent
             }
             foreach (var target in pp.GetTargetIds())
             {
+                foreach (var actionEffectType in pp.GetEffectTypes(target))
+                {
+                    PluginServices.PluginLog.Verbose($"ActionEffect Drk Pull on {target}: {actionEffectType}");
+                }
+
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
-                    return true;
+                    if (pp.GetEffectTypes(target).Contains(ActionEffectType.KbAndDrawIn))
+                    {
+                        return true; 
+                    }
                 }
             }
-            return false;
-      
         }
         return false;
     }

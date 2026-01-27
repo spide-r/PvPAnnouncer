@@ -6,7 +6,7 @@
 public enum ActorControlCategory : ushort {
     Death = 0x6,
     CancelAbility = 0xF,
-    GainEffect = 0x14,
+    GainEffect = 0x14,//todo - does this only come from external non-player sources? loseeffect happens as normal
     LoseEffect = 0x15,
     UpdateEffect = 0x16,
     TargetIcon = 0x22,
