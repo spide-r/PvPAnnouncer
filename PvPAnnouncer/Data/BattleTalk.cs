@@ -5,22 +5,23 @@ using Dalamud.Game;
 using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
+using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Data;
 
-public class  BattleTalk // decorator
+public class  BattleTalk : IBattleTalk // decorator
 {
-  public readonly uint RowId;
-  public readonly uint SubRowId;
-  public readonly uint Icon;
-  public readonly uint Voiceover;
-  public readonly string Name;
-  public readonly ReadOnlySeString Text;
-  public readonly byte Duration;
-  public readonly byte Style;
-  public readonly List<Personalization> Personalization;
-  
-    
+  public uint RowId { get; }
+  public uint SubRowId { get; }
+  public uint Icon { get; }
+  public uint Voiceover { get; }
+  public string Name { get; }
+  public ReadOnlySeString Text { get; }
+  public byte Duration { get; }
+  public byte Style { get; }
+  public List<Personalization> Personalization { get; }
+  public string SoundPath { get; }
+
   /*
       name: ContentDirectorBattleTalk
       fields:
@@ -74,37 +75,24 @@ public class  BattleTalk // decorator
     }
   }
 
-  public static BattleTalk CreateFromVoLine(string name, uint voiceover, List<Personalization> personalization, uint icon = 0)
-  {
-    var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
 
-    var t = sheet.Where(sc =>
-
-    {
-
-      return sc.Any(bt => bt.Unknown1.Equals(voiceover));
-
-    }).First().First(aa => aa.Unknown1.Equals(voiceover)); 
-    try
-    {
-      
-      return new BattleTalk(name, t.Unknown1, t.Unknown3,
-        t.Text.Value.ToString() ?? $"Unknown Text! You shouldn't be seeing this! ({voiceover})", personalization,
-        t.Unknown0 != 0 ? t.Unknown0 : icon, t.Unknown4, t.RowId, t.SubrowId);
-
-    }
-    catch (InvalidOperationException _)
-    {
-      return new BattleTalk(name, 0, 5, $"Unknown Text! You shouldn't be seeing this! ({voiceover})", personalization, icon);
-
-    }
-  }
   public BattleTalk(string name, uint voiceover, int duration, string text, List<Personalization> personalization,
+    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0) : this(name, voiceover, duration, personalization, icon, style, rowId, subRowId)
+  {//todo does this work?
+    Text = text;
+  }
+  
+  public BattleTalk(string name, uint voiceover, int duration, uint text, List<Personalization> personalization,
+    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0) : this(name, voiceover, duration, personalization, icon, style, rowId, subRowId)
+  {//todo does this work?
+    throw new NotImplementedException();
+  }
+
+  private BattleTalk(string name, uint voiceover, int duration, List<Personalization> personalization,
     uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0)
   {
     Name = name;
     Voiceover = voiceover;
-    Text = text;
     Duration = (byte) duration;
     Personalization = personalization;
     Icon = icon;
@@ -112,10 +100,9 @@ public class  BattleTalk // decorator
     RowId = rowId;
     SubRowId = subRowId;
   }
-
   public string GetPath(string lang)
   {
     return "sound/voice/vo_line/" + Voiceover + "_" + lang + ".scd";
-
   }
+  
 }

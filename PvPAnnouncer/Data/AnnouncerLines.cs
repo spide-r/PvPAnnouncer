@@ -13,6 +13,8 @@ public static class AnnouncerLines
     
     //Lines are found in ContentDirectorBattleTalk as well as InstanceContentTextData - Use AlphaAOT 
     
+    //trust lines are found in NpcYell
+    
     //todo: huge recovery from earths reply/microcosmos (regen voice lines) (8206125 for huge heal from others, 8206122 from pot?)
 
     private static string GetVoPath(string announcement, string lang)

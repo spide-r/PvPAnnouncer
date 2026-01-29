@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
@@ -13,6 +14,8 @@ namespace PvPAnnouncer.Windows;
 public class DevWindow: Window, IDisposable
 {
     private string LastUsedAction = "";
+    private List<string> _voLines = [];
+    private string[] _voLineArr = [];
     public DevWindow() : base(
         "PvPAnnouncer Dev Window")
     {
@@ -20,30 +23,35 @@ public class DevWindow: Window, IDisposable
         {
             MinimumSize = new Vector2(450, 225),
         };
-
+#if DEBUG
+        for (uint j = 0; j < 9999999; j++)
+        {
+            var voLine = $"sound/voice/vo_line/{j}_en.scd";
+            if (PluginServices.DataManager.FileExists(voLine))
+            {
+                _voLines.Add(j.ToString());
+            }
+        }
+        _voLineArr = _voLines.ToArray();
+#endif
     }
 
     private long ll = 0L;
     private string icon = "";
     private string ss = "";
-    private string nn = "";
-    private string vv = "";
-    private long dd = 0L;
+    private string _name = "";
+    private string _voicelineTranscription = "";
+    private long _duration = 0L;
     private bool hide = false;
-    
-    public static string GetPath(string announcement)
-    {
-        if (announcement.StartsWith("cut"))
-        {
-            return announcement + "_en.scd";
+    private string _textData = "";
+    private int _voLineSelector = 0;
 
-        }
-        return "sound/voice/vo_line/" + announcement + "_en.scd";
-    }
+    
     public override void Draw()
     {
-        var l = ll;
+        
 
+        var l = ll;
         var ic = icon;
         if(ImGui.InputText("Icon###Icon", ref ic))
         {
@@ -99,41 +107,64 @@ public class DevWindow: Window, IDisposable
             }
         }
         ImGui.Separator();
-        var n = nn;
+        var n = _name;
         if (ImGui.InputText("Name", ref n))
         {
-            nn = n;
+            _name = n;
         }
-        
-        var v = vv;
-        if (ImGui.InputText("Voice Line", ref v))
+        var vlTranscription = _voicelineTranscription;
+        if (ImGui.InputText("Voice Line Transcription", ref _voicelineTranscription))
         {
-            vv = v;
+            _voicelineTranscription = vlTranscription;
         }
-        var d = dd;
 
+        var textData = _textData;
+        if (ImGui.InputText("Sheet Line number", ref _textData))
+        {
+            _textData = textData;
+        }
+
+        ImGui.ListBox("Voice Lines", ref _voLineSelector, _voLineArr);
+        if (ImGui.Button("Play##dumblist"))
+        {
+            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ _voLineArr[_voLineSelector] + "_en.scd");
+
+        }
+        ImGui.Separator();
+        var d = _duration;
         if (ImGui.Button("Go Back And Play"))
         {
-            ll = l - 1;
-            play(ll);
+            _voLineSelector = _voLineSelector - 1;
+            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ _voLineArr[_voLineSelector] + "_en.scd");
         }
         ImGui.SameLine();
         if (ImGui.Button("Go Forward And Play"))
         {
-            ll = l + 1;
-            play(ll);
+            _voLineSelector = _voLineSelector + 1;
+            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ _voLineArr[_voLineSelector] + "_en.scd");
             
         }
         if (ImGui.InputScalar("Duration", ref d, 1L, 1L))
         {
-            dd = d;
+            _duration = d;
         }
 
         if (ImGui.Button("Save This"))
         {
-            PluginServices.Config.Dev_VoLineList.Add($" public static readonly BattleTalk VO{ll} new BattleTalk(\"{nn.Trim()}\", \"{ll}\", {dd}, \"{vv.Trim()}\"/, GetPersonalization([Personalization.{nn}Announcer])); // {vv}");
+            var argChosen = "";
+            if (!vlTranscription.Equals(""))
+            {
+                argChosen = vlTranscription;
+            }
+
+            if (!textData.Equals(""))
+            {
+                argChosen = textData;
+            }
+            PluginServices.Config.Dev_VoLineList.Add($" public static readonly BattleTalk VO{_voLineArr[_voLineSelector]} new BattleTalk({_name.Trim()}, \"{_voLineArr[_voLineSelector]}\", {_duration}, {argChosen}, GetPersonalization([Personalization.{_name}Announcer])); // {_voicelineTranscription}");
             PluginServices.Config.Save();
-            vv = "";
+            _voicelineTranscription = "";
+            _textData = "";
         }
         
         ImGui.Text("Events: ");

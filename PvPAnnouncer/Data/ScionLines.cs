@@ -1,4 +1,6 @@
-﻿namespace PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Impl;
+
+namespace PvPAnnouncer.Data;
 
 public static class ScionLines
 {
@@ -31,6 +33,7 @@ public static class ScionLines
      private static readonly uint UriangerI = 073026;
      private static readonly uint YshtolaI = 073025;
      
+     
      public static readonly BattleTalk ThisEndsHere = new BattleTalk(Zenos, 8201124, 2, "This ends here!", [Personalization.ZenosAnnouncer], ZenosI); 
      public static readonly BattleTalk DontStopNow = new BattleTalk(Zenos, 8201342, 2, "Dont stop now'!", [Personalization.ZenosAnnouncer], ZenosI); 
      public static readonly BattleTalk RunBeastRun = new BattleTalk(Zenos, 8201344, 2, "Run beast run!", [Personalization.ZenosAnnouncer], ZenosI); 
@@ -39,20 +42,21 @@ public static class ScionLines
      public static readonly BattleTalk Kill = new BattleTalk(Zenos, 8201350, 2, "Kill.", [Personalization.ZenosAnnouncer], ZenosI); 
      public static readonly BattleTalk Rend = new BattleTalk(Zenos, 8201351, 2, "Rend.", [Personalization.ZenosAnnouncer], ZenosI); 
      public static readonly BattleTalk More = new BattleTalk(Zenos, 8201352, 2, "More!", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk HaveYouTheStrength = new BattleTalk(Zenos, 8201353, 2, "Have you the strength?", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk LetThisMomentLastForever = new BattleTalk(Zenos, 8201357, 3, "Let this moment last forever!", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk ThePowerToTranscend = new BattleTalk(Zenos, 8201354, 3, "The power to transcend.", [Personalization.ZenosAnnouncer], ZenosI); 
+     public static readonly BattleTalk HaveYouTheStrength = new BattleTalk(Zenos, 8201353, 2, 17313, [Personalization.ZenosAnnouncer], ZenosI); // "Have you the strength?" 
+     public static readonly BattleTalk LetThisMomentLastForever = new BattleTalk(Zenos, 8201357, 3, 17315, [Personalization.ZenosAnnouncer], ZenosI); // Let this moment last forever....
+     public static readonly BattleTalk ShowMeYourAll = new BattleTalk(Zenos, 0, 3, 17315, [Personalization.ZenosAnnouncer], ZenosI); // Show me your all...
+     public static readonly BattleTalk ThePowerToTranscend = new BattleTalk(Zenos, 8201354, 3, 17314, [Personalization.ZenosAnnouncer], ZenosI); // "The power to transcend." 
      public static readonly BattleTalk Hahahahahaha = new BattleTalk(Zenos, 8201429, 2, "Hahahahahaha!", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk StillFightInYou = new BattleTalk(Zenos, 8203135, 3, "Ha! Still fight in you I see.", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk HydaelynsChosenMuster = new BattleTalk(Zenos, 8203136, 4, "Is this truly the best Hydaelyn's chosen can muster?", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk LifesFireAlreadySpent = new BattleTalk(Zenos, 8203141, 4, "Do not tell me your life's fire is already spent.", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk RiseOnceMore = new BattleTalk(Zenos, 8203142, 4, "Yes, yes! Rise once more, It musn't end yet.", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk OverestimatedPotential = new BattleTalk(Zenos, 8203144, 3, "Have I overestimated your potential?", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk VauntedFortitude = new BattleTalk(Zenos, 8203151, 3, "Show me your vaunted fortitude.", [Personalization.ZenosAnnouncer], ZenosI); 
+     public static readonly BattleTalk StillFightInYou = new BattleTalk(Zenos, 8203135, 3, 31201, [Personalization.ZenosAnnouncer], ZenosI); // "Ha! Still fight in you I see." 
+     public static readonly BattleTalk HydaelynsChosenMuster = new BattleTalk(Zenos, 8203136, 4, 31202, [Personalization.ZenosAnnouncer], ZenosI); // "Is this truly the best Hydaelyn's chosen can muster?" 
+     public static readonly BattleTalk LifesFireAlreadySpent = new BattleTalk(Zenos, 8203141, 4, 31207, [Personalization.ZenosAnnouncer], ZenosI); // "Do not tell me your life's fire is already spent." 
+     public static readonly BattleTalk RiseOnceMore = new BattleTalk(Zenos, 8203142, 4, 31208, [Personalization.ZenosAnnouncer], ZenosI); // "Yes, yes! Rise once more, It musn't end yet." 
+     public static readonly BattleTalk OverestimatedPotential = new BattleTalk(Zenos, 8203144, 3, 31213, [Personalization.ZenosAnnouncer], ZenosI); // "Have I overestimated your potential?" 
+     public static readonly BattleTalk VauntedFortitude = new BattleTalk(Zenos, 8203151, 3, 31215, [Personalization.ZenosAnnouncer], ZenosI); // "Show me your vaunted fortitude." 
      public static readonly BattleTalk ATestOfYourReflexes = new BattleTalk(Zenos, 8203147, 3, "A test of your reflexes!", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk BurnBurn = new BattleTalk(Zenos, 8203155,3, "Burn! Burn!", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk LetAllCreationBeConsumed = new BattleTalk(Zenos, 8203140,5, "Come! Let all creation be consumed by our ravenous fervor.", [Personalization.ZenosAnnouncer], ZenosI); 
-     public static readonly BattleTalk InfernoSwelling = new BattleTalk(Zenos, 8203139,5, "I know you feel it too, the inferno swelling within you!", [Personalization.ZenosAnnouncer], ZenosI); 
+     public static readonly BattleTalk BurnBurn = new BattleTalk(Zenos, 8203155,3, 31210, [Personalization.ZenosAnnouncer], ZenosI); // "Burn! Burn!" 
+     public static readonly BattleTalk LetAllCreationBeConsumed = new BattleTalk(Zenos, 8203140,5, 31206, [Personalization.ZenosAnnouncer], ZenosI); // "Come! Let all creation be consumed by our ravenous fervor." 
+     public static readonly BattleTalk InfernoSwelling = new BattleTalk(Zenos, 8203139,5, 31205, [Personalization.ZenosAnnouncer], ZenosI); // "I know you feel it too, the inferno swelling within you!" 
 
 
 
@@ -85,7 +89,8 @@ public static class ScionLines
      public static readonly BattleTalk TheoryAndPractice = new BattleTalk(Alphinaud, 8202009, 2, "Theory and practice!", [Personalization.AlphinaudAnnouncer], AlphinaudI); 
      public static readonly BattleTalk FocusReleaseAlphinaud = new BattleTalk(Alphinaud, 8202006, 2, "Focus. Release!", [Personalization.AlphinaudAnnouncer], AlphinaudI); 
      public static readonly BattleTalk OnYourFeetAlphinaud = new BattleTalk(Alphinaud, 8202012, 2, "On your feet!", [Personalization.AlphinaudAnnouncer], AlphinaudI); 
-     public static readonly BattleTalk KeepItUp = new BattleTalk(Alphinaud, 8203009, 2, "Keep it up!", [Personalization.AlphinaudAnnouncer], AlphinaudI); 
+     public static readonly BattleTalk KeepItUp = new BattleTalk(Alphinaud, 8203009, 2, "Keep it up!", [Personalization.AlphinaudAnnouncer], AlphinaudI);
+     //todo 8203403-07
 
 
      public static readonly BattleTalk GiveItEverythingAlisaie = new BattleTalk(Alisaie, 8291023, 3, "Yes! Give it everything you've got.", [Personalization.AlisaieAnnouncer], AlisaieI); 
@@ -114,9 +119,10 @@ public static class ScionLines
      public static readonly BattleTalk OnYourFeetAlisaie = new BattleTalk(Alisaie, 8202031, 2, "On your feet!", [Personalization.AlisaieAnnouncer], AlisaieI); 
      public static readonly BattleTalk JustALittleMore = new BattleTalk(Alisaie, 8202376, 2, "Just a little more!", [Personalization.AlisaieAnnouncer], AlisaieI); 
      public static readonly BattleTalk DefeatIsNotAnOption = new BattleTalk(Alisaie, 8202528, 2, "Defeat is not an option.", [Personalization.AlisaieAnnouncer], AlisaieI); 
-     public static readonly BattleTalk TurnaboutsFairPlay = new BattleTalk(Alisaie, 8203018, 3, "As they say, turnabout's fair play.", [Personalization.AlisaieAnnouncer], AlisaieI); 
-     public static readonly BattleTalk WellDone = new BattleTalk(Alisaie, 8203412, 2, "Well done!", [Personalization.AlisaieAnnouncer], AlisaieI); 
-
+     public static readonly BattleTalk TurnaboutsFairPlay = new BattleTalk(Alisaie, 8203018, 3, 31523, [Personalization.AlisaieAnnouncer], AlisaieI); // "As they say, turnabout's fair play." 
+     public static readonly BattleTalk WellDone = new BattleTalk(Alisaie, 8203412, 2, 12227, [Personalization.AlisaieAnnouncer], AlisaieI); //"Well done!" - GOTCHA: this 12227 sheet line might not be alisaies actual text but its the same words so it should be translated the same (maybe)
+     public static readonly BattleTalk AreYouReady = new BattleTalk(Alisaie, 8201636, 3, "Are you Ready?", [Personalization.AlisaieAnnouncer], AlisaieI); 
+     //todo 8203408-12
 
      public static readonly BattleTalk ToTheBoldGoTheSpoils = new BattleTalk(Thancred, 8291046, 3, "To the bold go the spoils.", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk OurTurnThancred = new BattleTalk(Thancred, 8291047, 3, "My turn! I mean, our turn.", [Personalization.ThancredAnnouncer], ThancredI); 
@@ -141,19 +147,22 @@ public static class ScionLines
      public static readonly BattleTalk CouldHaveBeenWorse = new BattleTalk(Thancred, 8291066, 4, "Could have been worse, but it also could have been better.", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk DrinkBestOfUs = new BattleTalk(Thancred, 8291067, 5, "It happens to the best of us. Drink?", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk KeepChinUpPrettyLeast = new BattleTalk(Thancred, 8291068, 6, "I wont lie, that wasn't pretty in the least. Try to keep your chin up!", [Personalization.ThancredAnnouncer], ThancredI); 
-     public static readonly BattleTalk ThisIsGoingWell = new BattleTalk(Thancred, 8202040, 2, "This is going well.", [Personalization.ThancredAnnouncer], ThancredI); 
+     public static readonly BattleTalk ThisIsGoingWell = new BattleTalk(Thancred, 8202040, 2, 22717, [Personalization.ThancredAnnouncer], ThancredI); // "This is going well." 
      public static readonly BattleTalk RightBackToIt = new BattleTalk(Thancred, 8202042, 2, "Right! Back to it.", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk WhereWereWe = new BattleTalk(Thancred, 8202043, 2, "Where were we?", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk DoYourWorst = new BattleTalk(Thancred, 8202044, 2, "Do your worst!", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk KeepYourGuardUp = new BattleTalk(Thancred, 8202053, 2, "Keep your guard up!", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk ComeOn = new BattleTalk(Thancred, 8202055, 2, "Come on!", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk BestDefenceIsGoodDefence = new BattleTalk(Thancred, 8202056, 3, "The best defence is a good defence!", [Personalization.ThancredAnnouncer], ThancredI); 
-     public static readonly BattleTalk ExplosivesInPlace = new BattleTalk(Thancred, 8203021, 4, "This is Thancred. The explosives are in place.", [Personalization.ThancredAnnouncer], ThancredI); 
+     public static readonly BattleTalk ExplosivesInPlace = new BattleTalk(Thancred, 8203021, 4, 31617, [Personalization.ThancredAnnouncer], ThancredI); // "This is Thancred. The explosives are in place." 
      public static readonly BattleTalk SevenHells = new BattleTalk(Thancred, 8203023, 2, "Seven hells.", [Personalization.ThancredAnnouncer], ThancredI); 
      public static readonly BattleTalk ThatWasUnbecoming = new BattleTalk(Thancred, 8201649, 2, "That was unbecoming", [Personalization.ThancredAnnouncer], ThancredI);
      public static readonly BattleTalk HitThemWhereItHurts = new BattleTalk(Thancred, 8201660, 3, "You have to hit them where it hurts!", [Personalization.ThancredAnnouncer], ThancredI); 
+     public static readonly BattleTalk NotSoFast = new BattleTalk(Thancred, 8201651, 3, "Not so fast!", [Personalization.ThancredAnnouncer], ThancredI); 
+     public static readonly BattleTalk NoMistakes = new BattleTalk(Thancred, 8201654, 2, "No Mistakes!", [Personalization.ThancredAnnouncer], ThancredI); 
+     public static readonly BattleTalk MakeThisCount = new BattleTalk(Thancred, 8201656, 2, "Make this count!", [Personalization.ThancredAnnouncer], ThancredI); 
 
-
+//todo continue checking instancecontenttextdata for transcriptions
      public static readonly BattleTalk OvercomeTheOdds = new BattleTalk(Urianger, 8291070, 4, "Together we shall overcome the odds", [Personalization.UriangerAnnouncer], UriangerI); 
      public static readonly BattleTalk SoundDecision = new BattleTalk(Urianger, 8291070, 3, "A sound decision.", [Personalization.UriangerAnnouncer], UriangerI); 
      public static readonly BattleTalk ContendWithThreat = new BattleTalk(Urianger, 8291071, 3, "How best to contend with this threat?", [Personalization.UriangerAnnouncer], UriangerI); 
@@ -180,7 +189,9 @@ public static class ScionLines
      public static readonly BattleTalk BeAtEase = new BattleTalk(Urianger, 8203035, 2, "Be at ease my friend.", [Personalization.UriangerAnnouncer], UriangerI); 
      public static readonly BattleTalk HaveCare = new BattleTalk(Urianger, 8203038, 2, "Have care my friend.", [Personalization.UriangerAnnouncer], UriangerI); 
      public static readonly BattleTalk ThisBodethIll = new BattleTalk(Urianger, 8202076, 2, "This bodeth ill.", [Personalization.UriangerAnnouncer], UriangerI); 
-
+     public static readonly BattleTalk ThyTimeNotCome = new BattleTalk(Urianger, 8202090, 4, "Thy time hath not yet come.", [Personalization.UriangerAnnouncer], UriangerI); 
+     public static readonly BattleTalk FearsomeFamiliar = new BattleTalk(Urianger, 8203032, 4, "Tis a most fearsome familiar!", [Personalization.UriangerAnnouncer], UriangerI); 
+     
 
      public static readonly BattleTalk LooksPromising = new BattleTalk(Yshtola, 8291092, 3, "Well, this looks promising.", [Personalization.YshtolaAnnouncer], YshtolaI); 
      public static readonly BattleTalk AchievedWithoutRisk = new BattleTalk(Yshtola, 8291093, 4, "Nothing worthwhile was ever achieved without risk.", [Personalization.YshtolaAnnouncer], YshtolaI); 
@@ -217,6 +228,9 @@ public static class ScionLines
      public static readonly BattleTalk HoldNothingBack = new BattleTalk(Yshtola, 8202110, 2, "Hold nothing back!", [Personalization.YshtolaAnnouncer], YshtolaI); 
      public static readonly BattleTalk MayTheTwelveGuideYou = new BattleTalk(Yshtola, 8202111, 2, "May the twelve guide you.", [Personalization.YshtolaAnnouncer], YshtolaI); 
      public static readonly BattleTalk Fall = new BattleTalk(Yshtola, 8201098, 2, "Fall!", [Personalization.YshtolaAnnouncer], YshtolaI ); 
+     public static readonly BattleTalk SomeoneWillPay = new BattleTalk(Yshtola, 8202098, 3, "Someone will pay for that!", [Personalization.YshtolaAnnouncer], YshtolaI ); 
+     public static readonly BattleTalk Embarrassing = new BattleTalk(Yshtola, 8202099, 3, "That was embarrassing.", [Personalization.YshtolaAnnouncer], YshtolaI );
+     //todo 8203413-19
 
      public static readonly BattleTalk HaveThemNowEstinien = new BattleTalk(Estinien, 8291115, 3, "We have them now.", [Personalization.EstinienAnnouncer], EstinienI); 
      public static readonly BattleTalk UseConfidenceAgainstThem = new BattleTalk(Estinien, 8291116, 4, "Good, use their confidence against them.", [Personalization.EstinienAnnouncer], EstinienI); 
@@ -252,7 +266,7 @@ public static class ScionLines
      public static readonly BattleTalk RoarNidhogg = new BattleTalk(Estinien, 8203063, 2, "Roar Nidhogg, ROAR!", [Personalization.EstinienAnnouncer], EstinienI); 
      public static readonly BattleTalk FightHardNotHardEnough = new BattleTalk(Estinien, 8203066, 3, "They fight hard, but not hard enough!", [Personalization.EstinienAnnouncer], EstinienI); 
      public static readonly BattleTalk GiveItEverything = new BattleTalk(Estinien, 8203402, 3, "Give it everything you've got!", [Personalization.EstinienAnnouncer], EstinienI); 
-
+     //todo: review 8202488-8202503 (estinien paglthan), 8203045-820368, 8203394-8203402
 
      public static readonly BattleTalk FocusOnVictoryGraha = new BattleTalk(Graha, 8291138, 4, "Stay with me. Focus on victory.", [Personalization.GrahaAnnouncer], GrahaI); 
      public static readonly BattleTalk DeclareIntentions = new BattleTalk(Graha, 8291139, 6, "The time has come to declare our intentions as well.", [Personalization.GrahaAnnouncer], GrahaI); 
@@ -315,7 +329,7 @@ public static class ScionLines
      public static readonly BattleTalk ExploringIntricacies = new BattleTalk(Krile, 8291181, 5, "A complicated game to be sure. I hope to keep exploring its intricacies with you.", [Personalization.KrileAnnouncer], KrileI); 
      public static readonly BattleTalk PlayAgainWinOrLose = new BattleTalk(Krile, 8291182, 5, "it wasn't to be this time. But win or lose let's play again.", [Personalization.KrileAnnouncer], KrileI); 
      public static readonly BattleTalk ToughLossLearnKrile = new BattleTalk(Krile, 8291183, 6, "That was a tough loss, but we can learn from it and strive for greater heights!", [Personalization.KrileAnnouncer], KrileI); 
-
+     //todo: 8205001-8205029
      public static readonly BattleTalk GotThemNowWuk = new BattleTalk(WukLamat, 8291184, 3, "We've got them now!", [Personalization.WukLamatAnnouncer], WukLamatI); 
      public static readonly BattleTalk CantPassChanceWuk = new BattleTalk(WukLamat, 8291185, 4, "Can't pass up a chance like this!", [Personalization.WukLamatAnnouncer], WukLamatI); 
      public static readonly BattleTalk DontLoseNerveWuk = new BattleTalk(WukLamat, 8291186, 4, "They're close, but we can't lose our nerve!", [Personalization.WukLamatAnnouncer], WukLamatI); 
@@ -347,10 +361,9 @@ public static class ScionLines
      public static readonly BattleTalk KeepItUpWuk = new BattleTalk(WukLamat, 8205043, 2, "Keep it up!", [Personalization.WukLamatAnnouncer], WukLamatI); 
      public static readonly BattleTalk LetsGetToIt = new BattleTalk(WukLamat, 8205048, 2, "Let's get to it!", [Personalization.WukLamatAnnouncer], WukLamatI); 
      public static readonly BattleTalk DamnItAll = new BattleTalk(WukLamat, 8205068, 2, "Damn it all!", [Personalization.WukLamatAnnouncer], WukLamatI); 
-     public static readonly BattleTalk KeepYourGuardUpWuk = new BattleTalk(WukLamat, 8205071, 4, "Don't like the looks of this. Everyone, keep your guard up!", [Personalization.WukLamatAnnouncer], WukLamatI); 
+     public static readonly BattleTalk KeepYourGuardUpWuk = new BattleTalk(WukLamat, 8205071, 4, 39732, [Personalization.WukLamatAnnouncer], WukLamatI); // "Don't like the looks of this. Everyone, keep your guard up!" 
      public static readonly BattleTalk NotHoldingAnythingBack = new BattleTalk(WukLamat, 8205073, 3, "Not holding anything back are we?", [Personalization.WukLamatAnnouncer], WukLamatI); 
-
-
+     //todo 8205476-86
 
      public static readonly BattleTalk IntentionsKnown = new BattleTalk(Koana, 8291207, 4, "Let us make our intentions known.", [Personalization.KoanaAnnouncer], KoanaI); 
      public static readonly BattleTalk EvenTheOdds = new BattleTalk(Koana, 8291208, 4, "Perhaps this will even the odds.", [Personalization.KoanaAnnouncer], KoanaI); 
@@ -375,7 +388,7 @@ public static class ScionLines
      public static readonly BattleTalk SharlayanApproachResults = new BattleTalk(Koana, 8291227, 6, "Perhaps a more analytical, Sharlayan approach would achieve better results.", [Personalization.KoanaAnnouncer], KoanaI); 
      public static readonly BattleTalk ProtectFromFutureDefeat = new BattleTalk(Koana, 8291228, 5, "Even should it cost me my life, I will protect you from future defeat!", [Personalization.KoanaAnnouncer], KoanaI); 
      public static readonly BattleTalk UnworthyVowOfReason = new BattleTalk(Koana, 8291229, 4, "I feel as though, I am unworthy to serve as vow of reason.", [Personalization.KoanaAnnouncer], KoanaI); 
-
+     //todo: 8205487-8205504
 
      public static readonly BattleTalk VictoryOurs = new BattleTalk(BakoolJaJa, 8291230, 4, "Victory will be ours.", [Personalization.BakoolJaJaAnnouncer], BakoolJaJaI); 
      public static readonly BattleTalk NoDownWithoutFight = new BattleTalk(BakoolJaJa, 8291231, 4, "We won't go down without a fight!", [Personalization.BakoolJaJaAnnouncer], BakoolJaJaI); 
@@ -425,5 +438,6 @@ public static class ScionLines
      public static readonly BattleTalk NotWalkAway =new BattleTalk(Erenville, 8291273, 4, "You're not going to walk away now are you?", [Personalization.ErenvilleAnnouncer], ErenvilleI); 
      public static readonly BattleTalk StudyExperiencedPlayers = new BattleTalk(Erenville, 8291274, 4, "If you want to be competitive, maybe you should try studying experienced players.", [Personalization.ErenvilleAnnouncer], ErenvilleI); 
      public static readonly BattleTalk RideRroneekClearHead = new BattleTalk(Erenville, 8291275, 8, "Take a ride on a Rroneek. Clear your head and put this performance behind you.", [Personalization.ErenvilleAnnouncer], ErenvilleI);
+     //todo 8205505-07
 
 }

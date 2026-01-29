@@ -74,6 +74,7 @@ internal class PluginServices {
     internal static Configuration Config { get; private set; }
     internal static IEventListenerLoader ListenerLoader { get; private set; }
     internal static IPlayerStateTracker PlayerStateTracker { get; private set; }
+    internal static IBattleTalkBuilder BattleTalkBuilder { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<PluginServices>();
@@ -85,6 +86,7 @@ internal class PluginServices {
         PlayerStateTracker = new PlayerStateTracker();
         Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig);
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
+        BattleTalkBuilder = new BattleTalkBuilder(DataManager);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }
