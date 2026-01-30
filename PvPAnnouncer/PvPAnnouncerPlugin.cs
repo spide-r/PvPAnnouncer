@@ -6,6 +6,7 @@ using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer
 {
+    //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");

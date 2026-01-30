@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
+using System.Text.RegularExpressions;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility;
+using FFXIVClientStructs.FFXIV.Common.Component.Excel;
+using Lumina.Excel.Sheets;
+using Lumina.Extensions;
 using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Windows;
 
 public class DevWindow: Window, IDisposable
 {
-    private string LastUsedAction = "";
     private List<string> _voLines = [];
     private string[] _voLineArr = [];
     public DevWindow() : base(
@@ -23,7 +27,8 @@ public class DevWindow: Window, IDisposable
         {
             MinimumSize = new Vector2(450, 225),
         };
-#if DEBUG
+        
+/*#if DEBUG
         for (uint j = 0; j < 9999999; j++)
         {
             var voLine = $"sound/voice/vo_line/{j}_en.scd";
@@ -33,7 +38,7 @@ public class DevWindow: Window, IDisposable
             }
         }
         _voLineArr = _voLines.ToArray();
-#endif
+#endif*/
     }
 
     private long ll = 0L;
@@ -49,8 +54,50 @@ public class DevWindow: Window, IDisposable
     
     public override void Draw()
     {
-        
 
+        if (ImGui.Button("Pull the lever kronk"))
+        {
+            /*
+             * File: ./csv/en/cut_scene/050/VoiceMan_05001.csv
+            Header: key,0,1
+            Match: 121,"TEXT_VOICEMAN_05001_001170_EMETSELCH","(SIGH)"
+            TEXT_VOICEMAN_05001_001170_EMETSELCH
+            text:  cut_scene/050/VoiceMan_05001/
+            audio: cut/ex3/sound/voicem/voiceman_05001/vo_voiceman_05001_001170_m_en.scd
+
+
+            // step 1: get the text transcription
+            // step 2: convert text address into cutscene address (how do we check per-expac??? - we should probably just add a param)
+            // step 3: add cutscene audio address
+
+            //step N: make another function that creates from voiceline???? maybe not
+            */
+            var line = "TEXT_VOICEMAN_05001_004950_EMETSELCH";
+            var ex = 3;
+            
+            
+            var splitLine = line.Split("_");
+            var number = splitLine[2];
+            var secondNumber = splitLine[3];
+            var trimmedNumber = number.Substring(0,3);
+            var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
+            var cutscene = PluginServices.DataManager.GetExcelSheet<CutsceneText>(name: csvName);
+            var audio = $"cut/ex{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
+            
+            var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(line));
+            var dialogue = InternalConstants.ErrorContactDev;
+            if (row != null)
+            {
+                dialogue = row.Value.Dialogue.ExtractText();
+            }
+            dialogue = Regex.Replace(dialogue, @"^\(-.*-\)", ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
+
+
+            var bt = PluginServices.BattleTalkFactory.CreateFromNoSheet("Emet Selch", 0, 5, dialogue, [], 73256);
+            PluginServices.Announcer.SendBattleTalk(bt);
+            PluginServices.Announcer.PlaySound(audio + "_en.scd");
+            
+        }
         var l = ll;
         var ic = icon;
         if(ImGui.InputText("Icon###Icon", ref ic))
@@ -86,12 +133,6 @@ public class DevWindow: Window, IDisposable
         {
            play(ll);
         }
-
-        if (ImGui.Button("Play the weeb version"))
-        {
-            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_ja.scd");
-
-        }
         var h = hide;
         if (ImGui.Checkbox("Hide Battle Talk", ref h))
         {
@@ -101,10 +142,14 @@ public class DevWindow: Window, IDisposable
         ImGui.Text("Last Action Used: " + PluginServices.PvPEventBroker.GetLastAction());
         if (ImGui.Button("Get Statuses"))
         {
-            foreach (var status in PluginServices.ObjectTable.LocalPlayer?.StatusList)
+            if (PluginServices.ObjectTable.LocalPlayer != null)
             {
-                PluginServices.PluginLog.Verbose(status.StatusId + " " + status.GameData.Value.Name.ToString());
+                foreach (var status in PluginServices.ObjectTable.LocalPlayer.StatusList)
+                {
+                    PluginServices.PluginLog.Verbose(status.StatusId + " " + status.GameData.Value.Name.ToString());
+                }
             }
+       
         }
         ImGui.Separator();
         var n = _name;
@@ -173,8 +218,16 @@ public class DevWindow: Window, IDisposable
         {
             if (ImGui.Button(pvPEvent.Name))
             {
-                PluginServices.Announcer.ReceivePvPEvent(true, pvPEvent);
-                PluginServices.Announcer.ClearQueue();
+                try
+                {
+                    PluginServices.Announcer.ReceivePvPEvent(true, pvPEvent);
+                    PluginServices.Announcer.ClearQueue();
+                }
+                catch (Exception e)
+                {
+                    PluginServices.PluginLog.Error(e.Message);
+                }
+         
             }
 
             if (i % 4 != 0)

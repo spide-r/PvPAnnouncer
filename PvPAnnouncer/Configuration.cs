@@ -47,7 +47,6 @@ namespace PvpAnnouncer
         
  
         public string Language { get; set; } = "en";
-        //public string BattleTalkLang { get; set; } = "en"; //not shown to the end-user until i figure out why i'm unable to get other languages to show up
 
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Data;
 
@@ -24,29 +25,61 @@ public static class AnnouncerLines
 
     private static readonly string Metem = "Metem";
     private static readonly uint MetemI = 073287;
+    public static BattleTalk IntroBc;
+    public static BattleTalk IntroBb;
+    public static BattleTalk IntroHbl;
+    public static BattleTalk IntroWt;
+    public static BattleTalk VictoryWt;
+    public static BattleTalk IntroDg;
+    public static BattleTalk IntroSr;
+    public static BattleTalk IntroBa;
+    public static BattleTalk IntroHb;
+    public static BattleTalk IntroVf;
+    public static BattleTalk IntroDbRh;
+    public static BattleTalk IntroTt;
+    public static BattleTalk IntroLw;
 
+    public static BattleTalk GenericVictory;
+    public static BattleTalk NewGcBornVictory;
+    public static BattleTalk PresDefeated;
+    public static BattleTalk RobotKo; //todo this KO doesnt work because its not metem - look for it!!!!!!
 
-// === Intro Lines ===
-    public static readonly CutsceneTalk IntroBc = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000010_m", [Personalization.MetemAnnouncer, Personalization.BlackCat]); 
-    public static readonly CutsceneTalk IntroBb = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000050_m", [Personalization.MetemAnnouncer, Personalization.BruteBomber]);
-    public static readonly CutsceneTalk IntroHbl = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000040_m", [Personalization.MetemAnnouncer, Personalization.HoneyBLovely]);
-    public static readonly CutsceneTalk IntroWt = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000060_m", [Personalization.MetemAnnouncer, Personalization.WickedThunder]);
-    public static readonly CutsceneTalk VictoryWt = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000080_m", [Personalization.MetemAnnouncer]);
-    public static readonly CutsceneTalk IntroDg = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000010_m", [Personalization.MetemAnnouncer, Personalization.DancingGreen]);
-    public static readonly CutsceneTalk IntroSr = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000020_m",[Personalization.MetemAnnouncer, Personalization.SugarRiot]);
-    public static readonly CutsceneTalk IntroBa = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000030_m", [Personalization.MetemAnnouncer, Personalization.BruteAbominator]);
-    public static readonly CutsceneTalk IntroHb = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000040_m",[Personalization.MetemAnnouncer, Personalization.HowlingBlade]);
-    public static readonly CutsceneTalk IntroVf = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000010_m", [Personalization.MetemAnnouncer, Personalization.VampFatale]);
-    public static readonly CutsceneTalk IntroDbRh = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000020_m",[Personalization.MetemAnnouncer, Personalization.DeepBlueRedHot]);
-    public static readonly CutsceneTalk IntroTt = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000050_m", [Personalization.MetemAnnouncer, Personalization.Tyrant]);
-    public static readonly CutsceneTalk IntroLw = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000080_m", [Personalization.MetemAnnouncer, Personalization.President]);
+    public static void Init(IBattleTalkFactory factory)
+    {
+        // Intro Lines
+        IntroBc = CreateMetemCSLine("TEXT_VOICEMAN_07010_000010_METEM", [Personalization.MetemAnnouncer, Personalization.BlackCat], factory);
+        IntroBb = CreateMetemCSLine("TEXT_VOICEMAN_07010_000050_METEM", [Personalization.MetemAnnouncer, Personalization.BruteBomber], factory);
+        IntroHbl = CreateMetemCSLine("TEXT_VOICEMAN_07010_000040_METEM", [Personalization.MetemAnnouncer, Personalization.HoneyBLovely], factory);
+        IntroWt = CreateMetemCSLine("TEXT_VOICEMAN_07010_000060_METEM", [Personalization.MetemAnnouncer, Personalization.WickedThunder], factory);
+        IntroDg = CreateMetemCSLine("TEXT_VOICEMAN_07210_000010_METEM", [Personalization.MetemAnnouncer, Personalization.DancingGreen], factory);
+        IntroSr = CreateMetemCSLine("TEXT_VOICEMAN_07210_000020_METEM", [Personalization.MetemAnnouncer, Personalization.SugarRiot], factory);
+        IntroBa = CreateMetemCSLine("TEXT_VOICEMAN_07210_000030_METEM", [Personalization.MetemAnnouncer, Personalization.BruteAbominator], factory);
+        IntroHb = CreateMetemCSLine("TEXT_VOICEMAN_07210_000040_METEM", [Personalization.MetemAnnouncer, Personalization.HowlingBlade], factory);
+        IntroVf = CreateMetemCSLine("TEXT_VOICEMAN_07410_000010_METEM", [Personalization.MetemAnnouncer, Personalization.VampFatale], factory);
+        IntroDbRh = CreateMetemCSLine("TEXT_VOICEMAN_07410_000020_METEM", [Personalization.MetemAnnouncer, Personalization.DeepBlueRedHot], factory);
+        IntroTt = CreateMetemCSLine("TEXT_VOICEMAN_07410_000050_METEM", [Personalization.MetemAnnouncer, Personalization.Tyrant], factory);
+        IntroLw = CreateMetemCSLine("TEXT_VOICEMAN_07410_000080_METEM", [Personalization.MetemAnnouncer, Personalization.President], factory);
 
-    // === Victory & Event Lines ===
-    public static readonly CutsceneTalk GenericVictory = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07010/vo_voiceman_07010_000030_m", [Personalization.MetemAnnouncer]);
-    public static readonly CutsceneTalk NewGcBornVictory = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000070_m", [Personalization.MetemAnnouncer]);
-    public static readonly CutsceneTalk PresDefeated = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07410/vo_voiceman_07410_000090_m", [Personalization.MetemAnnouncer]);
-    public static readonly CutsceneTalk RobotKo = new CutsceneTalk("cut/ex5/sound/voicem/voiceman_07210/vo_voiceman_07210_000050_m", [Personalization.MetemAnnouncer]);
+        // Victory
+        VictoryWt = CreateMetemCSLine("TEXT_VOICEMAN_07010_000080_METEM", [Personalization.MetemAnnouncer], factory);
+        GenericVictory = CreateMetemCSLine("TEXT_VOICEMAN_07010_000030_METEM", [Personalization.MetemAnnouncer], factory);
+        NewGcBornVictory = CreateMetemCSLine("TEXT_VOICEMAN_07410_000070_METEM", [Personalization.MetemAnnouncer], factory);
+        PresDefeated = CreateMetemCSLine("TEXT_VOICEMAN_07410_000090_METEM", [Personalization.MetemAnnouncer], factory);
+        RobotKo = factory.CreateFromCutsceneLine("Referee", 5, 6, "TEXT_VOICEMAN_07010_000020_REFEREE",
+            [Personalization.MetemAnnouncer]);
+    }
+
+    private static BattleTalk CreateMetemCSLine(string key, List<Personalization> p, IBattleTalkFactory factory)
+    {
+        return factory.CreateFromCutsceneLine(Metem, 5, 6, key, p, MetemI);
+    }
     
+    private static BattleTalk CreateMetemBtLine(uint vo, List<Personalization> p, IBattleTalkFactory factory)
+    {
+        return factory.CreateFromContentDirectorBattleTalk(Metem, vo, p, MetemI);
+    }
+
+    // === Intro Lines ===
     public static readonly BattleTalk ViciousBlow = new BattleTalk(Metem,  8205341, [Personalization.MetemAnnouncer], MetemI); // A vicious blow! That'll leave a mark!
     public static readonly BattleTalk FeltThatOneStillStanding = new BattleTalk(Metem,  8205342, [Personalization.MetemAnnouncer], MetemI); // Even I felt that one! But the challenger's still standing!
     public static readonly BattleTalk BeautifullyDodged = new BattleTalk(Metem,  8205343, [Personalization.MetemAnnouncer], MetemI); // Beautifully dodged!

@@ -16,11 +16,11 @@ public class  BattleTalk : IBattleTalk // decorator
   public uint Icon { get; }
   public uint Voiceover { get; }
   public string Name { get; }
-  public ReadOnlySeString Text { get; }
+  public string Text { get; }
   public byte Duration { get; }
   public byte Style { get; }
   public List<Personalization> Personalization { get; }
-  public string SoundPath { get; }
+  public string Path { get; }
 
   /*
       name: ContentDirectorBattleTalk
@@ -32,16 +32,11 @@ public class  BattleTalk : IBattleTalk // decorator
           targets: [InstanceContentTextData]
         - name: Unknown3 -> BattleTalkDuration
         - name: Unknown4 -> BattleTalkStyle
-
+  
      */
 
-  protected BattleTalk(string name, List<Personalization> personalization)
-  {
-    Name = name;
-    Personalization = personalization;
-  }
-
   //todo this constructor is bad and needs to be fixed, this means rewriting how we init battletalks - cant be depending on datamanager on being init
+  [Obsolete("If this gets pushed to main you're a dingus")]
   public BattleTalk(string name, uint voiceover, List<Personalization> personalization, uint icon = 0) 
   {
 
@@ -56,12 +51,14 @@ public class  BattleTalk : IBattleTalk // decorator
       SubRowId = t.SubrowId;
       Icon = icon != 0 ? icon : t.Unknown0;
       Voiceover = t.Unknown1;
-      Text = t.Text.Value.Text;
+      Text = t.Text.Value.Text.ToString();
       Duration = t.Unknown3;
       Style = t.Unknown4;
       Personalization = personalization;
+      Path = "sound/voice/vo_line/" + voiceover + "_";
+
     }
-    catch (InvalidOperationException _)
+    catch (InvalidOperationException)
     {
       Name = name;
       Personalization = personalization;
@@ -72,26 +69,15 @@ public class  BattleTalk : IBattleTalk // decorator
       Text = "Unknown Text! You shouldn't be seeing this";
       Duration = 3;
       Style = 6;
+      Path = "sound/voice/vo_line/" + voiceover + "_";
     }
   }
 
-
   public BattleTalk(string name, uint voiceover, int duration, string text, List<Personalization> personalization,
-    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0) : this(name, voiceover, duration, personalization, icon, style, rowId, subRowId)
-  {//todo does this work?
-    Text = text;
-  }
-  
-  public BattleTalk(string name, uint voiceover, int duration, uint text, List<Personalization> personalization,
-    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0) : this(name, voiceover, duration, personalization, icon, style, rowId, subRowId)
-  {//todo does this work?
-    throw new NotImplementedException();
-  }
-
-  private BattleTalk(string name, uint voiceover, int duration, List<Personalization> personalization,
-    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0)
+    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0, string path = "")
   {
     Name = name;
+    Text = text;
     Voiceover = voiceover;
     Duration = (byte) duration;
     Personalization = personalization;
@@ -99,10 +85,11 @@ public class  BattleTalk : IBattleTalk // decorator
     Style = style;
     RowId = rowId;
     SubRowId = subRowId;
+    Path = path.Equals("") ? "sound/voice/vo_line/" + voiceover + "_" : path;
   }
-  public string GetPath(string lang)
+  public string GetSoundPath()
   {
-    return "sound/voice/vo_line/" + Voiceover + "_" + lang + ".scd";
+    return Path;
   }
   
 }

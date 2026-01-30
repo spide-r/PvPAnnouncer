@@ -12,7 +12,6 @@ public class AllyActionEvent : PvPActionEvent
     //generic event for specific action and sound pairings
 
     private List<BattleTalk> SoundPathsList { get; }
-    private Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPathsList;
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,

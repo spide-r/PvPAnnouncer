@@ -11,10 +11,11 @@ public interface IBattleTalk
     public uint Icon { get; }
     public uint Voiceover { get; }
     public string Name { get; }
-    public ReadOnlySeString Text { get; }
+    public string Text { get; }
     public byte Duration { get; }
     public byte Style { get; }
     public List<Personalization> Personalization { get; }
-    public string SoundPath { get; }
+    public string Path { get; }
+    public string GetSoundPath();
 
 }

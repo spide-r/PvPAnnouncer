@@ -18,7 +18,7 @@ namespace PvPAnnouncer.Windows;
 public class ConfigWindow : Window, IDisposable
 {
     private IEventListenerLoader listenerLoader;
-    private BattleTalk[]? _allBattleTalks;
+    private BattleTalk[] _allBattleTalks;
 
     private readonly Configuration _configuration; public ConfigWindow() : base(
         "PvPAnnouncer Configuration")
@@ -35,9 +35,7 @@ public class ConfigWindow : Window, IDisposable
         _configuration = PluginServices.Config;
         listenerLoader = PluginServices.ListenerLoader;
         _allEvents = listenerLoader.GetPvPEvents();
-        var v1 = InternalConstants.GetStaticReadOnlyFields<BattleTalk>(typeof(ScionLines));
-        var v2 = InternalConstants.GetStaticReadOnlyFields<BattleTalk>(typeof(AnnouncerLines));
-        _allBattleTalks = v1.Concat(v2).ToArray()!;
+        _allBattleTalks = InternalConstants.GetBattleTalkList();
         foreach (var pvPEvent in _allEvents)
         {
             _eventskv.Add(pvPEvent.InternalName, pvPEvent);
@@ -113,12 +111,12 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Button("Test The Announcer"))
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
-            var bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
+            BattleTalk[] bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
             if (bt.Length != 0) // no announcers selected
             {
                 
                 var e = bt[Random.Shared.Next(bt.Length)];
-                PluginServices.Announcer.PlaySound(e.GetPath(PluginServices.Config.Language));
+                PluginServices.Announcer.PlaySound(e.Path + PluginServices.Config.Language + ".scd");
                 PluginServices.Announcer.SendBattleTalk(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Name}", InternalConstants.MessageTag);
 
@@ -562,10 +560,12 @@ public class ConfigWindow : Window, IDisposable
     {
         foreach (var battleTalk in e.SoundPaths())
         {
+            if (battleTalk == null) continue;
             if (PluginServices.Config.WantsAllPersonalization(battleTalk.Personalization))
             {
                 return true;
             }
+
         }
 
         return false;

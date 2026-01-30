@@ -19,7 +19,7 @@ public class SoundManager: ISoundManager
     
     private delegate IntPtr InitSoundPrototype( IntPtr a1, IntPtr path, float volume, int idx, int a5, uint a6, uint a7 );
 
-    private readonly InitSoundPrototype _initSoundHook;
+    //private readonly InitSoundPrototype _initSoundHook;
 
     private bool _muted;
 

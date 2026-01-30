@@ -20,7 +20,7 @@ public class Announcer: IAnnouncer
      * 5. Use the appropriate gender for the challenger
      */
     
-    private readonly Queue<BattleTalk> _lastVoiceLines = new();
+    private readonly Queue<BattleTalk?> _lastVoiceLines = new();
     private readonly Queue<string> _lastEvents = new();
     private long _timestamp = 0;
     private int _lastVoiceLineLength = 0;
@@ -52,6 +52,7 @@ public class Announcer: IAnnouncer
 
         if (bypass)
         {
+            PluginServices.PluginLog.Verbose("Bypassing randomness & repeat commentary.");
             PlaySoundAndSendBattleTalk(true, pvpEvent);
             return;
         }
@@ -97,9 +98,9 @@ public class Announcer: IAnnouncer
     }
 
     
-    private void AddVoiceLineToRecentList(BattleTalk e)
+    private void AddVoiceLineToRecentList(BattleTalk talk)
     {
-        PluginServices.PluginLog.Verbose($"Adding Voice line {e.Voiceover} to history");
+        PluginServices.PluginLog.Verbose($"Adding Voice line {talk.Voiceover} to history");
 
         if (_lastVoiceLines.Count > PluginServices.Config.RepeatVoiceLineQueue - 1) 
         {
@@ -108,7 +109,7 @@ public class Announcer: IAnnouncer
             _lastVoiceLines.Dequeue();
         }
         
-        _lastVoiceLines.Enqueue(e);
+        _lastVoiceLines.Enqueue(talk);
 
     }
 
@@ -126,13 +127,21 @@ public class Announcer: IAnnouncer
     public void PlaySound(string sound)
     {
         PluginServices.PluginLog.Verbose($"Playing sound: {sound}");
+
+        if (!PluginServices.DataManager.FileExists(sound))
+        {
+            PluginServices.PluginLog.Error("Sound file not found!");
+            return;
+        }
+        
+        
         PluginServices.SoundManager.PlaySound(sound);
     }
-
+    
 
     private void PlaySoundAndSendBattleTalk(bool bypass, PvPEvent pvpEvent)
     {
-        List<BattleTalk> sounds = new List<BattleTalk>();
+        List<BattleTalk> sounds = [];
 
         foreach (var sound in pvpEvent.SoundPaths())
         {
@@ -149,7 +158,7 @@ public class Announcer: IAnnouncer
         {
             foreach (var line in _lastVoiceLines)
             {
-                if (sounds.Contains(line))
+                if (line != null && sounds.Contains(line))
                 {
                     sounds.Remove(line);
                 }
@@ -166,18 +175,10 @@ public class Announcer: IAnnouncer
         WrapUp(pvpEvent, s);
         Task announceTask = Task.Factory.StartNew(async () =>
         {
-            PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s} by {PluginServices.Config.AnimationDelayFactor}");
+            PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s.Path} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
-            if (s is CutsceneTalk cs)
-            {
-                PlaySound(cs.GetPath(PluginServices.Config.Language));
-
-            }
-            else
-            {
-                PlaySound(s.GetPath(PluginServices.Config.Language));
-
-            }
+            var p = s.Path + PluginServices.Config.Language + ".scd";
+            PlaySound(p);
             SendBattleTalk(s);
             PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");
 
@@ -189,18 +190,28 @@ public class Announcer: IAnnouncer
         PlaySoundAndSendBattleTalk(false, pvpEvent);
     }
 
-    private void WrapUp(PvPEvent pvpEvent, BattleTalk chosenLine)
+    private void WrapUp(PvPEvent pvpEvent, BattleTalk? chosenLine)
     {
         AddEventToRecentList(pvpEvent);
-        AddVoiceLineToRecentList(chosenLine);
-        _lastVoiceLineLength = chosenLine.Duration;
+        if (chosenLine != null)
+        {
+            AddVoiceLineToRecentList(chosenLine);
+            _lastVoiceLineLength = chosenLine.Duration;
+        }
+
         _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
     }
 
     public void SendBattleTalk(BattleTalk battleTalk) 
     {
-        if (PluginServices.Config.HideBattleText || battleTalk is CutsceneTalk) 
+        if (PluginServices.Config.HideBattleText) 
         {
+            return;
+        }
+
+        if (battleTalk.Text.Equals(""))
+        {
+            PluginServices.PluginLog.Verbose($"Text empty for {battleTalk.Name}, {battleTalk.Path}");
             return;
         }
         unsafe
@@ -208,11 +219,11 @@ public class Announcer: IAnnouncer
             try
             {
                 var name = battleTalk.Name;
-                var text = battleTalk.Text.ExtractText(); 
+                var text = battleTalk.Text; 
                 var duration = battleTalk.Duration;
                 var icon = battleTalk.Icon;
                 var style = battleTalk.Style;
-                if (text.StartsWith('_'))
+                if (text.StartsWith('_')) //todo remove since you're no longer using scuffed CutsceneTalk class
                 {
                     text = InternalConstants.ErrorContactDev;
                     name = InternalConstants.PvPAnnouncerDevName;
@@ -228,7 +239,7 @@ public class Announcer: IAnnouncer
                     UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
                 }
             }
-            catch (InvalidOperationException _) 
+            catch (InvalidOperationException) 
             {
                 UIModule.Instance()->ShowBattleTalk(InternalConstants.PvPAnnouncerDevName, InternalConstants.ErrorContactDev, 6, 6);
             }
