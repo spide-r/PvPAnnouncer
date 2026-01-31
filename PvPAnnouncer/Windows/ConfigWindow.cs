@@ -137,6 +137,13 @@ public class ConfigWindow : Window, IDisposable
                 PluginServices.Announcer.SendBattleTalk(new BattleTalk(InternalConstants.PvPAnnouncerDevName, 0, 5, "You don't have any announcers selected!", [], InternalConstants.PvPAnnouncerDevIcon));
             }
         }
+
+        if (ImGui.Button("Show All Possible Voicelines"))
+        {
+            PluginServices.voiceLineTesterWindow.Toggle();
+        }
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
         
         
         if (ImGui.Checkbox("Disabled", ref disabled))
@@ -403,17 +410,9 @@ public class ConfigWindow : Window, IDisposable
         ImGui.TextWrapped("Minimum unique voice lines to play before a repeat is allowed.");
         ImGui.Indent();
         if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
-        {
-            if (repeatVoiceLine == 69)
-            {
-                PluginServices.voiceLineTesterWindow.IsOpen = true;
-            }
-            else
-            {
-                _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
-        
-                _configuration.Save();
-            }
+        { 
+            _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
+            _configuration.Save();
         }
         ImGui.Unindent();
         

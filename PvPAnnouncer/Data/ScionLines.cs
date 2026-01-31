@@ -638,7 +638,7 @@ public static class ScionLines
 
     private static void InitUrianger(IBattleTalkFactory factory)
     {
-        OvercomeTheOdds = CreateUriangerTalk(8291070, 4, "Together we shall overcome the odds");
+        OvercomeTheOdds = CreateUriangerTalk(8291069, 4, "Together we shall overcome the odds");
         SoundDecision = CreateUriangerTalk(8291070, 3, "A sound decision.");
         ContendWithThreat = CreateUriangerTalk(8291071, 3, "How best to contend with this threat?");
         DanceOfTheStars = CreateUriangerTalk(8291072, 4, "Attune thyself to the dance of the stars.");
