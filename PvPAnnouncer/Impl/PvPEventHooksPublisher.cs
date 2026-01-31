@@ -41,7 +41,7 @@ public class PvPEventHooksPublisher: IPvPEventPublisher, IDisposable
      }
 
      //GOTCHA: some of these are labeled incorrectly but we only care about entityid and type 
-     //todo Actor Control is much much more complicated than previously thought, apparently theres 3 different ways each of these args can be used - yikes!
+     //Actor Control is much much more complicated than previously thought, apparently theres 3 different ways each of these args can be used - yikes!
      private void ProcessPacketActorControlDetour(uint entityId, uint category, uint arg1, uint arg2, uint arg3, uint arg4, uint arg5, uint arg6, uint arg7, uint arg8, ulong targetId, byte isRecorded)
      {
          processPacketActorControlHook.Original(entityId, category, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, targetId, isRecorded);

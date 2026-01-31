@@ -13,15 +13,17 @@ namespace PvPAnnouncer
         private ConfigWindow ConfigWindow { get; init; }
         private MainWindow MainWindow { get; init; }
         private DevWindow DevWindow { get; init; }
+        private VoiceLineTesterWindow VoiceLineTesterWindow { get; init; }
 
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
-            PluginServices.Initialize(pluginInterface);
+            PluginServices.Initialize(pluginInterface, WindowSystem);
             LoadCommands();
             ConfigWindow = new ConfigWindow();
             MainWindow = new MainWindow();
             DevWindow = new DevWindow();
+            VoiceLineTesterWindow = new VoiceLineTesterWindow();
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);
             WindowSystem.AddWindow(DevWindow);
@@ -85,6 +87,11 @@ namespace PvPAnnouncer
         {
             PluginUpdateMessage();
             MainWindow.Toggle();
+        }
+        
+        private void ToggleTesterWindow()
+        {
+            VoiceLineTesterWindow.Toggle();
         }
 
         private void LoadCommands()

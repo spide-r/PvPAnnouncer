@@ -16,17 +16,18 @@ public class BattleTalkFactory(IDataManager dataManager) : IBattleTalkFactory
     public BattleTalk CreateFromContentDirectorBattleTalk(string name, uint voiceover, List<Personalization> personalization, uint icon = 0)
     {
         var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
+    
+        var t = sheet.SelectMany(row => row)
 
+            .FirstOrDefault(bt => bt.Unknown1 == voiceover); 
         try
         {
-            
-            var t = sheet.Where(sc =>
+            var text = t.Text.Value.Text.ExtractText();
+            if (text.Equals(""))
             {
-                return sc.Any(bt => bt.Unknown1.Equals(voiceover));
-
-            }).First().First(aa => aa.Unknown1.Equals(voiceover)); 
-            return new BattleTalk(name, t.Unknown1, t.Unknown3,
-                t.Text.Value.ToString() ?? $"Unknown Text! You shouldn't be seeing this! ({voiceover})", personalization,
+                text = $"Unknown Text! You shouldn't be seeing this! {voiceover}";
+            }
+            return new BattleTalk(name, t.Unknown1, t.Unknown3, text, personalization,
                 t.Unknown0 != 0 ? t.Unknown0 : icon, t.Unknown4, t.RowId, t.SubrowId);
         }
         catch (InvalidOperationException)

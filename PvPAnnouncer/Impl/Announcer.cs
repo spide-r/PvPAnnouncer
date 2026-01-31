@@ -223,13 +223,6 @@ public class Announcer: IAnnouncer
                 var duration = battleTalk.Duration;
                 var icon = battleTalk.Icon;
                 var style = battleTalk.Style;
-                if (text.StartsWith('_')) //todo remove since you're no longer using scuffed CutsceneTalk class
-                {
-                    text = InternalConstants.ErrorContactDev;
-                    name = InternalConstants.PvPAnnouncerDevName;
-                    duration = 5;
-                    icon = InternalConstants.PvPAnnouncerDevIcon;
-                }
                 if (icon != 0 && PluginServices.Config.WantsIcon)
                 {
                     UIModule.Instance()->ShowBattleTalkImage(name, text, duration, icon, style);

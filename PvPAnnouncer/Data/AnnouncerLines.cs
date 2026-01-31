@@ -45,7 +45,7 @@ public static class AnnouncerLines
     public static BattleTalk GenericVictory;
     public static BattleTalk NewGcBornVictory;
     public static BattleTalk PresDefeated;
-    public static BattleTalk RobotKo; //todo this KO doesnt work because its not metem - look for it!!!!!!
+    public static BattleTalk RobotKo;
     public static BattleTalk ViciousBlow;
     public static BattleTalk FeltThatOneStillStanding;
     public static BattleTalk BeautifullyDodged;

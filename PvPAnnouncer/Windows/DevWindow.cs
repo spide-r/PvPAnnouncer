@@ -86,8 +86,6 @@ public class DevWindow: Window, IDisposable
 
             //step N: make another function that creates from voiceline???? maybe not
             */
-            var line = tag;
-            var ex = 3;
             
             
             /*

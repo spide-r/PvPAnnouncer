@@ -404,12 +404,16 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Indent();
         if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
         {
-            _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
-            if (repeatVoiceLine == 420)
+            if (repeatVoiceLine == 69)
             {
-                //todo open voiceline tester window
+                PluginServices.voiceLineTesterWindow.IsOpen = true;
             }
-            _configuration.Save();
+            else
+            {
+                _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
+        
+                _configuration.Save();
+            }
         }
         ImGui.Unindent();
         

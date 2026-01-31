@@ -1,5 +1,6 @@
 ﻿using Dalamud.Configuration;
 using Dalamud.Game;
+using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -8,6 +9,7 @@ using PvpAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
+using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer;
 
@@ -76,8 +78,10 @@ internal class PluginServices {
     internal static IEventListenerLoader ListenerLoader { get; private set; }
     internal static IPlayerStateTracker PlayerStateTracker { get; private set; }
     internal static IBattleTalkFactory BattleTalkFactory { get; private set; }
+    
+    internal static VoiceLineTesterWindow voiceLineTesterWindow { get; private set; }
 
-    internal static void Initialize(IDalamudPluginInterface pluginInterface) {
+    internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window) {
         pluginInterface.Create<PluginServices>();
         Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         PvPEventBroker = new PvPEventBroker();
@@ -90,6 +94,9 @@ internal class PluginServices {
         BattleTalkFactory = new BattleTalkFactory(DataManager);
         ScionLines.InitScionLines(BattleTalkFactory);
         AnnouncerLines.Init(BattleTalkFactory);
+        
+        voiceLineTesterWindow = new VoiceLineTesterWindow();
+        window.AddWindow(voiceLineTesterWindow);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }

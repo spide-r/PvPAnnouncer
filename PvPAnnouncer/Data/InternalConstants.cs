@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace PvPAnnouncer.Data;
 using static AnnouncerLines;
@@ -13,7 +11,7 @@ public abstract class InternalConstants
     public const string PvPAnnouncerDevName = "PvPAnnouncer Dev";
     public const string ErrorContactDev = "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!";
 
-    public static readonly List<BattleTalk?> LimitBreakList =
+    public static readonly List<BattleTalk> LimitBreakList =
     [
         WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, NeitherSideHoldingBack, BattleElectrifying, 
         MjGameChanger, MjBoldMove, MjHeatingUp, AbsoluteBrutality, SuchFerocity, SomethingsComing, ThisEndsHere,
@@ -33,9 +31,9 @@ public abstract class InternalConstants
     public static BattleTalk[] GetBattleTalkList()
     {
         var s = typeof(ScionLines).GetFields().Where(info => info.FieldType == typeof(BattleTalk))
-            .Select(info => (BattleTalk) info.GetValue(null)).ToList();
+            .Select(info => (BattleTalk) info.GetValue(null)!).ToList();
         var a = typeof(AnnouncerLines).GetFields().Where(info => info.FieldType == typeof(BattleTalk))
-            .Select(info => (BattleTalk) info.GetValue(null)).ToList();
-        return  s.Concat(a).ToArray()!;
+            .Select(info => (BattleTalk) info.GetValue(null)!).ToList();
+        return  s.Concat(a).ToArray();
     }
 }
