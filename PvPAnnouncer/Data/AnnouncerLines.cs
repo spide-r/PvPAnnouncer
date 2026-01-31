@@ -25,6 +25,8 @@ public static class AnnouncerLines
 
     private static readonly string Metem = "Metem";
     private static readonly uint MetemI = 073287;
+    
+    #region Intros
     public static BattleTalk IntroBc;
     public static BattleTalk IntroBb;
     public static BattleTalk IntroHbl;
@@ -38,7 +40,8 @@ public static class AnnouncerLines
     public static BattleTalk IntroDbRh;
     public static BattleTalk IntroTt;
     public static BattleTalk IntroLw;
-
+    #endregion
+    #region Generic
     public static BattleTalk GenericVictory;
     public static BattleTalk NewGcBornVictory;
     public static BattleTalk PresDefeated;
@@ -80,7 +83,8 @@ public static class AnnouncerLines
     public static BattleTalk TheyreDownCanTheyRecover;
     public static BattleTalk WhatFightingSpirit;
     public static BattleTalk BackInAction;
-    
+    #endregion
+    #region BlackCat
     public static BattleTalk FirstOpponent;
     public static BattleTalk FelineFerocity;
     public static BattleTalk LitheAndLethal;
@@ -88,7 +92,8 @@ public static class AnnouncerLines
     public static BattleTalk FeralOnslaught;
     public static BattleTalk MyRing;
     public static BattleTalk RepairRing;
-    
+    #endregion
+    #region HoneyB
     public static BattleTalk HoneyBShowBegun;
     public static BattleTalk SavorSting;
     public static BattleTalk ChangedRoutine;
@@ -97,7 +102,8 @@ public static class AnnouncerLines
     public static BattleTalk ResistTheIrresistible;
     public static BattleTalk HerCharmsNotDeniedFem;
     public static BattleTalk WhatAClash;
-    
+    #endregion
+    #region BruteB
     public static BattleTalk BBMuscled;
     public static BattleTalk BBEmbiggening;
     public static BattleTalk KaboomBBSpecial;
@@ -106,7 +112,8 @@ public static class AnnouncerLines
     public static BattleTalk AssaultedRefMasc;
     public static BattleTalk FuseField;
     public static BattleTalk ChainDeathmatch;
-    
+    #endregion
+    #region WickedT
     public static BattleTalk WTReturned;
     public static BattleTalk SomethingGrowingFem;
     public static BattleTalk GatheringAetherFem;
@@ -116,13 +123,15 @@ public static class AnnouncerLines
     public static BattleTalk UnleashedANewFeralSoul;
     public static BattleTalk DischargeAether;
     public static BattleTalk BattleElectrifying;
-    
+    #endregion
+    #region DancingG
     public static BattleTalk DGSteps;
     public static BattleTalk UpstartBegins;
     public static BattleTalk InvitationToDance;
     public static BattleTalk DGFeverTakenHold;
     public static BattleTalk DGFeverPich;
-    
+    #endregion
+    #region SugarR
     public static BattleTalk SRGallery;
     public static BattleTalk SRBringsWorkToLife;
     public static BattleTalk Quicksand;
@@ -134,7 +143,8 @@ public static class AnnouncerLines
     public static BattleTalk SuckedIn;
     public static BattleTalk Thunderstorm;
     public static BattleTalk TransformativePiece;
-    
+    #endregion
+    #region BruteA
     public static BattleTalk BAMeansBusiness;
     public static BattleTalk ChimericalFoe;
     public static BattleTalk FeralPowersWeapon;
@@ -151,7 +161,8 @@ public static class AnnouncerLines
     public static BattleTalk DodgedEverything;
     public static BattleTalk BrutalBlow;
     public static BattleTalk ThrillingBattle;
-    
+    #endregion
+    #region HowlingB
     public static BattleTalk WolfLair;
     public static BattleTalk SuchSpeedMasc;
     public static BattleTalk ColossalThing;
@@ -161,7 +172,8 @@ public static class AnnouncerLines
     public static BattleTalk MovedToFloatingDeathtraps;
     public static BattleTalk DestroyedIsle;
     public static BattleTalk NeitherSideHoldingBack;
-    
+    #endregion
+    #region VampF
     public static BattleTalk VFFeastEyes;
     public static BattleTalk FallPreyCruelMistress;
     public static BattleTalk VFWickedWeapon;
@@ -174,7 +186,8 @@ public static class AnnouncerLines
     public static BattleTalk EvenMoreAether;
     public static BattleTalk LightheadedFem;
     public static BattleTalk SiphonedAether;
-    
+    #endregion
+    #region DeepBRedH
     public static BattleTalk TagTeam;
     public static BattleTalk SuchScorn;
     public static BattleTalk FearsomeFlamesMasc;
@@ -185,7 +198,8 @@ public static class AnnouncerLines
     public static BattleTalk DoubleTrouble;
     public static BattleTalk Fusion;
     public static BattleTalk HoldingNothingBack;
-    
+    #endregion
+    #region TTyrant
     public static BattleTalk GrandChampion;
     public static BattleTalk TTThrone;
     public static BattleTalk TyrannyTimeMasc;
@@ -199,7 +213,8 @@ public static class AnnouncerLines
     public static BattleTalk ThrownRingMasc;
     public static BattleTalk RingRestored;
     public static BattleTalk EitherSide;
-    
+    #endregion
+    #region TPresident
     public static BattleTalk PresidentMustPay;
     public static BattleTalk ArmLifeOwnMasc;
     public static BattleTalk ArmSlitheringOutDisgustingMasc;
@@ -216,13 +231,16 @@ public static class AnnouncerLines
     public static BattleTalk StruckWithVenon;
     public static BattleTalk SomethingRevolting;
     public static BattleTalk VictoryChamp;
-    
+    #endregion
+    #region Unused
     public static BattleTalk UnusedNoRespectMasc;
     public static BattleTalk UnusedUpOnThePost;
     public static BattleTalk UnusedBombarianPress;
     public static BattleTalk UnusedOhMercyFem;
     public static BattleTalk UnusedBackTail;
+    #endregion
     
+    #region Mahjong
     public static BattleTalk MjGameChanger;
     public static BattleTalk MjBoldMove;
     public static BattleTalk MjChallengerRecover;
@@ -246,7 +264,9 @@ public static class AnnouncerLines
     public static BattleTalk MjReportingLive;
     public static BattleTalk MjCompetitionTooMuch;
     public static BattleTalk MjUtterlyHumiliated;
+    #endregion
     
+    #region M12sp2
     public static BattleTalk LindwurmsHeart;
     public static BattleTalk BadFeeling;
     public static BattleTalk Transforming;
@@ -268,6 +288,7 @@ public static class AnnouncerLines
     public static BattleTalk NotSureIUnderstand;
     public static BattleTalk LeftRealmOfLogic;
     public static BattleTalk DefiesComprehension;
+    #endregion
     
     // I'd like to thank IntelliJ Smart Align Plugin for making all of this readable
     public static void Init(IBattleTalkFactory factory)

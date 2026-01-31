@@ -78,14 +78,15 @@ public class BattleTalkFactory(IDataManager dataManager) : IBattleTalkFactory
 
     }
 
-    public BattleTalk CreateFromNpcYell(string name, uint voiceover, int duration, uint npcYellLine,
+    public BattleTalk CreateFromNpcYell(string name, uint voiceover, uint npcYellLine,
         List<Personalization> personalization,
         uint icon = 0) 
     {
         var sheet = dataManager.GetExcelSheet<NpcYell>();
         var foundText = sheet.TryGetRow(npcYellLine, out var row);
         var text = foundText ? row.Text.ToString() : InternalConstants.ErrorContactDev;
-        return new BattleTalk(name, voiceover, duration, text, personalization, icon);
+        var duration = foundText ? row.BalloonTime : 5;
+        return new BattleTalk(name, voiceover, (int) duration, text, personalization, icon);
 
     }
 }

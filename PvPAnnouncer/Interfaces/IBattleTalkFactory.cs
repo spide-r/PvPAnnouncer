@@ -13,7 +13,7 @@ public interface IBattleTalkFactory
         List<Personalization> personalization,
         uint icon = 0);
 
-    public BattleTalk CreateFromNpcYell(string name, uint voiceover, int duration, uint npcYellLine,
+    public BattleTalk CreateFromNpcYell(string name, uint voiceover, uint npcYellLine,
         List<Personalization> personalization,
         uint icon = 0);
 

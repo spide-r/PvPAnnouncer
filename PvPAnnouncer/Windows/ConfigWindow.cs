@@ -17,6 +17,7 @@ namespace PvPAnnouncer.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
+    //todo make a note somewhere that some of the ways i pull the data are kinda skuffedTM and that some of the translations to other languages may not be 100% and to tell me if that happens
     private IEventListenerLoader listenerLoader;
     private BattleTalk[] _allBattleTalks;
 
@@ -404,6 +405,10 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
         {
             _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
+            if (repeatVoiceLine == 420)
+            {
+                //todo open voiceline tester window
+            }
             _configuration.Save();
         }
         ImGui.Unindent();
