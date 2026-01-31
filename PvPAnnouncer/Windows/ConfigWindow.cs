@@ -117,7 +117,7 @@ public class ConfigWindow : Window, IDisposable
             {
                 
                 var e = bt[Random.Shared.Next(bt.Length)];
-                PluginServices.Announcer.PlaySound(e.Path + PluginServices.Config.Language + ".scd");
+                PluginServices.Announcer.PlaySound(e.Path + "_" + PluginServices.Config.Language + ".scd");
                 PluginServices.Announcer.SendBattleTalk(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Name}", InternalConstants.MessageTag);
 

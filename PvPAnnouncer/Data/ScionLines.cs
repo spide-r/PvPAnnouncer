@@ -4,8 +4,6 @@ namespace PvPAnnouncer.Data;
 #pragma warning disable 8618
 public static class ScionLines 
 {
-    //todo really test if the warning disable is worth it
-    //todo init everyone - does the init happen on disable/enable
     #region vars
     private static readonly string Alphinaud = "Alphinaud";
     private static readonly string Zenos = "Zenos";
@@ -468,7 +466,7 @@ public static class ScionLines
         More = CreateZenosNpcYell(8201352, 5374);
         HaveYouTheStrength = CreateZenosTextData(8201353, 2, 17313); // Have you the strength? 
         LetThisMomentLastForever = CreateZenosTextData(8201357, 3, 17315); // Let this moment last forever....
-        ShowMeYourAll = CreateZenosTextData(0, 3, 17315); // Show me your all...
+        ShowMeYourAll = CreateZenosTextData(8201356, 3, 17315); // Show me your all...
         ThePowerToTranscend = CreateZenosTextData(8201354, 3, 17314); // The power to transcend. 
         Hahahahahaha = CreateZenosNpcYell(8201429, 5375); 
         StillFightInYou = CreateZenosTextData(8203135, 3, 31201); // Ha! Still fight in you I see. 

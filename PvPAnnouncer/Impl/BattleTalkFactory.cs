@@ -48,7 +48,7 @@ public class BattleTalkFactory(IDataManager dataManager) : IBattleTalkFactory
         var trimmedNumber = number.Substring(0,3);
         var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
         var cutscene = PluginServices.DataManager.GetExcelSheet<CutsceneText>(name: csvName);
-        var audio = $"cut/ex{expac}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m_";
+        var audio = $"cut/ex{expac}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
             
         var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag));
         var dialogue = InternalConstants.ErrorContactDev;

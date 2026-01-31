@@ -28,35 +28,63 @@ public class VoiceLineTesterWindow: Window, IDisposable
         
     }
 
+    private int _filterIndex = 0;
+    private string[] toFilter = {"All", "Zenos", "Alphinaud", "Alisaie", "Thancred", "Urianger", "Y'shtola", 
+        "Estinien", "G'raha Tia", "Krile", "Wuk Lamat", "Koana", "Bakool Ja Ja", "Erenville", "Metem", "Referee"};
     public override void Draw()
     {
         ImGui.Text("How did we get here?");
         ImGui.Separator();
-        //todo sort by name
-        // id(voLine/path/)- name - text - button
-        ImGui.BeginTable("Voicelines", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable | ImGuiTableFlags.Reorderable);
-        ImGui.TableSetupColumn("Voiceline Path");
-        ImGui.TableSetupColumn("Name");
-        ImGui.TableSetupColumn("Text");
-        ImGui.TableSetupColumn("Button");
-        ImGui.TableHeadersRow();
-        foreach (var bt in _allBattleTalks)
+
+        if (ImGui.BeginCombo("Announcer Filter", toFilter[_filterIndex]))
         {
-            ImGui.TableNextRow();
-            ImGui.TableNextColumn();
-            ImGui.Text(bt.Path);
-            ImGui.TableNextColumn();
-            ImGui.Text(bt.Name);
-            ImGui.TableNextColumn();
-            ImGui.Text(bt.Text);
-            ImGui.TableNextColumn();
-            
-            if (ImGui.Button("Play###" + bt.Path))
+            for (var i = 0; i < toFilter.Length; i++)
             {
-                PluginServices.Announcer.SendBattleTalk(bt);
-                PluginServices.Announcer.PlaySound(bt.Path + PluginServices.Config.Language +".scd");
-            }
+                bool selected = (_filterIndex == i);
+                if (ImGui.Selectable(toFilter[i], selected))
+                {
+                    _filterIndex = i;
+                }
+            }   
+            ImGui.EndCombo();
         }
-        ImGui.EndTable();
+     
+        
+        // id(voLine/path/)- name - text - button
+        if (ImGui.BeginTable("Voicelines", 4,
+                ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable | ImGuiTableFlags.Reorderable))
+        {
+            ImGui.TableSetupColumn("Voiceline Path");
+            ImGui.TableSetupColumn("Name");
+            ImGui.TableSetupColumn("Text");
+            ImGui.TableSetupColumn("Button");
+            ImGui.TableHeadersRow();
+            foreach (var bt in _allBattleTalks)
+            {
+                if (_filterIndex != 0)
+                {
+                    if (!bt.Name.Equals(toFilter[_filterIndex]))
+                    {
+                        continue;
+                    }
+                }
+                ImGui.TableNextRow();
+                ImGui.TableNextColumn();
+                ImGui.Text(bt.Path);
+                ImGui.TableNextColumn();
+                ImGui.Text(bt.Name);
+                ImGui.TableNextColumn();
+                ImGui.Text(bt.Text);
+                ImGui.TableNextColumn();
+            
+                if (ImGui.Button("Play###" + bt.Path))
+                {
+                    PluginServices.Announcer.SendBattleTalk(bt);
+                    PluginServices.Announcer.PlaySound(bt.Path + "_" + PluginServices.Config.Language +".scd");
+                }
+            }
+            ImGui.EndTable();
+        }
+
     }
 }

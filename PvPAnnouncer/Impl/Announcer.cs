@@ -177,7 +177,7 @@ public class Announcer: IAnnouncer
         {
             PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s.Path} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
-            var p = s.Path + PluginServices.Config.Language + ".scd";
+            var p = s.Path + "_" + PluginServices.Config.Language + ".scd";
             PlaySound(p);
             SendBattleTalk(s);
             PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");

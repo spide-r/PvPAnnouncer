@@ -109,7 +109,7 @@ public class DevWindow: Window, IDisposable
 
             var bt = PluginServices.BattleTalkFactory.CreateFromCutsceneLine("Emet Selch", 0, 5, tag, [], 73256);
             PluginServices.Announcer.SendBattleTalk(bt);
-            PluginServices.Announcer.PlaySound(bt.Path + "en.scd");
+            PluginServices.Announcer.PlaySound(bt.Path + "_" + "en.scd");
             
         }
         var l = ll;

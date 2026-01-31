@@ -47,6 +47,6 @@ public class  BattleTalk : IBattleTalk // decorator
     Style = style;
     RowId = rowId;
     SubRowId = subRowId;
-    Path = path.Equals("") ? "sound/voice/vo_line/" + voiceover + "_" : path;
+    Path = path.Equals("") ? "sound/voice/vo_line/" + voiceover : path;
   }
 }
