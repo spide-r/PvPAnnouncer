@@ -50,10 +50,24 @@ public class DevWindow: Window, IDisposable
     private bool hide = false;
     private string _textData = "";
     private int _voLineSelector = 0;
+    private string _tag = "";
+    private int _expac = 3;
 
     
     public override void Draw()
     {
+
+        var tag = _tag;
+        var expac = _expac;
+        if(ImGui.InputText("Tag", ref tag))
+        {
+            _tag = tag;
+        }
+
+        if (ImGui.InputInt("Expac", ref expac))
+        {
+            _expac = expac;
+        }
 
         if (ImGui.Button("Pull the lever kronk"))
         {
@@ -72,10 +86,11 @@ public class DevWindow: Window, IDisposable
 
             //step N: make another function that creates from voiceline???? maybe not
             */
-            var line = "TEXT_VOICEMAN_05001_004950_EMETSELCH";
+            var line = tag;
             var ex = 3;
             
             
+            /*
             var splitLine = line.Split("_");
             var number = splitLine[2];
             var secondNumber = splitLine[3];
@@ -91,11 +106,12 @@ public class DevWindow: Window, IDisposable
                 dialogue = row.Value.Dialogue.ExtractText();
             }
             dialogue = Regex.Replace(dialogue, @"^\(-.*-\)", ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
+            */
 
 
-            var bt = PluginServices.BattleTalkFactory.CreateFromNoSheet("Emet Selch", 0, 5, dialogue, [], 73256);
+            var bt = PluginServices.BattleTalkFactory.CreateFromCutsceneLine("Emet Selch", 0, 5, tag, [], 73256);
             PluginServices.Announcer.SendBattleTalk(bt);
-            PluginServices.Announcer.PlaySound(audio + "_en.scd");
+            PluginServices.Announcer.PlaySound(bt.Path + "en.scd");
             
         }
         var l = ll;
@@ -245,7 +261,8 @@ public class DevWindow: Window, IDisposable
         PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
         if (!hide)
         {
-            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", (uint) l, []));
+            ;
+            PluginServices.Announcer.SendBattleTalk(PluginServices.BattleTalkFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
         }
     }
     

@@ -35,46 +35,8 @@ public class  BattleTalk : IBattleTalk // decorator
   
      */
 
-  //todo this constructor is bad and needs to be fixed, this means rewriting how we init battletalks - cant be depending on datamanager on being init
-  [Obsolete("If this gets pushed to main you're a dingus")]
-  public BattleTalk(string name, uint voiceover, List<Personalization> personalization, uint icon = 0) 
-  {
-
-    var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
-    try
-    {
-      var t = sheet.SelectMany(row => row)
-
-        .FirstOrDefault(bt => bt.Unknown1 == voiceover); 
-      Name = name;
-      RowId = t.RowId;
-      SubRowId = t.SubrowId;
-      Icon = icon != 0 ? icon : t.Unknown0;
-      Voiceover = t.Unknown1;
-      Text = t.Text.Value.Text.ToString();
-      Duration = t.Unknown3;
-      Style = t.Unknown4;
-      Personalization = personalization;
-      Path = "sound/voice/vo_line/" + voiceover + "_";
-
-    }
-    catch (InvalidOperationException)
-    {
-      Name = name;
-      Personalization = personalization;
-      RowId = 0;
-      SubRowId = 0;
-      Icon = 0;
-      Voiceover = voiceover;
-      Text = "Unknown Text! You shouldn't be seeing this";
-      Duration = 3;
-      Style = 6;
-      Path = "sound/voice/vo_line/" + voiceover + "_";
-    }
-  }
-
   public BattleTalk(string name, uint voiceover, int duration, string text, List<Personalization> personalization,
-    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0, string path = "")
+    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0, string path = "") 
   {
     Name = name;
     Text = text;
@@ -87,9 +49,4 @@ public class  BattleTalk : IBattleTalk // decorator
     SubRowId = subRowId;
     Path = path.Equals("") ? "sound/voice/vo_line/" + voiceover + "_" : path;
   }
-  public string GetSoundPath()
-  {
-    return Path;
-  }
-  
 }

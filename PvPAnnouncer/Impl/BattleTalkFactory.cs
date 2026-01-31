@@ -17,15 +17,14 @@ public class BattleTalkFactory(IDataManager dataManager) : IBattleTalkFactory
     {
         var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
 
-        var t = sheet.Where(sc =>
-
-        {
-
-            return sc.Any(bt => bt.Unknown1.Equals(voiceover));
-
-        }).First().First(aa => aa.Unknown1.Equals(voiceover)); 
         try
         {
+            
+            var t = sheet.Where(sc =>
+            {
+                return sc.Any(bt => bt.Unknown1.Equals(voiceover));
+
+            }).First().First(aa => aa.Unknown1.Equals(voiceover)); 
             return new BattleTalk(name, t.Unknown1, t.Unknown3,
                 t.Text.Value.ToString() ?? $"Unknown Text! You shouldn't be seeing this! ({voiceover})", personalization,
                 t.Unknown0 != 0 ? t.Unknown0 : icon, t.Unknown4, t.RowId, t.SubrowId);

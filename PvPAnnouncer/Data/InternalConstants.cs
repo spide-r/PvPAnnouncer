@@ -22,7 +22,7 @@ public abstract class InternalConstants
         BBEmbiggening, KaboomBBSpecial, UnusedBombarianPress, BBDesprate, DischargeAether, DGSteps, DGFeverPich, SRBringsWorkToLife,
         ChimericalFoe, FeralPowersWeapon, PunishingAttackFusion, VFWickedWeapon, VFUnleashedAether, EvenMoreAether, LightheadedFem,
         DBTaggingIn, Fusion, HoldingNothingBack, TyrannyTimeMasc, UnleashedFullMightMasc, ArmLifeOwnMasc, ArmSlitheringOutDisgustingMasc, CruelCoil,
-        VictoryWithinReach, ReleaseYourPotential, YouHaveThem, ForTheHouseOfLeveilleur, FocusReleaseAlphinaud, SoItComesToThis, TheoryAndPractice,
+        VictoryWithinReach, ReleaseYourPotential, YouHaveThem, ForTheHouseOfLeveilleur, FocusReleaseAlphinaud, SoItComesToThis, TheoryInPractice,
         GiveItEverythingAlisaie, ShowThemWhatYoureMadeOf, ExpectedWhenSerious, KeepUpTheOffensive, JustGettingStarted, Fall, ThereIsNoEscapeAlisaie, KeepThemOnTheirHeels,
         DanceOfTheStars, ThereIsNoEscapeYshtola, AndNowToReturnTheFavor, HoldNothingBack, HaveThemNowEstinien, EndTheirStruggles,
         GiveItEverything, DeclareIntentions, MakeAStandOurselves, FinishThemTooMuch, PointsAndAll, FocusRelease, TimeHasCome, ShowMeWhatYouCanDo,

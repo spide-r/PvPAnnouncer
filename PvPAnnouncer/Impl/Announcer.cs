@@ -238,6 +238,7 @@ public class Announcer: IAnnouncer
                 {
                     UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
                 }
+                //todo play around with UIModule.Instance()->ShowBattleTalkSound();
             }
             catch (InvalidOperationException) 
             {

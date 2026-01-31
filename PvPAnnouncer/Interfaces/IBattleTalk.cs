@@ -16,6 +16,4 @@ public interface IBattleTalk
     public byte Style { get; }
     public List<Personalization> Personalization { get; }
     public string Path { get; }
-    public string GetSoundPath();
-
 }
