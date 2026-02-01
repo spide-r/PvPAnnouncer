@@ -6,6 +6,7 @@ using Dalamud.Game.Config;
 using Dalamud.Game.Text;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using PvPAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
@@ -65,9 +66,13 @@ namespace PvpAnnouncer
                 } else
                 {
                     gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
-                    Language = configuredLang switch
+                    gameConfig.TryGet(SystemConfigOption.Language,  out uint clientLang);
+                    PluginServices.PluginLog.Verbose($"Lang: {configuredLang}");
+                    PluginServices.PluginLog.Verbose($"Lang: {clientLang}");
+                    var sw = configuredLang == 4294967295 ? clientLang : configuredLang;
+                    Language = sw switch
                     {
-                        0 => "jp",
+                        0 => "ja",
                         1 => "en",
                         2 => "de",
                         3 => "fr",
