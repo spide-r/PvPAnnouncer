@@ -51,28 +51,31 @@ namespace PvpAnnouncer
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
 
-        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)
+        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig, bool newConfig)
         {
             _pluginInterface = pluginInterface;
-            if (ps.CheckCNClient()) 
+            if (newConfig)
             {
-                Language = "chs";
-            } else if (ps.CheckKRClient())
-            {
-                Language = "kr";
-            } else
-            {
-                gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
-                Language = configuredLang switch
+                if (ps.CheckCNClient()) 
                 {
-                    0 => "jp",
-                    1 => "en",
-                    2 => "de",
-                    3 => "fr",
-                    _ => "en"
-                };
+                    Language = "chs";
+                } else if (ps.CheckKRClient())
+                {
+                    Language = "kr";
+                } else
+                {
+                    gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
+                    Language = configuredLang switch
+                    {
+                        0 => "jp",
+                        1 => "en",
+                        2 => "de",
+                        3 => "fr",
+                        _ => "en"
+                    };
+                }
+                _pluginInterface?.SavePluginConfig(this);
             }
-            _pluginInterface?.SavePluginConfig(this);
 
             MigrateOldPluginConfig();
         }
