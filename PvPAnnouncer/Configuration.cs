@@ -190,6 +190,16 @@ namespace PvpAnnouncer
                 ShowNotification = true;
                 Version++;
             }
+
+            if (Version == 5) // fix ja/jp bug
+            {
+                if (Language.Equals("jp"))
+                {
+                    Language = "ja";
+                }
+
+                Version++;
+            }
             _pluginInterface?.SavePluginConfig(this);
         }
 
