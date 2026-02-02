@@ -516,7 +516,13 @@ public static class ScionLines
         ProudYetIgnorant = CreateAlphinaud(8291021, 5, "How proud we were, yet ignorant of our own shortcomings.");
         ReplaceIgnoranceWithKnowledge = CreateAlphinaud(8291021, 7, "You must accept this defeat with grace, and endeavour to replace our ignorance with knowledge.");
         OutplayedClearMinds = CreateAlphinaud(8291022, 7, "We were outplayed this time. Let us take a moment to clear our minds.");
-        
+        PullYourselfTogether = CreateAlphinaud(8201085, 2, "Pull Yourself together!"); 
+        FocusRelease = CreateAlphinaud(8201086, 2, "Focus. Release!"); 
+        AwayWithYou = CreateAlphinaud(8201087, 2, "Away with you!"); 
+        IHaveMyPride = CreateAlphinaud(8201088, 2, "I have my pride!"); 
+        StandFast = CreateAlphinaud(8205000, 2, "Stand Fast!"); 
+        WeveComeTooFar = CreateAlphinaud(8203012, 3, "We've come too far to fall short here."); 
+        EasyNowDeepBreaths = CreateAlphinaud(8203015, 2, "Easy now. Deep breaths."); 
         ForTheHouseOfLeveilleur = CreateAlphinaudYell(8201089, 14071); 
         SoItComesToThis = CreateAlphinaudYell(8201091, 3094); 
         TheoryInPractice = CreateAlphinaudYell(8202009, 7740);
@@ -794,18 +800,11 @@ public static class ScionLines
         AllaganGameGraha = CreateGrahaTalk(8291158, 4, "Were it an allagan game perhaps I might have been more useful to you?");
         SomethingToTeachDefeat = CreateGrahaTalk(8291159, 6, "While I'd rather you have triumphed, even in defeat you have something to teach us.");
         TaleWillNotEnd = CreateGrahaTalk(8291160, 4, "Your tale will not end here. Is that not so my friend?");
-        PullYourselfTogether = CreateGrahaTalk(8201085, 2, "Pull Yourself together!");
-        FocusRelease = CreateGrahaTalk(8201086, 2, "Focus. Release!");
-        AwayWithYou = CreateGrahaTalk(8201087, 2, "Away with you!");
-        IHaveMyPride = CreateGrahaTalk(8201088, 2, "I have my pride!");
         BackToTheFight = CreateGrahaTalk(8202119, 2, "Back to the fight.");
         TimeHasCome = CreateGrahaTalk(8202125, 2, "The time has come!");
         JustTheBeginning = CreateGrahaTalk(8202342, 2, "Just the beginning.");
         ShowMeWhatYouCanDo = CreateGrahaTalk(8202341, 2, "Show me what you can do.");
         AreYouAlright = CreateGrahaTalk(8202337, 2, "Are you alright?");
-        StandFast = CreateGrahaTalk(8205000, 2, "Stand Fast!");
-        WeveComeTooFar = CreateGrahaTalk(8203012, 3, "We've come too far to fall short here.");
-        EasyNowDeepBreaths = CreateGrahaTalk(8203015, 2, "Easy now. Deep breaths.");
         FindCoverEnergy = CreateGrahaTalk(8203042, 3, "The air crackles with energy. Find cover!");
         return;
 

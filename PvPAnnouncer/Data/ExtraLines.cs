@@ -29,5 +29,8 @@ public class ExtraLines
      gulool ja ja????: 8205158-8205192
      calyx: 8205679-8205732
      llumull: 8206021-8206035
+     krile? 8205019
+     sphene:8206000-8206020 ??
+     graha: somewhere around 8202328 ending at 8202346
      */
 }

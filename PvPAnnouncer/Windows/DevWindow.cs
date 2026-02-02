@@ -259,7 +259,6 @@ public class DevWindow: Window, IDisposable
         PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
         if (!hide)
         {
-            ;
             PluginServices.Announcer.SendBattleTalk(PluginServices.BattleTalkFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
         }
     }
