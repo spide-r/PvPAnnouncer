@@ -5,11 +5,13 @@ using System.Numerics;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Configuration;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Utility;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -21,7 +23,10 @@ public class ConfigWindow : Window, IDisposable
     private IEventListenerLoader listenerLoader;
     private Shoutcast[] _allBattleTalks;
 
-    private readonly Configuration _configuration; public ConfigWindow() : base(
+    private readonly Configuration _configuration; 
+    private readonly ShoutcastRepository _shoutcastRepository; 
+    private readonly EventShoutcastMapping _eventShoutcastMapping; 
+    public ConfigWindow(ShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, EventShoutcastMapping eventShoutcastMapping) : base(
         "PvPAnnouncer Configuration")
     {
 
@@ -33,10 +38,12 @@ public class ConfigWindow : Window, IDisposable
 
         SizeCondition = ImGuiCond.Always;
 
-        _configuration = PluginServices.Config;
+        _configuration = pluginConfiguration;
         listenerLoader = PluginServices.ListenerLoader;
         _allEvents = listenerLoader.GetPvPEvents();
         _allBattleTalks = InternalConstants.GetBattleTalkList();
+        _shoutcastRepository = shoutcastRepository;
+        _eventShoutcastMapping = eventShoutcastMapping;
         foreach (var pvPEvent in _allEvents)
         {
             _eventskv.Add(pvPEvent.InternalName, pvPEvent);
@@ -68,6 +75,20 @@ public class ConfigWindow : Window, IDisposable
         var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
         var icon = _configuration.WantsIcon;
+        
+        // ==== Attributes that need to be refactored ====
+        
+        /*
+         
+         * private void DoAttribute(string attr){
+         * var attVar _configuration.WantsAttribute(attr);
+         *       if (ImGui.Checkbox(attr, ref attVar))
+            {
+                SetAttribute(attr, attVar);
+                _configuration.Save();
+            }
+         * }
+         */
         
         //personalization 
         var fem = _configuration.WantsPersonalization(Personalization.FemPronouns);
@@ -101,6 +122,9 @@ public class ConfigWindow : Window, IDisposable
         var erenville = _configuration.WantsPersonalization(Personalization.ErenvilleAnnouncer);
         var zenos = _configuration.WantsPersonalization(Personalization.ZenosAnnouncer);
         
+        // ==== Attributes that need to be refactored ====
+
+        
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
             ImGui.Separator();
@@ -112,12 +136,12 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Button("Test The Announcer"))
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
-            Shoutcast[] bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
+            Shoutcast[] bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllAttributes(bt.Attributes)).ToArray();
             if (bt.Length != 0) // no announcers selected
             {
                 
                 var e = bt[Random.Shared.Next(bt.Length)];
-                PluginServices.Announcer.PlaySound(e.Path + "_" + PluginServices.Config.Language + ".scd");
+                PluginServices.Announcer.PlaySound(e.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
                 PluginServices.Announcer.SendBattleTalk(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.ShouterName}", InternalConstants.MessageTag);
 
@@ -134,7 +158,13 @@ public class ConfigWindow : Window, IDisposable
             }
             else
             {
-                PluginServices.Announcer.SendBattleTalk(new Shoutcast(InternalConstants.PvPAnnouncerDevName, 0, 5, "You don't have any announcers selected!", [], InternalConstants.PvPAnnouncerDevIcon));
+                var dict = new Dictionary<string, string>
+                {
+                    ["en"] = "You don't have any announcers selected!"
+                };
+                var s = PluginServices.ShoutcastBuilder.WithName(InternalConstants.PvPAnnouncerDevName).WithIcon(InternalConstants.PvPAnnouncerDevIcon)
+                    .WithTranscription(dict).Build();
+                PluginServices.Announcer.SendBattleTalk(s);
             }
         }
 
@@ -566,10 +596,10 @@ public class ConfigWindow : Window, IDisposable
 
     private bool WantsAnyInEvent(PvPEvent e)
     {
-        foreach (var battleTalk in e.SoundPaths())
+        foreach (var battleTalkStr in _eventShoutcastMapping.GetShoutcastList(e.Name))
         {
-            if (battleTalk == null) continue;
-            if (PluginServices.Config.WantsAllPersonalization(battleTalk.Personalization))
+            var battleTalk = _shoutcastRepository.GetShoutcast(battleTalkStr);
+            if (PluginServices.Config.WantsAllAttributes(battleTalk.Attributes))
             {
                 return true;
             }

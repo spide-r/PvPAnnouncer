@@ -8,13 +8,13 @@ namespace PvPAnnouncer.Impl;
 
 public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastRepository
 {
-    private readonly Dictionary<string, IShoutcast> _shoutcasts = new();
-    public IShoutcast GetShoutcast(string shoutcastId)
+    private readonly Dictionary<string, Shoutcast> _shoutcasts = new();
+    public Shoutcast GetShoutcast(string shoutcastId)
     {
         return _shoutcasts[shoutcastId];
     }
 
-    public void SetShoutcast(string shoutcastId, IShoutcast shoutcast)
+    public void SetShoutcast(string shoutcastId, Shoutcast shoutcast)
     {
         _shoutcasts[shoutcastId] = shoutcast;
     }
@@ -24,12 +24,11 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
         return !_shoutcasts.ContainsKey(shoutcastId);
     }
 
-    public IShoutcast ConstructShoutcast(string json)
+    public Shoutcast ConstructShoutcast(string json)
     {
         var j = JsonNode.Parse(json);
         if (j == null)
         {
-            //todo log 
             return builder.Build();
         }
         if (j["id"] != null)
@@ -73,10 +72,26 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
             builder.WithSoundPath(j["soundPath"]!.GetValue<string>());
         }
         
-        if (j["textPath"] != null)
+        if (j["cutsceneLine"] != null)
         {
-            builder.WithTextPath(j["textPath"]!.GetValue<string>());
+            builder.WithCutsceneLine(j["cutsceneLine"]!.GetValue<string>());
         }
+        
+        if (j["contentDirectorBattleTalkRow"] != null)
+        {
+            builder.WithContentDirectorBattleTalkRow(j["contentDirectorBattleTalkRow"]!.GetValue<uint>());
+        }
+        
+        if (j["npcYell"] != null)
+        {
+            builder.WithNpcYell(j["npcYell"]!.GetValue<uint>());
+        }
+        
+        if (j["instanceContentTextDataRow"] != null)
+        {
+            builder.WithInstanceContentTextDataRow(j["instanceContentTextDataRow"]!.GetValue<uint>());
+        }
+
         
         return builder.Build();
         

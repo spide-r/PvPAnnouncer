@@ -25,9 +25,13 @@ namespace PvpAnnouncer
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
         
+        [Obsolete]
         public int PersonalizedVoicelines {get; set;} = 0;
 
+        [Obsolete]
         public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
+
+        public List<string> DesiredAttributes { get; set; } = ["MetemAnnouncer"]; //todo maybe enum for this string idk
         
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
@@ -210,14 +214,22 @@ namespace PvpAnnouncer
 
                 Version++;
             }
+            //todo migrate to new attribute settings
             _pluginInterface?.SavePluginConfig(this);
         }
 
+        [Obsolete]
         public bool WantsPersonalization(Personalization p)
         {
             return VoicelineSettings.HasFlag(p);
         }
 
+        public bool WantsAttribute(string attribute)
+        {
+            return DesiredAttributes.Contains(attribute);
+        }
+
+        [Obsolete]
         public bool WantsAllPersonalization(List<Personalization> ps)
         {
             foreach (var p in ps)
@@ -230,16 +242,42 @@ namespace PvpAnnouncer
             return true;
         }
 
+        
+        public bool WantsAllAttributes(List<string> attributes)
+        {
+            foreach (var p in attributes)
+            {
+                if (!DesiredAttributes.Contains(p))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        [Obsolete]
         public void SetPersonalization(Personalization p)
         {
             VoicelineSettings = VoicelineSettings | p;
         }
 
+        [Obsolete]
         public void RemovePersonalization(Personalization toRemove)
         {
             VoicelineSettings &= ~toRemove;
         }
 
+        public void SetAttribute(string attribute)
+        {
+            DesiredAttributes.Add(attribute);
+        }
+
+        public void RemoveAttribute(string attribute)
+        {
+            DesiredAttributes.Remove(attribute);
+        }
+
+        [Obsolete]
         public void TogglePersonalization(Personalization toSet, bool set)
         {
             if (set)
@@ -249,6 +287,18 @@ namespace PvpAnnouncer
             else
             {
                 RemovePersonalization(toSet);
+            }
+        }
+
+        public void ToggleAttribute(string attribute, bool set)
+        {
+            if (set)
+            {
+                DesiredAttributes.Add(attribute);
+            }
+            else
+            {
+                DesiredAttributes.Remove(attribute);
             }
         }
         public void Save()

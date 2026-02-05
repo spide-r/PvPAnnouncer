@@ -2,7 +2,7 @@
 
 namespace PvPAnnouncer.Interfaces;
 
-public interface IShoutcastEventMapping
+public interface IEventShoutcastMapping
 {
     public void AddShoutcast(string eventStr, string shoutcast);
     public void RemoveShoutcast(string eventStr, string shoutcast);

@@ -70,17 +70,17 @@ public class VoiceLineTesterWindow: Window, IDisposable
                 }
                 ImGui.TableNextRow();
                 ImGui.TableNextColumn();
-                ImGui.Text(bt.Path);
+                ImGui.Text(bt.SoundPath);
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.ShouterName);
                 ImGui.TableNextColumn();
-                ImGui.Text(bt.Text);
+                ImGui.Text(bt.GetTranscriptionWithLang(PluginServices.Config.Language));
                 ImGui.TableNextColumn();
             
-                if (ImGui.Button("Play###" + bt.Path))
+                if (ImGui.Button("Play###" + bt.SoundPath))
                 {
                     PluginServices.Announcer.SendBattleTalk(bt);
-                    PluginServices.Announcer.PlaySound(bt.Path + "_" + PluginServices.Config.Language +".scd");
+                    PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
                 }
             }
             ImGui.EndTable();

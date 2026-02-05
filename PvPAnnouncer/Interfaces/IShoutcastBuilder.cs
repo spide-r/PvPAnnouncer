@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Interfaces;
 
@@ -8,7 +9,7 @@ public interface IShoutcastBuilder
     //instead of Text, we use transcription
     //name is assumed to be how customization for announcer is filtered
     //personalization is for fem/masc pronouns, if certain competitors can be mentioned, etc 
-    IShoutcast Build();
+    Shoutcast Build();
     public IShoutcastBuilder WithId(string id);
     public IShoutcastBuilder WithIcon(uint icon);
     public IShoutcastBuilder WithTranscription(Dictionary<string, string> transcription);
@@ -17,5 +18,9 @@ public interface IShoutcastBuilder
     public IShoutcastBuilder WithName(string name);
     public IShoutcastBuilder WithAttributes(List<string> attributes);
     public IShoutcastBuilder WithSoundPath(string path);
-    public IShoutcastBuilder WithTextPath(string path);
+    public IShoutcastBuilder WithCutsceneLine(string path);
+    public IShoutcastBuilder WithContentDirectorBattleTalkRow(uint contentDirectorBattleTalkRow);
+    public IShoutcastBuilder WithNpcYell(uint npcYell);
+    public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow);
+
 }

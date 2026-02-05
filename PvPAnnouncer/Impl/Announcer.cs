@@ -9,7 +9,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl;
 
-public class Announcer: IAnnouncer
+public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastRepository shoutcastRepository): IAnnouncer
 {
     /*
      * Objectives:
@@ -100,7 +100,7 @@ public class Announcer: IAnnouncer
     
     private void AddVoiceLineToRecentList(Shoutcast talk)
     {
-        PluginServices.PluginLog.Verbose($"Adding Voice line {talk.Voiceover} to history");
+        PluginServices.PluginLog.Verbose($"Adding Voice line {talk.SoundPath} to history");
 
         if (_lastVoiceLines.Count > PluginServices.Config.RepeatVoiceLineQueue - 1) 
         {
@@ -143,13 +143,13 @@ public class Announcer: IAnnouncer
     {
         List<Shoutcast> sounds = [];
 
-        foreach (var sound in pvpEvent.SoundPaths())
+        foreach (var shoutcastId in eventShoutcastMapping.GetShoutcastList(pvpEvent.Name))
         {
+            var sound = shoutcastRepository.GetShoutcast(shoutcastId);
             // == Objective 5 == 
-            if (PluginServices.Config.WantsAllPersonalization(sound.Personalization))
+            if (PluginServices.Config.WantsAllAttributes(sound.Attributes))
             {
                 sounds.AddRange(sound);
-
             }
         }
         
@@ -175,9 +175,9 @@ public class Announcer: IAnnouncer
         WrapUp(pvpEvent, s);
         Task announceTask = Task.Factory.StartNew(async () =>
         {
-            PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s.Path} by {PluginServices.Config.AnimationDelayFactor}");
+            PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s.SoundPath} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
-            var p = s.Path + "_" + PluginServices.Config.Language + ".scd";
+            var p = s.GetShoutcastSoundPathWithLang(PluginServices.Config.Language);
             PlaySound(p);
             SendBattleTalk(s);
             PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");
@@ -209,27 +209,39 @@ public class Announcer: IAnnouncer
             return;
         }
 
-        if (shoutcast.Text.Equals(""))
+        var transcription = "";
+
+        if (shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language).Equals(""))
         {
-            PluginServices.PluginLog.Verbose($"Text empty for {shoutcast.ShouterName}, {shoutcast.Path}");
-            return;
+            if (shoutcast.GetTranscriptionWithLang("en").Equals(""))
+            {
+                PluginServices.PluginLog.Verbose($"Text empty for {shoutcast.ShouterName}, {shoutcast.SoundPath}");
+                return; 
+            }
+
+            transcription = shoutcast.GetTranscriptionWithLang("en");
+            PluginServices.PluginLog.Warning($"Text empty for {shoutcast.ShouterName}, {shoutcast.SoundPath} on lang {PluginServices.Config.Language} - falling back to EN");
         }
+        else
+        {
+            transcription = shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language);
+        }
+
         unsafe
         {
             try
             {
                 var name = shoutcast.ShouterName;
-                var text = shoutcast.Text; 
                 var duration = shoutcast.Duration;
                 var icon = shoutcast.Icon;
                 var style = shoutcast.Style;
                 if (icon != 0 && PluginServices.Config.WantsIcon)
                 {
-                    UIModule.Instance()->ShowBattleTalkImage(name, text, duration, icon, style);
+                    UIModule.Instance()->ShowBattleTalkImage(name, transcription, duration, icon, style);
                 }
                 else
                 {
-                    UIModule.Instance()->ShowBattleTalk(name, text, duration, style);
+                    UIModule.Instance()->ShowBattleTalk(name, transcription, duration, style);
                 }
                 //todo play around with UIModule.Instance()->ShowBattleTalkSound();
             }

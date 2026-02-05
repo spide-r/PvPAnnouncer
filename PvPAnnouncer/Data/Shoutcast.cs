@@ -11,29 +11,23 @@ namespace PvPAnnouncer.Data;
 
 public class  Shoutcast : IShoutcast // decorator
 {
-  [Obsolete]
-  public uint RowId { get; }
-  [Obsolete]
-  public uint SubRowId { get; }
   public uint Icon { get; set; }
 
-  [Obsolete]
-  public uint Voiceover { get; }
   public string ShouterName { get; set; }
 
-  [Obsolete]
-  public string Text { get; }
   public byte Duration { get; set; }
   public byte Style { get; set; }
-
-  [Obsolete]
-  public List<Personalization> Personalization { get; }
-  public string Path { get; }
   public Dictionary<string, string> Transcription { get; set; }
   public string Id { get; set; }
   public List<string> Attributes { get; set; }
   public string SoundPath { get; set; }
-  public string TextPath { get; set; }
+  public string CutsceneLine { get; set; }
+
+  public uint ContentDirectorBattleTalkRow {get; set;}
+  
+  public uint NpcYell {get; set;}
+  
+  public uint InstanceContentTextDataRow {get; set;}
 
   /*
       name: ContentDirectorBattleTalk
@@ -49,23 +43,18 @@ public class  Shoutcast : IShoutcast // decorator
      */
   
 
+  [Obsolete]
   public Shoutcast(string shouterName, uint voiceover, int duration, string text, List<Personalization> personalization,
     uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0, string path = "") 
   {
     ShouterName = shouterName;
-    Text = text;
-    Voiceover = voiceover;
     Duration = (byte) duration;
-    Personalization = personalization;
     Icon = icon;
     Style = style;
-    RowId = rowId;
-    SubRowId = subRowId;
-    Path = path.Equals("") ? "sound/voice/vo_line/" + voiceover : path; //todo logic shouldnt be here - shitty! sad! remove!
   }
 
   public Shoutcast(string id, uint icon, Dictionary<string, string> transcription, byte duration, byte style,
-    string shouterName, List<string> attributes, string soundPath, string textPath)
+    string shouterName, List<string> attributes, string soundPath, string cutsceneLine, uint contentDirectorBattleTalkRow, uint npcYell, uint instanceContentTextDataRow)
   {
     Id = id;
     Icon = icon;
@@ -75,8 +64,22 @@ public class  Shoutcast : IShoutcast // decorator
     ShouterName = shouterName;
     Attributes = attributes;
     SoundPath = soundPath;
-    TextPath = textPath;
+    CutsceneLine = cutsceneLine;
+    ContentDirectorBattleTalkRow = contentDirectorBattleTalkRow;
+    NpcYell = npcYell;
+    InstanceContentTextDataRow = instanceContentTextDataRow;
   }
+
+  public string GetShoutcastSoundPathWithLang(string lang)
+  {
+    return SoundPath + "_" + lang + ".scd";
+  }
+
+  public string GetTranscriptionWithLang(string lang)
+  {
+    return Transcription[lang];
+  }
+
   public Shoutcast()
   {
     

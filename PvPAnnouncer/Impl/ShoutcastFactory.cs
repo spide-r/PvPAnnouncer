@@ -12,7 +12,7 @@ namespace PvPAnnouncer.Impl;
 
 public class ShoutcastFactory(IDataManager dataManager) : IShoutcastFactory
 {
-    
+    //todo maybe delete this class
     public Shoutcast CreateFromContentDirectorBattleTalk(string name, uint voiceover, List<Personalization> personalization, uint icon = 0)
     {
         var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 

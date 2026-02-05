@@ -109,7 +109,7 @@ public class DevWindow: Window, IDisposable
 
             var bt = PluginServices.ShoutcastFactory.CreateFromCutsceneLine("Emet Selch", 0, 5, tag, [], 73256);
             PluginServices.Announcer.SendBattleTalk(bt);
-            PluginServices.Announcer.PlaySound(bt.Path + "_" + "en.scd");
+            PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
             
         }
         var l = ll;
@@ -118,12 +118,7 @@ public class DevWindow: Window, IDisposable
         {
             icon = ic;
         }
-
-        if (ImGui.Button("Test Icon"))
-        {
-            PluginServices.Announcer.SendBattleTalk(new Shoutcast("Unknown", 8291265, 2, "Asdf", [], Convert.ToUInt32(icon)));
-
-        }
+        
         var s = ss;
         ImGui.Text("Play A Sound path");
         if (ImGui.InputText("###SoundPath", ref s))
