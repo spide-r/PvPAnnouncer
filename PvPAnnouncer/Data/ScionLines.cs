@@ -57,6 +57,18 @@ public static class ScionLines
     public static BattleTalk BurnBurn;
     public static BattleTalk LetAllCreationBeConsumed;
     public static BattleTalk InfernoSwelling;
+    public static BattleTalk DoNotDisappoint;
+    public static BattleTalk NotWorthy;
+    public static BattleTalk DidYouFindFulfillment;
+    public static BattleTalk EndingNewBeginning;
+    public static BattleTalk FarewellFirstFriend;
+    public static BattleTalk ATaste;
+    public static BattleTalk RightToSpare;
+    public static BattleTalk PoorSport;
+    public static BattleTalk HowWeak;
+    public static BattleTalk ExpectNoLessBahamut;
+    public static BattleTalk HunterBecomeHunted;
+    public static BattleTalk EikonSlayer;
     #endregion
     #region Alphinaud
     public static BattleTalk VictoryWithinReach;
@@ -88,6 +100,12 @@ public static class ScionLines
     public static BattleTalk FocusReleaseAlphinaud;
     public static BattleTalk OnYourFeetAlphinaud;
     public static BattleTalk KeepItUp;
+    public static BattleTalk StandFast;
+    public static BattleTalk WeveComeTooFar;
+    public static BattleTalk EasyNowDeepBreaths;
+    public static BattleTalk FocusRelease;
+    public static BattleTalk AwayWithYou;
+    public static BattleTalk IHaveMyPride;
     #endregion
     #region Alisaie
     public static BattleTalk GiveItEverythingAlisaie;
@@ -289,17 +307,11 @@ public static class ScionLines
     public static BattleTalk SomethingToTeachDefeat;
     public static BattleTalk TaleWillNotEnd;
     public static BattleTalk PullYourselfTogether;
-    public static BattleTalk FocusRelease;
-    public static BattleTalk AwayWithYou;
-    public static BattleTalk IHaveMyPride;
     public static BattleTalk BackToTheFight;
     public static BattleTalk TimeHasCome;
     public static BattleTalk JustTheBeginning;
     public static BattleTalk ShowMeWhatYouCanDo;
     public static BattleTalk AreYouAlright;
-    public static BattleTalk StandFast;
-    public static BattleTalk WeveComeTooFar;
-    public static BattleTalk EasyNowDeepBreaths;
     public static BattleTalk FindCoverEnergy;
     #endregion
     #region Krile
@@ -479,6 +491,19 @@ public static class ScionLines
         BurnBurn = CreateZenosTextData(8203155, 3, 31210); // Burn! Burn! 
         LetAllCreationBeConsumed = CreateZenosTextData(8203140, 5, 31206); // Come! Let all creation be consumed by our ravenous fervor. 
         InfernoSwelling = CreateZenosTextData(8203139, 5, 31205); // I know you feel it too, the inferno swelling within you!
+        DoNotDisappoint = factory.CreateFromCutsceneLine(Zenos, (int) Expac.SB, 5, "TEXT_VOICEMAN_04000_001800_ZENOS",
+            [Personalization.ZenosAnnouncer, Personalization.FemPronouns], ZenosI);
+        NotWorthy = CreateZenosFromCsLine((int)Expac.SB, 3, "TEXT_VOICEMAN_04002_003880_ZENOS");
+        DidYouFindFulfillment = CreateZenosFromCsLine((int)Expac.EW, 3, "TEXT_VOICEMAN_06006_008210_ZENOS");
+        FarewellFirstFriend = CreateZenosFromCsLine((int)Expac.SB, 3, "TEXT_VOICEMAN_04006_001340_ZENOS");
+        EndingNewBeginning = CreateZenosFromCsLine((int)Expac.SB, 3, "TEXT_VOICEMAN_04006_001220_ZENOS");
+        ATaste = CreateZenosFromCsLine((int)Expac.EW, 3, "TEXT_VOICEMAN_06001_007510_ZENOS");
+        RightToSpare = CreateZenosFromCsLine((int)Expac.SB, 3, "TEXT_VOICEMAN_04002_003840_ZENOS");
+        PoorSport = CreateZenosFromCsLine((int)Expac.EW, 4, "TEXT_VOICEMAN_06005_000760_ZENOS");
+        HowWeak = CreateZenosFromCsLine((int)Expac.SB, 4, "TEXT_VOICEMAN_04002_003760_ZENOS");
+        ExpectNoLessBahamut = CreateZenosFromCsLine((int)Expac.SB, 4, "TEXT_VOICEMAN_04002_004290_ZENOS");
+        HunterBecomeHunted = CreateZenosFromCsLine((int)Expac.SB, 4, "TEXT_VOICEMAN_04006_001260_ZENOS");
+        EikonSlayer = CreateZenosFromCsLine((int)Expac.SB, 6, "TEXT_VOICEMAN_04006_001050_ZENOS");
         return;
 
         BattleTalk CreateZenosNpcYell(uint voiceover, uint npcYell)
@@ -489,6 +514,11 @@ public static class ScionLines
         BattleTalk CreateZenosTextData(uint voiceover, int duration, uint textDataRow)
         { 
             return factory.CreateFromInstanceContentTextData(Zenos, voiceover, duration, textDataRow, [Personalization.ZenosAnnouncer], ZenosI);
+        }
+        
+        BattleTalk CreateZenosFromCsLine(int expac, int duration, string tag)
+        { 
+            return factory.CreateFromCutsceneLine(Zenos, expac, duration, tag, [Personalization.ZenosAnnouncer], ZenosI);
         }
     }
     private static void InitAlphinaud(IBattleTalkFactory factory)
@@ -517,12 +547,12 @@ public static class ScionLines
         ReplaceIgnoranceWithKnowledge = CreateAlphinaud(8291021, 7, "You must accept this defeat with grace, and endeavour to replace our ignorance with knowledge.");
         OutplayedClearMinds = CreateAlphinaud(8291022, 7, "We were outplayed this time. Let us take a moment to clear our minds.");
         PullYourselfTogether = CreateAlphinaud(8201085, 2, "Pull Yourself together!"); 
-        FocusRelease = CreateAlphinaud(8201086, 2, "Focus. Release!"); 
-        AwayWithYou = CreateAlphinaud(8201087, 2, "Away with you!"); 
-        IHaveMyPride = CreateAlphinaud(8201088, 2, "I have my pride!"); 
-        StandFast = CreateAlphinaud(8205000, 2, "Stand Fast!"); 
-        WeveComeTooFar = CreateAlphinaud(8203012, 3, "We've come too far to fall short here."); 
-        EasyNowDeepBreaths = CreateAlphinaud(8203015, 2, "Easy now. Deep breaths."); 
+        FocusRelease = CreateAlphinaudYell(8201086, 3089); 
+        AwayWithYou = CreateAlphinaudYell(8201087, 10247); 
+        IHaveMyPride = CreateAlphinaudYell(8201088, 3091); 
+        StandFast = CreateAlphinaudYell(8205000, 17128); 
+        WeveComeTooFar = CreateAlphinaudYell(8203012, 13466); 
+        EasyNowDeepBreaths = CreateAlphinaudYell(8203015, 12329); 
         ForTheHouseOfLeveilleur = CreateAlphinaudYell(8201089, 14071); 
         SoItComesToThis = CreateAlphinaudYell(8201091, 3094); 
         TheoryInPractice = CreateAlphinaudYell(8202009, 7740);
@@ -568,7 +598,7 @@ public static class ScionLines
         ScramblingToKeepUp = CreateAlisaieTalk(8291044, 4, "I must say I'm not used to seeing you scrambling to keep up.");
         LaughingInTheEnd = CreateAlisaieTalk(8291044, 5, "We won't lose next time! keep at it and we'll be the ones laughing in the end.");
 
-        ThisIsNotOver = CreateAlisaieYell(8201092, 3484); //todo this might be yshtola
+        ThisIsNotOver = CreateAlisaieYell(8201092, 3484); 
         ThereIsNoEscapeAlisaie = CreateAlisaieYell(8201108, 7612);
         BackInTheGame = CreateAlisaieYell(8202023, 7754);
         OnYourFeetAlisaie = CreateAlisaieYell(8202031, 7762);
