@@ -16,7 +16,7 @@ public class MatchStartEvent: PvPMatchEvent
         InternalName = "MatchStartEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [SendingCameras, UpstartBegins, OurTurnThancred, FirstOpponent, NineLives, IntroBc,
             HoneyBShowBegun, SavorSting, IntroHbl, BBMuscled, IntroBb, WTReturned, IntroWt,

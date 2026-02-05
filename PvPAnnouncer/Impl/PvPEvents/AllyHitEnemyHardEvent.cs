@@ -17,7 +17,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
         InternalName = "AllyHitEnemyHardEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath, FeverPitch, 
             HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay,

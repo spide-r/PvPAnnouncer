@@ -16,7 +16,7 @@ public class EnemyMissedCc: PvPActionEvent
         InternalName = "EnemyMissedCcEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return
         [

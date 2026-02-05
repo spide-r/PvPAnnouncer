@@ -107,7 +107,7 @@ public class DevWindow: Window, IDisposable
             */
 
 
-            var bt = PluginServices.BattleTalkFactory.CreateFromCutsceneLine("Emet Selch", 0, 5, tag, [], 73256);
+            var bt = PluginServices.ShoutcastFactory.CreateFromCutsceneLine("Emet Selch", 0, 5, tag, [], 73256);
             PluginServices.Announcer.SendBattleTalk(bt);
             PluginServices.Announcer.PlaySound(bt.Path + "_" + "en.scd");
             
@@ -121,7 +121,7 @@ public class DevWindow: Window, IDisposable
 
         if (ImGui.Button("Test Icon"))
         {
-            PluginServices.Announcer.SendBattleTalk(new BattleTalk("Unknown", 8291265, 2, "Asdf", [], Convert.ToUInt32(icon)));
+            PluginServices.Announcer.SendBattleTalk(new Shoutcast("Unknown", 8291265, 2, "Asdf", [], Convert.ToUInt32(icon)));
 
         }
         var s = ss;
@@ -259,7 +259,7 @@ public class DevWindow: Window, IDisposable
         PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
         if (!hide)
         {
-            PluginServices.Announcer.SendBattleTalk(PluginServices.BattleTalkFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
+            PluginServices.Announcer.SendBattleTalk(PluginServices.ShoutcastFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
         }
     }
     

@@ -16,7 +16,7 @@ public class AllyResurrectEvent: PvPActorEvent
         InternalName = "AllyResurrectEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [BackUpGrit, BackOnFeet, RisesAgain, WhatFightingSpirit, BackInAction, BattleNotOverDontDespair,
             ItsAliveLindwurm, ContinuesToMultiply, LWCompletelyHealed, SomethingRevolting, RiseOnceMore, VauntedFortitude,

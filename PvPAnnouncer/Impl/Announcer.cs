@@ -20,7 +20,7 @@ public class Announcer: IAnnouncer
      * 5. Use the appropriate gender for the challenger
      */
     
-    private readonly Queue<BattleTalk?> _lastVoiceLines = new();
+    private readonly Queue<Shoutcast?> _lastVoiceLines = new();
     private readonly Queue<string> _lastEvents = new();
     private long _timestamp = 0;
     private int _lastVoiceLineLength = 0;
@@ -98,7 +98,7 @@ public class Announcer: IAnnouncer
     }
 
     
-    private void AddVoiceLineToRecentList(BattleTalk talk)
+    private void AddVoiceLineToRecentList(Shoutcast talk)
     {
         PluginServices.PluginLog.Verbose($"Adding Voice line {talk.Voiceover} to history");
 
@@ -141,7 +141,7 @@ public class Announcer: IAnnouncer
 
     private void PlaySoundAndSendBattleTalk(bool bypass, PvPEvent pvpEvent)
     {
-        List<BattleTalk> sounds = [];
+        List<Shoutcast> sounds = [];
 
         foreach (var sound in pvpEvent.SoundPaths())
         {
@@ -190,7 +190,7 @@ public class Announcer: IAnnouncer
         PlaySoundAndSendBattleTalk(false, pvpEvent);
     }
 
-    private void WrapUp(PvPEvent pvpEvent, BattleTalk? chosenLine)
+    private void WrapUp(PvPEvent pvpEvent, Shoutcast? chosenLine)
     {
         AddEventToRecentList(pvpEvent);
         if (chosenLine != null)
@@ -202,27 +202,27 @@ public class Announcer: IAnnouncer
         _timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
     }
 
-    public void SendBattleTalk(BattleTalk battleTalk) 
+    public void SendBattleTalk(Shoutcast shoutcast) 
     {
         if (PluginServices.Config.HideBattleText) 
         {
             return;
         }
 
-        if (battleTalk.Text.Equals(""))
+        if (shoutcast.Text.Equals(""))
         {
-            PluginServices.PluginLog.Verbose($"Text empty for {battleTalk.Name}, {battleTalk.Path}");
+            PluginServices.PluginLog.Verbose($"Text empty for {shoutcast.ShouterName}, {shoutcast.Path}");
             return;
         }
         unsafe
         {
             try
             {
-                var name = battleTalk.Name;
-                var text = battleTalk.Text; 
-                var duration = battleTalk.Duration;
-                var icon = battleTalk.Icon;
-                var style = battleTalk.Style;
+                var name = shoutcast.ShouterName;
+                var text = shoutcast.Text; 
+                var duration = shoutcast.Duration;
+                var icon = shoutcast.Icon;
+                var style = shoutcast.Style;
                 if (icon != 0 && PluginServices.Config.WantsIcon)
                 {
                     UIModule.Instance()->ShowBattleTalkImage(name, text, duration, icon, style);

@@ -11,11 +11,11 @@ public class AllyActionEvent : PvPActionEvent
 {
     //generic event for specific action and sound pairings
 
-    private List<BattleTalk> SoundPathsList { get; }
+    private List<Shoutcast> SoundPathsList { get; }
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,
-        List<BattleTalk> soundPaths, string name = "Action", string internalName = "internal")
+        List<Shoutcast> soundPaths, string name = "Action", string internalName = "internal")
     {
         SoundPathsList = soundPaths;
         ActionIds = actionIds;
@@ -23,7 +23,7 @@ public class AllyActionEvent : PvPActionEvent
         InternalName = internalName;
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return SoundPathsList;
     }

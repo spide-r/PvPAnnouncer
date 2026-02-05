@@ -44,7 +44,17 @@ namespace PvpAnnouncer
         
         public bool ShowNotification { get; set; } = false;
 
-        public HashSet<string> Dev_VoLineList { get; set; } = [];
+        public HashSet<string> Dev_VoLineList { get; set; } = []; //todo remove this crap
+        
+        //todo:
+        //store voiceline definitions
+        //store event=>Voiceline[] mapping 
+        //store event definitions (later once i've ported voicelines and mapping)
+        //preserve readonly defaults, read from them on first load
+        //maybe read from resources to get the defaults(press button to reset everything)
+        //encourage sharing - export the new stuff maybe
+        //find ways to incentivise sharing modification w/ dev
+        //maybe only store *modified* shit in this config
         
  
         public string Language { get; set; } = "en";

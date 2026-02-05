@@ -14,7 +14,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
         InternalName = "AllyLimitBreakEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return InternalConstants.LimitBreakList;
     }

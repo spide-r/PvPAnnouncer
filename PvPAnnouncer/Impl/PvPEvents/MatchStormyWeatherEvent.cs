@@ -17,7 +17,7 @@ public class MatchStormyWeatherEvent: PvPEvent
     }
 
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [StormParasols, Thunderstorm];
     }

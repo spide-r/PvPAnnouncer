@@ -11,7 +11,7 @@ public abstract class InternalConstants
     public const string PvPAnnouncerDevName = "PvPAnnouncer Dev";
     public const string ErrorContactDev = "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!";
 
-    public static readonly List<BattleTalk> LimitBreakList =
+    public static readonly List<Shoutcast> LimitBreakList =
     [
         WhatPower, PotentMagicks, WhatAClash, ThrillingBattle, NeitherSideHoldingBack, BattleElectrifying, 
         MjGameChanger, MjBoldMove, MjHeatingUp, AbsoluteBrutality, SuchFerocity, SomethingsComing, ThisEndsHere,
@@ -28,12 +28,12 @@ public abstract class InternalConstants
         EvenTheOdds, HaveThemStrike, ShowThemTheirPlace, ThereYouHaveThem
     ];
 
-    public static BattleTalk[] GetBattleTalkList()
+    public static Shoutcast[] GetBattleTalkList()
     {
-        var s = typeof(ScionLines).GetFields().Where(info => info.FieldType == typeof(BattleTalk))
-            .Select(info => (BattleTalk) info.GetValue(null)!).ToList();
-        var a = typeof(AnnouncerLines).GetFields().Where(info => info.FieldType == typeof(BattleTalk))
-            .Select(info => (BattleTalk) info.GetValue(null)!).ToList();
+        var s = typeof(ScionLines).GetFields().Where(info => info.FieldType == typeof(Shoutcast))
+            .Select(info => (Shoutcast) info.GetValue(null)!).ToList();
+        var a = typeof(AnnouncerLines).GetFields().Where(info => info.FieldType == typeof(Shoutcast))
+            .Select(info => (Shoutcast) info.GetValue(null)!).ToList();
         return  s.Concat(a).ToArray();
     }
 }

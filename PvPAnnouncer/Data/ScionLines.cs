@@ -34,423 +34,423 @@ public static class ScionLines
     private static readonly uint YshtolaI = 073025;
     #endregion
     #region Zenos
-    public static BattleTalk ThisEndsHere;
-    public static BattleTalk DontStopNow;
-    public static BattleTalk RunBeastRun;
-    public static BattleTalk DanceForMe;
-    public static BattleTalk YesYesJustSo;
-    public static BattleTalk Kill;
-    public static BattleTalk Rend;
-    public static BattleTalk More;
-    public static BattleTalk HaveYouTheStrength;
-    public static BattleTalk LetThisMomentLastForever;
-    public static BattleTalk ShowMeYourAll;
-    public static BattleTalk ThePowerToTranscend;
-    public static BattleTalk Hahahahahaha;
-    public static BattleTalk StillFightInYou;
-    public static BattleTalk HydaelynsChosenMuster;
-    public static BattleTalk LifesFireAlreadySpent;
-    public static BattleTalk RiseOnceMore;
-    public static BattleTalk OverestimatedPotential;
-    public static BattleTalk VauntedFortitude;
-    public static BattleTalk ATestOfYourReflexes;
-    public static BattleTalk BurnBurn;
-    public static BattleTalk LetAllCreationBeConsumed;
-    public static BattleTalk InfernoSwelling;
-    public static BattleTalk DoNotDisappoint;
-    public static BattleTalk NotWorthy;
-    public static BattleTalk DidYouFindFulfillment;
-    public static BattleTalk EndingNewBeginning;
-    public static BattleTalk FarewellFirstFriend;
-    public static BattleTalk ATaste;
-    public static BattleTalk RightToSpare;
-    public static BattleTalk PoorSport;
-    public static BattleTalk HowWeak;
-    public static BattleTalk ExpectNoLessBahamut;
-    public static BattleTalk HunterBecomeHunted;
-    public static BattleTalk EikonSlayer;
+    public static Shoutcast ThisEndsHere;
+    public static Shoutcast DontStopNow;
+    public static Shoutcast RunBeastRun;
+    public static Shoutcast DanceForMe;
+    public static Shoutcast YesYesJustSo;
+    public static Shoutcast Kill;
+    public static Shoutcast Rend;
+    public static Shoutcast More;
+    public static Shoutcast HaveYouTheStrength;
+    public static Shoutcast LetThisMomentLastForever;
+    public static Shoutcast ShowMeYourAll;
+    public static Shoutcast ThePowerToTranscend;
+    public static Shoutcast Hahahahahaha;
+    public static Shoutcast StillFightInYou;
+    public static Shoutcast HydaelynsChosenMuster;
+    public static Shoutcast LifesFireAlreadySpent;
+    public static Shoutcast RiseOnceMore;
+    public static Shoutcast OverestimatedPotential;
+    public static Shoutcast VauntedFortitude;
+    public static Shoutcast ATestOfYourReflexes;
+    public static Shoutcast BurnBurn;
+    public static Shoutcast LetAllCreationBeConsumed;
+    public static Shoutcast InfernoSwelling;
+    public static Shoutcast DoNotDisappoint;
+    public static Shoutcast NotWorthy;
+    public static Shoutcast DidYouFindFulfillment;
+    public static Shoutcast EndingNewBeginning;
+    public static Shoutcast FarewellFirstFriend;
+    public static Shoutcast ATaste;
+    public static Shoutcast RightToSpare;
+    public static Shoutcast PoorSport;
+    public static Shoutcast HowWeak;
+    public static Shoutcast ExpectNoLessBahamut;
+    public static Shoutcast HunterBecomeHunted;
+    public static Shoutcast EikonSlayer;
     #endregion
     #region Alphinaud
-    public static BattleTalk VictoryWithinReach;
-    public static BattleTalk ReleaseYourPotential;
-    public static BattleTalk TreadWarily;
-    public static BattleTalk DoNotLoseHeart;
-    public static BattleTalk ThaliakProtectUs;
-    public static BattleTalk YouHaveThem;
-    public static BattleTalk PraiseTheTwelve;
-    public static BattleTalk ConfoundIt;
-    public static BattleTalk OneMoreTurn;
-    public static BattleTalk DoNotDwellOnIt;
-    public static BattleTalk PlayedHandToPerfection;
-    public static BattleTalk TriumphWorthyOfCelebration;
-    public static BattleTalk VictoryGivesGreaterHope;
-    public static BattleTalk CommendableResult;
-    public static BattleTalk OutcomeWithHubris;
-    public static BattleTalk PainfulThrashing;
-    public static BattleTalk LearnAndForgeOn;
-    public static BattleTalk KeepYourChinUp;
-    public static BattleTalk PerformanceForTheAges;
-    public static BattleTalk HoldYourHeadHigh;
-    public static BattleTalk ProudYetIgnorant;
-    public static BattleTalk ReplaceIgnoranceWithKnowledge;
-    public static BattleTalk OutplayedClearMinds;
-    public static BattleTalk ForTheHouseOfLeveilleur;
-    public static BattleTalk SoItComesToThis;
-    public static BattleTalk TheoryInPractice;
-    public static BattleTalk FocusReleaseAlphinaud;
-    public static BattleTalk OnYourFeetAlphinaud;
-    public static BattleTalk KeepItUp;
-    public static BattleTalk StandFast;
-    public static BattleTalk WeveComeTooFar;
-    public static BattleTalk EasyNowDeepBreaths;
-    public static BattleTalk FocusRelease;
-    public static BattleTalk AwayWithYou;
-    public static BattleTalk IHaveMyPride;
+    public static Shoutcast VictoryWithinReach;
+    public static Shoutcast ReleaseYourPotential;
+    public static Shoutcast TreadWarily;
+    public static Shoutcast DoNotLoseHeart;
+    public static Shoutcast ThaliakProtectUs;
+    public static Shoutcast YouHaveThem;
+    public static Shoutcast PraiseTheTwelve;
+    public static Shoutcast ConfoundIt;
+    public static Shoutcast OneMoreTurn;
+    public static Shoutcast DoNotDwellOnIt;
+    public static Shoutcast PlayedHandToPerfection;
+    public static Shoutcast TriumphWorthyOfCelebration;
+    public static Shoutcast VictoryGivesGreaterHope;
+    public static Shoutcast CommendableResult;
+    public static Shoutcast OutcomeWithHubris;
+    public static Shoutcast PainfulThrashing;
+    public static Shoutcast LearnAndForgeOn;
+    public static Shoutcast KeepYourChinUp;
+    public static Shoutcast PerformanceForTheAges;
+    public static Shoutcast HoldYourHeadHigh;
+    public static Shoutcast ProudYetIgnorant;
+    public static Shoutcast ReplaceIgnoranceWithKnowledge;
+    public static Shoutcast OutplayedClearMinds;
+    public static Shoutcast ForTheHouseOfLeveilleur;
+    public static Shoutcast SoItComesToThis;
+    public static Shoutcast TheoryInPractice;
+    public static Shoutcast FocusReleaseAlphinaud;
+    public static Shoutcast OnYourFeetAlphinaud;
+    public static Shoutcast KeepItUp;
+    public static Shoutcast StandFast;
+    public static Shoutcast WeveComeTooFar;
+    public static Shoutcast EasyNowDeepBreaths;
+    public static Shoutcast FocusRelease;
+    public static Shoutcast AwayWithYou;
+    public static Shoutcast IHaveMyPride;
     #endregion
     #region Alisaie
-    public static BattleTalk GiveItEverythingAlisaie;
-    public static BattleTalk ShowThemWhatYoureMadeOf;
-    public static BattleTalk WontLetThemGetAway;
-    public static BattleTalk WhatANuisance;
-    public static BattleTalk WinThisYet;
-    public static BattleTalk JustWhatWeNeeded;
-    public static BattleTalk WontSoonForget;
-    public static BattleTalk BeatenToThePunch;
-    public static BattleTalk WorthyOfGrandfather;
-    public static BattleTalk ExpectedWhenSerious;
-    public static BattleTalk KeepUpTheOffensive;
-    public static BattleTalk OnwardsAndUpwards;
-    public static BattleTalk TwelveGiveMeStrength;
-    public static BattleTalk JustGettingStarted;
-    public static BattleTalk NothingCantRecoverFrom;
-    public static BattleTalk LittleSetback;
-    public static BattleTalk OnlyPossibleOutcome;
-    public static BattleTalk TakeFirstPlaceNextTime;
-    public static BattleTalk ScramblingToKeepUp;
-    public static BattleTalk LaughingInTheEnd;
-    public static BattleTalk ThisIsNotOver;
-    public static BattleTalk ThereIsNoEscapeAlisaie;
-    public static BattleTalk BackInTheGame;
-    public static BattleTalk OnYourFeetAlisaie;
-    public static BattleTalk JustALittleMore;
-    public static BattleTalk DefeatIsNotAnOption;
-    public static BattleTalk TurnaboutsFairPlay;
-    public static BattleTalk WellDone;
-    public static BattleTalk AreYouReady;
+    public static Shoutcast GiveItEverythingAlisaie;
+    public static Shoutcast ShowThemWhatYoureMadeOf;
+    public static Shoutcast WontLetThemGetAway;
+    public static Shoutcast WhatANuisance;
+    public static Shoutcast WinThisYet;
+    public static Shoutcast JustWhatWeNeeded;
+    public static Shoutcast WontSoonForget;
+    public static Shoutcast BeatenToThePunch;
+    public static Shoutcast WorthyOfGrandfather;
+    public static Shoutcast ExpectedWhenSerious;
+    public static Shoutcast KeepUpTheOffensive;
+    public static Shoutcast OnwardsAndUpwards;
+    public static Shoutcast TwelveGiveMeStrength;
+    public static Shoutcast JustGettingStarted;
+    public static Shoutcast NothingCantRecoverFrom;
+    public static Shoutcast LittleSetback;
+    public static Shoutcast OnlyPossibleOutcome;
+    public static Shoutcast TakeFirstPlaceNextTime;
+    public static Shoutcast ScramblingToKeepUp;
+    public static Shoutcast LaughingInTheEnd;
+    public static Shoutcast ThisIsNotOver;
+    public static Shoutcast ThereIsNoEscapeAlisaie;
+    public static Shoutcast BackInTheGame;
+    public static Shoutcast OnYourFeetAlisaie;
+    public static Shoutcast JustALittleMore;
+    public static Shoutcast DefeatIsNotAnOption;
+    public static Shoutcast TurnaboutsFairPlay;
+    public static Shoutcast WellDone;
+    public static Shoutcast AreYouReady;
     #endregion
     #region Thancred
-    public static BattleTalk ToTheBoldGoTheSpoils;
-    public static BattleTalk OurTurnThancred;
-    public static BattleTalk ChanceWillCome;
-    public static BattleTalk GainedOnUsWinInEnd;
-    public static BattleTalk SomeCompetitionNow;
-    public static BattleTalk AllAccordingToPlan;
-    public static BattleTalk VictoryIsOursThancred;
-    public static BattleTalk ThatIsntGood;
-    public static BattleTalk NotMostDisastrous;
-    public static BattleTalk LadyLuckOtherIdeas;
-    public static BattleTalk PraiseOrPity;
-    public static BattleTalk DecisiveVictoryThancred;
-    public static BattleTalk KeepThemOnTheirHeels;
-    public static BattleTalk SlowAndSteadyThancred;
-    public static BattleTalk NotEasyRecovering;
-    public static BattleTalk CreditWhereDue;
-    public static BattleTalk StillDoThisDontGiveUp;
-    public static BattleTalk HowWeStrikeBack;
-    public static BattleTalk RaiseAGlassVictory;
-    public static BattleTalk FellJustShortThancred;
-    public static BattleTalk CouldHaveBeenWorse;
-    public static BattleTalk DrinkBestOfUs;
-    public static BattleTalk KeepChinUpPrettyLeast;
-    public static BattleTalk ThisIsGoingWell;
-    public static BattleTalk RightBackToIt;
-    public static BattleTalk WhereWereWe;
-    public static BattleTalk DoYourWorst;
-    public static BattleTalk KeepYourGuardUp;
-    public static BattleTalk ComeOn;
-    public static BattleTalk BestDefenceIsGoodDefence;
-    public static BattleTalk ExplosivesInPlace;
-    public static BattleTalk SevenHells;
-    public static BattleTalk ThatWasUnbecoming;
-    public static BattleTalk HitThemWhereItHurts;
-    public static BattleTalk NotSoFast;
-    public static BattleTalk NoMistakes;
-    public static BattleTalk MakeThisCount;
+    public static Shoutcast ToTheBoldGoTheSpoils;
+    public static Shoutcast OurTurnThancred;
+    public static Shoutcast ChanceWillCome;
+    public static Shoutcast GainedOnUsWinInEnd;
+    public static Shoutcast SomeCompetitionNow;
+    public static Shoutcast AllAccordingToPlan;
+    public static Shoutcast VictoryIsOursThancred;
+    public static Shoutcast ThatIsntGood;
+    public static Shoutcast NotMostDisastrous;
+    public static Shoutcast LadyLuckOtherIdeas;
+    public static Shoutcast PraiseOrPity;
+    public static Shoutcast DecisiveVictoryThancred;
+    public static Shoutcast KeepThemOnTheirHeels;
+    public static Shoutcast SlowAndSteadyThancred;
+    public static Shoutcast NotEasyRecovering;
+    public static Shoutcast CreditWhereDue;
+    public static Shoutcast StillDoThisDontGiveUp;
+    public static Shoutcast HowWeStrikeBack;
+    public static Shoutcast RaiseAGlassVictory;
+    public static Shoutcast FellJustShortThancred;
+    public static Shoutcast CouldHaveBeenWorse;
+    public static Shoutcast DrinkBestOfUs;
+    public static Shoutcast KeepChinUpPrettyLeast;
+    public static Shoutcast ThisIsGoingWell;
+    public static Shoutcast RightBackToIt;
+    public static Shoutcast WhereWereWe;
+    public static Shoutcast DoYourWorst;
+    public static Shoutcast KeepYourGuardUp;
+    public static Shoutcast ComeOn;
+    public static Shoutcast BestDefenceIsGoodDefence;
+    public static Shoutcast ExplosivesInPlace;
+    public static Shoutcast SevenHells;
+    public static Shoutcast ThatWasUnbecoming;
+    public static Shoutcast HitThemWhereItHurts;
+    public static Shoutcast NotSoFast;
+    public static Shoutcast NoMistakes;
+    public static Shoutcast MakeThisCount;
     #endregion
     #region Urianger
-    public static BattleTalk OvercomeTheOdds;
-    public static BattleTalk SoundDecision;
-    public static BattleTalk ContendWithThreat;
-    public static BattleTalk DanceOfTheStars;
-    public static BattleTalk AmidstGreatChaos;
-    public static BattleTalk StarsFavorUs;
-    public static BattleTalk TheHandIsOurs;
-    public static BattleTalk SuchShouldBeFate;
-    public static BattleTalk VicissitudesOfFortune;
-    public static BattleTalk FavoredByTheSpinner;
-    public static BattleTalk MasterfulStrategy;
-    public static BattleTalk SureStepForward;
-    public static BattleTalk VictoriesPaveWayToRenown;
-    public static BattleTalk DestroyerMightyBlow;
-    public static BattleTalk BodethIllTurnTide;
-    public static BattleTalk ReviewOurStrategy;
-    public static BattleTalk StarsFavourNextHand;
-    public static BattleTalk UnequivocalVictory;
-    public static BattleTalk NarrowestOfDefeats;
-    public static BattleTalk OpponentsFormidableIndeed;
-    public static BattleTalk TriflingUntoLosing;
-    public static BattleTalk ShoulderToLeanUpon;
-    public static BattleTalk HoldFastFriend;
-    public static BattleTalk BeAtEase;
-    public static BattleTalk HaveCare;
-    public static BattleTalk ThisBodethIll;
-    public static BattleTalk ThyTimeNotCome;
-    public static BattleTalk FearsomeFamiliar;
+    public static Shoutcast OvercomeTheOdds;
+    public static Shoutcast SoundDecision;
+    public static Shoutcast ContendWithThreat;
+    public static Shoutcast DanceOfTheStars;
+    public static Shoutcast AmidstGreatChaos;
+    public static Shoutcast StarsFavorUs;
+    public static Shoutcast TheHandIsOurs;
+    public static Shoutcast SuchShouldBeFate;
+    public static Shoutcast VicissitudesOfFortune;
+    public static Shoutcast FavoredByTheSpinner;
+    public static Shoutcast MasterfulStrategy;
+    public static Shoutcast SureStepForward;
+    public static Shoutcast VictoriesPaveWayToRenown;
+    public static Shoutcast DestroyerMightyBlow;
+    public static Shoutcast BodethIllTurnTide;
+    public static Shoutcast ReviewOurStrategy;
+    public static Shoutcast StarsFavourNextHand;
+    public static Shoutcast UnequivocalVictory;
+    public static Shoutcast NarrowestOfDefeats;
+    public static Shoutcast OpponentsFormidableIndeed;
+    public static Shoutcast TriflingUntoLosing;
+    public static Shoutcast ShoulderToLeanUpon;
+    public static Shoutcast HoldFastFriend;
+    public static Shoutcast BeAtEase;
+    public static Shoutcast HaveCare;
+    public static Shoutcast ThisBodethIll;
+    public static Shoutcast ThyTimeNotCome;
+    public static Shoutcast FearsomeFamiliar;
     #endregion
     #region Yshtola
-    public static BattleTalk LooksPromising;
-    public static BattleTalk AchievedWithoutRisk;
-    public static BattleTalk TreadCautiously;
-    public static BattleTalk BetterHandYet;
-    public static BattleTalk DangerousMomentIndeed;
-    public static BattleTalk VictoryAtHandIsItNot;
-    public static BattleTalk PreciselyWhatNeeded;
-    public static BattleTalk SimplyNoKnowing;
-    public static BattleTalk SmallMerciesYshtola;
-    public static BattleTalk UnfortunateSuchIsLife;
-    public static BattleTalk ImpeccablePerformance;
-    public static BattleTalk ExcellentRoundImpressed;
-    public static BattleTalk NotRestOnLaurels;
-    public static BattleTalk BestEffortWellDone;
-    public static BattleTalk BedWithoutSupper;
-    public static BattleTalk NotOverYetYshtola;
-    public static BattleTalk RedoubleEfforts;
-    public static BattleTalk MakeUpLostGround;
-    public static BattleTalk RefreshingDiversion;
-    public static BattleTalk WeCanDoBetterYshtola;
-    public static BattleTalk HoneOurWits;
-    public static BattleTalk DisappointingDefeatGrowStronger;
-    public static BattleTalk OffWithYouSleep;
-    public static BattleTalk ThereIsNoEscapeYshtola;
-    public static BattleTalk AndNowToReturnTheFavor;
-    public static BattleTalk MakeReady;
-    public static BattleTalk WereCountingOnYou;
-    public static BattleTalk BeVigilant;
-    public static BattleTalk BeStrong;
-    public static BattleTalk LeaveAMark;
-    public static BattleTalk BeMoreCareful;
-    public static BattleTalk DontBeSoReckless;
-    public static BattleTalk HoldNothingBack;
-    public static BattleTalk MayTheTwelveGuideYou;
-    public static BattleTalk Fall;
-    public static BattleTalk SomeoneWillPay;
-    public static BattleTalk Embarrassing;
+    public static Shoutcast LooksPromising;
+    public static Shoutcast AchievedWithoutRisk;
+    public static Shoutcast TreadCautiously;
+    public static Shoutcast BetterHandYet;
+    public static Shoutcast DangerousMomentIndeed;
+    public static Shoutcast VictoryAtHandIsItNot;
+    public static Shoutcast PreciselyWhatNeeded;
+    public static Shoutcast SimplyNoKnowing;
+    public static Shoutcast SmallMerciesYshtola;
+    public static Shoutcast UnfortunateSuchIsLife;
+    public static Shoutcast ImpeccablePerformance;
+    public static Shoutcast ExcellentRoundImpressed;
+    public static Shoutcast NotRestOnLaurels;
+    public static Shoutcast BestEffortWellDone;
+    public static Shoutcast BedWithoutSupper;
+    public static Shoutcast NotOverYetYshtola;
+    public static Shoutcast RedoubleEfforts;
+    public static Shoutcast MakeUpLostGround;
+    public static Shoutcast RefreshingDiversion;
+    public static Shoutcast WeCanDoBetterYshtola;
+    public static Shoutcast HoneOurWits;
+    public static Shoutcast DisappointingDefeatGrowStronger;
+    public static Shoutcast OffWithYouSleep;
+    public static Shoutcast ThereIsNoEscapeYshtola;
+    public static Shoutcast AndNowToReturnTheFavor;
+    public static Shoutcast MakeReady;
+    public static Shoutcast WereCountingOnYou;
+    public static Shoutcast BeVigilant;
+    public static Shoutcast BeStrong;
+    public static Shoutcast LeaveAMark;
+    public static Shoutcast BeMoreCareful;
+    public static Shoutcast DontBeSoReckless;
+    public static Shoutcast HoldNothingBack;
+    public static Shoutcast MayTheTwelveGuideYou;
+    public static Shoutcast Fall;
+    public static Shoutcast SomeoneWillPay;
+    public static Shoutcast Embarrassing;
     #endregion
     #region Estinien
-    public static BattleTalk HaveThemNowEstinien;
-    public static BattleTalk UseConfidenceAgainstThem;
-    public static BattleTalk TheyHaveUpperHand;
-    public static BattleTalk SettleThisQuickly;
-    public static BattleTalk HaveFaithMyFriend;
-    public static BattleTalk EndTheirStruggles;
-    public static BattleTalk LuckOfTheDrawEstinien;
-    public static BattleTalk LeftOurselvesOpen;
-    public static BattleTalk DidntBearBrunt;
-    public static BattleTalk ShouldHaveBeenUs;
-    public static BattleTalk DragoonImpressed;
-    public static BattleTalk NoLessExpectedEstinien;
-    public static BattleTalk AimForTheKill;
-    public static BattleTalk DefeatedGreaterFoes;
-    public static BattleTalk TumultuousDespair;
-    public static BattleTalk PainStrengthPassion;
-    public static BattleTalk HaventLostEdge;
-    public static BattleTalk RepayThisDebt;
-    public static BattleTalk HonorToFightBySide;
-    public static BattleTalk ClaimVictoryNextTime;
-    public static BattleTalk CapableOfMoreEstinien;
-    public static BattleTalk TogetherRiseAgain;
-    public static BattleTalk DrinkAndDriedSquid;
-    public static BattleTalk WatchYourself;
-    public static BattleTalk ThereIsNoEndToThem;
-    public static BattleTalk TheyllPayForThatEstinien;
-    public static BattleTalk BackToTheFray;
-    public static BattleTalk WereNotDoneHere;
-    public static BattleTalk HangInThere;
-    public static BattleTalk Courage;
-    public static BattleTalk StayStrongEstinien;
-    public static BattleTalk RoarNidhogg;
-    public static BattleTalk FightHardNotHardEnough;
-    public static BattleTalk GiveItEverything;
+    public static Shoutcast HaveThemNowEstinien;
+    public static Shoutcast UseConfidenceAgainstThem;
+    public static Shoutcast TheyHaveUpperHand;
+    public static Shoutcast SettleThisQuickly;
+    public static Shoutcast HaveFaithMyFriend;
+    public static Shoutcast EndTheirStruggles;
+    public static Shoutcast LuckOfTheDrawEstinien;
+    public static Shoutcast LeftOurselvesOpen;
+    public static Shoutcast DidntBearBrunt;
+    public static Shoutcast ShouldHaveBeenUs;
+    public static Shoutcast DragoonImpressed;
+    public static Shoutcast NoLessExpectedEstinien;
+    public static Shoutcast AimForTheKill;
+    public static Shoutcast DefeatedGreaterFoes;
+    public static Shoutcast TumultuousDespair;
+    public static Shoutcast PainStrengthPassion;
+    public static Shoutcast HaventLostEdge;
+    public static Shoutcast RepayThisDebt;
+    public static Shoutcast HonorToFightBySide;
+    public static Shoutcast ClaimVictoryNextTime;
+    public static Shoutcast CapableOfMoreEstinien;
+    public static Shoutcast TogetherRiseAgain;
+    public static Shoutcast DrinkAndDriedSquid;
+    public static Shoutcast WatchYourself;
+    public static Shoutcast ThereIsNoEndToThem;
+    public static Shoutcast TheyllPayForThatEstinien;
+    public static Shoutcast BackToTheFray;
+    public static Shoutcast WereNotDoneHere;
+    public static Shoutcast HangInThere;
+    public static Shoutcast Courage;
+    public static Shoutcast StayStrongEstinien;
+    public static Shoutcast RoarNidhogg;
+    public static Shoutcast FightHardNotHardEnough;
+    public static Shoutcast GiveItEverything;
     #endregion
     #region Graha
-    public static BattleTalk FocusOnVictoryGraha;
-    public static BattleTalk DeclareIntentions;
-    public static BattleTalk MakeAStandOurselves;
-    public static BattleTalk NotGoingDownWithoutFight;
-    public static BattleTalk TestUsButPrevail;
-    public static BattleTalk FinishThemTooMuch;
-    public static BattleTalk PointsAndAll;
-    public static BattleTalk AreYouAlrightGraha;
-    public static BattleTalk AvoidedWorstNotHopedFor;
-    public static BattleTalk BeatUsToItNextTime;
-    public static BattleTalk LivingLegends;
-    public static BattleTalk SplendidResultKeepUp;
-    public static BattleTalk TaskAtHandVictoryOurs;
-    public static BattleTalk WillDoEvenBetter;
-    public static BattleTalk OhHowEmbarrassing;
-    public static BattleTalk MattersHalfFinished;
-    public static BattleTalk DoYouRequireHealing;
-    public static BattleTalk CowelToStir;
-    public static BattleTalk BefittingMyInspiration;
-    public static BattleTalk CourageAndZeal;
-    public static BattleTalk AllaganGameGraha;
-    public static BattleTalk SomethingToTeachDefeat;
-    public static BattleTalk TaleWillNotEnd;
-    public static BattleTalk PullYourselfTogether;
-    public static BattleTalk BackToTheFight;
-    public static BattleTalk TimeHasCome;
-    public static BattleTalk JustTheBeginning;
-    public static BattleTalk ShowMeWhatYouCanDo;
-    public static BattleTalk AreYouAlright;
-    public static BattleTalk FindCoverEnergy;
+    public static Shoutcast FocusOnVictoryGraha;
+    public static Shoutcast DeclareIntentions;
+    public static Shoutcast MakeAStandOurselves;
+    public static Shoutcast NotGoingDownWithoutFight;
+    public static Shoutcast TestUsButPrevail;
+    public static Shoutcast FinishThemTooMuch;
+    public static Shoutcast PointsAndAll;
+    public static Shoutcast AreYouAlrightGraha;
+    public static Shoutcast AvoidedWorstNotHopedFor;
+    public static Shoutcast BeatUsToItNextTime;
+    public static Shoutcast LivingLegends;
+    public static Shoutcast SplendidResultKeepUp;
+    public static Shoutcast TaskAtHandVictoryOurs;
+    public static Shoutcast WillDoEvenBetter;
+    public static Shoutcast OhHowEmbarrassing;
+    public static Shoutcast MattersHalfFinished;
+    public static Shoutcast DoYouRequireHealing;
+    public static Shoutcast CowelToStir;
+    public static Shoutcast BefittingMyInspiration;
+    public static Shoutcast CourageAndZeal;
+    public static Shoutcast AllaganGameGraha;
+    public static Shoutcast SomethingToTeachDefeat;
+    public static Shoutcast TaleWillNotEnd;
+    public static Shoutcast PullYourselfTogether;
+    public static Shoutcast BackToTheFight;
+    public static Shoutcast TimeHasCome;
+    public static Shoutcast JustTheBeginning;
+    public static Shoutcast ShowMeWhatYouCanDo;
+    public static Shoutcast AreYouAlright;
+    public static Shoutcast FindCoverEnergy;
     #endregion
     #region Krile
-    public static BattleTalk CanvasOfVictory;
-    public static BattleTalk SkillsToTheProof;
-    public static BattleTalk WontFallHereKrile;
-    public static BattleTalk HaveFaithAllWell;
-    public static BattleTalk MustStandStrongKrile;
-    public static BattleTalk FinishingTouchKrile;
-    public static BattleTalk GoodThingsWait;
-    public static BattleTalk CantBeRightKrile;
-    public static BattleTalk DidntHandItToThem;
-    public static BattleTalk ThatsTooBadKrile;
-    public static BattleTalk AdventurerOfTalent;
-    public static BattleTalk QuiteTheStatement;
-    public static BattleTalk GoodProgressKrile;
-    public static BattleTalk HeartRacingKrile;
-    public static BattleTalk ManagedSoPoorly;
-    public static BattleTalk DontLoseHeartKrile;
-    public static BattleTalk WontGiveUpOntoNext;
-    public static BattleTalk ReclaimLostKrile;
-    public static BattleTalk DelightVictoryKrile;
-    public static BattleTalk ThrillingGameNextTime;
-    public static BattleTalk ExploringIntricacies;
-    public static BattleTalk PlayAgainWinOrLose;
-    public static BattleTalk ToughLossLearnKrile;
+    public static Shoutcast CanvasOfVictory;
+    public static Shoutcast SkillsToTheProof;
+    public static Shoutcast WontFallHereKrile;
+    public static Shoutcast HaveFaithAllWell;
+    public static Shoutcast MustStandStrongKrile;
+    public static Shoutcast FinishingTouchKrile;
+    public static Shoutcast GoodThingsWait;
+    public static Shoutcast CantBeRightKrile;
+    public static Shoutcast DidntHandItToThem;
+    public static Shoutcast ThatsTooBadKrile;
+    public static Shoutcast AdventurerOfTalent;
+    public static Shoutcast QuiteTheStatement;
+    public static Shoutcast GoodProgressKrile;
+    public static Shoutcast HeartRacingKrile;
+    public static Shoutcast ManagedSoPoorly;
+    public static Shoutcast DontLoseHeartKrile;
+    public static Shoutcast WontGiveUpOntoNext;
+    public static Shoutcast ReclaimLostKrile;
+    public static Shoutcast DelightVictoryKrile;
+    public static Shoutcast ThrillingGameNextTime;
+    public static Shoutcast ExploringIntricacies;
+    public static Shoutcast PlayAgainWinOrLose;
+    public static Shoutcast ToughLossLearnKrile;
     #endregion
     #region Wuk
-    public static BattleTalk GotThemNowWuk;
-    public static BattleTalk CantPassChanceWuk;
-    public static BattleTalk DontLoseNerveWuk;
-    public static BattleTalk GettingInterestingWuk;
-    public static BattleTalk StillWinWuk;
-    public static BattleTalk WillStopThemWuk;
-    public static BattleTalk NoHoldingBackWukMahjong;
-    public static BattleTalk HowDidThatHappenWuk;
-    public static BattleTalk CloseOneWuk;
-    public static BattleTalk BeatUsToItWuk;
-    public static BattleTalk FeatOldManWuk;
-    public static BattleTalk SmilingBecauseSmiling;
-    public static BattleTalk AllRightYouDidGreat;
-    public static BattleTalk DoingFineKeepItUpWuk;
-    public static BattleTalk GonnaBeSickWuk;
-    public static BattleTalk FeelYourPainWuk;
-    public static BattleTalk DidntHoldBackWuk;
-    public static BattleTalk NothingToWorryWuk;
-    public static BattleTalk TryMyOwnHandWuk;
-    public static BattleTalk PapaChallengeMatch;
-    public static BattleTalk CanDoBetterWuk;
-    public static BattleTalk WinSomeLoseSomeWuk;
-    public static BattleTalk LearningExperienceWuk;
-    public static BattleTalk YouReallyAreFamous;
-    public static BattleTalk Impressive;
-    public static BattleTalk TheyllPayForThatWuk;
-    public static BattleTalk RightBackToItWuk;
-    public static BattleTalk NoHoldingBackWuk;
-    public static BattleTalk KeepItUpWuk;
-    public static BattleTalk LetsGetToIt;
-    public static BattleTalk DamnItAll;
-    public static BattleTalk KeepYourGuardUpWuk;
-    public static BattleTalk NotHoldingAnythingBack;
+    public static Shoutcast GotThemNowWuk;
+    public static Shoutcast CantPassChanceWuk;
+    public static Shoutcast DontLoseNerveWuk;
+    public static Shoutcast GettingInterestingWuk;
+    public static Shoutcast StillWinWuk;
+    public static Shoutcast WillStopThemWuk;
+    public static Shoutcast NoHoldingBackWukMahjong;
+    public static Shoutcast HowDidThatHappenWuk;
+    public static Shoutcast CloseOneWuk;
+    public static Shoutcast BeatUsToItWuk;
+    public static Shoutcast FeatOldManWuk;
+    public static Shoutcast SmilingBecauseSmiling;
+    public static Shoutcast AllRightYouDidGreat;
+    public static Shoutcast DoingFineKeepItUpWuk;
+    public static Shoutcast GonnaBeSickWuk;
+    public static Shoutcast FeelYourPainWuk;
+    public static Shoutcast DidntHoldBackWuk;
+    public static Shoutcast NothingToWorryWuk;
+    public static Shoutcast TryMyOwnHandWuk;
+    public static Shoutcast PapaChallengeMatch;
+    public static Shoutcast CanDoBetterWuk;
+    public static Shoutcast WinSomeLoseSomeWuk;
+    public static Shoutcast LearningExperienceWuk;
+    public static Shoutcast YouReallyAreFamous;
+    public static Shoutcast Impressive;
+    public static Shoutcast TheyllPayForThatWuk;
+    public static Shoutcast RightBackToItWuk;
+    public static Shoutcast NoHoldingBackWuk;
+    public static Shoutcast KeepItUpWuk;
+    public static Shoutcast LetsGetToIt;
+    public static Shoutcast DamnItAll;
+    public static Shoutcast KeepYourGuardUpWuk;
+    public static Shoutcast NotHoldingAnythingBack;
     #endregion
     #region Koana
-    public static BattleTalk IntentionsKnown;
-    public static BattleTalk EvenTheOdds;
-    public static BattleTalk NothingToFearYet;
-    public static BattleTalk MuchToBeExpected;
-    public static BattleTalk StayAlert;
-    public static BattleTalk HaveThemStrike;
-    public static BattleTalk StrategyKeyToVictory;
-    public static BattleTalk CantBe;
-    public static BattleTalk DammitAll;
-    public static BattleTalk StepBehind;
-    public static BattleTalk GloryUponTuliyollal;
-    public static BattleTalk VowOfReasonGuide;
-    public static BattleTalk DoneWell;
-    public static BattleTalk FairPerformanceBetter;
-    public static BattleTalk FaceLamatyi;
-    public static BattleTalk ChangeOfStrategyInOrder;
-    public static BattleTalk ErrorInCalculations;
-    public static BattleTalk OccasionalLossInevitable;
-    public static BattleTalk WorthyOfReputation;
-    public static BattleTalk ProudOfYou;
-    public static BattleTalk SharlayanApproachResults;
-    public static BattleTalk ProtectFromFutureDefeat;
-    public static BattleTalk UnworthyVowOfReason;
+    public static Shoutcast IntentionsKnown;
+    public static Shoutcast EvenTheOdds;
+    public static Shoutcast NothingToFearYet;
+    public static Shoutcast MuchToBeExpected;
+    public static Shoutcast StayAlert;
+    public static Shoutcast HaveThemStrike;
+    public static Shoutcast StrategyKeyToVictory;
+    public static Shoutcast CantBe;
+    public static Shoutcast DammitAll;
+    public static Shoutcast StepBehind;
+    public static Shoutcast GloryUponTuliyollal;
+    public static Shoutcast VowOfReasonGuide;
+    public static Shoutcast DoneWell;
+    public static Shoutcast FairPerformanceBetter;
+    public static Shoutcast FaceLamatyi;
+    public static Shoutcast ChangeOfStrategyInOrder;
+    public static Shoutcast ErrorInCalculations;
+    public static Shoutcast OccasionalLossInevitable;
+    public static Shoutcast WorthyOfReputation;
+    public static Shoutcast ProudOfYou;
+    public static Shoutcast SharlayanApproachResults;
+    public static Shoutcast ProtectFromFutureDefeat;
+    public static Shoutcast UnworthyVowOfReason;
     #endregion
     #region Bjj
-    public static BattleTalk VictoryOurs;
-    public static BattleTalk NoDownWithoutFight;
-    public static BattleTalk FallingBehind;
-    public static BattleTalk ChallengeMe;
-    public static BattleTalk GodsHelpUs;
-    public static BattleTalk ShowThemTheirPlace;
-    public static BattleTalk HahaAllowMe;
-    public static BattleTalk LuckWontLast;
-    public static BattleTalk TearEachOtherApart;
-    public static BattleTalk TooLate;
-    public static BattleTalk NeverFailToImpress;
-    public static BattleTalk PieceOfMeNext;
-    public static BattleTalk NotBadAtAll;
-    public static BattleTalk HandWell;
-    public static BattleTalk HowCanThisBe;
-    public static BattleTalk NoNo;
-    public static BattleTalk ScoreIsntRight;
-    public static BattleTalk HaAPittance;
-    public static BattleTalk BefittingStature;
-    public static BattleTalk GoodEnoughGuess;
-    public static BattleTalk ThoughtBetter;
-    public static BattleTalk ThreeHeadsStupid;
-    public static BattleTalk SmashTable;
+    public static Shoutcast VictoryOurs;
+    public static Shoutcast NoDownWithoutFight;
+    public static Shoutcast FallingBehind;
+    public static Shoutcast ChallengeMe;
+    public static Shoutcast GodsHelpUs;
+    public static Shoutcast ShowThemTheirPlace;
+    public static Shoutcast HahaAllowMe;
+    public static Shoutcast LuckWontLast;
+    public static Shoutcast TearEachOtherApart;
+    public static Shoutcast TooLate;
+    public static Shoutcast NeverFailToImpress;
+    public static Shoutcast PieceOfMeNext;
+    public static Shoutcast NotBadAtAll;
+    public static Shoutcast HandWell;
+    public static Shoutcast HowCanThisBe;
+    public static Shoutcast NoNo;
+    public static Shoutcast ScoreIsntRight;
+    public static Shoutcast HaAPittance;
+    public static Shoutcast BefittingStature;
+    public static Shoutcast GoodEnoughGuess;
+    public static Shoutcast ThoughtBetter;
+    public static Shoutcast ThreeHeadsStupid;
+    public static Shoutcast SmashTable;
     #endregion
     #region Erenville
-    public static BattleTalk CouldBeChance;
-    public static BattleTalk EnjoyingYourself;
-    public static BattleTalk ComeOutOnTop;
-    public static BattleTalk Competition;
-    public static BattleTalk CarefulPlanning;
-    public static BattleTalk ThereYouHaveThem;
-    public static BattleTalk LuckyYou;
-    public static BattleTalk Unfortunate;
-    public static BattleTalk CouldHaveBeenWorseErenville;
-    public static BattleTalk LifeGoYourWay;
-    public static BattleTalk ManyTalents;
-    public static BattleTalk EnjoyingThisArentYou;
-    public static BattleTalk FairGo;
-    public static BattleTalk ThatsTheWay;
-    public static BattleTalk DontPlayGames;
-    public static BattleTalk PresenceDistraction;
-    public static BattleTalk MerelyBadHand;
-    public static BattleTalk MinorSetback;
-    public static BattleTalk NotSurprised;
-    public static BattleTalk FunThanExpected;
-    public static BattleTalk NotWalkAway;
-    public static BattleTalk StudyExperiencedPlayers;
-    public static BattleTalk RideRroneekClearHead;
+    public static Shoutcast CouldBeChance;
+    public static Shoutcast EnjoyingYourself;
+    public static Shoutcast ComeOutOnTop;
+    public static Shoutcast Competition;
+    public static Shoutcast CarefulPlanning;
+    public static Shoutcast ThereYouHaveThem;
+    public static Shoutcast LuckyYou;
+    public static Shoutcast Unfortunate;
+    public static Shoutcast CouldHaveBeenWorseErenville;
+    public static Shoutcast LifeGoYourWay;
+    public static Shoutcast ManyTalents;
+    public static Shoutcast EnjoyingThisArentYou;
+    public static Shoutcast FairGo;
+    public static Shoutcast ThatsTheWay;
+    public static Shoutcast DontPlayGames;
+    public static Shoutcast PresenceDistraction;
+    public static Shoutcast MerelyBadHand;
+    public static Shoutcast MinorSetback;
+    public static Shoutcast NotSurprised;
+    public static Shoutcast FunThanExpected;
+    public static Shoutcast NotWalkAway;
+    public static Shoutcast StudyExperiencedPlayers;
+    public static Shoutcast RideRroneekClearHead;
     #endregion
 
-    public static void InitScionLines(IBattleTalkFactory factory)
+    public static void InitScionLines(IShoutcastFactory factory)
     { 
         InitZenos(factory);
         InitAlisaie(factory);
@@ -466,7 +466,7 @@ public static class ScionLines
         InitBakoolJaJa(factory);
         InitErenville(factory);
     }
-    private static void InitZenos(IBattleTalkFactory factory)
+    private static void InitZenos(IShoutcastFactory factory)
     {
         ThisEndsHere = CreateZenosNpcYell(8201124, 3106);
         DontStopNow = CreateZenosNpcYell(8201342, 4838);
@@ -506,22 +506,22 @@ public static class ScionLines
         EikonSlayer = CreateZenosFromCsLine((int)Expac.SB, 6, "TEXT_VOICEMAN_04006_001050_ZENOS");
         return;
 
-        BattleTalk CreateZenosNpcYell(uint voiceover, uint npcYell)
+        Shoutcast CreateZenosNpcYell(uint voiceover, uint npcYell)
         { 
             return factory.CreateFromNpcYell(Zenos, voiceover, npcYell, [Personalization.ZenosAnnouncer], ZenosI);
         }
 
-        BattleTalk CreateZenosTextData(uint voiceover, int duration, uint textDataRow)
+        Shoutcast CreateZenosTextData(uint voiceover, int duration, uint textDataRow)
         { 
             return factory.CreateFromInstanceContentTextData(Zenos, voiceover, duration, textDataRow, [Personalization.ZenosAnnouncer], ZenosI);
         }
         
-        BattleTalk CreateZenosFromCsLine(int expac, int duration, string tag)
+        Shoutcast CreateZenosFromCsLine(int expac, int duration, string tag)
         { 
             return factory.CreateFromCutsceneLine(Zenos, expac, duration, tag, [Personalization.ZenosAnnouncer], ZenosI);
         }
     }
-    private static void InitAlphinaud(IBattleTalkFactory factory)
+    private static void InitAlphinaud(IShoutcastFactory factory)
     {
         VictoryWithinReach = CreateAlphinaud(8291000, 4, "Victory is within reach. Now to seize it!");
         ReleaseYourPotential = CreateAlphinaud(8291001, 4, "We won't be outdone! Focus, then release your potential.");
@@ -563,19 +563,19 @@ public static class ScionLines
         //todo 8202000-18 or whatever
         return;
 
-        BattleTalk CreateAlphinaud(uint voiceover, int duration, string text)
+        Shoutcast CreateAlphinaud(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Alphinaud, voiceover, duration, text, [Personalization.AlphinaudAnnouncer], AlphinaudI);
         }
 
-        BattleTalk CreateAlphinaudYell(uint voiceover, uint yell)
+        Shoutcast CreateAlphinaudYell(uint voiceover, uint yell)
         {
             return factory.CreateFromNpcYell(Alphinaud, voiceover, yell, [Personalization.AlphinaudAnnouncer],
                 AlphinaudI);
         }
     }
     
-    private static void InitAlisaie(IBattleTalkFactory factory)
+    private static void InitAlisaie(IShoutcastFactory factory)
     {
         GiveItEverythingAlisaie = CreateAlisaieTalk(8291023, 3, "Yes! Give it everything you've got.");
         ShowThemWhatYoureMadeOf = CreateAlisaieTalk(8291024, 3, "That's it. Show them what you're made of!");
@@ -610,12 +610,12 @@ public static class ScionLines
         //todo "Lets Give them a show" next to the you underestimate me or smth
         return;
 
-        BattleTalk CreateAlisaieYell(uint voiceover, uint yell)
+        Shoutcast CreateAlisaieYell(uint voiceover, uint yell)
         {
             return factory.CreateFromNpcYell(Alisaie, voiceover, yell, [Personalization.AlisaieAnnouncer], AlisaieI);
         }
 
-        BattleTalk CreateAlisaieTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateAlisaieTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Alisaie, voiceover, duration, text, [Personalization.AlisaieAnnouncer], AlisaieI);
         }
@@ -623,7 +623,7 @@ public static class ScionLines
     
 
 
-    private static void InitThancred(IBattleTalkFactory factory)
+    private static void InitThancred(IShoutcastFactory factory)
     {
         ToTheBoldGoTheSpoils = CreateThancredTalk(8291046, 3, "To the bold go the spoils.");
         OurTurnThancred = CreateThancredTalk(8291047, 3, "My turn! I mean, our turn.");
@@ -664,7 +664,7 @@ public static class ScionLines
         MakeThisCount = CreateThancredTalk(8201656, 2, "Make this count!");
         return;
 
-        BattleTalk CreateThancredTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateThancredTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Thancred, voiceover, duration, text, [Personalization.ThancredAnnouncer], ThancredI);
         }
@@ -672,7 +672,7 @@ public static class ScionLines
     //todo continue checking instancecontenttextdata for transcriptions
 
 
-    private static void InitUrianger(IBattleTalkFactory factory)
+    private static void InitUrianger(IShoutcastFactory factory)
     {
         OvercomeTheOdds = CreateUriangerTalk(8291069, 4, "Together we shall overcome the odds");
         SoundDecision = CreateUriangerTalk(8291070, 3, "A sound decision.");
@@ -704,16 +704,16 @@ public static class ScionLines
         FearsomeFamiliar = CreateUriangerTalk(8203032, 4, "Tis a most fearsome familiar!");
         return;
 
-        BattleTalk CreateUriangerTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateUriangerTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Urianger, voiceover, duration, text, [Personalization.UriangerAnnouncer], UriangerI);
         }
     }
 
 
-    private static void InitYshtola(IBattleTalkFactory factory)
+    private static void InitYshtola(IShoutcastFactory factory)
     {
-        BattleTalk CreateYshtolaTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateYshtolaTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Yshtola, voiceover, duration, text, [Personalization.YshtolaAnnouncer], YshtolaI);
         }
@@ -758,7 +758,7 @@ public static class ScionLines
     }
     //todo 8203413-19
 
-    private static void InitEstinien(IBattleTalkFactory factory)
+    private static void InitEstinien(IShoutcastFactory factory)
     {
         HaveThemNowEstinien = CreateEstinienTalk(8291115, 3, "We have them now.");
         UseConfidenceAgainstThem = CreateEstinienTalk(8291116, 4, "Good, use their confidence against them.");
@@ -796,7 +796,7 @@ public static class ScionLines
         GiveItEverything = CreateEstinienTalk(8203402, 3, "Give it everything you've got!");
         return;
 
-        BattleTalk CreateEstinienTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateEstinienTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Estinien, voiceover, duration, text, [Personalization.EstinienAnnouncer], EstinienI);
         }
@@ -805,7 +805,7 @@ public static class ScionLines
 
 
 
-    private static void InitGraha(IBattleTalkFactory factory)
+    private static void InitGraha(IShoutcastFactory factory)
     {
         FocusOnVictoryGraha = CreateGrahaTalk(8291138, 4, "Stay with me. Focus on victory.");
         DeclareIntentions = CreateGrahaTalk(8291139, 6, "The time has come to declare our intentions as well.");
@@ -838,14 +838,14 @@ public static class ScionLines
         FindCoverEnergy = CreateGrahaTalk(8203042, 3, "The air crackles with energy. Find cover!");
         return;
 
-        BattleTalk CreateGrahaTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateGrahaTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Graha, voiceover, duration, text, [Personalization.GrahaAnnouncer], GrahaI);
         }
     }
 
 
-    private static void InitKrile(IBattleTalkFactory factory)
+    private static void InitKrile(IShoutcastFactory factory)
     {
         CanvasOfVictory = CreateKrileTalk(8291161, 4, "We draw upon the canvas of victory.");
         SkillsToTheProof = CreateKrileTalk(8291162, 4, "Time to put your skills to the proof!");
@@ -872,7 +872,7 @@ public static class ScionLines
         ToughLossLearnKrile = CreateKrileTalk(8291183, 6, "That was a tough loss, but we can learn from it and strive for greater heights!");
         return;
         
-        BattleTalk CreateKrileTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateKrileTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Krile, voiceover, duration, text, [Personalization.KrileAnnouncer], KrileI);
         }
@@ -880,7 +880,7 @@ public static class ScionLines
     
 
 
-    private static void InitWukLamat(IBattleTalkFactory factory)
+    private static void InitWukLamat(IShoutcastFactory factory)
     {
         GotThemNowWuk = CreateWukLamatTalk(8291184, 3, "We've got them now!");
         CantPassChanceWuk = CreateWukLamatTalk(8291185, 4, "Can't pass up a chance like this!");
@@ -917,14 +917,14 @@ public static class ScionLines
         NotHoldingAnythingBack = CreateWukLamatTalk(8205073, 3, "Not holding anything back are we?");
         return;
 
-        BattleTalk CreateWukLamatTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateWukLamatTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(WukLamat, voiceover, duration, text, [Personalization.WukLamatAnnouncer], WukLamatI);
         }
     }
     //todo 8205476-86
 
-    private static void InitKoana(IBattleTalkFactory factory)
+    private static void InitKoana(IShoutcastFactory factory)
     {
         IntentionsKnown = CreateKoanaTalk(8291207, 4, "Let us make our intentions known.");
         EvenTheOdds = CreateKoanaTalk(8291208, 4, "Perhaps this will even the odds.");
@@ -951,14 +951,14 @@ public static class ScionLines
         UnworthyVowOfReason = CreateKoanaTalk(8291229, 4, "I feel as though, I am unworthy to serve as vow of reason.");
         return;
 
-        BattleTalk CreateKoanaTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateKoanaTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Koana, voiceover, duration, text, [Personalization.KoanaAnnouncer], KoanaI);
         }
     }
     //todo: 8205487-8205504
 
-    private static void InitBakoolJaJa(IBattleTalkFactory factory)
+    private static void InitBakoolJaJa(IShoutcastFactory factory)
     {
         VictoryOurs = CreateBakoolJaJaTalk(8291230, 4, "Victory will be ours.");
         NoDownWithoutFight = CreateBakoolJaJaTalk(8291231, 4, "We won't go down without a fight!");
@@ -985,13 +985,13 @@ public static class ScionLines
         SmashTable = CreateBakoolJaJaTalk(8291252, 5, "I'm gonna smash this table to bits! And don't you dare stop me brother.");
         return;
 
-        BattleTalk CreateBakoolJaJaTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateBakoolJaJaTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(BakoolJaJa, voiceover, duration, text, [Personalization.BakoolJaJaAnnouncer], BakoolJaJaI);
         }
     }
 
-    private static void InitErenville(IBattleTalkFactory factory)
+    private static void InitErenville(IShoutcastFactory factory)
     {
         CouldBeChance = CreateErenvilleTalk(8291253, 3, "This could be your chance!");
         EnjoyingYourself = CreateErenvilleTalk(8291254, 4, "Enjoying yourself I see.");
@@ -1018,7 +1018,7 @@ public static class ScionLines
         RideRroneekClearHead = CreateErenvilleTalk(8291275, 8, "Take a ride on a Rroneek. Clear your head and put this performance behind you.");
         return;
 
-        BattleTalk CreateErenvilleTalk(uint voiceover, int duration, string text)
+        Shoutcast CreateErenvilleTalk(uint voiceover, int duration, string text)
         {
             return factory.CreateFromNoSheet(Erenville, voiceover, duration, text, [Personalization.ErenvilleAnnouncer], ErenvilleI);
         }

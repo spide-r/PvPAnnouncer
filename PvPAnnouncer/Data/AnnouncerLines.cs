@@ -27,271 +27,271 @@ public static class AnnouncerLines
     private static readonly uint MetemI = 073287;
     
     #region Intros
-    public static BattleTalk IntroBc;
-    public static BattleTalk IntroBb;
-    public static BattleTalk IntroHbl;
-    public static BattleTalk IntroWt;
-    public static BattleTalk VictoryWt;
-    public static BattleTalk IntroDg;
-    public static BattleTalk IntroSr;
-    public static BattleTalk IntroBa;
-    public static BattleTalk IntroHb;
-    public static BattleTalk IntroVf;
-    public static BattleTalk IntroDbRh;
-    public static BattleTalk IntroTt;
-    public static BattleTalk IntroLw;
+    public static Shoutcast IntroBc;
+    public static Shoutcast IntroBb;
+    public static Shoutcast IntroHbl;
+    public static Shoutcast IntroWt;
+    public static Shoutcast VictoryWt;
+    public static Shoutcast IntroDg;
+    public static Shoutcast IntroSr;
+    public static Shoutcast IntroBa;
+    public static Shoutcast IntroHb;
+    public static Shoutcast IntroVf;
+    public static Shoutcast IntroDbRh;
+    public static Shoutcast IntroTt;
+    public static Shoutcast IntroLw;
     #endregion
     #region Generic
-    public static BattleTalk GenericVictory;
-    public static BattleTalk NewGcBornVictory;
-    public static BattleTalk PresDefeated;
-    public static BattleTalk RobotKo;
-    public static BattleTalk ViciousBlow;
-    public static BattleTalk FeltThatOneStillStanding;
-    public static BattleTalk BeautifullyDodged;
-    public static BattleTalk SawThroughIt;
-    public static BattleTalk WentDownHard;
-    public static BattleTalk TheyreDownIsItOver;
-    public static BattleTalk BackUpGrit;
-    public static BattleTalk StillInIt;
-    public static BattleTalk WhatPower;
-    public static BattleTalk PotentMagicks;
-    public static BattleTalk IroncladDefense;
-    public static BattleTalk Fallen;
-    public static BattleTalk AllOverUntilNextTime;
-    public static BattleTalk StruckSquare;
-    public static BattleTalk Oof;
-    public static BattleTalk CouldntAvoid;
-    public static BattleTalk MustHaveHurtNotOut;
-    public static BattleTalk EffortlesslyDodged;
-    public static BattleTalk ClearlyAnticipated;
-    public static BattleTalk StylishEvasion;
-    public static BattleTalk AvoidedWithEase;
-    public static BattleTalk TooMuch;
-    public static BattleTalk ChallengerDownIsThisEnd;
-    public static BattleTalk RisesAgain;
-    public static BattleTalk BackOnFeet;
-    public static BattleTalk OofMustHaveHurt;
-    public static BattleTalk NotFastEnough;
-    public static BattleTalk CantBeCareless;
-    public static BattleTalk DirectHitStillStanding;
-    public static BattleTalk ImpressiveFootwork;
-    public static BattleTalk DancingAwayUnharmed;
-    public static BattleTalk AnotherAttackEvaded;
-    public static BattleTalk SlippedBeyondReach;
-    public static BattleTalk BeenFelled;
-    public static BattleTalk TheyreDownCanTheyRecover;
-    public static BattleTalk WhatFightingSpirit;
-    public static BattleTalk BackInAction;
+    public static Shoutcast GenericVictory;
+    public static Shoutcast NewGcBornVictory;
+    public static Shoutcast PresDefeated;
+    public static Shoutcast RobotKo;
+    public static Shoutcast ViciousBlow;
+    public static Shoutcast FeltThatOneStillStanding;
+    public static Shoutcast BeautifullyDodged;
+    public static Shoutcast SawThroughIt;
+    public static Shoutcast WentDownHard;
+    public static Shoutcast TheyreDownIsItOver;
+    public static Shoutcast BackUpGrit;
+    public static Shoutcast StillInIt;
+    public static Shoutcast WhatPower;
+    public static Shoutcast PotentMagicks;
+    public static Shoutcast IroncladDefense;
+    public static Shoutcast Fallen;
+    public static Shoutcast AllOverUntilNextTime;
+    public static Shoutcast StruckSquare;
+    public static Shoutcast Oof;
+    public static Shoutcast CouldntAvoid;
+    public static Shoutcast MustHaveHurtNotOut;
+    public static Shoutcast EffortlesslyDodged;
+    public static Shoutcast ClearlyAnticipated;
+    public static Shoutcast StylishEvasion;
+    public static Shoutcast AvoidedWithEase;
+    public static Shoutcast TooMuch;
+    public static Shoutcast ChallengerDownIsThisEnd;
+    public static Shoutcast RisesAgain;
+    public static Shoutcast BackOnFeet;
+    public static Shoutcast OofMustHaveHurt;
+    public static Shoutcast NotFastEnough;
+    public static Shoutcast CantBeCareless;
+    public static Shoutcast DirectHitStillStanding;
+    public static Shoutcast ImpressiveFootwork;
+    public static Shoutcast DancingAwayUnharmed;
+    public static Shoutcast AnotherAttackEvaded;
+    public static Shoutcast SlippedBeyondReach;
+    public static Shoutcast BeenFelled;
+    public static Shoutcast TheyreDownCanTheyRecover;
+    public static Shoutcast WhatFightingSpirit;
+    public static Shoutcast BackInAction;
     #endregion
     #region BlackCat
-    public static BattleTalk FirstOpponent;
-    public static BattleTalk FelineFerocity;
-    public static BattleTalk LitheAndLethal;
-    public static BattleTalk NineLives;
-    public static BattleTalk FeralOnslaught;
-    public static BattleTalk MyRing;
-    public static BattleTalk RepairRing;
+    public static Shoutcast FirstOpponent;
+    public static Shoutcast FelineFerocity;
+    public static Shoutcast LitheAndLethal;
+    public static Shoutcast NineLives;
+    public static Shoutcast FeralOnslaught;
+    public static Shoutcast MyRing;
+    public static Shoutcast RepairRing;
     #endregion
     #region HoneyB
-    public static BattleTalk HoneyBShowBegun;
-    public static BattleTalk SavorSting;
-    public static BattleTalk ChangedRoutine;
-    public static BattleTalk VenomStrikeFem;
-    public static BattleTalk FeelingLoveFem;
-    public static BattleTalk ResistTheIrresistible;
-    public static BattleTalk HerCharmsNotDeniedFem;
-    public static BattleTalk WhatAClash;
+    public static Shoutcast HoneyBShowBegun;
+    public static Shoutcast SavorSting;
+    public static Shoutcast ChangedRoutine;
+    public static Shoutcast VenomStrikeFem;
+    public static Shoutcast FeelingLoveFem;
+    public static Shoutcast ResistTheIrresistible;
+    public static Shoutcast HerCharmsNotDeniedFem;
+    public static Shoutcast WhatAClash;
     #endregion
     #region BruteB
-    public static BattleTalk BBMuscled;
-    public static BattleTalk BBEmbiggening;
-    public static BattleTalk KaboomBBSpecial;
-    public static BattleTalk BBDesprate;
-    public static BattleTalk BannedCompoundRobot;
-    public static BattleTalk AssaultedRefMasc;
-    public static BattleTalk FuseField;
-    public static BattleTalk ChainDeathmatch;
+    public static Shoutcast BBMuscled;
+    public static Shoutcast BBEmbiggening;
+    public static Shoutcast KaboomBBSpecial;
+    public static Shoutcast BBDesprate;
+    public static Shoutcast BannedCompoundRobot;
+    public static Shoutcast AssaultedRefMasc;
+    public static Shoutcast FuseField;
+    public static Shoutcast ChainDeathmatch;
     #endregion
     #region WickedT
-    public static BattleTalk WTReturned;
-    public static BattleTalk SomethingGrowingFem;
-    public static BattleTalk GatheringAetherFem;
-    public static BattleTalk ConvertAetherFem;
-    public static BattleTalk MassiveCannonFem;
-    public static BattleTalk GrownWingsFem;
-    public static BattleTalk UnleashedANewFeralSoul;
-    public static BattleTalk DischargeAether;
-    public static BattleTalk BattleElectrifying;
+    public static Shoutcast WTReturned;
+    public static Shoutcast SomethingGrowingFem;
+    public static Shoutcast GatheringAetherFem;
+    public static Shoutcast ConvertAetherFem;
+    public static Shoutcast MassiveCannonFem;
+    public static Shoutcast GrownWingsFem;
+    public static Shoutcast UnleashedANewFeralSoul;
+    public static Shoutcast DischargeAether;
+    public static Shoutcast BattleElectrifying;
     #endregion
     #region DancingG
-    public static BattleTalk DGSteps;
-    public static BattleTalk UpstartBegins;
-    public static BattleTalk InvitationToDance;
-    public static BattleTalk DGFeverTakenHold;
-    public static BattleTalk DGFeverPich;
+    public static Shoutcast DGSteps;
+    public static Shoutcast UpstartBegins;
+    public static Shoutcast InvitationToDance;
+    public static Shoutcast DGFeverTakenHold;
+    public static Shoutcast DGFeverPich;
     #endregion
     #region SugarR
-    public static BattleTalk SRGallery;
-    public static BattleTalk SRBringsWorkToLife;
-    public static BattleTalk Quicksand;
-    public static BattleTalk River;
-    public static BattleTalk StormParasols;
-    public static BattleTalk Lava;
-    public static BattleTalk RingBecomeDesert;
-    public static BattleTalk StormOfNeedles;
-    public static BattleTalk SuckedIn;
-    public static BattleTalk Thunderstorm;
-    public static BattleTalk TransformativePiece;
+    public static Shoutcast SRGallery;
+    public static Shoutcast SRBringsWorkToLife;
+    public static Shoutcast Quicksand;
+    public static Shoutcast River;
+    public static Shoutcast StormParasols;
+    public static Shoutcast Lava;
+    public static Shoutcast RingBecomeDesert;
+    public static Shoutcast StormOfNeedles;
+    public static Shoutcast SuckedIn;
+    public static Shoutcast Thunderstorm;
+    public static Shoutcast TransformativePiece;
     #endregion
     #region BruteA
-    public static BattleTalk BAMeansBusiness;
-    public static BattleTalk ChimericalFoe;
-    public static BattleTalk FeralPowersWeapon;
-    public static BattleTalk FiendishFlora;
-    public static BattleTalk CamerasPetrified;
-    public static BattleTalk BAHanging;
-    public static BattleTalk BBLariat;
-    public static BattleTalk PunishingAttackFusion;
-    public static BattleTalk SentRivalFlyingMasc;
-    public static BattleTalk BoundingFromWallToWallMasc;
-    public static BattleTalk RoofCavedSuchDevastation;
-    public static BattleTalk SendingCameras;
-    public static BattleTalk StartedFire;
-    public static BattleTalk DodgedEverything;
-    public static BattleTalk BrutalBlow;
-    public static BattleTalk ThrillingBattle;
+    public static Shoutcast BAMeansBusiness;
+    public static Shoutcast ChimericalFoe;
+    public static Shoutcast FeralPowersWeapon;
+    public static Shoutcast FiendishFlora;
+    public static Shoutcast CamerasPetrified;
+    public static Shoutcast BAHanging;
+    public static Shoutcast BBLariat;
+    public static Shoutcast PunishingAttackFusion;
+    public static Shoutcast SentRivalFlyingMasc;
+    public static Shoutcast BoundingFromWallToWallMasc;
+    public static Shoutcast RoofCavedSuchDevastation;
+    public static Shoutcast SendingCameras;
+    public static Shoutcast StartedFire;
+    public static Shoutcast DodgedEverything;
+    public static Shoutcast BrutalBlow;
+    public static Shoutcast ThrillingBattle;
     #endregion
     #region HowlingB
-    public static BattleTalk WolfLair;
-    public static BattleTalk SuchSpeedMasc;
-    public static BattleTalk ColossalThing;
-    public static BattleTalk ColossusSwordMasc;
-    public static BattleTalk SomethingsAmissMasc;
-    public static BattleTalk RingDestroyedFallen;
-    public static BattleTalk MovedToFloatingDeathtraps;
-    public static BattleTalk DestroyedIsle;
-    public static BattleTalk NeitherSideHoldingBack;
+    public static Shoutcast WolfLair;
+    public static Shoutcast SuchSpeedMasc;
+    public static Shoutcast ColossalThing;
+    public static Shoutcast ColossusSwordMasc;
+    public static Shoutcast SomethingsAmissMasc;
+    public static Shoutcast RingDestroyedFallen;
+    public static Shoutcast MovedToFloatingDeathtraps;
+    public static Shoutcast DestroyedIsle;
+    public static Shoutcast NeitherSideHoldingBack;
     #endregion
     #region VampF
-    public static BattleTalk VFFeastEyes;
-    public static BattleTalk FallPreyCruelMistress;
-    public static BattleTalk VFWickedWeapon;
-    public static BattleTalk NowhereLeft;
-    public static BattleTalk DrainingAudienceFem;
-    public static BattleTalk VFUnleashedAether;
-    public static BattleTalk SpectacleResumes;
-    public static BattleTalk RainOfDeath;
-    public static BattleTalk DrainingCrowd;
-    public static BattleTalk EvenMoreAether;
-    public static BattleTalk LightheadedFem;
-    public static BattleTalk SiphonedAether;
+    public static Shoutcast VFFeastEyes;
+    public static Shoutcast FallPreyCruelMistress;
+    public static Shoutcast VFWickedWeapon;
+    public static Shoutcast NowhereLeft;
+    public static Shoutcast DrainingAudienceFem;
+    public static Shoutcast VFUnleashedAether;
+    public static Shoutcast SpectacleResumes;
+    public static Shoutcast RainOfDeath;
+    public static Shoutcast DrainingCrowd;
+    public static Shoutcast EvenMoreAether;
+    public static Shoutcast LightheadedFem;
+    public static Shoutcast SiphonedAether;
     #endregion
     #region DeepBRedH
-    public static BattleTalk TagTeam;
-    public static BattleTalk SuchScorn;
-    public static BattleTalk FearsomeFlamesMasc;
-    public static BattleTalk FlamesSpreading;
-    public static BattleTalk DBTaggingIn;
-    public static BattleTalk EnormousWave;
-    public static BattleTalk BothBrosEntered;
-    public static BattleTalk DoubleTrouble;
-    public static BattleTalk Fusion;
-    public static BattleTalk HoldingNothingBack;
+    public static Shoutcast TagTeam;
+    public static Shoutcast SuchScorn;
+    public static Shoutcast FearsomeFlamesMasc;
+    public static Shoutcast FlamesSpreading;
+    public static Shoutcast DBTaggingIn;
+    public static Shoutcast EnormousWave;
+    public static Shoutcast BothBrosEntered;
+    public static Shoutcast DoubleTrouble;
+    public static Shoutcast Fusion;
+    public static Shoutcast HoldingNothingBack;
     #endregion
     #region TTyrant
-    public static BattleTalk GrandChampion;
-    public static BattleTalk TTThrone;
-    public static BattleTalk TyrannyTimeMasc;
-    public static BattleTalk HoldingTheirOwn;
-    public static BattleTalk AllTheseWeaponsMasc;
-    public static BattleTalk AbsoluteBrutality;
-    public static BattleTalk SuchFerocity;
-    public static BattleTalk TTAlteredFormMasc;
-    public static BattleTalk UnleashedFullMightMasc;
-    public static BattleTalk SplitRingHalfMasc;
-    public static BattleTalk ThrownRingMasc;
-    public static BattleTalk RingRestored;
-    public static BattleTalk EitherSide;
+    public static Shoutcast GrandChampion;
+    public static Shoutcast TTThrone;
+    public static Shoutcast TyrannyTimeMasc;
+    public static Shoutcast HoldingTheirOwn;
+    public static Shoutcast AllTheseWeaponsMasc;
+    public static Shoutcast AbsoluteBrutality;
+    public static Shoutcast SuchFerocity;
+    public static Shoutcast TTAlteredFormMasc;
+    public static Shoutcast UnleashedFullMightMasc;
+    public static Shoutcast SplitRingHalfMasc;
+    public static Shoutcast ThrownRingMasc;
+    public static Shoutcast RingRestored;
+    public static Shoutcast EitherSide;
     #endregion
     #region TPresident
-    public static BattleTalk PresidentMustPay;
-    public static BattleTalk ArmLifeOwnMasc;
-    public static BattleTalk ArmSlitheringOutDisgustingMasc;
-    public static BattleTalk LWScatteredGore;
-    public static BattleTalk CruelCoil;
-    public static BattleTalk ChampCrushed;
-    public static BattleTalk RoundRingMasc;
-    public static BattleTalk RingPieces;
-    public static BattleTalk GoreLatched;
-    public static BattleTalk LWCompletelyHealed;
-    public static BattleTalk LWOutOfControl;
-    public static BattleTalk PowerRunAmokMasc;
-    public static BattleTalk RegenCapacityMasc;
-    public static BattleTalk StruckWithVenon;
-    public static BattleTalk SomethingRevolting;
-    public static BattleTalk VictoryChamp;
+    public static Shoutcast PresidentMustPay;
+    public static Shoutcast ArmLifeOwnMasc;
+    public static Shoutcast ArmSlitheringOutDisgustingMasc;
+    public static Shoutcast LWScatteredGore;
+    public static Shoutcast CruelCoil;
+    public static Shoutcast ChampCrushed;
+    public static Shoutcast RoundRingMasc;
+    public static Shoutcast RingPieces;
+    public static Shoutcast GoreLatched;
+    public static Shoutcast LWCompletelyHealed;
+    public static Shoutcast LWOutOfControl;
+    public static Shoutcast PowerRunAmokMasc;
+    public static Shoutcast RegenCapacityMasc;
+    public static Shoutcast StruckWithVenon;
+    public static Shoutcast SomethingRevolting;
+    public static Shoutcast VictoryChamp;
     #endregion
     #region Unused
-    public static BattleTalk UnusedNoRespectMasc;
-    public static BattleTalk UnusedUpOnThePost;
-    public static BattleTalk UnusedBombarianPress;
-    public static BattleTalk UnusedOhMercyFem;
-    public static BattleTalk UnusedBackTail;
+    public static Shoutcast UnusedNoRespectMasc;
+    public static Shoutcast UnusedUpOnThePost;
+    public static Shoutcast UnusedBombarianPress;
+    public static Shoutcast UnusedOhMercyFem;
+    public static Shoutcast UnusedBackTail;
     #endregion
     
     #region Mahjong
-    public static BattleTalk MjGameChanger;
-    public static BattleTalk MjBoldMove;
-    public static BattleTalk MjChallengerRecover;
-    public static BattleTalk MjRivalVying;
-    public static BattleTalk MjHeatingUp;
-    public static BattleTalk MjHandDecided;
-    public static BattleTalk MjKissLadyLuck;
-    public static BattleTalk MjGoodnessGracious;
-    public static BattleTalk MjOurTile;
-    public static BattleTalk MjPainfulToWatch;
-    public static BattleTalk MjClobberedWithTable;
-    public static BattleTalk MjBeautifullyPlayed;
-    public static BattleTalk MjMadeYourMark;
-    public static BattleTalk MjDontStandAChance;
-    public static BattleTalk MjChallengerDownHardGentle;
-    public static BattleTalk MjStillInItGentle;
-    public static BattleTalk MjStillStandingGentle;
-    public static BattleTalk MjDownNotOut;
-    public static BattleTalk MjTitanOfTable;
-    public static BattleTalk MjCommendableEffort;
-    public static BattleTalk MjReportingLive;
-    public static BattleTalk MjCompetitionTooMuch;
-    public static BattleTalk MjUtterlyHumiliated;
+    public static Shoutcast MjGameChanger;
+    public static Shoutcast MjBoldMove;
+    public static Shoutcast MjChallengerRecover;
+    public static Shoutcast MjRivalVying;
+    public static Shoutcast MjHeatingUp;
+    public static Shoutcast MjHandDecided;
+    public static Shoutcast MjKissLadyLuck;
+    public static Shoutcast MjGoodnessGracious;
+    public static Shoutcast MjOurTile;
+    public static Shoutcast MjPainfulToWatch;
+    public static Shoutcast MjClobberedWithTable;
+    public static Shoutcast MjBeautifullyPlayed;
+    public static Shoutcast MjMadeYourMark;
+    public static Shoutcast MjDontStandAChance;
+    public static Shoutcast MjChallengerDownHardGentle;
+    public static Shoutcast MjStillInItGentle;
+    public static Shoutcast MjStillStandingGentle;
+    public static Shoutcast MjDownNotOut;
+    public static Shoutcast MjTitanOfTable;
+    public static Shoutcast MjCommendableEffort;
+    public static Shoutcast MjReportingLive;
+    public static Shoutcast MjCompetitionTooMuch;
+    public static Shoutcast MjUtterlyHumiliated;
     #endregion
     
     #region M12sp2
-    public static BattleTalk LindwurmsHeart;
-    public static BattleTalk BadFeeling;
-    public static BattleTalk Transforming;
-    public static BattleTalk ItsAliveLindwurm;
-    public static BattleTalk BattleNotOverDontDespair;
-    public static BattleTalk CreatingMore;
-    public static BattleTalk ContinuesToMultiply;
-    public static BattleTalk CuriousProps;
-    public static BattleTalk TakenOnChampionForm;
-    public static BattleTalk DejaVu;
-    public static BattleTalk RingRendInTwo;
-    public static BattleTalk MutationCorrupting;
-    public static BattleTalk SomethingsComing;
-    public static BattleTalk WarpedFabric;
-    public static BattleTalk AnotherDimension;
-    public static BattleTalk HardPressed;
-    public static BattleTalk FeverPitch;
-    public static BattleTalk StayStrong;
-    public static BattleTalk NotSureIUnderstand;
-    public static BattleTalk LeftRealmOfLogic;
-    public static BattleTalk DefiesComprehension;
+    public static Shoutcast LindwurmsHeart;
+    public static Shoutcast BadFeeling;
+    public static Shoutcast Transforming;
+    public static Shoutcast ItsAliveLindwurm;
+    public static Shoutcast BattleNotOverDontDespair;
+    public static Shoutcast CreatingMore;
+    public static Shoutcast ContinuesToMultiply;
+    public static Shoutcast CuriousProps;
+    public static Shoutcast TakenOnChampionForm;
+    public static Shoutcast DejaVu;
+    public static Shoutcast RingRendInTwo;
+    public static Shoutcast MutationCorrupting;
+    public static Shoutcast SomethingsComing;
+    public static Shoutcast WarpedFabric;
+    public static Shoutcast AnotherDimension;
+    public static Shoutcast HardPressed;
+    public static Shoutcast FeverPitch;
+    public static Shoutcast StayStrong;
+    public static Shoutcast NotSureIUnderstand;
+    public static Shoutcast LeftRealmOfLogic;
+    public static Shoutcast DefiesComprehension;
     #endregion
     
     // I'd like to thank IntelliJ Smart Align Plugin for making all of this readable
-    public static void Init(IBattleTalkFactory factory)
+    public static void Init(IShoutcastFactory factory)
     {
         var onlyMetem       = new List<Personalization> { Personalization.MetemAnnouncer };
         var blackCat        = new List<Personalization> { Personalization.MetemAnnouncer   , Personalization.BlackCat };
@@ -574,23 +574,23 @@ public static class AnnouncerLines
 
     }
 
-    private static BattleTalk CreateMetemCsLine(string key, List<Personalization> p, IBattleTalkFactory factory)
+    private static Shoutcast CreateMetemCsLine(string key, List<Personalization> p, IShoutcastFactory factory)
     {
         return factory.CreateFromCutsceneLine(Metem, 5, 6, key, p, MetemI);
     }
     
-    private static BattleTalk CreateMetemBtLine(uint voiceover, List<Personalization> p, IBattleTalkFactory factory)
+    private static Shoutcast CreateMetemBtLine(uint voiceover, List<Personalization> p, IShoutcastFactory factory)
     {
         return factory.CreateFromContentDirectorBattleTalk(Metem, voiceover, p, MetemI);
     }
     
-    private static BattleTalk CreateMetemLine(uint voiceover, int duration, string text, List<Personalization> p, IBattleTalkFactory factory)
+    private static Shoutcast CreateMetemLine(uint voiceover, int duration, string text, List<Personalization> p, IShoutcastFactory factory)
     {
         return factory.CreateFromNoSheet(Metem, voiceover, duration, text, p, MetemI);
     }
-    public static BattleTalk GetRandomAnnouncement()
+    public static Shoutcast GetRandomAnnouncement()
     {
-        List<BattleTalk> list = [ViciousBlow, FeltThatOneStillStanding, BeautifullyDodged, SawThroughIt, WentDownHard, SuckedIn, StruckSquare, AllOverUntilNextTime, Fallen, WhatPower];
+        List<Shoutcast> list = [ViciousBlow, FeltThatOneStillStanding, BeautifullyDodged, SawThroughIt, WentDownHard, SuckedIn, StruckSquare, AllOverUntilNextTime, Fallen, WhatPower];
         return list[Random.Shared.Next(list.Count)];
     }
     

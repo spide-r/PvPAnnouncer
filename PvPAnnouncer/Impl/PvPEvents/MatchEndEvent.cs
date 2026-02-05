@@ -16,7 +16,7 @@ public class MatchEndEvent: PvPMatchEvent
         InternalName = "MatchEndEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [AllOverUntilNextTime, HoldYourHeadHigh, OnlyPossibleOutcome, WellDone, CouldHaveBeenWorse,
             RaiseAGlassVictory, QuiteTheStatement, HeartRacingKrile, AllRightYouDidGreat];

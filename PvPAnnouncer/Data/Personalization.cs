@@ -7,6 +7,7 @@ public enum Personalization: int
  None = 0,
  FemPronouns = 1 << 0,
  MascPronouns = 1 << 1,
+ 
  BlackCat = 1 << 2,
  HoneyBLovely = 1 << 3,
  BruteBomber = 1 << 4,
@@ -19,6 +20,7 @@ public enum Personalization: int
  DeepBlueRedHot = 1 << 11,
  Tyrant = 1 << 12,
  President = 1 << 13,
+ 
  MetemAnnouncer = 1 << 14,
  AlphinaudAnnouncer = 1 << 15,
  AlisaieAnnouncer = 1 << 16,

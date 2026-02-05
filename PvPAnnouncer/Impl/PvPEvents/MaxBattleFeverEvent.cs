@@ -16,7 +16,7 @@ public class MaxBattleFeverEvent: PvPEvent
         InternalName = "MaxBattleFeverEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [WhatPower, RainOfDeath, DontStopNow, RoofCavedSuchDevastation, TyrannyTimeMasc, HerCharmsNotDeniedFem,
             GatheringAetherFem, UnusedOhMercyFem, DGFeverPich, YesYesJustSo, More, LetThisMomentLastForever, Hahahahahaha,

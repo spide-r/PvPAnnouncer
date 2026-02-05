@@ -16,7 +16,7 @@ public class MatchLossEvent: PvPMatchEvent
         InternalName = "MatchLossEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [MjPainfulToWatch, MjCommendableEffort, MjCompetitionTooMuch, MjUtterlyHumiliated,
             OutcomeWithHubris, PainfulThrashing, LearnAndForgeOn, ProudYetIgnorant, ReplaceIgnoranceWithKnowledge, 

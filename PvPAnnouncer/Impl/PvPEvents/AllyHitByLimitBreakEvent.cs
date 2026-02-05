@@ -16,7 +16,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
         InternalName = "AllyHitByLimitBreakEvent"; 
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
             CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 

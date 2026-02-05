@@ -14,7 +14,7 @@ public class EnteredMechEvent: PvPEvent
         Name = "Entering a RW Mech";
         InternalName = "EnteredMechEvent";
     }
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [ColossalThing];
     }

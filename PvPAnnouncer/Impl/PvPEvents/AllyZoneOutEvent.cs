@@ -15,7 +15,7 @@ public class AllyZoneOutEvent: PvPActorEvent
         InternalName = "AllyZoneOutEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [Fallen, Hahahahahaha, OutplayedClearMinds, TwelveGiveMeStrength, KeepChinUpPrettyLeast, 
             SuchShouldBeFate, UnfortunateSuchIsLife, LeftOurselvesOpen, DoYouRequireHealing, ThatsTooBadKrile, GonnaBeSickWuk, CantBe, GodsHelpUs, Unfortunate];

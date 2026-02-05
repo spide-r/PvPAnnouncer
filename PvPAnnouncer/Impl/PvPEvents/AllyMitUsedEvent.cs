@@ -15,7 +15,7 @@ public class AllyMitUsedEvent: PvPActionEvent
         InternalName = "AllyMitUsedEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return  [IroncladDefense, WhatAClash, ThrillingBattle, MjDontStandAChance, BestDefenceIsGoodDefence, 
             DoYourWorst, KeepYourGuardUp, SoundDecision, SmallMerciesYshtola, MakeReady, UseConfidenceAgainstThem,

@@ -16,7 +16,7 @@ public class AllyPulledByDrkEvent: PvPActionEvent
         InternalName = "AllyPulledByDrkEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [SuckedIn, ThrillingBattle, Quicksand, MjRivalVying, WinThisYet, Hahahahahaha, ATestOfYourReflexes];
     }

@@ -14,7 +14,7 @@ public class AllyDeathEvent : PvPActorControlEvent
         Name = "Deaths";
         InternalName = "AllyDeathEvent";
     }
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [TheyreDownIsItOver, ChallengerDownIsThisEnd, TooMuch, WentDownHard, 
             CouldntAvoid, BeenFelled, TheyreDownCanTheyRecover, ChampCrushed, MjGoodnessGracious, MjPainfulToWatch, 

@@ -6,7 +6,7 @@ namespace PvPAnnouncer.Interfaces.PvPEvents;
 
 public abstract class PvPEvent(string name = "PvP Event")
 {
-    public abstract List<BattleTalk> SoundPaths();
+    public abstract List<Shoutcast> SoundPaths();
 
     public abstract bool InvokeRule(IMessage message);
     public string Name = name;

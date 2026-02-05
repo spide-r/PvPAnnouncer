@@ -11,7 +11,7 @@ namespace PvPAnnouncer.Windows;
 public class VoiceLineTesterWindow: Window, IDisposable
 {
     //todo create
-    private List<BattleTalk> _allBattleTalks;
+    private List<Shoutcast> _allBattleTalks;
     public VoiceLineTesterWindow() : base(
         "Voice Line Tester window", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {
@@ -19,7 +19,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
         {
             MinimumSize = new Vector2(450, 225),
         };
-        _allBattleTalks = new List<BattleTalk>(InternalConstants.GetBattleTalkList());
+        _allBattleTalks = new List<Shoutcast>(InternalConstants.GetBattleTalkList());
 
     }
 
@@ -63,7 +63,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
             {
                 if (_filterIndex != 0)
                 {
-                    if (!bt.Name.Equals(toFilter[_filterIndex]))
+                    if (!bt.ShouterName.Equals(toFilter[_filterIndex]))
                     {
                         continue;
                     }
@@ -72,7 +72,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.Path);
                 ImGui.TableNextColumn();
-                ImGui.Text(bt.Name);
+                ImGui.Text(bt.ShouterName);
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.Text);
                 ImGui.TableNextColumn();

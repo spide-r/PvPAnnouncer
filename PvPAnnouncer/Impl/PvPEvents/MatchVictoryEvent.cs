@@ -16,7 +16,7 @@ public class MatchVictoryEvent: PvPMatchEvent
         InternalName = "MatchVictoryEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [GenericVictory,  NewGcBornVictory, RobotKo, VictoryChamp, MjBeautifullyPlayed, 
             MjMadeYourMark, MjKissLadyLuck, MjClobberedWithTable, Hahahahahaha, LetThisMomentLastForever, 

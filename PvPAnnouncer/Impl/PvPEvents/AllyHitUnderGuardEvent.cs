@@ -18,7 +18,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
         InternalName = "AllyHitUnderGuardEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
+    public override List<Shoutcast> SoundPaths()
     {
         return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, 
             WhatAClash, DirectHitStillStanding, NotFastEnough, MjHeatingUp, MjStillStandingGentle, 

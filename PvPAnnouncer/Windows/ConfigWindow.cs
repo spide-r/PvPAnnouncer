@@ -19,7 +19,7 @@ public class ConfigWindow : Window, IDisposable
 {
     //todo make a note somewhere that some of the ways i pull the data are kinda skuffedTM and that some of the translations to other languages may not be 100% and to tell me if that happens
     private IEventListenerLoader listenerLoader;
-    private BattleTalk[] _allBattleTalks;
+    private Shoutcast[] _allBattleTalks;
 
     private readonly Configuration _configuration; public ConfigWindow() : base(
         "PvPAnnouncer Configuration")
@@ -112,14 +112,14 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Button("Test The Announcer"))
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
-            BattleTalk[] bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
+            Shoutcast[] bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllPersonalization(bt.Personalization)).ToArray();
             if (bt.Length != 0) // no announcers selected
             {
                 
                 var e = bt[Random.Shared.Next(bt.Length)];
                 PluginServices.Announcer.PlaySound(e.Path + "_" + PluginServices.Config.Language + ".scd");
                 PluginServices.Announcer.SendBattleTalk(e);
-                PluginServices.ChatGui.Print($"Playing Voiceline for {e.Name}", InternalConstants.MessageTag);
+                PluginServices.ChatGui.Print($"Playing Voiceline for {e.ShouterName}", InternalConstants.MessageTag);
 
                 if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
                 {
@@ -134,7 +134,7 @@ public class ConfigWindow : Window, IDisposable
             }
             else
             {
-                PluginServices.Announcer.SendBattleTalk(new BattleTalk(InternalConstants.PvPAnnouncerDevName, 0, 5, "You don't have any announcers selected!", [], InternalConstants.PvPAnnouncerDevIcon));
+                PluginServices.Announcer.SendBattleTalk(new Shoutcast(InternalConstants.PvPAnnouncerDevName, 0, 5, "You don't have any announcers selected!", [], InternalConstants.PvPAnnouncerDevIcon));
             }
         }
 
