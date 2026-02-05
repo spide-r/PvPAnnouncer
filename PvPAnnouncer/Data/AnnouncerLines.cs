@@ -18,11 +18,6 @@ public static class AnnouncerLines
     
     //todo: huge recovery from earths reply/microcosmos (regen voice lines) (8206125 for huge heal from others, 8206122 from pot?)
 
-    private static string GetVoPath(string announcement, string lang)
-    {
-        return "sound/voice/vo_line/" + announcement + "_" + lang + ".scd";
-    }
-
     private static readonly string Metem = "Metem";
     private static readonly uint MetemI = 073287;
     
@@ -588,11 +583,5 @@ public static class AnnouncerLines
     {
         return factory.CreateFromNoSheet(Metem, voiceover, duration, text, p, MetemI);
     }
-    public static Shoutcast GetRandomAnnouncement()
-    {
-        List<Shoutcast> list = [ViciousBlow, FeltThatOneStillStanding, BeautifullyDodged, SawThroughIt, WentDownHard, SuckedIn, StruckSquare, AllOverUntilNextTime, Fallen, WhatPower];
-        return list[Random.Shared.Next(list.Count)];
-    }
-    
 
 }

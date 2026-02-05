@@ -26,7 +26,7 @@ public class ConfigWindow : Window, IDisposable
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
     private readonly EventShoutcastMapping _eventShoutcastMapping; 
-    public ConfigWindow(ShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, EventShoutcastMapping eventShoutcastMapping) : base(
+    public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, IEventShoutcastMapping eventShoutcastMapping) : base(
         "PvPAnnouncer Configuration")
     {
 
@@ -42,8 +42,8 @@ public class ConfigWindow : Window, IDisposable
         listenerLoader = PluginServices.ListenerLoader;
         _allEvents = listenerLoader.GetPvPEvents();
         _allBattleTalks = InternalConstants.GetBattleTalkList();
-        _shoutcastRepository = shoutcastRepository;
-        _eventShoutcastMapping = eventShoutcastMapping;
+        _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
+        _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
         foreach (var pvPEvent in _allEvents)
         {
             _eventskv.Add(pvPEvent.InternalName, pvPEvent);

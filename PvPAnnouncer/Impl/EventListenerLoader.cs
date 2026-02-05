@@ -10,7 +10,7 @@ namespace PvPAnnouncer.Impl;
 
 public class EventListenerLoader : IEventListenerLoader
 {
-    public PvPEvent[] CustomPvPEvents { get; } =
+    public PvPEvent[] CustomPvPEvents { get; } = //todo sad! bad! delete!
     [
         new AllyActionEvent([ActionIds.HorridRoar], [RoarNidhogg], "Horrid Roar", "HorridRoarEvent"),
         new AllyActionEvent([ActionIds.WorldSwallower],
