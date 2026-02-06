@@ -23,9 +23,10 @@ public class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuilder
             if ( result is {ContentDirectorBattleTalkVo: 0, InstanceContentTextDataRow: 0, NpcYell: 0})
             {
                 //todo error out since we dont have text
+            } else if (result.ContentDirectorBattleTalkVo != 0 || result.InstanceContentTextDataRow != 0 || result.NpcYell != 0)
+            {
+                //todo load text data into transcription (maybe load all languages) dunno if you need to split these || or not 
             }
-            //todo we will probably load transcriptions right here using either ct dir battle talk, or CutsceneLine if it exists
-            //if nothing exists, throw an error/warn
         }
         
         if (!dataManager.FileExists(result.GetShoutcastSoundPathWithLang("ja")))

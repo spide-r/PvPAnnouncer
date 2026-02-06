@@ -33,7 +33,7 @@
 
     <ItemGroup>
         <Content Include="json\event.json" />
-        <Content Include="json\eventShoutcastMapping.json" />
+        <Content Include="json\mapping.json" />
         <Content Include="json\shoutcast.json" />
         <Content Include="PvPAnnouncer.json" />
         <Content Include="PvPAnnouncer\packages.lock.json" />

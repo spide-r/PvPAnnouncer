@@ -13,8 +13,7 @@ public class AllyActionEvent : PvPActionEvent
 
     private uint[] ActionIds { get; }
     
-    public AllyActionEvent(uint[] actionIds,
-        List<Shoutcast> soundPaths, string name = "Action", string internalName = "internal")
+    public AllyActionEvent(uint[] actionIds, string name = "Action", string internalName = "internal")
     {
         ActionIds = actionIds;
         Name = name;
