@@ -55,7 +55,14 @@ namespace PvpAnnouncer
         public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig, bool newConfig)
         {
             _pluginInterface = pluginInterface;
-            if (newConfig)
+            if (ps.CheckCNClient()) 
+            {
+                Language = "chs";
+            } else if (ps.CheckKRClient())
+            {
+                Language = "kr";
+            } 
+            /*if (newConfig)
             {
                 if (ps.CheckCNClient()) 
                 {
@@ -69,7 +76,7 @@ namespace PvpAnnouncer
                     gameConfig.TryGet(SystemConfigOption.Language,  out uint clientLang);
                     PluginServices.PluginLog.Verbose($"Lang: {configuredLang}");
                     PluginServices.PluginLog.Verbose($"Lang: {clientLang}");
-                    var sw = configuredLang == 4294967295 ? clientLang : configuredLang;
+                    var sw = configuredLang > 99 ? clientLang : configuredLang; // bodge 
                     Language = sw switch
                     {
                         0 => "ja",
@@ -80,7 +87,7 @@ namespace PvpAnnouncer
                     };
                 }
                 _pluginInterface?.SavePluginConfig(this);
-            }
+            }*/
 
             MigrateOldPluginConfig();
         }
