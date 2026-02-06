@@ -7,6 +7,7 @@ using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.impl;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Windows;
@@ -75,11 +76,12 @@ internal class PluginServices {
     internal static Configuration Config { get; private set; }
     internal static IEventListenerLoader ListenerLoader { get; private set; }
     internal static IPlayerStateTracker PlayerStateTracker { get; private set; }
-    internal static IEventShoutcastMapping EventShoutcastMapping { get; private set; } //todo make these 3 not null
+    internal static IEventShoutcastMapping EventShoutcastMapping { get; private set; } 
     internal static IShoutcastRepository ShoutcastRepository { get; private set; }
     internal static IShoutcastBuilder ShoutcastBuilder { get; private set; }
+    internal static IJsonFileLoader JsonFileLoader { get; private set; }
     
-    internal static VoiceLineTesterWindow voiceLineTesterWindow { get; private set; }
+    internal static VoiceLineTesterWindow VoiceLineTesterWindow { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window) {
         pluginInterface.Create<PluginServices>();
@@ -93,8 +95,14 @@ internal class PluginServices {
         Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig, newCfg);
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
         
-        voiceLineTesterWindow = new VoiceLineTesterWindow();
-        window.AddWindow(voiceLineTesterWindow);
+        EventShoutcastMapping = new  EventShoutcastMapping();
+        ShoutcastBuilder = new ShoutcastBuilder(DataManager);
+        ShoutcastRepository = new ShoutcastRepository(ShoutcastBuilder);
+        JsonFileLoader = new JsonFileLoader(PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
+        JsonFileLoader.LoadAll();
+
+        VoiceLineTesterWindow = new VoiceLineTesterWindow();
+        window.AddWindow(VoiceLineTesterWindow);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }

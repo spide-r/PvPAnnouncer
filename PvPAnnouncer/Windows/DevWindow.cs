@@ -135,7 +135,7 @@ public class DevWindow: Window, IDisposable
         ImGui.SameLine();
         if (ImGui.Button("Play###VoLineButton"))
         {
-           play(ll);
+            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
         }
         var h = hide;
         if (ImGui.Checkbox("Hide Battle Talk", ref h))
@@ -197,24 +197,6 @@ public class DevWindow: Window, IDisposable
         {
             _duration = d;
         }
-
-        if (ImGui.Button("Save This"))
-        {
-            var argChosen = "";
-            if (!vlTranscription.Equals(""))
-            {
-                argChosen = vlTranscription;
-            }
-
-            if (!textData.Equals(""))
-            {
-                argChosen = textData;
-            }
-            PluginServices.Config.Dev_VoLineList.Add($" public static readonly BattleTalk VO{_voLineArr[_voLineSelector]} new BattleTalk({_name.Trim()}, \"{_voLineArr[_voLineSelector]}\", {_duration}, {argChosen}, GetPersonalization([Personalization.{_name}Announcer])); // {_voicelineTranscription}");
-            PluginServices.Config.Save();
-            _voicelineTranscription = "";
-            _textData = "";
-        }
         
         ImGui.Text("Events: ");
         var i = 1;
@@ -242,15 +224,6 @@ public class DevWindow: Window, IDisposable
             i++;
         }
         
-    }
-
-    private void play(long l)
-    {
-        PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
-        if (!hide)
-        {
-           // PluginServices.Announcer.SendBattleTalk(PluginServices.ShoutcastFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
-        }
     }
     
     public void Dispose()

@@ -10,8 +10,7 @@ namespace PvPAnnouncer.Windows;
 
 public class VoiceLineTesterWindow: Window, IDisposable
 {
-    //todo create
-    private List<Shoutcast> _allBattleTalks;
+    private readonly List<Shoutcast> _allBattleTalks;
     public VoiceLineTesterWindow() : base(
         "Voice Line Tester window", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {

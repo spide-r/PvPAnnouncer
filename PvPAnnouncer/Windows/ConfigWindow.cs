@@ -170,7 +170,7 @@ public class ConfigWindow : Window, IDisposable
 
         if (ImGui.Button("Show All Possible Voicelines"))
         {
-            PluginServices.voiceLineTesterWindow.Toggle();
+            PluginServices.VoiceLineTesterWindow.Toggle();
         }
         ImGui.SameLine();
         ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");

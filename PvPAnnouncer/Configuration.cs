@@ -31,7 +31,7 @@ namespace PvpAnnouncer
         [Obsolete]
         public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
 
-        public List<string> DesiredAttributes { get; set; } = ["MetemAnnouncer"]; //todo maybe enum for this string idk
+        public List<string> DesiredAttributes { get; set; } = ["Metem"]; //todo maybe enum for this string idk
         
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
@@ -47,13 +47,11 @@ namespace PvpAnnouncer
         public int Percent { get; set; } = 70; 
         
         public bool ShowNotification { get; set; } = false;
-
-        public HashSet<string> Dev_VoLineList { get; set; } = []; //todo remove this crap
         
-        //todo:
-        //store voiceline definitions
-        //store event=>Voiceline[] mapping 
-        //store event definitions (later once i've ported voicelines and mapping)
+        //Notes for when we're letting people customize things
+        //store overriden voiceline definitions
+        //store overriden event=>Voiceline[] mapping 
+        //store overriden event definitions 
         //preserve readonly defaults, read from them on first load
         //maybe read from resources to get the defaults(press button to reset everything)
         //encourage sharing - export the new stuff maybe
@@ -62,6 +60,8 @@ namespace PvpAnnouncer
         
  
         public string Language { get; set; } = "en";
+        //todo CHANGE LANGUAGE TO USE THE LUMINA ENUM AND THE HELPER FUNCTION AND MAKE IT DYNAMIC
+        //TODO ALLOW PEOPLE TO PICK THE LANGUAGE FOR AUDIO AND FOR THE TEXT
 
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -44,23 +45,24 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
         
         if (j["icon"] != null)
         {
-            builder.WithIcon(j["icon"]!.GetValue<uint>());
+            builder.WithIcon(Convert.ToUInt32(j["icon"]!.GetValue<string>()));
         }
         
         if (j["transcription"] != null)
         {
-            var dict =  j["transcription"]!.Deserialize<Dictionary<string, string>>();
+            var tranNode = j["transcription"];
+            var dict =  j["transcription"][0].Deserialize<Dictionary<string, string>>();
             builder.WithTranscription(dict ?? []);
         }
         
         if (j["duration"] != null)
         {
-            builder.WithDuration(j["duration"]!.GetValue<byte>());
+            builder.WithDuration(Convert.ToByte(j["duration"]!.GetValue<string>()));
         }
                 
         if (j["style"] != null)
         {
-            builder.WithStyle(j["style"]!.GetValue<byte>());
+            builder.WithStyle(Convert.ToByte(j["style"]!.GetValue<string>()));
         }
         if (j["shoutcaster"] != null)
         {
@@ -85,17 +87,17 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
         
         if (j["contentDirectorBattleTalkVo"] != null)
         {
-            builder.WithContentDirectorBattleTalkVo(j["contentDirectorBattleTalkVo"]!.GetValue<uint>());
+            builder.WithContentDirectorBattleTalkVo(Convert.ToUInt32(j["contentDirectorBattleTalkVo"]!.GetValue<string>()));
         }
         
         if (j["npcYell"] != null)
         {
-            builder.WithNpcYell(j["npcYell"]!.GetValue<uint>());
+            builder.WithNpcYell(Convert.ToUInt32(j["npcYell"]!.GetValue<string>()));
         }
         
         if (j["instanceContentTextDataRow"] != null)
         {
-            builder.WithInstanceContentTextDataRow(j["instanceContentTextDataRow"]!.GetValue<uint>());
+            builder.WithInstanceContentTextDataRow(Convert.ToUInt32(j["instanceContentTextDataRow"]!.GetValue<string>()));
         }
 
         

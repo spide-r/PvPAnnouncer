@@ -16,8 +16,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
 {
     private Shoutcast _instance = NewShoutcast();
     
-    // todo make sure that the announcer pulls from transcription when seeing a shoutcast
-    //todo make the config finally let you change the language of the text as well as the audio
+    //todo make the config finally let you change the language of the text as well as the audio 
     
     public Shoutcast Build()
     {
@@ -26,7 +25,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         //todo check and warn for screwed up shoutcast obj
         if (result.Transcription.Keys.Count == 0) //no manual text transcription
         {
-            if ( result is {ContentDirectorBattleTalkVo: 0, InstanceContentTextDataRow: 0, NpcYell: 0})
+            if ( result is {ContentDirectorBattleTalkVo: 0, InstanceContentTextDataRow: 0, NpcYell: 0, CutsceneLine: ""})
             {
                 PluginServices.PluginLog.Error($"No transcription or sheet entry found for {result.Id}");
                 return NewShoutcast();
@@ -79,7 +78,8 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
 
         if (result.CutsceneLine is not "")
         {
-            var expac = 4; //todo this is going to fail until you can fiddle with what that ex(N) means
+            PluginServices.PluginLog.Verbose("Csline: " + result.CutsceneLine);
+            var expac = 69; //todo this is going to fail until you can fiddle with what that ex(N) means
             var splitLine = result.CutsceneLine.Split("_");
             var number = splitLine[2];
             var secondNumber = splitLine[3];
@@ -91,8 +91,8 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         
         if (!dataManager.FileExists(result.GetShoutcastSoundPathWithLang("ja")))
         {
-            PluginServices.PluginLog.Error($"No sound path found for shoutcast {result.Id}: {result.SoundPath}");
-            return NewShoutcast();
+            PluginServices.PluginLog.Error($"No sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
+           // return NewShoutcast();
         }
 
         _instance = NewShoutcast();

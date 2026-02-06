@@ -32,9 +32,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="json\event.json" />
-        <Content Include="json\mapping.json" />
-        <Content Include="json\shoutcast.json" />
+        <EmbeddedResource Include="json\event.json" />
+        <EmbeddedResource Include="json\mapping.json" />
+        <EmbeddedResource Include="json\shoutcast.json" />
         <Content Include="PvPAnnouncer.json" />
         <Content Include="PvPAnnouncer\packages.lock.json" />
     </ItemGroup>
