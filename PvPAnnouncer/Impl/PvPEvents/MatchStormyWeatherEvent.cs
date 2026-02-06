@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using Lumina.Excel.Sheets;
-using PvPAnnouncer.Data;
+﻿using Lumina.Excel.Sheets;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
@@ -16,11 +13,6 @@ public class MatchStormyWeatherEvent: PvPEvent
         InternalName = "MatchStormyWeatherEvent";
     }
 
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return [StormParasols, Thunderstorm];
-    }
 
     public override bool InvokeRule(IMessage message)
     {

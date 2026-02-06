@@ -17,10 +17,6 @@ public class MatchConditionsEvent : PvPEvent
     
     
     private List<Shoutcast> SoundPathsList { get; }
-    public override List<Shoutcast> SoundPaths()
-    {
-        return SoundPathsList;
-    }
 
     public override bool InvokeRule(IMessage message)
     {

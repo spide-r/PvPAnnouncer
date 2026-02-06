@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
+
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyMitUsedEvent: PvPActionEvent
@@ -13,13 +11,6 @@ public class AllyMitUsedEvent: PvPActionEvent
     {
         Name = "Mitigation";
         InternalName = "AllyMitUsedEvent";
-    }
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return  [IroncladDefense, WhatAClash, ThrillingBattle, MjDontStandAChance, BestDefenceIsGoodDefence, 
-            DoYourWorst, KeepYourGuardUp, SoundDecision, SmallMerciesYshtola, MakeReady, UseConfidenceAgainstThem,
-            WontFallHereKrile, HaveFaithAllWell, MustStandStrongKrile, KeepYourGuardUpWuk];
     }
 
     public override bool InvokeRule(IMessage message)

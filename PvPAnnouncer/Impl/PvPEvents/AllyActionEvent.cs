@@ -11,22 +11,16 @@ public class AllyActionEvent : PvPActionEvent
 {
     //generic event for specific action and sound pairings
 
-    private List<Shoutcast> SoundPathsList { get; }
     private uint[] ActionIds { get; }
     
     public AllyActionEvent(uint[] actionIds,
         List<Shoutcast> soundPaths, string name = "Action", string internalName = "internal")
     {
-        SoundPathsList = soundPaths;
         ActionIds = actionIds;
         Name = name;
         InternalName = internalName;
     }
 
-    public override List<Shoutcast> SoundPaths()
-    {
-        return SoundPathsList;
-    }
     public override bool InvokeRule(IMessage p)
     {
         if (p is ActionEffectMessage)

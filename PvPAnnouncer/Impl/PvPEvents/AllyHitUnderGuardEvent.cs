@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
+
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyHitUnderGuardEvent: PvPActionEvent
@@ -16,15 +14,6 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
     {
         Name = "Hit while under Guard";
         InternalName = "AllyHitUnderGuardEvent";
-    }
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return [ClearlyAnticipated, FeltThatOneStillStanding, SawThroughIt, IroncladDefense, 
-            WhatAClash, DirectHitStillStanding, NotFastEnough, MjHeatingUp, MjStillStandingGentle, 
-            WhatANuisance, WontLetThemGetAway, DefeatIsNotAnOption, DoYourWorst, KeepYourGuardUp, ComeOn,
-            TreadCautiously, DangerousMomentIndeed, UseConfidenceAgainstThem, StandFast, WontFallHereKrile, HaveFaithAllWell, MustStandStrongKrile,
-            CloseOneWuk, NothingToFearYet, MuchToBeExpected, VauntedFortitude, DanceForMe, RunBeastRun, EasyNowDeepBreaths];
     }
 
     public override bool InvokeRule(IMessage arg)

@@ -13,18 +13,12 @@ public class EnemyActionEvent : PvPActionEvent
     public EnemyActionEvent(uint[] actionIds, List<Shoutcast> soundPaths, Dictionary<Personalization, List<Shoutcast>> personalizedSoundPaths, string name = "Enemy Actions", string internalName = "EnemyActions")
     {
         _actionIds = actionIds;
-        SoundPathsList = soundPaths;
         PersonalizedSoundPathsList = personalizedSoundPaths;
         Name = name;
         InternalName = internalName;
     }
 
-    public List<Shoutcast> SoundPathsList { get; init; }
     public Dictionary<Personalization, List<Shoutcast>> PersonalizedSoundPathsList { get; init; }
-    public override List<Shoutcast> SoundPaths()
-    {
-        return SoundPathsList;
-    }
 
     public override bool InvokeRule(IMessage arg)
     {

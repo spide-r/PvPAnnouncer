@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Messages;
+﻿using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
 
 namespace PvPAnnouncer.impl.PvPEvents;
 
@@ -14,17 +10,6 @@ public class MaxBattleFeverEvent: PvPEvent
     {
         Name = "Gaining Battle High V / Flying High";
         InternalName = "MaxBattleFeverEvent";
-    }
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return [WhatPower, RainOfDeath, DontStopNow, RoofCavedSuchDevastation, TyrannyTimeMasc, HerCharmsNotDeniedFem,
-            GatheringAetherFem, UnusedOhMercyFem, DGFeverPich, YesYesJustSo, More, LetThisMomentLastForever, Hahahahahaha,
-            Kill, Rend, KeepItUp, KeepUpTheOffensive, JustWhatWeNeeded, OnwardsAndUpwards, JustGettingStarted, AllAccordingToPlan, PraiseOrPity, KeepThemOnTheirHeels,
-            StarsFavorUs, TheHandIsOurs, LivingLegends, GiveItEverything, FightHardNotHardEnough, CourageAndZeal, BefittingMyInspiration,
-            GoodThingsWait, GettingInterestingWuk, YouReallyAreFamous, Impressive, NotHoldingAnythingBack, 
-            KeepItUpWuk, NeverFailToImpress, EnjoyingYourself, EnjoyingThisArentYou, LetAllCreationBeConsumed, 
-            InfernoSwelling, PreciselyWhatNeeded, JustTheBeginning];
     }
 
     public override bool InvokeRule(IMessage message)

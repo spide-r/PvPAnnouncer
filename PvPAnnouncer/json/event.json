@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Horrid Roar",
+    "id": "HorridRoarEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29496],
+    "shouts": ["RoarNidhogg"]
+  },
+  {
+    "name": "World Swallower",
+    "id": "AllyVprLBEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [39190],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "CruelCoil", "EitherSide", "SomethingRevolting"]
+  },
+  {
+    "name": "Backlash",
+    "id": "AllyBacklashEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [39187],
+    "shouts": ["RegenCapacityMasc", "LWCompletelyHealed", "LWOutOfControl"]
+  },
+  {
+    "name": "Slither",
+    "id": "AllySlitherEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [39184],
+    "shouts": ["ArmSlitheringOutDisgustingMasc", "RoundRingMasc"]
+  },
+  {
+    "name": "Phalanx",
+    "id": "AllyPldLBEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29069],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "AllTheseWeaponsMasc"]
+  },
+  {
+    "name": "Comet",
+    "id": "AllyCometEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [43252],
+    "shouts": ["UnleashedFullMightMasc"]
+  },
+  {
+    "name": "Marksman's Spite",
+    "id": "AllyMchLBEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29415],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "MassiveCannonFem"]
+  },
+  {
+    "name": "Soul Resonance",
+    "id": "AllyBlmLBEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29662],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "GatheringAetherFem", "ConvertAetherFem", "DischargeAether", "UnleashedANewFeralSoul"]
+  },
+  {
+    "name": "Meteodrive",
+    "id": "AllyMnkLbEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29485],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "BoundingFromWallToWallMasc"]
+  },
+  {
+    "name": "Seraphism",
+    "id": "AllySchLbEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [41502],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "GrownWingsFem", "SomethingGrowingFem"]
+  },
+  {
+    "name": "Tenebrae Lemurum",
+    "id": "AllyRprLBEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29553],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "EitherSide", "UnleashedANewFeralSoul", "ConvertAetherFem", "SomethingGrowingFem", "EvenMoreAether", "TTAlteredFormMasc", "BadFeeling", "Transforming", "ItsAliveLindwurm"]
+  },
+  {
+    "name": "Full Swing, Wind's Reply",
+    "id": "AllyKBActionEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [43245, 41509],
+    "shouts": ["SentRivalFlyingMasc"]
+  },
+  {
+    "name": "Swift",
+    "id": "AllySwiftEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [43247],
+    "shouts": ["SuchSpeedMasc"]
+  },
+  {
+    "name": "Biolysis",
+    "id": "AllyBiolysisEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29233],
+    "shouts": ["VenomStrikeFem"]
+  },
+  {
+    "name": "Biolysis From Enemies",
+    "id": "EnemyBiolysisEvent",
+    "eventType": "EnemyActionEvent",
+    "actionIds": [29233],
+    "shouts": ["StruckWithVenon", "MutationCorrupting"]
+  },
+  {
+    "name": "Contradance",
+    "id": "AllyDncLBEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29432],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "HerCharmsNotDeniedFem", "FeelingLoveFem"]
+  },
+  {
+    "name": "Flarethrower (Rival Wings)",
+    "id": "AllyFlarethrowerEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [9978],
+    "shouts": ["StartedFire", "BurnBurn"]
+  },
+  {
+    "name": "Enemy Flarethrower (Rival Wings)",
+    "id": "EnemyFlarethrowerEvent",
+    "eventType": "EnemyActionEvent",
+    "actionIds": [9978],
+    "shouts": ["StartedFire", "BurnBurn"]
+  },
+  {
+    "name": "Enemy Contradance",
+    "id": "EnemyDncLBEvent",
+    "eventType": "EnemyActionEvent",
+    "actionIds": [29432],
+    "shouts": ["ResistTheIrresistible", "InvitationToDance"]
+  },
+  {
+    "name": "Instant Kills",
+    "id": "AllyInstantKillEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29537, 29515, 29516, 41458],
+    "shouts": ["BannedCompoundRobot", "VFWickedWeapon", "UnusedOhMercyFem", "UnusedNoRespectMasc", "Hahahahahaha", "Kill", "More", "Rend"]
+  },
+  {
+    "name": "Rising Phoenix/Flare Star/Scorch",
+    "id": "AllyFireEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29481, 41480, 41491],
+    "shouts": ["StartedFire", "BurnBurn", "InfernoSwelling"]
+  },
+  {
+    "name": "Blota",
+    "id": "AllyPullEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29081],
+    "shouts": ["ChainDeathmatch"]
+  },
+  {
+    "name": "Communio",
+    "id": "AllyCommunioEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29554],
+    "shouts": ["PunishingAttackFusion"]
+  },
+  {
+    "name": "Celestial River",
+    "id": "AllyAstLbEvent",
+    "eventType": "AllyActionEvent",
+    "actionIds": [29255],
+    "shouts": ["{{LIMIT_BREAK_LIST}}", "River", "StarsFavorUs", "DanceOfTheStars"]
+  }
+]

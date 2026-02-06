@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -12,11 +11,6 @@ public class AllyLimitBreakEvent: PvPActionEvent
     {
         Name = "Limit Breaks";
         InternalName = "AllyLimitBreakEvent";
-    }
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return InternalConstants.LimitBreakList;
     }
 
     public override bool InvokeRule(IMessage message)

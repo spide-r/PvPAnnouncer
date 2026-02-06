@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
+
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class AllyPulledByDrkEvent: PvPActionEvent
@@ -14,11 +12,6 @@ public class AllyPulledByDrkEvent: PvPActionEvent
     {
         Name = "Pulled By Dark Knight";
         InternalName = "AllyPulledByDrkEvent";
-    }
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return [SuckedIn, ThrillingBattle, Quicksand, MjRivalVying, WinThisYet, Hahahahahaha, ATestOfYourReflexes];
     }
 
     public override bool InvokeRule(IMessage message)

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
+
 namespace PvPAnnouncer.impl.PvPEvents;
 
 public class EnemyMissedCc: PvPActionEvent
@@ -14,16 +12,6 @@ public class EnemyMissedCc: PvPActionEvent
     {
         Name = "Cleansing & Dodging CC";
         InternalName = "EnemyMissedCcEvent";
-    }
-
-    public override List<Shoutcast> SoundPaths()
-    {
-        return
-        [
-            BeautifullyDodged, SawThroughIt, EffortlesslyDodged, ClearlyAnticipated, StylishEvasion, AvoidedWithEase,
-            DodgedEverything, ImpressiveFootwork, DancingAwayUnharmed, AnotherAttackEvaded, 
-            SlippedBeyondReach, ThisIsGoingWell, NothingToWorryWuk, RunBeastRun
-        ];
     }
 
     public override bool InvokeRule(IMessage message)
