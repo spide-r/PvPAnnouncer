@@ -1,0 +1,5889 @@
+[
+  {
+    "id": "IntroBc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["BlackCat"],
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000010_METEM"
+  },
+  {
+    "id": "IntroBb",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["BruteBomber"],
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000050_METEM"
+  },
+  {
+    "id": "IntroHbl",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["HoneyBLovely"],
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000040_METEM"
+  },
+  {
+    "id": "IntroWt",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["WickedThunder"],
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000060_METEM"
+  },
+  {
+    "id": "IntroDg",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["DancingGreen"],
+    "cutsceneLine": "TEXT_VOICEMAN_07210_000010_METEM"
+  },
+  {
+    "id": "IntroSr",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["SugarRiot"],
+    "cutsceneLine": "TEXT_VOICEMAN_07210_000020_METEM"
+  },
+  {
+    "id": "IntroBa",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["BruteAbominator"],
+    "cutsceneLine": "TEXT_VOICEMAN_07210_000030_METEM"
+  },
+  {
+    "id": "IntroHb",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["HowlingBlade"],
+    "cutsceneLine": "TEXT_VOICEMAN_07210_000040_METEM"
+  },
+  {
+    "id": "IntroVf",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["VampFatale"],
+    "cutsceneLine": "TEXT_VOICEMAN_07410_000010_METEM"
+  },
+  {
+    "id": "IntroDbRh",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["DeepBlueRedHot"],
+    "cutsceneLine": "TEXT_VOICEMAN_07410_000020_METEM"
+  },
+  {
+    "id": "IntroTt",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["Tyrant"],
+    "cutsceneLine": "TEXT_VOICEMAN_07410_000050_METEM"
+  },
+  {
+    "id": "IntroLw",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "Attributes": ["President"],
+    "cutsceneLine": "TEXT_VOICEMAN_07410_000080_METEM"
+  },
+
+
+  {
+    "id": "VictoryWt",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000080_METEM"
+  },
+  {
+    "id": "GenericVictory",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000030_METEM"
+  },
+  {
+    "id": "NewGcBornVictory",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "cutsceneLine": "TEXT_VOICEMAN_07410_000070_METEM"
+  },
+  {
+    "id": "PresDefeated",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "duration": "6",
+    "cutsceneLine": "TEXT_VOICEMAN_07410_000090_METEM"
+  },
+  {
+    "id": "RobotKo",
+    "shoutcaster": "Referee",
+    "duration": "6",
+    "style": "5",
+    "cutsceneLine": "TEXT_VOICEMAN_07010_000020_REFEREE"
+  },
+  {
+    "id": "BannedCompoundRobot",
+    "shoutcaster": "Referee",
+    "ContentDirectorBattleTalkVo": "8205440"
+  },
+
+  {
+    "id": "ViciousBlow",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205341"
+  },
+  {
+    "id": "FeltThatOneStillStanding",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205342"
+  },
+  {
+    "id": "BeautifullyDodged",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205343"
+  },
+  {
+    "id": "SawThroughIt",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205344"
+  },
+  {
+    "id": "WentDownHard",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205345"
+  },
+  {
+    "id": "TheyreDownIsItOver",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205346"
+  },
+  {
+    "id": "BackUpGrit",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205347"
+  },
+  {
+    "id": "StillInIt",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205348"
+  },
+  {
+    "id": "WhatPower",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205349"
+  },
+  {
+    "id": "PotentMagicks",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205350"
+  },
+  {
+    "id": "IroncladDefense",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205351"
+  },
+  {
+    "id": "Fallen",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205352"
+  },
+  {
+    "id": "AllOverUntilNextTime",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205388"
+  },
+  {
+    "id": "StruckSquare",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205772"
+  },
+  {
+    "id": "Oof",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205773"
+  },
+  {
+    "id": "CouldntAvoid",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205774"
+  },
+  {
+    "id": "MustHaveHurtNotOut",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205775"
+  },
+  {
+    "id": "EffortlesslyDodged",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205776"
+  },
+  {
+    "id": "ClearlyAnticipated",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205777"
+  },
+  {
+    "id": "StylishEvasion",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205778"
+  },
+  {
+    "id": "AvoidedWithEase",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205779"
+  },
+  {
+    "id": "TooMuch",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205780"
+  },
+  {
+    "id": "ChallengerDownIsThisEnd",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205781"
+  },
+  {
+    "id": "RisesAgain",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205782"
+  },
+  {
+    "id": "BackOnFeet",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205783"
+  },
+  {
+    "id": "OofMustHaveHurt",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206066"
+  },
+  {
+    "id": "NotFastEnough",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206067"
+  },
+  {
+    "id": "CantBeCareless",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206068"
+  },
+  {
+    "id": "DirectHitStillStanding",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206069"
+  },
+  {
+    "id": "ImpressiveFootwork",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206070"
+  },
+  {
+    "id": "DancingAwayUnharmed",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206071"
+  },
+  {
+    "id": "AnotherAttackEvaded",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206072"
+  },
+  {
+    "id": "SlippedBeyondReach",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206073"
+  },
+  {
+    "id": "BeenFelled",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206074"
+  },
+  {
+    "id": "TheyreDownCanTheyRecover",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206075"
+  },
+  {
+    "id": "WhatFightingSpirit",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206076"
+  },
+  {
+    "id": "BackInAction",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206077"
+  },
+
+
+  {
+    "id": "FirstOpponent",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205353",
+    "Attributes": ["BlackCat"]
+  },
+  {
+    "id": "FelineFerocity",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205354",
+    "Attributes": ["BlackCat"]
+  },
+  {
+    "id": "LitheAndLethal",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205355",
+    "Attributes": ["BlackCat"]
+  },
+  {
+    "id": "NineLives",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205358",
+    "Attributes": ["BlackCat"]
+  },
+  {
+    "id": "FeralOnslaught",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205360",
+    "Attributes": ["BlackCat"]
+  },
+  {
+    "id": "MyRing",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205356"
+  },
+  {
+    "id": "RepairRing",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205357"
+  },
+
+
+  {
+    "id": "HoneyBShowBegun",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205361",
+    "Attributes": ["HoneyBLovely"]
+  },
+  {
+    "id": "SavorSting",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205363",
+    "Attributes": ["HoneyBLovely"]
+  },
+  {
+    "id": "ChangedRoutine",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205367",
+    "Attributes": ["HoneyBLovely"]
+  },
+  {
+    "id": "VenomStrikeFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205362",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "FeelingLoveFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205364",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "ResistTheIrresistible",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205365"
+  },
+  {
+    "id": "HerCharmsNotDeniedFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205366",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "WhatAClash",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205368"
+  },
+
+
+  {
+    "id": "BBMuscled",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205369",
+    "Attributes": ["BruteBomber"]
+  },
+  {
+    "id": "BBEmbiggening",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205371",
+    "Attributes": ["BruteBomber"]
+  },
+  {
+    "id": "KaboomBBSpecial",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205375",
+    "Attributes": ["BruteBomber"]
+  },
+  {
+    "id": "BBDesprate",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205378",
+    "Attributes": ["BruteBomber"]
+  },
+  {
+    "id": "AssaultedRefMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205370",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "FuseField",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205376"
+  },
+  {
+    "id": "ChainDeathmatch",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205377"
+  },
+
+
+  {
+    "id": "WTReturned",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205379",
+    "Attributes": ["WickedThunder"]
+  },
+  {
+    "id": "SomethingGrowingFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205383",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "GatheringAetherFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205385",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "ConvertAetherFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205386",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "MassiveCannonFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205380",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "GrownWingsFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205381",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "UnleashedANewFeralSoul",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205384",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "DischargeAether",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205382",
+    "Attributes": ["WickedThunder"]
+  },
+  {
+    "id": "BattleElectrifying",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205387"
+  },
+
+
+  {
+    "id": "DGSteps",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205785",
+    "Attributes": ["DancingGreen"]
+  },
+  {
+    "id": "UpstartBegins",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205784"
+  },
+  {
+    "id": "InvitationToDance",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205786"
+  },
+  {
+    "id": "DGFeverTakenHold",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205787",
+    "Attributes": ["DancingGreen"]
+  },
+  {
+    "id": "DGFeverPich",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205788",
+    "Attributes": ["DancingGreen"]
+  },
+
+
+  {
+    "id": "SRGallery",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205789",
+    "Attributes": ["SugarRiot"]
+  },
+  {
+    "id": "SRBringsWorkToLife",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205790",
+    "Attributes": ["SugarRiot"]
+  },
+  {
+    "id": "Quicksand",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205793"
+  },
+  {
+    "id": "River",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205795"
+  },
+  {
+    "id": "StormParasols",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205797"
+  },
+  {
+    "id": "Lava",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205798"
+  },
+  {
+    "id": "RingBecomeDesert",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205791"
+  },
+  {
+    "id": "StormOfNeedles",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205792"
+  },
+  {
+    "id": "SuckedIn",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205794"
+  },
+  {
+    "id": "Thunderstorm",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205796"
+  },
+  {
+    "id": "TransformativePiece",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205799"
+  },
+
+
+  {
+    "id": "BAMeansBusiness",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205800",
+    "Attributes": ["BruteAbominator"]
+  },
+  {
+    "id": "ChimericalFoe",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205801"
+  },
+  {
+    "id": "FeralPowersWeapon",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205802",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "FiendishFlora",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205803"
+  },
+  {
+    "id": "CamerasPetrified",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205804"
+  },
+  {
+    "id": "BAHanging",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205806",
+    "Attributes": ["BruteAbominator"]
+  },
+  {
+    "id": "BBLariat",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205811",
+    "Attributes": ["BruteAbominator"]
+  },
+  {
+    "id": "PunishingAttackFusion",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205812"
+  },
+  {
+    "id": "SentRivalFlyingMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205805",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "BoundingFromWallToWallMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205807",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "RoofCavedSuchDevastation",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205808"
+  },
+  {
+    "id": "SendingCameras",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205809"
+  },
+  {
+    "id": "StartedFire",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205810"
+  },
+  {
+    "id": "DodgedEverything",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205813"
+  },
+  {
+    "id": "BrutalBlow",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205814"
+  },
+  {
+    "id": "ThrillingBattle",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205815"
+  },
+
+
+  {
+    "id": "WolfLair",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205816",
+    "Attributes": ["HowlingBlade"]
+  },
+  {
+    "id": "SuchSpeedMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205817",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "ColossalThing",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205818"
+  },
+  {
+    "id": "ColossusSwordMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205819",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "SomethingsAmissMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205820",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "RingDestroyedFallen",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205821"
+  },
+  {
+    "id": "MovedToFloatingDeathtraps",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205822"
+  },
+  {
+    "id": "DestroyedIsle",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205823",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "NeitherSideHoldingBack",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8205824"
+  },
+
+
+  {
+    "id": "VFFeastEyes",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206078",
+    "Attributes": ["VampFatale"]
+  },
+  {
+    "id": "FallPreyCruelMistress",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206079"
+  },
+  {
+    "id": "VFWickedWeapon",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206080"
+  },
+  {
+    "id": "NowhereLeft",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206081",
+    "Attributes": ["VampFatale"]
+  },
+  {
+    "id": "DrainingAudienceFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206082",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "VFUnleashedAether",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206083",
+    "Attributes": ["VampFatale"]
+  },
+  {
+    "id": "SpectacleResumes",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206084"
+  },
+  {
+    "id": "RainOfDeath",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206085"
+  },
+  {
+    "id": "DrainingCrowd",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206086",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "EvenMoreAether",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206087",
+    "Attributes": ["FemPronouns"]
+  },
+  {
+    "id": "LightheadedFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206088",
+    "Attributes": ["VampFatale"]
+  },
+  {
+    "id": "SiphonedAether",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206089",
+    "Attributes": ["FemPronouns"]
+  },
+
+  {
+    "id": "TagTeam",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206090",
+    "Attributes": ["DeepBlueRedHot"]
+  },
+  {
+    "id": "SuchScorn",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206091"
+  },
+  {
+    "id": "FearsomeFlamesMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206092",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "FlamesSpreading",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206093"
+  },
+  {
+    "id": "DBTaggingIn",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206094",
+    "Attributes": ["DeepBlueRedHot"]
+  },
+  {
+    "id": "EnormousWave",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206095"
+  },
+  {
+    "id": "BothBrosEntered",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206096",
+    "Attributes": ["DeepBlueRedHot"]
+  },
+  {
+    "id": "DoubleTrouble",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206097",
+    "Attributes": ["DeepBlueRedHot"]
+  },
+  {
+    "id": "Fusion",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206098",
+    "Attributes": ["DeepBlueRedHot"]
+  },
+  {
+    "id": "HoldingNothingBack",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206099",
+    "Attributes": ["DeepBlueRedHot"]
+  },
+
+
+  {
+    "id": "GrandChampion",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206100"
+  },
+  {
+    "id": "TTThrone",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206101"
+  },
+  {
+    "id": "TyrannyTimeMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206102",
+    "Attributes": ["Tyrant"]
+  },
+  {
+    "id": "HoldingTheirOwn",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206103"
+  },
+  {
+    "id": "AllTheseWeaponsMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206104",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "AbsoluteBrutality",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206105"
+  },
+  {
+    "id": "SuchFerocity",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206106"
+  },
+  {
+    "id": "TTAlteredFormMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206107",
+    "Attributes": ["Tyrant"]
+  },
+  {
+    "id": "UnleashedFullMightMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206108",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "SplitRingHalfMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206109",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "ThrownRingMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206110",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "RingRestored",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206111"
+  },
+  {
+    "id": "EitherSide",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206112"
+  },
+
+  {
+    "id": "PresidentMustPay",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206113"
+  },
+  {
+    "id": "ArmLifeOwnMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206114",
+    "Attributes": ["President"]
+  },
+  {
+    "id": "ArmSlitheringOutDisgustingMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206115",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "LWScatteredGore",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206116",
+    "Attributes": ["President"]
+  },
+  {
+    "id": "CruelCoil",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206117"
+  },
+  {
+    "id": "ChampCrushed",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206118"
+  },
+  {
+    "id": "RoundRingMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206119",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "RingPieces",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206120"
+  },
+  {
+    "id": "GoreLatched",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206121"
+  },
+  {
+    "id": "LWCompletelyHealed",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206122",
+    "Attributes": ["President"]
+  },
+  {
+    "id": "LWOutOfControl",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206123",
+    "Attributes": ["President"]
+  },
+  {
+    "id": "PowerRunAmokMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206124",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "RegenCapacityMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206125",
+    "Attributes": ["MascPronouns"]
+  },
+  {
+    "id": "StruckWithVenon",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206127"
+  },
+  {
+    "id": "SomethingRevolting",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206128"
+  },
+  {
+    "id": "VictoryChamp",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "ContentDirectorBattleTalkVo": "8206129"
+  },
+
+
+  {
+    "id": "UnusedNoRespectMasc",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8205372",
+    "Attributes": ["MascPronouns"],
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "This man has absolutely no respect for the rules!"
+      }
+    ]
+  },
+  {
+    "id": "UnusedUpOnThePost",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8205373",
+    "Attributes": ["MascPronouns"],
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "He's up on the post! You know what that means."
+      }
+    ]
+  },
+  {
+    "id": "UnusedBombarianPress",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8205374",
+    "Attributes": ["Personalization"],
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "It's the Bombarian press!"
+      }
+    ]
+  },
+  {
+    "id": "UnusedOhMercyFem",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8205359",
+    "Attributes": ["FemPronouns"],
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Oh mercy is she doing what I think she's doing?"
+      }
+    ]
+  },
+  {
+    "id": "UnusedBackTail",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206126",
+    "Attributes": ["Personalization"],
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Yes! You've got the serpent on the back tail! Press the advantage and finish this!"
+      }
+    ]
+  },
+  {
+    "id": "MjGameChanger",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291277",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "This could be a real game changer."
+      }
+    ]
+  },
+  {
+    "id": "MjBoldMove",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291276",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A bold move from our challenger, but will it pay off?"
+      }
+    ]
+  },
+  {
+    "id": "MjChallengerRecover",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291278",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "How will the challenger recover from this I wonder?"
+      }
+    ]
+  },
+  {
+    "id": "MjRivalVying",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291279",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Whats this? A rival vying for victory?"
+      }
+    ]
+  },
+  {
+    "id": "MjHeatingUp",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291280",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Things are really heating up. I can scarcely look away."
+      }
+    ]
+  },
+  {
+    "id": "MjHandDecided",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291281",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "There it is. The hand is decided."
+      }
+    ]
+  },
+  {
+    "id": "MjKissLadyLuck",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291282",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "And with a kiss from lady luck, we have our winner."
+      }
+    ]
+  },
+  {
+    "id": "MjGoodnessGracious",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291283",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Oh goodness gracious me."
+      }
+    ]
+  },
+  {
+    "id": "MjOurTile",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291284",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "That should have been our tile, the scoundrel."
+      }
+    ]
+  },
+  {
+    "id": "MjPainfulToWatch",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291285",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Oh the horror! It was too painful to watch."
+      }
+    ]
+  },
+  {
+    "id": "MjClobberedWithTable",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291286",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Ha! You all but clobbered them with a table that round."
+      }
+    ]
+  },
+  {
+    "id": "MjBeautifullyPlayed",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291287",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Beautifully played my friend, beautifully played."
+      }
+    ]
+  },
+  {
+    "id": "MjMadeYourMark",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291288",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You certainly made your mark this round. Keep it up!"
+      }
+    ]
+  },
+  {
+    "id": "MjDontStandAChance",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291289",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Mmm, letting them think they stand a chance. I like it."
+      }
+    ]
+  },
+  {
+    "id": "MjChallengerDownHardGentle",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291290",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Oh my, our challenger went down hard."
+      }
+    ]
+  },
+  {
+    "id": "MjStillInItGentle",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291291",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Our challenger is still in it! But for how long?"
+      }
+    ]
+  },
+  {
+    "id": "MjStillStandingGentle",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291292",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Ooh even I felt that one, but our challenger is still standing."
+      }
+    ]
+  },
+  {
+    "id": "MjDownNotOut",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291293",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Our challenger is down, but not out."
+      }
+    ]
+  },
+  {
+    "id": "MjTitanOfTable",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291294",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "The titan of the table, tactician of the tiles! Brilliantly Played."
+      }
+    ]
+  },
+  {
+    "id": "MjCommendableEffort",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291295",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A commendable effort! You should be proud."
+      }
+    ]
+  },
+  {
+    "id": "MjReportingLive",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291296",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "This was metem, reporting live from the Mahjong table. Thank you and good night."
+      }
+    ]
+  },
+  {
+    "id": "MjCompetitionTooMuch",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291297",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Was the competition simply too much for our challenger? I should hope not."
+      }
+    ]
+  },
+  {
+    "id": "MjUtterlyHumiliated",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8291298",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "Oh dear our challenger has been utterly humiliated! I fear this will haunt them."
+      }
+    ]
+  },
+
+
+  {
+    "id": "LindwurmsHeart",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206130",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Huh? Is it? The Lindwurm’s heart!?"
+      }
+    ]
+  },
+  {
+    "id": "BadFeeling",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206131",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "It’s pulsating… I’ve got a bad feeling about this!"
+      }
+    ]
+  },
+  {
+    "id": "Transforming",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206132",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "It’s contorted…transforming!"
+      }
+    ]
+  },
+  {
+    "id": "ItsAliveLindwurm",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206133",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "It’s alive! It’s the birth of a new Lindwurm!"
+      }
+    ]
+  },
+  {
+    "id": "BattleNotOverDontDespair",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206134",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Alas, the battle isn’t over yet, but don’t despair Champion!"
+      }
+    ]
+  },
+  {
+    "id": "CreatingMore",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206135",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "The Lindwurm is creating more of itself!"
+      }
+    ]
+  },
+  {
+    "id": "ContinuesToMultiply",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206136",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "The Lindwurm continues to multiply! We’ve gone well beyond mortal limits now!"
+      }
+    ]
+  },
+  {
+    "id": "CuriousProps",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206137",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Some curious props have appeared… What would they possibly be?"
+      }
+    ]
+  },
+  {
+    "id": "TakenOnChampionForm",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206138",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Egads! They’ve taken on the Champion’s form! This bodes ill!"
+      }
+    ]
+  },
+  {
+    "id": "DejaVu",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206139",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Ah-I’ve got a serious case of deja vu here."
+      }
+    ]
+  },
+  {
+    "id": "RingRendInTwo",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206140",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "What destructiveness! The ring has been rend in two!"
+      }
+    ]
+  },
+  {
+    "id": "MutationCorrupting",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206141",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "The mutation is…corrupting the champion! Let’s hope they keep it together!"
+      }
+    ]
+  },
+  {
+    "id": "SomethingsComing",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206142",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Something’s coming! Stay on your toes!"
+      }]
+  },
+  {
+    "id": "WarpedFabric",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206143",
+    "Attributes": ["President"],
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "Woah! What is this place? Did the Lindwurm warp the very fabric of space and time?"
+      }
+    ]
+  },
+  {
+    "id": "AnotherDimension",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206144",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Is this another dimension? I must confess, I am utterly bewildered!"
+      }
+    ]
+  },
+  {
+    "id": "HardPressed",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206145",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A relentless assault! The Champion is hard-pressed!"
+      }
+    ]
+  },
+  {
+    "id": "FeverPitch",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206146",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "The battle has reached a fever pitch, but the Champion still stands!"
+      }
+    ]
+  },
+  {
+    "id": "StayStrong",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206147",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "There’s so many of them! Stay strong, I beg you!"
+      }
+    ]
+  },
+  {
+    "id": "NotSureIUnderstand",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206148",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I’m not sure I understand what’s going on anymore, folks!"
+      }
+    ]
+  },
+  {
+    "id": "LeftRealmOfLogic",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206149",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We appear to have completely left the realm of logic behind!"
+      }
+    ]
+  },
+  {
+    "id": "DefiesComprehension",
+    "icon": "073287",
+    "shoutcaster": "Metem",
+    "soundPath": "sound/voice/vo_line/8206150",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Something that defies all comprehension is unfolding before our very eyes!"
+      }
+    ]
+  },
+  {
+    "id": "ThisEndsHere",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201124",
+    "NpcYell": "3106"
+  },
+  {
+    "id": "DontStopNow",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201342",
+    "NpcYell": "4838"
+  },
+  {
+    "id": "RunBeastRun",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201344",
+    "NpcYell": "4944"
+  },
+  {
+    "id": "DanceForMe",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201345",
+    "NpcYell": "16777"
+  },
+  {
+    "id": "YesYesJustSo",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201349",
+    "NpcYell": "5373"
+  },
+  {
+    "id": "Kill",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201350",
+    "NpcYell": "5372"
+  },
+  {
+    "id": "Rend",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201351",
+    "NpcYell": "5376"
+  },
+  {
+    "id": "More",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201352",
+    "NpcYell": "5374"
+  },
+  {
+    "id": "LetThisMomentLastForever",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8201357",
+    "InstanceContentTextDataRow": "17315"
+  },
+  {
+    "id": "ShowMeYourAll",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8201356",
+    "InstanceContentTextDataRow": "17315"
+  },
+  {
+    "id": "ThePowerToTranscend",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8201354",
+    "InstanceContentTextDataRow": "17314"
+  },
+  {
+    "id": "Hahahahahaha",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201429",
+    "NpcYell": "5375"
+  },
+  {
+    "id": "StillFightInYou",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8203135",
+    "InstanceContentTextDataRow": "31201"
+  },
+  {
+    "id": "HydaelynsChosenMuster",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "soundPath": "sound/voice/vo_line/8203136",
+    "InstanceContentTextDataRow": "31202"
+  },
+  {
+    "id": "LifesFireAlreadySpent",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "soundPath": "sound/voice/vo_line/8203141",
+    "InstanceContentTextDataRow": "31207"
+  },
+  {
+    "id": "RiseOnceMore",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "soundPath": "sound/voice/vo_line/8203142",
+    "InstanceContentTextDataRow": "31208"
+  },
+  {
+    "id": "OverestimatedPotential",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8203144",
+    "InstanceContentTextDataRow": "31213"
+  },
+  {
+    "id": "VauntedFortitude",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8203151",
+    "InstanceContentTextDataRow": "31215"
+  },
+  {
+    "id": "ATestOfYourReflexes",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8203147",
+    "NpcYell": "12274"
+  },
+  {
+    "id": "BurnBurn",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "soundPath": "sound/voice/vo_line/8203155",
+    "InstanceContentTextDataRow": "31210"
+  },
+  {
+    "id": "LetAllCreationBeConsumed",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "5",
+    "soundPath": "sound/voice/vo_line/8203140",
+    "InstanceContentTextDataRow": "31206"
+  },
+  {
+    "id": "InfernoSwelling",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "5",
+    "soundPath": "sound/voice/vo_line/8203139",
+    "InstanceContentTextDataRow": "31205"
+  },
+  {
+    "id": "DoNotDisappoint",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "Attributes": ["FemPronouns"],
+    "cutsceneLine": "TEXT_VOICEMAN_04000_001800_ZENOS"
+  },
+  {
+    "id": "NotWorthy",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_04002_003880_ZENOS"
+  },
+
+  {
+    "id": "DidYouFindFulfillment",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_06006_008210_ZENOS"
+  },
+
+  {
+    "id": "DidYouFindFulfillment",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_06006_008210_ZENOS"
+  },
+
+  {
+    "id": "FarewellFirstFriend",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_04006_001340_ZENOS"
+  },
+
+  {
+    "id": "EndingNewBeginning",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_04006_001220_ZENOS"
+  },
+
+  {
+    "id": "ATaste",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_06001_007510_ZENOS"
+  },
+
+  {
+    "id": "RightToSpare",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "3",
+    "cutsceneLine": "TEXT_VOICEMAN_04002_003840_ZENOS"
+  },
+
+  {
+    "id": "PoorSport",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "cutsceneLine": "TEXT_VOICEMAN_06005_000760_ZENOS"
+  },
+
+  {
+    "id": "HowWeak",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "cutsceneLine": "TEXT_VOICEMAN_04002_003760_ZENOS"
+  },
+
+  {
+    "id": "ExpectNoLessBahamut",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "cutsceneLine": "TEXT_VOICEMAN_04002_004290_ZENOS"
+  },
+
+  {
+    "id": "HunterBecomeHunted",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "4",
+    "cutsceneLine": "TEXT_VOICEMAN_04006_001260_ZENOS"
+  },
+
+  {
+    "id": "EikonSlayer",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "duration": "6",
+    "cutsceneLine": "TEXT_VOICEMAN_04006_001050_ZENOS"
+  },
+
+  {
+    "id": "VictoryWithinReach",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291000",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Victory is within reach. Now to seize it!"
+      }
+    ]},
+  {
+    "id": "ReleaseYourPotential",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291001",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We won't be outdone! Focus, then release your potential."
+      }
+    ]},
+  {
+    "id": "TreadWarily",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291002",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They're poised to win this round. You must tread warily."
+      }
+    ]},
+  {
+    "id": "DoNotLoseHeart",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291003",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "So they draw level. But do not lose heart!"
+      }
+    ]},
+  {
+    "id": "ThaliakProtectUs",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291004",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Again! Thaliak protect us."
+      }
+    ]},
+  {
+    "id": "YouHaveThem",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291005",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "You have them!"
+      }
+    ]},
+  {
+    "id": "PraiseTheTwelve",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291006",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Yes! Praise the twelve."
+      }
+    ]},
+  {
+    "id": "ConfoundIt",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291007",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Confound it. I hadn't anticipated that."
+      }
+    ]},
+  {
+    "id": "OneMoreTurn",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291008",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "If only we had one more turn."
+      }
+    ]},
+  {
+    "id": "DoNotDwellOnIt",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291009",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "This hand wasn't to be. Do not dwell on it."
+      }
+    ]},
+  {
+    "id": "PlayedHandToPerfection",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291010",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You played your hand to perfection!"
+      }
+    ]},
+  {
+    "id": "TriumphWorthyOfCelebration",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291011",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A triumph worthy of celebration, bravo!"
+      }
+    ]},
+  {
+    "id": "VictoryGivesGreaterHope",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291012",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "This victory gives us greater hope for the morrow."
+      }
+    ]},
+  {
+    "id": "CommendableResult",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291013",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A commendable result. Let us stay the course."
+      }
+    ]},
+  {
+    "id": "OutcomeWithHubris",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291014",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Good gods. Did we invite this outcome with our hubris?"
+      }
+    ]},
+  {
+    "id": "PainfulThrashing",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291015",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "A painful thrashing."
+      }
+    ]},
+  {
+    "id": "LearnAndForgeOn",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291016",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Let us learn from this and forge on."
+      }
+    ]},
+  {
+    "id": "KeepYourChinUp",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291017",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "It isn't over yet. Keep your chin up."
+      }
+    ]},
+  {
+    "id": "PerformanceForTheAges",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291018",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "That was a performance for the ages! You truly are our champion!"
+      }
+    ]},
+  {
+    "id": "HoldYourHeadHigh",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291019",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "You played well my friend. You may hold your head high."
+      }
+    ]},
+  {
+    "id": "ProudYetIgnorant",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291021",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "How proud we were, yet ignorant of our own shortcomings."
+      }
+    ]},
+  {
+    "id": "ReplaceIgnoranceWithKnowledge",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291021",
+    "duration": "7",
+    "transcription": [
+      {
+        "en": "You must accept this defeat with grace, and endeavour to replace our ignorance with knowledge."
+      }
+    ]},
+  {
+    "id": "OutplayedClearMinds",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8291022",
+    "duration": "7",
+    "transcription": [
+      {
+        "en": "We were outplayed this time. Let us take a moment to clear our minds."
+      }
+    ]},
+  {
+    "id": "PullYourselfTogether",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8201085",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Pull Yourself together!"
+      }
+    ]},
+  {
+    "id": "FocusRelease",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8201086",
+    "NpcYell": "3089"
+  },
+  {
+    "id": "AwayWithYou",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8201087",
+    "NpcYell": "10247"
+  },
+  {
+    "id": "IHaveMyPride",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8201088",
+    "NpcYell": "3091"
+  },
+  {
+    "id": "StandFast",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8205000",
+    "NpcYell": "17128"
+  },
+  {
+    "id": "WeveComeTooFar",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8203012",
+    "NpcYell": "13466"
+  },
+  {
+    "id": "EasyNowDeepBreaths",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8203015",
+    "NpcYell": "12329"
+  },
+  {
+    "id": "ForTheHouseOfLeveilleur",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8201089",
+    "NpcYell": "14071"
+  },
+  {
+    "id": "SoItComesToThis",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8201091",
+    "NpcYell": "3094"
+  },
+  {
+    "id": "TheoryInPractice",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8202009",
+    "NpcYell": "7740"
+  },
+  {
+    "id": "FocusReleaseAlphinaud",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8202006",
+    "NpcYell": "14068"
+  },
+  {
+    "id": "OnYourFeetAlphinaud",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8202012",
+    "NpcYell": "7743"
+  },
+  {
+    "id": "KeepItUp",
+    "icon": "073008",
+    "shoutcaster": "Alphinaud",
+    "soundPath": "sound/voice/vo_line/8203009",
+    "NpcYell": "7803"
+  },
+  {
+    "id": "GiveItEverythingAlisaie",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291023",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Yes! Give it everything you've got."
+      }
+    ]},
+  {
+    "id": "ShowThemWhatYoureMadeOf",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291024",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That's it. Show them what you're made of!"
+      }
+    ]},
+  {
+    "id": "WontLetThemGetAway",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291025",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We won't let them get away with that of course."
+      }
+    ]},
+  {
+    "id": "WhatANuisance",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291026",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "What a nuisance. Finish them off!"
+      }
+    ]},
+  {
+    "id": "WinThisYet",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291027",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "It's getting crowded but we'll win this yet."
+      }
+    ]},
+  {
+    "id": "JustWhatWeNeeded",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291028",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Ah! Just what we needed!"
+      }
+    ]},
+  {
+    "id": "WontSoonForget",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291030",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "What?! oh we won't soon forget that."
+      }
+    ]},
+  {
+    "id": "BeatenToThePunch",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291031",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Beaten to the punch."
+      }
+    ]},
+  {
+    "id": "WorthyOfGrandfather",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291033",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Amazing! A performance worthy of grandfather in his prime!"
+      }
+    ]},
+  {
+    "id": "ExpectedWhenSerious",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291034",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Only to be expected when you get serious."
+      }
+    ]},
+  {
+    "id": "KeepUpTheOffensive",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291035",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Great work. let's keep up the offensive."
+      }
+    ]},
+  {
+    "id": "OnwardsAndUpwards",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291036",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We can work with this. Onwards and upwards."
+      }
+    ]},
+  {
+    "id": "TwelveGiveMeStrength",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291037",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Twelve give me strength."
+      }
+    ]},
+  {
+    "id": "JustGettingStarted",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291038",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We're just getting started."
+      }
+    ]},
+  {
+    "id": "NothingCantRecoverFrom",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291039",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Nothing we can't recover from."
+      }
+    ]},
+  {
+    "id": "LittleSetback",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291040",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Don't worry. It's just a little setback."
+      }
+    ]},
+  {
+    "id": "OnlyPossibleOutcome",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291041",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "I knew you'd win! When I'm with you it's the only possible outcome."
+      }
+    ]},
+  {
+    "id": "TakeFirstPlaceNextTime",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291042",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "So close. Next time we'll take first place for sure."
+      }
+    ]},
+  {
+    "id": "ScramblingToKeepUp",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291044",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I must say I'm not used to seeing you scrambling to keep up."
+      }
+    ]},
+  {
+    "id": "LaughingInTheEnd",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8291044",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "We won't lose next time! keep at it and we'll be the ones laughing in the end."
+      }
+    ]},
+
+  {
+    "id": "ThisIsNotOver",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8201092",
+    "NpcYell": "3484"
+  },
+  {
+    "id": "ThereIsNoEscapeAlisaie",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8201108",
+    "NpcYell": "7612"
+  },
+  {
+    "id": "BackInTheGame",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8202023",
+    "NpcYell": "7754"
+  },
+  {
+    "id": "OnYourFeetAlisaie",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8202031",
+    "NpcYell": "7762"
+  },
+  {
+    "id": "JustALittleMore",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8202376",
+    "NpcYell": "17776"
+  },
+  {
+    "id": "DefeatIsNotAnOption",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8202528",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Defeat is not an option."
+      }
+    ]},
+
+  {
+    "id": "TurnaboutsFairPlay",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8203018",
+    "duration": "3",
+    "InstanceContentTextDataRow": "31523"
+  },
+
+  {
+    "id": "WellDone",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8203412",
+    "duration": "2",
+    "InstanceContentTextDataRow": "12227"
+  },
+  {
+    "id": "AreYouReady",
+    "icon": "073036",
+    "shoutcaster": "Alisaie",
+    "soundPath": "sound/voice/vo_line/8201636",
+    "NpcYell": "11424"
+  },
+  {
+    "id": "ToTheBoldGoTheSpoils",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291046",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "To the bold go the spoils."
+      }
+    ]},
+  {
+    "id": "OurTurnThancred",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291047",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "My turn! I mean, our turn."
+      }
+    ]},
+  {
+    "id": "ChanceWillCome",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291048",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Worry not. Your chance will come."
+      }
+    ]},
+  {
+    "id": "GainedOnUsWinInEnd",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291049",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They've gained on us but we'll win in the end."
+      }
+    ]},
+  {
+    "id": "SomeCompetitionNow",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291050",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Hmm, we've got some competition now."
+      }
+    ]},
+  {
+    "id": "AllAccordingToPlan",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291051",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "All according to plan."
+      }
+    ]},
+  {
+    "id": "VictoryIsOursThancred",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291052",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "And there it is. Victory is ours!"
+      }
+    ]},
+  {
+    "id": "ThatIsntGood",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291053",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That isn't good."
+      }
+    ]},
+  {
+    "id": "NotMostDisastrous",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291054",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Not the most disastrous outcome to be fair."
+      }
+    ]},
+  {
+    "id": "LadyLuckOtherIdeas",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291055",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Too bad, lady luck had other ideas,"
+      }
+    ]},
+  {
+    "id": "PraiseOrPity",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291056",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I hardly know whether to praise you or pity your opponents."
+      }
+    ]},
+  {
+    "id": "DecisiveVictoryThancred",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291057",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A decisive victory from a decisive strategist."
+      }
+    ]},
+  {
+    "id": "KeepThemOnTheirHeels",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291058",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "That's the way! Keep them on their heels,"
+      }
+    ]},
+  {
+    "id": "SlowAndSteadyThancred",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291059",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Slow and steady wins the game is it?"
+      }
+    ]},
+  {
+    "id": "NotEasyRecovering",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291060",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "It won't be easy recovering from that."
+      }
+    ]},
+  {
+    "id": "CreditWhereDue",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291061",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Credit where credit is due I suppose."
+      }
+    ]},
+  {
+    "id": "StillDoThisDontGiveUp",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291062",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You can still do this. Don't give up."
+      }
+    ]},
+  {
+    "id": "HowWeStrikeBack",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291063",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We can't always win. What's important is how we strike back."
+      }
+    ]},
+  {
+    "id": "RaiseAGlassVictory",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291064",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Tonight we raise a glass to your victory!"
+      }
+    ]},
+  {
+    "id": "FellJustShortThancred",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291065",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Alas, we fell just short. So it goes sometimes."
+      }
+    ]},
+  {
+    "id": "CouldHaveBeenWorse",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291066",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Could have been worse, but it also could have been better."
+      }
+    ]},
+  {
+    "id": "DrinkBestOfUs",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291067",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "It happens to the best of us. Drink?"
+      }
+    ]},
+  {
+    "id": "KeepChinUpPrettyLeast",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8291068",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "I wont lie, that wasn't pretty in the least. Try to keep your chin up!"
+      }
+    ]},
+  {
+    "id": "ThisIsGoingWell",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202040",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "This is going well."
+      }
+    ]},
+  {
+    "id": "RightBackToIt",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202042",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Right! Back to it."
+      }
+    ]},
+  {
+    "id": "WhereWereWe",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202043",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Where were we?"
+      }
+    ]},
+  {
+    "id": "DoYourWorst",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202044",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Do your worst!"
+      }
+    ]},
+  {
+    "id": "KeepYourGuardUp",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202053",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Keep your guard up!"
+      }
+    ]},
+  {
+    "id": "ComeOn",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202055",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Come on!"
+      }
+    ]},
+  {
+    "id": "BestDefenceIsGoodDefence",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8202056",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "The best defence is a good defence!"
+      }
+    ]},
+  {
+    "id": "ExplosivesInPlace",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8203021",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "This is Thancred. The explosives are in place."
+      }
+    ]},
+  {
+    "id": "SevenHells",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8203023",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Seven hells."
+      }
+    ]},
+  {
+    "id": "ThatWasUnbecoming",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8201649",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "That was unbecoming"
+      }
+    ]},
+  {
+    "id": "HitThemWhereItHurts",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8201660",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You have to hit them where it hurts!"
+      }
+    ]},
+  {
+    "id": "NotSoFast",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8201651",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Not so fast!"
+      }
+    ]},
+  {
+    "id": "NoMistakes",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8201654",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "No Mistakes!"
+      }
+    ]},
+  {
+    "id": "MakeThisCount",
+    "icon": "073024",
+    "shoutcaster": "Thancred",
+    "soundPath": "sound/voice/vo_line/8201656",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Make this count!"
+      }
+    ]},
+  {
+    "id": "OvercomeTheOdds",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291069",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Together we shall overcome the odds"
+      }
+    ]},
+  {
+    "id": "SoundDecision",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291070",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "A sound decision."
+      }
+    ]},
+  {
+    "id": "ContendWithThreat",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291071",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "How best to contend with this threat?"
+      }
+    ]},
+  {
+    "id": "DanceOfTheStars",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291072",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Attune thyself to the dance of the stars."
+      }
+    ]},
+  {
+    "id": "AmidstGreatChaos",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291073",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Amidst great chaos, victory may yet be grasped."
+      }
+    ]},
+  {
+    "id": "StarsFavorUs",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291074",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Look, the stars favor us!"
+      }
+    ]},
+  {
+    "id": "TheHandIsOurs",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291075",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "The hand is ours! Strike with all thy might!"
+      }
+    ]},
+  {
+    "id": "SuchShouldBeFate",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291076",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "That such should be our fate."
+      }
+    ]},
+  {
+    "id": "VicissitudesOfFortune",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291078",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Let us accept the vicissitudes of fortune"
+      }
+    ]},
+  {
+    "id": "FavoredByTheSpinner",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291079",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Favored our we by the Spinner to triumph so handily!"
+      }
+    ]},
+  {
+    "id": "MasterfulStrategy",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291080",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A masterful strategy masterfully executed."
+      }
+    ]},
+  {
+    "id": "SureStepForward",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291081",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "By this triumph we take a sure step forward."
+      }
+    ]},
+  {
+    "id": "VictoriesPaveWayToRenown",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291082",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Great or small, our victories pave the way to renown."
+      }
+    ]},
+  {
+    "id": "DestroyerMightyBlow",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291083",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Tis as though the destroyer himself hath dealt us a mighty blow."
+      }
+    ]},
+  {
+    "id": "BodethIllTurnTide",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291084",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "This bodeth ill. We must need turn the tide."
+      }
+    ]},
+  {
+    "id": "ReviewOurStrategy",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291085",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We would do well to review our strategy."
+      }
+    ]},
+  {
+    "id": "StarsFavourNextHand",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291086",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Mayhap the stars will favour our next hand."
+      }
+    ]},
+  {
+    "id": "UnequivocalVictory",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291087",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "An unequivocal victory! Thou leavest me in awe my friend."
+      }
+    ]},
+  {
+    "id": "NarrowestOfDefeats",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291088",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "The narrowest of defeats. Take pride in thine efforts."
+      }
+    ]},
+  {
+    "id": "OpponentsFormidableIndeed",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291089",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Thine opponents were formidable indeed."
+      }
+    ]},
+  {
+    "id": "TriflingUntoLosing",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291090",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "That which a man think is trifling, he mourneth unto losing."
+      }
+    ]},
+  {
+    "id": "ShoulderToLeanUpon",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8291091",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "I offer no excuses, only a shoulder to lean upon shouldst thou require it."
+      }
+    ]},
+  {
+    "id": "HoldFastFriend",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8202089",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Hold fast friend."
+      }
+    ]},
+  {
+    "id": "BeAtEase",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8203035",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Be at ease my friend."
+      }
+    ]},
+  {
+    "id": "HaveCare",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8203038",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Have care my friend."
+      }
+    ]},
+  {
+    "id": "ThisBodethIll",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8202076",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "This bodeth ill."
+      }
+    ]},
+  {
+    "id": "ThyTimeNotCome",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8202090",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Thy time hath not yet come."
+      }
+    ]},
+  {
+    "id": "FearsomeFamiliar",
+    "icon": "073026",
+    "shoutcaster": "Urianger",
+    "soundPath": "sound/voice/vo_line/8203032",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Tis a most fearsome familiar!"
+      }
+    ]},
+  {
+    "id": "LooksPromising",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291092",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Well, this looks promising."
+      }
+    ]},
+  {
+    "id": "AchievedWithoutRisk",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291093",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Nothing worthwhile was ever achieved without risk."
+      }
+    ]},
+  {
+    "id": "TreadCautiously",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291094",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Tread cautiously now."
+      }
+    ]},
+  {
+    "id": "BetterHandYet",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291095",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "So it goes, but we may yet have better hand."
+      }
+    ]},
+  {
+    "id": "DangerousMomentIndeed",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291096",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A dangerous moment indeed."
+      }
+    ]},
+  {
+    "id": "VictoryAtHandIsItNot",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291097",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Victory is at hand is it not?"
+      }
+    ]},
+  {
+    "id": "PreciselyWhatNeeded",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291098",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Precisely what we needed!"
+      }
+    ]},
+  {
+    "id": "SimplyNoKnowing",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291099",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Sometimes there is simply no knowing."
+      }
+    ]},
+  {
+    "id": "SmallMerciesYshtola",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291100",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Small mercies I suppose."
+      }
+    ]},
+  {
+    "id": "UnfortunateSuchIsLife",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291101",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Unfortunate, but such is life."
+      }
+    ]},
+  {
+    "id": "ImpeccablePerformance",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291102",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "An impeccable performance! I couldn't be more satisfied."
+      }
+    ]},
+  {
+    "id": "ExcellentRoundImpressed",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291103",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "An excellent round. I'm impressed."
+      }
+    ]},
+  {
+    "id": "NotRestOnLaurels",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291104",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You won't rest on these laurels of course."
+      }
+    ]},
+  {
+    "id": "BestEffortWellDone",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291105",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You put forth your best effort, well done."
+      }
+    ]},
+  {
+    "id": "BedWithoutSupper",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291106",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Keep that up and I'll send you to bed without supper!"
+      }
+    ]},
+  {
+    "id": "NotOverYetYshtola",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291107",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Do not be disheartened, it's not over yet"
+      }
+    ]},
+  {
+    "id": "RedoubleEfforts",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291108",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We must redouble our efforts!"
+      }
+    ]},
+  {
+    "id": "MakeUpLostGround",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291109",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We shall make up for the ground we lost, yes?"
+      }
+    ]},
+  {
+    "id": "RefreshingDiversion",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291110",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A refreshing diversion, made all the more enjoyable by your victory!"
+      }
+    ]},
+  {
+    "id": "WeCanDoBetterYshtola",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291111",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We can do better, do you not agree?"
+      }
+    ]},
+  {
+    "id": "HoneOurWits",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291112",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We shall need to hone our wits if we are to triumph."
+      }
+    ]},
+  {
+    "id": "DisappointingDefeatGrowStronger",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291113",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Disappointing defeat, but you'll grow stronger for it won't you?"
+      }
+    ]},
+  {
+    "id": "OffWithYouSleep",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8291114",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Some sleep will do you a world of good. Go on now off with you."
+      }
+    ]},
+  {
+    "id": "ThereIsNoEscapeYshtola",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201108",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "There is no escape!"
+      }
+    ]},
+  {
+    "id": "AndNowToReturnTheFavor",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201639",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "And now to return the favor."
+      }
+    ]},
+  {
+    "id": "MakeReady",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201640",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Make Ready!"
+      }
+    ]},
+  {
+    "id": "WereCountingOnYou",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201642",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "We're counting on you."
+      }
+    ]},
+  {
+    "id": "BeVigilant",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201644",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Be Vigilant."
+      }
+    ]},
+  {
+    "id": "BeStrong",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201645",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Be Strong."
+      }
+    ]},
+  {
+    "id": "LeaveAMark",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202106",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "This is going to leave a mark!"
+      }
+    ]},
+  {
+    "id": "BeMoreCareful",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202107",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Be more careful."
+      }
+    ]},
+  {
+    "id": "DontBeSoReckless",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202109",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Don't be so reckless."
+      }
+    ]},
+  {
+    "id": "HoldNothingBack",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202110",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Hold nothing back!"
+      }
+    ]},
+  {
+    "id": "MayTheTwelveGuideYou",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202111",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "May the twelve guide you."
+      }
+    ]},
+  {
+    "id": "Fall",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8201098",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Fall!"
+      }
+    ]},
+  {
+    "id": "SomeoneWillPay",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202098",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Someone will pay for that!"
+      }
+    ]},
+  {
+    "id": "Embarrassing",
+    "icon": "073025",
+    "shoutcaster": "Y'shtola",
+    "soundPath": "sound/voice/vo_line/8202099",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That was embarrassing."
+      }
+    ]},
+  {
+    "id": "HaveThemNowEstinien",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291115",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We have them now."
+      }
+    ]},
+  {
+    "id": "UseConfidenceAgainstThem",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291116",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Good, use their confidence against them."
+      }
+    ]},
+  {
+    "id": "TheyHaveUpperHand",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291117",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "They have the upper hand."
+      }
+    ]},
+  {
+    "id": "SettleThisQuickly",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291118",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "They've gained on us, we must settle this quickly."
+      }
+    ]},
+  {
+    "id": "HaveFaithMyFriend",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291119",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Have faith my friend!"
+      }
+    ]},
+  {
+    "id": "EndTheirStruggles",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291120",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Let us end their struggles!"
+      }
+    ]},
+  {
+    "id": "LuckOfTheDrawEstinien",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291121",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Luck of the draw eh? I'll not complain."
+      }
+    ]},
+  {
+    "id": "LeftOurselvesOpen",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291122",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We left ourselves open and paid for it."
+      }
+    ]},
+  {
+    "id": "DidntBearBrunt",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291123",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "At least we didn't bear the brunt of it."
+      }
+    ]},
+  {
+    "id": "ShouldHaveBeenUs",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291124",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That should have been us."
+      }
+    ]},
+  {
+    "id": "DragoonImpressed",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291125",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "A mightier blow I've seldom seen! Consider this dragoon impressed."
+      }
+    ]},
+  {
+    "id": "NoLessExpectedEstinien",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291126",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "No less than I expected of you my friend."
+      }
+    ]},
+  {
+    "id": "AimForTheKill",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291127",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A solid outing! Next we aim for the kill."
+      }
+    ]},
+  {
+    "id": "DefeatedGreaterFoes",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291128",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You've defeated far greater foes."
+      }
+    ]},
+  {
+    "id": "TumultuousDespair",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291129",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "This tumultuous despair, I know it well."
+      }
+    ]},
+  {
+    "id": "PainStrengthPassion",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291130",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Let this pain be your strength and your passion!"
+      }
+    ]},
+  {
+    "id": "HaventLostEdge",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291131",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You haven't lost your edge I hope."
+      }
+    ]},
+  {
+    "id": "RepayThisDebt",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291132",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We'll repay this debt my friend."
+      }
+    ]},
+  {
+    "id": "HonorToFightBySide",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291133",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "Impressive has ever my friend! It was an honor to fight by your side."
+      }
+    ]},
+  {
+    "id": "ClaimVictoryNextTime",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291134",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "So near yet so far. Next time we must claim victory."
+      }
+    ]},
+  {
+    "id": "CapableOfMoreEstinien",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291135",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "You're capable of more than this, much more."
+      }
+    ]},
+  {
+    "id": "TogetherRiseAgain",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291136",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "No matter how deep our grief, together we will rise again."
+      }
+    ]},
+  {
+    "id": "DrinkAndDriedSquid",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8291137",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "I for one could do with a drink, and some dried squid. Care to join?"
+      }
+    ]},
+  {
+    "id": "WatchYourself",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8202497",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Watch yourself!"
+      }
+    ]},
+  {
+    "id": "ThereIsNoEndToThem",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8202503",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "There's no end to them!"
+      }
+    ]},
+  {
+    "id": "TheyllPayForThatEstinien",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203049",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "They'll pay for that."
+      }
+    ]},
+  {
+    "id": "BackToTheFray",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203050",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Back to the fray."
+      }
+    ]},
+  {
+    "id": "WereNotDoneHere",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203059",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "We're not done here."
+      }
+    ]},
+  {
+    "id": "HangInThere",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203060",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Hang in there!"
+      }
+    ]},
+  {
+    "id": "Courage",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203061",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Courage!"
+      }
+    ]},
+  {
+    "id": "StayStrongEstinien",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203062",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Stay strong!"
+      }
+    ]},
+  {
+    "id": "RoarNidhogg",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203063",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Roar Nidhogg, ROAR!"
+      }
+    ]},
+  {
+    "id": "FightHardNotHardEnough",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203066",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "They fight hard, but not hard enough!"
+      }
+    ]},
+  {
+    "id": "GiveItEverything",
+    "icon": "073007",
+    "shoutcaster": "Estinien",
+    "soundPath": "sound/voice/vo_line/8203402",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Give it everything you've got!"
+      }
+    ]},
+  {
+    "id": "FocusOnVictoryGraha",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291138",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Stay with me. Focus on victory."
+      }
+    ]},
+  {
+    "id": "DeclareIntentions",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291139",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "The time has come to declare our intentions as well."
+      }
+    ]},
+  {
+    "id": "MakeAStandOurselves",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291140",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "What say you? Shall we make a stand ourselves?"
+      }
+    ]},
+  {
+    "id": "NotGoingDownWithoutFight",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291141",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "They're not going down without a fight aren't they?"
+      }
+    ]},
+  {
+    "id": "TestUsButPrevail",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291142",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They may test us, but we shall prevail."
+      }
+    ]},
+  {
+    "id": "FinishThemTooMuch",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291143",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Finish them! Oh, erm.. too much?"
+      }
+    ]},
+  {
+    "id": "PointsAndAll",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291144",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "We shall have victory. Points and all!"
+      }
+    ]},
+  {
+    "id": "AreYouAlrightGraha",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291145",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Oh dear, are you alright?"
+      }
+    ]},
+  {
+    "id": "AvoidedWorstNotHopedFor",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291146",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "We avoided the worst but it's not what I'd hoped for."
+      }
+    ]},
+  {
+    "id": "BeatUsToItNextTime",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291147",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They beat us to it. The next time will be different."
+      }
+    ]},
+  {
+    "id": "LivingLegends",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291148",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Tremendous. The stuff of living legends!"
+      }
+    ]},
+  {
+    "id": "SplendidResultKeepUp",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291149",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "A splendid result! Keep up the good work my friend."
+      }
+    ]},
+  {
+    "id": "TaskAtHandVictoryOurs",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291150",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Focus on the task at hand and victory shall be ours."
+      }
+    ]},
+  {
+    "id": "WillDoEvenBetter",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291151",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We can and we will do even better."
+      }
+    ]},
+  {
+    "id": "OhHowEmbarrassing",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291152",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Oh, how embarassing."
+      }
+    ]},
+  {
+    "id": "MattersHalfFinished",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291153",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We cannot leave matters half finished."
+      }
+    ]},
+  {
+    "id": "DoYouRequireHealing",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291154",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Do you require healing?"
+      }
+    ]},
+  {
+    "id": "CowelToStir",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291155",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Well that would scarcely cause my cowl to stir."
+      }
+    ]},
+  {
+    "id": "BefittingMyInspiration",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291156",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A performance befitting of my inspiration!"
+      }
+    ]},
+  {
+    "id": "CourageAndZeal",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291157",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Continue with the same courage and zeal and victory will be yours!"
+      }
+    ]},
+  {
+    "id": "AllaganGameGraha",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291158",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Were it an allagan game perhaps I might have been more useful to you?"
+      }
+    ]},
+  {
+    "id": "SomethingToTeachDefeat",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291159",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "While I'd rather you have triumphed, even in defeat you have something to teach us."
+      }
+    ]},
+  {
+    "id": "TaleWillNotEnd",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8291160",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Your tale will not end here. Is that not so my friend?"
+      }
+    ]},
+  {
+    "id": "BackToTheFight",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8202119",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Back to the fight."
+      }
+    ]},
+  {
+    "id": "TimeHasCome",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8202125",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "The time has come!"
+      }
+    ]},
+  {
+    "id": "JustTheBeginning",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8202342",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Just the beginning."
+      }
+    ]},
+  {
+    "id": "ShowMeWhatYouCanDo",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8202341",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Show me what you can do."
+      }
+    ]},
+  {
+    "id": "AreYouAlright",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8202337",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Are you alright?"
+      }
+    ]},
+  {
+    "id": "FindCoverEnergy",
+    "icon": "073012",
+    "shoutcaster": "G'raha Tia",
+    "soundPath": "sound/voice/vo_line/8203042",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "The air crackles with energy. Find cover!"
+      }
+    ]},
+  {
+    "id": "CanvasOfVictory",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291161",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We draw upon the canvas of victory."
+      }
+    ]},
+  {
+    "id": "SkillsToTheProof",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291162",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Time to put your skills to the proof!"
+      }
+    ]},
+  {
+    "id": "WontFallHereKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291163",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We won't fall here!"
+      }
+    ]},
+  {
+    "id": "HaveFaithAllWell",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291164",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Have faith and all shall be well."
+      }
+    ]},
+  {
+    "id": "MustStandStrongKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291165",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We must stand strong."
+      }
+    ]},
+  {
+    "id": "FinishingTouchKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291166",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "And now for the finishing touch!"
+      }
+    ]},
+  {
+    "id": "GoodThingsWait",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291167",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Good things do come to those who wait!"
+      }
+    ]},
+  {
+    "id": "CantBeRightKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291168",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "What? That can't be right!"
+      }
+    ]},
+  {
+    "id": "DidntHandItToThem",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291169",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "At least we didn't hand it to them."
+      }
+    ]},
+  {
+    "id": "ThatsTooBadKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291170",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That's too bad!"
+      }
+    ]},
+  {
+    "id": "AdventurerOfTalent",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291171",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "I should expect nothing less from an adventurer of your talents!"
+      }
+    ]},
+  {
+    "id": "QuiteTheStatement",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291172",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You made quite this statement!"
+      }
+    ]},
+  {
+    "id": "GoodProgressKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291173",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Good progress! Let us maintain our efforts."
+      }
+    ]},
+  {
+    "id": "HeartRacingKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291174",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "My heart was positively racing!"
+      }
+    ]},
+  {
+    "id": "ManagedSoPoorly",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291175",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Goodness me, How did we manage to do so poorly?"
+      }
+    ]},
+  {
+    "id": "DontLoseHeartKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291176",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "You're alright yes? Don't lose heart now!"
+      }
+    ]},
+  {
+    "id": "WontGiveUpOntoNext",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291177",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We won't give up! Onto the next."
+      }
+    ]},
+  {
+    "id": "ReclaimLostKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291178",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "No need to fret. We can reclaim what we've lost."
+      }
+    ]},
+  {
+    "id": "DelightVictoryKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291179",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Well done my friend! It was a delight to be part of your victory!"
+      }
+    ]},
+  {
+    "id": "ThrillingGameNextTime",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291180",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "What a thrilling game! You'll win next time I'm sure of it."
+      }
+    ]},
+  {
+    "id": "ExploringIntricacies",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291181",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "A complicated game to be sure. I hope to keep exploring its intricacies with you."
+      }
+    ]},
+  {
+    "id": "PlayAgainWinOrLose",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291182",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "it wasn't to be this time. But win or lose let's play again."
+      }
+    ]},
+  {
+    "id": "ToughLossLearnKrile",
+    "icon": "073071",
+    "shoutcaster": "Krile",
+    "soundPath": "sound/voice/vo_line/8291183",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "That was a tough loss, but we can learn from it and strive for greater heights!"
+      }
+    ]},
+  {
+    "id": "GotThemNowWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291184",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We've got them now!"
+      }
+    ]},
+  {
+    "id": "CantPassChanceWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291185",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Can't pass up a chance like this!"
+      }
+    ]},
+  {
+    "id": "DontLoseNerveWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291186",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They're close, but we can't lose our nerve!"
+      }
+    ]},
+  {
+    "id": "GettingInterestingWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291187",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Now things are getting interesting!"
+      }
+    ]},
+  {
+    "id": "StillWinWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291188",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Doesn't matter if it's one or all of them, we can still win!"
+      }
+    ]},
+  {
+    "id": "WillStopThemWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291189",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "It's over! We will stop them!"
+      }
+    ]},
+  {
+    "id": "NoHoldingBackWukMahjong",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291190",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "No holding back!"
+      }
+    ]},
+  {
+    "id": "HowDidThatHappenWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291191",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "What? How did that happen?"
+      }
+    ]},
+  {
+    "id": "CloseOneWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291192",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Whew! That was a close one."
+      }
+    ]},
+  {
+    "id": "BeatUsToItWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291193",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They beat us to it!"
+      }
+    ]},
+  {
+    "id": "FeatOldManWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291194",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "A feat even my old man couldn't have managed."
+      }
+    ]},
+  {
+    "id": "SmilingBecauseSmiling",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291195",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Are you smiling because I'm smiling!"
+      }
+    ]},
+  {
+    "id": "AllRightYouDidGreat",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291196",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "All right! You did great!"
+      }
+    ]},
+  {
+    "id": "DoingFineKeepItUpWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291197",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You're doing fine, keep it up!"
+      }
+    ]},
+  {
+    "id": "GonnaBeSickWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291198",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Gods! I think I'm gonna be sick."
+      }
+    ]},
+  {
+    "id": "FeelYourPainWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291199",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I feel your pain as if it were my own."
+      }
+    ]},
+  {
+    "id": "DidntHoldBackWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291200",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "They didn't hold back did they?"
+      }
+    ]},
+  {
+    "id": "NothingToWorryWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291201",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Nothing to worry about."
+      }
+    ]},
+  {
+    "id": "TryMyOwnHandWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291202",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "That was incredible! Makes me want to try my own hand at this game."
+      }
+    ]},
+  {
+    "id": "PapaChallengeMatch",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291203",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "If papa were here, he'd challenge you to a match I just know it."
+      }
+    ]},
+  {
+    "id": "CanDoBetterWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291204",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Come on! I know you can do better than that."
+      }
+    ]},
+  {
+    "id": "WinSomeLoseSomeWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291205",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "You win some you'll lose some. Next time the game will be yours."
+      }
+    ]},
+  {
+    "id": "LearningExperienceWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8291206",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "On the bright side it can't get any worse. Consider it a learning experience!"
+      }
+    ]},
+  {
+    "id": "YouReallyAreFamous",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8204261",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "You really are famous!"
+      }
+    ]},
+  {
+    "id": "Impressive",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8204280",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Impressive!"
+      }
+    ]},
+  {
+    "id": "TheyllPayForThatWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205035",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "They'll pay for that."
+      }
+    ]},
+  {
+    "id": "RightBackToItWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205036",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Right, back to it."
+      }
+    ]},
+  {
+    "id": "NoHoldingBackWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205040",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "No holding back!"
+      }
+    ]},
+  {
+    "id": "KeepItUpWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205043",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Keep it up!"
+      }
+    ]},
+  {
+    "id": "LetsGetToIt",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205048",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Let's get to it!"
+      }
+    ]},
+  {
+    "id": "DamnItAll",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205068",
+    "duration": "2",
+    "transcription": [
+      {
+        "en": "Damn it all!"
+      }
+    ]},
+  {
+    "id": "KeepYourGuardUpWuk",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205071",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Don't like the looks of this. Everyone, keep your guard up!"
+      }
+    ]},
+  {
+    "id": "NotHoldingAnythingBack",
+    "icon": "073265",
+    "shoutcaster": "Wuk Lamat",
+    "soundPath": "sound/voice/vo_line/8205073",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Not holding anything back are we?"
+      }
+    ]},
+  {
+    "id": "IntentionsKnown",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291207",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Let us make our intentions known."
+      }
+    ]},
+  {
+    "id": "EvenTheOdds",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291208",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Perhaps this will even the odds."
+      }
+    ]},
+  {
+    "id": "NothingToFearYet",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291209",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We have nothing to fear, yet."
+      }
+    ]},
+  {
+    "id": "MuchToBeExpected",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291210",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "This much is to be expected."
+      }
+    ]},
+  {
+    "id": "StayAlert",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291211",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Stay alert."
+      }
+    ]},
+  {
+    "id": "HaveThemStrike",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291212",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We have them! Strike!"
+      }
+    ]},
+  {
+    "id": "StrategyKeyToVictory",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291213",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Strategy is the key to victory."
+      }
+    ]},
+  {
+    "id": "CantBe",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291214",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "No, it can't be!"
+      }
+    ]},
+  {
+    "id": "DammitAll",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291215",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Damn it all."
+      }
+    ]},
+  {
+    "id": "StepBehind",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291216",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We were a step behind."
+      }
+    ]},
+  {
+    "id": "GloryUponTuliyollal",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291217",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Our triumph brings glory upon Tuliyollal!"
+      }
+    ]},
+  {
+    "id": "VowOfReasonGuide",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291218",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "As vow of reason, it is my duty to guide you to victory."
+      }
+    ]},
+  {
+    "id": "DoneWell",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291219",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I would say we have done well."
+      }
+    ]},
+  {
+    "id": "FairPerformanceBetter",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291220",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "A fair performance, but we can do better."
+      }
+    ]},
+  {
+    "id": "FaceLamatyi",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291221",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Disgraceful, how can I ever face Lamaty'i after this."
+      }
+    ]},
+  {
+    "id": "ChangeOfStrategyInOrder",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291222",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Hmm, a change of strategy may be in order."
+      }
+    ]},
+  {
+    "id": "ErrorInCalculations",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291223",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Did we make an error in our calculations?"
+      }
+    ]},
+  {
+    "id": "OccasionalLossInevitable",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291224",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "The occasional loss is inevitable."
+      }
+    ]},
+  {
+    "id": "WorthyOfReputation",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291225",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "You are more than worthy of your reputation. That much is plain!"
+      }
+    ]},
+  {
+    "id": "ProudOfYou",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291226",
+    "duration": "9",
+    "transcription": [
+      {
+        "en": "Unpracticed as I am, this may sound hackneyed but. I'm proud of you."
+      }
+    ]},
+  {
+    "id": "SharlayanApproachResults",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291227",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "Perhaps a more analytical, Sharlayan approach would achieve better results."
+      }
+    ]},
+  {
+    "id": "ProtectFromFutureDefeat",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291228",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "Even should it cost me my life, I will protect you from future defeat!"
+      }
+    ]},
+  {
+    "id": "UnworthyVowOfReason",
+    "icon": "073266",
+    "shoutcaster": "Koana",
+    "soundPath": "sound/voice/vo_line/8291229",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I feel as though, I am unworthy to serve as vow of reason."
+      }
+    ]},
+  {
+    "id": "VictoryOurs",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291230",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Victory will be ours."
+      }
+    ]},
+  {
+    "id": "NoDownWithoutFight",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291231",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "We won't go down without a fight!"
+      }
+    ]},
+  {
+    "id": "FallingBehind",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291232",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We're falling behind!"
+      }
+    ]},
+  {
+    "id": "ChallengeMe",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291233",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "They think they can challenge me?"
+      }
+    ]},
+  {
+    "id": "GodsHelpUs",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291234",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Gods help us."
+      }
+    ]},
+  {
+    "id": "ShowThemTheirPlace",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291235",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Hahaha! Show them their place."
+      }
+    ]},
+  {
+    "id": "HahaAllowMe",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291236",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Haha, allow me."
+      }
+    ]},
+  {
+    "id": "LuckWontLast",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291237",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That luck won't last forever."
+      }
+    ]},
+  {
+    "id": "TearEachOtherApart",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291238",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Let them tear each other apart."
+      }
+    ]},
+  {
+    "id": "TooLate",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291239",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "We were too late!"
+      }
+    ]},
+  {
+    "id": "NeverFailToImpress",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291240",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Ohoh! You never fail to impress me!"
+      }
+    ]},
+  {
+    "id": "PieceOfMeNext",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291241",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "So, who wants a piece of me next?"
+      }
+    ]},
+  {
+    "id": "NotBadAtAll",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291242",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Not bad, not bad at all!"
+      }
+    ]},
+  {
+    "id": "HandWell",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291243",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You played your hand well."
+      }
+    ]},
+  {
+    "id": "HowCanThisBe",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291244",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "No! How can this be?"
+      }
+    ]},
+  {
+    "id": "NoNo",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291245",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "No! No!"
+      }
+    ]},
+  {
+    "id": "ScoreIsntRight",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291246",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I know that score isn't right."
+      }
+    ]},
+  {
+    "id": "HaAPittance",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291247",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Ha! A pittance."
+      }
+    ]},
+  {
+    "id": "BefittingStature",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291248",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Tahaha! Victory befitting our stature."
+      }
+    ]},
+  {
+    "id": "GoodEnoughGuess",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291249",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Well, good enough I guess."
+      }
+    ]},
+  {
+    "id": "ThoughtBetter",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291250",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I thought you could do better than that."
+      }
+    ]},
+  {
+    "id": "ThreeHeadsStupid",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291251",
+    "duration": "6",
+    "transcription": [
+      {
+        "en": "Thats the best that three heads could manage? Tch. This was stupid anyways."
+      }
+    ]},
+  {
+    "id": "SmashTable",
+    "icon": "073261",
+    "shoutcaster": "Bakool Ja Ja",
+    "soundPath": "sound/voice/vo_line/8291252",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "I'm gonna smash this table to bits! And don't you dare stop me brother."
+      }
+    ]},
+  {
+    "id": "CouldBeChance",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291253",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "This could be your chance!"
+      }
+    ]},
+  {
+    "id": "EnjoyingYourself",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291254",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Enjoying yourself I see."
+      }
+    ]},
+  {
+    "id": "ComeOutOnTop",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291255",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You can still come out on top!"
+      }
+    ]},
+  {
+    "id": "Competition",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291256",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You have competition."
+      }
+    ]},
+  {
+    "id": "CarefulPlanning",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291257",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Careful, they're planning something."
+      }
+    ]},
+  {
+    "id": "ThereYouHaveThem",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291258",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "There! You have them!"
+      }
+    ]},
+  {
+    "id": "LuckyYou",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291259",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "Ha! Lucky you."
+      }
+    ]},
+  {
+    "id": "Unfortunate",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291260",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That was unfortunate."
+      }
+    ]},
+  {
+    "id": "CouldHaveBeenWorseErenville",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291261",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "A loss, but it could have been worse!"
+      }
+    ]},
+  {
+    "id": "LifeGoYourWay",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291262",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Sometimes life doesn't go your way."
+      }
+    ]},
+  {
+    "id": "ManyTalents",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291263",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Impressive! Clearly this is another of your many talents."
+      }
+    ]},
+  {
+    "id": "EnjoyingThisArentYou",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291264",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You're enjoying this, arent you?"
+      }
+    ]},
+  {
+    "id": "FairGo",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291265",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "You made a fair go of it."
+      }
+    ]},
+  {
+    "id": "ThatsTheWay",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291266",
+    "duration": "3",
+    "transcription": [
+      {
+        "en": "That's the way!"
+      }
+    ]},
+  {
+    "id": "DontPlayGames",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291267",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "There's a reason I don't play games like this."
+      }
+    ]},
+  {
+    "id": "PresenceDistraction",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291268",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "I can leave if my presence is a distraction."
+      }
+    ]},
+  {
+    "id": "MerelyBadHand",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291269",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "That was merely a bad hand. You'll do better next time!"
+      }
+    ]},
+  {
+    "id": "MinorSetback",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291270",
+    "duration": "5",
+    "transcription": [
+      {
+        "en": "A minor setback. All is not yet lost!"
+      }
+    ]},
+  {
+    "id": "NotSurprised",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291271",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "Somehow I'm not surprised!"
+      }
+    ]},
+  {
+    "id": "FunThanExpected",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291272",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "This game is more fun than I expected."
+      }
+    ]},
+  {
+    "id": "NotWalkAway",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291273",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "You're not going to walk away now are you?"
+      }
+    ]},
+  {
+    "id": "StudyExperiencedPlayers",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291274",
+    "duration": "4",
+    "transcription": [
+      {
+        "en": "If you want to be competitive, maybe you should try studying experienced players."
+      }
+    ]},
+  {
+    "id": "RideRroneekClearHead",
+    "icon": "073275",
+    "shoutcaster": "Erenville",
+    "soundPath": "sound/voice/vo_line/8291275",
+    "duration": "8",
+    "transcription": [
+      {
+        "en": "Take a ride on a Rroneek. Clear your head and put this performance behind you."
+      }
+    ]}
+]

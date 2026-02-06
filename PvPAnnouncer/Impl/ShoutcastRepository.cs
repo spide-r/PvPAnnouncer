@@ -56,9 +56,9 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
         {
             builder.WithStyle(j["style"]!.GetValue<byte>());
         }
-        if (j["name"] != null)
+        if (j["shoutcaster"] != null)
         {
-            builder.WithName(j["name"]!.GetValue<string>());
+            builder.WithShoutcaster(j["shoutcaster"]!.GetValue<string>());
         }
         
         if (j["attributes"] != null)
@@ -77,9 +77,9 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
             builder.WithCutsceneLine(j["cutsceneLine"]!.GetValue<string>());
         }
         
-        if (j["contentDirectorBattleTalkRow"] != null)
+        if (j["contentDirectorBattleTalkVo"] != null)
         {
-            builder.WithContentDirectorBattleTalkRow(j["contentDirectorBattleTalkRow"]!.GetValue<uint>());
+            builder.WithContentDirectorBattleTalkVo(j["contentDirectorBattleTalkVo"]!.GetValue<uint>());
         }
         
         if (j["npcYell"] != null)

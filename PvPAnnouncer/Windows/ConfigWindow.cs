@@ -143,7 +143,7 @@ public class ConfigWindow : Window, IDisposable
                 var e = bt[Random.Shared.Next(bt.Length)];
                 PluginServices.Announcer.PlaySound(e.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
                 PluginServices.Announcer.SendBattleTalk(e);
-                PluginServices.ChatGui.Print($"Playing Voiceline for {e.ShouterName}", InternalConstants.MessageTag);
+                PluginServices.ChatGui.Print($"Playing Voiceline for {e.Shoutcaster}", InternalConstants.MessageTag);
 
                 if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
                 {
@@ -162,7 +162,7 @@ public class ConfigWindow : Window, IDisposable
                 {
                     ["en"] = "You don't have any announcers selected!"
                 };
-                var s = PluginServices.ShoutcastBuilder.WithName(InternalConstants.PvPAnnouncerDevName).WithIcon(InternalConstants.PvPAnnouncerDevIcon)
+                var s = PluginServices.ShoutcastBuilder.WithShoutcaster(InternalConstants.PvPAnnouncerDevName).WithIcon(InternalConstants.PvPAnnouncerDevIcon)
                     .WithTranscription(dict).Build();
                 PluginServices.Announcer.SendBattleTalk(s);
             }

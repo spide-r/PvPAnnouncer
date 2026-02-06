@@ -15,11 +15,11 @@ public interface IShoutcastBuilder
     public IShoutcastBuilder WithTranscription(Dictionary<string, string> transcription);
     public IShoutcastBuilder WithDuration(byte duration);
     public IShoutcastBuilder WithStyle(byte style);
-    public IShoutcastBuilder WithName(string name);
+    public IShoutcastBuilder WithShoutcaster(string name);
     public IShoutcastBuilder WithAttributes(List<string> attributes);
     public IShoutcastBuilder WithSoundPath(string path);
     public IShoutcastBuilder WithCutsceneLine(string path);
-    public IShoutcastBuilder WithContentDirectorBattleTalkRow(uint contentDirectorBattleTalkRow);
+    public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo);
     public IShoutcastBuilder WithNpcYell(uint npcYell);
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow);
 

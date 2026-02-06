@@ -20,7 +20,7 @@ public class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuilder
         //todo check and warn for screwed up shoutcast obj
         if (result.Transcription.Keys.Count == 0) //no text transcription
         {
-            if ( result is {ContentDirectorBattleTalkRow: 0, InstanceContentTextDataRow: 0, NpcYell: 0})
+            if ( result is {ContentDirectorBattleTalkVo: 0, InstanceContentTextDataRow: 0, NpcYell: 0})
             {
                 //todo error out since we dont have text
             }
@@ -41,17 +41,17 @@ public class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuilder
     public IShoutcastBuilder WithTranscription(Dictionary<string, string> transcription) { _instance.Transcription = transcription; return this; }
     public IShoutcastBuilder WithDuration(byte duration) { _instance.Duration = duration; return this; }
     public IShoutcastBuilder WithStyle(byte style) { _instance.Style = style; return this; }
-    public IShoutcastBuilder WithName(string name) { _instance.ShouterName = name; return this; }
+    public IShoutcastBuilder WithShoutcaster(string name) { _instance.Shoutcaster = name; return this; }
     public IShoutcastBuilder WithAttributes(List<string> attributes) { _instance.Attributes = attributes; return this; }
     public IShoutcastBuilder WithSoundPath(string path) { _instance.SoundPath = path; return this; }
     public IShoutcastBuilder WithCutsceneLine(string cutsceneLine) { _instance.CutsceneLine = cutsceneLine; return this; }
-    public IShoutcastBuilder WithContentDirectorBattleTalkRow(uint contentDirectorBattleTalkRow) { _instance.ContentDirectorBattleTalkRow = contentDirectorBattleTalkRow; return this; }
+    public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo) { _instance.ContentDirectorBattleTalkVo = contentDirectorBattleTalkVo; return this; }
     public IShoutcastBuilder WithNpcYell(uint npcYell) { _instance.NpcYell = npcYell; return this; }
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow) { _instance.InstanceContentTextDataRow = instanceContentTextDataRow; return this; }
 
     private static Shoutcast NewShoutcast()
     {
-        return new Shoutcast("ShoutcastId", 0, [], 5, 6, "ShouterName", [], "", "", 0, 0, 0);
+        return new Shoutcast("ShoutcastId", 0, [], 5, 6, "Shoutcaster", [], "", "", 0, 0, 0);
     }
     
 }

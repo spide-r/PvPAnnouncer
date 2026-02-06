@@ -215,12 +215,12 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         {
             if (shoutcast.GetTranscriptionWithLang("en").Equals(""))
             {
-                PluginServices.PluginLog.Verbose($"Text empty for {shoutcast.ShouterName}, {shoutcast.SoundPath}");
+                PluginServices.PluginLog.Verbose($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath}");
                 return; 
             }
 
             transcription = shoutcast.GetTranscriptionWithLang("en");
-            PluginServices.PluginLog.Warning($"Text empty for {shoutcast.ShouterName}, {shoutcast.SoundPath} on lang {PluginServices.Config.Language} - falling back to EN");
+            PluginServices.PluginLog.Warning($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath} on lang {PluginServices.Config.Language} - falling back to EN");
         }
         else
         {
@@ -231,7 +231,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         {
             try
             {
-                var name = shoutcast.ShouterName;
+                var name = shoutcast.Shoutcaster;
                 var duration = shoutcast.Duration;
                 var icon = shoutcast.Icon;
                 var style = shoutcast.Style;

@@ -6,7 +6,7 @@ namespace PvPAnnouncer.Interfaces;
 public interface IShoutcast
 {
     public uint Icon { get; }
-    public string ShouterName { get; }
+    public string Shoutcaster { get; }
     public byte Duration { get; }
     public byte Style { get; }
 
@@ -18,7 +18,7 @@ public interface IShoutcast
     public string SoundPath { get;  }
     public string CutsceneLine { get; }
     
-    public uint ContentDirectorBattleTalkRow {get; set;}
+    public uint ContentDirectorBattleTalkVo {get; set;}
   
     public uint NpcYell {get; set;}
   

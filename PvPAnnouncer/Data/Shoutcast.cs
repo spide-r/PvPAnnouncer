@@ -13,7 +13,7 @@ public class  Shoutcast : IShoutcast // decorator
 {
   public uint Icon { get; set; }
 
-  public string ShouterName { get; set; }
+  public string Shoutcaster { get; set; }
 
   public byte Duration { get; set; }
   public byte Style { get; set; }
@@ -23,7 +23,7 @@ public class  Shoutcast : IShoutcast // decorator
   public string SoundPath { get; set; }
   public string CutsceneLine { get; set; }
 
-  public uint ContentDirectorBattleTalkRow {get; set;}
+  public uint ContentDirectorBattleTalkVo {get; set;}
   
   public uint NpcYell {get; set;}
   
@@ -44,28 +44,28 @@ public class  Shoutcast : IShoutcast // decorator
   
 
   [Obsolete]
-  public Shoutcast(string shouterName, uint voiceover, int duration, string text, List<Personalization> personalization,
+  public Shoutcast(string shoutcaster, uint voiceover, int duration, string text, List<Personalization> personalization,
     uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0, string path = "") 
   {
-    ShouterName = shouterName;
+    Shoutcaster = shoutcaster;
     Duration = (byte) duration;
     Icon = icon;
     Style = style;
   }
 
   public Shoutcast(string id, uint icon, Dictionary<string, string> transcription, byte duration, byte style,
-    string shouterName, List<string> attributes, string soundPath, string cutsceneLine, uint contentDirectorBattleTalkRow, uint npcYell, uint instanceContentTextDataRow)
+    string shoutcaster, List<string> attributes, string soundPath, string cutsceneLine, uint contentDirectorBattleTalkVo, uint npcYell, uint instanceContentTextDataRow)
   {
     Id = id;
     Icon = icon;
     Transcription = transcription;
     Duration = duration;
     Style = style;
-    ShouterName = shouterName;
+    Shoutcaster = shoutcaster;
     Attributes = attributes;
     SoundPath = soundPath;
     CutsceneLine = cutsceneLine;
-    ContentDirectorBattleTalkRow = contentDirectorBattleTalkRow;
+    ContentDirectorBattleTalkVo = contentDirectorBattleTalkVo;
     NpcYell = npcYell;
     InstanceContentTextDataRow = instanceContentTextDataRow;
   }

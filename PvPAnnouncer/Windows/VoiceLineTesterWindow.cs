@@ -63,7 +63,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
             {
                 if (_filterIndex != 0)
                 {
-                    if (!bt.ShouterName.Equals(toFilter[_filterIndex]))
+                    if (!bt.Shoutcaster.Equals(toFilter[_filterIndex]))
                     {
                         continue;
                     }
@@ -72,7 +72,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.SoundPath);
                 ImGui.TableNextColumn();
-                ImGui.Text(bt.ShouterName);
+                ImGui.Text(bt.Shoutcaster);
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.GetTranscriptionWithLang(PluginServices.Config.Language));
                 ImGui.TableNextColumn();
