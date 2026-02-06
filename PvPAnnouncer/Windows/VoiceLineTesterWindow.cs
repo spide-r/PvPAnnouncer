@@ -19,7 +19,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
         {
             MinimumSize = new Vector2(450, 225),
         };
-        _allBattleTalks = new List<Shoutcast>(InternalConstants.GetBattleTalkList());
+        _allBattleTalks = new List<Shoutcast>(PluginServices.ShoutcastRepository.GetShoutcasts());
 
     }
 

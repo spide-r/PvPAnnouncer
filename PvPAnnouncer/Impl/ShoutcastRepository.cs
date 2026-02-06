@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using PvPAnnouncer.Data;
@@ -12,6 +13,11 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
     public Shoutcast GetShoutcast(string shoutcastId)
     {
         return _shoutcasts[shoutcastId];
+    }
+
+    public List<Shoutcast> GetShoutcasts()
+    {
+        return _shoutcasts.Values.ToList();
     }
 
     public void SetShoutcast(string shoutcastId, Shoutcast shoutcast)

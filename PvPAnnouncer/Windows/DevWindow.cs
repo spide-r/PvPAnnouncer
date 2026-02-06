@@ -105,11 +105,6 @@ public class DevWindow: Window, IDisposable
             }
             dialogue = Regex.Replace(dialogue, @"^\(-.*-\)", ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
             */
-
-
-            var bt = PluginServices.ShoutcastFactory.CreateFromCutsceneLine("Emet Selch", 0, 5, tag, [], 73256);
-            PluginServices.Announcer.SendBattleTalk(bt);
-            PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
             
         }
         var l = ll;
@@ -254,7 +249,7 @@ public class DevWindow: Window, IDisposable
         PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
         if (!hide)
         {
-            PluginServices.Announcer.SendBattleTalk(PluginServices.ShoutcastFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
+           // PluginServices.Announcer.SendBattleTalk(PluginServices.ShoutcastFactory.CreateFromContentDirectorBattleTalk("Unknown", (uint) l, []));
         }
     }
     

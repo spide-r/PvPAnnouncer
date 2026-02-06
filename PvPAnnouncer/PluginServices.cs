@@ -75,7 +75,6 @@ internal class PluginServices {
     internal static Configuration Config { get; private set; }
     internal static IEventListenerLoader ListenerLoader { get; private set; }
     internal static IPlayerStateTracker PlayerStateTracker { get; private set; }
-    internal static IShoutcastFactory ShoutcastFactory { get; private set; }
     internal static IEventShoutcastMapping EventShoutcastMapping { get; private set; } //todo make these 3 not null
     internal static IShoutcastRepository ShoutcastRepository { get; private set; }
     internal static IShoutcastBuilder ShoutcastBuilder { get; private set; }
@@ -93,9 +92,6 @@ internal class PluginServices {
         PlayerStateTracker = new PlayerStateTracker();
         Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig, newCfg);
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
-        ShoutcastFactory = new ShoutcastFactory(DataManager);
-        ScionLines.InitScionLines(ShoutcastFactory);
-        AnnouncerLines.Init(ShoutcastFactory);
         
         voiceLineTesterWindow = new VoiceLineTesterWindow();
         window.AddWindow(voiceLineTesterWindow);

@@ -21,7 +21,7 @@ public class ConfigWindow : Window, IDisposable
 {
     //todo make a note somewhere that some of the ways i pull the data are kinda skuffedTM and that some of the translations to other languages may not be 100% and to tell me if that happens
     private IEventListenerLoader listenerLoader;
-    private Shoutcast[] _allBattleTalks;
+    private List<Shoutcast> _allBattleTalks;
 
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
@@ -41,7 +41,7 @@ public class ConfigWindow : Window, IDisposable
         _configuration = pluginConfiguration;
         listenerLoader = PluginServices.ListenerLoader;
         _allEvents = listenerLoader.GetPvPEvents();
-        _allBattleTalks = InternalConstants.GetBattleTalkList();
+        _allBattleTalks = shoutcastRepository.GetShoutcasts();
         _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
         _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
         foreach (var pvPEvent in _allEvents)
