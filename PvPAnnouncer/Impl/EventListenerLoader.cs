@@ -4,8 +4,6 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
 namespace PvPAnnouncer.Impl;
 
 public class EventListenerLoader : IEventListenerLoader
