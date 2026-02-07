@@ -22,80 +22,118 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     {
         
         var result = _instance;
-        //todo check and warn for screwed up shoutcast obj
-        if (result.Transcription.Keys.Count == 0) //no manual text transcription
-        {
-            if ( result is {ContentDirectorBattleTalkVo: 0, InstanceContentTextDataRow: 0, NpcYell: 0, CutsceneLine: ""})
-            {
-                PluginServices.PluginLog.Error($"No transcription or sheet entry found for {result.Id}");
-                return NewShoutcast();
-            } 
-            if (result.ContentDirectorBattleTalkVo != 0)
-            {
-                /*
-                    name: ContentDirectorBattleTalk
-                    fields:
-                    - name: Unknown0 -> BattleTalkIcon
-                    - name: Unknown1 -> Voiceover
-                    - name: Text
-                    type: link
-                    targets: [InstanceContentTextData]
-                    - name: Unknown3 -> BattleTalkDuration
-                    - name: Unknown4 -> BattleTalkStyle
-                */
-                result.SoundPath = "sound/voice/vo_line/" + result.ContentDirectorBattleTalkVo;
-                var d = GetContentDirectorBattleTalkAllLanguages(result.ContentDirectorBattleTalkVo);
-                if (d.Keys.Count > 0) // record exists in the sheets - attempt to set the other values
-                {
-                    var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
-
-                    var t = sheet.SelectMany(row => row)
-
-                        .FirstOrDefault(bt => bt.Unknown1 == result.ContentDirectorBattleTalkVo);
-                    result.Icon = t.Unknown0;
-                    result.Style = t.Unknown4;
-                    result.Duration = t.Unknown3;
-                    result.Transcription = d;
-                }
-            
-            }
-            if (result.InstanceContentTextDataRow != 0)
-            {
-                result.Transcription = GetInstanceContentTextDataAllLang(result.InstanceContentTextDataRow);
-            }
-            
-            if (result.NpcYell != 0)
-            {
-                var d = GetNpcYellAllLang(result.NpcYell);
-                var sheet = dataManager.GetExcelSheet<NpcYell>();
-                var foundEntry = sheet.TryGetRow(result.NpcYell, out var row);
-                var duration = foundEntry ? row.BalloonTime : 5;
-                
-                result.Duration = (byte) duration;
-                result.Transcription = d;
-            }
-        }
-
-        if (result.CutsceneLine is not "")
-        {
-            PluginServices.PluginLog.Verbose("Csline: " + result.CutsceneLine);
-            var expac = 69; //todo this is going to fail until you can fiddle with what that ex(N) means
-            var splitLine = result.CutsceneLine.Split("_");
-            var number = splitLine[2];
-            var secondNumber = splitLine[3];
-            var audio = $"cut/ex{expac}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
-            result.SoundPath = audio;
-            var d = GetCutsceneLineAllLang(result.CutsceneLine);
-            result.Transcription = d;
-        }
+        _instance = NewShoutcast();
+        PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id}");
+        //todo check and warn for screwed up shoutcast obj - current impl is SCUFFED
         
+        
+        /*
+         * Time to build!
+         * - Check for BattleTalkVo, InstanceContentTextDataRow, NpcYell. CutsceneLine
+         * - if One is found, try to pull all data we can (even if we override something)
+         *
+         * Check for a valid name, icon, voice, length, if its valid send it through, if not, error out
+         */
+         if (result.ContentDirectorBattleTalkVo != 0)
+         {
+             PluginServices.PluginLog.Verbose($"ContentDirectorBattleTalkVo: {result.ContentDirectorBattleTalkVo}");
+             /*
+                 name: ContentDirectorBattleTalk
+                 fields:
+                 - name: Unknown0 -> BattleTalkIcon
+                 - name: Unknown1 -> Voiceover
+                 - name: Text
+                 type: link
+                 targets: [InstanceContentTextData]
+                 - name: Unknown3 -> BattleTalkDuration
+                 - name: Unknown4 -> BattleTalkStyle
+             */
+             result.SoundPath = "sound/voice/vo_line/" + result.ContentDirectorBattleTalkVo;
+             PluginServices.PluginLog.Debug($"BattleTalkVO Sound path: {result.SoundPath}");
+             var d = GetContentDirectorBattleTalkAllLanguages(result.ContentDirectorBattleTalkVo);
+             if (d.Keys.Count > 0) // record exists in the sheets - attempt to set the other values
+             {
+                 var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
+
+                 var t = sheet.SelectMany(row => row)
+                     .FirstOrDefault(bt => bt.Unknown1 == result.ContentDirectorBattleTalkVo);
+                 if (t.Unknown0 != 0)
+                 {
+                     result.Icon = t.Unknown0;
+                 }
+                 
+                 result.Style = t.Unknown4;
+                 result.Duration = t.Unknown3;
+                 result.Transcription = d;
+             }
+    
+         }
+         
+         if (result.InstanceContentTextDataRow != 0)
+         {
+             PluginServices.PluginLog.Verbose($"InstanceContentTextDataRow: {result.InstanceContentTextDataRow}");
+
+             result.Transcription = GetInstanceContentTextDataAllLang(result.InstanceContentTextDataRow);
+         }
+    
+         if (result.NpcYell != 0)
+         {
+             PluginServices.PluginLog.Verbose($"NpcYell: {result.NpcYell}");
+
+             var d = GetNpcYellAllLang(result.NpcYell);
+             var sheet = dataManager.GetExcelSheet<NpcYell>();
+             var foundEntry = sheet.TryGetRow(result.NpcYell, out var row);
+             var duration = foundEntry ? row.BalloonTime : 5;
+        
+             result.Duration = (byte) duration;
+             result.Transcription = d;
+         }
+         
+         if (!result.CutsceneLine.Equals("")) // cutsceneLine is not empty and we don't have a soundpath set
+         {
+             PluginServices.PluginLog.Verbose($"CutsceneLine (Will Fail): {result.CutsceneLine}");
+             
+             var expac = 69; //todo this is going to fail until you can fiddle with what that ex(N) means
+             var splitLine = result.CutsceneLine.Split("_");
+             var number = splitLine[2];
+             var secondNumber = splitLine[3];
+             var audio = $"cut/ex{expac}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
+             result.SoundPath = audio;
+             var d = GetCutsceneLineAllLang(result.CutsceneLine);
+             result.Transcription = d;
+         }
+         
+        
+        
+        //validation order:
+        //name, text, soundpath
+
+        if (result.Shoutcaster.Equals(""))
+        {
+            PluginServices.PluginLog.Error($"No shoutcaster name found for {result.Id}");
+            return NewShoutcast();
+        }
+
+        if (result.Transcription.Count == 0)
+        {
+            PluginServices.PluginLog.Error($"No text data found for {result.Id}");
+            return NewShoutcast();
+        }
+
+        if (result.SoundPath.Equals(""))
+        {
+            PluginServices.PluginLog.Error($"Empty sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
+            return NewShoutcast();
+        }
+
         if (!dataManager.FileExists(result.GetShoutcastSoundPathWithLang("ja")))
         {
-            PluginServices.PluginLog.Error($"No sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
-           // return NewShoutcast();
+            PluginServices.PluginLog.Error($"No valid sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
+            return NewShoutcast();
         }
 
-        _instance = NewShoutcast();
+
+
         return result;
     }
     private readonly Language[] _langList =
@@ -238,7 +276,10 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
 
     private static Shoutcast NewShoutcast()
     {
-        return new Shoutcast("ShoutcastId", 0, [], 5, 6, "Shoutcaster", [], "", "", 0, 0, 0);
+        return new Shoutcast("ShoutcastId", 0, new Dictionary<string, string>()
+        {
+            {"en", "Shoutcast Transcription"}
+        }, 5, 6, "Shoutcaster", [], InternalConstants.DefaultSoundPath, "", 0, 0, 0);
     }
 
     [GeneratedRegex(@"^\(-.*-\)")]

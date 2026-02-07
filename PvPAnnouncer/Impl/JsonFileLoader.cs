@@ -48,6 +48,7 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
             { 
                 var sh = shoutcastRepository.ConstructShoutcast(shout?.ToString() ?? "");
                 PluginServices.PluginLog.Verbose($"Constructed {sh.Id} with {sh.SoundPath}");
+                shoutcastRepository.SetShoutcast(sh.Id, sh);
             }
         }
     }
@@ -66,16 +67,17 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
                     var id = customEvent["id"]?.GetValue<string>();
                     var eventType = customEvent["eventType"]?.GetValue<string>();
                     var actionIds = customEvent["actionIds"]?.AsArray().Select(x => (uint)x).ToArray();
-                    var shouts = customEvent["shouts"]?.Deserialize<List<string>>() ?? new List<string>(); 
+                    var shouts = customEvent["shouts"]?.Deserialize<List<string>>() ?? []; 
                     List<string> newShoutList = [];
-                    foreach (var shout in (shouts ?? []).ToList())
+                    foreach (var shout in (shouts).ToList())
                     {
-                        if (shout.Equals("{{LIMIT_BREAK_LIST}}"))
+                        if (shout.Equals("LIMIT_BREAK_LIST"))
                         {
                             newShoutList.AddRange(InternalConstants.LimitBreakListStr);
                         }
                         else
                         {
+                            PluginServices.PluginLog.Verbose(shout);
                             newShoutList.Add(shout);
                         }
                     }

@@ -249,6 +249,7 @@ namespace PvpAnnouncer
             {
                 if (!DesiredAttributes.Contains(p))
                 {
+                    PluginServices.PluginLog.Verbose($"Attribute {p} not found.");
                     return false;
                 }
             }

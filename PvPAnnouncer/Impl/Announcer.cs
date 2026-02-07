@@ -143,7 +143,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
     {
         List<Shoutcast> sounds = [];
 
-        foreach (var shoutcastId in eventShoutcastMapping.GetShoutcastList(pvpEvent.Name))
+        foreach (var shoutcastId in eventShoutcastMapping.GetShoutcastList(pvpEvent.InternalName))
         {
             var sound = shoutcastRepository.GetShoutcast(shoutcastId);
             // == Objective 5 == 
@@ -151,6 +151,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             {
                 sounds.AddRange(sound);
             }
+            //todo check if they want a specific announcer
         }
         
         // == Objective 2 == 
@@ -167,6 +168,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
         if (sounds.Count < 1)
         {
+            PluginServices.PluginLog.Verbose($"Sound list after customization removal is less than 1 for {pvpEvent.InternalName}");
             return;
         }
         

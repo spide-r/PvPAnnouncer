@@ -8,6 +8,7 @@ public abstract class InternalConstants
     public const string MessageTag = "PvPAnnouncer";
     public const uint PvPAnnouncerDevIcon = 73282;
     public const string PvPAnnouncerDevName = "PvPAnnouncer Dev";
+    public const string DefaultSoundPath = "sound/voice/vo_line/8205794";
     public const string ErrorContactDev = "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!";
     
     public static readonly List<string> LimitBreakListStr =

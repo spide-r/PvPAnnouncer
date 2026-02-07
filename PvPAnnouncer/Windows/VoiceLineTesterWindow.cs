@@ -5,20 +5,21 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Windows;
 
 public class VoiceLineTesterWindow: Window, IDisposable
 {
     private readonly List<Shoutcast> _allBattleTalks;
-    public VoiceLineTesterWindow() : base(
+    public VoiceLineTesterWindow(IShoutcastRepository shoutcastRepository) : base(
         "Voice Line Tester window", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {
         this.SizeConstraints = new WindowSizeConstraints
         {
             MinimumSize = new Vector2(450, 225),
         };
-        _allBattleTalks = new List<Shoutcast>(PluginServices.ShoutcastRepository.GetShoutcasts());
+        _allBattleTalks = new List<Shoutcast>(shoutcastRepository.GetShoutcasts());
 
     }
 

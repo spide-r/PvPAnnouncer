@@ -11,7 +11,7 @@
     "id": "AllyVprLBEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [39190],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "CruelCoil", "EitherSide", "SomethingRevolting"]
+    "shouts": ["LIMIT_BREAK_LIST", "CruelCoil", "EitherSide", "SomethingRevolting"]
   },
   {
     "name": "Backlash",
@@ -32,7 +32,7 @@
     "id": "AllyPldLBEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29069],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "AllTheseWeaponsMasc"]
+    "shouts": ["LIMIT_BREAK_LIST", "AllTheseWeaponsMasc"]
   },
   {
     "name": "Comet",
@@ -46,35 +46,35 @@
     "id": "AllyMchLBEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29415],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "MassiveCannonFem"]
+    "shouts": ["LIMIT_BREAK_LIST", "MassiveCannonFem"]
   },
   {
     "name": "Soul Resonance",
     "id": "AllyBlmLBEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29662],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "GatheringAetherFem", "ConvertAetherFem", "DischargeAether", "UnleashedANewFeralSoul"]
+    "shouts": ["LIMIT_BREAK_LIST", "GatheringAetherFem", "ConvertAetherFem", "DischargeAether", "UnleashedANewFeralSoul"]
   },
   {
     "name": "Meteodrive",
     "id": "AllyMnkLbEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29485],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "BoundingFromWallToWallMasc"]
+    "shouts": ["LIMIT_BREAK_LIST", "BoundingFromWallToWallMasc"]
   },
   {
     "name": "Seraphism",
     "id": "AllySchLbEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [41502],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "GrownWingsFem", "SomethingGrowingFem"]
+    "shouts": ["LIMIT_BREAK_LIST", "GrownWingsFem", "SomethingGrowingFem"]
   },
   {
     "name": "Tenebrae Lemurum",
     "id": "AllyRprLBEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29553],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "EitherSide", "UnleashedANewFeralSoul", "ConvertAetherFem", "SomethingGrowingFem", "EvenMoreAether", "TTAlteredFormMasc", "BadFeeling", "Transforming", "ItsAliveLindwurm"]
+    "shouts": ["LIMIT_BREAK_LIST", "EitherSide", "UnleashedANewFeralSoul", "ConvertAetherFem", "SomethingGrowingFem", "EvenMoreAether", "TTAlteredFormMasc", "BadFeeling", "Transforming", "ItsAliveLindwurm"]
   },
   {
     "name": "Full Swing, Wind's Reply",
@@ -109,7 +109,7 @@
     "id": "AllyDncLBEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29432],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "HerCharmsNotDeniedFem", "FeelingLoveFem"]
+    "shouts": ["LIMIT_BREAK_LIST", "HerCharmsNotDeniedFem", "FeelingLoveFem"]
   },
   {
     "name": "Flarethrower (Rival Wings)",
@@ -165,6 +165,6 @@
     "id": "AllyAstLbEvent",
     "eventType": "AllyActionEvent",
     "actionIds": [29255],
-    "shouts": ["{{LIMIT_BREAK_LIST}}", "River", "StarsFavorUs", "DanceOfTheStars"]
+    "shouts": ["LIMIT_BREAK_LIST", "River", "StarsFavorUs", "DanceOfTheStars"]
   }
 ]

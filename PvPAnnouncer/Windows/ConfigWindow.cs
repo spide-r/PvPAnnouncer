@@ -21,7 +21,6 @@ public class ConfigWindow : Window, IDisposable
 {
     //todo make a note somewhere that some of the ways i pull the data are kinda skuffedTM and that some of the translations to other languages may not be 100% and to tell me if that happens
     private IEventListenerLoader listenerLoader;
-    private List<Shoutcast> _allBattleTalks;
 
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
@@ -41,7 +40,6 @@ public class ConfigWindow : Window, IDisposable
         _configuration = pluginConfiguration;
         listenerLoader = PluginServices.ListenerLoader;
         _allEvents = listenerLoader.GetPvPEvents();
-        _allBattleTalks = shoutcastRepository.GetShoutcasts();
         _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
         _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
         foreach (var pvPEvent in _allEvents)
@@ -136,7 +134,7 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Button("Test The Announcer"))
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
-            Shoutcast[] bt = _allBattleTalks.Where(bt => PluginServices.Config.WantsAllAttributes(bt.Attributes)).ToArray();
+            Shoutcast[] bt = _shoutcastRepository.GetShoutcasts().Where(bt => PluginServices.Config.WantsAllAttributes(bt.Attributes)).ToArray();
             if (bt.Length != 0) // no announcers selected
             {
                 
@@ -162,7 +160,7 @@ public class ConfigWindow : Window, IDisposable
                 {
                     ["en"] = "You don't have any announcers selected!"
                 };
-                var s = PluginServices.ShoutcastBuilder.WithShoutcaster(InternalConstants.PvPAnnouncerDevName).WithIcon(InternalConstants.PvPAnnouncerDevIcon)
+                var s = PluginServices.ShoutcastBuilder.WithSoundPath(InternalConstants.DefaultSoundPath).WithId("OopsAnnouncerDev").WithShoutcaster(InternalConstants.PvPAnnouncerDevName).WithIcon(InternalConstants.PvPAnnouncerDevIcon)
                     .WithTranscription(dict).Build();
                 PluginServices.Announcer.SendBattleTalk(s);
             }

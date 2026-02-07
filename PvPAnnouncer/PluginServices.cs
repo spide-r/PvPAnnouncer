@@ -88,7 +88,6 @@ internal class PluginServices {
         var newCfg = pluginInterface.GetPluginConfig() == null;
         Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         PvPEventBroker = new PvPEventBroker();
-        Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
@@ -100,8 +99,8 @@ internal class PluginServices {
         ShoutcastRepository = new ShoutcastRepository(ShoutcastBuilder);
         JsonFileLoader = new JsonFileLoader(PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
         JsonFileLoader.LoadAll();
-
-        VoiceLineTesterWindow = new VoiceLineTesterWindow();
+        Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
+        VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);
         window.AddWindow(VoiceLineTesterWindow);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();

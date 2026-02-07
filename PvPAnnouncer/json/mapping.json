@@ -63,7 +63,7 @@
   {
     "event": "AllyLimitBreakEvent",
     "shouts": [
-      "{{LIMIT_BREAK_LIST}}"
+      "LIMIT_BREAK_LIST"
     ]
   },
   {

@@ -41,17 +41,6 @@ public class  Shoutcast : IShoutcast // decorator
         - name: Unknown4 -> BattleTalkStyle
   
      */
-  
-
-  [Obsolete]
-  public Shoutcast(string shoutcaster, uint voiceover, int duration, string text, List<Personalization> personalization,
-    uint icon = 0, byte style = 6, uint rowId = 0, uint subRowId = 0, string path = "") 
-  {
-    Shoutcaster = shoutcaster;
-    Duration = (byte) duration;
-    Icon = icon;
-    Style = style;
-  }
 
   public Shoutcast(string id, uint icon, Dictionary<string, string> transcription, byte duration, byte style,
     string shoutcaster, List<string> attributes, string soundPath, string cutsceneLine, uint contentDirectorBattleTalkVo, uint npcYell, uint instanceContentTextDataRow)
@@ -80,8 +69,9 @@ public class  Shoutcast : IShoutcast // decorator
     return Transcription[lang];
   }
 
-  public Shoutcast()
+  public override string ToString()
   {
-    
+    return $"iD: {this.Id}, icon: {Icon}, Duration: {Duration}, Style: {Style}, Shoutcaster: {Shoutcaster}, attributes: {Attributes}, " +
+           $"SoundPath: {SoundPath}, CutsceneLine: {CutsceneLine},  ContentDirectorBattleTalkVo: {ContentDirectorBattleTalkVo}, NPCYell: {NpcYell}, InstanceContentTextDataRow: {InstanceContentTextDataRow}";
   }
 }

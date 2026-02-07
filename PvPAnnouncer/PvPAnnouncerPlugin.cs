@@ -24,7 +24,7 @@ namespace PvPAnnouncer
             ConfigWindow = new ConfigWindow(PluginServices.ShoutcastRepository, PluginServices.Config, PluginServices.EventShoutcastMapping);
             MainWindow = new MainWindow();
             DevWindow = new DevWindow();
-            VoiceLineTesterWindow = new VoiceLineTesterWindow();
+            VoiceLineTesterWindow = new VoiceLineTesterWindow(PluginServices.ShoutcastRepository);
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);
             WindowSystem.AddWindow(DevWindow);
