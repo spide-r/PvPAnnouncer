@@ -11,7 +11,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
     public AllyHitByLimitBreakEvent()
     {
         Name = "Hit by an Enemy Limit Break";
-        InternalName = "AllyHitByLimitBreakEvent"; 
+        Id = "AllyHitByLimitBreakEvent"; 
     }
 
     public override bool InvokeRule(IMessage message)

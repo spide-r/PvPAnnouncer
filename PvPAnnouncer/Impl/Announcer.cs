@@ -39,7 +39,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return;
         }
         
-        PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.InternalName} received");
+        PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.Id} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
         
@@ -94,7 +94,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             _lastEvents.Dequeue();
         }
         
-        _lastEvents.Enqueue(e.InternalName);
+        _lastEvents.Enqueue(e.Id);
     }
 
     
@@ -115,7 +115,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
     private bool FailsRepeatCommentaryCheck(PvPEvent pvpEvent)
     {
-        bool b = _lastEvents.Contains(pvpEvent.InternalName);
+        bool b = _lastEvents.Contains(pvpEvent.Id);
         foreach (var lastEvent in _lastEvents)
         {
             PluginServices.PluginLog.Verbose($"Last Event: {lastEvent}");
@@ -143,7 +143,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
     {
         List<Shoutcast> sounds = [];
 
-        foreach (var shoutcastId in eventShoutcastMapping.GetShoutcastList(pvpEvent.InternalName))
+        foreach (var shoutcastId in eventShoutcastMapping.GetShoutcastList(pvpEvent.Id))
         {
             var sound = shoutcastRepository.GetShoutcast(shoutcastId);
             // == Objective 5 == 
@@ -168,7 +168,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
         if (sounds.Count < 1)
         {
-            PluginServices.PluginLog.Verbose($"Sound list after customization removal is less than 1 for {pvpEvent.InternalName}");
+            PluginServices.PluginLog.Verbose($"Sound list after customization removal is less than 1 for {pvpEvent.Id}");
             return;
         }
         

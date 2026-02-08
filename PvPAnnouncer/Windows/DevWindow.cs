@@ -200,7 +200,7 @@ public class DevWindow: Window, IDisposable
         
         ImGui.Text("Events: ");
         var i = 1;
-        foreach (var pvPEvent in PluginServices.EventShoutcastMapping.GetEventList())
+        foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
         {
             if (ImGui.Button(pvPEvent))
             {

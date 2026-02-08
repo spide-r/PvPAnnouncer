@@ -12,7 +12,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
     public AllyHitEnemyHardEvent()
     {
         Name = "Hit an Enemy Hard/Used Burst on an enemy";
-        InternalName = "AllyHitEnemyHardEvent";
+        Id = "AllyHitEnemyHardEvent";
     }
 
     public override bool InvokeRule(IMessage message) 

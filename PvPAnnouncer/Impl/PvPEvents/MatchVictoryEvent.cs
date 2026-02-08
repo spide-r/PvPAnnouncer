@@ -9,7 +9,7 @@ public class MatchVictoryEvent: PvPMatchEvent
     public MatchVictoryEvent()
     {
         Name = "Match Victory";
-        InternalName = "MatchVictoryEvent";
+        Id = "MatchVictoryEvent";
     }
 
     public override bool InvokeRule(IMessage message)

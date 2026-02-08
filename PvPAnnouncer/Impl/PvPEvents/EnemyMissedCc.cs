@@ -11,7 +11,7 @@ public class EnemyMissedCc: PvPActionEvent
     public EnemyMissedCc()
     {
         Name = "Cleansing & Dodging CC";
-        InternalName = "EnemyMissedCcEvent";
+        Id = "EnemyMissedCcEvent";
     }
 
     public override bool InvokeRule(IMessage message)

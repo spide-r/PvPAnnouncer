@@ -10,7 +10,7 @@ public class AllyMitUsedEvent: PvPActionEvent
     public AllyMitUsedEvent()
     {
         Name = "Mitigation";
-        InternalName = "AllyMitUsedEvent";
+        Id = "AllyMitUsedEvent";
     }
 
     public override bool InvokeRule(IMessage message)

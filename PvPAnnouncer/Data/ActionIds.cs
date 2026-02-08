@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PvPAnnouncer.Data;
 
-public class ActionIds
+public static class ActionIds
 {
 
 

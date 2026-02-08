@@ -9,7 +9,7 @@ public class MaxBattleFeverEvent: PvPEvent
     public MaxBattleFeverEvent()
     {
         Name = "Gaining Battle High V / Flying High";
-        InternalName = "MaxBattleFeverEvent";
+        Id = "MaxBattleFeverEvent";
     }
 
     public override bool InvokeRule(IMessage message)

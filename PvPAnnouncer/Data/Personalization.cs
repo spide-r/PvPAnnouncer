@@ -2,6 +2,7 @@
 
 namespace PvPAnnouncer.Data;
 [Flags]
+[Obsolete]
 public enum Personalization: int
 {
  None = 0,

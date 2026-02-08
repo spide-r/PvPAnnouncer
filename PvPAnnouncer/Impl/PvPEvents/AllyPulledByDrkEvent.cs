@@ -11,7 +11,7 @@ public class AllyPulledByDrkEvent: PvPActionEvent
     public AllyPulledByDrkEvent()
     {
         Name = "Pulled By Dark Knight";
-        InternalName = "AllyPulledByDrkEvent";
+        Id = "AllyPulledByDrkEvent";
     }
 
     public override bool InvokeRule(IMessage message)

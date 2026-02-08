@@ -10,7 +10,7 @@ public class EnteredMechEvent: PvPEvent
     public EnteredMechEvent()
     {
         Name = "Entering a RW Mech";
-        InternalName = "EnteredMechEvent";
+        Id = "EnteredMechEvent";
     }
 
     public override bool InvokeRule(IMessage message)

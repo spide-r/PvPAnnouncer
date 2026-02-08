@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
@@ -11,7 +12,7 @@ namespace PvPAnnouncer.Impl;
 public class PvPEventBroker: IPvPEventBroker
 {
     private readonly List<Tuple<PvPEvent, Func<IMessage, bool>>> _registeredListeners = new();
-    private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new(); //todo bodge - remove/make a new class/provider
+    private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new(); //todo bodge? maybe make the broker provide the list as well
     private string LastUsedAction = "";
     public void IngestMessage(IMessage message)
     {
@@ -61,7 +62,7 @@ public class PvPEventBroker: IPvPEventBroker
             bool emit = shouldEmit.Invoke(message);
             if (emit)
             {
-                PluginServices.PluginLog.Verbose("Emitted: " + ee.InternalName);
+                PluginServices.PluginLog.Verbose("Emitted: " + ee.Id);
 
                 EmitToSubscribers(ee);
             }
@@ -70,7 +71,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     private bool IsBlacklistedEvent(PvPEvent ee)
     {
-        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.InternalName);
+        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.Id);
         return eventIsBlacklisted;
     }
 
@@ -83,8 +84,8 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void RegisterListener(PvPEvent e)
     {
-        _pvpEventIdBinding.Add(e.InternalName, e);
-        PluginServices.PluginLog.Verbose("Registered listener: " + e.InternalName);
+        _pvpEventIdBinding.Add(e.Id, e);
+        PluginServices.PluginLog.Verbose("Registered listener: " + e.Id);
         _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
     }
 
@@ -99,15 +100,19 @@ public class PvPEventBroker: IPvPEventBroker
         return !found ? null : obj;
     }
 
+    public List<PvPEvent> GetPvPEvents()
+    {
+        return _pvpEventIdBinding.Values.ToList();
+    }
+
+    public List<string> GetPvPEventIDs()
+    {
+        return _pvpEventIdBinding.Keys.ToList();
+    }
+
     public void DeregisterListener(PvPEvent e)
     {
-        _registeredListeners.RemoveAll(aa =>
-        {
-            return aa.Item1.InternalName.Equals(e.InternalName);
-        });
+        _registeredListeners.RemoveAll(aa => aa.Item1.Id.Equals(e.Id));
+        _pvpEventIdBinding.Remove(e.Id);
     }
-    
-    
-    
-    
 }

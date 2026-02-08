@@ -71,6 +71,7 @@ namespace PvpAnnouncer
             _pluginInterface = pluginInterface;
             if (newConfig)
             {
+                //todo this newConfig logic is still broken - TEST!!!
                 if (ps.CheckCNClient()) 
                 {
                     Language = "chs";

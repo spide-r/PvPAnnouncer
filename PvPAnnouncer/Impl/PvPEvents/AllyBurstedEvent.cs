@@ -16,7 +16,7 @@ public class AllyBurstedEvent: PvPEvent
     public AllyBurstedEvent()
     {
         Name = "Bursted By Enemy Team";
-        InternalName = "AllyBurstedEvent";
+        Id = "AllyBurstedEvent";
     }
 
     public override bool InvokeRule(IMessage message)

@@ -9,7 +9,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
     public AllyLimitBreakEvent()
     {
         Name = "Limit Breaks";
-        InternalName = "AllyLimitBreakEvent";
+        Id = "AllyLimitBreakEvent";
     }
 
     public override bool InvokeRule(IMessage message)

@@ -2,7 +2,7 @@
 
 namespace PvPAnnouncer.Data;
 
-public class StatusIds
+public static class StatusIds
 {
     public static readonly uint Guard = 3054;
     public static readonly uint HardenedScales = 4096;

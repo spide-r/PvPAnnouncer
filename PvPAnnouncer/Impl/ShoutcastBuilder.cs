@@ -24,7 +24,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         var result = _instance;
         _instance = NewShoutcast();
         PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id}");
-        //todo check and warn for screwed up shoutcast obj - current impl is SCUFFED
+        //todo current impl to let you know that something failed is bad - maybe preserve the shoutcast id and other metadata but flag it as an error in the console?
         
         
         /*

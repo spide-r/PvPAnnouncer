@@ -10,7 +10,7 @@ public class AllyDeathEvent : PvPActorControlEvent
     public AllyDeathEvent()
     {
         Name = "Deaths";
-        InternalName = "AllyDeathEvent";
+        Id = "AllyDeathEvent";
     }
 
     public override bool InvokeRule(IMessage m)

@@ -508,14 +508,9 @@ public class ConfigWindow : Window, IDisposable
         List<string> activeEvents = new List<string>();
         List<string> activeEventsInternal = new List<string>();
         bool modifiedList = false;
-        //todo slow your roll - you use the event broker for getting an event object but the shoutcast mapping for a list? nuh uh - FIX!! modify the repository maybe?
-        foreach (var eventId in PluginServices.EventShoutcastMapping.GetEventList())
+        foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())
         {
-            var e = PluginServices.PvPEventBroker.GetEvent(eventId);
-            if (e == null)
-            {
-                continue;
-            }
+            var eventId = e.Id;
             if (!blEvents.Contains(eventId))
             {
                 if (WantsAnyInEvent(e))

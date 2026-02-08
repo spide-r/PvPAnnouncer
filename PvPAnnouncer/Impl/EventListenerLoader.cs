@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
@@ -8,10 +9,8 @@ namespace PvPAnnouncer.Impl;
 
 public class EventListenerLoader : IEventListenerLoader
 {
-    public PvPEvent[] StandardPvpEvents { get; } = [
+    private PvPEvent[] StandardPvpEvents { get; } = [
 
-
-        // == Standard Events ==
         new MatchVictoryEvent(),
         new MatchLossEvent(),
         new AllyBurstedEvent(),
@@ -31,23 +30,15 @@ public class EventListenerLoader : IEventListenerLoader
         new MatchStormyWeatherEvent(),
         new MaxBattleFeverEvent()
     ];
-
-    [Obsolete(message:"Replace me with something idk")]
-    public PvPEvent[] GetPvPEvents()
-    {
-        return StandardPvpEvents;
-    }
     public void LoadEventListeners()
     {
+        
         PluginServices.PluginLog.Verbose("Loading Standard event listeners");
         
         foreach (var ee in StandardPvpEvents)
         {
             PluginServices.PvPEventBroker.RegisterListener(ee);
         }
-
-       
-
     }
     
 }

@@ -8,8 +8,8 @@ namespace PvPAnnouncer
 {
     //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
     //todo pull the old todo's from scionlines when you want to add more voicelines
-    
-    //todo there is so much differing naming for everything, id/internalname shout/annnounce fix it!!!
+    //todo fix kardia activating voicelines maybe 
+    //todo there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");
@@ -47,6 +47,7 @@ namespace PvPAnnouncer
                     
                     return;
                 }
+                //todo let people know big update that changed a lot of backend stuff
                 PluginServices.ChatGui.Print(
                     "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!\n" +
                     "Tell your local scion enjoyer that their fav is now in PvP ;D \n" +

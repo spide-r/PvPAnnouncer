@@ -13,11 +13,11 @@ public class AllyActionEvent : PvPActionEvent
 
     private uint[] ActionIds { get; }
     
-    public AllyActionEvent(uint[] actionIds, string name = "Action", string internalName = "internal")
+    public AllyActionEvent(uint[] actionIds, string name = "Action", string id = "internal")
     {
         ActionIds = actionIds;
         Name = name;
-        InternalName = internalName;
+        Id = id;
     }
 
     public override bool InvokeRule(IMessage p)

@@ -9,7 +9,7 @@ public class AllyZoneOutEvent: PvPActorEvent
     public AllyZoneOutEvent()
     {
         Name = "Fatal Fall Damage";
-        InternalName = "AllyZoneOutEvent";
+        Id = "AllyZoneOutEvent";
     }
 
     public override bool InvokeRule(IMessage m) 

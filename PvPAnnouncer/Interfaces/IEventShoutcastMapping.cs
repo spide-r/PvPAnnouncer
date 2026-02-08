@@ -8,5 +8,4 @@ public interface IEventShoutcastMapping
     public void AddShoutcast(string eventId, string shoutcast);
     public void RemoveShoutcast(string eventId, string shoutcast);
     public List<string> GetShoutcastList(string eventId);
-    public List<string> GetEventList();
 }

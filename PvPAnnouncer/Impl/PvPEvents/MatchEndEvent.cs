@@ -10,7 +10,7 @@ public class MatchEndEvent: PvPMatchEvent
     public MatchEndEvent()
     {
         Name = "Matches Ending";
-        InternalName = "MatchEndEvent";
+        Id = "MatchEndEvent";
     }
 
     public override bool InvokeRule(IMessage message)

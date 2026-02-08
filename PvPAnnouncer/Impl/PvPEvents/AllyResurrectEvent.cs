@@ -10,7 +10,7 @@ public class AllyResurrectEvent: PvPActorEvent
     public AllyResurrectEvent()
     {
         Name = "Resurrection";
-        InternalName = "AllyResurrectEvent";
+        Id = "AllyResurrectEvent";
     }
 
     public override bool InvokeRule(IMessage m)

@@ -10,7 +10,7 @@ public class MatchStartEvent: PvPMatchEvent
     public MatchStartEvent()
     {
         Name = "Matches Starting";
-        InternalName = "MatchStartEvent";
+        Id = "MatchStartEvent";
     }
 
     public override bool InvokeRule(IMessage message)

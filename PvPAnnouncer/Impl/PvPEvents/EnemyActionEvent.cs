@@ -10,11 +10,11 @@ public class EnemyActionEvent : PvPActionEvent
 {
     private static uint[] _actionIds = [];
 
-    public EnemyActionEvent(uint[] actionIds, string name = "Enemy Actions", string internalName = "EnemyActions")
+    public EnemyActionEvent(uint[] actionIds, string name = "Enemy Actions", string id = "EnemyActions")
     {
         _actionIds = actionIds;
         Name = name;
-        InternalName = internalName;
+        Id = id;
     }
     
     public override bool InvokeRule(IMessage arg)
