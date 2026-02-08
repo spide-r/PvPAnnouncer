@@ -1,6 +1,6 @@
 [
   {
-    "event": "AllyBurstedEvent",
+    "eventId": "AllyBurstedEvent",
     "shouts": [
       "ViciousBlow", "FeltThatOneStillStanding", "StruckSquare", "Oof", "MustHaveHurtNotOut",
       "CouldntAvoid", "BattleElectrifying", "BrutalBlow", "StillInIt", "OofMustHaveHurt", "NotFastEnough",
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "event": "AllyDeathEvent",
+    "eventId": "AllyDeathEvent",
     "shouts": [
       "TheyreDownIsItOver", "ChallengerDownIsThisEnd", "TooMuch", "WentDownHard",
       "CouldntAvoid", "BeenFelled", "TheyreDownCanTheyRecover", "ChampCrushed", "MjGoodnessGracious", "MjPainfulToWatch",
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "event": "AllyHitByLimitBreakEvent",
+    "eventId": "AllyHitByLimitBreakEvent",
     "shouts": [
       "ViciousBlow", "FeltThatOneStillStanding", "StruckSquare", "Oof", "MustHaveHurtNotOut",
       "CouldntAvoid", "BattleElectrifying", "BrutalBlow", "StillInIt", "OofMustHaveHurt", "NotFastEnough",
@@ -40,7 +40,7 @@
     ]
   },
   {
-    "event": "AllyHitEnemyHardEvent",
+    "eventId": "AllyHitEnemyHardEvent",
     "shouts": [
       "StruckSquare", "WhatAClash", "BattleElectrifying", "ViciousBlow", "RainOfDeath", "FeverPitch",
       "HitThemWhereItHurts", "WinThisYet", "JustALittleMore", "Fall", "DefeatIsNotAnOption", "TurnaboutsFairPlay",
@@ -51,7 +51,7 @@
     ]
   },
   {
-    "event": "AllyHitUnderGuardEvent",
+    "eventId": "AllyHitUnderGuardEvent",
     "shouts": [
       "ClearlyAnticipated", "FeltThatOneStillStanding", "SawThroughIt", "IroncladDefense",
       "WhatAClash", "DirectHitStillStanding", "NotFastEnough", "MjHeatingUp", "MjStillStandingGentle",
@@ -61,13 +61,13 @@
     ]
   },
   {
-    "event": "AllyLimitBreakEvent",
+    "eventId": "AllyLimitBreakEvent",
     "shouts": [
       "LIMIT_BREAK_LIST"
     ]
   },
   {
-    "event": "AllyMitUsedEvent",
+    "eventId": "AllyMitUsedEvent",
     "shouts": [
       "IroncladDefense", "WhatAClash", "ThrillingBattle", "MjDontStandAChance", "BestDefenceIsGoodDefence",
       "DoYourWorst", "KeepYourGuardUp", "SoundDecision", "SmallMerciesYshtola", "MakeReady", "UseConfidenceAgainstThem",
@@ -75,13 +75,13 @@
     ]
   },
   {
-    "event": "AllyPulledByDrkEvent",
+    "eventId": "AllyPulledByDrkEvent",
     "shouts": [
       "SuckedIn", "ThrillingBattle", "Quicksand", "MjRivalVying", "WinThisYet", "Hahahahahaha", "ATestOfYourReflexes"
     ]
   },
   {
-    "event": "AllyResurrectEvent",
+    "eventId": "AllyResurrectEvent",
     "shouts": [
       "BackUpGrit", "BackOnFeet", "RisesAgain", "WhatFightingSpirit", "BackInAction", "BattleNotOverDontDespair",
       "ItsAliveLindwurm", "ContinuesToMultiply", "LWCompletelyHealed", "SomethingRevolting", "RiseOnceMore", "VauntedFortitude",
@@ -99,14 +99,14 @@
     ]
   },
   {
-    "event": "AllyZoneOutEvent",
+    "eventId": "AllyZoneOutEvent",
     "shouts": [
       "Fallen", "Hahahahahaha", "OutplayedClearMinds", "TwelveGiveMeStrength", "KeepChinUpPrettyLeast",
       "SuchShouldBeFate", "UnfortunateSuchIsLife", "LeftOurselvesOpen", "DoYouRequireHealing", "ThatsTooBadKrile", "GonnaBeSickWuk", "CantBe", "GodsHelpUs", "Unfortunate"
     ]
   },
   {
-    "event": "EnemyMissedCcEvent",
+    "eventId": "EnemyMissedCcEvent",
     "shouts": [
       "BeautifullyDodged", "SawThroughIt", "EffortlesslyDodged", "ClearlyAnticipated", "StylishEvasion", "AvoidedWithEase",
       "DodgedEverything", "ImpressiveFootwork", "DancingAwayUnharmed", "AnotherAttackEvaded",
@@ -114,20 +114,20 @@
     ]
   },
   {
-    "event": "EnteredMechEvent",
+    "eventId": "EnteredMechEvent",
     "shouts": [
       "ColossalThing"
     ]
   },
   {
-    "event": "MatchEndEvent",
+    "eventId": "MatchEndEvent",
     "shouts": [
       "AllOverUntilNextTime", "HoldYourHeadHigh", "OnlyPossibleOutcome", "WellDone", "CouldHaveBeenWorse",
       "RaiseAGlassVictory", "QuiteTheStatement", "HeartRacingKrile", "AllRightYouDidGreat"
     ]
   },
   {
-    "event": "MatchLossEvent",
+    "eventId": "MatchLossEvent",
     "shouts": [
       "MjPainfulToWatch", "MjCommendableEffort", "MjCompetitionTooMuch", "MjUtterlyHumiliated",
       "OutcomeWithHubris", "PainfulThrashing", "LearnAndForgeOn", "ProudYetIgnorant", "ReplaceIgnoranceWithKnowledge",
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "event": "MatchStartEvent",
+    "eventId": "MatchStartEvent",
     "shouts": [
       "SendingCameras", "UpstartBegins", "OurTurnThancred", "FirstOpponent", "NineLives", "IntroBc",
       "HoneyBShowBegun", "SavorSting", "IntroHbl", "BBMuscled", "IntroBb", "WTReturned", "IntroWt",
@@ -157,13 +157,13 @@
     ]
   },
   {
-    "event": "MatchStormyWeatherEvent",
+    "eventId": "MatchStormyWeatherEvent",
     "shouts": [
       "StormParasols", "Thunderstorm"
     ]
   },
   {
-    "event": "MatchVictoryEvent",
+    "eventId": "MatchVictoryEvent",
     "shouts": [
       "GenericVictory", "NewGcBornVictory", "RobotKo", "VictoryChamp", "MjBeautifullyPlayed",
       "MjMadeYourMark", "MjKissLadyLuck", "MjClobberedWithTable", "Hahahahahaha", "LetThisMomentLastForever",
@@ -180,7 +180,7 @@
     ]
   },
   {
-    "event": "MaxBattleFeverEvent",
+    "eventId": "MaxBattleFeverEvent",
     "shouts": [
       "WhatPower", "RainOfDeath", "DontStopNow", "RoofCavedSuchDevastation", "TyrannyTimeMasc", "HerCharmsNotDeniedFem",
       "GatheringAetherFem", "UnusedOhMercyFem", "DGFeverPich", "YesYesJustSo", "More", "LetThisMomentLastForever", "Hahahahahaha",

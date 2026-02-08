@@ -8,4 +8,5 @@ public interface IPvPEventBroker
     void IngestMessage(IMessage message);
     void RegisterListener(PvPEvent e);
     string GetLastAction();
+    PvPEvent? GetEvent(string eventId);
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
@@ -6,40 +7,45 @@ namespace PvPAnnouncer.Impl;
 public class EventShoutcastMapping: IEventShoutcastMapping
 {
     private readonly Dictionary<string, List<string>> _map = new();
-    public void AddShoutcasts(string eventStr, List<string> shoutcasts)
+    public void AddShoutcasts(string eventId, List<string> shoutcasts)
     {
-        if (_map.TryGetValue(eventStr, out var shoutList))
+        if (_map.TryGetValue(eventId, out var shoutList))
         {
             shoutList.AddRange(shoutcasts);
         }
         else
         {
-            _map.Add(eventStr, [..shoutcasts]); //todo does this work???
+            _map.Add(eventId, [..shoutcasts]); //todo does this work???
         }
     }
 
-    public void AddShoutcast(string eventStr, string shoutcast)
+    public void AddShoutcast(string eventId, string shoutcast)
     {
-        if (_map.TryGetValue(eventStr, out var shoutList))
+        if (_map.TryGetValue(eventId, out var shoutList))
         {
             shoutList.Add(shoutcast);
         }
         else
         {
-            _map.Add(eventStr, [shoutcast]); //todo does this work???
+            _map.Add(eventId, [shoutcast]); //todo does this work???
         }
     }
 
-    public void RemoveShoutcast(string eventStr, string shoutcast)
+    public void RemoveShoutcast(string eventId, string shoutcast)
     {
-        if (_map.TryGetValue(eventStr, out var shoutList))
+        if (_map.TryGetValue(eventId, out var shoutList))
         {
             shoutList.Remove(shoutcast);
         }
     }
 
-    public List<string> GetShoutcastList(string eventStr)
+    public List<string> GetShoutcastList(string eventId)
     {
-        return _map.TryGetValue(eventStr, out var shoutList) ? shoutList : [];
+        return _map.TryGetValue(eventId, out var shoutList) ? shoutList : [];
+    }
+
+    public List<string> GetEventList()
+    {
+        return _map.Keys.ToList();
     }
 }

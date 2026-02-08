@@ -151,7 +151,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             {
                 sounds.AddRange(sound);
             }
-            //todo check if they want a specific announcer
+            //todo check if they want a specific announcer - due to the changes to personalization that needs to be factored in here
         }
         
         // == Objective 2 == 

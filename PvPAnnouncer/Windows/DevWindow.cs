@@ -200,18 +200,24 @@ public class DevWindow: Window, IDisposable
         
         ImGui.Text("Events: ");
         var i = 1;
-        foreach (var pvPEvent in PluginServices.ListenerLoader.GetPvPEvents())
+        foreach (var pvPEvent in PluginServices.EventShoutcastMapping.GetEventList())
         {
-            if (ImGui.Button(pvPEvent.Name))
+            if (ImGui.Button(pvPEvent))
             {
                 try
                 {
-                    PluginServices.Announcer.ReceivePvPEvent(true, pvPEvent);
-                    PluginServices.Announcer.ClearQueue();
+                    var ev = PluginServices.PvPEventBroker.GetEvent(pvPEvent);
+                    if (ev != null)
+                    {
+                        PluginServices.Announcer.ReceivePvPEvent(true, ev);
+                        PluginServices.Announcer.ClearQueue();    
+                    }
+
+
                 }
                 catch (Exception e)
                 {
-                    PluginServices.PluginLog.Error(e.Message);
+                    PluginServices.PluginLog.Error(e, "Issue sending custom event!!!");
                 }
          
             }

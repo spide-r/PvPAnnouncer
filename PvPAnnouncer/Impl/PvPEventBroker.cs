@@ -11,6 +11,7 @@ namespace PvPAnnouncer.Impl;
 public class PvPEventBroker: IPvPEventBroker
 {
     private readonly List<Tuple<PvPEvent, Func<IMessage, bool>>> _registeredListeners = new();
+    private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new(); //todo bodge - remove/make a new class/provider
     private string LastUsedAction = "";
     public void IngestMessage(IMessage message)
     {
@@ -82,6 +83,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void RegisterListener(PvPEvent e)
     {
+        _pvpEventIdBinding.Add(e.InternalName, e);
         PluginServices.PluginLog.Verbose("Registered listener: " + e.InternalName);
         _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
     }
@@ -91,6 +93,12 @@ public class PvPEventBroker: IPvPEventBroker
         return LastUsedAction;
     }
 
+    public PvPEvent? GetEvent(string eventId)
+    {
+        var found = _pvpEventIdBinding.TryGetValue(eventId, out var obj);
+        return !found ? null : obj;
+    }
+
     public void DeregisterListener(PvPEvent e)
     {
         _registeredListeners.RemoveAll(aa =>
@@ -98,4 +106,8 @@ public class PvPEventBroker: IPvPEventBroker
             return aa.Item1.InternalName.Equals(e.InternalName);
         });
     }
+    
+    
+    
+    
 }

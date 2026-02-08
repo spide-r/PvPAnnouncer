@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
@@ -67,22 +68,12 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
                     var id = customEvent["id"]?.GetValue<string>();
                     var eventType = customEvent["eventType"]?.GetValue<string>();
                     var actionIds = customEvent["actionIds"]?.AsArray().Select(x => (uint)x).ToArray();
-                    var shouts = customEvent["shouts"]?.Deserialize<List<string>>() ?? []; 
-                    List<string> newShoutList = [];
-                    foreach (var shout in (shouts).ToList())
+                    var shouts = customEvent["shouts"]?.Deserialize<List<string>>() ?? [];
+                    if (id == null)
                     {
-                        if (shout.Equals("LIMIT_BREAK_LIST"))
-                        {
-                            newShoutList.AddRange(InternalConstants.LimitBreakListStr);
-                        }
-                        else
-                        {
-                            PluginServices.PluginLog.Verbose(shout);
-                            newShoutList.Add(shout);
-                        }
+                        continue;
                     }
-                    
-                    eventShoutcastMapping.AddShoutcasts(id ?? "UnknownEvent", newShoutList);
+                    MapEvent(id, shouts);
                     switch (eventType)
                     {
                         case "AllyActionEvent":
@@ -104,6 +95,25 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
         }
     }
 
+    public void MapEvent(string id, List<string> shouts)
+    {
+        List<string> newShoutList = [];
+        foreach (var shout in shouts)
+        {
+            if (shout.Equals("LIMIT_BREAK_LIST"))
+            {
+                newShoutList.AddRange(InternalConstants.LimitBreakListStr);
+            }
+            else
+            {
+                PluginServices.PluginLog.Verbose($"Shout {shout} for {id} added.");
+                newShoutList.Add(shout);
+            }
+        }
+                    
+        eventShoutcastMapping.AddShoutcasts(id, newShoutList);
+    }
+
     public void LoadMapping()
     {
         var mappingJ = ReadFile("mapping.json");
@@ -112,10 +122,13 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
         {
             foreach (var mapping in j)
             {
-                var eventName = mapping?["event"]?.GetValue<string>();
+                var id = mapping?["eventId"]?.GetValue<string>();
                 var shouts = mapping?["shouts"]?.Deserialize<List<string>>();
-                eventShoutcastMapping.AddShoutcasts(eventName ?? "Unknown Event", shouts ?? []);
-                PluginServices.PluginLog.Verbose($"Constructed Shoutcast: {eventName} with {shouts}");
+                if (id == null || shouts == null)
+                {
+                    continue;
+                }
+                MapEvent(id, shouts);
             }
         }
 

@@ -20,7 +20,6 @@ namespace PvPAnnouncer.Windows;
 public class ConfigWindow : Window, IDisposable
 {
     //todo make a note somewhere that some of the ways i pull the data are kinda skuffedTM and that some of the translations to other languages may not be 100% and to tell me if that happens
-    private IEventListenerLoader listenerLoader;
 
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
@@ -38,14 +37,8 @@ public class ConfigWindow : Window, IDisposable
         SizeCondition = ImGuiCond.Always;
 
         _configuration = pluginConfiguration;
-        listenerLoader = PluginServices.ListenerLoader;
-        _allEvents = listenerLoader.GetPvPEvents();
         _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
         _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
-        foreach (var pvPEvent in _allEvents)
-        {
-            _eventskv.Add(pvPEvent.InternalName, pvPEvent);
-        }
     }
 
     public void Dispose() { }
@@ -56,8 +49,6 @@ public class ConfigWindow : Window, IDisposable
     private string[] _activeEventsArrInternal = [];
     private string[] _disabledEventsArr = [];
     private string[] _disabledEventsArrInternal = [];
-    private readonly PvPEvent[] _allEvents;
-    private readonly Dictionary<string, PvPEvent> _eventskv = new Dictionary<string, PvPEvent>();
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
@@ -517,16 +508,20 @@ public class ConfigWindow : Window, IDisposable
         List<string> activeEvents = new List<string>();
         List<string> activeEventsInternal = new List<string>();
         bool modifiedList = false;
-        foreach (var keyValuePair in _eventskv)
+        //todo slow your roll - you use the event broker for getting an event object but the shoutcast mapping for a list? nuh uh - FIX!! modify the repository maybe?
+        foreach (var eventId in PluginServices.EventShoutcastMapping.GetEventList())
         {
-            var internalName = keyValuePair.Key;
-            var e = keyValuePair.Value;
-            if (!blEvents.Contains(internalName))
+            var e = PluginServices.PvPEventBroker.GetEvent(eventId);
+            if (e == null)
+            {
+                continue;
+            }
+            if (!blEvents.Contains(eventId))
             {
                 if (WantsAnyInEvent(e))
                 {
                     activeEvents.Add(e.Name);
-                    activeEventsInternal.Add(internalName);
+                    activeEventsInternal.Add(eventId);
                 }
                 else
                 {
@@ -541,7 +536,11 @@ public class ConfigWindow : Window, IDisposable
         List<string> listDisabledPublic = [];
         foreach (string internalName in blEvents)
         {
-            var e = _eventskv[internalName];
+            var e = PluginServices.PvPEventBroker.GetEvent(internalName); 
+            if (e == null)
+            {
+                continue;
+            }
             if (WantsAnyInEvent(e))
             {
                 listDisabledInternal.Add(internalName);
