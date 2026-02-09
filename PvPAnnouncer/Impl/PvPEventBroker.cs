@@ -12,7 +12,7 @@ namespace PvPAnnouncer.Impl;
 public class PvPEventBroker: IPvPEventBroker
 {
     private readonly List<Tuple<PvPEvent, Func<IMessage, bool>>> _registeredListeners = new();
-    private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new(); //todo bodge? maybe make the broker provide the list as well
+    private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
     private string LastUsedAction = "";
     public void IngestMessage(IMessage message)
     {

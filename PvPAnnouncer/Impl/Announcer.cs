@@ -212,21 +212,29 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         }
 
         var transcription = "";
-
-        if (shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language).Equals(""))
+        try
         {
-            if (shoutcast.GetTranscriptionWithLang("en").Equals(""))
+            //todo cant play voicelines/show transcriptions of different languages properly
+            PluginServices.PluginLog.Verbose("Jp: " + shoutcast.GetTranscriptionWithLang("ja"));
+            if (shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language).Equals(""))
             {
-                PluginServices.PluginLog.Verbose($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath}");
-                return; 
-            }
+                if (shoutcast.GetTranscriptionWithLang("en").Equals(""))
+                {
+                    PluginServices.PluginLog.Error($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath}");
+                    return; 
+                }
 
-            transcription = shoutcast.GetTranscriptionWithLang("en");
-            PluginServices.PluginLog.Warning($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath} on lang {PluginServices.Config.Language} - falling back to EN");
+                transcription = shoutcast.GetTranscriptionWithLang("en");
+                PluginServices.PluginLog.Warning($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath} on lang {PluginServices.Config.Language} - falling back to EN");
+            }
+            else
+            {
+                transcription = shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language);
+            }
         }
-        else
+        catch (Exception e)
         {
-            transcription = shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language);
+            PluginServices.PluginLog.Error(e, "AAAA");
         }
 
         unsafe

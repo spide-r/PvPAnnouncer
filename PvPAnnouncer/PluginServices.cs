@@ -80,6 +80,8 @@ internal class PluginServices {
     internal static IShoutcastRepository ShoutcastRepository { get; private set; }
     internal static IShoutcastBuilder ShoutcastBuilder { get; private set; }
     internal static IJsonFileLoader JsonFileLoader { get; private set; }
+    internal static IStringRepository AttributeRepository { get; private set; }
+    internal static IStringRepository CasterRepository { get; private set; }
     
     internal static VoiceLineTesterWindow VoiceLineTesterWindow { get; private set; }
 
@@ -97,7 +99,9 @@ internal class PluginServices {
         EventShoutcastMapping = new  EventShoutcastMapping();
         ShoutcastBuilder = new ShoutcastBuilder(DataManager);
         ShoutcastRepository = new ShoutcastRepository(ShoutcastBuilder);
-        JsonFileLoader = new JsonFileLoader(PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
+        AttributeRepository = new AttributeRepository();
+        CasterRepository = new CasterRepository();
+        JsonFileLoader = new JsonFileLoader(AttributeRepository, CasterRepository, PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
         JsonFileLoader.LoadAll();
         Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
         VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);

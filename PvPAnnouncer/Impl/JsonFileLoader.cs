@@ -13,7 +13,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository shoutcastRepository, IEventShoutcastMapping eventShoutcastMapping) : IJsonFileLoader
+public class JsonFileLoader(IStringRepository attributeRepository, IStringRepository casterRepository, IPvPEventBroker pvPEventBroker, IShoutcastRepository shoutcastRepository, IEventShoutcastMapping eventShoutcastMapping) : IJsonFileLoader
 {
     public void LoadAll()
     {
@@ -22,22 +22,19 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
         LoadMapping();
     }
 
-    private string ReadFile(string jsonFile)
+    private static string ReadFile(string jsonFile)
     {
         var assembly = Assembly.GetExecutingAssembly();
-    
-        // Format: "YourProjectNamespace.json.event.json"
-        // Replace 'YourProjectNamespace' with your actual root namespace
-        string resourceName = $"PvPAnnouncer.json." + jsonFile;
+        
+        var resourceName = "PvPAnnouncer.json." + jsonFile;
 
-        using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+        using var stream = assembly.GetManifestResourceStream(resourceName);
+        if (stream == null)
         {
-            if (stream == null) return null;
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
+            return "";
         }
+        using var reader = new StreamReader(stream);
+        return reader.ReadToEnd();
     }
     public void LoadShoutcasts()
     {
@@ -49,7 +46,13 @@ public class JsonFileLoader(IPvPEventBroker pvPEventBroker, IShoutcastRepository
             { 
                 var sh = shoutcastRepository.ConstructShoutcast(shout?.ToString() ?? "");
                 PluginServices.PluginLog.Verbose($"Constructed {sh.Id} with {sh.SoundPath}");
+                casterRepository.RegisterAttribute(sh.Shoutcaster);
                 shoutcastRepository.SetShoutcast(sh.Id, sh);
+                foreach (var shAttribute in sh.Attributes)
+                {
+                    attributeRepository.RegisterAttribute(shAttribute);
+
+                }
             }
         }
     }

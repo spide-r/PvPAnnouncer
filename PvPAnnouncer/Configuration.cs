@@ -60,8 +60,12 @@ namespace PvpAnnouncer
         
  
         public string Language { get; set; } = "en";
+        public string TextLanguage { get; set; } = "en";
+        //todo language other than english isn't working in lumina when playing voicelines - why?
         //todo CHANGE LANGUAGE TO USE THE LUMINA ENUM AND THE HELPER FUNCTION AND MAKE IT DYNAMIC
         //TODO ALLOW PEOPLE TO PICK THE LANGUAGE FOR AUDIO AND FOR THE TEXT
+        //todo make the config finally let you change the language of the text as well as the audio 
+
 
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
@@ -107,13 +111,11 @@ namespace PvpAnnouncer
                 if (WantsFem)
                 {
                     SetPersonalization(Personalization.FemPronouns);
-                   // WantsPersonalizedVoiceLines = true;
                 }
 
                 if (WantsMasc)
                 {
                     SetPersonalization(Personalization.MascPronouns);
-                   // WantsPersonalizedVoiceLines = true;
                 }
                 Version++;
             }

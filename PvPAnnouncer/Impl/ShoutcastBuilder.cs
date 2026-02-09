@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Dalamud.Plugin.Services;
@@ -16,7 +17,6 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
 {
     private Shoutcast _instance = NewShoutcast();
     
-    //todo make the config finally let you change the language of the text as well as the audio 
     
     public Shoutcast Build()
     {
@@ -24,7 +24,6 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         var result = _instance;
         _instance = NewShoutcast();
         PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id}");
-        //todo current impl to let you know that something failed is bad - maybe preserve the shoutcast id and other metadata but flag it as an error in the console?
         
         
         /*
@@ -91,16 +90,19 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
          
          if (!result.CutsceneLine.Equals("")) // cutsceneLine is not empty and we don't have a soundpath set
          {
-             PluginServices.PluginLog.Verbose($"CutsceneLine (Will Fail): {result.CutsceneLine}");
-             
-             var expac = 69; //todo this is going to fail until you can fiddle with what that ex(N) means
              var splitLine = result.CutsceneLine.Split("_");
              var number = splitLine[2];
              var secondNumber = splitLine[3];
-             var audio = $"cut/ex{expac}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
-             result.SoundPath = audio;
-             var d = GetCutsceneLineAllLang(result.CutsceneLine);
-             result.Transcription = d;
+             var expac = Convert.ToInt32(number.Substring(0, 2)) - 2;
+             if (expac >= 0)
+             {
+                 var ex = expac == 0 ? "ffxiv" : $"ex{expac}";
+                 var audio = $"cut/{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
+                 //todo - are a few audio lines exist that refer to a wol with fem vs masc pronouns - the _m and _f at the end make it different - we will probably want to factor that somehow
+                 result.SoundPath = audio;
+                 var d = GetCutsceneLineAllLang(result.CutsceneLine);
+                 result.Transcription = d;
+             }
          }
          
         
@@ -122,18 +124,13 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
 
         if (result.SoundPath.Equals(""))
         {
-            PluginServices.PluginLog.Error($"Empty sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
-            return NewShoutcast();
+            PluginServices.PluginLog.Error($"Empty sound path for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
         }
 
         if (!dataManager.FileExists(result.GetShoutcastSoundPathWithLang("ja")))
         {
             PluginServices.PluginLog.Error($"No valid sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
-            return NewShoutcast();
         }
-
-
-
         return result;
     }
     private readonly Language[] _langList =
@@ -162,7 +159,8 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                     dialogue = row.Value.Dialogue.ExtractText();
                 }
                 dialogue = CutsceneNameRemovalRegex().Replace(dialogue, ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
-                dict[langStr] = dialogue;
+                dict.Add(langStr, dialogue);
+                PluginServices.PluginLog.Verbose($"CutsceneLineLang: {langStr}, Transcription: {dialogue}");
 
             }
             catch (UnsupportedLanguageException)
@@ -188,6 +186,9 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                 var foundEntry = sheet.TryGetRow(yell, out var row);
                 var text = foundEntry ? row.Text.ExtractText() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
+                
+                PluginServices.PluginLog.Verbose($"NPCYellLang: {langStr}, Transcription: {text}");
+
 
             }
             catch (UnsupportedLanguageException)
@@ -224,11 +225,14 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                 {
                     var text = entry.Text.Value.Text.ExtractText();
                     dict[langStr] = text;
+                    PluginServices.PluginLog.Verbose($"CtrDirectorBattleTalkLang: {langStr}, Transcription: {text}");
+
                 }
+
             }
             catch (UnsupportedLanguageException)
             {
-                PluginServices.PluginLog.Verbose($"Attempted to pull NPC Yell for {langStr} and failed due to unsupported language");   
+                PluginServices.PluginLog.Verbose($"Attempted to pull CtrDirectorBattleTalk for {langStr} and failed due to unsupported language");   
             }
            
 
@@ -250,6 +254,8 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                 var foundEntry = sheet.TryGetRow(textDataRow, out var row);
                 var text = foundEntry ? row.Text.ExtractText() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
+                PluginServices.PluginLog.Verbose($"GetInstanceContentTextDataAllLang: {langStr}, Transcription: {text}");
+
 
             }
             catch (UnsupportedLanguageException)

@@ -4,7 +4,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["BlackCat"],
+    "attributes": ["Black Cat"],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000010_METEM"
   },
   {
@@ -12,7 +12,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["BruteBomber"],
+    "attributes": ["Brute Bomber"],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000050_METEM"
   },
   {
@@ -20,7 +20,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["HoneyBLovely"],
+    "attributes": ["Honey B. Lovely"],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000040_METEM"
   },
   {
@@ -28,7 +28,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["WickedThunder"],
+    "attributes": ["Wicked Thunder"],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000060_METEM"
   },
   {
@@ -36,7 +36,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["DancingGreen"],
+    "attributes": ["Dancing Green"],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000010_METEM"
   },
   {
@@ -44,7 +44,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["SugarRiot"],
+    "attributes": ["Sugar Riot"],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000020_METEM"
   },
   {
@@ -52,7 +52,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["BruteAbominator"],
+    "attributes": ["Brute Abominator"],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000030_METEM"
   },
   {
@@ -60,7 +60,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["HowlingBlade"],
+    "attributes": ["Howling Blade"],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000040_METEM"
   },
   {
@@ -68,7 +68,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["VampFatale"],
+    "attributes": ["Vamp Fatale"],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000010_METEM"
   },
   {
@@ -76,7 +76,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["DeepBlueRedHot"],
+    "attributes": ["Deep Blue & Red Hot"],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000020_METEM"
   },
   {
@@ -84,7 +84,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["Tyrant"],
+    "attributes": ["The Tyrant"],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000050_METEM"
   },
   {
@@ -92,7 +92,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "Attributes": ["President"],
+    "attributes": ["The President"],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000080_METEM"
   },
 
@@ -367,35 +367,35 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205353",
-    "Attributes": ["BlackCat"]
+    "attributes": ["Black Cat"]
   },
   {
     "id": "FelineFerocity",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205354",
-    "Attributes": ["BlackCat"]
+    "attributes": ["Black Cat"]
   },
   {
     "id": "LitheAndLethal",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205355",
-    "Attributes": ["BlackCat"]
+    "attributes": ["Black Cat"]
   },
   {
     "id": "NineLives",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205358",
-    "Attributes": ["BlackCat"]
+    "attributes": ["Black Cat"]
   },
   {
     "id": "FeralOnslaught",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205360",
-    "Attributes": ["BlackCat"]
+    "attributes": ["Black Cat"]
   },
   {
     "id": "MyRing",
@@ -416,35 +416,35 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205361",
-    "Attributes": ["HoneyBLovely"]
+    "attributes": ["Honey B. Lovely"]
   },
   {
     "id": "SavorSting",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205363",
-    "Attributes": ["HoneyBLovely"]
+    "attributes": ["Honey B. Lovely"]
   },
   {
     "id": "ChangedRoutine",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205367",
-    "Attributes": ["HoneyBLovely"]
+    "attributes": ["Honey B. Lovely"]
   },
   {
     "id": "VenomStrikeFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205362",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "FeelingLoveFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205364",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "ResistTheIrresistible",
@@ -457,7 +457,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205366",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "WhatAClash",
@@ -472,35 +472,35 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205369",
-    "Attributes": ["BruteBomber"]
+    "attributes": ["Brute Bomber"]
   },
   {
     "id": "BBEmbiggening",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205371",
-    "Attributes": ["BruteBomber"]
+    "attributes": ["Brute Bomber"]
   },
   {
     "id": "KaboomBBSpecial",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205375",
-    "Attributes": ["BruteBomber"]
+    "attributes": ["Brute Bomber"]
   },
   {
     "id": "BBDesprate",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205378",
-    "Attributes": ["BruteBomber"]
+    "attributes": ["Brute Bomber"]
   },
   {
     "id": "AssaultedRefMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205370",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "FuseField",
@@ -521,56 +521,56 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205379",
-    "Attributes": ["WickedThunder"]
+    "attributes": ["Wicked Thunder"]
   },
   {
     "id": "SomethingGrowingFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205383",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "GatheringAetherFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205385",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "ConvertAetherFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205386",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "MassiveCannonFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205380",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "GrownWingsFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205381",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "UnleashedANewFeralSoul",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205384",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "DischargeAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205382",
-    "Attributes": ["WickedThunder"]
+    "attributes": ["Wicked Thunder"]
   },
   {
     "id": "BattleElectrifying",
@@ -585,7 +585,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205785",
-    "Attributes": ["DancingGreen"]
+    "attributes": ["Dancing Green"]
   },
   {
     "id": "UpstartBegins",
@@ -604,14 +604,14 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205787",
-    "Attributes": ["DancingGreen"]
+    "attributes": ["Dancing Green"]
   },
   {
     "id": "DGFeverPich",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205788",
-    "Attributes": ["DancingGreen"]
+    "attributes": ["Dancing Green"]
   },
 
 
@@ -620,14 +620,14 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205789",
-    "Attributes": ["SugarRiot"]
+    "attributes": ["Sugar Riot"]
   },
   {
     "id": "SRBringsWorkToLife",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205790",
-    "Attributes": ["SugarRiot"]
+    "attributes": ["Sugar Riot"]
   },
   {
     "id": "Quicksand",
@@ -690,7 +690,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205800",
-    "Attributes": ["BruteAbominator"]
+    "attributes": ["Brute Abominator"]
   },
   {
     "id": "ChimericalFoe",
@@ -703,7 +703,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205802",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "FiendishFlora",
@@ -722,14 +722,14 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205806",
-    "Attributes": ["BruteAbominator"]
+    "attributes": ["Brute Abominator"]
   },
   {
     "id": "BBLariat",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205811",
-    "Attributes": ["BruteAbominator"]
+    "attributes": ["Brute Abominator"]
   },
   {
     "id": "PunishingAttackFusion",
@@ -742,14 +742,14 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205805",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "BoundingFromWallToWallMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205807",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "RoofCavedSuchDevastation",
@@ -794,14 +794,14 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205816",
-    "Attributes": ["HowlingBlade"]
+    "attributes": ["Howling Blade"]
   },
   {
     "id": "SuchSpeedMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205817",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "ColossalThing",
@@ -814,14 +814,14 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205819",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "SomethingsAmissMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205820",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "RingDestroyedFallen",
@@ -840,7 +840,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205823",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "NeitherSideHoldingBack",
@@ -855,7 +855,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206078",
-    "Attributes": ["VampFatale"]
+    "attributes": ["Vamp Fatale"]
   },
   {
     "id": "FallPreyCruelMistress",
@@ -874,21 +874,21 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206081",
-    "Attributes": ["VampFatale"]
+    "attributes": ["Vamp Fatale"]
   },
   {
     "id": "DrainingAudienceFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206082",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "VFUnleashedAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206083",
-    "Attributes": ["VampFatale"]
+    "attributes": ["Vamp Fatale"]
   },
   {
     "id": "SpectacleResumes",
@@ -907,28 +907,28 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206086",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "EvenMoreAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206087",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
   {
     "id": "LightheadedFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206088",
-    "Attributes": ["VampFatale"]
+    "attributes": ["Vamp Fatale"]
   },
   {
     "id": "SiphonedAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206089",
-    "Attributes": ["FemPronouns"]
+    "attributes": ["Feminine Pronouns"]
   },
 
   {
@@ -936,7 +936,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206090",
-    "Attributes": ["DeepBlueRedHot"]
+    "attributes": ["Deep Blue & Red Hot"]
   },
   {
     "id": "SuchScorn",
@@ -949,7 +949,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206092",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "FlamesSpreading",
@@ -962,7 +962,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206094",
-    "Attributes": ["DeepBlueRedHot"]
+    "attributes": ["Deep Blue & Red Hot"]
   },
   {
     "id": "EnormousWave",
@@ -975,28 +975,28 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206096",
-    "Attributes": ["DeepBlueRedHot"]
+    "attributes": ["Deep Blue & Red Hot"]
   },
   {
     "id": "DoubleTrouble",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206097",
-    "Attributes": ["DeepBlueRedHot"]
+    "attributes": ["Deep Blue & Red Hot"]
   },
   {
     "id": "Fusion",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206098",
-    "Attributes": ["DeepBlueRedHot"]
+    "attributes": ["Deep Blue & Red Hot"]
   },
   {
     "id": "HoldingNothingBack",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206099",
-    "Attributes": ["DeepBlueRedHot"]
+    "attributes": ["Deep Blue & Red Hot"]
   },
 
 
@@ -1017,7 +1017,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206102",
-    "Attributes": ["Tyrant"]
+    "attributes": ["The Tyrant"]
   },
   {
     "id": "HoldingTheirOwn",
@@ -1030,7 +1030,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206104",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "AbsoluteBrutality",
@@ -1049,28 +1049,28 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206107",
-    "Attributes": ["Tyrant"]
+    "attributes": ["The Tyrant"]
   },
   {
     "id": "UnleashedFullMightMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206108",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "SplitRingHalfMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206109",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "ThrownRingMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206110",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "RingRestored",
@@ -1086,7 +1086,7 @@
   },
 
   {
-    "id": "PresidentMustPay",
+    "id": "The PresidentMustPay",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206113"
@@ -1096,21 +1096,21 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206114",
-    "Attributes": ["President"]
+    "attributes": ["The President"]
   },
   {
     "id": "ArmSlitheringOutDisgustingMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206115",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "LWScatteredGore",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206116",
-    "Attributes": ["President"]
+    "attributes": ["The President"]
   },
   {
     "id": "CruelCoil",
@@ -1129,7 +1129,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206119",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "RingPieces",
@@ -1148,28 +1148,28 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206122",
-    "Attributes": ["President"]
+    "attributes": ["The President"]
   },
   {
     "id": "LWOutOfControl",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206123",
-    "Attributes": ["President"]
+    "attributes": ["The President"]
   },
   {
     "id": "PowerRunAmokMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206124",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "RegenCapacityMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206125",
-    "Attributes": ["MascPronouns"]
+    "attributes": ["Masculine Pronouns"]
   },
   {
     "id": "StruckWithVenon",
@@ -1196,7 +1196,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205372",
-    "Attributes": ["MascPronouns"],
+    "attributes": ["Masculine Pronouns"],
     "duration": "4",
     "transcription": [
       {
@@ -1209,7 +1209,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205373",
-    "Attributes": ["MascPronouns"],
+    "attributes": ["Masculine Pronouns"],
     "duration": "3",
     "transcription": [
       {
@@ -1222,7 +1222,6 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205374",
-    "Attributes": ["Personalization"],
     "duration": "3",
     "transcription": [
       {
@@ -1235,7 +1234,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205359",
-    "Attributes": ["FemPronouns"],
+    "attributes": ["Feminine Pronouns"],
     "duration": "4",
     "transcription": [
       {
@@ -1248,7 +1247,6 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206126",
-    "Attributes": ["Personalization"],
     "duration": "5",
     "transcription": [
       {
@@ -1694,7 +1692,7 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206143",
-    "Attributes": ["President"],
+    "attributes": ["The President"],
     "duration": "6",
     "transcription": [
       {
@@ -1957,7 +1955,7 @@
     "icon": "073002",
     "shoutcaster": "Zenos",
     "duration": "3",
-    "Attributes": ["FemPronouns"],
+    "attributes": ["Feminine Pronouns"],
     "cutsceneLine": "TEXT_VOICEMAN_04000_001800_ZENOS"
   },
   {

@@ -9,6 +9,7 @@ using Dalamud.Configuration;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Utility;
+using Lumina.Data;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl;
@@ -24,7 +25,9 @@ public class ConfigWindow : Window, IDisposable
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
     private readonly EventShoutcastMapping _eventShoutcastMapping; 
-    public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, IEventShoutcastMapping eventShoutcastMapping) : base(
+    private readonly CasterRepository _casterRepository; 
+    private readonly AttributeRepository _attributeRepository; 
+    public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, IEventShoutcastMapping eventShoutcastMapping, IStringRepository casterRepository, IStringRepository attributeRepository) : base(
         "PvPAnnouncer Configuration")
     {
 
@@ -39,9 +42,28 @@ public class ConfigWindow : Window, IDisposable
         _configuration = pluginConfiguration;
         _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
         _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
+        _casterRepository = (casterRepository as CasterRepository)!;
+        _attributeRepository = (attributeRepository as AttributeRepository)!;
     }
 
     public void Dispose() { }
+    
+    private void DoAttribute(string attr){ 
+        var attVar = _configuration.WantsAttribute(attr); 
+        if (ImGui.Checkbox(attr, ref attVar))
+        {
+            if (attVar)
+            {
+                _configuration.SetAttribute(attr);
+            }
+            else
+            {
+                _configuration.RemoveAttribute(attr);
+
+            }
+            _configuration.Save();
+        }
+    }
 
     private int _activeEventsSelectedItem;
     private int _disabledEventsSelectedItem = 0;
@@ -64,54 +86,6 @@ public class ConfigWindow : Window, IDisposable
         var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
         var icon = _configuration.WantsIcon;
-        
-        // ==== Attributes that need to be refactored ====
-        
-        /*
-         
-         * private void DoAttribute(string attr){
-         * var attVar _configuration.WantsAttribute(attr);
-         *       if (ImGui.Checkbox(attr, ref attVar))
-            {
-                SetAttribute(attr, attVar);
-                _configuration.Save();
-            }
-         * }
-         */
-        
-        //personalization 
-        var fem = _configuration.WantsPersonalization(Personalization.FemPronouns);
-        var masc = _configuration.WantsPersonalization(Personalization.MascPronouns);
-        var bc = _configuration.WantsPersonalization(Personalization.BlackCat);
-        var bb = _configuration.WantsPersonalization(Personalization.BruteBomber);
-        var hbl = _configuration.WantsPersonalization(Personalization.HoneyBLovely);
-        var wt = _configuration.WantsPersonalization(Personalization.WickedThunder);
-        var dg = _configuration.WantsPersonalization(Personalization.DancingGreen);
-        var sr = _configuration.WantsPersonalization(Personalization.SugarRiot);
-        var ba = _configuration.WantsPersonalization(Personalization.BruteAbominator);
-        var hb = _configuration.WantsPersonalization(Personalization.HowlingBlade);
-        var vf = _configuration.WantsPersonalization(Personalization.VampFatale);
-        var dbrh = _configuration.WantsPersonalization(Personalization.DeepBlueRedHot);
-        var tt = _configuration.WantsPersonalization(Personalization.Tyrant);
-        var pr = _configuration.WantsPersonalization(Personalization.President);
-        
-        // Announcers
-        var metem = _configuration.WantsPersonalization(Personalization.MetemAnnouncer);
-        var alphinaud = _configuration.WantsPersonalization(Personalization.AlphinaudAnnouncer);
-        var alisaie = _configuration.WantsPersonalization(Personalization.AlisaieAnnouncer);
-        var thancred = _configuration.WantsPersonalization(Personalization.ThancredAnnouncer);
-        var urianger = _configuration.WantsPersonalization(Personalization.UriangerAnnouncer);
-        var yshtola = _configuration.WantsPersonalization(Personalization.YshtolaAnnouncer);
-        var estinien = _configuration.WantsPersonalization(Personalization.EstinienAnnouncer);
-        var graha = _configuration.WantsPersonalization(Personalization.GrahaAnnouncer);
-        var krile = _configuration.WantsPersonalization(Personalization.KrileAnnouncer);
-        var wuk = _configuration.WantsPersonalization(Personalization.WukLamatAnnouncer);
-        var koana = _configuration.WantsPersonalization(Personalization.KoanaAnnouncer);
-        var bjj = _configuration.WantsPersonalization(Personalization.BakoolJaJaAnnouncer);
-        var erenville = _configuration.WantsPersonalization(Personalization.ErenvilleAnnouncer);
-        var zenos = _configuration.WantsPersonalization(Personalization.ZenosAnnouncer);
-        
-        // ==== Attributes that need to be refactored ====
 
         
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -174,206 +148,37 @@ public class ConfigWindow : Window, IDisposable
         
         ImGui.Text("Announcers: ");
 
-        if (ImGui.Checkbox("Alphinaud", ref alphinaud))
+        var c = 0;
+        foreach (var caster in _casterRepository.GetAttributeList())
         {
-            _configuration.TogglePersonalization(Personalization.AlphinaudAnnouncer, alphinaud);
-            _configuration.Save();
+            DoAttribute(caster);
+            c++;
+            if (c % 4 != 0)
+            {
+                ImGui.SameLine();
+            }
         }
-        ImGui.SameLine();
         
-        if (ImGui.Checkbox("Alisaie", ref alisaie))
-        {
-            _configuration.TogglePersonalization(Personalization.AlisaieAnnouncer, alisaie);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        
-        if (ImGui.Checkbox("Thancred", ref thancred))
-        {
-            _configuration.TogglePersonalization(Personalization.ThancredAnnouncer, thancred);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        
-        if (ImGui.Checkbox("Urianger", ref urianger))
-        {
-            _configuration.TogglePersonalization(Personalization.UriangerAnnouncer, urianger);
-            _configuration.Save();
-        }
+        //todo modify this area to explain attributes properly since they've changed
+        ImGui.NewLine();
+
+        ImGui.Separator();
        
-        if (ImGui.Checkbox("Y'shtola", ref yshtola))
-        {
-            _configuration.TogglePersonalization(Personalization.YshtolaAnnouncer, yshtola);
-            _configuration.Save();
-        }
+        ImGui.TextWrapped("Use Voice Lines mentioning: "); 
         ImGui.SameLine();
-        
-        if (ImGui.Checkbox("Estinien", ref estinien))
+        ImGuiComponents.HelpMarker("These two values allow announcers to use voice lines usually reserved for specific people. For example, \nMetem may say \"The Honey B. Lovely show has begun!\" if Honey B. Lovely is enabled.");
+        var a = 0;
+        foreach (var se in _attributeRepository.GetAttributeList())
         {
-            _configuration.TogglePersonalization(Personalization.EstinienAnnouncer, estinien);
-            _configuration.Save();
+            DoAttribute(se);
+            a++;
+            if (a % 4 != 0)
+            {
+                ImGui.SameLine();
+            }
         }
-        ImGui.SameLine();
-        if (ImGui.Checkbox("G'raha Tia", ref graha))
-        {
-            _configuration.TogglePersonalization(Personalization.GrahaAnnouncer, graha);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        
-        if (ImGui.Checkbox("Krile", ref krile))
-        {
-            _configuration.TogglePersonalization(Personalization.KrileAnnouncer, krile);
-            _configuration.Save();
-        }
-        
-        if (ImGui.Checkbox("Wuk Lamat", ref wuk))
-        {
-            _configuration.TogglePersonalization(Personalization.WukLamatAnnouncer, wuk);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        
-        if (ImGui.Checkbox("Koana", ref koana))
-        {
-            _configuration.TogglePersonalization(Personalization.KoanaAnnouncer, koana);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        if (ImGui.Checkbox("Bakool Ja Ja", ref bjj))
-        {
-            _configuration.TogglePersonalization(Personalization.BakoolJaJaAnnouncer, bjj);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        if (ImGui.Checkbox("Erenville", ref erenville))
-        {
-            _configuration.TogglePersonalization(Personalization.ErenvilleAnnouncer, erenville);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        if (ImGui.Checkbox("Zenos", ref zenos))
-        {
-            _configuration.TogglePersonalization(Personalization.ZenosAnnouncer, zenos);
-            _configuration.Save();
-        }
-        ImGui.SameLine();
-        
-        if (ImGui.Checkbox("Metem", ref metem))
-        {
-            _configuration.TogglePersonalization(Personalization.MetemAnnouncer, metem);
-            _configuration.Save();
-        }
-
-       
-        if (metem)
-        {
-            ImGui.Spacing();
-            ImGui.Text("Personalized Voice Lines");
-            ImGuiComponents.HelpMarker("These values let Metem use he/she, or directly mention Arcadion fighter names. No other announcers use these features.");
-
-            ImGui.Separator();
-            ImGui.TextWrapped("Use Voice Lines with: ");
-            ImGui.SameLine();
-            if (ImGui.Checkbox("Feminine Pronouns", ref fem))
-            {
-                SetPersonalization(fem, Personalization.FemPronouns);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.Checkbox("Masculine Pronouns", ref masc))
-            {
-                SetPersonalization(masc, Personalization.MascPronouns);
-                _configuration.Save();
-            }
-            ImGuiComponents.HelpMarker("These two values allow this plugin to use voice lines usually reserved for the Arcadion fighters.\nMetem may say \"She's grown wings! How wickedly divine!\" if feminine pronouns are enabled.");
-            
-            ImGui.TextWrapped("Use announcer voice lines mentioning the following competitors names:");
-            ImGuiComponents.HelpMarker("This allows Metem to mention Arcadion fighters directly.\nFor example: \"The Honey B. Lovely show has begun!\"");
-            if (ImGui.Checkbox("Black Cat", ref bc))
-            {
-                SetPersonalization(bc, Personalization.BlackCat);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.Checkbox("Honey B. Lovely", ref hbl))
-            {
-                SetPersonalization(hbl, Personalization.HoneyBLovely);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("Brute Bomber", ref bb))
-            {
-                SetPersonalization(bb, Personalization.BruteBomber);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("Wicked Thunder", ref wt))
-            {
-                SetPersonalization(wt, Personalization.WickedThunder);
-                _configuration.Save();
-            }
-            
-            if (ImGui.Checkbox("Dancing Green", ref dg))
-            {
-                SetPersonalization(dg, Personalization.DancingGreen);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("Sugar Riot", ref sr))
-            {
-                SetPersonalization(sr, Personalization.SugarRiot);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("Brute Abominator", ref ba))
-            {
-                SetPersonalization(ba, Personalization.BruteAbominator);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("Howling Blade", ref hb))
-            {
-                SetPersonalization(hb, Personalization.HowlingBlade);
-                _configuration.Save();
-            }
-
-            if (ImGui.Checkbox("Vamp Fatale", ref vf))
-            {
-                SetPersonalization(vf, Personalization.VampFatale);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("Deep Blue & Red Hot", ref dbrh))
-            {
-                SetPersonalization(dbrh, Personalization.DeepBlueRedHot);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("The Tyrant", ref tt))
-            {
-                SetPersonalization(tt, Personalization.Tyrant);
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-
-            if (ImGui.Checkbox("The President", ref pr))
-            {
-                SetPersonalization(pr, Personalization.President);
-                _configuration.Save();
-            }
-            
-            
-            ImGui.Separator();
-        }
-
+        ImGui.NewLine();
+        ImGui.Separator();
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
         {
             _configuration.WolvesDen = wolvesDen;
@@ -445,50 +250,8 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Unindent();
         ImGui.Separator();
-        ImGui.Text("Announcer Language:");
-        if (PluginServices.PlayerStateTracker.CheckKRClient() || PluginServices.PlayerStateTracker.CheckCNClient()) 
-        {
-            if (PluginServices.PlayerStateTracker.CheckCNClient())
-            {
-                if (ImGui.RadioButton("Chinese", lang.Equals("chs")))
-                {
-                    _configuration.Language = "chs";
-                    _configuration.Save();
-                }
-                ImGui.SameLine();
-                if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
-                {
-                    _configuration.Language = "ja";
-                    _configuration.Save();
-                }
-            }
-        }
-        else
-        {
-            if (ImGui.RadioButton("English", lang.Equals("en")))
-            {
-                _configuration.Language = "en";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("German", lang.Equals("de")))
-            {
-                _configuration.Language = "de";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("French", lang.Equals("fr")))
-            {
-                _configuration.Language = "fr";
-                _configuration.Save();
-            }
-            ImGui.SameLine();
-            if (ImGui.RadioButton("Japanese", lang.Equals("ja")))
-            {
-                _configuration.Language = "ja";
-                _configuration.Save();
-            }
-        }
+        ImGui.Text("Announcer Spoken Language:");
+        DoLanguageSelection();
         ImGui.Separator();
         
    
@@ -507,22 +270,14 @@ public class ConfigWindow : Window, IDisposable
         
         List<string> activeEvents = new List<string>();
         List<string> activeEventsInternal = new List<string>();
-        bool modifiedList = false;
         foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())
         {
             var eventId = e.Id;
             if (!blEvents.Contains(eventId))
             {
-                if (WantsAnyInEvent(e))
-                {
-                    activeEvents.Add(e.Name);
-                    activeEventsInternal.Add(eventId);
-                }
-                else
-                {
-                    modifiedList = true;
-                }
-             
+                activeEvents.Add(e.Name);
+                activeEventsInternal.Add(eventId);
+
             }
         }
    
@@ -536,25 +291,9 @@ public class ConfigWindow : Window, IDisposable
             {
                 continue;
             }
-            if (WantsAnyInEvent(e))
-            {
-                listDisabledInternal.Add(internalName);
-                listDisabledPublic.Add(e.Name);
-            }
-            else
-            {
-                modifiedList = true;
-            }
-           
+            listDisabledInternal.Add(internalName);
+            listDisabledPublic.Add(e.Name);
         }
-
-        if (modifiedList)
-        {
-            ImGui.Text("Event list looking a little empty?");
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker("Some events are hidden as they do not contain any voice lines that would match your settings.");
-        }
-
         _activeEventsArr = activeEvents.ToArray();
         _activeEventsArrInternal = activeEventsInternal.ToArray();
         ImGui.Text("Enabled Events:");
@@ -586,30 +325,30 @@ public class ConfigWindow : Window, IDisposable
         }
     }
 
-    private bool WantsAnyInEvent(PvPEvent e)
+    private void DoLanguageSelection()
     {
-        foreach (var battleTalkStr in _eventShoutcastMapping.GetShoutcastList(e.Name))
+        foreach (var keyValuePair in LanguageUtil.LanguageMap)
         {
-            var battleTalk = _shoutcastRepository.GetShoutcast(battleTalkStr);
-            if (PluginServices.Config.WantsAllAttributes(battleTalk.Attributes))
+            
+            var k = keyValuePair.Key;
+            var v = keyValuePair.Value;
+            if (k == 0)
             {
-                return true;
+                continue;
             }
+            var keyName = Enum.GetName(k) ?? "Unknown Language"; //todo this needs to be changed since only some clients have some languages
+            if (!PluginServices.DataManager.FileExists($"sound/voice/vo_line/8205353_{v}.scd"))
+            {
+                continue;
+            }
+            if (ImGui.RadioButton(keyName, _configuration.Language.Equals(v)))
+            {
+                _configuration.Language = v;
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+        }
+        ImGui.NewLine();
 
-        }
-
-        return false;
-    }
-    
-    private void SetPersonalization(bool b, Personalization p)
-    {
-        if (b)
-        {
-            _configuration.SetPersonalization(p);
-        }
-        else
-        {
-            _configuration.RemovePersonalization(p);
-        }
     }
 }
