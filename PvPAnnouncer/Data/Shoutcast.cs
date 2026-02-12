@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Dalamud.Game;
+using Dalamud.Game.Text.Evaluator;
 using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
+using Lumina.Text;
+using Lumina.Text.Parse;
 using Lumina.Text.ReadOnly;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Data;
 
-public class  Shoutcast : IShoutcast // decorator
+public partial class Shoutcast : IShoutcast // decorator
 {
   public uint Icon { get; set; }
 
@@ -28,6 +32,8 @@ public class  Shoutcast : IShoutcast // decorator
   public uint NpcYell {get; set;}
   
   public uint InstanceContentTextDataRow {get; set;}
+  
+  public bool IsGendered {get; set;}
 
   /*
       name: ContentDirectorBattleTalk
@@ -43,7 +49,8 @@ public class  Shoutcast : IShoutcast // decorator
      */
 
   public Shoutcast(string id, uint icon, Dictionary<string, string> transcription, byte duration, byte style,
-    string shoutcaster, List<string> attributes, string soundPath, string cutsceneLine, uint contentDirectorBattleTalkVo, uint npcYell, uint instanceContentTextDataRow)
+    string shoutcaster, List<string> attributes, string soundPath, string cutsceneLine,
+    uint contentDirectorBattleTalkVo, uint npcYell, uint instanceContentTextDataRow, bool isGendered)
   {
     Id = id;
     Icon = icon;
@@ -64,14 +71,55 @@ public class  Shoutcast : IShoutcast // decorator
     return SoundPath + "_" + lang + ".scd";
   }
 
-  public string GetTranscriptionWithLang(string lang)
+  [GeneratedRegex(@"<if\(gnum4,(.*?),(.*?)\)>")]
+  private static partial Regex GenderRegex(); //"This Whole Thing Smacks Of Gender," i holler as i overturn my plugin and turn the fall of dalamud into the fall of Shit
+  
+  public string GetTranscriptionWithGender(string lang, bool fem, ISeStringEvaluator evaluator)
   {
-    return Transcription[lang];
+    var transcription = Transcription.GetValueOrDefault(lang, "");
+    if (!IsGendered)
+    {
+      return transcription;
+    }
+
+    var toEval = transcription;
+    PluginServices.PluginLog.Verbose($"To Eval: {toEval}, Fem: {fem}");
+    
+    
+    //Only parameters in SeStrings are if(PlayerParameter(4) for gender stuff - largest amt of params i saw as of 7.0 was 3 - setting 5 just to be safe but due to how this plugin works i dont think we'll go past 1 
+
+    if (fem)
+    {
+      var femStr = evaluator.EvaluateMacroString(GenderRegex().Replace(toEval, "$1")).ExtractText();
+      PluginServices.PluginLog.Verbose($"Evaluated: {femStr}");
+      return femStr;
+    }
+    else
+    {
+      var mascStr = evaluator.EvaluateMacroString(GenderRegex().Replace(toEval, "$2")).ExtractText();
+      PluginServices.PluginLog.Verbose($"Evaluated: {mascStr}");
+
+      return mascStr;
+    }
+
+    //return evaluator.EvaluateMacroString(Transcription.GetValueOrDefault(lang, ""), new Span<SeStringParameter>())
   }
 
+  public string GetShoutcastSoundPathWithGenderAndLang(string lang, bool fem)
+  {
+    if (fem)
+    {
+      return SoundPath.Replace("_m", "_f") + "_" + lang + ".scd";
+    }
+
+    // masc default
+    return GetShoutcastSoundPathWithLang(lang);
+  }
   public override string ToString()
   {
-    return $"iD: {this.Id}, icon: {Icon}, Duration: {Duration}, Style: {Style}, Shoutcaster: {Shoutcaster}, attributes: {Attributes}, " +
+    var at = Attributes.Aggregate("", (current, attribute) => current + attribute + " | ");
+    var tr = Transcription.Aggregate("", (current, attribute) => current + attribute.Key + ":" + attribute.Value + " | ");
+    return $"iD: {this.Id}, icon: {Icon}, Duration: {Duration}, Style: {Style}, Shoutcaster: {Shoutcaster}, attributes: {at}, transcription: {tr}, " +
            $"SoundPath: {SoundPath}, CutsceneLine: {CutsceneLine},  ContentDirectorBattleTalkVo: {ContentDirectorBattleTalkVo}, NPCYell: {NpcYell}, InstanceContentTextDataRow: {InstanceContentTextDataRow}";
   }
 }

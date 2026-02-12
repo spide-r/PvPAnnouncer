@@ -22,5 +22,7 @@ public interface IShoutcastBuilder
     public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo);
     public IShoutcastBuilder WithNpcYell(uint npcYell);
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow);
+    public IShoutcastBuilder WithGendered(bool gendered);
+
 
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Configuration;
+using Dalamud.Game;
 using Dalamud.Game.Config;
 using Dalamud.Game.Text;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using Dalamud.Utility;
 using PvPAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -16,6 +18,7 @@ namespace PvpAnnouncer
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
+        public bool NewConfig { get; set; } = true;
         public int Version { get; set; } = 5;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
@@ -31,7 +34,7 @@ namespace PvpAnnouncer
         [Obsolete]
         public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
 
-        public List<string> DesiredAttributes { get; set; } = ["Metem"]; //todo maybe enum for this string idk
+        public HashSet<string> DesiredAttributes { get; set; } = [];
         
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
@@ -42,7 +45,7 @@ namespace PvpAnnouncer
         public bool Muted { get; set; } = false;
 
         public bool HideBattleText { get; set; } = false;
-        public bool WantsIcon { get; set; } = false;
+        public bool WantsIcon { get; set; } = true;
 
         public int Percent { get; set; } = 70; 
         
@@ -61,19 +64,14 @@ namespace PvpAnnouncer
  
         public string Language { get; set; } = "en";
         public string TextLanguage { get; set; } = "en";
-        //todo language other than english isn't working in lumina when playing voicelines - why?
-        //todo CHANGE LANGUAGE TO USE THE LUMINA ENUM AND THE HELPER FUNCTION AND MAKE IT DYNAMIC
-        //TODO ALLOW PEOPLE TO PICK THE LANGUAGE FOR AUDIO AND FOR THE TEXT
-        //todo make the config finally let you change the language of the text as well as the audio 
-
 
         [NonSerialized]
         private IDalamudPluginInterface? _pluginInterface;
 
-        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig, bool newConfig)
+        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)
         {
             _pluginInterface = pluginInterface;
-            if (newConfig)
+            if (NewConfig)
             {
                 //todo this newConfig logic is still broken - TEST!!!
                 if (ps.CheckCNClient()) 
@@ -83,21 +81,19 @@ namespace PvpAnnouncer
                 {
                     Language = "kr";
                 } else
-                {
+                { // global client
                     gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
                     gameConfig.TryGet(SystemConfigOption.Language,  out uint clientLang);
                     PluginServices.PluginLog.Verbose($"Lang: {configuredLang}");
                     PluginServices.PluginLog.Verbose($"Lang: {clientLang}");
-                    var sw = configuredLang == 4294967295 ? clientLang : configuredLang;
-                    Language = sw switch
-                    {
-                        0 => "ja",
-                        1 => "en",
-                        2 => "de",
-                        3 => "fr",
-                        _ => "en"
-                    };
+                    var sw = configuredLang > 99 ? clientLang : configuredLang; 
+                    //todo check and catch this if exception 
+                    Language = ((ClientLanguage) sw).ToCode();
+                    TextLanguage = ((ClientLanguage) sw).ToCode();
                 }
+
+                DesiredAttributes.Add("Metem");
+                NewConfig = false;
                 _pluginInterface?.SavePluginConfig(this);
             }
 

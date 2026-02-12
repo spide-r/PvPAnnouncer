@@ -22,7 +22,6 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     {
         
         var result = _instance;
-        _instance = NewShoutcast();
         PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id}");
         
         
@@ -50,6 +49,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
              result.SoundPath = "sound/voice/vo_line/" + result.ContentDirectorBattleTalkVo;
              PluginServices.PluginLog.Debug($"BattleTalkVO Sound path: {result.SoundPath}");
              var d = GetContentDirectorBattleTalkAllLanguages(result.ContentDirectorBattleTalkVo);
+             
              if (d.Keys.Count > 0) // record exists in the sheets - attempt to set the other values
              {
                  var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
@@ -98,14 +98,15 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
              {
                  var ex = expac == 0 ? "ffxiv" : $"ex{expac}";
                  var audio = $"cut/{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
-                 //todo - are a few audio lines exist that refer to a wol with fem vs masc pronouns - the _m and _f at the end make it different - we will probably want to factor that somehow
                  result.SoundPath = audio;
                  var d = GetCutsceneLineAllLang(result.CutsceneLine);
+                 result.IsGendered = dataManager.FileExists(result.GetShoutcastSoundPathWithGenderAndLang("ja", true));
                  result.Transcription = d;
              }
          }
          
-        
+         _instance = NewShoutcast();
+
         
         //validation order:
         //name, text, soundpath
@@ -133,11 +134,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         }
         return result;
     }
-    private readonly Language[] _langList =
-    [
-        Language.English, Language.French, Language.German, 
-        Language.Japanese, Language.ChineseSimplified, Language.ChineseTraditional, Language.Korean
-    ];
+
     private Dictionary<string, string> GetCutsceneLineAllLang(string tag)
     {
         var splitLine = tag.Split("_");
@@ -146,9 +143,8 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
         Dictionary<string, string> dict = new Dictionary<string, string>();
         
-        foreach (var lang in _langList)
+        foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
-            var langStr = LanguageUtil.GetLanguageStr(lang);
             try
             {
                 var cutscene = PluginServices.DataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
@@ -156,7 +152,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                 var dialogue = InternalConstants.ErrorContactDev;
                 if (row != null)
                 {
-                    dialogue = row.Value.Dialogue.ExtractText();
+                    dialogue = row.Value.Dialogue.ToMacroString(); 
                 }
                 dialogue = CutsceneNameRemovalRegex().Replace(dialogue, ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
                 dict.Add(langStr, dialogue);
@@ -177,9 +173,8 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     {
 
         Dictionary<string, string> dict = new Dictionary<string, string>();
-        foreach (var lang in _langList)
+        foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
-            var langStr = LanguageUtil.GetLanguageStr(lang);
             try
             {
                 var sheet = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang);
@@ -204,30 +199,28 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     private Dictionary<string, string> GetContentDirectorBattleTalkAllLanguages(uint voiceover)
     {
 
-        Dictionary<string, string> dict = new Dictionary<string, string>();
-        foreach (var lang in _langList)
+        var dict = new Dictionary<string, string>();
+        foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
-            var langStr = LanguageUtil.GetLanguageStr(lang);
             try
             {
-                var sheet = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>(language: lang);
-                var entry = new ContentDirectorBattleTalk();
-                var foundEntry = false;
-                foreach (SubrowCollection<ContentDirectorBattleTalk> row in sheet)
-                foreach (var talk in row.Where(talk => talk.Unknown1 == voiceover))
+                var sheet = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>(); //ContentDirectorBattleTalk does NOT have a language assigned 
+                foreach (var row in sheet)
                 {
-                    entry = talk;
-                    foundEntry = true;
-                    break;
+                    
+                    foreach (var talk in row.Where(talk => talk.Unknown1 == voiceover))
+                    {
+                        // see https://github.com/NotAdam/Lumina/issues/65 - gotta not use the RowRef and instead pull it manually ourselves
+                        var textDataRow = talk.Text.RowId; 
+                        var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
+                        var foundEntry = instanceContent.TryGetRow(textDataRow, out var ctrRow);
+                        var text = foundEntry ? ctrRow.Text.ExtractText() : InternalConstants.ErrorContactDev;
+                        dict[langStr] = text;
+                        PluginServices.PluginLog.Verbose($"CtrDirectorBattleTalkLang: {langStr}, Transcription: {text}, Lang: {talk.ExcelPage.Language}");
+                    }
+ 
                 }
-
-                if (foundEntry)
-                {
-                    var text = entry.Text.Value.Text.ExtractText();
-                    dict[langStr] = text;
-                    PluginServices.PluginLog.Verbose($"CtrDirectorBattleTalkLang: {langStr}, Transcription: {text}");
-
-                }
+                
 
             }
             catch (UnsupportedLanguageException)
@@ -244,10 +237,9 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     private Dictionary<string, string> GetInstanceContentTextDataAllLang(uint textDataRow)
     {
 
-        Dictionary<string, string> dict = new Dictionary<string, string>();
-        foreach (var lang in _langList)
+        var dict = new Dictionary<string, string>();
+        foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
-            var langStr = LanguageUtil.GetLanguageStr(lang);
             try
             {
                 var sheet = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
@@ -278,6 +270,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     public IShoutcastBuilder WithCutsceneLine(string cutsceneLine) { _instance.CutsceneLine = cutsceneLine; return this; }
     public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo) { _instance.ContentDirectorBattleTalkVo = contentDirectorBattleTalkVo; return this; }
     public IShoutcastBuilder WithNpcYell(uint npcYell) { _instance.NpcYell = npcYell; return this; }
+    public IShoutcastBuilder WithGendered(bool gendered) { _instance.IsGendered = gendered; return this; }
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow) { _instance.InstanceContentTextDataRow = instanceContentTextDataRow; return this; }
 
     private static Shoutcast NewShoutcast()
@@ -285,7 +278,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         return new Shoutcast("ShoutcastId", 0, new Dictionary<string, string>()
         {
             {"en", "Shoutcast Transcription"}
-        }, 5, 6, "Shoutcaster", [], InternalConstants.DefaultSoundPath, "", 0, 0, 0);
+        }, 5, 6, "Shoutcaster", [], InternalConstants.DefaultSoundPath, "", 0, 0, 0, false);
     }
 
     [GeneratedRegex(@"^\(-.*-\)")]

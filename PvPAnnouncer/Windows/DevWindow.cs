@@ -13,6 +13,7 @@ using FFXIVClientStructs.FFXIV.Common.Component.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.impl;
 
 namespace PvPAnnouncer.Windows;
 
@@ -71,6 +72,15 @@ public class DevWindow: Window, IDisposable
 
         if (ImGui.Button("Pull the lever kronk"))
         {
+            if (PluginServices.ShoutcastBuilder is ShoutcastBuilder builder)
+            {
+                builder.WithCutsceneLine("TEXT_VOICEMAN_03007_D00040_YSHTOLA");
+                builder.WithDuration(5);
+                builder.WithId("YshtolaHeShe");
+                var sc = builder.Build();
+                PluginServices.Announcer.PlaySound(sc.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
+                PluginServices.Announcer.SendBattleTalk(sc);
+            }
             /*
              * File: ./csv/en/cut_scene/050/VoiceMan_05001.csv
             Header: key,0,1
@@ -86,8 +96,8 @@ public class DevWindow: Window, IDisposable
 
             //step N: make another function that creates from voiceline???? maybe not
             */
-            
-            
+
+
             /*
             var splitLine = line.Split("_");
             var number = splitLine[2];
@@ -96,7 +106,7 @@ public class DevWindow: Window, IDisposable
             var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
             var cutscene = PluginServices.DataManager.GetExcelSheet<CutsceneText>(name: csvName);
             var audio = $"cut/ex{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
-            
+
             var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(line));
             var dialogue = InternalConstants.ErrorContactDev;
             if (row != null)
@@ -105,7 +115,7 @@ public class DevWindow: Window, IDisposable
             }
             dialogue = Regex.Replace(dialogue, @"^\(-.*-\)", ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
             */
-            
+
         }
         var l = ll;
         var ic = icon;

@@ -6,9 +6,11 @@ using Dalamud.Game.Text;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Configuration;
+using Dalamud.Game;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Utility;
+using Dalamud.Utility;
 using Lumina.Data;
 using PvpAnnouncer;
 using PvPAnnouncer.Data;
@@ -76,7 +78,6 @@ public class ConfigWindow : Window, IDisposable
         var disabled = _configuration.Disabled;
         var muted = _configuration.Muted;
         var hideBattleText = _configuration.HideBattleText;
-        var lang = _configuration.Language;
         var blEvents = _configuration.BlacklistedEvents;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
@@ -104,7 +105,7 @@ public class ConfigWindow : Window, IDisposable
             {
                 
                 var e = bt[Random.Shared.Next(bt.Length)];
-                PluginServices.Announcer.PlaySound(e.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
+                PluginServices.Announcer.PlaySound(e.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
                 PluginServices.Announcer.SendBattleTalk(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Shoutcaster}", InternalConstants.MessageTag);
 
@@ -159,7 +160,6 @@ public class ConfigWindow : Window, IDisposable
             }
         }
         
-        //todo modify this area to explain attributes properly since they've changed
         ImGui.NewLine();
 
         ImGui.Separator();
@@ -251,7 +251,10 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Unindent();
         ImGui.Separator();
         ImGui.Text("Announcer Spoken Language:");
-        DoLanguageSelection();
+        DoLanguageVoiceSelection();
+        
+        ImGui.Text("Announcer Written Language:");
+        DoLanguageTextSelection();
         ImGui.Separator();
         
    
@@ -325,7 +328,7 @@ public class ConfigWindow : Window, IDisposable
         }
     }
 
-    private void DoLanguageSelection()
+    private void DoLanguageVoiceSelection()
     {
         foreach (var keyValuePair in LanguageUtil.LanguageMap)
         {
@@ -336,14 +339,39 @@ public class ConfigWindow : Window, IDisposable
             {
                 continue;
             }
-            var keyName = Enum.GetName(k) ?? "Unknown Language"; //todo this needs to be changed since only some clients have some languages
+            var keyName = Enum.GetName(k) ?? "Unknown Language";
             if (!PluginServices.DataManager.FileExists($"sound/voice/vo_line/8205353_{v}.scd"))
             {
                 continue;
             }
-            if (ImGui.RadioButton(keyName, _configuration.Language.Equals(v)))
+
+            var lang = _configuration.Language;
+            if (ImGui.RadioButton(keyName + "###" + "LanguageVoiceSelection" + v, lang.Equals(v)))
             {
                 _configuration.Language = v;
+                _configuration.Save();
+            }
+            ImGui.SameLine();
+        }
+        ImGui.NewLine();
+    }
+    
+    private void DoLanguageTextSelection()
+    {
+        var langs = Enum.GetValues<ClientLanguage>().Cast<ClientLanguage>();
+
+        foreach (var clientLangEnum in langs)
+        {
+            
+            var enumCodeString = clientLangEnum.ToCode();
+   
+            var userFacingLang = Enum.GetName(clientLangEnum) ?? "Unknown Language";
+
+            var configuredTextLang = _configuration.TextLanguage;
+
+            if (ImGui.RadioButton(userFacingLang + "###" + "LanguageTextSelection" + enumCodeString, configuredTextLang.Equals(enumCodeString)))
+            {
+                _configuration.TextLanguage = enumCodeString;
                 _configuration.Save();
             }
             ImGui.SameLine();

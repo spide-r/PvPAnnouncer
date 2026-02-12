@@ -74,13 +74,13 @@ public class VoiceLineTesterWindow: Window, IDisposable
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.Shoutcaster);
                 ImGui.TableNextColumn();
-                ImGui.Text(bt.GetTranscriptionWithLang(PluginServices.Config.Language));
+                ImGui.Text(bt.GetTranscriptionWithGender(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns"), PluginServices.SeStringEvaluator));
                 ImGui.TableNextColumn();
             
                 if (ImGui.Button("Play###" + bt.SoundPath))
                 {
                     PluginServices.Announcer.SendBattleTalk(bt);
-                    PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
+                    PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
                 }
             }
             ImGui.EndTable();

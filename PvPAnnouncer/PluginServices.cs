@@ -67,6 +67,9 @@ internal class PluginServices {
     
     [PluginService]
     internal static IAddonLifecycle AddonLifecycle { get; private set; }
+        
+    [PluginService]
+    internal static ISeStringEvaluator SeStringEvaluator { get; private set; }
     
     internal static IPvPEventBroker PvPEventBroker { get; private set; }
     internal static IPvPMatchManager PvPMatchManager { get; private set; }
@@ -87,13 +90,12 @@ internal class PluginServices {
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window) {
         pluginInterface.Create<PluginServices>();
-        var newCfg = pluginInterface.GetPluginConfig() == null;
         Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         PvPEventBroker = new PvPEventBroker();
         PvPEventHooksPublisher = new PvPEventHooksPublisher();
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
-        Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig, newCfg);
+        Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig);
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
         
         EventShoutcastMapping = new  EventShoutcastMapping();

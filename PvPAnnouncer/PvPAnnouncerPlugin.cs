@@ -10,6 +10,7 @@ namespace PvPAnnouncer
     //todo pull the old todo's from scionlines when you want to add more voicelines
     //todo fix kardia activating voicelines maybe 
     //todo there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
+    //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");

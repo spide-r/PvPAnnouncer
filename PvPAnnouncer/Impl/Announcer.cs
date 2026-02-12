@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dalamud.Game.Text.Evaluator;
 using FFXIVClientStructs.FFXIV.Client.System.Threading;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
+using Enumerable = System.Linq.Enumerable;
 
 namespace PvPAnnouncer.Impl;
 
@@ -20,7 +22,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
      * 5. Use the appropriate gender for the challenger
      */
     
-    private readonly Queue<Shoutcast?> _lastVoiceLines = new();
+    private readonly Queue<string> _lastVoiceLines = new();
     private readonly Queue<string> _lastEvents = new();
     private long _timestamp = 0;
     private int _lastVoiceLineLength = 0;
@@ -109,7 +111,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             _lastVoiceLines.Dequeue();
         }
         
-        _lastVoiceLines.Enqueue(talk);
+        _lastVoiceLines.Enqueue(talk.Id);
 
     }
 
@@ -126,15 +128,13 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
     public void PlaySound(string sound)
     {
-        PluginServices.PluginLog.Verbose($"Playing sound: {sound}");
-
         if (!PluginServices.DataManager.FileExists(sound))
         {
-            PluginServices.PluginLog.Error("Sound file not found!");
+            PluginServices.PluginLog.Error($"Sound file {sound} not found!");
             return;
         }
         
-        
+        PluginServices.PluginLog.Verbose($"Playing sound: {sound}");
         PluginServices.SoundManager.PlaySound(sound);
     }
     
@@ -147,22 +147,31 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         {
             var sound = shoutcastRepository.GetShoutcast(shoutcastId);
             // == Objective 5 == 
-            if (PluginServices.Config.WantsAllAttributes(sound.Attributes))
+            if (PluginServices.Config.WantsAllAttributes(sound.Attributes) && PluginServices.Config.WantsAttribute(sound.Shoutcaster))
             {
-                sounds.AddRange(sound);
+                if (sound.IsGendered)
+                {
+                    var masc = PluginServices.Config.WantsAttribute("Masculine Pronouns");
+                    var fem = PluginServices.Config.WantsAttribute("Feminine Pronouns");
+                    if (masc || fem) // voice is gendered and user wants at least 1
+                    {
+                        sounds.AddRange(sound);
+                    }
+                }
+                else
+                {
+                    sounds.AddRange(sound);
+
+                }
             }
-            //todo check if they want a specific announcer - due to the changes to personalization that needs to be factored in here
         }
         
         // == Objective 2 == 
         if (!bypass)
         {
-            foreach (var line in _lastVoiceLines)
+            foreach (var sound in Enumerable.Where(Enumerable.ToList(sounds), sound => _lastVoiceLines.Contains(sound.Id)))
             {
-                if (line != null && sounds.Contains(line))
-                {
-                    sounds.Remove(line);
-                }
+                sounds.Remove(sound);
             }
         }
 
@@ -179,7 +188,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         {
             PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s.SoundPath} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
-            var p = s.GetShoutcastSoundPathWithLang(PluginServices.Config.Language);
+            var p = s.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns"));
             PlaySound(p);
             SendBattleTalk(s);
             PluginServices.PluginLog.Verbose($"Finished Playing announcement after delay: {s}");
@@ -212,29 +221,21 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         }
 
         var transcription = "";
-        try
+        PluginServices.PluginLog.Verbose(shoutcast.ToString());
+        if (shoutcast.GetTranscriptionWithGender(PluginServices.Config.TextLanguage, PluginServices.Config.WantsAttribute("Feminine Pronouns"), PluginServices.SeStringEvaluator).Equals(""))
         {
-            //todo cant play voicelines/show transcriptions of different languages properly
-            PluginServices.PluginLog.Verbose("Jp: " + shoutcast.GetTranscriptionWithLang("ja"));
-            if (shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language).Equals(""))
+            if (shoutcast.GetTranscriptionWithGender("en", false, PluginServices.SeStringEvaluator).Equals(""))
             {
-                if (shoutcast.GetTranscriptionWithLang("en").Equals(""))
-                {
-                    PluginServices.PluginLog.Error($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath}");
-                    return; 
-                }
+                PluginServices.PluginLog.Error($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath}");
+                return; 
+            }
 
-                transcription = shoutcast.GetTranscriptionWithLang("en");
-                PluginServices.PluginLog.Warning($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath} on lang {PluginServices.Config.Language} - falling back to EN");
-            }
-            else
-            {
-                transcription = shoutcast.GetTranscriptionWithLang(PluginServices.Config.Language);
-            }
+            transcription = shoutcast.GetTranscriptionWithGender("en", PluginServices.Config.WantsAttribute("Feminine Pronouns"), PluginServices.SeStringEvaluator);
+            PluginServices.PluginLog.Warning($"Text empty for {shoutcast.Shoutcaster}, {shoutcast.SoundPath} on lang {PluginServices.Config.TextLanguage} - falling back to EN");
         }
-        catch (Exception e)
+        else
         {
-            PluginServices.PluginLog.Error(e, "AAAA");
+            transcription = shoutcast.GetTranscriptionWithGender(PluginServices.Config.TextLanguage, PluginServices.Config.WantsAttribute("Feminine Pronouns"), PluginServices.SeStringEvaluator);
         }
 
         unsafe

@@ -24,10 +24,6 @@ public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastReposito
     public void SetShoutcast(string shoutcastId, Shoutcast shoutcast)
     {
         bool added = _shoutcasts.TryAdd(shoutcastId,  shoutcast);
-        if (shoutcastId.Equals("BeautifullyDodged"))
-        {
-            PluginServices.PluginLog.Verbose(shoutcast.ToString());
-        }
         if (!added)
         {
             PluginServices.PluginLog.Verbose($"Unable to add {shoutcastId}");
