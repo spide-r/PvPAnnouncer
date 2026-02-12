@@ -59,6 +59,12 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return;
         }
 
+        if (!PluginServices.DutyState.IsDutyStarted) //fixes kardia and other stuff at start but does not allow for weather events
+        {
+            PluginServices.PluginLog.Verbose("Duty not started!");
+            return;
+        }
+
         
         int rand = Random.Shared.Next(100);
         

@@ -25,8 +25,6 @@ namespace PvpAnnouncer
         public int AnimationDelayFactor { get; set; } = 250;
         
         public int CooldownSeconds { get; set; } = 15;
-        public bool WantsFem { get; set; } = false;
-        public bool WantsMasc { get; set; } = false;
 
         [Obsolete]
         public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
@@ -68,9 +66,10 @@ namespace PvpAnnouncer
         public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)
         {
             _pluginInterface = pluginInterface;
-            if (NewConfig)
+            MigrateOldPluginConfig();
+
+            if (NewConfig && DesiredAttributes.Count < 1) // confirmed new config w/o anything set
             {
-                //todo this newConfig logic is still broken - TEST!!!
                 if (ps.CheckCNClient()) 
                 {
                     Language = "chs";
@@ -83,13 +82,13 @@ namespace PvpAnnouncer
                 { // global client
                     gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
                     gameConfig.TryGet(SystemConfigOption.Language,  out uint clientLang);
-                    PluginServices.PluginLog.Verbose($"Lang: {configuredLang}");
-                    PluginServices.PluginLog.Verbose($"Lang: {clientLang}");
+                    PluginServices.PluginLog.Info($"CutsceneMovieVoice: {configuredLang}");
+                    PluginServices.PluginLog.Info($"Client Language: {clientLang}");
                     var sw = configuredLang > 99 ? clientLang : configuredLang; 
                     try
                     {
                         Language = ((ClientLanguage) sw).ToCode();
-                        TextLanguage = ((ClientLanguage) sw).ToCode();
+                        TextLanguage = ((ClientLanguage) clientLang).ToCode();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -103,7 +102,6 @@ namespace PvpAnnouncer
                 _pluginInterface?.SavePluginConfig(this);
             }
 
-            MigrateOldPluginConfig();
         }
 
         private void MigrateOldPluginConfig()

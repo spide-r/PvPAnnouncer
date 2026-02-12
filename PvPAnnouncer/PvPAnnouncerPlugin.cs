@@ -11,7 +11,6 @@ namespace PvPAnnouncer
     //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
 
     //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
-    //todo fix kardia activating voicelines 
     //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {

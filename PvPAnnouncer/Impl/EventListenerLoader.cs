@@ -27,7 +27,7 @@ public class EventListenerLoader : IEventListenerLoader
         new MatchEndEvent(),
         new MatchStartEvent(),
         new EnteredMechEvent(),
-        new MatchStormyWeatherEvent(),
+       // new MatchStormyWeatherEvent(), hidden b/c it only activated at start of the match and there was a gotcha where events would fire before pvp started - will probably delete 
         new MaxBattleFeverEvent()
     ];
     public void LoadEventListeners()
