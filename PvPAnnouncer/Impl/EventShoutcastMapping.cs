@@ -15,7 +15,7 @@ public class EventShoutcastMapping: IEventShoutcastMapping
         }
         else
         {
-            _map.Add(eventId, [..shoutcasts]); //todo does this work???
+            _map.Add(eventId, [..shoutcasts]);
         }
     }
 
@@ -27,7 +27,7 @@ public class EventShoutcastMapping: IEventShoutcastMapping
         }
         else
         {
-            _map.Add(eventId, [shoutcast]); //todo does this work???
+            _map.Add(eventId, [shoutcast]); 
         }
     }
 

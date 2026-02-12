@@ -1846,7 +1846,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8201357",
-    "InstanceContentTextDataRow": "17315"
+    "instanceContentTextDataRow": "17315"
   },
   {
     "id": "ShowMeYourAll",
@@ -1854,7 +1854,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8201356",
-    "InstanceContentTextDataRow": "17315"
+    "instanceContentTextDataRow": "17315"
   },
   {
     "id": "ThePowerToTranscend",
@@ -1862,7 +1862,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8201354",
-    "InstanceContentTextDataRow": "17314"
+    "instanceContentTextDataRow": "17314"
   },
   {
     "id": "Hahahahahaha",
@@ -1877,7 +1877,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8203135",
-    "InstanceContentTextDataRow": "31201"
+    "instanceContentTextDataRow": "31201"
   },
   {
     "id": "HydaelynsChosenMuster",
@@ -1885,7 +1885,7 @@
     "shoutcaster": "Zenos",
     "duration": "4",
     "soundPath": "sound/voice/vo_line/8203136",
-    "InstanceContentTextDataRow": "31202"
+    "instanceContentTextDataRow": "31202"
   },
   {
     "id": "LifesFireAlreadySpent",
@@ -1893,7 +1893,7 @@
     "shoutcaster": "Zenos",
     "duration": "4",
     "soundPath": "sound/voice/vo_line/8203141",
-    "InstanceContentTextDataRow": "31207"
+    "instanceContentTextDataRow": "31207"
   },
   {
     "id": "RiseOnceMore",
@@ -1901,7 +1901,7 @@
     "shoutcaster": "Zenos",
     "duration": "4",
     "soundPath": "sound/voice/vo_line/8203142",
-    "InstanceContentTextDataRow": "31208"
+    "instanceContentTextDataRow": "31208"
   },
   {
     "id": "OverestimatedPotential",
@@ -1909,7 +1909,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8203144",
-    "InstanceContentTextDataRow": "31213"
+    "instanceContentTextDataRow": "31213"
   },
   {
     "id": "VauntedFortitude",
@@ -1917,7 +1917,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8203151",
-    "InstanceContentTextDataRow": "31215"
+    "instanceContentTextDataRow": "31215"
   },
   {
     "id": "ATestOfYourReflexes",
@@ -1932,7 +1932,7 @@
     "shoutcaster": "Zenos",
     "duration": "3",
     "soundPath": "sound/voice/vo_line/8203155",
-    "InstanceContentTextDataRow": "31210"
+    "instanceContentTextDataRow": "31210"
   },
   {
     "id": "LetAllCreationBeConsumed",
@@ -1940,7 +1940,7 @@
     "shoutcaster": "Zenos",
     "duration": "5",
     "soundPath": "sound/voice/vo_line/8203140",
-    "InstanceContentTextDataRow": "31206"
+    "instanceContentTextDataRow": "31206"
   },
   {
     "id": "InfernoSwelling",
@@ -1948,7 +1948,7 @@
     "shoutcaster": "Zenos",
     "duration": "5",
     "soundPath": "sound/voice/vo_line/8203139",
-    "InstanceContentTextDataRow": "31205"
+    "instanceContentTextDataRow": "31205"
   },
   {
     "id": "DoNotDisappoint",
@@ -2676,7 +2676,7 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8203018",
     "duration": "3",
-    "InstanceContentTextDataRow": "31523"
+    "instanceContentTextDataRow": "31523"
   },
 
   {
@@ -2685,7 +2685,7 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8203412",
     "duration": "2",
-    "InstanceContentTextDataRow": "12227"
+    "instanceContentTextDataRow": "12227"
   },
   {
     "id": "AreYouReady",

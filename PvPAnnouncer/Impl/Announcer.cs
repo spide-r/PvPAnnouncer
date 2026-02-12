@@ -254,7 +254,6 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
                 {
                     UIModule.Instance()->ShowBattleTalk(name, transcription, duration, style);
                 }
-                //todo play around with UIModule.Instance()->ShowBattleTalkSound();
             }
             catch (InvalidOperationException) 
             {

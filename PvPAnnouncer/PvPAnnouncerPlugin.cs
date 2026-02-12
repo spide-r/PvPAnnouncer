@@ -6,10 +6,12 @@ using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer
 {
+    
+    //use announcer notes.txt for more scion lines
+    //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
+
     //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
-    //todo pull the old todo's from scionlines when you want to add more voicelines
-    //todo fix kardia activating voicelines maybe 
-    //todo there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
+    //todo fix kardia activating voicelines 
     //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
@@ -48,11 +50,10 @@ namespace PvPAnnouncer
                     
                     return;
                 }
-                //todo let people know big update that changed a lot of backend stuff
                 PluginServices.ChatGui.Print(
-                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!\n" +
-                    "Tell your local scion enjoyer that their fav is now in PvP ;D \n" +
-                    "You can also enable the character portrait when an announcer speaks.", "PvPAnnouncer", 15);
+                    "Important!!!! This Plugin went through a LOT of changes under the hood. " +
+                    "If absolutely anything seems wrong or looks like a bug, please let the developer know! " +
+                    "Use the Plugin Feedback button!", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }

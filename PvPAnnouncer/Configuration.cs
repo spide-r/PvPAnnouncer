@@ -19,7 +19,7 @@ namespace PvpAnnouncer
     public class Configuration : IPluginConfiguration
     {
         public bool NewConfig { get; set; } = true;
-        public int Version { get; set; } = 5;
+        public int Version { get; set; } = 7;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         public int AnimationDelayFactor { get; set; } = 250;
@@ -27,9 +27,6 @@ namespace PvpAnnouncer
         public int CooldownSeconds { get; set; } = 15;
         public bool WantsFem { get; set; } = false;
         public bool WantsMasc { get; set; } = false;
-        
-        [Obsolete]
-        public int PersonalizedVoicelines {get; set;} = 0;
 
         [Obsolete]
         public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
@@ -77,9 +74,11 @@ namespace PvpAnnouncer
                 if (ps.CheckCNClient()) 
                 {
                     Language = "chs";
+                    TextLanguage = "chs";
                 } else if (ps.CheckKRClient())
                 {
                     Language = "kr";
+                    TextLanguage = "kr";
                 } else
                 { // global client
                     gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
@@ -87,9 +86,16 @@ namespace PvpAnnouncer
                     PluginServices.PluginLog.Verbose($"Lang: {configuredLang}");
                     PluginServices.PluginLog.Verbose($"Lang: {clientLang}");
                     var sw = configuredLang > 99 ? clientLang : configuredLang; 
-                    //todo check and catch this if exception 
-                    Language = ((ClientLanguage) sw).ToCode();
-                    TextLanguage = ((ClientLanguage) sw).ToCode();
+                    try
+                    {
+                        Language = ((ClientLanguage) sw).ToCode();
+                        TextLanguage = ((ClientLanguage) sw).ToCode();
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        
+                    }
+
                 }
 
                 DesiredAttributes.Add("Metem");
@@ -104,15 +110,6 @@ namespace PvpAnnouncer
         {
             if (Version == 0) //porting due to changes in voice line personalization system
             {
-                if (WantsFem)
-                {
-                    SetPersonalization(Personalization.FemPronouns);
-                }
-
-                if (WantsMasc)
-                {
-                    SetPersonalization(Personalization.MascPronouns);
-                }
                 Version++;
             }
 
@@ -168,13 +165,6 @@ namespace PvpAnnouncer
 
             if (Version == 2) //2 week spoiler embargo had a personalization Spoiler value of 15 - to remove any wonkyness, remake the personalization int without 15
             {
-                for (var i = 1; i < 15; i++)
-                {
-                    if (WantsPersonalization((Personalization) i))
-                    {
-                        SetPersonalization((Personalization) i);
-                    }
-                }
                 Version++;
                 ShowNotification = false;
             }
@@ -192,14 +182,7 @@ namespace PvpAnnouncer
 
             if (Version == 4)
             { // Personalization rework
-                for (var i = 1; i < 15; i++)
-                {
-                    if (((1 << i) & PersonalizedVoicelines) == (1 << i))
-                    {
-                        SetPersonalization((Personalization) (i - 1));
-                    }
-                }
-                SetPersonalization(Personalization.MetemAnnouncer);
+                
                 ShowNotification = true;
                 Version++;
             }
@@ -213,32 +196,91 @@ namespace PvpAnnouncer
 
                 Version++;
             }
-            //todo migrate to new attribute settings
-            _pluginInterface?.SavePluginConfig(this);
-        }
 
-        [Obsolete]
-        public bool WantsPersonalization(Personalization p)
-        {
-            return VoicelineSettings.HasFlag(p);
+            if (Version == 6)
+            {
+                ShowNotification = true;
+                var values = (Personalization[])Enum.GetValues(typeof(Personalization));
+
+                foreach (var p in values)
+                {
+                    if (!VoicelineSettings.HasFlag(p))
+                    {
+                        continue;
+                    }
+
+                    switch (p)
+                    {
+                        case Personalization.FemPronouns: DesiredAttributes.Add("Feminine Pronouns"); 
+                            break;
+                        case Personalization.MascPronouns: DesiredAttributes.Add("Masculine Pronouns");
+                            break;
+                        case Personalization.BlackCat: DesiredAttributes.Add("Black Cat"); 
+                            break;
+                        case Personalization.HoneyBLovely: DesiredAttributes.Add("Honey B. Lovely"); 
+                            break;
+                        case Personalization.BruteBomber: DesiredAttributes.Add("Brute Bomber"); 
+                            break;
+                        case Personalization.WickedThunder: DesiredAttributes.Add("Wicked Thunder"); 
+                            break;
+                        case Personalization.DancingGreen: DesiredAttributes.Add("Dancing Green");
+                            break;
+                        case Personalization.SugarRiot: DesiredAttributes.Add("Sugar Riot"); 
+                            break;
+                        case Personalization.BruteAbominator: DesiredAttributes.Add("Brute Abominator"); 
+                            break;
+                        case Personalization.HowlingBlade: DesiredAttributes.Add("Howling Blade"); 
+                            break;
+                        case Personalization.VampFatale: DesiredAttributes.Add("Vamp Fatale"); 
+                            break;
+                        case Personalization.DeepBlueRedHot: DesiredAttributes.Add("Deep Blue & Red Hot"); 
+                            break;
+                        case Personalization.Tyrant: DesiredAttributes.Add("The Tyrant"); 
+                            break;
+                        case Personalization.President: DesiredAttributes.Add("The President"); 
+                            break;
+                        case Personalization.MetemAnnouncer: DesiredAttributes.Add("Metem"); 
+                            break;
+                        case Personalization.AlphinaudAnnouncer: DesiredAttributes.Add("Alphinaud"); 
+                            break;
+                        case Personalization.AlisaieAnnouncer: DesiredAttributes.Add("Alisaie"); 
+                            break;
+                        case Personalization.ThancredAnnouncer: DesiredAttributes.Add("Thancred"); 
+                            break;
+                        case Personalization.UriangerAnnouncer: DesiredAttributes.Add("Urianger"); 
+                            break;
+                        case Personalization.YshtolaAnnouncer: DesiredAttributes.Add("Y'shtola"); 
+                            break;
+                        case Personalization.EstinienAnnouncer: DesiredAttributes.Add("Estinien"); 
+                            break;
+                        case Personalization.GrahaAnnouncer: DesiredAttributes.Add("G'raha Tia"); 
+                            break;
+                        case Personalization.KrileAnnouncer: DesiredAttributes.Add("Krile"); 
+                            break;
+                        case Personalization.WukLamatAnnouncer: DesiredAttributes.Add("Wuk Lamat"); 
+                            break;
+                        case Personalization.KoanaAnnouncer: DesiredAttributes.Add("Koana"); 
+                            break;
+                        case Personalization.BakoolJaJaAnnouncer: DesiredAttributes.Add("Bakool Ja Ja"); 
+                            break;
+                        case Personalization.ErenvilleAnnouncer: DesiredAttributes.Add("Erenville"); 
+                            break;
+                        case Personalization.ZenosAnnouncer: DesiredAttributes.Add("Zenos"); 
+                            break;
+                        case Personalization.None:
+                        default:
+                            break;
+                    }
+                }
+
+                Version++;
+            }
+            _pluginInterface?.SavePluginConfig(this);
         }
 
         public bool WantsAttribute(string attribute)
         {
             return DesiredAttributes.Contains(attribute);
-        }
-
-        [Obsolete]
-        public bool WantsAllPersonalization(List<Personalization> ps)
-        {
-            foreach (var p in ps)
-            {
-                if (!WantsPersonalization(p))
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
         
@@ -254,19 +296,7 @@ namespace PvpAnnouncer
             }
             return true;
         }
-
-        [Obsolete]
-        public void SetPersonalization(Personalization p)
-        {
-            VoicelineSettings = VoicelineSettings | p;
-        }
-
-        [Obsolete]
-        public void RemovePersonalization(Personalization toRemove)
-        {
-            VoicelineSettings &= ~toRemove;
-        }
-
+        
         public void SetAttribute(string attribute)
         {
             DesiredAttributes.Add(attribute);
@@ -276,20 +306,6 @@ namespace PvpAnnouncer
         {
             DesiredAttributes.Remove(attribute);
         }
-
-        [Obsolete]
-        public void TogglePersonalization(Personalization toSet, bool set)
-        {
-            if (set)
-            {
-                SetPersonalization(toSet);
-            }
-            else
-            {
-                RemovePersonalization(toSet);
-            }
-        }
-
         public void ToggleAttribute(string attribute, bool set)
         {
             if (set)

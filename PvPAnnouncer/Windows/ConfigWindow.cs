@@ -22,8 +22,6 @@ namespace PvPAnnouncer.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
-    //todo make a note somewhere that some of the ways i pull the data are kinda skuffedTM and that some of the translations to other languages may not be 100% and to tell me if that happens
-
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
     private readonly EventShoutcastMapping _eventShoutcastMapping; 
@@ -209,7 +207,7 @@ public class ConfigWindow : Window, IDisposable
         
         
         ImGui.TextWrapped("Announcement Frequency");
-        ImGuiComponents.HelpMarker("This controlls the chance of Metem announcing any given event.");
+        ImGuiComponents.HelpMarker("This controls the chance of announcing any given event.");
         ImGui.Indent();
 
         if (ImGui.SliderInt("###SliderPercent", ref percent, 1, 100, "%d%%"))
@@ -220,7 +218,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Unindent();
         
         ImGui.TextWrapped("Announcement Delay");
-        ImGuiComponents.HelpMarker("Sometimes Metem announces a split-second too early. This setting adds a very minor delay which should prevent announcements before an action finishes.");
+        ImGuiComponents.HelpMarker("Sometimes this plugin announces a split-second too early. This setting adds a very minor delay which should prevent announcements before an action finishes.");
         ImGui.Indent();
 
         if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms"))
@@ -253,7 +251,9 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Text("Announcer Spoken Language:");
         DoLanguageVoiceSelection();
         
-        ImGui.Text("Announcer Written Language:");
+        ImGui.Text("Announcer Written Language:"); 
+        ImGuiComponents.HelpMarker("Due to how the plugin works, some voice lines do not have text equivalents in game. (specifically Mahjong Lines and Encrypted Voicelines from M12S). They have been manually transcribed to English. If you wish to help translate them to different languages, please contact the Plugin Developer.");
+
         DoLanguageTextSelection();
         ImGui.Separator();
         

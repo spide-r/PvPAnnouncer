@@ -72,15 +72,24 @@ public class DevWindow: Window, IDisposable
 
         if (ImGui.Button("Pull the lever kronk"))
         {
-            if (PluginServices.ShoutcastBuilder is ShoutcastBuilder builder)
+
+            unsafe
+            {
+                UIModule.Instance()->ShowBattleTalkSound("Asdf", "Asdfaaa", 5, 8206108,6);
+            }
+            /*if (PluginServices.ShoutcastBuilder is ShoutcastBuilder builder)
             {
                 builder.WithCutsceneLine("TEXT_VOICEMAN_03007_D00040_YSHTOLA");
-                builder.WithDuration(5);
+                builder.WithDuration(3);
+                builder.WithIcon(073025);
+                builder.WithShoutcaster("Y'shtola");
                 builder.WithId("YshtolaHeShe");
                 var sc = builder.Build();
                 PluginServices.Announcer.PlaySound(sc.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
                 PluginServices.Announcer.SendBattleTalk(sc);
-            }
+            }*/
+            
+            
             /*
              * File: ./csv/en/cut_scene/050/VoiceMan_05001.csv
             Header: key,0,1
