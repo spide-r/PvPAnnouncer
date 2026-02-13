@@ -21,6 +21,8 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
         LoadShoutcasts();
         LoadMapping();
     }
+    
+    
 
     private static string ReadFile(string jsonFile)
     {
@@ -113,6 +115,7 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
                     }
                     else
                     {
+                        //todo fix this
                         PluginServices.PluginLog.Warning($"{se} not found in shoutcast repository!");
                     }
                 }
@@ -146,6 +149,15 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
                 MapEvent(id, shouts);
             }
         }
+    }
+
+    public Dictionary<string, List<string>> LoadCutsceneLines()
+    {
+        //todo it no worky
+        var cs = ReadFile("csl.json");
+        var cutsceneLines = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(cs.Trim()) ?? [];
+        return cutsceneLines;
+
     }
 
     private Shoutcast ConstructShoutcast(string json)

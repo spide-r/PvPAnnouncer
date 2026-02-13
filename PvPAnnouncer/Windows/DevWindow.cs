@@ -11,6 +11,7 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Utility;
 using FFXIVClientStructs.FFXIV.Common.Component.Excel;
+using Lumina.Data;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
 using PvPAnnouncer.Data;
@@ -18,10 +19,13 @@ using PvPAnnouncer.Impl;
 
 namespace PvPAnnouncer.Windows;
 
-public class DevWindow: Window, IDisposable
+public partial class DevWindow: Window, IDisposable
 {
-    private List<uint> _orphanedVoLines = [];
-    private uint[] _orphanedVoLineArr = [];
+    private List<string> _orphanedVoLines = [];
+    private string[] _orphanedVoLineArr = [];
+    private int _voLineSelector = 0;
+    private Dictionary<string, List<string>> _cutsceneLines = new();
+    //todo ALL THIS CODE IS VERY SLOW!!!!!!!!!!!!!!!!!! FIX!!!!!!!!!!!
     public DevWindow() : base(
         "PvPAnnouncer Dev Window")
     {
@@ -37,7 +41,7 @@ public class DevWindow: Window, IDisposable
     // ContentDirectorBattleTalkVO, CutsceneLine
         
     // sources of text:
-    // npcyell, cutsceneLine, instancecontenttextdata
+    // npcyell, cutsceneLine, instancecontenttextdatarow
 
     private long _pressedLast = 0;
     private uint _iconId = 0;
@@ -46,10 +50,36 @@ public class DevWindow: Window, IDisposable
     private bool _useIcon = false;
     private uint _npcyell = 0;
     private uint _instanceContentTextDataRow = 0;
-    private string _cutsceneLine = "";
+    private string _cutsceneLineTag = "";
     private uint _duration = 1;
     private uint _voLine = 0;
     private uint _style = 6; //0, 6, 7, 11
+    private string _displayText = "";
+    
+    private void TestData()
+    {
+        var b = PluginServices.ShoutcastBuilder
+            .WithId(_eventId)
+            
+            .WithShoutcaster(_name)
+            .WithDuration((byte) _duration)
+            .WithStyle((byte) _style)
+
+            .WithInstanceContentTextDataRow(_instanceContentTextDataRow)
+            .WithCutsceneLine(_cutsceneLineTag)
+            .WithContentDirectorBattleTalkVo(_voLine)
+            .WithNpcYell(_npcyell);
+        if (_useIcon)
+        {
+            b.WithIcon(_iconId);
+        }
+
+        var sc = b.Build();
+        PluginServices.Announcer.SendBattleTalk(sc);
+        PluginServices.Announcer.PlaySound(sc.GetShoutcastSoundPathWithLang(PluginServices.Config.Language));
+    }
+
+    //todo initial draw / load of this class freezes everything - FIX!!!
     public override void Draw()
     {
         ImGui.Text("Configured Voice Language: " + PluginServices.Config.Language); //todo make pretty
@@ -83,7 +113,8 @@ public class DevWindow: Window, IDisposable
             if (ImGui.Button("Clear Selection###TextSelectionClear"))
             {
                 _npcyell = 0;
-                _cutsceneLine = "";
+                _cutsceneLineTag = "";
+                _displayText = "";
             }
         }
 
@@ -129,7 +160,9 @@ public class DevWindow: Window, IDisposable
             {
                 _style = styleInt;
             }
+            ImGui.SameLine();
         }
+        ImGui.NewLine();
     }
 
     private void ShowAudioSelection()
@@ -154,28 +187,36 @@ public class DevWindow: Window, IDisposable
 
         if (ImGui.Button("Content Director Battle Talk"))
         {
-            ContentDirectorBattleTalkPopUp();
+            ImGui.OpenPopup("CtrPop");
+
         }
+        ContentDirectorBattleTalkPopUp();
+
 
         if (ImGui.Button("Cutscene Line"))
         {
-            CutsceneLinePopup();
+            ImGui.OpenPopup("CutscenePop");
+
         }
+        CutsceneLinePopup();
+
 
         if (ImGui.Button("Orphaned Voice Lines"))
         {
-            OrphanedVoLinePopup();
+            if (_orphanedVoLineArr.Length > 1)
+            {
+                ImGui.OpenPopup("OrphanedPop");
+
+            }
+
         }
+        OrphanedVoLinePopup();
+
     }
 
     private void SaveObject()
     {
         //todo impl
-    }
-
-    private void TestData()
-    {
-        //todo build object and fire it off
     }
 
     private void ShowObjectData()
@@ -206,9 +247,9 @@ public class DevWindow: Window, IDisposable
             ImGui.Text("Instance Content Text Data: " + _instanceContentTextDataRow);
         }
 
-        if (!_cutsceneLine.Equals(""))
+        if (!_cutsceneLineTag.Equals(""))
         {
-            ImGui.Text("Cutscene Line: " + _cutsceneLine);
+            ImGui.Text("Cutscene Line: " + _cutsceneLineTag);
         }
 
         if (_voLine != 0)
@@ -225,21 +266,7 @@ public class DevWindow: Window, IDisposable
         
     // voiceline source selector/dropdown (contentDirectorBattleTalk, cutsceneLine, orphaned(change the name) vo-lines w/o )
 
-
-    // -- Audio Selection --
-
-    // -- Audio Selection --
-
-
-
-    // -- Text Selection --
-
-    // display transcription for $LANG
-    //play chosen voiceline
-
-    // duration selector - max out at 10s
-    // style selector(?)
-
+    
 
 
 
@@ -262,7 +289,7 @@ public class DevWindow: Window, IDisposable
         
         /*
          * Window to create events tied to specific actions (AllyActionEvent/EnemyActionEvent)
-         * Name, internal name
+         * Name, internal name, action id's, voicelines
          */
 
     }
@@ -270,87 +297,405 @@ public class DevWindow: Window, IDisposable
     {
 
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
-        var exists = sheet.Flatten().Any(bt => bt.Unknown1 == _voLine);
-        if (_voLine != 0 && exists)
+        var contentDir = sheet.Flatten().FirstOrNull(bt => bt.Unknown1 == _voLine);
+        if (_voLine != 0 && contentDir != null)
         {
-            ShowVoLineData();
-        } else if (!_cutsceneLine.Equals(""))
+            PullVoLineData((ContentDirectorBattleTalk) contentDir);
+        } else if (!_cutsceneLineTag.Equals(""))
         {
-            ShowCutsceneLineData();
+            PullCutsceneLineData();
         }
         else
         {
             if (ImGui.Button("Instance Content Text Data Selector"))
             {
-                InstanceContentTextDataPopup();
+                ImGui.OpenPopup("ICTDPop");
+
             }
+            InstanceContentTextDataPopup();
+
 
             if (ImGui.Button("NPC Yell Data Selector"))
             {
-                ShowNpcYellSelectionPopup();
+                ImGui.OpenPopup("NPCPop");
+
             }
+            ShowNpcYellSelectionPopup();
+
         }
         
-        //todo display chosen text at end here 
         
+        ImGui.Text("Voiceline Transcription: " + _displayText);
         
         // -- Text Selection --
         /*
          * if VOLine set, pull data if exists & show
          * if Cutscene line set, pull data
-         * if not selected or found, allow for NPCYell selection
+         * if not selected or found, allow for NPCYell and instancecontenttextdata selection
          */
 
-        //dropdown
-        //transcription for $LANG (note that its a fallback, not recommended) 
-
 
     }
 
-    private void ShowVoLineData()
+    private void PullVoLineData(ContentDirectorBattleTalk bt)
     {
-
-        var vo = _voLine;
+        if (_displayText.Equals(""))
+        {
+            var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
+            var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language:lang);
+            var foundEntry = instanceContent.TryGetRow(bt.Text.RowId, out var ctrRow);
+            var text = foundEntry ? ctrRow.Text.ExtractText() : InternalConstants.ErrorContactDev;
+            _displayText = text;
+        }
     }
 
-    private void ShowCutsceneLineData()
+    private void PullCutsceneLineData()
     {
-        var cs = _cutsceneLine;
+        if (_displayText.Equals(""))
+        {
+
+            _displayText = GetCSLineWithTag(_cutsceneLineTag);
+
+        }
+
     }
 
+    private string GetCSLineWithTag(string tag)
+    {
+        var splitLine = tag.Split("_");
+        var number = splitLine[2];
+        var trimmedNumber = number.Substring(0,3);
+        var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
+        var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
+        var cutscene = PluginServices.DataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
+        var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag));
+        var dialogue = InternalConstants.ErrorContactDev;
+        if (row != null)
+        {
+            dialogue = row.Value.Dialogue.ToMacroString(); 
+        }
+        dialogue = CutsceneNameRemovalRegex().Replace(dialogue, ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
+        return dialogue;
+    }
+    [GeneratedRegex(@"^\(-.*-\)")]
+    private static partial Regex CutsceneNameRemovalRegex();
+
+    private string _npcYellFilter = "";
     private void ShowNpcYellSelectionPopup()
     {
-        //todo
-    }
+        var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
 
-    private void LoadAllCutsceneLines()
-    {
-        //todo - maybe also load this in a file somewhere
-    }
+        var filter = _npcYellFilter;
+     
+        
+        if (ImGui.BeginPopup("NPCPop"))
+        {
+            if (ImGui.InputText("Filter###NPCYellFilter", ref filter, 300))
+            {
+                _npcYellFilter = filter;
+            }
+            if (ImGui.BeginTable("NPCYell###NPCYellTable", 2,
+                    ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.Resizable))
+            {
+                ImGui.TableSetupColumn("Text");
+                ImGui.TableSetupColumn("Button");
+                ImGui.TableHeadersRow();
+                var yells = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang);
+                foreach (var y in yells)
+                {
+                    var text =  y.Text.ToString();
+                    if (!_npcYellFilter.Equals(""))
+                    {
+                        if (!text.Contains(_npcYellFilter))
+                        {
+                            continue;
+                        }
+                    }
+                    ImGui.TableNextRow();
+                    ImGui.TableNextColumn();
+                    ImGui.Text(text);
+                    ImGui.TableNextColumn();
+                    if (ImGui.Button("Select###SelectYell" + y.RowId))
+                    {
+                        _npcyell = y.RowId;
+                        ImGui.CloseCurrentPopup();
+                    }
+                }
+                ImGui.EndTable();
+            }
 
-    private void ContentDirectorBattleTalkPopUp()
-    {
-        //todo
+            ImGui.EndPopup();
+        }
     }
-    
+    private string _textDataFilter = "";
+
     private void InstanceContentTextDataPopup()
     {
-        //todo
+        var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
+        
+        if (ImGui.BeginPopup("ICTDPop"))
+        {
+            var filter = _textDataFilter;
+            if (ImGui.InputText("Filter###TextDataFilter", ref filter, 300))
+            {
+                _textDataFilter = filter;
+            }
+            if (ImGui.BeginTable("Text Data###TextDataTable", 2,
+                    ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.Resizable))
+            {
+                ImGui.TableSetupColumn("Text");
+                ImGui.TableSetupColumn("Button");
+                ImGui.TableHeadersRow();
+                var yells = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
+                foreach (var td in yells)
+                {
+                    var text =  td.Text.ToString();
+                    if (!_textDataFilter.Equals(""))
+                    {
+                        if (!text.Contains(_textDataFilter))
+                        {
+                            continue;
+                        }
+                    }
+                    ImGui.TableNextRow();
+                    ImGui.TableNextColumn();
+                    ImGui.TextWrapped(text);
+                    ImGui.TableNextColumn();
+                    if (ImGui.Button("Select###SelectTextData" + td.RowId))
+                    {
+                        _instanceContentTextDataRow = td.RowId;
+                        ImGui.CloseCurrentPopup();
+                    }
+                }
+                ImGui.EndTable();
+            }
+
+            ImGui.EndPopup();
+        }
+    }
+    private void LoadAllCutsceneLines()
+    {
+        PluginServices.ChatGui.Print("Started Loading all Cutscene Lines! ", InternalConstants.MessageTag);
+        //check for file
+        //if file is not created, create one
+        //if file is created, load into memory
+        
+
+        _cutsceneLines = PluginServices.JsonFileLoader.LoadCutsceneLines(); // todo bodge - will be changed once we have a way to pull all CS lines dynamically
+        PluginServices.ChatGui.Print("Finished Loading all Cutscene Lines! ", InternalConstants.MessageTag);
     }
 
+    private string _contentDirectorFilter = "";
+    private void ContentDirectorBattleTalkPopUp()
+    {
+        if (ImGui.BeginPopup("CtrPop"))
+        {
+              
+            var filter = _contentDirectorFilter;
+            if (ImGui.InputText("Filter###CtrFilter", ref filter, 300))
+            {
+                _textDataFilter = filter;
+            }
+            var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
+
+            if (ImGui.BeginTable("Content DirectorBattleTalk###ContentDirectorBattleTalk", 5,
+                    ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.Resizable))
+            {
+                ImGui.TableSetupColumn("Text");
+                ImGui.TableSetupColumn("Style");
+                ImGui.TableSetupColumn("Icon");
+                ImGui.TableSetupColumn("VoLine");
+                ImGui.TableSetupColumn("Button");
+                ImGui.TableHeadersRow();
+                var ctr = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>();
+                var ictd = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>();
+                foreach (var td in ctr.Flatten())
+                {
+                    var rId = td.Text.RowId;
+                    var foundEntry = ictd.TryGetRow(rId, out var ctrRow);
+                    var text = InternalConstants.ErrorContactDev;
+                    if (foundEntry)
+                    {
+                        text = ctrRow.Text.ToString();
+                    }
+                    var voLine = td.Unknown1;
+                    var style = td.Unknown4;
+                    var icon = td.Unknown0;
+                    var duration = td.Unknown3;
+                    if (!_contentDirectorFilter.Equals(""))
+                    {
+                        if (!text.Contains(_contentDirectorFilter))
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (voLine == 0)
+                    {
+                        continue;
+                    }
+                    ImGui.TableNextRow();
+                    ImGui.TableNextColumn();
+                    ImGui.TextWrapped(text);
+                    ImGui.TableNextColumn();
+                    ImGui.Text(style.ToString());
+                    ImGui.TableNextColumn();
+                    ImGui.Text(icon.ToString());
+                    ImGui.TableNextColumn();
+                    ImGui.Text(voLine.ToString());
+                    ImGui.TableNextColumn();
+                    if (ImGui.Button("Select###SelectCtr" + td.RowId))
+                    {
+                        _voLine = voLine;
+                        if (style != 0)
+                        {
+                            _style = style;
+                        }
+
+                        if (icon != 0)
+                        {
+                            _iconId = icon;
+                        }
+
+                        if (duration != 0)
+                        {
+                            _duration = duration;
+                        }
+                    
+                        ImGui.CloseCurrentPopup();
+                    }
+                }
+                ImGui.EndTable();
+            }
+
+            ImGui.EndPopup();
+        }
+      
+    }
+
+
+    private string _chosenChar = "";
+    private string _cutsceneLineFilter = "";
     private void CutsceneLinePopup()
     {
-        //todo
+        
+        if (ImGui.BeginPopup("CutscenePop"))
+        {
+           if (ImGui.BeginCombo("Character Picker", "Pick A Character"))
+           {
+               foreach (var character in _cutsceneLines.Keys)
+               {
+                   bool selected = _chosenChar.Equals(character);
+                   if (ImGui.Selectable(character, selected))
+                   {
+                       _chosenChar = character;
+                   }
+               }
+               ImGui.EndCombo();
+           }
+        
+           if (_chosenChar.Equals(""))
+           {
+               ImGui.Text("Select A Character!");
+           }
+           else
+           {
+               var filter = _cutsceneLineFilter;
+               if (ImGui.InputText("Filter###CutsceneLineFilter", ref filter, 300))
+               {
+                   _cutsceneLineFilter = filter;
+               }
+               if (ImGui.BeginTable("Character Cutscene Lines", 3,
+                       ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.Resizable))
+               {
+                   ImGui.TableSetupColumn("Tag");
+                   ImGui.TableSetupColumn("Text");
+                   ImGui.TableSetupColumn("Button");
+                   ImGui.TableHeadersRow();
+                   foreach (var cutsceneLineTag in _cutsceneLines[_chosenChar])
+                   {
+                       var text = GetCSLineWithTag(cutsceneLineTag);
+                       if (!_cutsceneLineFilter.Equals(""))
+                       {
+                           if (!text.Contains(_cutsceneLineFilter))
+                           {
+                               continue;
+                           }
+                       }
+
+                       if (text.Equals("No subtitles, report if displayed."))
+                       {
+                           continue;
+                       }
+                       ImGui.TableNextRow();
+                       ImGui.TableNextColumn();
+                       ImGui.Text(cutsceneLineTag);
+                       ImGui.TableNextColumn();
+                       if (text.Equals(""))
+                       {
+                           text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
+                       }
+                       ImGui.TextWrapped(text);
+                       ImGui.TableNextColumn();
+            
+                       if (ImGui.Button("Select###Select" + cutsceneLineTag))
+                       {
+                           _cutsceneLineTag = cutsceneLineTag;
+                           ImGui.CloseCurrentPopup();
+                       }
+                   }
+                   ImGui.EndTable();
+               }
+           }
+           ImGui.EndPopup();    
+        }
     }
 
     private void OrphanedVoLinePopup()
     {
-        //todo
+        var selector = _voLineSelector;
+        if (ImGui.BeginPopup("OrphanedPop"))
+        {
+            
+            ImGui.ListBox("Voice Lines###OrphanedVoLinesList", ref _voLineSelector, _orphanedVoLineArr);
+            if (ImGui.Button("Play###OrphanedVoLinesPlay"))
+            {
+                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector));
+
+            }
+            ImGui.Separator();
+            if (ImGui.Button("Go Back And Play###OrphanedVoLinesBackward"))
+            {
+                _voLineSelector = selector - 1;
+                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector-1));
+            }
+            ImGui.SameLine();
+            if (ImGui.Button("Go Forward And Play###OrphanedVoLinesForward"))
+            {
+                _voLineSelector = selector + 1;
+                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector+1));
+            }
+
+            if (ImGui.Button("Select Voiceline " + _orphanedVoLineArr[selector] + "###OrphanedVoLinesSelect" + selector))
+            {
+                _voLine = Convert.ToUInt32(_orphanedVoLineArr[selector]);
+                ImGui.CloseCurrentPopup();
+            }
+        
+            ImGui.EndPopup();
+        }
+
+    }
+
+    private string GetVoLineToPlay(int selector)
+    {
+        return "sound/voice/vo_line/" + _orphanedVoLineArr[selector] + "_" +
+                            PluginServices.Config.Language + ".scd";
     }
     private void ShowDangerZone()
     {
         ImGui.Text("WARNING! These buttons will take a while and may freeze your game.");
-        if (ImGui.Button("Load all Orphaned Voiceover Lines."))
+        if (ImGui.Button("Load all Orphaned Voiceover Lines. (DANGER)"))
         {
             var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
 
@@ -364,7 +709,7 @@ public class DevWindow: Window, IDisposable
                     
                 if (sheet.Flatten().All(bt => bt.Unknown1 != j)) // if the VO Line does not exist in sheet, its orphaned so we need to add data
                 {
-                    _orphanedVoLines.Add(j);
+                    _orphanedVoLines.Add(j.ToString());
                 }
             }
             _orphanedVoLineArr = _orphanedVoLines.ToArray();
@@ -388,22 +733,53 @@ public class DevWindow: Window, IDisposable
     private void ShowAnnouncerMetadata()
     {
         var name = _name;
-        if (ImGui.InputText("Announcer Name", ref name, 100))
+        ImGui.Text("Name:");
+        if (ImGui.InputText("###Announcer Name", ref name, 100))
         {
             _name = name;
         }
-        ImGui.SameLine();
         var icon = _iconId;
-        uint min = 70000;
-        uint max = 70010;  //todo change min and max
-        if (ImGui.SliderUInt("Announcer Icon", ref icon, min, max, default, ImGuiSliderFlags.AlwaysClamp))
+        uint min = 73001;
+        uint max = 73287;  
+        ImGui.Text("Icon: ");
+        if (ImGui.SliderUInt("###AnnouncerIcon", ref icon, min, max, default, ImGuiSliderFlags.AlwaysClamp))
         {
             _iconId = icon;
         }
         ImGui.SameLine();
-        var iconImage = PluginServices.TextureProvider.GetFromGameIcon(new GameIconLookup(icon)).GetWrapOrEmpty();
-        ImGui.Image(iconImage.Handle, iconImage.Size);
+        if (ImGui.Button("++###GoUpIcon"))
+        {
+
+            if (_iconId > max)
+            {
+                _iconId = min;
+            }
+            _iconId = icon + 1;
+        }
+        ImGui.SameLine();
+        if (ImGui.Button("--###GoDownIcon"))
+        {
+            if (_iconId < min)
+            {
+                _iconId = max;
+            }
+            _iconId = icon - 1;
+        }
+
+        try
+        {
+            var iconImage = PluginServices.TextureProvider.GetFromGameIcon(new GameIconLookup(icon)).GetWrapOrDefault();
+            if (iconImage != null)
+            {
+                ImGui.Image(iconImage.Handle, new Vector2(250, 210));
+            }
+        }
+        catch (Exception e)
+        {
+            ImGui.Text("Issue rendering icon!");
+        }
         var useIcon = _useIcon;
+        ImGui.NewLine();
         if (ImGui.Checkbox("Use Icon", ref useIcon))
         {
             _useIcon = useIcon;

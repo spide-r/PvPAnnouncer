@@ -35,6 +35,7 @@
         <EmbeddedResource Include="json\event.json" />
         <EmbeddedResource Include="json\mapping.json" />
         <EmbeddedResource Include="json\shoutcast.json" />
+        <EmbeddedResource Include="json\csl.json" />
         <Content Include="PvPAnnouncer.json" />
         <Content Include="PvPAnnouncer\packages.lock.json" />
     </ItemGroup>
