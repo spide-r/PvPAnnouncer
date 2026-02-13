@@ -109,7 +109,7 @@ public unsafe class ActionEffectMessage(
         List<uint> damage = new List<uint>();
         for (var i = 0; i < Targets; i++)
         {
-            var targetId = (uint) (EffectTrail[i] * uint.MaxValue);
+            var targetId = (uint) (EffectTrail[i] & uint.MaxValue);
             if (actionTargetIds.Contains(targetId))
             {
                 for (var j = 0; j < 8; j++)

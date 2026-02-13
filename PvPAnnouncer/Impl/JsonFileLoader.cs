@@ -8,12 +8,12 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.impl.PvPEvents;
+using PvPAnnouncer.Impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class JsonFileLoader(IStringRepository attributeRepository, IStringRepository casterRepository, IPvPEventBroker pvPEventBroker, IShoutcastRepository shoutcastRepository, IEventShoutcastMapping eventShoutcastMapping) : IJsonFileLoader
+public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attributeRepository, IStringRepository casterRepository, IPvPEventBroker pvPEventBroker, IShoutcastRepository shoutcastRepository, IEventShoutcastMapping eventShoutcastMapping) : IJsonFileLoader
 {
     public void LoadAll()
     {
@@ -44,7 +44,7 @@ public class JsonFileLoader(IStringRepository attributeRepository, IStringReposi
         {
             foreach (var shout in j)
             { 
-                var sh = shoutcastRepository.ConstructShoutcast(shout?.ToString() ?? "");
+                var sh = ConstructShoutcast(shout?.ToString() ?? "");
                 PluginServices.PluginLog.Verbose($"Constructed {sh.Id} with {sh.SoundPath}");
                 casterRepository.RegisterAttribute(sh.Shoutcaster);
                 shoutcastRepository.SetShoutcast(sh.Id, sh);
@@ -98,13 +98,25 @@ public class JsonFileLoader(IStringRepository attributeRepository, IStringReposi
         }
     }
 
-    public void MapEvent(string id, List<string> shouts)
+    private void MapEvent(string id, List<string> shouts)
     {
         List<string> newShoutList = [];
         foreach (var shout in shouts)
         {
             if (shout.Equals("LIMIT_BREAK_LIST"))
             {
+                foreach (var se in InternalConstants.LimitBreakListStr)
+                {
+                    if (shoutcastRepository.ContainsKey(se))
+                    {
+                        newShoutList.Add(se);
+                    }
+                    else
+                    {
+                        PluginServices.PluginLog.Warning($"{se} not found in shoutcast repository!");
+                    }
+                }
+
                 newShoutList.AddRange(InternalConstants.LimitBreakListStr);
             }
             else
@@ -134,6 +146,77 @@ public class JsonFileLoader(IStringRepository attributeRepository, IStringReposi
                 MapEvent(id, shouts);
             }
         }
+    }
 
+    private Shoutcast ConstructShoutcast(string json)
+    {
+        var j = JsonNode.Parse(json);
+        if (j == null)
+        {
+            return builder.Build();
+        }
+        if (j["id"] != null)
+        {
+            builder.WithId(j["id"]!.GetValue<string>());
+        }
+        
+        if (j["icon"] != null)
+        {
+            builder.WithIcon(Convert.ToUInt32(j["icon"]!.GetValue<string>()));
+        }
+        
+        if (j["transcription"] != null)
+        {
+            var dict =  j["transcription"][0].Deserialize<Dictionary<string, string>>();
+            builder.WithTranscription(dict ?? []);
+        }
+        
+        if (j["duration"] != null)
+        {
+            builder.WithDuration(Convert.ToByte(j["duration"]!.GetValue<string>()));
+        }
+                
+        if (j["style"] != null)
+        {
+            builder.WithStyle(Convert.ToByte(j["style"]!.GetValue<string>()));
+        }
+        if (j["shoutcaster"] != null)
+        {
+            builder.WithShoutcaster(j["shoutcaster"]!.GetValue<string>());
+        }
+        
+        if (j["attributes"] != null)
+        {
+            var att =  j["attributes"]!.Deserialize<List<string>>();
+            builder.WithAttributes(att ?? []);
+        }
+        
+        if (j["soundPath"] != null)
+        {
+            builder.WithSoundPath(j["soundPath"]!.GetValue<string>());
+        }
+        
+        if (j["cutsceneLine"] != null)
+        {
+            builder.WithCutsceneLine(j["cutsceneLine"]!.GetValue<string>());
+        }
+        
+        if (j["contentDirectorBattleTalkVo"] != null)
+        {
+            builder.WithContentDirectorBattleTalkVo(Convert.ToUInt32(j["contentDirectorBattleTalkVo"]!.GetValue<string>()));
+        }
+        
+        if (j["npcYell"] != null)
+        {
+            builder.WithNpcYell(Convert.ToUInt32(j["npcYell"]!.GetValue<string>()));
+        }
+        
+        if (j["instanceContentTextDataRow"] != null)
+        {
+            builder.WithInstanceContentTextDataRow(Convert.ToUInt32(j["instanceContentTextDataRow"]!.GetValue<string>()));
+        }
+
+        
+        return builder.Build();
     }
 }

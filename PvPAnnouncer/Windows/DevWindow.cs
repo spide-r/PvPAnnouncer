@@ -8,19 +8,20 @@ using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
+using Dalamud.Interface.Textures;
 using Dalamud.Interface.Utility;
 using FFXIVClientStructs.FFXIV.Common.Component.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.impl;
+using PvPAnnouncer.Impl;
 
 namespace PvPAnnouncer.Windows;
 
 public class DevWindow: Window, IDisposable
 {
-    private List<string> _voLines = [];
-    private string[] _voLineArr = [];
+    private List<uint> _orphanedVoLines = [];
+    private uint[] _orphanedVoLineArr = [];
     public DevWindow() : base(
         "PvPAnnouncer Dev Window")
     {
@@ -29,228 +30,386 @@ public class DevWindow: Window, IDisposable
             MinimumSize = new Vector2(450, 225),
         };
         
-/*#if DEBUG
-        for (uint j = 0; j < 9999999; j++)
-        {
-            var voLine = $"sound/voice/vo_line/{j}_en.scd";
-            if (PluginServices.DataManager.FileExists(voLine))
-            {
-                _voLines.Add(j.ToString());
-            }
-        }
-        _voLineArr = _voLines.ToArray();
-#endif*/
     }
 
-    private long ll = 0L;
-    private string icon = "";
-    private string ss = "";
-    private string _name = "";
-    private string _voicelineTranscription = "";
-    private long _duration = 0L;
-    private bool hide = false;
-    private string _textData = "";
-    private int _voLineSelector = 0;
-    private string _tag = "";
-    private int _expac = 3;
+    //
+    // sources of voicelines: 
+    // ContentDirectorBattleTalkVO, CutsceneLine
+        
+    // sources of text:
+    // npcyell, cutsceneLine, instancecontenttextdata
 
-    
+    private long _pressedLast = 0;
+    private uint _iconId = 0;
+    private string _name = "Announcer Name";
+    private string _eventId = "UniqueEventId";
+    private bool _useIcon = false;
+    private uint _npcyell = 0;
+    private uint _instanceContentTextDataRow = 0;
+    private string _cutsceneLine = "";
+    private uint _duration = 1;
+    private uint _voLine = 0;
+    private uint _style = 6; //0, 6, 7, 11
     public override void Draw()
     {
-
-        var tag = _tag;
-        var expac = _expac;
-        if(ImGui.InputText("Tag", ref tag))
+        ImGui.Text("Configured Voice Language: " + PluginServices.Config.Language); //todo make pretty
+        ImGui.Text("Configured Text Language: " + PluginServices.Config.TextLanguage);
+        
+        if (ImGui.CollapsingHeader("Danger Zone"))
         {
-            _tag = tag;
+            ShowDangerZone();
         }
 
-        if (ImGui.InputInt("Expac", ref expac))
+        if (ImGui.CollapsingHeader("Announcer Metadata"))
         {
-            _expac = expac;
+            ShowAnnouncerMetadata();
         }
 
-        if (ImGui.Button("Pull the lever kronk"))
+        if (ImGui.CollapsingHeader("Audio Selection"))
         {
-
-            unsafe
-            {
-                UIModule.Instance()->ShowBattleTalkSound("Asdf", "Asdfaaa", 5, 8206108,6);
-            }
-            /*if (PluginServices.ShoutcastBuilder is ShoutcastBuilder builder)
-            {
-                builder.WithCutsceneLine("TEXT_VOICEMAN_03007_D00040_YSHTOLA");
-                builder.WithDuration(3);
-                builder.WithIcon(073025);
-                builder.WithShoutcaster("Y'shtola");
-                builder.WithId("YshtolaHeShe");
-                var sc = builder.Build();
-                PluginServices.Announcer.PlaySound(sc.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
-                PluginServices.Announcer.SendBattleTalk(sc);
-            }*/
             
-            
-            /*
-             * File: ./csv/en/cut_scene/050/VoiceMan_05001.csv
-            Header: key,0,1
-            Match: 121,"TEXT_VOICEMAN_05001_001170_EMETSELCH","(SIGH)"
-            TEXT_VOICEMAN_05001_001170_EMETSELCH
-            text:  cut_scene/050/VoiceMan_05001/
-            audio: cut/ex3/sound/voicem/voiceman_05001/vo_voiceman_05001_001170_m_en.scd
-
-
-            // step 1: get the text transcription
-            // step 2: convert text address into cutscene address (how do we check per-expac??? - we should probably just add a param)
-            // step 3: add cutscene audio address
-
-            //step N: make another function that creates from voiceline???? maybe not
-            */
-
-
-            /*
-            var splitLine = line.Split("_");
-            var number = splitLine[2];
-            var secondNumber = splitLine[3];
-            var trimmedNumber = number.Substring(0,3);
-            var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
-            var cutscene = PluginServices.DataManager.GetExcelSheet<CutsceneText>(name: csvName);
-            var audio = $"cut/ex{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
-
-            var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(line));
-            var dialogue = InternalConstants.ErrorContactDev;
-            if (row != null)
+            ShowAudioSelection();
+            if (ImGui.Button("Clear Selection###AudioSelectionClear"))
             {
-                dialogue = row.Value.Dialogue.ExtractText();
+                _instanceContentTextDataRow = 0;
+                _voLine = 0;
             }
-            dialogue = Regex.Replace(dialogue, @"^\(-.*-\)", ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
-            */
-
         }
-        var l = ll;
-        var ic = icon;
-        if(ImGui.InputText("Icon###Icon", ref ic))
+
+        if (ImGui.CollapsingHeader("Text Selection"))
         {
-            icon = ic;
+            ShowTextSelection();
+            
+            if (ImGui.Button("Clear Selection###TextSelectionClear"))
+            {
+                _npcyell = 0;
+                _cutsceneLine = "";
+            }
+        }
+
+        var id = _eventId;
+
+        if (ImGui.InputText("Unique Internal Announcement ID", ref id))
+        {
+            _eventId = id;
+        }
+
+        var duration = _duration;
+        if (ImGui.SliderUInt("Announcement Duration", ref duration, 1, 10, default, ImGuiSliderFlags.AlwaysClamp))
+        {
+            _duration = duration;
+        }
+
+    
+        ShowStyleSelector();
+        
+        if (ImGui.CollapsingHeader("Object Data"))
+        {
+            ShowObjectData();
+        }
+
+        if (ImGui.Button("Test Current Data"))
+        {
+            TestData();
+        }
+
+        if (ImGui.Button("Save and Write to config"))
+        {
+            SaveObject();
+        }
+
+    }
+
+    private void ShowStyleSelector()
+    {
+        uint[] ss = [0, 6, 7, 11];
+        foreach (var styleInt in ss)
+        {
+            if (ImGui.RadioButton("Style " + styleInt, _style == styleInt))
+            {
+                _style = styleInt;
+            }
+        }
+    }
+
+    private void ShowAudioSelection()
+    {
+        /*
+         * ContentDirectorBattleTalk (filter by VoLine existing or not)
+         * VOline | Duration | text (if it exists) | play button to hear the thing
+         * On apply, set duration and link to the specific row in instancecontentTextdata
+         */
+
+        /*
+         * CutsceneLine (oh boy)
+         * Filter by Character (DO NOT EVER SHOW ALL)
+         * Sort by Line Length
+         *
+         */
+
+        /*
+         * Orphaned Vo Lines
+         * Show all, play all, select one
+         */
+
+        if (ImGui.Button("Content Director Battle Talk"))
+        {
+            ContentDirectorBattleTalkPopUp();
+        }
+
+        if (ImGui.Button("Cutscene Line"))
+        {
+            CutsceneLinePopup();
+        }
+
+        if (ImGui.Button("Orphaned Voice Lines"))
+        {
+            OrphanedVoLinePopup();
+        }
+    }
+
+    private void SaveObject()
+    {
+        //todo impl
+    }
+
+    private void TestData()
+    {
+        //todo build object and fire it off
+    }
+
+    private void ShowObjectData()
+    {
+        ImGui.Text("Object Data:");
+        ImGui.Separator();
+        if (!_name.Equals(""))
+        {
+            ImGui.Text("Announcer Name: " + _name);
+        }
+
+        if (_useIcon)
+        {
+            ImGui.Text("Icon: " + _iconId);
         }
         
-        var s = ss;
-        ImGui.Text("Play A Sound path");
-        if (ImGui.InputText("###SoundPath", ref s))
-        {
-            ss = s;
+        ImGui.Text("Duration: " + _duration);
+        ImGui.Text("Style: " + _style);
+        ImGui.Text("Unique Event ID: " + _eventId);
 
-        }
-        ImGui.SameLine();
-        if (ImGui.Button("Play###SoundPathButton"))
+        if (_npcyell != 0)
         {
-            PluginServices.Announcer.PlaySound(s);
+            ImGui.Text("NPC Yell: " + _npcyell);
         }
 
-        ImGui.Text("Play sound/voice/vo_line/"+ l + "_en.scd");
-        if(ImGui.InputScalar("###SoundLong", ref l, 1L, 1L))
+        if (_instanceContentTextDataRow != 0)
         {
-            ll = l;
+            ImGui.Text("Instance Content Text Data: " + _instanceContentTextDataRow);
         }
-        ImGui.SameLine();
-        if (ImGui.Button("Play###VoLineButton"))
+
+        if (!_cutsceneLine.Equals(""))
         {
-            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ l + "_en.scd");
+            ImGui.Text("Cutscene Line: " + _cutsceneLine);
         }
-        var h = hide;
-        if (ImGui.Checkbox("Hide Battle Talk", ref h))
+
+        if (_voLine != 0)
         {
-            hide = h;
+            ImGui.Text("Voice Line: " + _voLine);
         }
         ImGui.Separator();
-        ImGui.Text("Last Action Used: " + PluginServices.PvPEventBroker.GetLastAction());
-        if (ImGui.Button("Get Statuses"))
+    }
+    // -- Announcer Metadata -- 
+    //name //sameline Icon browser (limit from X to X+N) (checkbox to say use icon or not)
+
+    // -- Announcer Metadata -- 
+        
+        
+    // voiceline source selector/dropdown (contentDirectorBattleTalk, cutsceneLine, orphaned(change the name) vo-lines w/o )
+
+
+    // -- Audio Selection --
+
+    // -- Audio Selection --
+
+
+
+    // -- Text Selection --
+
+    // display transcription for $LANG
+    //play chosen voiceline
+
+    // duration selector - max out at 10s
+    // style selector(?)
+
+
+
+
+    private void AddVoicelineToEventsThisIsAPopupButShouldProbablyBeItsOwnWindow()
+    {
+        //todo
+        
+        /*
+         * Window To add voiceline to events
+         * List of events
+         * Select events to add it to
+         * Edit a mapping json
+         */
+
+    }
+
+    private void ActionEventCreatorThisIsAPopupButShouldProbablyBeItsOwnWindow()
+    {
+        //todo
+        
+        /*
+         * Window to create events tied to specific actions (AllyActionEvent/EnemyActionEvent)
+         * Name, internal name
+         */
+
+    }
+    private void ShowTextSelection()
+    {
+
+        var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
+        var exists = sheet.Flatten().Any(bt => bt.Unknown1 == _voLine);
+        if (_voLine != 0 && exists)
         {
-            if (PluginServices.ObjectTable.LocalPlayer != null)
+            ShowVoLineData();
+        } else if (!_cutsceneLine.Equals(""))
+        {
+            ShowCutsceneLineData();
+        }
+        else
+        {
+            if (ImGui.Button("Instance Content Text Data Selector"))
             {
-                foreach (var status in PluginServices.ObjectTable.LocalPlayer.StatusList)
-                {
-                    PluginServices.PluginLog.Verbose(status.StatusId + " " + status.GameData.Value.Name.ToString());
-                }
+                InstanceContentTextDataPopup();
             }
-       
-        }
-        ImGui.Separator();
-        var n = _name;
-        if (ImGui.InputText("Name", ref n))
-        {
-            _name = n;
-        }
-        var vlTranscription = _voicelineTranscription;
-        if (ImGui.InputText("Voice Line Transcription", ref _voicelineTranscription))
-        {
-            _voicelineTranscription = vlTranscription;
-        }
 
-        var textData = _textData;
-        if (ImGui.InputText("Sheet Line number", ref _textData))
-        {
-            _textData = textData;
-        }
-
-        ImGui.ListBox("Voice Lines", ref _voLineSelector, _voLineArr);
-        if (ImGui.Button("Play##dumblist"))
-        {
-            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ _voLineArr[_voLineSelector] + "_en.scd");
-
-        }
-        ImGui.Separator();
-        var d = _duration;
-        if (ImGui.Button("Go Back And Play"))
-        {
-            _voLineSelector = _voLineSelector - 1;
-            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ _voLineArr[_voLineSelector] + "_en.scd");
-        }
-        ImGui.SameLine();
-        if (ImGui.Button("Go Forward And Play"))
-        {
-            _voLineSelector = _voLineSelector + 1;
-            PluginServices.SoundManager.PlaySound("sound/voice/vo_line/"+ _voLineArr[_voLineSelector] + "_en.scd");
-            
-        }
-        if (ImGui.InputScalar("Duration", ref d, 1L, 1L))
-        {
-            _duration = d;
+            if (ImGui.Button("NPC Yell Data Selector"))
+            {
+                ShowNpcYellSelectionPopup();
+            }
         }
         
-        ImGui.Text("Events: ");
-        var i = 1;
-        foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
-        {
-            if (ImGui.Button(pvPEvent))
-            {
-                try
-                {
-                    var ev = PluginServices.PvPEventBroker.GetEvent(pvPEvent);
-                    if (ev != null)
-                    {
-                        PluginServices.Announcer.ReceivePvPEvent(true, ev);
-                        PluginServices.Announcer.ClearQueue();    
-                    }
-
-
-                }
-                catch (Exception e)
-                {
-                    PluginServices.PluginLog.Error(e, "Issue sending custom event!!!");
-                }
-         
-            }
-
-            if (i % 4 != 0)
-            {
-                ImGui.SameLine();
-            }
-
-            i++;
-        }
+        //todo display chosen text at end here 
         
+        
+        // -- Text Selection --
+        /*
+         * if VOLine set, pull data if exists & show
+         * if Cutscene line set, pull data
+         * if not selected or found, allow for NPCYell selection
+         */
+
+        //dropdown
+        //transcription for $LANG (note that its a fallback, not recommended) 
+
+
+    }
+
+    private void ShowVoLineData()
+    {
+
+        var vo = _voLine;
+    }
+
+    private void ShowCutsceneLineData()
+    {
+        var cs = _cutsceneLine;
+    }
+
+    private void ShowNpcYellSelectionPopup()
+    {
+        //todo
+    }
+
+    private void LoadAllCutsceneLines()
+    {
+        //todo - maybe also load this in a file somewhere
+    }
+
+    private void ContentDirectorBattleTalkPopUp()
+    {
+        //todo
     }
     
+    private void InstanceContentTextDataPopup()
+    {
+        //todo
+    }
+
+    private void CutsceneLinePopup()
+    {
+        //todo
+    }
+
+    private void OrphanedVoLinePopup()
+    {
+        //todo
+    }
+    private void ShowDangerZone()
+    {
+        ImGui.Text("WARNING! These buttons will take a while and may freeze your game.");
+        if (ImGui.Button("Load all Orphaned Voiceover Lines."))
+        {
+            var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
+
+            for (uint j = 0; j < 9999999; j++)
+            {
+                var voLine = $"sound/voice/vo_line/{j}_en.scd";
+                if (!PluginServices.DataManager.FileExists(voLine))
+                {
+                    continue;
+                }
+                    
+                if (sheet.Flatten().All(bt => bt.Unknown1 != j)) // if the VO Line does not exist in sheet, its orphaned so we need to add data
+                {
+                    _orphanedVoLines.Add(j);
+                }
+            }
+            _orphanedVoLineArr = _orphanedVoLines.ToArray();
+        }
+
+        if (ImGui.Button("Load All cutscene lines (DANGER)"))
+        {
+            var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            if (now > (_pressedLast + (3 * 60)))
+            {
+                _pressedLast = now;
+                LoadAllCutsceneLines();
+            }
+            else
+            {
+                PluginServices.ChatGui.PrintError("You Must wait 3 minutes to press this button again!");
+            }
+        }
+    }
+
+    private void ShowAnnouncerMetadata()
+    {
+        var name = _name;
+        if (ImGui.InputText("Announcer Name", ref name, 100))
+        {
+            _name = name;
+        }
+        ImGui.SameLine();
+        var icon = _iconId;
+        uint min = 70000;
+        uint max = 70010;  //todo change min and max
+        if (ImGui.SliderUInt("Announcer Icon", ref icon, min, max, default, ImGuiSliderFlags.AlwaysClamp))
+        {
+            _iconId = icon;
+        }
+        ImGui.SameLine();
+        var iconImage = PluginServices.TextureProvider.GetFromGameIcon(new GameIconLookup(icon)).GetWrapOrEmpty();
+        ImGui.Image(iconImage.Handle, iconImage.Size);
+        var useIcon = _useIcon;
+        if (ImGui.Checkbox("Use Icon", ref useIcon))
+        {
+            _useIcon = useIcon;
+        }
+        ImGui.NewLine();
+    }
     public void Dispose()
     {
     }

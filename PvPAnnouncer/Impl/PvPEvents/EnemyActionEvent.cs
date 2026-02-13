@@ -4,7 +4,7 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-namespace PvPAnnouncer.impl.PvPEvents;
+namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class EnemyActionEvent : PvPActionEvent
 {

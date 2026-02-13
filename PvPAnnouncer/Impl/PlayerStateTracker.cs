@@ -6,7 +6,7 @@ using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
-using PvPAnnouncer.impl.PvPEvents;
+using PvPAnnouncer.Impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;

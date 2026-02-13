@@ -5,9 +5,8 @@ using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
-using PvpAnnouncer;
+using PvPAnnouncer;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.impl;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Windows;
@@ -71,6 +70,9 @@ internal class PluginServices {
     [PluginService]
     internal static ISeStringEvaluator SeStringEvaluator { get; private set; }
     
+    [PluginService]
+    internal static ITextureProvider TextureProvider { get; private set; }
+    
     internal static IPvPEventBroker PvPEventBroker { get; private set; }
     internal static IPvPMatchManager PvPMatchManager { get; private set; }
     internal static IAnnouncer Announcer { get; private set; }
@@ -101,9 +103,9 @@ internal class PluginServices {
         EventShoutcastMapping = new  EventShoutcastMapping();
         ShoutcastBuilder = new ShoutcastBuilder(DataManager);
         ShoutcastRepository = new ShoutcastRepository(ShoutcastBuilder);
-        AttributeRepository = new AttributeRepository();
-        CasterRepository = new CasterRepository();
-        JsonFileLoader = new JsonFileLoader(AttributeRepository, CasterRepository, PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
+        AttributeRepository = new StringRepository();
+        CasterRepository = new StringRepository();
+        JsonFileLoader = new JsonFileLoader(ShoutcastBuilder, AttributeRepository, CasterRepository, PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
         JsonFileLoader.LoadAll();
         Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
         VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);

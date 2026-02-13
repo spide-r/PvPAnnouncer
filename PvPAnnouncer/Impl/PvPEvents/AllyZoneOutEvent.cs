@@ -2,7 +2,7 @@
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
-namespace PvPAnnouncer.impl.PvPEvents;
+namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class AllyZoneOutEvent: PvPActorEvent
 {

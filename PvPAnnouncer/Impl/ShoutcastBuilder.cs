@@ -11,10 +11,11 @@ using Lumina.Extensions;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
-namespace PvPAnnouncer.impl;
+namespace PvPAnnouncer.Impl;
 
 public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuilder
 {
+    //todo fix concurrency
     private Shoutcast _instance = NewShoutcast();
     
     

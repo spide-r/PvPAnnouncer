@@ -11,7 +11,7 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPEventBroker: IPvPEventBroker
 {
-    private readonly List<Tuple<PvPEvent, Func<IMessage, bool>>> _registeredListeners = new();
+    private readonly List<PvPEvent> _registeredListeners = new();
     private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
     private string LastUsedAction = "";
     public void IngestMessage(IMessage message)
@@ -51,20 +51,18 @@ public class PvPEventBroker: IPvPEventBroker
             }
         }
         
-        foreach (var keyValuePair in _registeredListeners)
+        foreach (var pvpEvent in _registeredListeners)
         {
-            PvPEvent ee = keyValuePair.Item1;
-            if (IsBlacklistedEvent(ee))
+            if (IsBlacklistedEvent(pvpEvent))
             {
                 continue;
             }
-            Func<IMessage, bool> shouldEmit = keyValuePair.Item2;
-            bool emit = shouldEmit.Invoke(message);
+            var emit = pvpEvent.InvokeRule(message);
             if (emit)
             {
-                PluginServices.PluginLog.Verbose("Emitted: " + ee.Id);
+                PluginServices.PluginLog.Verbose("Emitted: " + pvpEvent.Id);
 
-                EmitToSubscribers(ee);
+                EmitToSubscribers(pvpEvent);
             }
         }
     }
@@ -86,7 +84,7 @@ public class PvPEventBroker: IPvPEventBroker
     {
         _pvpEventIdBinding.Add(e.Id, e);
         PluginServices.PluginLog.Verbose("Registered listener: " + e.Id);
-        _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
+        _registeredListeners.Add(e);
     }
 
     public string GetLastAction()
@@ -112,7 +110,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void DeregisterListener(PvPEvent e)
     {
-        _registeredListeners.RemoveAll(aa => aa.Item1.Id.Equals(e.Id));
+        _registeredListeners.RemoveAll(aa => aa.Id.Equals(e.Id));
         _pvpEventIdBinding.Remove(e.Id);
     }
 }

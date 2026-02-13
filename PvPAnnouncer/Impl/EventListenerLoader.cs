@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.impl.PvPEvents;
+using PvPAnnouncer.Impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 namespace PvPAnnouncer.Impl;

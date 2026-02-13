@@ -12,7 +12,7 @@ using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Utility;
 using Dalamud.Utility;
 using Lumina.Data;
-using PvpAnnouncer;
+using PvPAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
@@ -25,8 +25,8 @@ public class ConfigWindow : Window, IDisposable
     private readonly Configuration _configuration; 
     private readonly ShoutcastRepository _shoutcastRepository; 
     private readonly EventShoutcastMapping _eventShoutcastMapping; 
-    private readonly CasterRepository _casterRepository; 
-    private readonly AttributeRepository _attributeRepository; 
+    private readonly StringRepository _casterRepository; 
+    private readonly StringRepository _attributeRepository; 
     public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, IEventShoutcastMapping eventShoutcastMapping, IStringRepository casterRepository, IStringRepository attributeRepository) : base(
         "PvPAnnouncer Configuration")
     {
@@ -42,8 +42,8 @@ public class ConfigWindow : Window, IDisposable
         _configuration = pluginConfiguration;
         _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
         _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
-        _casterRepository = (casterRepository as CasterRepository)!;
-        _attributeRepository = (attributeRepository as AttributeRepository)!;
+        _casterRepository = (casterRepository as StringRepository)!;
+        _attributeRepository = (attributeRepository as StringRepository)!;
     }
 
     public void Dispose() { }
@@ -198,7 +198,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Separator();
         ImGui.TextWrapped("Minimum delay between announcements");
         ImGui.Indent();
-        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120,"%ds"))
+        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120,"%ds", ImGuiSliderFlags.AlwaysClamp))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
@@ -210,7 +210,7 @@ public class ConfigWindow : Window, IDisposable
         ImGuiComponents.HelpMarker("This controls the chance of announcing any given event.");
         ImGui.Indent();
 
-        if (ImGui.SliderInt("###SliderPercent", ref percent, 1, 100, "%d%%"))
+        if (ImGui.SliderInt("###SliderPercent", ref percent, 1, 100, "%d%%", ImGuiSliderFlags.AlwaysClamp))
         {
             _configuration.Percent = percent;
             _configuration.Save();
@@ -221,7 +221,7 @@ public class ConfigWindow : Window, IDisposable
         ImGuiComponents.HelpMarker("Sometimes this plugin announces a split-second too early. This setting adds a very minor delay which should prevent announcements before an action finishes.");
         ImGui.Indent();
 
-        if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms"))
+        if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms", ImGuiSliderFlags.AlwaysClamp))
         {
             _configuration.AnimationDelayFactor = animationDelayFactor;
             _configuration.Save();

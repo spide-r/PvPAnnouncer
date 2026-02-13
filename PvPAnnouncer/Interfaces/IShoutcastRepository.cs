@@ -9,8 +9,5 @@ public interface IShoutcastRepository
     
     public List<Shoutcast> GetShoutcasts();
     public void SetShoutcast(string shoutcastId, Shoutcast shoutcast);
-    public bool UniqueKey(string shoutcastId);
-    
-    public Shoutcast ConstructShoutcast(string json);
-
+    public bool ContainsKey(string shoutcastId);
 }

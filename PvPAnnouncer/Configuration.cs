@@ -13,7 +13,7 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
 
-namespace PvpAnnouncer
+namespace PvPAnnouncer
 {
     [Serializable]
     public class Configuration : IPluginConfiguration

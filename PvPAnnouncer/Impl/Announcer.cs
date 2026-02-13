@@ -190,7 +190,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         int rand = Random.Shared.Next(sounds.Count);
         var s = sounds[rand];
         WrapUp(pvpEvent, s);
-        Task announceTask = Task.Factory.StartNew(async () =>
+        var announceTask = Task.Run(async () =>
         {
             PluginServices.PluginLog.Verbose($"Playing announcement (Delaying): {s.SoundPath} by {PluginServices.Config.AnimationDelayFactor}");
             await Task.Delay(PluginServices.Config.AnimationDelayFactor); //delay to prevent shenanigans w/ attacks being announced before their animations finish
