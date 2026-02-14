@@ -8,7 +8,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class ShoutcastRepository(IShoutcastBuilder builder) : IShoutcastRepository
+public class ShoutcastRepository : IShoutcastRepository
 {
     private readonly Dictionary<string, Shoutcast> _shoutcasts = new();
     public Shoutcast GetShoutcast(string shoutcastId)

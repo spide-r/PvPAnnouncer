@@ -45,16 +45,21 @@ namespace PvPAnnouncer
         public int Percent { get; set; } = 70; 
         
         public bool ShowNotification { get; set; } = false;
+
+        public List<string> ShoutcastOverride { get; set; } = [];
+        public List<string> EventOverride { get; set; } = [];
+        public List<string> MappingOverride { get; set; } = [];
         
         //Notes for when we're letting people customize things
-        //store overriden voiceline definitions
-        //store overriden event=>Voiceline[] mapping 
-        //store overriden event definitions 
+        //store overriden voiceline definitions (done)
+        //store overriden event=>Voiceline[] mapping (done)
+        //store overriden event definitions (done)
         //preserve readonly defaults, read from them on first load
         //maybe read from resources to get the defaults(press button to reset everything)
         //encourage sharing - export the new stuff maybe
         //find ways to incentivise sharing modification w/ dev
         //maybe only store *modified* shit in this config
+        //make sure config overrides are applied correctly
         
  
         public string Language { get; set; } = "en";

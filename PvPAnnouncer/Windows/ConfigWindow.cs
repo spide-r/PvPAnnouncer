@@ -103,8 +103,7 @@ public class ConfigWindow : Window, IDisposable
             {
                 
                 var e = bt[Random.Shared.Next(bt.Length)];
-                PluginServices.Announcer.PlaySound(e.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
-                PluginServices.Announcer.SendBattleTalk(e);
+                PluginServices.Announcer.PlayForTesting(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Shoutcaster}", InternalConstants.MessageTag);
 
                 if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -130,20 +129,25 @@ public class ConfigWindow : Window, IDisposable
             }
         }
 
-        if (ImGui.Button("Show All Possible Voicelines"))
-        {
-            PluginServices.VoiceLineTesterWindow.Toggle();
-        }
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
-        
-        
         if (ImGui.Checkbox("Disabled", ref disabled))
         {
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
         ImGui.Separator();
+
+        if (ImGui.CollapsingHeader("Misc Buttons"))
+        {
+                    
+            if (ImGui.Button("Show All Possible Voicelines"))
+            {
+                PluginServices.VoiceLineTesterWindow.Toggle();
+            }
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
+            
+            ImGui.Separator();
+        }
         
         ImGui.Text("Announcers: ");
 

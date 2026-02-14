@@ -89,6 +89,8 @@ internal class PluginServices {
     internal static IStringRepository CasterRepository { get; private set; }
     
     internal static VoiceLineTesterWindow VoiceLineTesterWindow { get; private set; }
+    internal static VoicelineCreationWindow VoicelineCreationWindow { get; private set; }
+    internal static VoicelineMappingWindow VoicelineMappingWindow { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window) {
         pluginInterface.Create<PluginServices>();
@@ -102,14 +104,18 @@ internal class PluginServices {
         
         EventShoutcastMapping = new  EventShoutcastMapping();
         ShoutcastBuilder = new ShoutcastBuilder(DataManager);
-        ShoutcastRepository = new ShoutcastRepository(ShoutcastBuilder);
+        ShoutcastRepository = new ShoutcastRepository();
         AttributeRepository = new StringRepository();
         CasterRepository = new StringRepository();
         JsonFileLoader = new JsonFileLoader(ShoutcastBuilder, AttributeRepository, CasterRepository, PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
         JsonFileLoader.LoadAll();
         Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
         VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);
+        VoicelineCreationWindow = new VoicelineCreationWindow();
+        VoicelineMappingWindow = new VoicelineMappingWindow();
         window.AddWindow(VoiceLineTesterWindow);
+        window.AddWindow(VoicelineCreationWindow);
+        window.AddWindow(VoicelineMappingWindow);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }

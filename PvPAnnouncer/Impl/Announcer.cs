@@ -33,6 +33,14 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         _lastEvents.Clear();
     }
 
+    public void PlayForTesting(Shoutcast shoutcast)
+    {
+        var p = shoutcast.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns"));
+
+        PluginServices.Announcer.PlaySound(p);
+        PluginServices.Announcer.SendBattleTalk(shoutcast);
+    }
+
     public void ReceivePvPEvent(bool bypass, PvPEvent pvpEvent)
     {
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())

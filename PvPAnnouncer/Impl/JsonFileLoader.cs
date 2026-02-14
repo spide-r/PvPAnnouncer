@@ -153,7 +153,6 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
 
     public Dictionary<string, List<string>> LoadCutsceneLines()
     {
-        //todo it no worky
         var cs = ReadFile("csl.json");
         var cutsceneLines = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(cs.Trim()) ?? [];
         return cutsceneLines;
@@ -227,8 +226,86 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
         {
             builder.WithInstanceContentTextDataRow(Convert.ToUInt32(j["instanceContentTextDataRow"]!.GetValue<string>()));
         }
-
         
         return builder.Build();
     }
+    public JsonObject BuildJsonShout(Shoutcast s)
+    {
+        var j = new JsonObject();
+
+        if (!s.Id.Equals(""))
+        {
+            j["id"] = s.Id;
+        }
+
+        if (s.Icon != 0)
+        {
+            j["icon"] = s.Icon.ToString();
+        }
+
+        if (!s.Shoutcaster.Equals(""))
+        {
+            j["shoutcaster"] = s.Shoutcaster;
+        }
+
+        if (s.Duration != 0)
+        {
+            j["duration"] = s.Duration.ToString();
+        }
+
+        if (s.Style != 0)
+        {
+            j["style"] = s.Style.ToString();
+        }
+
+        if (s.Transcription.Count > 0)
+        {
+            var array = new JsonArray();
+            var dictNode = JsonSerializer.SerializeToNode(s.Transcription);
+            if (dictNode != null)
+            {
+                array.Add(dictNode);
+                j["transcription"] = array;
+            }
+        }
+
+        if (s.Attributes.Count > 0)
+        {
+            j["attributes"] = JsonSerializer.SerializeToNode(s.Attributes);
+        }
+
+        if (!s.SoundPath.Equals(""))
+        {
+            j["soundPath"] = s.SoundPath;
+        }
+
+        if (!s.CutsceneLine.Equals(""))
+        {
+            j["cutsceneLine"] = s.CutsceneLine;
+        }
+        
+        if (s.ContentDirectorBattleTalkVo != 0)
+        {
+            j["contentDirectorBattleTalkVo"] = s.ContentDirectorBattleTalkVo.ToString();
+        }
+
+        if (s.NpcYell != 0)
+        {
+            j["npcYell"] = s.NpcYell.ToString();
+        }
+
+        if (s.InstanceContentTextDataRow != 0)
+        {
+            j["instanceContentTextDataRow"] = s.InstanceContentTextDataRow.ToString();
+        }
+
+        if (s.IsGendered)
+        {
+            j["isGendered"] = true;
+        }
+
+        return j;
+    }
+    
+
 }

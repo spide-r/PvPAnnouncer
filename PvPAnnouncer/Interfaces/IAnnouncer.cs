@@ -11,4 +11,5 @@ public interface IAnnouncer
     void PlaySound(string sound);
     void SendBattleTalk(Shoutcast shoutcast);
     void ClearQueue();
+    void PlayForTesting(Shoutcast shoutcast);
 }
