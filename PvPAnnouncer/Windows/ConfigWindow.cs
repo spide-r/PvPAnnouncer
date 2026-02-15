@@ -136,7 +136,7 @@ public class ConfigWindow : Window, IDisposable
         }
         ImGui.Separator();
 
-        if (ImGui.CollapsingHeader("Misc Buttons"))
+        if (ImGui.CollapsingHeader("Miscellaneous Buttons"))
         {
                     
             if (ImGui.Button("Show All Possible Voicelines"))
@@ -145,7 +145,11 @@ public class ConfigWindow : Window, IDisposable
             }
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
-            
+            if (ImGui.Button("Open the Event Customization & Voiceline creation window!"))
+            {
+                PluginServices.CustomizationWindow.Toggle();
+            }
+            ImGuiComponents.HelpMarker("Soft-launched feature for real pvp enjoyers. ");
             ImGui.Separator();
         }
         

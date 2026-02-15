@@ -228,6 +228,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         PluginServices.Config.Save();
         PluginServices.ShoutcastRepository.SetShoutcast(sc.Id, sc);
         PluginServices.CasterRepository.RegisterAttribute(sc.Shoutcaster);
+        foreach (var scAttribute in sc.Attributes)
+        {
+            PluginServices.AttributeRepository.RegisterAttribute(scAttribute);
+
+        }
         PluginServices.PluginLog.Verbose("Saved Json: " + json);
         PluginServices.ChatGui.Print($"Saved Shoutcast from {sc.Shoutcaster} with ID {sc.Id}");
     }
@@ -598,6 +603,16 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                    ImGui.TableHeadersRow();
                    foreach (var cutsceneLineTag in _cutsceneLines[_chosenChar])
                    {
+                           
+                       var text = GetCsLineWithTag(cutsceneLineTag);
+                       if (!_cutsceneLineFilter.Equals(""))
+                       {
+                           if (!text.Contains(_cutsceneLineFilter))
+                           {
+                               continue;
+                           }
+                       }
+
                        ImGui.TableNextRow();
                        ImGui.TableNextColumn();
 
@@ -608,16 +623,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                        }
 
                        ImGui.TableNextColumn();
-                       
-                       var text = GetCsLineWithTag(cutsceneLineTag);
-                       if (!_cutsceneLineFilter.Equals(""))
-                       {
-                           if (!text.Contains(_cutsceneLineFilter))
-                           {
-                               continue;
-                           }
-                       }
-
+                   
                        if (text.Equals("No subtitles, report if displayed."))
                        {
                            continue;

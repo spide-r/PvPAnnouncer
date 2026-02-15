@@ -91,6 +91,7 @@ internal class PluginServices {
     internal static VoiceLineTesterWindow VoiceLineTesterWindow { get; private set; }
     internal static VoicelineCreationWindow VoicelineCreationWindow { get; private set; }
     internal static VoicelineMappingWindow VoicelineMappingWindow { get; private set; }
+    internal static CustomizationWindow CustomizationWindow { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window) {
         pluginInterface.Create<PluginServices>();
@@ -114,9 +115,11 @@ internal class PluginServices {
         VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);
         VoicelineCreationWindow = new VoicelineCreationWindow();
         VoicelineMappingWindow = new VoicelineMappingWindow();
+        CustomizationWindow = new CustomizationWindow();
         window.AddWindow(VoiceLineTesterWindow);
         window.AddWindow(VoicelineCreationWindow);
         window.AddWindow(VoicelineMappingWindow);
+        window.AddWindow(CustomizationWindow);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }

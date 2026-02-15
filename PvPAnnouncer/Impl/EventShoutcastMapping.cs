@@ -35,13 +35,13 @@ public class EventShoutcastMapping: IEventShoutcastMapping
         }
         else
         {
-            _map.Add(eventId, [shoutcast]); 
+            _map[eventId] = [shoutcast];
         }
     }
 
-    public void ReplaceShoutcast(string eventId, List<string> shoutcast)
+    public void ReplaceMapping(string eventId, List<string> shoutcast)
     {
-        _map.Add(eventId, shoutcast);
+        _map[eventId] = shoutcast;
     }
 
     public void RemoveShoutcast(string eventId, string shoutcast)

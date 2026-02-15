@@ -50,7 +50,7 @@ namespace PvPAnnouncer
         public void ReloadConfig()
         {
             PluginServices.JsonLoader.LoadAllValuesIntoMemory();
-            ApplyCustomValues();
+           ApplyCustomValues();
         }
 
         public void ApplyCustomValues()
@@ -65,7 +65,7 @@ namespace PvPAnnouncer
             foreach (var keyValuePair in MappingOverride)
             {
                 var jsonMapping = keyValuePair.Value;
-                PluginServices.EventShoutcastMapping.AddShoutcasts(keyValuePair.Key, PluginServices.JsonLoader.ConstructMapping(jsonMapping));
+                PluginServices.EventShoutcastMapping.ReplaceMapping(keyValuePair.Key, PluginServices.JsonLoader.ConstructMapping(jsonMapping));
             }
             
             foreach (var keyValuePair in CustomEvents)
@@ -89,12 +89,12 @@ namespace PvPAnnouncer
         //store overriden voiceline definitions (done)
         //store overriden event=>Voiceline[] mapping (done)
         //store overriden event definitions (done)
-        //preserve readonly defaults, read from them on first load
+        //preserve readonly defaults, read from them on first load (done)
         //maybe read from resources to get the defaults(press button to reset everything)
         //encourage sharing - export the new stuff maybe
         //find ways to incentivise sharing modification w/ dev
-        //maybe only store *modified* shit in this config
-        //make sure config overrides are applied correctly
+        //maybe only store *modified* shit in this config (done)
+        //make sure config overrides are applied correctly (done)
         
  
         public string Language { get; set; } = "en";

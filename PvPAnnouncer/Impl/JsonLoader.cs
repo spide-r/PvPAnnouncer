@@ -131,7 +131,7 @@ public class JsonLoader(IShoutcastBuilder builder, IStringRepository attributeRe
             }
         }
                     
-        eventShoutcastMapping.AddShoutcasts(id, newShoutList);
+        eventShoutcastMapping.ReplaceMapping(id, newShoutList);
     }
 
     public void LoadMapping()
