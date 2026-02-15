@@ -11,24 +11,37 @@ public class EventShoutcastMapping: IEventShoutcastMapping
     {
         if (_map.TryGetValue(eventId, out var shoutList))
         {
-            shoutList.AddRange(shoutcasts);
+            foreach (var shoutcast in shoutcasts.Where(shoutcast => !shoutList.Contains(shoutcast)))
+            {
+                shoutList.Add(shoutcast);
+            }
         }
         else
         {
             _map.Add(eventId, [..shoutcasts]);
         }
     }
+    
+    
 
     public void AddShoutcast(string eventId, string shoutcast)
     {
         if (_map.TryGetValue(eventId, out var shoutList))
         {
-            shoutList.Add(shoutcast);
+            if (!shoutList.Contains(shoutcast))
+            {
+                shoutList.Add(shoutcast);
+            }
         }
         else
         {
             _map.Add(eventId, [shoutcast]); 
         }
+    }
+
+    public void ReplaceShoutcast(string eventId, List<string> shoutcast)
+    {
+        _map.Add(eventId, shoutcast);
     }
 
     public void RemoveShoutcast(string eventId, string shoutcast)

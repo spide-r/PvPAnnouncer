@@ -82,7 +82,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void RegisterListener(PvPEvent e)
     {
-        _pvpEventIdBinding.Add(e.Id, e);
+        _pvpEventIdBinding[e.Id] = e;
         PluginServices.PluginLog.Verbose("Registered listener: " + e.Id);
         _registeredListeners.Add(e);
     }

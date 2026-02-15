@@ -13,12 +13,15 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attributeRepository, IStringRepository casterRepository, IPvPEventBroker pvPEventBroker, IShoutcastRepository shoutcastRepository, IEventShoutcastMapping eventShoutcastMapping) : IJsonFileLoader
+public class JsonLoader(IShoutcastBuilder builder, IStringRepository attributeRepository, 
+    IStringRepository casterRepository, IPvPEventBroker pvPEventBroker, IShoutcastRepository shoutcastRepository,
+    IEventShoutcastMapping eventShoutcastMapping) : IJsonLoader
 {
-    public void LoadAll()
+    public void LoadAllValuesIntoMemory()
     {
-        LoadAndMapCustomEvents();
         LoadShoutcasts();
+        //todo bad design - shoutcasts needs to be loaded w/ the above method before the below methods can complete - divide responsibility?
+        LoadAndMapCustomEvents();
         LoadMapping();
     }
     
@@ -72,7 +75,7 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
                     var name = customEvent["name"]?.GetValue<string>();
                     var id = customEvent["id"]?.GetValue<string>();
                     var eventType = customEvent["eventType"]?.GetValue<string>();
-                    var actionIds = customEvent["actionIds"]?.AsArray().Select(x => (uint)x).ToArray();
+                    var actionIds = customEvent["actionIds"]?.AsArray().Select(x => (uint)(x ?? 0)).ToArray();
                     var shouts = customEvent["shouts"]?.Deserialize<List<string>>() ?? [];
                     if (id == null)
                     {
@@ -115,7 +118,6 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
                     }
                     else
                     {
-                        //todo fix this
                         PluginServices.PluginLog.Warning($"{se} not found in shoutcast repository!");
                     }
                 }
@@ -156,10 +158,17 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
         var cs = ReadFile("csl.json");
         var cutsceneLines = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(cs.Trim()) ?? [];
         return cutsceneLines;
-
     }
 
-    private Shoutcast ConstructShoutcast(string json)
+    public List<string> ConstructMapping(string json)
+    {
+        var r = JsonNode.Parse(json);
+        var id = r?["eventId"]?.GetValue<string>();
+        var shouts = r?["shouts"]?.Deserialize<List<string>>();
+        return shouts ?? [];
+    }
+
+    public Shoutcast ConstructShoutcast(string json)
     {
         var j = JsonNode.Parse(json);
         if (j == null)
@@ -178,7 +187,7 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
         
         if (j["transcription"] != null)
         {
-            var dict =  j["transcription"][0].Deserialize<Dictionary<string, string>>();
+            var dict =  j["transcription"]?[0].Deserialize<Dictionary<string, string>>();
             builder.WithTranscription(dict ?? []);
         }
         
@@ -258,17 +267,7 @@ public class JsonFileLoader(IShoutcastBuilder builder, IStringRepository attribu
             j["style"] = s.Style.ToString();
         }
 
-        if (s.Transcription.Count > 0)
-        {
-            var array = new JsonArray();
-            var dictNode = JsonSerializer.SerializeToNode(s.Transcription);
-            if (dictNode != null)
-            {
-                array.Add(dictNode);
-                j["transcription"] = array;
-            }
-        }
-
+        //GOTCHA/Reminder for later: Transcription should not be loaded into a json shout since I want that field to only be an in-memory/fallback thing
         if (s.Attributes.Count > 0)
         {
             j["attributes"] = JsonSerializer.SerializeToNode(s.Attributes);

@@ -12,7 +12,7 @@ namespace PvPAnnouncer
 
     //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
     //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
-    
+    //todo take another look at the _f/_m logic... seems to be screwing up somehow (maybe only occurs using the test function?)
     public sealed class PvPAnnouncerPlugin: IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");

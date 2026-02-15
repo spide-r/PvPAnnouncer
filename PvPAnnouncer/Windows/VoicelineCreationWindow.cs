@@ -25,7 +25,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private string[] _orphanedVoLineArr = [];
     private int _voLineSelector = 0;
     private Dictionary<string, List<string>> _cutsceneLines = new();
-    //todo ALL THIS CODE IS VERY SLOW!!!!!!!!!!!!!!!!!! FIX!!!!!!!!!!!
     public VoicelineCreationWindow() : base(
         "PvPAnnouncer Voiceline Creation")
     {
@@ -55,6 +54,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private uint _voLine = 0;
     private uint _style = 6; //0, 6, 7, 11
     private string _displayText = "";
+    private List<string> _attributes = [];
+    private string _attributeToAdd = "";
     
     private void TestData()
     {
@@ -71,7 +72,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             .WithShoutcaster(_name)
             .WithDuration((byte) _duration)
             .WithStyle((byte) _style)
-
+            .WithAttributes(_attributes)
             .WithInstanceContentTextDataRow(_instanceContentTextDataRow)
             .WithCutsceneLine(_cutsceneLineTag)
             .WithContentDirectorBattleTalkVo(_voLine)
@@ -137,7 +138,25 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         }
 
     
-        ShowStyleSelector();
+
+        
+        var attributeToAdd = _attributeToAdd;
+        if(ImGui.InputText("###AddAttrText", ref attributeToAdd))
+        {
+            _attributeToAdd = attributeToAdd;
+        }
+
+        if (ImGui.Button("Add Attribute"))
+        {
+            _attributes.Add(attributeToAdd);
+
+        }
+        ImGui.SameLine();
+
+        if (ImGui.Button("Clear Attributes"))
+        {
+            _attributes.Clear();
+        }
         
         if (ImGui.CollapsingHeader("Object Data"))
         {
@@ -148,7 +167,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             TestData();
         }
-
+        ImGui.SameLine();
         if (ImGui.Button("Save and Write to config"))
         {
             SaveAndRegisterObject();
@@ -204,12 +223,13 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private void SaveAndRegisterObject()
     {
         var sc = BuildShoutcast();
-        var json = PluginServices.JsonFileLoader.BuildJsonShout(sc);
-        PluginServices.Config.ShoutcastOverride.Add(json.ToString());
-        PluginServices.Config.Save(); //todo this should probably be removed somewhere idk
+        var json = PluginServices.JsonLoader.BuildJsonShout(sc);
+        PluginServices.Config.AddCustomShoutCast(sc.Id, json.ToJsonString());
+        PluginServices.Config.Save();
         PluginServices.ShoutcastRepository.SetShoutcast(sc.Id, sc);
+        PluginServices.CasterRepository.RegisterAttribute(sc.Shoutcaster);
         PluginServices.PluginLog.Verbose("Saved Json: " + json);
-        PluginServices.ChatGui.Print("Saved Shoutcast!");
+        PluginServices.ChatGui.Print($"Saved Shoutcast from {sc.Shoutcaster} with ID {sc.Id}");
     }
 
     private void ShowObjectData()
@@ -248,6 +268,16 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         if (_voLine != 0)
         {
             ImGui.Text("Voice Line: " + _voLine);
+        }
+
+        if (_attributes.Count > 0)
+        {
+            ImGui.Text("Properties:");
+            foreach (var property in _attributes)
+            {
+                ImGui.Text(property + ", ");
+                ImGui.SameLine();
+            }
         }
         ImGui.Separator();
     }
@@ -305,14 +335,21 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         if (_displayText.Equals(""))
         {
 
-            _displayText = GetCSLineWithTag(_cutsceneLineTag);
+            _displayText = GetCsLineWithTag(_cutsceneLineTag);
 
         }
 
     }
 
-    private string GetCSLineWithTag(string tag)
+    private readonly Dictionary<string, string> _cSLineTagDict = []; // me when memoization
+    private string GetCsLineWithTag(string tag)
     {
+        if (_cSLineTagDict.TryGetValue(tag, out var value))
+        {
+            return value;
+        }
+        
+        
         var splitLine = tag.Split("_");
         var number = splitLine[2];
         var trimmedNumber = number.Substring(0,3);
@@ -326,6 +363,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             dialogue = row.Value.Dialogue.ToMacroString(); 
         }
         dialogue = CutsceneNameRemovalRegex().Replace(dialogue, ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
+        _cSLineTagDict[tag] = dialogue;
         return dialogue;
     }
     [GeneratedRegex(@"^\(-.*-\)")]
@@ -428,11 +466,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     {
         PluginServices.ChatGui.Print("Started Loading all Cutscene Lines! ", InternalConstants.MessageTag);
         //todo make a program that scans through lumina to create this
-        _cutsceneLines = PluginServices.JsonFileLoader.LoadCutsceneLines();
+        _cutsceneLines = PluginServices.JsonLoader.LoadCutsceneLines();
         PluginServices.ChatGui.Print("Finished Loading all Cutscene Lines! ", InternalConstants.MessageTag);
     }
 
-    private string _contentDirectorFilter = "";
+    private readonly string _contentDirectorFilter = "";
     private void ContentDirectorBattleTalkPopUp()
     {
         if (ImGui.BeginPopup("CtrPop"))
@@ -528,7 +566,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         
         if (ImGui.BeginPopup("CutscenePop"))
         {
-           if (ImGui.BeginCombo("Character Picker", "Pick A Character"))
+           if (ImGui.BeginCombo("Character Picker", _chosenChar))
            {
                foreach (var character in _cutsceneLines.Keys)
                {
@@ -552,16 +590,26 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                {
                    _cutsceneLineFilter = filter;
                }
-               if (ImGui.BeginTable("Character Cutscene Lines", 3,
-                       ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.Resizable))
+               if (ImGui.BeginTable("Character Cutscene Lines", 2,
+                       ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchSame | ImGuiTableFlags.Resizable))
                {
-                   ImGui.TableSetupColumn("Tag");
-                   ImGui.TableSetupColumn("Text");
                    ImGui.TableSetupColumn("Button");
+                   ImGui.TableSetupColumn("Text");
                    ImGui.TableHeadersRow();
                    foreach (var cutsceneLineTag in _cutsceneLines[_chosenChar])
                    {
-                       var text = GetCSLineWithTag(cutsceneLineTag);
+                       ImGui.TableNextRow();
+                       ImGui.TableNextColumn();
+
+                       if (ImGui.Button("Select###Select" + cutsceneLineTag))
+                       {
+                           _cutsceneLineTag = cutsceneLineTag;
+                           ImGui.CloseCurrentPopup();
+                       }
+
+                       ImGui.TableNextColumn();
+                       
+                       var text = GetCsLineWithTag(cutsceneLineTag);
                        if (!_cutsceneLineFilter.Equals(""))
                        {
                            if (!text.Contains(_cutsceneLineFilter))
@@ -574,22 +622,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                        {
                            continue;
                        }
-                       ImGui.TableNextRow();
-                       ImGui.TableNextColumn();
-                       ImGui.Text(cutsceneLineTag);
-                       ImGui.TableNextColumn();
                        if (text.Equals(""))
                        {
                            text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
                        }
                        ImGui.TextWrapped(text);
-                       ImGui.TableNextColumn();
-            
-                       if (ImGui.Button("Select###Select" + cutsceneLineTag))
-                       {
-                           _cutsceneLineTag = cutsceneLineTag;
-                           ImGui.CloseCurrentPopup();
-                       }
                    }
                    ImGui.EndTable();
                }
@@ -700,21 +737,21 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             _iconId = icon;
         }
         ImGui.SameLine();
-        if (ImGui.Button("--###GoDownIcon"))
+        if (ImGui.ArrowButton("###GoDownIcon", ImGuiDir.Left))
         {
             if (_iconId < min)
             {
-                _iconId = max;
+                _iconId = min;
             }
             _iconId = icon - 1;
         }
         ImGui.SameLine();
-        if (ImGui.Button("++###GoUpIcon"))
+        if (ImGui.ArrowButton("###GoUpIcon", ImGuiDir.Right))
         {
 
             if (_iconId > max)
             {
-                _iconId = min;
+                _iconId = max;
             }
             _iconId = icon + 1;
         }
@@ -729,7 +766,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.Image(iconImage.Handle, new Vector2(250, 210));
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
             ImGui.Text("Issue rendering icon!");
         }
@@ -740,6 +777,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             _useIcon = useIcon;
         }
         ImGui.NewLine();
+        ShowStyleSelector();
+
     }
     public void Dispose()
     {

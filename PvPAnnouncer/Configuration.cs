@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Configuration;
 using Dalamud.Game;
 using Dalamud.Game.Config;
-using Dalamud.Game.Text;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Dalamud.Utility;
-using PvPAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
@@ -46,9 +43,47 @@ namespace PvPAnnouncer
         
         public bool ShowNotification { get; set; } = false;
 
-        public List<string> ShoutcastOverride { get; set; } = [];
-        public List<string> EventOverride { get; set; } = [];
-        public List<string> MappingOverride { get; set; } = [];
+        public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
+        public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now
+        public Dictionary<string, string> MappingOverride { get; set; } = [];
+
+        public void ReloadConfig()
+        {
+            PluginServices.JsonLoader.LoadAllValuesIntoMemory();
+            ApplyCustomValues();
+        }
+
+        public void ApplyCustomValues()
+        {
+            PluginServices.PluginLog.Verbose("Applying custom values!");
+            foreach (var keyValuePair in CustomShoutcasts)
+            {
+                var sc = keyValuePair.Value;
+                PluginServices.ShoutcastRepository.SetShoutcast(keyValuePair.Key, PluginServices.JsonLoader.ConstructShoutcast(sc));
+            }
+
+            foreach (var keyValuePair in MappingOverride)
+            {
+                var jsonMapping = keyValuePair.Value;
+                PluginServices.EventShoutcastMapping.AddShoutcasts(keyValuePair.Key, PluginServices.JsonLoader.ConstructMapping(jsonMapping));
+            }
+            
+            foreach (var keyValuePair in CustomEvents)
+            {
+               //unused - thank goodness
+            }
+        }
+
+        public void AddCustomShoutCast(string shoutcastId, string shoutcastJson)
+        {
+            CustomShoutcasts[shoutcastId] = shoutcastJson;
+        }
+
+        public void AddMappingOverride(string eventId, string mappingJson)
+        {
+            MappingOverride[eventId] = mappingJson;
+        }
+        
         
         //Notes for when we're letting people customize things
         //store overriden voiceline definitions (done)
@@ -111,6 +146,7 @@ namespace PvPAnnouncer
 
         private void MigrateOldPluginConfig()
         {
+#pragma warning disable CS0612 // Type or member is obsolete
             if (Version == 0) //porting due to changes in voice line personalization system
             {
                 Version++;
@@ -120,8 +156,8 @@ namespace PvPAnnouncer
             {
                 if (BlacklistedEvents.Count > 0)
                 {
-                    List<string> oldBL = [];
-                    oldBL.AddRange(BlacklistedEvents);
+                    List<string> oldBl = [];
+                    oldBl.AddRange(BlacklistedEvents);
                     BlacklistedEvents.Clear();
                     var oldDict = new Dictionary<string, string>
                     {
@@ -155,7 +191,7 @@ namespace PvPAnnouncer
                         {"Battle High V / Flying High Gained", "MaxBattleFeverEvent"},
                         
                     };
-                    foreach (var oldName in oldBL)
+                    foreach (var oldName in oldBl)
                     {
                         if (oldDict.TryGetValue(oldName, out var value))
                         {
@@ -279,6 +315,8 @@ namespace PvPAnnouncer
                 Version++;
             }
             _pluginInterface?.SavePluginConfig(this);
+#pragma warning restore CS0612 // Type or member is obsolete
+
         }
 
         public bool WantsAttribute(string attribute)

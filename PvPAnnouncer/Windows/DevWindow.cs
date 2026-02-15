@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Text;
 using System.Text.Json.Nodes;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.ImGuiNotification;
+using Newtonsoft.Json;
 
 namespace PvPAnnouncer.Windows;
 
@@ -25,13 +30,115 @@ public class DevWindow: Window, IDisposable
         {
             PluginServices.VoicelineCreationWindow.Toggle();
         }
+        ImGui.SameLine();
         if (ImGui.Button("Open Voice Line Mapping Window"))
         {
             PluginServices.VoicelineMappingWindow.Toggle();
         }
 
-        //todo reset button
-        //todo export button
+        if (ImGui.Button("Export Custom Voicelines"))
+        {
+            CopyValues(PluginServices.Config.CustomShoutcasts, [], []);
+
+        }
+
+        ImGui.SameLine();
+        
+        if (ImGui.Button("Export Voiceline Mapping"))
+        {
+            CopyValues([], PluginServices.Config.MappingOverride, []);
+        }
+        ImGui.SameLine();
+
+        if (ImGui.Button("Export All"))
+        {
+            CopyValues(PluginServices.Config.CustomShoutcasts, PluginServices.Config.MappingOverride, []);
+        }
+
+        if (ImGui.Button("Import From Clipboard"))
+        {
+            var b64Clip = ImGui.GetClipboardText();
+            PluginServices.PluginLog.Verbose($"Found {b64Clip}");
+            try
+            {
+                var ser = JsonSerializer.Create();
+                var decoded = new string(Encoding.UTF8.GetString(Convert.FromBase64String(b64Clip)));
+                PluginServices.PluginLog.Verbose($"Decoded to: {decoded} ");
+                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(decoded)!;
+                if (dict.TryGetValue("shoutcasts", out string? sc))
+                {
+                    var decodedSc =  new string(Encoding.UTF8.GetString(Convert.FromBase64String(sc)));
+                    var deserializedSc = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedSc)!;
+                    foreach (var keyValuePair in deserializedSc)
+                    {
+                        PluginServices.Config.CustomShoutcasts[keyValuePair.Key] = keyValuePair.Value;
+                    }
+                }
+                if (dict.TryGetValue("mapping", out string? mapping))
+                {
+                    var decodedMap = new string(Encoding.UTF8.GetString(Convert.FromBase64String(mapping)));
+                    var deserializedMapping = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedMap)!;
+                    foreach (var keyValuePair in deserializedMapping)
+                    {
+                        PluginServices.Config.MappingOverride[keyValuePair.Key] = keyValuePair.Value;
+                    }                
+                }
+                
+                if (dict.TryGetValue("events", out string? events))
+                {
+                    var decodedEvents =  new string(Encoding.UTF8.GetString(Convert.FromBase64String(events)));
+                    var deserializedEvents = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedEvents)!;
+                    foreach (var keyValuePair in deserializedEvents)
+                    {
+                        PluginServices.Config.CustomEvents[keyValuePair.Key] = keyValuePair.Value;
+                    }
+                    
+                }
+                PluginServices.Config.Save();
+                PluginServices.Config.ReloadConfig();
+            }
+            catch (Exception e)
+            {
+                PluginServices.PluginLog.Error(e, "Oops!");
+                PluginServices.NotificationManager.AddNotification(new Notification()
+                {
+                    Content = "Error: " + e.Message,
+                    Type = NotificationType.Error,
+                    Title = "Error Importing Clipboard Data!"
+                });
+            }
+        }
+        if (ImGui.CollapsingHeader("Danger Zone"))
+        {
+            //todo this only applies changes on next plugin load - how do we reset this in-memory
+            if (ImGui.Button("Reset Custom Voicelines"))
+            {
+                if (ImGui.BeginPopupModal("Are you sure?###ConfirmWipeVoicelines"))
+                {
+                    PluginServices.Config.CustomShoutcasts.Clear();
+                    PluginServices.Config.ReloadConfig();
+                    PluginServices.Config.Save();
+                }
+            }
+            ImGui.SameLine();
+            if (ImGui.Button("Reset Custom Mapping"))
+            {
+                if (ImGui.BeginPopupModal("Are you sure?###ConfirmWipeMapping"))
+                {
+                    PluginServices.Config.MappingOverride.Clear();
+                    PluginServices.Config.ReloadConfig();
+                    PluginServices.Config.Save();
+                }
+            }
+            ImGui.Separator();
+        }
+
+        
+        //todo make sure that failure to import one or the other doesnt cause anything more than warnings 
+
+        ImGui.Separator();
+        EventTester();
+
     }
     private void ActionEventCreator()
     {
@@ -40,6 +147,73 @@ public class DevWindow: Window, IDisposable
          * Name, internal name, action id's, voicelines
          */
 
+    }
+    private void CopyValues(Dictionary<string, string> customVoicelines, Dictionary<string, string> customMappings,
+        Dictionary<string, string> customEvents)
+    {
+        var customStuff = new Dictionary<string, string>
+        {
+            {"shoutcasts", GetB64(customVoicelines)},
+            {"mapping", GetB64(customMappings)},
+            {"events", GetB64(customEvents)}
+        };
+        var b64 = GetB64(customStuff);
+        PluginServices.PluginLog.Verbose($"Output: {b64}");
+        ImGui.SetClipboardText(b64);
+        PluginServices.NotificationManager.AddNotification(new Notification()
+        {
+            Title = "Copied!",
+            Content = "Successfully copied to the clipboard!"
+        });
+
+    }
+
+    private string GetB64(object? obj)
+    {
+        var ser = Newtonsoft.Json.JsonSerializer.Create();
+        var writer = new StringWriter();
+        ser.Serialize(writer, obj);
+        var str = writer.ToString();
+        var b64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
+        
+        return b64;
+    }
+
+    private void EventTester()
+    {
+        ImGui.Text("Events: ");
+        var i = 1;
+        foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
+        {
+            if (ImGui.Button(pvPEvent))
+            {
+                try
+                {
+                    var ev = PluginServices.PvPEventBroker.GetEvent(pvPEvent);
+                    if (ev != null)
+                    {
+                        PluginServices.Announcer.ReceivePvPEvent(true, ev);
+                        PluginServices.Announcer.ClearQueue();    
+                    }
+
+
+                }
+                catch (Exception e)
+                {
+                    PluginServices.PluginLog.Error(e, "Issue sending custom event!!!");
+                }
+         
+            }
+
+            if (i % 4 != 0)
+            {
+                ImGui.SameLine();
+            }
+
+            i++;
+        }
+        
+    
     }
     public void Dispose()
     {

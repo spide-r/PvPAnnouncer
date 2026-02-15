@@ -123,10 +123,10 @@ public class VoicelineMappingWindow: Window, IDisposable
             {
                 var eventToAdd = events[pvpEventSelection];
                 var j = BuildJsonMapping(eventToAdd, PluginServices.EventShoutcastMapping.GetShoutcastList(eventToAdd));
-                PluginServices.Config.MappingOverride.Add(j.ToString());
+                PluginServices.Config.AddMappingOverride(eventToAdd, j.ToJsonString());
                 PluginServices.Config.Save();
                 PluginServices.PluginLog.Verbose("Saved: " + j);
-                PluginServices.ChatGui.Print("Saved!");
+                PluginServices.ChatGui.Print($"Saved shoutcast mapping for {eventToAdd}!");
             }
             catch (ArgumentOutOfRangeException)
             {
