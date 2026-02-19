@@ -8,6 +8,7 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
+using Dalamud.Utility;
 using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
@@ -18,6 +19,13 @@ namespace PvPAnnouncer.Windows;
 
 public partial class VoicelineCreationWindow: Window, IDisposable
 {
+    //todo
+    /*
+     * No way to delete voicelines
+     * Not clear what a voiceline has when created, (show name, id, properties)
+     * Popups are NOT resizable
+     * Buttons dont work in the popups fix that lol
+     */
     private List<string> _orphanedVoLines = [];
     private string[] _orphanedVoLineArr = [];
     private int _voLineSelector = 0;
@@ -126,6 +134,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             _eventId = id;
         }
+        ImGuiComponents.HelpMarker("This must be unique across all voicelines. If a duplicate is found, one may overwrite the other.");
 
         var duration = _duration;
         if (ImGui.SliderUInt("Announcement Duration", ref duration, 1, 10, default, ImGuiSliderFlags.AlwaysClamp))
@@ -134,6 +143,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         }
 
     
+        ImGui.TextWrapped("Attributes:");
+        ImGuiComponents.HelpMarker("Attributes are optional fields that act as filters. " +
+                                   "If an attribute is not enabled in the configuration, the voiceline will never be shown during gameplay." +
+                                   "This is useful for if the line uses pronouns or calls ingame characters by name.");
 
         
         var attributeToAdd = _attributeToAdd;
@@ -144,7 +157,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
         if (ImGui.Button("Add Attribute"))
         {
-            _attributes.Add(attributeToAdd);
+            if (!attributeToAdd.IsNullOrEmpty())
+            {
+                _attributes.Add(attributeToAdd);
+            }
 
         }
         ImGui.SameLine();
@@ -168,6 +184,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             SaveAndRegisterObject();
         }
+        ImGuiComponents.HelpMarker("This button saves and lets you use this voiceline in the mapping window.");
 
     }
 
