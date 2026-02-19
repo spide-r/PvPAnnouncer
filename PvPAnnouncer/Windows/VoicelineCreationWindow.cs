@@ -626,7 +626,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                     ImGui.TableNextColumn();
                     if (ImGui.Button("Select###SelectCtr" + voLine))
                     {
-                        PluginServices.ChatGui.PrintError("asdfadfafsdf");
                         ClearAudioData();
                         ClearTextData();
                         _autoFilled = true;
@@ -655,13 +654,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             ImGui.EndPopup();
         }
     }
-
-    private void SelectBattleTalk()
-    {
-        _cutsceneLineTag = "";
-        
-    }
-
 
     private string _chosenChar = "";
     private string _cutsceneLineFilter = "";
@@ -713,9 +705,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                                continue;
                            }
                        }
-
-                       ImGui.TableNextRow();
-                       ImGui.TableNextColumn();
+                       
                        if (text.Equals("No subtitles, report if displayed."))
                        {
                            continue;
@@ -724,6 +714,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                        {
                            text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
                        }
+                       
+
+                       ImGui.TableNextRow();
+                       ImGui.TableNextColumn();
+                   
                        ImGui.TextWrapped(text);
 
                        ImGui.TableNextColumn();

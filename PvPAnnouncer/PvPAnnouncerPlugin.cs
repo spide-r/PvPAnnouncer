@@ -83,7 +83,7 @@ namespace PvPAnnouncer
         private void ToggleConfigWindow()
         {
             #if DEBUG
-           // DevWindow.Toggle();
+            DevWindow.Toggle();
             #endif
             ConfigWindow.Toggle();
         }
