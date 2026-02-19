@@ -31,7 +31,9 @@ public class CustomizationWindow: Window, IDisposable
                    "\nTutorial will be forthcoming. Please feel free to play around with it and ask ANY questions!" +
                    "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
         ImGui.Separator();
-        ImGui.TextWrapped("In order for this plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through a process to create a proper voiceline.");
+        ImGui.TextWrapped("Important gotcha. Currently there is no way to manage and delete certain voicelines. I will be adding a window in the future. For now, if you wish to modify ");
+        ImGui.Separator();
+        ImGui.TextWrapped("In order for this plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through some steps to create a proper voiceline.");
         ImGui.TextWrapped("Once a voiceline is created, we must map it to an existing event.");
         if (ImGui.Button("Open Voice Line Creation Window"))
         {
@@ -137,7 +139,11 @@ public class CustomizationWindow: Window, IDisposable
             }
         }
         ImGui.Separator();
-        EventTester();
+        if (ImGui.CollapsingHeader("Event Tester###Testerheader"))
+        {
+            EventTester();
+
+        }
 
     }
     private void CopyValues(Dictionary<string, string> customVoicelines, Dictionary<string, string> customMappings,
@@ -173,7 +179,7 @@ public class CustomizationWindow: Window, IDisposable
 
     private void EventTester()
     {
-        ImGui.Text("Event Tester (Simulates these events happening in real pvp, using your configuration settings): ");
+        ImGui.Text("Event Tester (Simulates these events happening in real pvp, using your configuration settings - !!!this includes announcement frequency and delay!!!)");
         var i = 1;
         foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
         {
