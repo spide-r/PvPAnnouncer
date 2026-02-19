@@ -9,82 +9,44 @@ using Dalamud.Utility;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
-
 namespace PvPAnnouncer
 {
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
+        [NonSerialized] private IDalamudPluginInterface? _pluginInterface;
+
+        [Obsolete] public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
+
         public bool NewConfig { get; set; } = true;
-        public int Version { get; set; } = 7;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         public int AnimationDelayFactor { get; set; } = 250;
-        
+
         public int CooldownSeconds { get; set; } = 15;
 
-        [Obsolete]
-        public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
-
         public HashSet<string> DesiredAttributes { get; set; } = [];
-        
+
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
 
         public List<string> BlacklistedEvents { get; set; } = [];
-        
+
         public bool Disabled { get; set; } = false;
         public bool Muted { get; set; } = false;
 
         public bool HideBattleText { get; set; } = false;
         public bool WantsIcon { get; set; } = true;
 
-        public int Percent { get; set; } = 70; 
-        
+        public int Percent { get; set; } = 70;
+
         public bool ShowNotification { get; set; } = false;
 
         public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
         public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now
         public Dictionary<string, string> MappingOverride { get; set; } = [];
 
-        public void ReloadConfig()
-        {
-            PluginServices.JsonLoader.LoadAllValuesIntoMemory();
-           ApplyCustomValues();
-        }
 
-        public void ApplyCustomValues()
-        {
-            PluginServices.PluginLog.Verbose("Applying custom values!");
-            foreach (var keyValuePair in CustomShoutcasts)
-            {
-                var sc = keyValuePair.Value;
-                PluginServices.ShoutcastRepository.SetShoutcast(keyValuePair.Key, PluginServices.JsonLoader.ConstructShoutcast(sc));
-            }
-
-            foreach (var keyValuePair in MappingOverride)
-            {
-                var jsonMapping = keyValuePair.Value;
-                PluginServices.EventShoutcastMapping.ReplaceMapping(keyValuePair.Key, PluginServices.JsonLoader.ConstructMapping(jsonMapping));
-            }
-            
-            foreach (var keyValuePair in CustomEvents)
-            {
-               //unused - thank goodness
-            }
-        }
-
-        public void AddCustomShoutCast(string shoutcastId, string shoutcastJson)
-        {
-            CustomShoutcasts[shoutcastId] = shoutcastJson;
-        }
-
-        public void AddMappingOverride(string eventId, string mappingJson)
-        {
-            MappingOverride[eventId] = mappingJson;
-        }
-        
-        
         //Notes for when we're letting people customize things
         //store overriden voiceline definitions (done)
         //store overriden event=>Voiceline[] mapping (done)
@@ -95,13 +57,21 @@ namespace PvPAnnouncer
         //find ways to incentivise sharing modification w/ dev
         //maybe only store *modified* shit in this config (done)
         //make sure config overrides are applied correctly (done)
-        
- 
+
+
         public string Language { get; set; } = "en";
         public string TextLanguage { get; set; } = "en";
+        public int Version { get; set; } = 7;
 
-        [NonSerialized]
-        private IDalamudPluginInterface? _pluginInterface;
+        public void AddCustomShoutCast(string shoutcastId, string shoutcastJson)
+        {
+            CustomShoutcasts[shoutcastId] = shoutcastJson;
+        }
+
+        public void AddMappingOverride(string eventId, string mappingJson)
+        {
+            MappingOverride[eventId] = mappingJson;
+        }
 
         public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)
         {
@@ -110,21 +80,24 @@ namespace PvPAnnouncer
 
             if (NewConfig && DesiredAttributes.Count < 1) // confirmed new config w/o anything set
             {
-                if (ps.CheckCNClient()) 
+                if (ps.CheckCNClient())
                 {
                     Language = "chs";
                     TextLanguage = "chs";
-                } else if (ps.CheckKRClient())
+                }
+                else if (ps.CheckKRClient())
                 {
                     Language = "kr";
                     TextLanguage = "kr";
-                } else
-                { // global client
-                    gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
-                    gameConfig.TryGet(SystemConfigOption.Language,  out uint clientLang);
+                }
+                else
+                {
+                    // global client
+                    gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice, out uint configuredLang);
+                    gameConfig.TryGet(SystemConfigOption.Language, out uint clientLang);
                     PluginServices.PluginLog.Info($"CutsceneMovieVoice: {configuredLang}");
                     PluginServices.PluginLog.Info($"Client Language: {clientLang}");
-                    var sw = configuredLang > 99 ? clientLang : configuredLang; 
+                    var sw = configuredLang > 99 ? clientLang : configuredLang;
                     try
                     {
                         Language = ((ClientLanguage) sw).ToCode();
@@ -132,16 +105,13 @@ namespace PvPAnnouncer
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        
                     }
-
                 }
 
                 DesiredAttributes.Add("Metem");
                 NewConfig = false;
                 _pluginInterface?.SavePluginConfig(this);
             }
-
         }
 
         private void MigrateOldPluginConfig()
@@ -189,7 +159,6 @@ namespace PvPAnnouncer
                         {"Entered Rival Wings Mech", "EnteredMechEvent"},
                         {"Stormy Weather", "MatchStormyWeatherEvent"},
                         {"Battle High V / Flying High Gained", "MaxBattleFeverEvent"},
-                        
                     };
                     foreach (var oldName in oldBl)
                     {
@@ -199,6 +168,7 @@ namespace PvPAnnouncer
                         }
                     }
                 }
+
                 Version++;
             }
 
@@ -209,19 +179,22 @@ namespace PvPAnnouncer
             }
 
             if (Version == 3)
-            { // Event Changes
+            {
+                // Event Changes
                 if (BlacklistedEvents.Contains("AllyHitHardEvent"))
                 {
                     BlacklistedEvents.Remove("AllyHitHardEvent");
                     BlacklistedEvents.Add("AllyHitByLimitBreakEvent");
                 }
+
                 ShowNotification = true;
                 Version++;
             }
 
             if (Version == 4)
-            { // Personalization rework
-                
+            {
+                // Personalization rework
+
                 ShowNotification = true;
                 Version++;
             }
@@ -239,7 +212,7 @@ namespace PvPAnnouncer
             if (Version == 6)
             {
                 ShowNotification = true;
-                var values = (Personalization[])Enum.GetValues(typeof(Personalization));
+                var values = (Personalization[]) Enum.GetValues(typeof(Personalization));
 
                 foreach (var p in values)
                 {
@@ -250,61 +223,89 @@ namespace PvPAnnouncer
 
                     switch (p)
                     {
-                        case Personalization.FemPronouns: DesiredAttributes.Add("Feminine Pronouns"); 
+                        case Personalization.FemPronouns:
+                            DesiredAttributes.Add("Feminine Pronouns");
                             break;
-                        case Personalization.MascPronouns: DesiredAttributes.Add("Masculine Pronouns");
+                        case Personalization.MascPronouns:
+                            DesiredAttributes.Add("Masculine Pronouns");
                             break;
-                        case Personalization.BlackCat: DesiredAttributes.Add("Black Cat"); 
+                        case Personalization.BlackCat:
+                            DesiredAttributes.Add("Black Cat");
                             break;
-                        case Personalization.HoneyBLovely: DesiredAttributes.Add("Honey B. Lovely"); 
+                        case Personalization.HoneyBLovely:
+                            DesiredAttributes.Add("Honey B. Lovely");
                             break;
-                        case Personalization.BruteBomber: DesiredAttributes.Add("Brute Bomber"); 
+                        case Personalization.BruteBomber:
+                            DesiredAttributes.Add("Brute Bomber");
                             break;
-                        case Personalization.WickedThunder: DesiredAttributes.Add("Wicked Thunder"); 
+                        case Personalization.WickedThunder:
+                            DesiredAttributes.Add("Wicked Thunder");
                             break;
-                        case Personalization.DancingGreen: DesiredAttributes.Add("Dancing Green");
+                        case Personalization.DancingGreen:
+                            DesiredAttributes.Add("Dancing Green");
                             break;
-                        case Personalization.SugarRiot: DesiredAttributes.Add("Sugar Riot"); 
+                        case Personalization.SugarRiot:
+                            DesiredAttributes.Add("Sugar Riot");
                             break;
-                        case Personalization.BruteAbominator: DesiredAttributes.Add("Brute Abominator"); 
+                        case Personalization.BruteAbominator:
+                            DesiredAttributes.Add("Brute Abominator");
                             break;
-                        case Personalization.HowlingBlade: DesiredAttributes.Add("Howling Blade"); 
+                        case Personalization.HowlingBlade:
+                            DesiredAttributes.Add("Howling Blade");
                             break;
-                        case Personalization.VampFatale: DesiredAttributes.Add("Vamp Fatale"); 
+                        case Personalization.VampFatale:
+                            DesiredAttributes.Add("Vamp Fatale");
                             break;
-                        case Personalization.DeepBlueRedHot: DesiredAttributes.Add("Deep Blue & Red Hot"); 
+                        case Personalization.DeepBlueRedHot:
+                            DesiredAttributes.Add("Deep Blue & Red Hot");
                             break;
-                        case Personalization.Tyrant: DesiredAttributes.Add("The Tyrant"); 
+                        case Personalization.Tyrant:
+                            DesiredAttributes.Add("The Tyrant");
                             break;
-                        case Personalization.President: DesiredAttributes.Add("The President"); 
+                        case Personalization.President:
+                            DesiredAttributes.Add("The President");
                             break;
-                        case Personalization.MetemAnnouncer: DesiredAttributes.Add("Metem"); 
+                        case Personalization.MetemAnnouncer:
+                            DesiredAttributes.Add("Metem");
                             break;
-                        case Personalization.AlphinaudAnnouncer: DesiredAttributes.Add("Alphinaud"); 
+                        case Personalization.AlphinaudAnnouncer:
+                            DesiredAttributes.Add("Alphinaud");
                             break;
-                        case Personalization.AlisaieAnnouncer: DesiredAttributes.Add("Alisaie"); 
+                        case Personalization.AlisaieAnnouncer:
+                            DesiredAttributes.Add("Alisaie");
                             break;
-                        case Personalization.ThancredAnnouncer: DesiredAttributes.Add("Thancred"); 
+                        case Personalization.ThancredAnnouncer:
+                            DesiredAttributes.Add("Thancred");
                             break;
-                        case Personalization.UriangerAnnouncer: DesiredAttributes.Add("Urianger"); 
+                        case Personalization.UriangerAnnouncer:
+                            DesiredAttributes.Add("Urianger");
                             break;
-                        case Personalization.YshtolaAnnouncer: DesiredAttributes.Add("Y'shtola"); 
+                        case Personalization.YshtolaAnnouncer:
+                            DesiredAttributes.Add("Y'shtola");
                             break;
-                        case Personalization.EstinienAnnouncer: DesiredAttributes.Add("Estinien"); 
+                        case Personalization.EstinienAnnouncer:
+                            DesiredAttributes.Add("Estinien");
                             break;
-                        case Personalization.GrahaAnnouncer: DesiredAttributes.Add("G'raha Tia"); 
+                        case Personalization.GrahaAnnouncer:
+                            DesiredAttributes.Add("G'raha Tia");
                             break;
-                        case Personalization.KrileAnnouncer: DesiredAttributes.Add("Krile"); 
+                        case Personalization.KrileAnnouncer:
+                            DesiredAttributes.Add("Krile");
                             break;
-                        case Personalization.WukLamatAnnouncer: DesiredAttributes.Add("Wuk Lamat"); 
+                        case Personalization.WukLamatAnnouncer:
+                            DesiredAttributes.Add("Wuk Lamat");
                             break;
-                        case Personalization.KoanaAnnouncer: DesiredAttributes.Add("Koana"); 
+                        case Personalization.KoanaAnnouncer:
+                            DesiredAttributes.Add("Koana");
                             break;
-                        case Personalization.BakoolJaJaAnnouncer: DesiredAttributes.Add("Bakool Ja Ja"); 
+                        case Personalization.BakoolJaJaAnnouncer:
+                            DesiredAttributes.Add("Bakool Ja Ja");
                             break;
-                        case Personalization.ErenvilleAnnouncer: DesiredAttributes.Add("Erenville"); 
+                        case Personalization.ErenvilleAnnouncer:
+                            DesiredAttributes.Add("Erenville");
                             break;
-                        case Personalization.ZenosAnnouncer: DesiredAttributes.Add("Zenos"); 
+                        case Personalization.ZenosAnnouncer:
+                            DesiredAttributes.Add("Zenos");
                             break;
                         case Personalization.None:
                         default:
@@ -314,9 +315,9 @@ namespace PvPAnnouncer
 
                 Version++;
             }
+
             _pluginInterface?.SavePluginConfig(this);
 #pragma warning restore CS0612 // Type or member is obsolete
-
         }
 
         public bool WantsAttribute(string attribute)
@@ -324,7 +325,7 @@ namespace PvPAnnouncer
             return DesiredAttributes.Contains(attribute);
         }
 
-        
+
         public bool WantsAllAttributes(List<string> attributes)
         {
             foreach (var p in attributes)
@@ -335,9 +336,10 @@ namespace PvPAnnouncer
                     return false;
                 }
             }
+
             return true;
         }
-        
+
         public void SetAttribute(string attribute)
         {
             DesiredAttributes.Add(attribute);
@@ -347,6 +349,7 @@ namespace PvPAnnouncer
         {
             DesiredAttributes.Remove(attribute);
         }
+
         public void ToggleAttribute(string attribute, bool set)
         {
             if (set)
@@ -358,6 +361,7 @@ namespace PvPAnnouncer
                 DesiredAttributes.Remove(attribute);
             }
         }
+
         public void Save()
         {
             _pluginInterface?.SavePluginConfig(this);

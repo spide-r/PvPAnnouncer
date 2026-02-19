@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text.RegularExpressions;
-using Dalamud.Interface.ImGuiNotification;
-using Dalamud.Interface.Windowing;
-using FFXIVClientStructs.FFXIV.Client.UI;
+using System.Threading.Tasks;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Textures;
-using Dalamud.Interface.Utility;
-using FFXIVClientStructs.FFXIV.Common.Component.Excel;
+using Dalamud.Interface.Windowing;
 using Lumina.Data;
+using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl;
 
 namespace PvPAnnouncer.Windows;
 
@@ -68,7 +65,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     {
         var b = PluginServices.ShoutcastBuilder
             .WithId(_eventId)
-            
             .WithShoutcaster(_name)
             .WithDuration((byte) _duration)
             .WithStyle((byte) _style)
@@ -91,9 +87,9 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         ImGui.Text("Configured Voice Language: " + PluginServices.Config.Language);
         ImGui.Text("Configured Text Language: " + PluginServices.Config.TextLanguage);
         
-        if (ImGui.CollapsingHeader("Danger Zone"))
+        if (ImGui.CollapsingHeader("First Step"))
         {
-            ShowDangerZone();
+            FirstStepLoad();
         }
 
         if (ImGui.CollapsingHeader("Announcer Metadata"))
@@ -186,16 +182,19 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             }
             ImGui.SameLine();
         }
+        ImGuiComponents.HelpMarker("I don't know why, but the game labels shoutcast styles this way.");
         ImGui.NewLine();
     }
 
     private void ShowAudioSelection()
     {
-        if (ImGui.Button("Content Director Battle Talk"))
+        ImGui.TextWrapped("You must pick one source of audio. Battle Talk and Cutscene Line link both audio and text, so they are easier to work with.");
+        if (ImGui.Button("Battle Talk"))
         {
             ImGui.OpenPopup("CtrPop");
 
         }
+        ImGuiComponents.HelpMarker("Using this is the easiest, as it auto-fills style, icon, and voiceline duration.");
         ContentDirectorBattleTalkPopUp();
 
 
@@ -204,6 +203,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             ImGui.OpenPopup("CutscenePop");
 
         }
+        ImGuiComponents.HelpMarker("This contains ALL cutscene lines filtered by character. If nothing is shown, check the \"First Step\" section and press the button.");
         CutsceneLinePopup();
 
 
@@ -216,6 +216,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             }
 
         }
+        ImGuiComponents.HelpMarker("These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, but have a lot of trust voicelines, other battle NPC's, etc. I will elaborate more on this soon.");
         OrphanedVoLinePopup();
 
     }
@@ -290,7 +291,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     
     private void ShowTextSelection()
     {
-
+        ImGui.TextWrapped("If audio from Cutscene Line or Battle Talk was selected, this will be filled in automatically.");
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var contentDir = sheet.Flatten().FirstOrNull(bt => bt.Unknown1 == _voLine);
         if (_voLine != 0 && contentDir != null)
@@ -302,11 +303,13 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         }
         else
         {
-            if (ImGui.Button("Instance Content Text Data Selector"))
+            if (ImGui.Button("Instance Text Data Selector"))
             {
                 ImGui.OpenPopup("ICTDPop");
 
             }
+            //todo this entire thing is broken fix lol
+            ImGuiComponents.HelpMarker("This selects from most instance battle text.");
             InstanceContentTextDataPopup();
 
 
@@ -315,6 +318,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.OpenPopup("NPCPop");
 
             }
+            ImGuiComponents.HelpMarker("Trust/Regular NPC Speech Bubbles");
             ShowNpcYellSelectionPopup();
 
         }
@@ -328,11 +332,24 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         if (_displayText.Equals(""))
         {
             var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
-            var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language:lang);
-            var foundEntry = instanceContent.TryGetRow(bt.Text.RowId, out var ctrRow);
+            var foundEntry = GetInstanceContentTextData(lang).TryGetRow(bt.Text.RowId, out var ctrRow);
             var text = foundEntry ? ctrRow.Text.ExtractText() : InternalConstants.ErrorContactDev;
             _displayText = text;
         }
+    }
+
+    private Dictionary<Language, ExcelSheet<InstanceContentTextData>> _instanceContentTextData = new();
+    private ExcelSheet<InstanceContentTextData> GetInstanceContentTextData(Language lang)
+    {
+        if (_instanceContentTextData.TryGetValue(lang, out var data))
+        {
+            return data;
+        }
+
+        var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language:lang);
+        _instanceContentTextData[lang] = instanceContent;
+        return instanceContent;
+
     }
 
     private void PullCutsceneLineData()
@@ -440,8 +457,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.TableSetupColumn("Text");
                 ImGui.TableSetupColumn("Button");
                 ImGui.TableHeadersRow();
-                var yells = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
-                foreach (var td in yells)
+                var textData = GetInstanceContentTextData(lang);
+                foreach (var td in textData)
                 {
                     var text =  td.Text.ToString();
                     if (!_textDataFilter.Equals(""))
@@ -475,7 +492,9 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         PluginServices.ChatGui.Print("Finished Loading all Cutscene Lines! ", InternalConstants.MessageTag);
     }
 
-    private readonly string _contentDirectorFilter = "";
+    private string _contentDirectorFilter = "";
+    private readonly SubrowExcelSheet<ContentDirectorBattleTalk> _ctr = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>();
+    private readonly ExcelSheet<InstanceContentTextData> _ictd = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>();
     private void ContentDirectorBattleTalkPopUp()
     {
         if (ImGui.BeginPopup("CtrPop"))
@@ -484,10 +503,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             var filter = _contentDirectorFilter;
             if (ImGui.InputText("Filter###CtrFilter", ref filter, 300))
             {
-                _textDataFilter = filter;
+                _contentDirectorFilter = filter;
             }
-            var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
-
             if (ImGui.BeginTable("Content DirectorBattleTalk###ContentDirectorBattleTalk", 5,
                     ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollX | ImGuiTableFlags.ScrollY | ImGuiTableFlags.SizingStretchProp | ImGuiTableFlags.Resizable))
             {
@@ -497,12 +514,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.TableSetupColumn("VoLine");
                 ImGui.TableSetupColumn("Button");
                 ImGui.TableHeadersRow();
-                var ctr = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>();
-                var ictd = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>();
-                foreach (var td in ctr.Flatten())
+
+                foreach (var td in _ctr.Flatten())
                 {
                     var rId = td.Text.RowId;
-                    var foundEntry = ictd.TryGetRow(rId, out var ctrRow);
+                    var foundEntry = _ictd.TryGetRow(rId, out var ctrRow);
                     var text = InternalConstants.ErrorContactDev;
                     if (foundEntry)
                     {
@@ -534,7 +550,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                     ImGui.TableNextColumn();
                     ImGui.Text(voLine.ToString());
                     ImGui.TableNextColumn();
-                    if (ImGui.Button("Select###SelectCtr" + td.RowId))
+                    if (ImGui.Button("Select###SelectCtr" + ctrRow.RowId))
                     {
                         _voLine = voLine;
                         if (style != 0)
@@ -682,10 +698,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         return "sound/voice/vo_line/" + _orphanedVoLineArr[selector] + "_" +
                             PluginServices.Config.Language + ".scd";
     }
-    private void ShowDangerZone()
+    private void FirstStepLoad()
     {
-        ImGui.Text("WARNING! This buttons will take a while and may freeze your game.");
-        if (ImGui.Button("Load all Orphaned Voiceover Lines & Cutscene Lines. (DANGER)"))
+        ImGui.Text("This button will load all Cutscene Lines and Orphaned voicelines into the plugin for view. This may take a moment to complete.");
+        if (ImGui.Button("Load all Orphaned Voiceover Lines & Cutscene Lines"))
         {
             var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             if (now > (_pressedLast + (3 * 60)))
@@ -708,22 +724,32 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var all = sheet.Flatten().ToList();
         PluginServices.ChatGui.Print("Starting to load all orphaned lines!");
-        for (uint j = 0; j < 9999999; j++)
+        Task.Run( () =>
         {
-            var voLine = $"sound/voice/vo_line/{j}_en.scd";
-            if (!PluginServices.DataManager.FileExists(voLine))
+            var results = new List<string>();
+            for (uint j = 0; j < 9999999; j++)
             {
-                continue;
-            }
-                    
-            if (all.All(bt => bt.Unknown1 != j)) // if the VO Line does not exist in sheet, its orphaned so we need to add data
-            {
-                _orphanedVoLines.Add(j.ToString());
-            }
-        }
-        PluginServices.ChatGui.Print("Starting to load all orphaned lines!");
+                var voLine = $"sound/voice/vo_line/{j}_en.scd";
+                if (!PluginServices.DataManager.FileExists(voLine))
+                {
+                    continue;
+                }
 
-        _orphanedVoLineArr = _orphanedVoLines.ToArray();
+                if (all.All(bt => bt.Unknown1 != j)) 
+                    // if the VO Line does not exist in sheet, its orphaned so we need to add data
+                {
+                    results.Add(j.ToString());
+                }
+            }
+
+            PluginServices.Framework.RunOnFrameworkThread(() =>
+            {
+                _orphanedVoLines = results;
+                _orphanedVoLineArr = _orphanedVoLines.ToArray();
+                PluginServices.ChatGui.Print("Finished loading all orphaned lines!");
+            });
+        });
+
     }
 
     private void ShowAnnouncerMetadata()

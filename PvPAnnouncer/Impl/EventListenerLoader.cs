@@ -34,7 +34,6 @@ public class EventListenerLoader : IEventListenerLoader
     {
         
         PluginServices.PluginLog.Verbose("Loading Standard event listeners");
-        
         foreach (var ee in StandardPvpEvents)
         {
             PluginServices.PvPEventBroker.RegisterListener(ee);

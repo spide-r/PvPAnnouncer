@@ -57,7 +57,7 @@ public class EventShoutcastMapping: IEventShoutcastMapping
         return _map.TryGetValue(eventId, out var shoutList) ? shoutList : [];
     }
 
-    public List<string> GetAllShoutcasts()
+    public List<string> GetAllEvents()
     {
         return _map.Keys.ToList();
     }

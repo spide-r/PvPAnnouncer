@@ -92,6 +92,7 @@ internal class PluginServices {
     internal static VoicelineCreationWindow VoicelineCreationWindow { get; private set; }
     internal static VoicelineMappingWindow VoicelineMappingWindow { get; private set; }
     internal static CustomizationWindow CustomizationWindow { get; private set; }
+    internal static ConfigManager ConfigManager { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window) {
         pluginInterface.Create<PluginServices>();
@@ -110,7 +111,8 @@ internal class PluginServices {
         CasterRepository = new StringRepository();
         JsonLoader = new JsonLoader(ShoutcastBuilder, AttributeRepository, CasterRepository, PvPEventBroker, ShoutcastRepository, EventShoutcastMapping);
         JsonLoader.LoadAllValuesIntoMemory();
-        Config.ApplyCustomValues();
+        ConfigManager = new ConfigManager(Config, JsonLoader);
+        ConfigManager.ApplyCustomValues();
         Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
         VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);
         VoicelineCreationWindow = new VoicelineCreationWindow();

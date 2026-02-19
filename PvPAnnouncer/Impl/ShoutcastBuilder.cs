@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Dalamud.Plugin.Services;
 using Lumina.Data;
-using Lumina.Excel;
 using Lumina.Excel.Exceptions;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
@@ -101,7 +100,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                  var audio = $"cut/{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
                  result.SoundPath = audio;
                  var d = GetCutsceneLineAllLang(result.CutsceneLine);
-                 result.IsGendered = dataManager.FileExists(result.GetShoutcastSoundPathWithGenderAndLang("ja", true));
+                 result.IsGendered = dataManager.FileExists(result.GetFemSoundPath());
                  result.Transcription = d;
              }
          }
@@ -148,7 +147,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         {
             try
             {
-                var cutscene = PluginServices.DataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
+                var cutscene = dataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
                 var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag));
                 var dialogue = InternalConstants.ErrorContactDev;
                 if (row != null)
@@ -178,7 +177,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         {
             try
             {
-                var sheet = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang);
+                var sheet = dataManager.Excel.GetSheet<NpcYell>(lang);
                 var foundEntry = sheet.TryGetRow(yell, out var row);
                 var text = foundEntry ? row.Text.ExtractText() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
@@ -205,15 +204,17 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         {
             try
             {
-                var sheet = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>(); //ContentDirectorBattleTalk does NOT have a language assigned 
+                var sheet = dataManager.Excel
+                    .GetSubrowSheet<
+                        ContentDirectorBattleTalk>(); //ContentDirectorBattleTalk does NOT have a language assigned 
                 foreach (var row in sheet)
                 {
                     
                     foreach (var talk in row.Where(talk => talk.Unknown1 == voiceover))
                     {
                         // see https://github.com/NotAdam/Lumina/issues/65 - gotta not use the RowRef and instead pull it manually ourselves
-                        var textDataRow = talk.Text.RowId; 
-                        var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
+                        var textDataRow = talk.Text.RowId;
+                        var instanceContent = dataManager.Excel.GetSheet<InstanceContentTextData>(lang);
                         var foundEntry = instanceContent.TryGetRow(textDataRow, out var ctrRow);
                         var text = foundEntry ? ctrRow.Text.ExtractText() : InternalConstants.ErrorContactDev;
                         dict[langStr] = text;
@@ -243,7 +244,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
         {
             try
             {
-                var sheet = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
+                var sheet = dataManager.Excel.GetSheet<InstanceContentTextData>(lang);
                 var foundEntry = sheet.TryGetRow(textDataRow, out var row);
                 var text = foundEntry ? row.Text.ExtractText() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;

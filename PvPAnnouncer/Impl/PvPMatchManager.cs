@@ -34,26 +34,33 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         unsafe
         {
-            var addon = (AtkUnitBase*)args.Addon.Address;
-            var astraPercent = addon->GetTextNodeById(51)->NodeText.ToString();
-            astraPercent = astraPercent.Substring(0, astraPercent.Length - 1);
-            var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
-            umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
+            try
+            {
+                var addon = (AtkUnitBase*) args.Addon.Address;
+                var astraPercent = addon->GetTextNodeById(51)->NodeText.ToString();
+                astraPercent = astraPercent.Substring(0, astraPercent.Length - 1);
+                var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
+                umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
 
-            var astraColor = addon->GetTextNodeById(49)->EdgeColor.RGBA;
-            var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
-            //4286996785
-            // astra was blue, umbra was red
-            //08:20:48.837 | VRB | [PvPAnnouncer] 0.0 (4286996785) - 0.0 (4281348230)
-            if (astraColor == 4286996785)
-            {
-             _ourProgress = double.Parse(astraPercent);
-             _enemyProgress = double.Parse(umbraPercent);
+                var astraColor = addon->GetTextNodeById(49)->EdgeColor.RGBA;
+                var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
+                //4286996785
+                // astra was blue, umbra was red
+                //08:20:48.837 | VRB | [PvPAnnouncer] 0.0 (4286996785) - 0.0 (4281348230)
+                if (astraColor == 4286996785)
+                {
+                    _ourProgress = double.Parse(astraPercent);
+                    _enemyProgress = double.Parse(umbraPercent);
+                }
+                else
+                {
+                    _ourProgress = double.Parse(umbraPercent);
+                    _enemyProgress = double.Parse(astraPercent);
+                }
             }
-            else
+            catch (Exception e)
             {
-                _ourProgress = double.Parse(umbraPercent);
-                _enemyProgress = double.Parse(astraPercent);   
+                PluginServices.PluginLog.Error(e, "Issue Reading CC Header!");
             }
 
         }
@@ -63,11 +70,19 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         unsafe
         {
-            var addon = (AtkUnitBase*)args.Addon.Address;
-            
-            _ourPoints = GetScore(9, addon);
-            _rightPoints = GetScore(13, addon);
-            _leftPoints = GetScore(12, addon);
+            try
+            {
+                var addon = (AtkUnitBase*) args.Addon.Address;
+
+                _ourPoints = GetScore(9, addon);
+                _rightPoints = GetScore(13, addon);
+                _leftPoints = GetScore(12, addon);
+            }
+            catch (Exception e)
+            {
+                PluginServices.PluginLog.Error(e, "Issue Reading FL Header!");
+
+            }
         }
     }
 

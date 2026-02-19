@@ -26,10 +26,13 @@ public class CustomizationWindow: Window, IDisposable
     }
     public override void Draw()
     {
-        ImGui.Text("Hey Hey! PvPAnnouncer dev here. Thanks for using the testing version! This is a BIG feature. While technically" +
+        ImGui.TextWrapped("Hey Hey! PvPAnnouncer dev here. Thanks for using the testing version! This is a BIG feature. While technically" +
                    " \"finished\", it is very rough around the edges and requires a bit of technical knowledge that I haven't really explained anywhere." +
                    "\nTutorial will be forthcoming. Please feel free to play around with it and ask ANY questions!" +
                    "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
+        ImGui.Separator();
+        ImGui.TextWrapped("In order for this plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through a process to create a proper voiceline.");
+        ImGui.TextWrapped("Once a voiceline is created, we must map it to an existing event.");
         if (ImGui.Button("Open Voice Line Creation Window"))
         {
             PluginServices.VoicelineCreationWindow.Toggle();
@@ -100,7 +103,7 @@ public class CustomizationWindow: Window, IDisposable
                     
                 }
                 PluginServices.Config.Save();
-                PluginServices.Config.ReloadConfig();
+                PluginServices.ConfigManager.ReloadConfig();
             }
             catch (Exception e)
             {
@@ -119,7 +122,7 @@ public class CustomizationWindow: Window, IDisposable
             {
                 PluginServices.Config.CustomShoutcasts.Clear();
                 PluginServices.Config.Save();
-                PluginServices.Config.ReloadConfig();
+                PluginServices.ConfigManager.ReloadConfig();
                 PluginServices.ChatGui.Print("Reset Custom Voicelines!");
             }
             ImGui.SameLine();
@@ -127,7 +130,7 @@ public class CustomizationWindow: Window, IDisposable
             {
                 PluginServices.Config.MappingOverride.Clear();
                 PluginServices.Config.Save();
-                PluginServices.Config.ReloadConfig();
+                PluginServices.ConfigManager.ReloadConfig();
                 ImGui.OpenPopup("ConfirmWipeMapping");
                 PluginServices.ChatGui.Print("Reset Custom Mapping!");
 
@@ -135,14 +138,6 @@ public class CustomizationWindow: Window, IDisposable
         }
         ImGui.Separator();
         EventTester();
-
-    }
-    private void ActionEventCreator()
-    {
-        /*
-         * Window to create events tied to specific actions (AllyActionEvent/EnemyActionEvent)
-         * Name, internal name, action id's, voicelines
-         */
 
     }
     private void CopyValues(Dictionary<string, string> customVoicelines, Dictionary<string, string> customMappings,
@@ -167,7 +162,7 @@ public class CustomizationWindow: Window, IDisposable
 
     private string GetB64(object? obj)
     {
-        var ser = Newtonsoft.Json.JsonSerializer.Create();
+        var ser = JsonSerializer.Create();
         var writer = new StringWriter();
         ser.Serialize(writer, obj);
         var str = writer.ToString();

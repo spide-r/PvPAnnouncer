@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Nodes;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
@@ -23,11 +20,7 @@ public class ShoutcastRepository : IShoutcastRepository
 
     public void SetShoutcast(string shoutcastId, Shoutcast shoutcast)
     {
-        bool added = _shoutcasts.TryAdd(shoutcastId,  shoutcast);
-        if (!added)
-        {
-            PluginServices.PluginLog.Verbose($"Unable to add {shoutcastId}");
-        }
+        _shoutcasts[shoutcastId] = shoutcast;
     }
 
     public bool ContainsKey(string shoutcastId)

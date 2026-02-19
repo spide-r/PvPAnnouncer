@@ -107,13 +107,18 @@ public partial class Shoutcast : IShoutcast // decorator
 
   public string GetShoutcastSoundPathWithGenderAndLang(string lang, bool fem)
   {
-    if (fem)
+    if (fem && IsGendered) // if this is a gendered voiceline and the user wants the fem version
     {
       return SoundPath.Replace("_m", "_f") + "_" + lang + ".scd";
     }
 
     // masc default
     return GetShoutcastSoundPathWithLang(lang);
+  }
+  
+  public string GetFemSoundPath()
+  {
+    return SoundPath.Replace("_m", "_f") + "_ja.scd";
   }
   public override string ToString()
   {

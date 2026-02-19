@@ -26,7 +26,7 @@ public class VoicelineMappingWindow: Window, IDisposable
     private int _shoutcasterSelection = 0;
     public override void Draw()
     {
-        var events = PluginServices.EventShoutcastMapping.GetAllShoutcasts();
+        var events = PluginServices.EventShoutcastMapping.GetAllEvents();
         ImGui.Text("PvP Event Selector:");
         var pvpEventSelection = _pvpEventSelection;
 

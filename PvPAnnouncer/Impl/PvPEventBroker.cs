@@ -11,9 +11,8 @@ namespace PvPAnnouncer.Impl;
 
 public class PvPEventBroker: IPvPEventBroker
 {
-    private readonly List<PvPEvent> _registeredListeners = new();
     private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
-    private string LastUsedAction = "";
+    private string _lastUsedAction = "";
     public void IngestMessage(IMessage message)
     {
         if (PluginServices.Config.Disabled)
@@ -33,7 +32,7 @@ public class PvPEventBroker: IPvPEventBroker
             if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
-                LastUsedAction = aaa.ActionId.ToString();
+                _lastUsedAction = aaa.ActionId.ToString();
 
             }
         } else if (message is ActorControlMessage ac) {
@@ -51,7 +50,7 @@ public class PvPEventBroker: IPvPEventBroker
             }
         }
         
-        foreach (var pvpEvent in _registeredListeners)
+        foreach (var pvpEvent in _pvpEventIdBinding.Values)
         {
             if (IsBlacklistedEvent(pvpEvent))
             {
@@ -69,7 +68,7 @@ public class PvPEventBroker: IPvPEventBroker
 
     private bool IsBlacklistedEvent(PvPEvent ee)
     {
-        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.Id);
+        var eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.Id);
         return eventIsBlacklisted;
     }
 
@@ -84,12 +83,11 @@ public class PvPEventBroker: IPvPEventBroker
     {
         _pvpEventIdBinding[e.Id] = e;
         PluginServices.PluginLog.Verbose("Registered listener: " + e.Id);
-        _registeredListeners.Add(e);
     }
 
     public string GetLastAction()
     {
-        return LastUsedAction;
+        return _lastUsedAction;
     }
 
     public PvPEvent? GetEvent(string eventId)
@@ -110,7 +108,6 @@ public class PvPEventBroker: IPvPEventBroker
 
     public void DeregisterListener(PvPEvent e)
     {
-        _registeredListeners.RemoveAll(aa => aa.Id.Equals(e.Id));
         _pvpEventIdBinding.Remove(e.Id);
     }
 }

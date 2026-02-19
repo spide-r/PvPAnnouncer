@@ -23,10 +23,9 @@ namespace PvPAnnouncer.Windows;
 public class ConfigWindow : Window, IDisposable
 {
     private readonly Configuration _configuration; 
-    private readonly ShoutcastRepository _shoutcastRepository; 
-    private readonly EventShoutcastMapping _eventShoutcastMapping; 
-    private readonly StringRepository _casterRepository; 
-    private readonly StringRepository _attributeRepository; 
+    private readonly IShoutcastRepository _shoutcastRepository; 
+    private readonly IStringRepository _casterRepository; 
+    private readonly IStringRepository _attributeRepository; 
     public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, IEventShoutcastMapping eventShoutcastMapping, IStringRepository casterRepository, IStringRepository attributeRepository) : base(
         "PvPAnnouncer Configuration")
     {
@@ -40,10 +39,9 @@ public class ConfigWindow : Window, IDisposable
         SizeCondition = ImGuiCond.Always;
 
         _configuration = pluginConfiguration;
-        _shoutcastRepository = (shoutcastRepository as ShoutcastRepository)!;
-        _eventShoutcastMapping = (eventShoutcastMapping as EventShoutcastMapping)!;
-        _casterRepository = (casterRepository as StringRepository)!;
-        _attributeRepository = (attributeRepository as StringRepository)!;
+        _shoutcastRepository = shoutcastRepository;
+        _casterRepository = casterRepository;
+        _attributeRepository = attributeRepository;
     }
 
     public void Dispose() { }
