@@ -15,6 +15,7 @@ namespace PvPAnnouncer.Windows;
 
 public class CustomizationWindow: Window, IDisposable
 {
+    //todo make a way to delete / manage voicelines
     public CustomizationWindow() : base(
         "PvPAnnouncer Customization Window")
     {
@@ -31,7 +32,7 @@ public class CustomizationWindow: Window, IDisposable
                    "\nTutorial will be forthcoming. Please feel free to play around with it and ask ANY questions!" +
                    "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
         ImGui.Separator();
-        ImGui.TextWrapped("Important gotcha. Currently there is no way to manage and delete certain voicelines. I will be adding a window in the future. For now, if you wish to modify ");
+        ImGui.TextWrapped("Important gotcha. Currently there is no way to manage and delete certain voicelines. I will be adding a window in the future. For now, if you wish to modify an event, go to the creation window and use its Unique ID to overwrite it.");
         ImGui.Separator();
         ImGui.TextWrapped("In order for this plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through some steps to create a proper voiceline.");
         ImGui.TextWrapped("Once a voiceline is created, we must map it to an existing event.");
