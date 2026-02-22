@@ -99,7 +99,7 @@ public class VoicelineMappingWindow: Window, IDisposable
                 var sc = PluginServices.ShoutcastRepository.GetShoutcast(otherShoutsList[otherShoutsSelection]);
                 if (sc == null)
                 {
-                    PluginServices.PluginLog.Warning($"{currentShouts[currentShoutSelection]} not found");
+                    PluginServices.PluginLog.Warning($"{otherShoutsList[currentShoutSelection]} not found");
                     return;
                 }
                 PluginServices.Announcer.PlayForTesting(sc);
