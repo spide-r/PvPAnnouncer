@@ -12,19 +12,18 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuilder
+public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuilder
 {
     //todo fix concurrency
     private Shoutcast _instance = NewShoutcast();
-    
-    
+
+
     public Shoutcast Build()
     {
-        
         var result = _instance;
         PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id}");
-        
-        
+
+
         /*
          * Time to build!
          * - Check for BattleTalkVo, InstanceContentTextDataRow, NpcYell. CutsceneLine
@@ -32,82 +31,81 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
          *
          * Check for a valid name, icon, voice, length, if its valid send it through, if not, error out
          */
-         if (result.ContentDirectorBattleTalkVo != 0)
-         {
-             PluginServices.PluginLog.Verbose($"ContentDirectorBattleTalkVo: {result.ContentDirectorBattleTalkVo}");
-             /*
-                 name: ContentDirectorBattleTalk
-                 fields:
-                 - name: Unknown0 -> BattleTalkIcon
-                 - name: Unknown1 -> Voiceover
-                 - name: Text
-                 type: link
-                 targets: [InstanceContentTextData]
-                 - name: Unknown3 -> BattleTalkDuration
-                 - name: Unknown4 -> BattleTalkStyle
-             */
-             result.SoundPath = "sound/voice/vo_line/" + result.ContentDirectorBattleTalkVo;
-             PluginServices.PluginLog.Debug($"BattleTalkVO Sound path: {result.SoundPath}");
-             var d = GetContentDirectorBattleTalkAllLanguages(result.ContentDirectorBattleTalkVo);
-             
-             if (d.Keys.Count > 0) // record exists in the sheets - attempt to set the other values
-             {
-                 var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>(); 
+        if (result.ContentDirectorBattleTalkVo != 0)
+        {
+            PluginServices.PluginLog.Verbose($"ContentDirectorBattleTalkVo: {result.ContentDirectorBattleTalkVo}");
+            /*
+                name: ContentDirectorBattleTalk
+                fields:
+                - name: Unknown0 -> BattleTalkIcon
+                - name: Unknown1 -> Voiceover
+                - name: Text
+                type: link
+                targets: [InstanceContentTextData]
+                - name: Unknown3 -> BattleTalkDuration
+                - name: Unknown4 -> BattleTalkStyle
+            */
+            result.SoundPath = "sound/voice/vo_line/" + result.ContentDirectorBattleTalkVo;
+            PluginServices.PluginLog.Debug($"BattleTalkVO Sound path: {result.SoundPath}");
+            var d = GetContentDirectorBattleTalkAllLanguages(result.ContentDirectorBattleTalkVo);
 
-                 var t = sheet.SelectMany(row => row)
-                     .FirstOrDefault(bt => bt.Unknown1 == result.ContentDirectorBattleTalkVo);
-                 if (t.Unknown0 != 0)
-                 {
-                     result.Icon = t.Unknown0;
-                 }
-                 
-                 result.Style = t.Unknown4;
-                 result.Duration = t.Unknown3;
-                 result.Transcription = d;
-             }
-    
-         }
-         
-         if (result.InstanceContentTextDataRow != 0)
-         {
-             PluginServices.PluginLog.Verbose($"InstanceContentTextDataRow: {result.InstanceContentTextDataRow}");
+            if (d.Keys.Count > 0) // record exists in the sheets - attempt to set the other values
+            {
+                var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
 
-             result.Transcription = GetInstanceContentTextDataAllLang(result.InstanceContentTextDataRow);
-         }
-    
-         if (result.NpcYell != 0)
-         {
-             PluginServices.PluginLog.Verbose($"NpcYell: {result.NpcYell}");
+                var t = sheet.SelectMany(row => row)
+                    .FirstOrDefault(bt => bt.Unknown1 == result.ContentDirectorBattleTalkVo);
+                if (t.Unknown0 != 0)
+                {
+                    result.Icon = t.Unknown0;
+                }
 
-             var d = GetNpcYellAllLang(result.NpcYell);
-             var sheet = dataManager.GetExcelSheet<NpcYell>();
-             var foundEntry = sheet.TryGetRow(result.NpcYell, out var row);
-             var duration = foundEntry ? row.BalloonTime : 5;
-        
-             result.Duration = (byte) duration;
-             result.Transcription = d;
-         }
-         
-         if (!result.CutsceneLine.Equals("")) // cutsceneLine is not empty and we don't have a soundpath set
-         {
-             var splitLine = result.CutsceneLine.Split("_");
-             var number = splitLine[2];
-             var secondNumber = splitLine[3];
-             var expac = Convert.ToInt32(number.Substring(0, 2)) - 2;
-             if (expac >= 0)
-             {
-                 var ex = expac == 0 ? "ffxiv" : $"ex{expac}";
-                 var audio = $"cut/{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
-                 result.SoundPath = audio;
-                 var d = GetCutsceneLineAllLang(result.CutsceneLine);
-                 result.IsGendered = dataManager.FileExists(result.GetFemSoundPath());
-                 result.Transcription = d;
-             }
-         }
-         
-         _instance = NewShoutcast();
+                result.Style = t.Unknown4;
+                result.Duration = t.Unknown3;
+                result.Transcription = d;
+            }
+        }
 
-        
+        if (result.InstanceContentTextDataRow != 0)
+        {
+            PluginServices.PluginLog.Verbose($"InstanceContentTextDataRow: {result.InstanceContentTextDataRow}");
+
+            result.Transcription = GetInstanceContentTextDataAllLang(result.InstanceContentTextDataRow);
+        }
+
+        if (result.NpcYell != 0)
+        {
+            PluginServices.PluginLog.Verbose($"NpcYell: {result.NpcYell}");
+
+            var d = GetNpcYellAllLang(result.NpcYell);
+            var sheet = dataManager.GetExcelSheet<NpcYell>();
+            var foundEntry = sheet.TryGetRow(result.NpcYell, out var row);
+            var duration = foundEntry ? row.BalloonTime : 5;
+
+            result.Duration = (byte) duration;
+            result.Transcription = d;
+        }
+
+        if (!result.CutsceneLine.Equals("")) // cutsceneLine is not empty and we don't have a soundpath set
+        {
+            var splitLine = result.CutsceneLine.Split("_");
+            var number = splitLine[2];
+            var secondNumber = splitLine[3];
+            var expac = Convert.ToInt32(number.Substring(0, 2)) - 2;
+            if (expac >= 0)
+            {
+                var ex = expac == 0 ? "ffxiv" : $"ex{expac}";
+                var audio = $"cut/{ex}/sound/voicem/voiceman_{number}/vo_voiceman_{number}_{secondNumber}_m";
+                result.SoundPath = audio;
+                var d = GetCutsceneLineAllLang(result.CutsceneLine);
+                result.IsGendered = dataManager.FileExists(result.GetFemSoundPath());
+                result.Transcription = d;
+            }
+        }
+
+        _instance = NewShoutcast();
+
+
         //validation order:
         //name, text, soundpath
 
@@ -125,13 +123,16 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
 
         if (result.SoundPath.Equals(""))
         {
-            PluginServices.PluginLog.Error($"Empty sound path for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
+            PluginServices.PluginLog.Error(
+                $"Empty sound path for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
         }
 
         if (!dataManager.FileExists(result.GetShoutcastSoundPathWithLang("ja")))
         {
-            PluginServices.PluginLog.Error($"No valid sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
+            PluginServices.PluginLog.Error(
+                $"No valid sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
         }
+
         return result;
     }
 
@@ -139,39 +140,41 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
     {
         var splitLine = tag.Split("_");
         var number = splitLine[2];
-        var trimmedNumber = number.Substring(0,3);
+        var trimmedNumber = number.Substring(0, 3);
         var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
         Dictionary<string, string> dict = new Dictionary<string, string>();
-        
+
         foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
             try
             {
                 var cutscene = dataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
-                var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag)); //need extractText for macro string 
+                var row = cutscene.FirstOrNull(r =>
+                    r.MessageTag.ExtractText().Equals(tag)); //need extractText for macro string 
                 var dialogue = InternalConstants.ErrorContactDev;
                 if (row != null)
                 {
-                    dialogue = row.Value.Dialogue.ToMacroString(); 
+                    dialogue = row.Value.Dialogue.ToMacroString();
                 }
-                dialogue = CutsceneNameRemovalRegex().Replace(dialogue, ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
+
+                dialogue = CutsceneNameRemovalRegex()
+                    .Replace(dialogue,
+                        ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
                 dict.Add(langStr, dialogue);
                 PluginServices.PluginLog.Verbose($"CutsceneLineLang: {langStr}, Transcription: {dialogue}");
-
             }
             catch (UnsupportedLanguageException)
             {
-                PluginServices.PluginLog.Verbose($"Attempted to pull Cutscene Lang for {langStr} and failed due to unsupported language");   
+                PluginServices.PluginLog.Verbose(
+                    $"Attempted to pull Cutscene Lang for {langStr} and failed due to unsupported language");
             }
-           
-
         }
+
         return dict;
     }
-    
+
     private Dictionary<string, string> GetNpcYellAllLang(uint yell)
     {
-
         Dictionary<string, string> dict = new Dictionary<string, string>();
         foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
@@ -181,24 +184,21 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                 var foundEntry = sheet.TryGetRow(yell, out var row);
                 var text = foundEntry ? row.Text.ToString() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
-                
+
                 PluginServices.PluginLog.Verbose($"NPCYellLang: {langStr}, Transcription: {text}");
-
-
             }
             catch (UnsupportedLanguageException)
             {
-                PluginServices.PluginLog.Verbose($"Attempted to pull NPC Yell for {langStr} and failed due to unsupported language");   
+                PluginServices.PluginLog.Verbose(
+                    $"Attempted to pull NPC Yell for {langStr} and failed due to unsupported language");
             }
-           
-
         }
+
         return dict;
     }
-    
+
     private Dictionary<string, string> GetContentDirectorBattleTalkAllLanguages(uint voiceover)
     {
-
         var dict = new Dictionary<string, string>();
         foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
@@ -209,7 +209,6 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                         ContentDirectorBattleTalk>(); //ContentDirectorBattleTalk does NOT have a language assigned 
                 foreach (var row in sheet)
                 {
-                    
                     foreach (var talk in row.Where(talk => talk.Unknown1 == voiceover))
                     {
                         // see https://github.com/NotAdam/Lumina/issues/65 - gotta not use the RowRef and instead pull it manually ourselves
@@ -218,27 +217,24 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                         var foundEntry = instanceContent.TryGetRow(textDataRow, out var ctrRow);
                         var text = foundEntry ? ctrRow.Text.ToString() : InternalConstants.ErrorContactDev;
                         dict[langStr] = text;
-                        PluginServices.PluginLog.Verbose($"CtrDirectorBattleTalkLang: {langStr}, Transcription: {text}, Lang: {talk.ExcelPage.Language}");
+                        PluginServices.PluginLog.Verbose(
+                            $"CtrDirectorBattleTalkLang: {langStr}, Transcription: {text}, Lang: {talk.ExcelPage.Language}");
                     }
- 
                 }
-                
-
             }
             catch (UnsupportedLanguageException)
             {
-                PluginServices.PluginLog.Verbose($"Attempted to pull CtrDirectorBattleTalk for {langStr} and failed due to unsupported language");   
+                PluginServices.PluginLog.Verbose(
+                    $"Attempted to pull CtrDirectorBattleTalk for {langStr} and failed due to unsupported language");
             }
-           
-
         }
+
         return dict;
     }
-    
-    
+
+
     private Dictionary<string, string> GetInstanceContentTextDataAllLang(uint textDataRow)
     {
-
         var dict = new Dictionary<string, string>();
         foreach (var (lang, langStr) in LanguageUtil.LanguageMap)
         {
@@ -248,32 +244,96 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                 var foundEntry = sheet.TryGetRow(textDataRow, out var row);
                 var text = foundEntry ? row.Text.ToString() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
-                PluginServices.PluginLog.Verbose($"GetInstanceContentTextDataAllLang: {langStr}, Transcription: {text}");
-
-
+                PluginServices.PluginLog.Verbose(
+                    $"GetInstanceContentTextDataAllLang: {langStr}, Transcription: {text}");
             }
             catch (UnsupportedLanguageException)
             {
-                PluginServices.PluginLog.Verbose($"Attempted to pull Instance Content Text Data for {langStr} and failed due to unsupported language");   
+                PluginServices.PluginLog.Verbose(
+                    $"Attempted to pull Instance Content Text Data for {langStr} and failed due to unsupported language");
             }
-           
-
         }
+
         return dict;
     }
-    public IShoutcastBuilder WithId(string id) { _instance.Id = id; return this; }
-    public IShoutcastBuilder WithIcon(uint icon) { _instance.Icon = icon; return this; }
-    public IShoutcastBuilder WithTranscription(Dictionary<string, string> transcription) { _instance.Transcription = transcription; return this; }
-    public IShoutcastBuilder WithDuration(byte duration) { _instance.Duration = duration; return this; }
-    public IShoutcastBuilder WithStyle(byte style) { _instance.Style = style; return this; }
-    public IShoutcastBuilder WithShoutcaster(string name) { _instance.Shoutcaster = name; return this; }
-    public IShoutcastBuilder WithAttributes(List<string> attributes) { _instance.Attributes = attributes; return this; }
-    public IShoutcastBuilder WithSoundPath(string path) { _instance.SoundPath = path; return this; }
-    public IShoutcastBuilder WithCutsceneLine(string cutsceneLine) { _instance.CutsceneLine = cutsceneLine; return this; }
-    public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo) { _instance.ContentDirectorBattleTalkVo = contentDirectorBattleTalkVo; return this; }
-    public IShoutcastBuilder WithNpcYell(uint npcYell) { _instance.NpcYell = npcYell; return this; }
-    public IShoutcastBuilder WithGendered(bool gendered) { _instance.IsGendered = gendered; return this; }
-    public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow) { _instance.InstanceContentTextDataRow = instanceContentTextDataRow; return this; }
+
+    public IShoutcastBuilder WithId(string id)
+    {
+        _instance.Id = id;
+        return this;
+    }
+
+    public IShoutcastBuilder WithIcon(uint icon)
+    {
+        _instance.Icon = icon;
+        return this;
+    }
+
+    public IShoutcastBuilder WithTranscription(Dictionary<string, string> transcription)
+    {
+        _instance.Transcription = transcription;
+        return this;
+    }
+
+    public IShoutcastBuilder WithDuration(byte duration)
+    {
+        _instance.Duration = duration;
+        return this;
+    }
+
+    public IShoutcastBuilder WithStyle(byte style)
+    {
+        _instance.Style = style;
+        return this;
+    }
+
+    public IShoutcastBuilder WithShoutcaster(string name)
+    {
+        _instance.Shoutcaster = name;
+        return this;
+    }
+
+    public IShoutcastBuilder WithAttributes(List<string> attributes)
+    {
+        _instance.Attributes = attributes;
+        return this;
+    }
+
+    public IShoutcastBuilder WithSoundPath(string path)
+    {
+        _instance.SoundPath = path;
+        return this;
+    }
+
+    public IShoutcastBuilder WithCutsceneLine(string cutsceneLine)
+    {
+        _instance.CutsceneLine = cutsceneLine;
+        return this;
+    }
+
+    public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo)
+    {
+        _instance.ContentDirectorBattleTalkVo = contentDirectorBattleTalkVo;
+        return this;
+    }
+
+    public IShoutcastBuilder WithNpcYell(uint npcYell)
+    {
+        _instance.NpcYell = npcYell;
+        return this;
+    }
+
+    public IShoutcastBuilder WithGendered(bool gendered)
+    {
+        _instance.IsGendered = gendered;
+        return this;
+    }
+
+    public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow)
+    {
+        _instance.InstanceContentTextDataRow = instanceContentTextDataRow;
+        return this;
+    }
 
     private static Shoutcast NewShoutcast()
     {

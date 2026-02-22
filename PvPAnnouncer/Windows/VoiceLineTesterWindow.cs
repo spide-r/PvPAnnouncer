@@ -9,10 +9,11 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Windows;
 
-public class VoiceLineTesterWindow: Window, IDisposable
+public class VoiceLineTesterWindow : Window, IDisposable
 {
     private readonly List<Shoutcast> _allBattleTalks;
     private List<string> toFilter = ["All"];
+
     public VoiceLineTesterWindow(IShoutcastRepository shoutcastRepository) : base(
         "Voice Line Tester window", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {
@@ -21,15 +22,13 @@ public class VoiceLineTesterWindow: Window, IDisposable
             MinimumSize = new Vector2(450, 225),
         };
         foreach (var s in PluginServices.CasterRepository.GetAttributeList()) toFilter.Add(s);
-        
-        
-        _allBattleTalks = new List<Shoutcast>(shoutcastRepository.GetShoutcasts());
 
+
+        _allBattleTalks = new List<Shoutcast>(shoutcastRepository.GetShoutcasts());
     }
 
     public void Dispose()
     {
-        
     }
 
     private int _filterIndex = 0;
@@ -48,11 +47,12 @@ public class VoiceLineTesterWindow: Window, IDisposable
                 {
                     _filterIndex = i;
                 }
-            }   
+            }
+
             ImGui.EndCombo();
         }
-     
-        
+
+
         // id(voLine/path/)- name - text - button
         if (ImGui.BeginTable("Voicelines", 4,
                 ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable | ImGuiTableFlags.Reorderable))
@@ -71,6 +71,7 @@ public class VoiceLineTesterWindow: Window, IDisposable
                         continue;
                     }
                 }
+
                 ImGui.TableNextRow();
                 ImGui.TableNextColumn();
                 ImGui.Text(bt.SoundPath);
@@ -83,17 +84,19 @@ public class VoiceLineTesterWindow: Window, IDisposable
                 {
                     text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
                 }
+
                 ImGui.Text(text);
                 ImGui.TableNextColumn();
-            
+
                 if (ImGui.Button("Play###" + bt.SoundPath))
                 {
                     PluginServices.Announcer.SendBattleTalk(bt);
-                    PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
+                    PluginServices.Announcer.PlaySound(bt.GetShoutcastSoundPathWithGenderAndLang(
+                        PluginServices.Config.Language, PluginServices.Config.WantsAttribute("Feminine Pronouns")));
                 }
             }
+
             ImGui.EndTable();
         }
-
     }
 }

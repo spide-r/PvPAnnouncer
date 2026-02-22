@@ -8,7 +8,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyHitUnderGuardEvent: PvPActionEvent
+public class AllyHitUnderGuardEvent : PvPActionEvent
 {
     public AllyHitUnderGuardEvent()
     {
@@ -24,6 +24,7 @@ public class AllyHitUnderGuardEvent: PvPActionEvent
             {
                 return false;
             }
+
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))

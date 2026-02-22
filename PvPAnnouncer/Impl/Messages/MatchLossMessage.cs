@@ -2,7 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class MatchLossMessage: IMessage
+public class MatchLossMessage : IMessage
 {
-    
 }

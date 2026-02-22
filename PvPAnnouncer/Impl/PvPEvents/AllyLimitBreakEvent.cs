@@ -2,9 +2,10 @@
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
+
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyLimitBreakEvent: PvPActionEvent
+public class AllyLimitBreakEvent : PvPActionEvent
 {
     public AllyLimitBreakEvent()
     {
@@ -21,7 +22,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
                 return ActionIds.IsLimitBreak(pp.ActionId);
             }
         }
-        return false;    
-    }
 
+        return false;
+    }
 }

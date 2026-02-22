@@ -5,7 +5,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyMitUsedEvent: PvPActionEvent
+public class AllyMitUsedEvent : PvPActionEvent
 {
     public AllyMitUsedEvent()
     {
@@ -22,7 +22,7 @@ public class AllyMitUsedEvent: PvPActionEvent
                 return ActionIds.IsMitigation(pp.ActionId);
             }
         }
-        return false;    
-    }
 
+        return false;
+    }
 }

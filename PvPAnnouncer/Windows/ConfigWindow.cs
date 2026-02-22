@@ -22,14 +22,16 @@ namespace PvPAnnouncer.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
-    private readonly Configuration _configuration; 
-    private readonly IShoutcastRepository _shoutcastRepository; 
-    private readonly IStringRepository _casterRepository; 
-    private readonly IStringRepository _attributeRepository; 
-    public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration, IEventShoutcastMapping eventShoutcastMapping, IStringRepository casterRepository, IStringRepository attributeRepository) : base(
+    private readonly Configuration _configuration;
+    private readonly IShoutcastRepository _shoutcastRepository;
+    private readonly IStringRepository _casterRepository;
+    private readonly IStringRepository _attributeRepository;
+
+    public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration,
+        IEventShoutcastMapping eventShoutcastMapping, IStringRepository casterRepository,
+        IStringRepository attributeRepository) : base(
         "PvPAnnouncer Configuration")
     {
-
         SizeConstraints = new WindowSizeConstraints
         {
             MinimumSize = new Vector2(500, 425),
@@ -44,10 +46,13 @@ public class ConfigWindow : Window, IDisposable
         _attributeRepository = attributeRepository;
     }
 
-    public void Dispose() { }
-    
-    private void DoAttribute(string attr){ 
-        var attVar = _configuration.WantsAttribute(attr); 
+    public void Dispose()
+    {
+    }
+
+    private void DoAttribute(string attr)
+    {
+        var attVar = _configuration.WantsAttribute(attr);
         if (ImGui.Checkbox(attr, ref attVar))
         {
             if (attVar)
@@ -57,8 +62,8 @@ public class ConfigWindow : Window, IDisposable
             else
             {
                 _configuration.RemoveAttribute(attr);
-
             }
+
             _configuration.Save();
         }
     }
@@ -69,6 +74,7 @@ public class ConfigWindow : Window, IDisposable
     private string[] _activeEventsArrInternal = [];
     private string[] _disabledEventsArr = [];
     private string[] _disabledEventsArrInternal = [];
+
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
@@ -84,26 +90,27 @@ public class ConfigWindow : Window, IDisposable
         var notify = _configuration.Notify;
         var icon = _configuration.WantsIcon;
 
-        
+
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
             ImGui.Separator();
-            ImGui.TextWrapped("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
+            ImGui.TextWrapped(
+                "Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
             ImGui.Separator();
         }
-        
+
         ImGui.TextWrapped("I love your feedback! It helps me make the plugin better! " +
-                                   "If you have any issues at all, suggestions/questions etc. I would love to hear them no matter how small! " +
-                                   "Use the plugin feedback button or contact .spider in the Dalamud Discord.");
+                          "If you have any issues at all, suggestions/questions etc. I would love to hear them no matter how small! " +
+                          "Use the plugin feedback button or contact .spider in the Dalamud Discord.");
         ImGui.Separator();
-        
+
         if (ImGui.Button("Test The Announcer"))
         {
             PluginServices.PlayerStateTracker.CheckSoundState();
-            Shoutcast[] bt = _shoutcastRepository.GetShoutcasts().Where(bt => PluginServices.Config.WantsAllAttributes(bt.Attributes)).ToArray();
+            Shoutcast[] bt = _shoutcastRepository.GetShoutcasts()
+                .Where(bt => PluginServices.Config.WantsAllAttributes(bt.Attributes)).ToArray();
             if (bt.Length != 0) // no announcers selected
             {
-                
                 var e = bt[Random.Shared.Next(bt.Length)];
                 PluginServices.Announcer.PlayForTesting(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Shoutcaster}", InternalConstants.MessageTag);
@@ -125,7 +132,9 @@ public class ConfigWindow : Window, IDisposable
                 {
                     ["en"] = "You don't have any announcers selected!"
                 };
-                var s = PluginServices.ShoutcastBuilder.WithSoundPath(InternalConstants.DefaultSoundPath).WithId("OopsAnnouncerDev").WithShoutcaster(InternalConstants.PvPAnnouncerDevName).WithIcon(InternalConstants.PvPAnnouncerDevIcon)
+                var s = PluginServices.ShoutcastBuilder.WithSoundPath(InternalConstants.DefaultSoundPath)
+                    .WithId("OopsAnnouncerDev").WithShoutcaster(InternalConstants.PvPAnnouncerDevName)
+                    .WithIcon(InternalConstants.PvPAnnouncerDevIcon)
                     .WithTranscription(dict).Build();
                 PluginServices.Announcer.SendBattleTalk(s);
             }
@@ -136,23 +145,26 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
-        
+
         ImGui.Separator();
         ImGui.TextWrapped("Customization:");
         if (ImGui.Button("Show All Possible Voicelines"))
-        { //todo eventually move this to the customization window
+        {
+            //todo eventually move this to the customization window
             PluginServices.VoiceLineTesterWindow.Toggle();
         }
+
         ImGui.SameLine();
         ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
         if (ImGui.Button("Open the Event Customization & Voiceline creation window!"))
         {
             PluginServices.CustomizationWindow.Toggle();
         }
+
         ImGuiComponents.HelpMarker("Soft-launched feature for real pvp enjoyers. ");
         ImGui.Separator();
-    
-        
+
+
         ImGui.Text("Announcers: ");
 
         var c = 0;
@@ -165,14 +177,15 @@ public class ConfigWindow : Window, IDisposable
                 ImGui.SameLine();
             }
         }
-        
+
         ImGui.NewLine();
 
         ImGui.Separator();
-       
-        ImGui.TextWrapped("Use Voice Lines mentioning: "); 
+
+        ImGui.TextWrapped("Use Voice Lines mentioning: ");
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker("These two values allow announcers to use voice lines usually reserved for specific people. For example, \nMetem may say \"The Honey B. Lovely show has begun!\" if Honey B. Lovely is enabled.");
+        ImGuiComponents.HelpMarker(
+            "These two values allow announcers to use voice lines usually reserved for specific people. For example, \nMetem may say \"The Honey B. Lovely show has begun!\" if Honey B. Lovely is enabled.");
         var a = 0;
         foreach (var se in _attributeRepository.GetAttributeList())
         {
@@ -183,6 +196,7 @@ public class ConfigWindow : Window, IDisposable
                 ImGui.SameLine();
             }
         }
+
         ImGui.NewLine();
         ImGui.Separator();
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
@@ -190,30 +204,31 @@ public class ConfigWindow : Window, IDisposable
             _configuration.WolvesDen = wolvesDen;
             _configuration.Save();
         }
-        
+
         if (ImGui.Checkbox("Show Announcer Portrait", ref icon))
         {
             _configuration.WantsIcon = icon;
             _configuration.Save();
-
         }
-        
+
         if (ImGui.Checkbox("Notify when Voice Volume is muted", ref notify))
         {
             _configuration.Notify = notify;
             _configuration.Save();
         }
+
         ImGui.Separator();
         ImGui.TextWrapped("Minimum delay between announcements");
         ImGui.Indent();
-        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120,"%ds", ImGuiSliderFlags.AlwaysClamp))
+        if (ImGui.SliderInt("###SliderCooldown", ref cooldown, 1, 120, "%ds", ImGuiSliderFlags.AlwaysClamp))
         {
             _configuration.CooldownSeconds = cooldown;
             _configuration.Save();
         }
+
         ImGui.Unindent();
-        
-        
+
+
         ImGui.TextWrapped("Announcement Frequency");
         ImGuiComponents.HelpMarker("This controls the chance of announcing any given event.");
         ImGui.Indent();
@@ -223,29 +238,34 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Percent = percent;
             _configuration.Save();
         }
+
         ImGui.Unindent();
-        
+
         ImGui.TextWrapped("Announcement Delay");
-        ImGuiComponents.HelpMarker("Sometimes this plugin announces a split-second too early. This setting adds a very minor delay which should prevent announcements before an action finishes.");
+        ImGuiComponents.HelpMarker(
+            "Sometimes this plugin announces a split-second too early. This setting adds a very minor delay which should prevent announcements before an action finishes.");
         ImGui.Indent();
 
-        if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms", ImGuiSliderFlags.AlwaysClamp))
+        if (ImGui.SliderInt("###SliderAnimationFactor", ref animationDelayFactor, 250, 2000, "%dms",
+                ImGuiSliderFlags.AlwaysClamp))
         {
             _configuration.AnimationDelayFactor = animationDelayFactor;
             _configuration.Save();
         }
+
         ImGui.Unindent();
-        
-        
+
+
         ImGui.TextWrapped("Minimum unique voice lines to play before a repeat is allowed.");
         ImGui.Indent();
         if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
-        { 
+        {
             _configuration.RepeatVoiceLineQueue = repeatVoiceLine;
             _configuration.Save();
         }
+
         ImGui.Unindent();
-        
+
 
         ImGui.TextWrapped("Minimum number of events to announce before a repeat is allowed.");
         ImGui.Indent();
@@ -254,31 +274,35 @@ public class ConfigWindow : Window, IDisposable
             _configuration.RepeatEventCommentaryQueue = repeatEventCommentary;
             _configuration.Save();
         }
+
         ImGui.Unindent();
         ImGui.Separator();
         ImGui.Text("Announcer Spoken Language:");
         DoLanguageVoiceSelection();
-        
-        ImGui.Text("Announcer Written Language:"); 
-        ImGuiComponents.HelpMarker("Due to how the plugin works, some voice lines do not have text equivalents in game. (specifically Mahjong Lines and Encrypted Voicelines from M12S). They have been manually transcribed to English. If you wish to help translate them to different languages, please contact the Plugin Developer.");
+
+        ImGui.Text("Announcer Written Language:");
+        ImGuiComponents.HelpMarker(
+            "Due to how the plugin works, some voice lines do not have text equivalents in game. (specifically Mahjong Lines and Encrypted Voicelines from M12S). They have been manually transcribed to English. If you wish to help translate them to different languages, please contact the Plugin Developer.");
 
         DoLanguageTextSelection();
         ImGui.Separator();
-        
-   
+
+
         if (ImGui.Checkbox("Mute Announcer", ref muted))
         {
             _configuration.Muted = muted;
             _configuration.Save();
         }
+
         ImGui.SameLine();
         if (ImGui.Checkbox("Hide Battle Text", ref hideBattleText))
         {
             _configuration.HideBattleText = hideBattleText;
             _configuration.Save();
         }
+
         ImGui.Separator();
-        
+
         List<string> activeEvents = new List<string>();
         List<string> activeEventsInternal = new List<string>();
         foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())
@@ -288,23 +312,24 @@ public class ConfigWindow : Window, IDisposable
             {
                 activeEvents.Add(e.Name);
                 activeEventsInternal.Add(eventId);
-
             }
         }
-   
-        
+
+
         List<string> listDisabledInternal = [];
         List<string> listDisabledPublic = [];
         foreach (string internalName in blEvents)
         {
-            var e = PluginServices.PvPEventBroker.GetEvent(internalName); 
+            var e = PluginServices.PvPEventBroker.GetEvent(internalName);
             if (e == null)
             {
                 continue;
             }
+
             listDisabledInternal.Add(internalName);
             listDisabledPublic.Add(e.Name);
         }
+
         _activeEventsArr = activeEvents.ToArray();
         _activeEventsArrInternal = activeEventsInternal.ToArray();
         ImGui.Text("Enabled Events:");
@@ -315,11 +340,9 @@ public class ConfigWindow : Window, IDisposable
             {
                 _configuration.BlacklistedEvents.Add(_activeEventsArrInternal[_activeEventsSelectedItem]);
                 _configuration.Save();
-                
             }
-
         }
-     
+
         _disabledEventsArrInternal = listDisabledInternal.ToArray();
         _disabledEventsArr = listDisabledPublic.ToArray();
         ImGui.Text("Disabled Events:");
@@ -330,9 +353,7 @@ public class ConfigWindow : Window, IDisposable
             {
                 _configuration.BlacklistedEvents.Remove(_disabledEventsArrInternal[_disabledEventsSelectedItem]);
                 _configuration.Save();
-                
             }
-    
         }
     }
 
@@ -340,13 +361,13 @@ public class ConfigWindow : Window, IDisposable
     {
         foreach (var keyValuePair in LanguageUtil.LanguageMap)
         {
-            
             var k = keyValuePair.Key;
             var v = keyValuePair.Value;
             if (k == 0)
             {
                 continue;
             }
+
             var keyName = Enum.GetName(k) ?? "Unknown Language";
             if (!PluginServices.DataManager.FileExists($"sound/voice/vo_line/8205353_{v}.scd"))
             {
@@ -359,32 +380,35 @@ public class ConfigWindow : Window, IDisposable
                 _configuration.Language = v;
                 _configuration.Save();
             }
+
             ImGui.SameLine();
         }
+
         ImGui.NewLine();
     }
-    
+
     private void DoLanguageTextSelection()
     {
         var langs = Enum.GetValues<ClientLanguage>().Cast<ClientLanguage>();
 
         foreach (var clientLangEnum in langs)
         {
-            
             var enumCodeString = clientLangEnum.ToCode();
-   
+
             var userFacingLang = Enum.GetName(clientLangEnum) ?? "Unknown Language";
 
             var configuredTextLang = _configuration.TextLanguage;
 
-            if (ImGui.RadioButton(userFacingLang + "###" + "LanguageTextSelection" + enumCodeString, configuredTextLang.Equals(enumCodeString)))
+            if (ImGui.RadioButton(userFacingLang + "###" + "LanguageTextSelection" + enumCodeString,
+                    configuredTextLang.Equals(enumCodeString)))
             {
                 _configuration.TextLanguage = enumCodeString;
                 _configuration.Save();
             }
+
             ImGui.SameLine();
         }
-        ImGui.NewLine();
 
+        ImGui.NewLine();
     }
 }

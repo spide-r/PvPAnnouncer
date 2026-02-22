@@ -4,9 +4,10 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class EventShoutcastMapping: IEventShoutcastMapping
+public class EventShoutcastMapping : IEventShoutcastMapping
 {
     private readonly Dictionary<string, List<string>> _map = new();
+
     public void AddShoutcasts(string eventId, List<string> shoutcasts)
     {
         if (_map.TryGetValue(eventId, out var shoutList))
@@ -21,8 +22,7 @@ public class EventShoutcastMapping: IEventShoutcastMapping
             _map.Add(eventId, [..shoutcasts]);
         }
     }
-    
-    
+
 
     public void AddShoutcast(string eventId, string shoutcast)
     {

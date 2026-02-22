@@ -5,7 +5,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyResurrectEvent: PvPActorEvent
+public class AllyResurrectEvent : PvPActorEvent
 {
     public AllyResurrectEvent()
     {
@@ -17,5 +17,4 @@ public class AllyResurrectEvent: PvPActorEvent
     {
         return m is UserResurrectedMessage;
     }
-
 }

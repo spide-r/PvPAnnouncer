@@ -11,7 +11,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
     public AllyHitByLimitBreakEvent()
     {
         Name = "Hit by an Enemy Limit Break";
-        Id = "AllyHitByLimitBreakEvent"; 
+        Id = "AllyHitByLimitBreakEvent";
     }
 
     public override bool InvokeRule(IMessage message)
@@ -22,6 +22,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
             {
                 return false;
             }
+
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
@@ -30,6 +31,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
                 }
             }
         }
+
         return false;
     }
 }

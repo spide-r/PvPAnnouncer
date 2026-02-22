@@ -6,7 +6,6 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-
 public class AllyHitEnemyHardEvent : PvPActionEvent
 {
     public AllyHitEnemyHardEvent()
@@ -15,7 +14,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
         Id = "AllyHitEnemyHardEvent";
     }
 
-    public override bool InvokeRule(IMessage message) 
+    public override bool InvokeRule(IMessage message)
     {
         if (message is ActionEffectMessage pp)
         {
@@ -23,11 +22,14 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
             {
                 return false;
             }
+
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
-                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreakAttack(pp.ActionId) || ActionIds.IsBurst(pp.ActionId);
+                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreakAttack(pp.ActionId) ||
+                       ActionIds.IsBurst(pp.ActionId);
             }
         }
+
         return false;
     }
 }

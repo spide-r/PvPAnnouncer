@@ -10,9 +10,8 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Windows;
 
-public class MainWindow: Window, IDisposable
+public class MainWindow : Window, IDisposable
 {
-
     public MainWindow() : base(
         "PvPAnnouncer", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)
     {
@@ -28,12 +27,15 @@ public class MainWindow: Window, IDisposable
         if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
         {
             ImGui.Separator();
-            ImGui.TextWrapped("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
+            ImGui.TextWrapped(
+                "Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
             ImGui.Separator();
         }
-        ImGui.TextWrapped("Welcome to PvP Announcer! This plugin will take Metem from the Arcadion and put him into your PvP match! " +
-                          "\nPlease contact .spider in the Dalamud Discord for feedback/suggestions!" +
-                          "\nView the config with /pvpannouncer");
+
+        ImGui.TextWrapped(
+            "Welcome to PvP Announcer! This plugin will take Metem from the Arcadion and put him into your PvP match! " +
+            "\nPlease contact .spider in the Dalamud Discord for feedback/suggestions!" +
+            "\nView the config with /pvpannouncer");
         ImGui.Spacing();
         ImGui.Text("Attributions");
         ImGui.BulletText("DeathRecap, VFXEditor, OofPlugin");

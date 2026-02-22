@@ -12,7 +12,7 @@ public class AllyActionEvent : PvPActionEvent
     //generic event for specific action and sound pairings
 
     private uint[] ActionIds { get; }
-    
+
     public AllyActionEvent(uint[] actionIds, string name = "Action", string id = "internal")
     {
         ActionIds = actionIds;
@@ -24,13 +24,13 @@ public class AllyActionEvent : PvPActionEvent
     {
         if (p is ActionEffectMessage)
         {
-            ActionEffectMessage message = (ActionEffectMessage)p;
+            ActionEffectMessage message = (ActionEffectMessage) p;
             if (PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
             {
                 return ActionIds.Contains(message.ActionId);
-
             }
         }
+
         return false;
     }
 }

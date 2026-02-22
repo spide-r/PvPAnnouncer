@@ -20,9 +20,9 @@ public class AllyDeathEvent : PvPActorControlEvent
             if (PluginServices.PvPMatchManager.IsMonitoredUser(message.EntityId))
             {
                 return message.GetCategory() == ActorControlCategory.Death;
-
             }
         }
+
         return m is UserDiedMessage;
     }
 

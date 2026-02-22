@@ -4,9 +4,10 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class StringRepository: IStringRepository
+public class StringRepository : IStringRepository
 {
     private readonly HashSet<string> _casters = [];
+
     public HashSet<string> GetAttributeList()
     {
         return _casters;

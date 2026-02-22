@@ -22,7 +22,6 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
             foreach (var scObjAttribute in scObj.Attributes)
             {
                 PluginServices.AttributeRepository.RegisterAttribute(scObjAttribute);
-
             }
         }
 

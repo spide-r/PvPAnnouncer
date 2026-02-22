@@ -4,7 +4,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class MaxBattleFeverEvent: PvPEvent
+public class MaxBattleFeverEvent : PvPEvent
 {
     public MaxBattleFeverEvent()
     {
@@ -17,7 +17,8 @@ public class MaxBattleFeverEvent: PvPEvent
         if (message is BattleHighMessage bhm)
         {
             return bhm.Level == 5;
-        } 
+        }
+
         return message is FlyingHighMessage;
     }
 }

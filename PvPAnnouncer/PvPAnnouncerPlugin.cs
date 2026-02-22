@@ -6,16 +6,15 @@ using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer
 {
-    
     //use announcer notes.txt for more scion lines
     //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
 
     //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
     //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
-    
+
     //todo run full cleanup and then enable full pre-commit cleanup in intellij
     //todo vuln stack event
-    public sealed class PvPAnnouncerPlugin: IDalamudPlugin
+    public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");
         private ConfigWindow ConfigWindow { get; init; }
@@ -27,7 +26,9 @@ namespace PvPAnnouncer
         {
             PluginServices.Initialize(pluginInterface, WindowSystem);
             LoadCommands();
-            ConfigWindow = new ConfigWindow(PluginServices.ShoutcastRepository, PluginServices.Config, PluginServices.EventShoutcastMapping, PluginServices.CasterRepository, PluginServices.AttributeRepository);
+            ConfigWindow = new ConfigWindow(PluginServices.ShoutcastRepository, PluginServices.Config,
+                PluginServices.EventShoutcastMapping, PluginServices.CasterRepository,
+                PluginServices.AttributeRepository);
             MainWindow = new MainWindow();
             DevWindow = new DevWindow();
             WindowSystem.AddWindow(ConfigWindow);
@@ -38,7 +39,6 @@ namespace PvPAnnouncer
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
             PluginServices.ClientState.Login += PluginUpdateMessage;
             PluginUpdateMessage();
-                
         }
 
         public static void PluginUpdateMessage()
@@ -47,9 +47,9 @@ namespace PvPAnnouncer
             {
                 if (PluginServices.ClientState.IsLoggedIn == false)
                 {
-                    
                     return;
                 }
+
                 PluginServices.ChatGui.Print(
                     "Important!!!! This Plugin went through a LOT of changes under the hood. " +
                     "If absolutely anything seems wrong or looks like a bug, please let the developer know! " +
@@ -57,7 +57,6 @@ namespace PvPAnnouncer
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }
-           
         }
 
         private void DrawUi()
@@ -78,17 +77,18 @@ namespace PvPAnnouncer
             {
                 un = "un-";
             }
+
             PluginServices.ChatGui.Print("Announcer Has been " + un + "muted!", InternalConstants.MessageTag);
         }
 
         private void ToggleConfigWindow()
         {
-            #if DEBUG
+#if DEBUG
             DevWindow.Toggle();
-            #endif
+#endif
             ConfigWindow.Toggle();
         }
-        
+
         private void ToggleMainUI()
         {
             PluginUpdateMessage();
@@ -111,8 +111,8 @@ namespace PvPAnnouncer
         {
             PluginServices.CommandManager.RemoveHandler("/pvpannouncer");
             PluginServices.CommandManager.RemoveHandler("/muteannouncer");
-            
         }
+
         public void Dispose()
         {
             PluginServices.ClientState.Login -= PluginUpdateMessage;
@@ -126,4 +126,3 @@ namespace PvPAnnouncer
         }
     }
 }
-

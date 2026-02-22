@@ -2,6 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class UserResurrectedMessage: IMessage
+public class UserResurrectedMessage : IMessage
 {
 }

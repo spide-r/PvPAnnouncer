@@ -2,7 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class FlyingHighMessage: IMessage
+public class FlyingHighMessage : IMessage
 {
-    
 }

@@ -6,7 +6,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyPulledByDrkEvent: PvPActionEvent
+public class AllyPulledByDrkEvent : PvPActionEvent
 {
     public AllyPulledByDrkEvent()
     {
@@ -16,13 +16,13 @@ public class AllyPulledByDrkEvent: PvPActionEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        
         if (message is ActionEffectMessage pp)
         {
             if (pp.ActionId != ActionIds.SaltedEarth)
             {
                 return false;
             }
+
             foreach (var target in pp.GetTargetIds())
             {
                 foreach (var actionEffectType in pp.GetEffectTypes(target))
@@ -34,11 +34,12 @@ public class AllyPulledByDrkEvent: PvPActionEvent
                 {
                     if (pp.GetEffectTypes(target).Contains(ActionEffectType.KbAndDrawIn))
                     {
-                        return true; 
+                        return true;
                     }
                 }
             }
         }
+
         return false;
     }
 }

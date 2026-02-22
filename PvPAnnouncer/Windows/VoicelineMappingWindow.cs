@@ -8,7 +8,7 @@ using Dalamud.Bindings.ImGui;
 
 namespace PvPAnnouncer.Windows;
 
-public class VoicelineMappingWindow: Window, IDisposable
+public class VoicelineMappingWindow : Window, IDisposable
 {
     public VoicelineMappingWindow() : base(
         "PvPAnnouncer Mapping Window")
@@ -17,24 +17,26 @@ public class VoicelineMappingWindow: Window, IDisposable
         {
             MinimumSize = new Vector2(450, 225),
         };
-        
     }
-    
+
     private int _pvpEventSelection = 0;
     private int _currentEventShoutSelection = 0;
     private int _otherShouts = 0;
     private int _shoutcasterSelection = 0;
+
     public override void Draw()
     {
         var events = PluginServices.EventShoutcastMapping.GetAllEvents();
         ImGui.Text("PvP Event Selector:");
         var pvpEventSelection = _pvpEventSelection;
 
-        if(ImGui.Combo("###PvPEvents", ref pvpEventSelection, events))
+        if (ImGui.Combo("###PvPEvents", ref pvpEventSelection, events))
         {
             _pvpEventSelection = pvpEventSelection;
-        };
-        
+        }
+
+        ;
+
 
         var currentShouts = PluginServices.EventShoutcastMapping.GetShoutcastList(events[pvpEventSelection]);
 
@@ -45,6 +47,7 @@ public class VoicelineMappingWindow: Window, IDisposable
         {
             _currentEventShoutSelection = currentShoutSelection;
         }
+
         if (ImGui.Button("Test Selected Shout###CurrentShoutTest"))
         {
             try
@@ -55,13 +58,14 @@ public class VoicelineMappingWindow: Window, IDisposable
                     PluginServices.PluginLog.Warning($"{currentShouts[currentShoutSelection]} not found");
                     return;
                 }
+
                 PluginServices.Announcer.PlayForTesting(sc);
             }
             catch (ArgumentOutOfRangeException)
             {
-                
             }
         }
+
         ImGui.SameLine();
         if (ImGui.Button("Remove Voiceline"))
         {
@@ -73,25 +77,27 @@ public class VoicelineMappingWindow: Window, IDisposable
             }
             catch (ArgumentOutOfRangeException)
             {
-                
             }
         }
+
         ImGui.Text("Available Voicelines:");
         ImGui.Text("Filter");
         var shoutcasterSelection = _shoutcasterSelection;
-        if (ImGui.Combo("###ShoutcasterFilter",  ref shoutcasterSelection, shoutcasters))
+        if (ImGui.Combo("###ShoutcasterFilter", ref shoutcasterSelection, shoutcasters))
         {
             _shoutcasterSelection = shoutcasterSelection;
         }
-        
+
         var otherShoutsList = PluginServices.ShoutcastRepository.GetShoutcasts()
-            .Where(s => !currentShouts.Contains(s.Id)).Where(s => s.Shoutcaster.Equals(shoutcasters[shoutcasterSelection])).Select(e => e.Id).ToList();
+            .Where(s => !currentShouts.Contains(s.Id))
+            .Where(s => s.Shoutcaster.Equals(shoutcasters[shoutcasterSelection])).Select(e => e.Id).ToList();
         var otherShoutsSelection = _otherShouts;
-        
+
         if (ImGui.ListBox("###OtherShouts", ref otherShoutsSelection, otherShoutsList))
         {
             _otherShouts = otherShoutsSelection;
         }
+
         if (ImGui.Button("Test Selected Shout###OtherShoutTest"))
         {
             try
@@ -102,14 +108,14 @@ public class VoicelineMappingWindow: Window, IDisposable
                     PluginServices.PluginLog.Warning($"{otherShoutsList[currentShoutSelection]} not found");
                     return;
                 }
+
                 PluginServices.Announcer.PlayForTesting(sc);
             }
             catch (ArgumentOutOfRangeException)
             {
-                
             }
         }
-        
+
         ImGui.SameLine();
         if (ImGui.Button("Add Voiceline"))
         {
@@ -122,10 +128,9 @@ public class VoicelineMappingWindow: Window, IDisposable
             }
             catch (ArgumentOutOfRangeException)
             {
-                
             }
         }
-        
+
 
         if (ImGui.Button("Save and Write to config"))
         {
@@ -140,11 +145,10 @@ public class VoicelineMappingWindow: Window, IDisposable
             }
             catch (ArgumentOutOfRangeException)
             {
-                
             }
         }
     }
-    
+
     private JsonObject BuildJsonMapping(string eventId, List<string> shouts)
     {
         var j = new JsonObject
@@ -162,8 +166,10 @@ public class VoicelineMappingWindow: Window, IDisposable
         {
             j["shouts"] = shoutsArray;
         }
+
         return j;
     }
+
     public void Dispose()
     {
     }

@@ -9,10 +9,11 @@ using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPEventBroker: IPvPEventBroker
+public class PvPEventBroker : IPvPEventBroker
 {
     private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
     private string _lastUsedAction = "";
+
     public void IngestMessage(IMessage message)
     {
         if (PluginServices.Config.Disabled)
@@ -27,15 +28,17 @@ public class PvPEventBroker: IPvPEventBroker
 
         if (message is ActionEffectMessage aaa)
         {
-            string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " + aaa.GetAction()?.Name.ToString();
+            string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " +
+                       aaa.GetAction()?.Name.ToString();
             bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(aaa.SourceId);
             if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
                 _lastUsedAction = aaa.ActionId.ToString();
-
             }
-        } else if (message is ActorControlMessage ac) {
+        }
+        else if (message is ActorControlMessage ac)
+        {
             bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(ac.EntityId);
             if (shouldEmit)
             {
@@ -43,19 +46,18 @@ public class PvPEventBroker: IPvPEventBroker
                 {
                     /*PluginServices.PluginLog.Verbose($"Actor control: {ac.EntityId}, " +
                                                      $"type: {ac.GetCategory()} source: {ac.Source}, statusId: {ac.StatusId}" +
-                                                     $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}");*/ 
-
+                                                     $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}");*/
                 }
-                
             }
         }
-        
+
         foreach (var pvpEvent in _pvpEventIdBinding.Values)
         {
             if (IsBlacklistedEvent(pvpEvent))
             {
                 continue;
             }
+
             var emit = pvpEvent.InvokeRule(message);
             if (emit)
             {
@@ -76,7 +78,6 @@ public class PvPEventBroker: IPvPEventBroker
     private void EmitToSubscribers(PvPEvent ee)
     {
         PluginServices.Announcer.ReceivePvPEvent(ee);
-
     }
 
     public void RegisterListener(PvPEvent e)

@@ -4,6 +4,7 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
+
 namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class EnemyActionEvent : PvPActionEvent
@@ -16,7 +17,7 @@ public class EnemyActionEvent : PvPActionEvent
         Name = name;
         Id = id;
     }
-    
+
     public override bool InvokeRule(IMessage arg)
     {
         if (arg is ActionEffectMessage message)
@@ -25,6 +26,7 @@ public class EnemyActionEvent : PvPActionEvent
             {
                 return false;
             }
+
             foreach (var target in message.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
@@ -33,6 +35,7 @@ public class EnemyActionEvent : PvPActionEvent
                 }
             }
         }
+
         return false;
     }
 }

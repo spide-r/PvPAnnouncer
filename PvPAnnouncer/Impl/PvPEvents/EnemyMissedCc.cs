@@ -6,7 +6,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class EnemyMissedCc: PvPActionEvent
+public class EnemyMissedCc : PvPActionEvent
 {
     public EnemyMissedCc()
     {
@@ -26,7 +26,10 @@ public class EnemyMissedCc: PvPActionEvent
                     {
                         return false;
                     }
-                    if (pp.GetEffectTypes(target).Contains(ActionEffectType.StatusNoEffect)) // whats the difference between StatusNoEffect and NoEffectText 
+
+                    if (pp.GetEffectTypes(target)
+                        .Contains(ActionEffectType
+                            .StatusNoEffect)) // whats the difference between StatusNoEffect and NoEffectText 
                     {
                         return true;
                     }

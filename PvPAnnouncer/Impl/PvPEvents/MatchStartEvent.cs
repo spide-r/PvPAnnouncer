@@ -5,7 +5,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class MatchStartEvent: PvPMatchEvent
+public class MatchStartEvent : PvPMatchEvent
 {
     public MatchStartEvent()
     {
@@ -17,5 +17,4 @@ public class MatchStartEvent: PvPMatchEvent
     {
         return message is MatchStartedMessage;
     }
-
 }

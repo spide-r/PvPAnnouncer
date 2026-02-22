@@ -5,7 +5,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class MatchStormyWeatherEvent: PvPEvent
+public class MatchStormyWeatherEvent : PvPEvent
 {
     public MatchStormyWeatherEvent()
     {

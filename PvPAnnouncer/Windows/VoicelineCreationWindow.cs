@@ -17,13 +17,13 @@ using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Windows;
 
-public partial class VoicelineCreationWindow: Window, IDisposable
+public partial class VoicelineCreationWindow : Window, IDisposable
 {
-    
     private List<string> _orphanedVoLines = [];
     private string[] _orphanedVoLineArr = [];
     private int _voLineSelector = 0;
     private Dictionary<string, List<string>> _cutsceneLines = new();
+
     public VoicelineCreationWindow() : base(
         "PvPAnnouncer Voiceline Creation")
     {
@@ -33,13 +33,12 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         };
         LoadAllCutsceneLines();
         LoadAllOrphanedLines();
-
     }
 
     //
     // sources of voicelines: 
     // ContentDirectorBattleTalkVO, CutsceneLine
-        
+
     // sources of text:
     // npcyell, cutsceneLine, instancecontenttextdatarow
 
@@ -63,7 +62,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     {
         _iconId = 0;
         _name = "Announcer Name";
-        _eventId =  "UniqueEventId";
+        _eventId = "UniqueEventId";
         _useIcon = false;
         _npcyell = 0;
         _instanceContentTextDataRow = 0;
@@ -92,10 +91,9 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         _autoFilled = false;
         _cutsceneLineTag = "";
     }
-    
+
     private void TestData()
     {
-
         var sc = BuildShoutcast();
         PluginServices.Announcer.PlayForTesting(sc);
     }
@@ -129,7 +127,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
     public override void Draw()
     {
-
         if (ImGui.CollapsingHeader("Step 1: Character Data"))
         {
             ShowCharacterData();
@@ -137,7 +134,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
         if (ImGui.CollapsingHeader("Step 2: Audio Selection"))
         {
-            
             ShowAudioSelection();
             if (ImGui.Button("Clear Selection###AudioSelectionClear"))
             {
@@ -148,8 +144,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             if (_voLine != 0)
             {
                 ImGui.Text("Selected Voiceover: " + _voLine);
-
             }
+
             if (!_cutsceneLineTag.Equals(""))
             {
                 ImGui.Text("Selected Cutscene Line: " + _cutsceneLineTag);
@@ -173,6 +169,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             ShowAnnouncementMetadata();
         }
+
         if (ImGui.CollapsingHeader("Step 5: Confirm Everything Looks Good"))
         {
             ShowObjectData();
@@ -184,6 +181,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 SaveAndRegisterObject();
             }
+
             ImGuiComponents.HelpMarker("This button saves the voiceline and lets you use it in the mapping window.");
             ImGui.Separator();
             if (ImGui.Button("Reset To Defaults"))
@@ -191,8 +189,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 Reset();
             }
         }
-  
-
     }
 
     private void ShowAnnouncementMetadata()
@@ -203,24 +199,27 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             _eventId = id;
         }
-        ImGuiComponents.HelpMarker("This must be unique across all voicelines. If a duplicate is found, one may overwrite the other.");
+
+        ImGuiComponents.HelpMarker(
+            "This must be unique across all voicelines. If a duplicate is found, one may overwrite the other.");
 
         var duration = _duration;
         if (ImGui.SliderUInt("Announcement Duration", ref duration, 1, 10, default, ImGuiSliderFlags.AlwaysClamp))
         {
             _duration = duration;
         }
+
         ImGuiComponents.HelpMarker("This value determines how long text will stay on the screen.");
 
-    
+
         ImGui.TextWrapped("Attributes:");
         ImGuiComponents.HelpMarker("Attributes are optional fields that act as filters. " +
                                    "If an attribute is not enabled in the configuration, the voiceline will never be shown during gameplay. " +
                                    "This is useful for if the line uses pronouns or calls ingame characters by name.");
 
-        
+
         var attributeToAdd = _attributeToAdd;
-        if(ImGui.InputText("###AddAttrText", ref attributeToAdd))
+        if (ImGui.InputText("###AddAttrText", ref attributeToAdd))
         {
             _attributeToAdd = attributeToAdd;
         }
@@ -231,8 +230,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 _attributes.Add(attributeToAdd.Trim());
             }
-
         }
+
         ImGui.SameLine();
 
         if (ImGui.Button("Clear Attributes"))
@@ -250,20 +249,23 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 _style = styleInt;
             }
+
             ImGui.SameLine();
         }
+
         ImGuiComponents.HelpMarker("I don't know why, but the game labels shoutcast styles this way.");
         ImGui.NewLine();
     }
 
     private void ShowAudioSelection()
     {
-        ImGui.TextWrapped("You must pick one source of audio. Battle Talk and Cutscene Line link both audio and text, so they are easier to work with.");
+        ImGui.TextWrapped(
+            "You must pick one source of audio. Battle Talk and Cutscene Line link both audio and text, so they are easier to work with.");
         if (ImGui.Button("Battle Talk"))
         {
             ImGui.OpenPopup("CtrPop");
-
         }
+
         ImGuiComponents.HelpMarker("Using this is the easiest, as it auto-fills style, icon, and voiceline duration.");
         ContentDirectorBattleTalkPopUp();
 
@@ -271,9 +273,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         if (ImGui.Button("Cutscene Line"))
         {
             ImGui.OpenPopup("CutscenePop");
-
         }
-        ImGuiComponents.HelpMarker("This contains ALL cutscene lines filtered by character. If nothing is shown, check the \"First Step\" section and press the button.");
+
+        ImGuiComponents.HelpMarker(
+            "This contains ALL cutscene lines filtered by character. If nothing is shown, check the \"First Step\" section and press the button.");
         CutsceneLinePopup();
 
 
@@ -287,11 +290,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 PluginServices.ChatGui.PrintError("Game data has not yet loaded! Please try again in a few moments.");
             }
-
         }
-        ImGuiComponents.HelpMarker("These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, but have a lot of trust voicelines, other battle NPC's, etc. I will elaborate more on this soon.");
-        OrphanedVoLinePopup();
 
+        ImGuiComponents.HelpMarker(
+            "These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, but have a lot of trust voicelines, other battle NPC's, etc. I will elaborate more on this soon.");
+        OrphanedVoLinePopup();
     }
 
     private void SaveAndRegisterObject()
@@ -305,8 +308,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         foreach (var scAttribute in sc.Attributes)
         {
             PluginServices.AttributeRepository.RegisterAttribute(scAttribute);
-
         }
+
         PluginServices.PluginLog.Verbose("Saved Json: " + json);
         PluginServices.ChatGui.Print($"Saved Shoutcast from {sc.Shoutcaster} with ID {sc.Id}");
     }
@@ -324,7 +327,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             ImGui.Text("Icon: " + _iconId);
         }
-        
+
         ImGui.Text("Duration: " + _duration);
         ImGui.Text("Style: " + _style);
         ImGui.Text("Unique Event ID: " + _eventId);
@@ -358,18 +361,21 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.SameLine();
             }
         }
+
         if (ImGui.Button("Test Current Announcement"))
         {
             TestData();
         }
+
         ImGui.Separator();
     }
 
     private string _inputTextBackup = "";
-    
+
     private void ShowTextSelection()
     {
-        ImGui.TextWrapped("If audio from Cutscene Line or Battle Talk was selected, this will be filled in automatically.");
+        ImGui.TextWrapped(
+            "If audio from Cutscene Line or Battle Talk was selected, this will be filled in automatically.");
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var contentDir = sheet.Flatten().FirstOrNull(bt => bt.Unknown1 == _voLine);
         if (_displayText.Equals(""))
@@ -377,7 +383,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             if (_voLine != 0 && contentDir != null)
             {
                 PullVoLineData((ContentDirectorBattleTalk) contentDir);
-            } else if (!_cutsceneLineTag.Equals(""))
+            }
+            else if (!_cutsceneLineTag.Equals(""))
             {
                 PullCutsceneLineData();
             }
@@ -387,8 +394,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             if (ImGui.Button("Instance Text Data Selector"))
             {
                 ImGui.OpenPopup("ICTDPop");
-
             }
+
             ImGuiComponents.HelpMarker("This selects from most instance battle text.");
             InstanceContentTextDataPopup();
 
@@ -396,8 +403,8 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             if (ImGui.Button("NPC Yell Data Selector"))
             {
                 ImGui.OpenPopup("NPCPop");
-
             }
+
             ImGuiComponents.HelpMarker("Trust/Regular NPC Speech Bubbles");
             ShowNpcYellSelectionPopup();
             if (ImGui.CollapsingHeader("I can't find the text in either of the above places!"))
@@ -417,10 +424,9 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                     _useBackup = backup;
                 }
             }
-
         }
-        
-        
+
+
         ImGui.Text("Selected Text: " + _displayText);
     }
 
@@ -433,6 +439,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     }
 
     private Dictionary<Language, ExcelSheet<InstanceContentTextData>> _instanceContentTextData = new();
+
     private ExcelSheet<InstanceContentTextData> GetInstanceContentTextData(Language lang)
     {
         if (_instanceContentTextData.TryGetValue(lang, out var data))
@@ -440,30 +447,29 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             return data;
         }
 
-        var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language:lang);
+        var instanceContent = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>(language: lang);
         _instanceContentTextData[lang] = instanceContent;
         return instanceContent;
-
     }
 
     private void PullCutsceneLineData()
     {
         _displayText = GetCsLineWithTag(_cutsceneLineTag);
-
     }
 
     private readonly Dictionary<string, string> _cSLineTagDict = []; // me when memoization
+
     private string GetCsLineWithTag(string tag)
     {
         if (_cSLineTagDict.TryGetValue(tag, out var value))
         {
             return value;
         }
-        
-        
+
+
         var splitLine = tag.Split("_");
         var number = splitLine[2];
-        var trimmedNumber = number.Substring(0,3);
+        var trimmedNumber = number.Substring(0, 3);
         var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
         var cutscene = PluginServices.DataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
@@ -471,12 +477,16 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         var dialogue = InternalConstants.ErrorContactDev;
         if (row != null)
         {
-            dialogue = row.Value.Dialogue.ToMacroString(); 
+            dialogue = row.Value.Dialogue.ToMacroString();
         }
-        dialogue = CutsceneNameRemovalRegex().Replace(dialogue, ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
+
+        dialogue = CutsceneNameRemovalRegex()
+            .Replace(dialogue,
+                ""); // any dialogue with (- text_here -) at the start will override the name shown in battletalk
         _cSLineTagDict[tag] = dialogue;
         return dialogue;
     }
+
     [GeneratedRegex(@"^\(-.*-\)")]
     private static partial Regex CutsceneNameRemovalRegex();
 
@@ -485,20 +495,21 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
     private List<NpcYell> PullNpcYellMemo(Language lang)
     {
-        if(_npcYellMemo.TryGetValue(lang, out var cached))
+        if (_npcYellMemo.TryGetValue(lang, out var cached))
         {
             return cached;
         }
+
         _npcYellMemo[lang] = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang).ToList();
         return _npcYellMemo[lang];
-
     }
+
     private void ShowNpcYellSelectionPopup()
     {
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
 
         var filter = _npcYellFilter;
-     
+
         ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("NPCPop"))
         {
@@ -506,8 +517,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 _npcYellFilter = filter;
             }
+
             if (ImGui.BeginTable("NPCYell###NPCYellTable", 2,
-                    ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable | ImGuiTableFlags.SizingStretchProp))
+                    ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable |
+                    ImGuiTableFlags.SizingStretchProp))
             {
                 ImGui.TableSetupColumn("Text", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("Button", ImGuiTableColumnFlags.WidthFixed);
@@ -515,7 +528,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 var yells = PullNpcYellMemo(lang);
                 foreach (var y in yells)
                 {
-                    var text =  y.Text.ToString();
+                    var text = y.Text.ToString();
                     if (!_npcYellFilter.Equals(""))
                     {
                         if (!text.Contains(_npcYellFilter))
@@ -523,6 +536,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                             continue;
                         }
                     }
+
                     ImGui.TableNextRow();
                     ImGui.TableNextColumn();
                     ImGui.Text(text);
@@ -535,18 +549,20 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                         ImGui.CloseCurrentPopup();
                     }
                 }
+
                 ImGui.EndTable();
             }
 
             ImGui.EndPopup();
         }
     }
+
     private string _textDataFilter = "";
 
     private void InstanceContentTextDataPopup()
     {
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
-        
+
         ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("ICTDPop"))
         {
@@ -555,8 +571,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 _textDataFilter = filter;
             }
+
             if (ImGui.BeginTable("Text Data###TextDataTable", 2,
-                    ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable | ImGuiTableFlags.SizingStretchProp))
+                    ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable |
+                    ImGuiTableFlags.SizingStretchProp))
             {
                 ImGui.TableSetupColumn("Text", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("Button", ImGuiTableColumnFlags.WidthFixed);
@@ -564,7 +582,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 var textData = GetInstanceContentTextData(lang);
                 foreach (var td in textData)
                 {
-                    var text =  td.Text.ToString();
+                    var text = td.Text.ToString();
                     if (!_textDataFilter.Equals(""))
                     {
                         if (!text.Contains(_textDataFilter))
@@ -572,6 +590,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                             continue;
                         }
                     }
+
                     ImGui.TableNextRow();
                     ImGui.TableNextColumn();
                     ImGui.TextWrapped(text);
@@ -584,12 +603,14 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                         ImGui.CloseCurrentPopup();
                     }
                 }
+
                 ImGui.EndTable();
             }
 
             ImGui.EndPopup();
         }
     }
+
     private void LoadAllCutsceneLines()
     {
         PluginServices.PluginLog.Verbose("Started Loading all Cutscene Lines! ");
@@ -599,32 +620,37 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     }
 
     private string _contentDirectorFilter = "";
-    private readonly ExcelSheet<InstanceContentTextData> _ictd = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>();
+
+    private readonly ExcelSheet<InstanceContentTextData> _ictd =
+        PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>();
 
     private List<ContentDirectorBattleTalk> _ctrList = [];
+
     private List<ContentDirectorBattleTalk> PullCTRMemo()
     {
         if (_ctrList.Count > 0)
         {
             return _ctrList;
         }
-        
+
         _ctrList = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>().Flatten().ToList();
         return _ctrList;
     }
+
     private void ContentDirectorBattleTalkPopUp()
     {
         ImGui.SetNextWindowSize(new Vector2(600, 600), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("CtrPop"))
         {
-              
             var filter = _contentDirectorFilter;
             if (ImGui.InputText("Filter###CtrFilter", ref filter, 300))
             {
                 _contentDirectorFilter = filter;
             }
+
             if (ImGui.BeginTable("Content DirectorBattleTalk###ContentDirectorBattleTalk", 5,
-                    ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable | ImGuiTableFlags.SizingStretchProp))
+                    ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable |
+                    ImGuiTableFlags.SizingStretchProp))
             {
                 ImGui.TableSetupColumn("Text", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("Style", ImGuiTableColumnFlags.WidthFixed);
@@ -642,6 +668,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                     {
                         text = ctrRow.Text.ToString();
                     }
+
                     var voLine = td.Unknown1;
                     var style = td.Unknown4;
                     var icon = td.Unknown0;
@@ -658,6 +685,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                     {
                         continue;
                     }
+
                     ImGui.TableNextRow();
                     ImGui.TableNextColumn();
                     ImGui.TextWrapped(text);
@@ -688,10 +716,11 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                         {
                             _duration = duration;
                         }
-                    
+
                         ImGui.CloseCurrentPopup();
                     }
                 }
+
                 ImGui.EndTable();
             }
 
@@ -701,85 +730,90 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
     private string _chosenChar = "";
     private string _cutsceneLineFilter = "";
+
     private void CutsceneLinePopup()
     {
-        
         ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("CutscenePop"))
         {
-           if (ImGui.BeginCombo("Character Picker", _chosenChar))
-           {
-               //todo character filter / searcher + explanation why everything is in caps
-               foreach (var character in _cutsceneLines.Keys)
-               {
-                   bool selected = _chosenChar.Equals(character);
-                   if (ImGui.Selectable(character, selected))
-                   {
-                       _chosenChar = character;
-                   }
-               }
-               ImGui.EndCombo();
-           }
-        
-           if (_chosenChar.Equals(""))
-           {
-               ImGui.Text("Select A Character!");
-           }
-           else
-           {
-               var filter = _cutsceneLineFilter;
-               if (ImGui.InputText("Filter###CutsceneLineFilter", ref filter, 300))
-               {
-                   _cutsceneLineFilter = filter;
-               }
-               if (ImGui.BeginTable("Character Cutscene Lines", 2,
-                       ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable | ImGuiTableFlags.SizingStretchProp))
-               {
-                   ImGui.TableSetupColumn("Text", ImGuiTableColumnFlags.WidthStretch);
-                   ImGui.TableSetupColumn("Button", ImGuiTableColumnFlags.WidthFixed);
+            if (ImGui.BeginCombo("Character Picker", _chosenChar))
+            {
+                //todo character filter / searcher + explanation why everything is in caps
+                foreach (var character in _cutsceneLines.Keys)
+                {
+                    bool selected = _chosenChar.Equals(character);
+                    if (ImGui.Selectable(character, selected))
+                    {
+                        _chosenChar = character;
+                    }
+                }
 
-                   ImGui.TableHeadersRow();
-                   foreach (var cutsceneLineTag in _cutsceneLines[_chosenChar])
-                   {
-                           
-                       var text = GetCsLineWithTag(cutsceneLineTag);
-                       if (!_cutsceneLineFilter.Equals(""))
-                       {
-                           if (!text.Contains(_cutsceneLineFilter))
-                           {
-                               continue;
-                           }
-                       }
-                       
-                       if (text.Equals("No subtitles, report if displayed."))
-                       {
-                           continue;
-                       }
-                       if (text.Equals(""))
-                       {
-                           text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
-                       }
-                       
+                ImGui.EndCombo();
+            }
 
-                       ImGui.TableNextRow();
-                       ImGui.TableNextColumn();
-                   
-                       ImGui.TextWrapped(text);
+            if (_chosenChar.Equals(""))
+            {
+                ImGui.Text("Select A Character!");
+            }
+            else
+            {
+                var filter = _cutsceneLineFilter;
+                if (ImGui.InputText("Filter###CutsceneLineFilter", ref filter, 300))
+                {
+                    _cutsceneLineFilter = filter;
+                }
 
-                       ImGui.TableNextColumn();
-                       
-                       if (ImGui.Button("Select###Select" + cutsceneLineTag))
-                       {
-                           ClearAudioData();
-                           ClearTextData();
-                           _cutsceneLineTag = cutsceneLineTag;
-                           ImGui.CloseCurrentPopup();
-                       }
-                   }
-                   ImGui.EndTable();
-               }
-           }
-           ImGui.EndPopup();    
+                if (ImGui.BeginTable("Character Cutscene Lines", 2,
+                        ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg | ImGuiTableFlags.Resizable |
+                        ImGuiTableFlags.SizingStretchProp))
+                {
+                    ImGui.TableSetupColumn("Text", ImGuiTableColumnFlags.WidthStretch);
+                    ImGui.TableSetupColumn("Button", ImGuiTableColumnFlags.WidthFixed);
+
+                    ImGui.TableHeadersRow();
+                    foreach (var cutsceneLineTag in _cutsceneLines[_chosenChar])
+                    {
+                        var text = GetCsLineWithTag(cutsceneLineTag);
+                        if (!_cutsceneLineFilter.Equals(""))
+                        {
+                            if (!text.Contains(_cutsceneLineFilter))
+                            {
+                                continue;
+                            }
+                        }
+
+                        if (text.Equals("No subtitles, report if displayed."))
+                        {
+                            continue;
+                        }
+
+                        if (text.Equals(""))
+                        {
+                            text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
+                        }
+
+
+                        ImGui.TableNextRow();
+                        ImGui.TableNextColumn();
+
+                        ImGui.TextWrapped(text);
+
+                        ImGui.TableNextColumn();
+
+                        if (ImGui.Button("Select###Select" + cutsceneLineTag))
+                        {
+                            ClearAudioData();
+                            ClearTextData();
+                            _cutsceneLineTag = cutsceneLineTag;
+                            ImGui.CloseCurrentPopup();
+                        }
+                    }
+
+                    ImGui.EndTable();
+                }
+            }
+
+            ImGui.EndPopup();
         }
     }
 
@@ -789,24 +823,24 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("OrphanedPop"))
         {
-            
             ImGui.ListBox("Voice Lines###OrphanedVoLinesList", ref _voLineSelector, _orphanedVoLineArr);
             if (ImGui.Button("Play###OrphanedVoLinesPlay"))
             {
                 PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector));
-
             }
+
             ImGui.Separator();
             if (ImGui.Button("Go Back And Play###OrphanedVoLinesBackward"))
             {
                 _voLineSelector = selector - 1;
-                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector-1));
+                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector - 1));
             }
+
             ImGui.SameLine();
             if (ImGui.Button("Go Forward And Play###OrphanedVoLinesForward"))
             {
                 _voLineSelector = selector + 1;
-                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector+1));
+                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector + 1));
             }
 
             var currentVo = _orphanedVoLineArr[selector];
@@ -817,23 +851,23 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 _voLine = Convert.ToUInt32(currentVo);
                 ImGui.CloseCurrentPopup();
             }
-        
+
             ImGui.EndPopup();
         }
-
     }
 
     private string GetVoLineToPlay(int selector)
     {
         return "sound/voice/vo_line/" + _orphanedVoLineArr[selector] + "_" +
-                            PluginServices.Config.Language + ".scd";
+               PluginServices.Config.Language + ".scd";
     }
+
     private void LoadAllOrphanedLines()
     {
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var all = sheet.Flatten().ToList();
         PluginServices.PluginLog.Verbose("Starting to load all orphaned lines!");
-        Task.Run( () =>
+        Task.Run(() =>
         {
             var results = new List<string>();
             for (uint j = 0; j < 9999999; j++)
@@ -844,7 +878,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                     continue;
                 }
 
-                if (all.All(bt => bt.Unknown1 != j)) 
+                if (all.All(bt => bt.Unknown1 != j))
                     // if the VO Line does not exist in sheet, its orphaned so we need to add data
                 {
                     results.Add(j.ToString());
@@ -858,7 +892,6 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 PluginServices.PluginLog.Verbose("Finished loading all orphaned lines!");
             });
         });
-
     }
 
     private void ShowCharacterData()
@@ -869,14 +902,16 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             _name = name;
         }
+
         var icon = _iconId;
         uint min = 73001;
-        uint max = 73287;  
+        uint max = 73287;
         ImGui.Text("Icon: ");
         if (ImGui.SliderUInt("###AnnouncerIcon", ref icon, min, max, default, ImGuiSliderFlags.AlwaysClamp))
         {
             _iconId = icon;
         }
+
         ImGui.SameLine();
         if (ImGui.ArrowButton("###GoDownIcon", ImGuiDir.Left))
         {
@@ -884,19 +919,20 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             {
                 _iconId = min;
             }
+
             _iconId = icon - 1;
         }
+
         ImGui.SameLine();
         if (ImGui.ArrowButton("###GoUpIcon", ImGuiDir.Right))
         {
-
             if (_iconId > max)
             {
                 _iconId = max;
             }
+
             _iconId = icon + 1;
         }
-        
 
 
         try
@@ -911,17 +947,19 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         {
             ImGui.Text("Issue rendering icon!");
         }
+
         var useIcon = _useIcon;
         ImGui.NewLine();
         if (ImGui.Checkbox("Use Icon", ref useIcon))
         {
             _useIcon = useIcon;
         }
+
         ImGuiComponents.HelpMarker("Be sure to check this box if you wish for the icon to be used.");
         ImGui.NewLine();
         ShowStyleSelector();
-
     }
+
     public void Dispose()
     {
     }

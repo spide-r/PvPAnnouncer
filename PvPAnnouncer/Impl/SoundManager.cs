@@ -6,38 +6,39 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class SoundManager: ISoundManager
+public class SoundManager : ISoundManager
 {
     // Attributed to VFXEditor: https://github.com/0ceal0t/Dalamud-VFXEditor/blob/main/VFXEditor/Interop/ResourceLoader.Sound.cs
 
     private const string PlaySoundSig = "E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? FE C2";
 
-    private delegate IntPtr PlaySoundDelegate( IntPtr path, byte play );
+    private delegate IntPtr PlaySoundDelegate(IntPtr path, byte play);
 
     private readonly PlaySoundDelegate _playSoundPath;
-    
+
     private bool _muted;
 
     public SoundManager()
     {
         PluginServices.GameInteropProvider.InitializeFromAttributes(this);
-        _playSoundPath = Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>( PluginServices.SigScanner.ScanText(PlaySoundSig ) );
+        _playSoundPath =
+            Marshal.GetDelegateForFunctionPointer<PlaySoundDelegate>(PluginServices.SigScanner.ScanText(PlaySoundSig));
         SetMute(PluginServices.Config.Muted);
         PluginServices.PluginLog.Verbose("Initializing Sound Manager");
     }
-    
+
     public void PlaySound(string path)
     {
         if (_muted)
         {
             return;
         }
+
         var bytes = Encoding.ASCII.GetBytes(path);
         var ptr = Marshal.AllocHGlobal(bytes.Length + 1);
-        
+
         try
         {
-   
             Marshal.Copy(bytes, 0, ptr, bytes.Length);
             Marshal.WriteByte(ptr + bytes.Length, 0);
             _playSoundPath(ptr, 1);
@@ -49,9 +50,7 @@ public class SoundManager: ISoundManager
         finally
         {
             Marshal.FreeHGlobal(ptr);
-            
         }
-
     }
 
     public void ToggleMute()
@@ -64,6 +63,5 @@ public class SoundManager: ISoundManager
     {
         _muted = mute;
         PluginServices.Config.Muted = _muted;
-
     }
 }

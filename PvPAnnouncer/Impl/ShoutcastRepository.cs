@@ -8,6 +8,7 @@ namespace PvPAnnouncer.Impl;
 public class ShoutcastRepository : IShoutcastRepository
 {
     private readonly Dictionary<string, Shoutcast> _shoutcasts = new();
+
     public Shoutcast? GetShoutcast(string shoutcastId)
     {
         if (_shoutcasts.ContainsKey(shoutcastId))
@@ -32,6 +33,4 @@ public class ShoutcastRepository : IShoutcastRepository
     {
         return _shoutcasts.ContainsKey(shoutcastId);
     }
-
-
 }

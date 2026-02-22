@@ -218,6 +218,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
                 PluginServices.PluginLog.Warning($"{shoutcastId} not found.");
                 continue;
             }
+
             // == Objective 5 == 
             if (PluginServices.Config.WantsAllAttributes(sound.Attributes) &&
                 PluginServices.Config.WantsAttribute(sound.Shoutcaster))

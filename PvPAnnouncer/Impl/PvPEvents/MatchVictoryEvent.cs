@@ -4,7 +4,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class MatchVictoryEvent: PvPMatchEvent
+public class MatchVictoryEvent : PvPMatchEvent
 {
     public MatchVictoryEvent()
     {

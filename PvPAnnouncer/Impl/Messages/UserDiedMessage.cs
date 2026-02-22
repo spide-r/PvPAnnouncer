@@ -2,7 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class UserDiedMessage: IMessage
+public class UserDiedMessage : IMessage
 {
-    
 }

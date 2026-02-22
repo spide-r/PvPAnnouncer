@@ -13,7 +13,6 @@ public class ActorControlMessage(
 
     public ActorControlCategory GetCategory()
     {
-        return (ActorControlCategory)Type;
+        return (ActorControlCategory) Type;
     }
-    
 }

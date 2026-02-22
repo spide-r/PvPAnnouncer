@@ -8,11 +8,11 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyBurstedEvent: PvPEvent
+public class AllyBurstedEvent : PvPEvent
 {
     private long _lastHit = 0;
     private readonly HashSet<int> _hitters = [];
-    
+
     public AllyBurstedEvent()
     {
         Name = "Bursted By Enemy Team";
@@ -27,13 +27,12 @@ public class AllyBurstedEvent: PvPEvent
             {
                 return false;
             }
-            
+
             //PluginServices.PluginLog.Verbose($"{_lastHit}, {_hitters.Count}");
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
-
                     var unixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                     if (unixTime - _lastHit > 3)
                     {
@@ -62,5 +61,7 @@ public class AllyBurstedEvent: PvPEvent
                 }
             }
         }
-        return false;    }
+
+        return false;
+    }
 }
