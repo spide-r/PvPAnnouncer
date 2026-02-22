@@ -92,6 +92,10 @@ public class ConfigWindow : Window, IDisposable
             ImGui.Separator();
         }
         
+        ImGui.TextWrapped("I love your feedback! It helps me make the plugin better! " +
+                                   "If you have any issues at all, suggestions/questions etc. I would love to hear them no matter how small! " +
+                                   "Use the plugin feedback button or contact .spider in the Dalamud Discord.");
+        ImGui.Separator();
         
         if (ImGui.Button("Test The Announcer"))
         {
@@ -132,24 +136,22 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Disabled = disabled;
             _configuration.Save();
         }
+        
         ImGui.Separator();
-
-        if (ImGui.CollapsingHeader("Miscellaneous Buttons"))
-        {
-                    
-            if (ImGui.Button("Show All Possible Voicelines"))
-            {
-                PluginServices.VoiceLineTesterWindow.Toggle();
-            }
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
-            if (ImGui.Button("Open the Event Customization & Voiceline creation window!"))
-            {
-                PluginServices.CustomizationWindow.Toggle();
-            }
-            ImGuiComponents.HelpMarker("Soft-launched feature for real pvp enjoyers. ");
-            ImGui.Separator();
+        ImGui.TextWrapped("Customization:");
+        if (ImGui.Button("Show All Possible Voicelines"))
+        { //todo eventually move this to the customization window
+            PluginServices.VoiceLineTesterWindow.Toggle();
         }
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
+        if (ImGui.Button("Open the Event Customization & Voiceline creation window!"))
+        {
+            PluginServices.CustomizationWindow.Toggle();
+        }
+        ImGuiComponents.HelpMarker("Soft-launched feature for real pvp enjoyers. ");
+        ImGui.Separator();
+    
         
         ImGui.Text("Announcers: ");
 

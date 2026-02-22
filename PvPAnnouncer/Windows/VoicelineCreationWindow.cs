@@ -19,10 +19,6 @@ namespace PvPAnnouncer.Windows;
 
 public partial class VoicelineCreationWindow: Window, IDisposable
 {
-    //todo
-    /*
-     * No way to delete voicelines
-     */
     private List<string> _orphanedVoLines = [];
     private string[] _orphanedVoLineArr = [];
     private int _voLineSelector = 0;
@@ -60,6 +56,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private List<string> _attributes = [];
     private string _attributeToAdd = "";
     private bool _autoFilled = false;
+    private bool _useBackup = false;
 
     private void Reset()
     {
@@ -77,6 +74,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         _attributes = [];
         _attributeToAdd = "";
         _autoFilled = false;
+        _useBackup = false;
     }
 
     private void ClearTextData()
@@ -84,6 +82,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         _instanceContentTextDataRow = 0;
         _npcyell = 0;
         _displayText = "";
+        _useBackup = false;
     }
 
     private void ClearAudioData()
@@ -100,7 +99,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         PluginServices.Announcer.PlayForTesting(sc);
     }
 
-    public Shoutcast BuildShoutcast()
+    private Shoutcast BuildShoutcast()
     {
         var b = PluginServices.ShoutcastBuilder
             .WithId(_eventId)
@@ -115,6 +114,12 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         if (_useIcon)
         {
             b.WithIcon(_iconId);
+        }
+
+        var cfgLang = PluginServices.Config.Language;
+        if (_useBackup)
+        {
+            b.WithTranscription(new Dictionary<string, string> {[cfgLang] = _displayText});
         }
 
         var sc = b.Build();
@@ -357,18 +362,22 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         ImGui.Separator();
     }
 
+    private string _inputTextBackup = "";
     
     private void ShowTextSelection()
     {
         ImGui.TextWrapped("If audio from Cutscene Line or Battle Talk was selected, this will be filled in automatically.");
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var contentDir = sheet.Flatten().FirstOrNull(bt => bt.Unknown1 == _voLine);
-        if (_voLine != 0 && contentDir != null)
+        if (_displayText.Equals(""))
         {
-            PullVoLineData((ContentDirectorBattleTalk) contentDir);
-        } else if (!_cutsceneLineTag.Equals(""))
-        {
-            PullCutsceneLineData();
+            if (_voLine != 0 && contentDir != null)
+            {
+                PullVoLineData((ContentDirectorBattleTalk) contentDir);
+            } else if (!_cutsceneLineTag.Equals(""))
+            {
+                PullCutsceneLineData();
+            }
         }
         else
         {
@@ -388,6 +397,17 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             }
             ImGuiComponents.HelpMarker("Trust/Regular NPC Speech Bubbles");
             ShowNpcYellSelectionPopup();
+            if (ImGui.CollapsingHeader("I can't find the text in either of the above places!"))
+            {
+                var inputTextBackup = _inputTextBackup;
+                ImGui.TextWrapped("While it is encouraged to use ingame data due to easy translation, " +
+                                  "sometimes the text isn't present. Use this field to add the transcription yourself.");
+                if (ImGui.InputText("###InputBackup", ref inputTextBackup, 255))
+                {
+                    _inputTextBackup = inputTextBackup;
+                    _displayText = inputTextBackup;
+                }
+            }
 
         }
         
@@ -397,13 +417,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
     private void PullVoLineData(ContentDirectorBattleTalk bt)
     {
-        if (_displayText.Equals(""))
-        {
-            var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
-            var foundEntry = GetInstanceContentTextData(lang).TryGetRow(bt.Text.RowId, out var ctrRow);
-            var text = foundEntry ? ctrRow.Text.ExtractText() : InternalConstants.ErrorContactDev;
-            _displayText = text;
-        }
+        var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
+        var foundEntry = GetInstanceContentTextData(lang).TryGetRow(bt.Text.RowId, out var ctrRow);
+        var text = foundEntry ? ctrRow.Text.ToString() : InternalConstants.ErrorContactDev;
+        _displayText = text;
     }
 
     private Dictionary<Language, ExcelSheet<InstanceContentTextData>> _instanceContentTextData = new();
@@ -422,12 +439,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
     private void PullCutsceneLineData()
     {
-        if (_displayText.Equals(""))
-        {
-
-            _displayText = GetCsLineWithTag(_cutsceneLineTag);
-
-        }
+        _displayText = GetCsLineWithTag(_cutsceneLineTag);
 
     }
 
@@ -446,7 +458,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
         var csvName = $"cut_scene/{trimmedNumber}/VoiceMan_{number}";
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
         var cutscene = PluginServices.DataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
-        var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag));
+        var row = cutscene.FirstOrNull(r => r.MessageTag.ToString().Equals(tag));
         var dialogue = InternalConstants.ErrorContactDev;
         if (row != null)
         {
@@ -460,13 +472,26 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private static partial Regex CutsceneNameRemovalRegex();
 
     private string _npcYellFilter = "";
+    private Dictionary<Language, List<NpcYell>> _npcYellMemo = [];
+
+    private List<NpcYell> PullNpcYellMemo(Language lang)
+    {
+        if (_npcYellMemo.Count > 0)
+        {
+            return _npcYellMemo[lang];
+        }
+
+        _npcYellMemo[lang] = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang).ToList();
+        return _npcYellMemo[lang];
+
+    }
     private void ShowNpcYellSelectionPopup()
     {
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
 
         var filter = _npcYellFilter;
      
-        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.Appearing);
+        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("NPCPop"))
         {
             if (ImGui.InputText("Filter###NPCYellFilter", ref filter, 300))
@@ -479,7 +504,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.TableSetupColumn("Text", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableSetupColumn("Button", ImGuiTableColumnFlags.WidthFixed);
                 ImGui.TableHeadersRow();
-                var yells = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang);
+                var yells = PullNpcYellMemo(lang);
                 foreach (var y in yells)
                 {
                     var text =  y.Text.ToString();
@@ -514,7 +539,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     {
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
         
-        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.Appearing);
+        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("ICTDPop"))
         {
             var filter = _textDataFilter;
@@ -566,11 +591,22 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     }
 
     private string _contentDirectorFilter = "";
-    private readonly SubrowExcelSheet<ContentDirectorBattleTalk> _ctr = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>();
     private readonly ExcelSheet<InstanceContentTextData> _ictd = PluginServices.DataManager.Excel.GetSheet<InstanceContentTextData>();
+
+    private List<ContentDirectorBattleTalk> _ctrList = [];
+    private List<ContentDirectorBattleTalk> PullCTRMemo()
+    {
+        if (_ctrList.Count > 0)
+        {
+            return _ctrList;
+        }
+        
+        _ctrList = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>().Flatten().ToList();
+        return _ctrList;
+    }
     private void ContentDirectorBattleTalkPopUp()
     {
-        ImGui.SetNextWindowSize(new Vector2(600, 600), ImGuiCond.Appearing);
+        ImGui.SetNextWindowSize(new Vector2(600, 600), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("CtrPop"))
         {
               
@@ -589,7 +625,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.TableSetupColumn("Button", ImGuiTableColumnFlags.WidthFixed);
                 ImGui.TableHeadersRow();
 
-                foreach (var td in _ctr.Flatten())
+                foreach (var td in PullCTRMemo())
                 {
                     var rId = td.Text.RowId;
                     var foundEntry = _ictd.TryGetRow(rId, out var ctrRow);
@@ -660,11 +696,12 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private void CutsceneLinePopup()
     {
         
-        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.Appearing);
+        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("CutscenePop"))
         {
            if (ImGui.BeginCombo("Character Picker", _chosenChar))
            {
+               //todo character filter / searcher + explanation why everything is in caps
                foreach (var character in _cutsceneLines.Keys)
                {
                    bool selected = _chosenChar.Equals(character);
@@ -741,7 +778,7 @@ public partial class VoicelineCreationWindow: Window, IDisposable
     private void OrphanedVoLinePopup()
     {
         var selector = _voLineSelector;
-        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.Appearing);
+        ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("OrphanedPop"))
         {
             

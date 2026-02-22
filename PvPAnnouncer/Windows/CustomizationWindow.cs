@@ -16,6 +16,9 @@ namespace PvPAnnouncer.Windows;
 public class CustomizationWindow: Window, IDisposable
 {
     //todo make a way to delete / manage voicelines
+    //todo shill/ask players nicely to share their voicelines w/ people
+    //todo only export 1 character at a time option pre-checked
+    //todo determine if we need to replace or just add mapping
     public CustomizationWindow() : base(
         "PvPAnnouncer Customization Window")
     {
