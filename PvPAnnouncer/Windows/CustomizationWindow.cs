@@ -110,6 +110,7 @@ public class CustomizationWindow: Window, IDisposable
                 }
                 PluginServices.Config.Save();
                 PluginServices.ConfigManager.ReloadConfig();
+                PluginServices.ChatGui.Print("Imported!");
             }
             catch (Exception e)
             {
@@ -183,7 +184,7 @@ public class CustomizationWindow: Window, IDisposable
 
     private void EventTester()
     {
-        ImGui.Text("Event Tester (Simulates these events happening in real pvp, using your configuration settings - !!!this includes announcement frequency and delay!!!)");
+        ImGui.TextWrapped("Event Tester (Simulates these events happening in real pvp, using your configuration settings - !!!this includes announcement frequency and delay!!!)");
         var i = 1;
         foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
         {

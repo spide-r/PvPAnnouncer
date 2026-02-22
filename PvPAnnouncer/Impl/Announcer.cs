@@ -213,6 +213,11 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         foreach (var shoutcastId in eventShoutcastMapping.GetShoutcastList(pvpEvent.Id))
         {
             var sound = shoutcastRepository.GetShoutcast(shoutcastId);
+            if (sound == null)
+            {
+                PluginServices.PluginLog.Warning($"{shoutcastId} not found.");
+                continue;
+            }
             // == Objective 5 == 
             if (PluginServices.Config.WantsAllAttributes(sound.Attributes) &&
                 PluginServices.Config.WantsAttribute(sound.Shoutcaster))

@@ -20,7 +20,6 @@ namespace PvPAnnouncer.Windows;
 public partial class VoicelineCreationWindow: Window, IDisposable
 {
     
-    //todo make sure you're processing macro text correctly
     private List<string> _orphanedVoLines = [];
     private string[] _orphanedVoLineArr = [];
     private int _voLineSelector = 0;

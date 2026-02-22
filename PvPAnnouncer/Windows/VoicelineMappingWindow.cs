@@ -50,6 +50,11 @@ public class VoicelineMappingWindow: Window, IDisposable
             try
             {
                 var sc = PluginServices.ShoutcastRepository.GetShoutcast(currentShouts[currentShoutSelection]);
+                if (sc == null)
+                {
+                    PluginServices.PluginLog.Warning($"{currentShouts[currentShoutSelection]} not found");
+                    return;
+                }
                 PluginServices.Announcer.PlayForTesting(sc);
             }
             catch (ArgumentOutOfRangeException)
@@ -92,6 +97,11 @@ public class VoicelineMappingWindow: Window, IDisposable
             try
             {
                 var sc = PluginServices.ShoutcastRepository.GetShoutcast(otherShoutsList[otherShoutsSelection]);
+                if (sc == null)
+                {
+                    PluginServices.PluginLog.Warning($"{currentShouts[currentShoutSelection]} not found");
+                    return;
+                }
                 PluginServices.Announcer.PlayForTesting(sc);
             }
             catch (ArgumentOutOfRangeException)

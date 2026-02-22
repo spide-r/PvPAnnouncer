@@ -867,7 +867,8 @@
     "id": "VFWickedWeapon",
     "icon": "073287",
     "shoutcaster": "Metem",
-    "contentDirectorBattleTalkVo": "8206080"
+    "contentDirectorBattleTalkVo": "8206080",
+    "attributes": ["Vamp Fatale"]
   },
   {
     "id": "NowhereLeft",
@@ -1839,6 +1840,13 @@
     "shoutcaster": "Zenos",
     "soundPath": "sound/voice/vo_line/8201352",
     "npcYell": "5374"
+  },
+  {
+    "id": "HaveYouTheStrength",
+    "icon": "073002",
+    "shoutcaster": "Zenos",
+    "soundPath": "sound/voice/vo_line/8201353",
+    "instanceContentTextDataRow": "17313"
   },
   {
     "id": "LetThisMomentLastForever",

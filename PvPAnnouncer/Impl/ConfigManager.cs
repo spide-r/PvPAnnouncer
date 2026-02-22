@@ -16,8 +16,14 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
         foreach (var keyValuePair in pluginConfiguration.CustomShoutcasts)
         {
             var sc = keyValuePair.Value;
-            PluginServices.ShoutcastRepository.SetShoutcast(keyValuePair.Key,
-                PluginServices.JsonLoader.ConstructShoutcast(sc));
+            var scObj = PluginServices.JsonLoader.ConstructShoutcast(sc);
+            PluginServices.ShoutcastRepository.SetShoutcast(keyValuePair.Key, scObj);
+            PluginServices.CasterRepository.RegisterAttribute(scObj.Shoutcaster);
+            foreach (var scObjAttribute in scObj.Attributes)
+            {
+                PluginServices.AttributeRepository.RegisterAttribute(scObjAttribute);
+
+            }
         }
 
         foreach (var keyValuePair in pluginConfiguration.MappingOverride)

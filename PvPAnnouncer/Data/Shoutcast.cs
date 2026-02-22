@@ -79,7 +79,7 @@ public partial class Shoutcast : IShoutcast // decorator
     var transcription = Transcription.GetValueOrDefault(lang, "");
     if (!IsGendered)
     {
-      return transcription;
+      return evaluator.EvaluateMacroString(transcription).ToString();
     }
 
     var toEval = transcription;

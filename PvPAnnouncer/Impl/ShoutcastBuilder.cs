@@ -148,7 +148,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
             try
             {
                 var cutscene = dataManager.Excel.GetSheet<CutsceneText>(lang, csvName);
-                var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag));
+                var row = cutscene.FirstOrNull(r => r.MessageTag.ExtractText().Equals(tag)); //need extractText for macro string 
                 var dialogue = InternalConstants.ErrorContactDev;
                 if (row != null)
                 {
