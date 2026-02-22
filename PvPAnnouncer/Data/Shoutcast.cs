@@ -90,13 +90,13 @@ public partial class Shoutcast : IShoutcast // decorator
 
     if (fem)
     {
-      var femStr = evaluator.EvaluateMacroString(GenderRegex().Replace(toEval, "$1")).ExtractText();
+      var femStr = evaluator.EvaluateMacroString(GenderRegex().Replace(toEval, "$1")).ToString();
       PluginServices.PluginLog.Verbose($"Evaluated: {femStr}");
       return femStr;
     }
     else
     {
-      var mascStr = evaluator.EvaluateMacroString(GenderRegex().Replace(toEval, "$2")).ExtractText();
+      var mascStr = evaluator.EvaluateMacroString(GenderRegex().Replace(toEval, "$2")).ToString();
       PluginServices.PluginLog.Verbose($"Evaluated: {mascStr}");
 
       return mascStr;

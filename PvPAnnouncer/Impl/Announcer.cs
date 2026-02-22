@@ -117,7 +117,6 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
     public void SendBattleTalk(Shoutcast shoutcast)
     {
         if (PluginServices.Config.HideBattleText) return;
-
         var transcription = "";
         PluginServices.PluginLog.Verbose(shoutcast.ToString());
         if (shoutcast.GetTranscriptionWithGender(PluginServices.Config.TextLanguage,

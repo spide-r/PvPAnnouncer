@@ -19,6 +19,8 @@ namespace PvPAnnouncer.Windows;
 
 public partial class VoicelineCreationWindow: Window, IDisposable
 {
+    
+    //todo make sure you're processing macro text correctly
     private List<string> _orphanedVoLines = [];
     private string[] _orphanedVoLineArr = [];
     private int _voLineSelector = 0;
@@ -177,22 +179,20 @@ public partial class VoicelineCreationWindow: Window, IDisposable
             ShowObjectData();
         }
 
-        if (ImGui.Button("Test Current Announcement"))
+        if (ImGui.CollapsingHeader("Step 6: Save and Reset"))
         {
-            TestData();
+            if (ImGui.Button("Save and Write to config"))
+            {
+                SaveAndRegisterObject();
+            }
+            ImGuiComponents.HelpMarker("This button saves the voiceline and lets you use it in the mapping window.");
+            ImGui.Separator();
+            if (ImGui.Button("Reset To Defaults"))
+            {
+                Reset();
+            }
         }
-        ImGui.Separator(); 
-        ImGui.TextWrapped("Step 6:");
-        if (ImGui.Button("Save and Write to config"))
-        {
-            SaveAndRegisterObject();
-        }
-        ImGuiComponents.HelpMarker("This button saves the voiceline and lets you use it in the mapping window.");
-        ImGui.Separator();
-        if (ImGui.Button("Reset To Defaults"))
-        {
-            Reset();
-        }
+  
 
     }
 
@@ -359,6 +359,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 ImGui.SameLine();
             }
         }
+        if (ImGui.Button("Test Current Announcement"))
+        {
+            TestData();
+        }
         ImGui.Separator();
     }
 
@@ -406,6 +410,12 @@ public partial class VoicelineCreationWindow: Window, IDisposable
                 {
                     _inputTextBackup = inputTextBackup;
                     _displayText = inputTextBackup;
+                }
+
+                var backup = _useBackup;
+                if (ImGui.Checkbox("Use Backup Text", ref backup))
+                {
+                    _useBackup = backup;
                 }
             }
 
@@ -476,11 +486,10 @@ public partial class VoicelineCreationWindow: Window, IDisposable
 
     private List<NpcYell> PullNpcYellMemo(Language lang)
     {
-        if (_npcYellMemo.Count > 0)
+        if(_npcYellMemo.TryGetValue(lang, out var cached))
         {
-            return _npcYellMemo[lang];
+            return cached;
         }
-
         _npcYellMemo[lang] = PluginServices.DataManager.Excel.GetSheet<NpcYell>(language: lang).ToList();
         return _npcYellMemo[lang];
 

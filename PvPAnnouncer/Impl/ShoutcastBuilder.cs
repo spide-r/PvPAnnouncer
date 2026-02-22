@@ -179,7 +179,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
             {
                 var sheet = dataManager.Excel.GetSheet<NpcYell>(lang);
                 var foundEntry = sheet.TryGetRow(yell, out var row);
-                var text = foundEntry ? row.Text.ExtractText() : InternalConstants.ErrorContactDev;
+                var text = foundEntry ? row.Text.ToString() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
                 
                 PluginServices.PluginLog.Verbose($"NPCYellLang: {langStr}, Transcription: {text}");
@@ -216,7 +216,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
                         var textDataRow = talk.Text.RowId;
                         var instanceContent = dataManager.Excel.GetSheet<InstanceContentTextData>(lang);
                         var foundEntry = instanceContent.TryGetRow(textDataRow, out var ctrRow);
-                        var text = foundEntry ? ctrRow.Text.ExtractText() : InternalConstants.ErrorContactDev;
+                        var text = foundEntry ? ctrRow.Text.ToString() : InternalConstants.ErrorContactDev;
                         dict[langStr] = text;
                         PluginServices.PluginLog.Verbose($"CtrDirectorBattleTalkLang: {langStr}, Transcription: {text}, Lang: {talk.ExcelPage.Language}");
                     }
@@ -246,7 +246,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager): IShoutcastBuild
             {
                 var sheet = dataManager.Excel.GetSheet<InstanceContentTextData>(lang);
                 var foundEntry = sheet.TryGetRow(textDataRow, out var row);
-                var text = foundEntry ? row.Text.ExtractText() : InternalConstants.ErrorContactDev;
+                var text = foundEntry ? row.Text.ToString() : InternalConstants.ErrorContactDev;
                 dict[langStr] = text;
                 PluginServices.PluginLog.Verbose($"GetInstanceContentTextDataAllLang: {langStr}, Transcription: {text}");
 
