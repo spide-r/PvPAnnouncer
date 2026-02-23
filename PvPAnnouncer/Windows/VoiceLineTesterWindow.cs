@@ -35,8 +35,6 @@ public class VoiceLineTesterWindow : Window, IDisposable
 
     public override void Draw()
     {
-        ImGui.Text("How did we get here?");
-        ImGui.Separator();
 
         if (ImGui.BeginCombo("Announcer Filter", toFilter[_filterIndex]))
         {

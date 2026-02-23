@@ -44,7 +44,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
 
     private uint _iconId = 0;
     private string _name = "Announcer Name";
-    private string _eventId = "UniqueEventId";
+    private string _eventId = "UniqueAnnouncementId";
     private bool _useIcon = false;
     private uint _npcyell = 0;
     private uint _instanceContentTextDataRow = 0;
@@ -253,7 +253,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             ImGui.SameLine();
         }
 
-        ImGuiComponents.HelpMarker("I don't know why, but the game labels shoutcast styles this way.");
+        ImGui.TextWrapped("Style 0 is for dialogue, Style 6 is the default linkshell/announcement box, Style 7 is black and rounded, and Style 11 is a blue and sleek"); 
         ImGui.NewLine();
     }
 
@@ -316,7 +316,12 @@ public partial class VoicelineCreationWindow : Window, IDisposable
 
     private void ShowObjectData()
     {
-        ImGui.Text("Object Data:");
+        if (ImGui.Button("Test Current Announcement"))
+        {
+            TestData();
+        }
+        
+        ImGui.Text("Debug Data:");
         ImGui.Separator();
         if (!_name.Equals(""))
         {
@@ -360,11 +365,6 @@ public partial class VoicelineCreationWindow : Window, IDisposable
                 ImGui.Text(property + ", ");
                 ImGui.SameLine();
             }
-        }
-
-        if (ImGui.Button("Test Current Announcement"))
-        {
-            TestData();
         }
 
         ImGui.Separator();
@@ -416,12 +416,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
                 {
                     _inputTextBackup = inputTextBackup;
                     _displayText = inputTextBackup;
-                }
-
-                var backup = _useBackup;
-                if (ImGui.Checkbox("Use Backup Text", ref backup))
-                {
-                    _useBackup = backup;
+                    _useBackup = !_inputTextBackup.Equals("");
                 }
             }
         }
@@ -906,6 +901,14 @@ public partial class VoicelineCreationWindow : Window, IDisposable
         var icon = _iconId;
         uint min = 73001;
         uint max = 73287;
+        var useIcon = _useIcon;
+        if (ImGui.Checkbox("Use Icon", ref useIcon))
+        {
+            _useIcon = useIcon;
+        }
+
+        ImGuiComponents.HelpMarker("Be sure to check this box if you wish for the icon to be used.");
+        ImGui.NewLine();
         ImGui.Text("Icon: ");
         if (ImGui.SliderUInt("###AnnouncerIcon", ref icon, min, max, default, ImGuiSliderFlags.AlwaysClamp))
         {
@@ -948,15 +951,8 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             ImGui.Text("Issue rendering icon!");
         }
 
-        var useIcon = _useIcon;
-        ImGui.NewLine();
-        if (ImGui.Checkbox("Use Icon", ref useIcon))
-        {
-            _useIcon = useIcon;
-        }
-
-        ImGuiComponents.HelpMarker("Be sure to check this box if you wish for the icon to be used.");
-        ImGui.NewLine();
+    
+       
         ShowStyleSelector();
     }
 

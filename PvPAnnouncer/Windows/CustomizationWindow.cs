@@ -189,8 +189,9 @@ public class CustomizationWindow : Window, IDisposable
 
     private void EventTester()
     {
+        ImGui.Text("Event Tester");
         ImGui.TextWrapped(
-            "Event Tester (Simulates these events happening in real pvp, using your configuration settings - !!!this includes announcement frequency and delay!!!)");
+            "This Simulates these events happening in real pvp, using your configuration settings including announcement frequency and delay. If delay is long or frequency is low, you may not hear voice lines when activating these buttons.");
         var i = 1;
         foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
         {

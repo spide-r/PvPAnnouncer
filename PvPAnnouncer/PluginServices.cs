@@ -73,6 +73,9 @@ internal class PluginServices
     internal static VoicelineCreationWindow VoicelineCreationWindow { get; private set; }
     internal static VoicelineMappingWindow VoicelineMappingWindow { get; private set; }
     internal static CustomizationWindow CustomizationWindow { get; private set; }
+    internal static ConfigWindow ConfigWindow { get;  private set; }
+    internal static MainWindow MainWindow { get; private set; }
+    internal static DevWindow DevWindow { get; private set; }
     internal static ConfigManager ConfigManager { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window)
@@ -101,6 +104,14 @@ internal class PluginServices
         VoicelineCreationWindow = new VoicelineCreationWindow();
         VoicelineMappingWindow = new VoicelineMappingWindow();
         CustomizationWindow = new CustomizationWindow();
+        ConfigWindow = new ConfigWindow(ShoutcastRepository, Config,
+            EventShoutcastMapping, CasterRepository,
+            AttributeRepository);
+        MainWindow = new MainWindow();
+        DevWindow = new DevWindow();
+        window.AddWindow(ConfigWindow);
+        window.AddWindow(MainWindow);
+        window.AddWindow(DevWindow);
         window.AddWindow(VoiceLineTesterWindow);
         window.AddWindow(VoicelineCreationWindow);
         window.AddWindow(VoicelineMappingWindow);

@@ -140,7 +140,7 @@ public class ConfigWindow : Window, IDisposable
             }
         }
 
-        if (ImGui.Checkbox("Disabled", ref disabled))
+        if (ImGui.Checkbox("Disable Plugin", ref disabled))
         {
             _configuration.Disabled = disabled;
             _configuration.Save();
@@ -182,7 +182,7 @@ public class ConfigWindow : Window, IDisposable
 
         ImGui.Separator();
 
-        ImGui.TextWrapped("Use Voice Lines mentioning: ");
+        ImGui.TextWrapped("Use Voice Lines with the following attributes: ");
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(
             "These two values allow announcers to use voice lines usually reserved for specific people. For example, \nMetem may say \"The Honey B. Lovely show has begun!\" if Honey B. Lovely is enabled.");
@@ -256,7 +256,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Unindent();
 
 
-        ImGui.TextWrapped("Minimum unique voice lines to play before a repeat is allowed.");
+        ImGui.TextWrapped("Minimum unique voice lines to play before a repeated one may be played.");
         ImGui.Indent();
         if (ImGui.SliderInt("##SliderVoicelines", ref repeatVoiceLine, 1, 25))
         {
@@ -267,7 +267,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Unindent();
 
 
-        ImGui.TextWrapped("Minimum number of events to announce before a repeat is allowed.");
+        ImGui.TextWrapped("Minimum number of events to announce before a repeated one is allowed to come up.");
         ImGui.Indent();
         if (ImGui.SliderInt("###SliderEvents", ref repeatEventCommentary, 1, 10))
         {

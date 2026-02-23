@@ -32,8 +32,13 @@ public class MainWindow : Window, IDisposable
             ImGui.Separator();
         }
 
+        if (ImGui.Button("Open Plugin Configuration"))
+        {
+            PluginServices.ConfigWindow.Toggle();
+        }
+
         ImGui.TextWrapped(
-            "Welcome to PvP Announcer! This plugin will take Metem from the Arcadion and put him into your PvP match! " +
+            "Welcome to PvP Announcer! This plugin will take many NPC's and put them into your PvP match! " +
             "\nPlease contact .spider in the Dalamud Discord for feedback/suggestions!" +
             "\nView the config with /pvpannouncer");
         ImGui.Spacing();

@@ -17,23 +17,11 @@ namespace PvPAnnouncer
     public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");
-        private ConfigWindow ConfigWindow { get; init; }
-        private MainWindow MainWindow { get; init; }
-        private DevWindow DevWindow { get; init; }
-
-
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
             PluginServices.Initialize(pluginInterface, WindowSystem);
             LoadCommands();
-            ConfigWindow = new ConfigWindow(PluginServices.ShoutcastRepository, PluginServices.Config,
-                PluginServices.EventShoutcastMapping, PluginServices.CasterRepository,
-                PluginServices.AttributeRepository);
-            MainWindow = new MainWindow();
-            DevWindow = new DevWindow();
-            WindowSystem.AddWindow(ConfigWindow);
-            WindowSystem.AddWindow(MainWindow);
-            WindowSystem.AddWindow(DevWindow);
+       
             pluginInterface.UiBuilder.Draw += DrawUi;
             pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
@@ -84,15 +72,15 @@ namespace PvPAnnouncer
         private void ToggleConfigWindow()
         {
 #if DEBUG
-            DevWindow.Toggle();
+            PluginServices.DevWindow.Toggle();
 #endif
-            ConfigWindow.Toggle();
+            PluginServices.ConfigWindow.Toggle();
         }
 
         private void ToggleMainUI()
         {
             PluginUpdateMessage();
-            MainWindow.Toggle();
+            PluginServices.MainWindow.Toggle();
         }
 
         private void LoadCommands()
