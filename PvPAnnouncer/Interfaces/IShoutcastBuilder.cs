@@ -23,4 +23,5 @@ public interface IShoutcastBuilder
     public IShoutcastBuilder WithNpcYell(uint npcYell);
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow);
     public IShoutcastBuilder WithGendered(bool gendered);
+    public Shoutcast GetShoutcastMidConstruction();
 }

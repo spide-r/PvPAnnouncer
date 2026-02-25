@@ -328,6 +328,11 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
         return this;
     }
 
+    public Shoutcast GetShoutcastMidConstruction()
+    {
+        return _instance;
+    }
+
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow)
     {
         _instance.InstanceContentTextDataRow = instanceContentTextDataRow;
