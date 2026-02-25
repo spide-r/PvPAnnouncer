@@ -57,6 +57,8 @@ public partial class VoicelineCreationWindow : Window, IDisposable
     private string _attributeToAdd = "";
     private bool _autoFilled = false;
     private bool _useBackup = false;
+    
+    //todo close button for every popup
 
     private void Reset()
     {
@@ -378,7 +380,8 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             "If audio from Cutscene Line or Battle Talk was selected, this will be filled in automatically.");
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var contentDir = sheet.Flatten().FirstOrNull(bt => bt.Unknown1 == _voLine);
-        if (_displayText.Equals(""))
+        if (_displayText.Equals("")) //todo you rely on this to pull voiceline data but also fill it in when using the backup and thats BAD!!
+                                     //this is bodged in the next if statement but you really do gotta extract logic out of display - look at MVC
         {
             if (_voLine != 0 && contentDir != null)
             {
@@ -391,22 +394,26 @@ public partial class VoicelineCreationWindow : Window, IDisposable
         }
         else
         {
-            if (ImGui.Button("Instance Text Data Selector"))
+            if (!_useBackup) // havent used backup
             {
-                ImGui.OpenPopup("ICTDPop");
+                
+                if (ImGui.Button("Instance Text Data Selector"))
+                {
+                    ImGui.OpenPopup("ICTDPop");
+                }
+
+                ImGuiComponents.HelpMarker("This selects from most instance battle text.");
+                InstanceContentTextDataPopup();
+
+
+                if (ImGui.Button("NPC Yell Data Selector"))
+                {
+                    ImGui.OpenPopup("NPCPop");
+                }
+
+                ImGuiComponents.HelpMarker("Trust/Regular NPC Speech Bubbles");
+                ShowNpcYellSelectionPopup();
             }
-
-            ImGuiComponents.HelpMarker("This selects from most instance battle text.");
-            InstanceContentTextDataPopup();
-
-
-            if (ImGui.Button("NPC Yell Data Selector"))
-            {
-                ImGui.OpenPopup("NPCPop");
-            }
-
-            ImGuiComponents.HelpMarker("Trust/Regular NPC Speech Bubbles");
-            ShowNpcYellSelectionPopup();
             if (ImGui.CollapsingHeader("I can't find the text in either of the above places!"))
             {
                 var inputTextBackup = _inputTextBackup;
@@ -415,8 +422,8 @@ public partial class VoicelineCreationWindow : Window, IDisposable
                 if (ImGui.InputText("###InputBackup", ref inputTextBackup, 255))
                 {
                     _inputTextBackup = inputTextBackup;
-                    _displayText = inputTextBackup;
-                    _useBackup = !_inputTextBackup.Equals("");
+                    _displayText = inputTextBackup.Trim();
+                    _useBackup = !_inputTextBackup.Trim().Equals("");
                 }
             }
         }
