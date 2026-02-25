@@ -14,6 +14,7 @@ using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
 using PvPAnnouncer.Data;
+using PvPAnnouncer.Impl;
 
 namespace PvPAnnouncer.Windows;
 
@@ -102,7 +103,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
 
     private Shoutcast BuildShoutcast()
     {
-        var b = PluginServices.ShoutcastBuilder
+        var b = new ShoutcastBuilder(PluginServices.DataManager)
             .WithId(_eventId)
             .WithShoutcaster(_name)
             .WithDuration((byte) _duration)

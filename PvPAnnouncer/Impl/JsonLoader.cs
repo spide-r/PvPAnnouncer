@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.PvPEvents;
@@ -14,7 +15,7 @@ using PvPAnnouncer.Interfaces;
 namespace PvPAnnouncer.Impl;
 
 public class JsonLoader(
-    IShoutcastBuilder builder,
+    IDataManager dataManager,
     IStringRepository attributeRepository,
     IStringRepository casterRepository,
     IPvPEventBroker pvPEventBroker,
@@ -178,6 +179,7 @@ public class JsonLoader(
 
     public Shoutcast ConstructShoutcast(string json)
     {
+        ShoutcastBuilder builder = new ShoutcastBuilder(dataManager);
         var j = JsonNode.Parse(json);
         if (j == null)
         {

@@ -64,7 +64,6 @@ internal class PluginServices
     internal static IPlayerStateTracker PlayerStateTracker { get; private set; }
     internal static IEventShoutcastMapping EventShoutcastMapping { get; private set; }
     internal static IShoutcastRepository ShoutcastRepository { get; private set; }
-    internal static IShoutcastBuilder ShoutcastBuilder { get; private set; }
     internal static IJsonLoader JsonLoader { get; private set; }
     internal static IStringRepository AttributeRepository { get; private set; }
     internal static IStringRepository CasterRepository { get; private set; }
@@ -90,11 +89,10 @@ internal class PluginServices
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
 
         EventShoutcastMapping = new EventShoutcastMapping();
-        ShoutcastBuilder = new ShoutcastBuilder(DataManager);
         ShoutcastRepository = new ShoutcastRepository();
         AttributeRepository = new StringRepository();
         CasterRepository = new StringRepository();
-        JsonLoader = new JsonLoader(ShoutcastBuilder, AttributeRepository, CasterRepository, PvPEventBroker,
+        JsonLoader = new JsonLoader(DataManager, AttributeRepository, CasterRepository, PvPEventBroker,
             ShoutcastRepository, EventShoutcastMapping);
         JsonLoader.LoadAllValuesIntoMemory();
         ConfigManager = new ConfigManager(Config, JsonLoader);

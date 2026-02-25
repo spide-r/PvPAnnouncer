@@ -132,7 +132,7 @@ public class ConfigWindow : Window, IDisposable
                 {
                     ["en"] = "You don't have any announcers selected!"
                 };
-                var s = PluginServices.ShoutcastBuilder.WithSoundPath(InternalConstants.DefaultSoundPath)
+                var s = new ShoutcastBuilder(PluginServices.DataManager).WithSoundPath(InternalConstants.DefaultSoundPath)
                     .WithId("OopsAnnouncerDev").WithShoutcaster(InternalConstants.PvPAnnouncerDevName)
                     .WithIcon(InternalConstants.PvPAnnouncerDevIcon)
                     .WithTranscription(dict).Build();
