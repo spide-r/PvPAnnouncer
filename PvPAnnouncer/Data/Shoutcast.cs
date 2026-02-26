@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Dalamud.Game;
-using Dalamud.Game.Text.Evaluator;
 using Dalamud.Plugin.Services;
-using Lumina.Excel.Sheets;
-using Lumina.Text;
-using Lumina.Text.Parse;
-using Lumina.Text.ReadOnly;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Data;
@@ -128,7 +121,7 @@ public partial class Shoutcast : IShoutcast // decorator
         var tr = Transcription.Aggregate("",
             (current, attribute) => current + attribute.Key + ":" + attribute.Value + " | ");
         return
-            $"iD: {this.Id}, icon: {Icon}, Duration: {Duration}, Style: {Style}, Shoutcaster: {Shoutcaster}, attributes: {at}, transcription: {tr}, " +
+            $"iD: {Id}, icon: {Icon}, Duration: {Duration}, Style: {Style}, Shoutcaster: {Shoutcaster}, attributes: {at}, transcription: {tr}, " +
             $"SoundPath: {SoundPath}, CutsceneLine: {CutsceneLine},  ContentDirectorBattleTalkVo: {ContentDirectorBattleTalkVo}, NPCYell: {NpcYell}, InstanceContentTextDataRow: {InstanceContentTextDataRow}";
     }
 }

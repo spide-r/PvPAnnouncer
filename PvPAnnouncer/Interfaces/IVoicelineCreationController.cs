@@ -18,5 +18,6 @@ public interface IVoicelineCreationController
     void SetAttributes(List<string> attributes);
     void TestCreation();
     void SaveToConfig();
-
+    void ResetToCharacterDefaults();
+    void ResetToDefaults();
 }
