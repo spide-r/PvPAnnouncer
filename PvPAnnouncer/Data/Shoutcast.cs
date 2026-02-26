@@ -6,27 +6,41 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Data;
 
-public partial class Shoutcast : IShoutcast // decorator
+public partial class Shoutcast(
+    string id,
+    uint icon,
+    Dictionary<string, string> transcription,
+    byte duration,
+    byte style,
+    string shoutcaster,
+    List<string> attributes,
+    string soundPath,
+    string cutsceneLine,
+    uint contentDirectorBattleTalkVo,
+    uint npcYell,
+    uint instanceContentTextDataRow,
+    bool isGendered)
+    : IShoutcast
 {
-    public uint Icon { get; set; }
+    public uint Icon { get; set; } = icon;
 
-    public string Shoutcaster { get; set; }
+    public string Shoutcaster { get; set; } = shoutcaster;
 
-    public byte Duration { get; set; }
-    public byte Style { get; set; }
-    public Dictionary<string, string> Transcription { get; set; }
-    public string Id { get; set; }
-    public List<string> Attributes { get; set; }
-    public string SoundPath { get; set; }
-    public string CutsceneLine { get; set; }
+    public byte Duration { get; set; } = duration;
+    public byte Style { get; set; } = style;
+    public Dictionary<string, string> Transcription { get; set; } = transcription;
+    public string Id { get; set; } = id;
+    public List<string> Attributes { get; set; } = attributes;
+    public string SoundPath { get; set; } = soundPath;
+    public string CutsceneLine { get; set; } = cutsceneLine;
 
-    public uint ContentDirectorBattleTalkVo { get; set; }
+    public uint ContentDirectorBattleTalkVo { get; set; } = contentDirectorBattleTalkVo;
 
-    public uint NpcYell { get; set; }
+    public uint NpcYell { get; set; } = npcYell;
 
-    public uint InstanceContentTextDataRow { get; set; }
+    public uint InstanceContentTextDataRow { get; set; } = instanceContentTextDataRow;
 
-    public bool IsGendered { get; set; }
+    public bool IsGendered { get; set; } = isGendered;
 
     /*
         name: ContentDirectorBattleTalk
@@ -40,24 +54,6 @@ public partial class Shoutcast : IShoutcast // decorator
           - name: Unknown4 -> BattleTalkStyle
 
        */
-
-    public Shoutcast(string id, uint icon, Dictionary<string, string> transcription, byte duration, byte style,
-        string shoutcaster, List<string> attributes, string soundPath, string cutsceneLine,
-        uint contentDirectorBattleTalkVo, uint npcYell, uint instanceContentTextDataRow, bool isGendered)
-    {
-        Id = id;
-        Icon = icon;
-        Transcription = transcription;
-        Duration = duration;
-        Style = style;
-        Shoutcaster = shoutcaster;
-        Attributes = attributes;
-        SoundPath = soundPath;
-        CutsceneLine = cutsceneLine;
-        ContentDirectorBattleTalkVo = contentDirectorBattleTalkVo;
-        NpcYell = npcYell;
-        InstanceContentTextDataRow = instanceContentTextDataRow;
-    }
 
     public string GetShoutcastSoundPathWithLang(string lang)
     {
