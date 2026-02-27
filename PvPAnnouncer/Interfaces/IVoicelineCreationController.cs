@@ -12,10 +12,11 @@ public interface IVoicelineCreationController
     void SelectAnnouncementId(string announcementId);
     void SelectIcon(uint icon);
     void SelectName(string name);
-    void SelectStyle(uint style);
-    void SetDuration(uint duration);
+    void SelectStyle(byte style);
+    void SetDuration(byte duration);
     void SetManualTranscription(string lang, string transcription);
     void SetAttributes(List<string> attributes);
+    void AddAttribute(string attribute);
     void TestCreation();
     void SaveToConfig();
     void ResetToCharacterDefaults();
