@@ -464,6 +464,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
 
     private readonly Dictionary<string, string> _cSLineTagDict = []; // me when memoization
 
+    [Obsolete]
     private string GetCsLineWithTag(string tag)
     {
         if (_cSLineTagDict.TryGetValue(tag, out var value))
@@ -616,6 +617,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
         }
     }
 
+    [Obsolete]
     private void LoadAllCutsceneLines()
     {
         PluginServices.PluginLog.Verbose("Started Loading all Cutscene Lines! ");
@@ -631,6 +633,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
 
     private List<ContentDirectorBattleTalk> _ctrList = [];
 
+    [Obsolete]
     private List<ContentDirectorBattleTalk> PullCTRMemo()
     {
         if (_ctrList.Count > 0)
@@ -867,6 +870,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
                PluginServices.Config.Language + ".scd";
     }
 
+    [Obsolete]
     private void LoadAllOrphanedLines()
     {
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();

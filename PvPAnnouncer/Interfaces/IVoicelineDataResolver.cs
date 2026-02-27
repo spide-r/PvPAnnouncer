@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Lumina.Excel.Sheets;
 
 namespace PvPAnnouncer.Interfaces;
 
@@ -9,7 +10,7 @@ public interface IVoicelineDataResolver
     List<string> GetOrphanedLines();
     Dictionary<string, List<string>> GetCutsceneLineTags();
     string ResolveCutsceneLineWithTag(string tag);
-    uint ResolveBattleTalkWithVo(uint voline);
     string ResolveTextWithNpcYell(uint npcYell);
     string? ResolveTextWithIctdRow(uint row);
+    List<ContentDirectorBattleTalk> GetCdbtList();
 }
