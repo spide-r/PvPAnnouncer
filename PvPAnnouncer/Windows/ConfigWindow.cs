@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Game.Text;
-using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Configuration;
 using Dalamud.Game;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.ImGuiNotification;
-using Dalamud.Interface.Utility;
+using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using Lumina.Data;
-using PvPAnnouncer;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
-using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Windows;
 
@@ -112,7 +107,7 @@ public class ConfigWindow : Window, IDisposable
             if (bt.Length != 0) // no announcers selected
             {
                 var e = bt[Random.Shared.Next(bt.Length)];
-                PluginServices.Announcer.PlayForTesting(e);
+                PluginServices.Announcer.PlayAndSendBattleTalkForTesting(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Shoutcaster}", InternalConstants.MessageTag);
 
                 if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
@@ -132,10 +127,11 @@ public class ConfigWindow : Window, IDisposable
                 {
                     ["en"] = "You don't have any announcers selected!"
                 };
-                var s = new ShoutcastBuilder(PluginServices.DataManager).WithSoundPath(InternalConstants.DefaultSoundPath)
+                var s = new ShoutcastBuilder(PluginServices.DataManager)
+                    .WithSoundPath(InternalConstants.DefaultSoundPath)
                     .WithId("OopsAnnouncerDev").WithShoutcaster(InternalConstants.PvPAnnouncerDevName)
                     .WithIcon(InternalConstants.PvPAnnouncerDevIcon)
-                    .WithTranscription(dict).Build();
+                    .WithTranscription(dict).BuildAndRefreshProperties();
                 PluginServices.Announcer.SendBattleTalk(s);
             }
         }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text.Json.Nodes;
-using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Windowing;
 
 namespace PvPAnnouncer.Windows;
 
@@ -59,7 +59,7 @@ public class VoicelineMappingWindow : Window, IDisposable
                     return;
                 }
 
-                PluginServices.Announcer.PlayForTesting(sc);
+                PluginServices.Announcer.PlayAndSendBattleTalkForTesting(sc);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -109,7 +109,7 @@ public class VoicelineMappingWindow : Window, IDisposable
                     return;
                 }
 
-                PluginServices.Announcer.PlayForTesting(sc);
+                PluginServices.Announcer.PlayAndSendBattleTalkForTesting(sc);
             }
             catch (ArgumentOutOfRangeException)
             {

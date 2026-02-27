@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Plugin.Services;
-using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
@@ -183,7 +181,7 @@ public class JsonLoader(
         var j = JsonNode.Parse(json);
         if (j == null)
         {
-            return builder.Build();
+            return builder.BuildAndRefreshProperties();
         }
 
         if (j["id"] != null)
@@ -250,7 +248,7 @@ public class JsonLoader(
                 Convert.ToUInt32(j["instanceContentTextDataRow"]!.GetValue<string>()));
         }
 
-        return builder.Build();
+        return builder.BuildAndRefreshProperties();
     }
 
     public JsonObject BuildJsonShout(Shoutcast s)

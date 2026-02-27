@@ -58,7 +58,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
     private string _attributeToAdd = "";
     private bool _autoFilled = false;
     private bool _useBackup = false;
-    
+
     //todo close button for every popup
 
     private void Reset()
@@ -98,7 +98,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
     private void TestData()
     {
         var sc = BuildShoutcast();
-        PluginServices.Announcer.PlayForTesting(sc);
+        PluginServices.Announcer.PlayAndSendBattleTalkForTesting(sc);
     }
 
     private Shoutcast BuildShoutcast()
@@ -124,7 +124,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             b.WithTranscription(new Dictionary<string, string> {[cfgLang] = _displayText});
         }
 
-        var sc = b.Build();
+        var sc = b.BuildAndRefreshProperties();
         return sc;
     }
 
@@ -256,7 +256,8 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             ImGui.SameLine();
         }
 
-        ImGui.TextWrapped("Style 0 is for dialogue, Style 6 is the default linkshell/announcement box, Style 7 is black and rounded, and Style 11 is a blue and sleek"); 
+        ImGui.TextWrapped(
+            "Style 0 is for dialogue, Style 6 is the default linkshell/announcement box, Style 7 is black and rounded, and Style 11 is a blue and sleek");
         ImGui.NewLine();
     }
 
@@ -323,7 +324,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
         {
             TestData();
         }
-        
+
         ImGui.Text("Debug Data:");
         ImGui.Separator();
         if (!_name.Equals(""))
@@ -381,8 +382,9 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             "If audio from Cutscene Line or Battle Talk was selected, this will be filled in automatically.");
         var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var contentDir = sheet.Flatten().FirstOrNull(bt => bt.Unknown1 == _voLine);
-        if (_displayText.Equals("")) //todo you rely on this to pull voiceline data but also fill it in when using the backup and thats BAD!!
-                                     //this is bodged in the next if statement but you really do gotta extract logic out of display - look at MVC
+        if (_displayText
+            .Equals("")) //todo you rely on this to pull voiceline data but also fill it in when using the backup and thats BAD!!
+            //this is bodged in the next if statement but you really do gotta extract logic out of display - look at MVC
         {
             if (_voLine != 0 && contentDir != null)
             {
@@ -397,7 +399,6 @@ public partial class VoicelineCreationWindow : Window, IDisposable
         {
             if (!_useBackup) // havent used backup
             {
-                
                 if (ImGui.Button("Instance Text Data Selector"))
                 {
                     ImGui.OpenPopup("ICTDPop");
@@ -415,6 +416,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
                 ImGuiComponents.HelpMarker("Trust/Regular NPC Speech Bubbles");
                 ShowNpcYellSelectionPopup();
             }
+
             if (ImGui.CollapsingHeader("I can't find the text in either of the above places!"))
             {
                 var inputTextBackup = _inputTextBackup;
@@ -959,8 +961,7 @@ public partial class VoicelineCreationWindow : Window, IDisposable
             ImGui.Text("Issue rendering icon!");
         }
 
-    
-       
+
         ShowStyleSelector();
     }
 

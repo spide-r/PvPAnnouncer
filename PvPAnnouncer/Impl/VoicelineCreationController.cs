@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Dalamud.Plugin.Services;
+using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
@@ -80,21 +80,32 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
 
     public void TestCreation()
     {
-        throw new NotImplementedException();
+        var sc = _shoutcastBuilder.BuildAndPreserveProperties();
+        PluginServices.Announcer.PlayAndSendBattleTalkForTesting(sc);
     }
 
-    public void SaveToConfig()
+    public void SaveToConfigAndRegister(Shoutcast sc)
     {
-        throw new NotImplementedException();
+        var json = PluginServices.JsonLoader.BuildJsonShout(sc);
+        PluginServices.Config.AddCustomShoutCast(sc.Id, json.ToJsonString());
+        PluginServices.Config.Save();
+        PluginServices.ShoutcastRepository.SetShoutcast(sc.Id, sc);
+        PluginServices.CasterRepository.RegisterAttribute(sc.Shoutcaster);
+        foreach (var scAttribute in sc.Attributes) PluginServices.AttributeRepository.RegisterAttribute(scAttribute);
+
+        PluginServices.PluginLog.Verbose("Saved Json: " + json);
+        PluginServices.ChatGui.Print($"Saved Shoutcast from {sc.Shoutcaster} with ID {sc.Id}");
     }
 
-    public void ResetToCharacterDefaults()
+    public Shoutcast BuildAndResetToCharacterDefaults()
     {
-        throw new NotImplementedException();
+        var sc = _shoutcastBuilder.BuildAndPreserveCharacter();
+        return sc;
     }
 
-    public void ResetToDefaults()
+    public Shoutcast BuildAndResetToDefaults()
     {
-        throw new NotImplementedException();
+        var sc = _shoutcastBuilder.BuildAndRefreshProperties();
+        return sc;
     }
 }

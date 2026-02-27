@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Interfaces;
 
@@ -18,7 +19,7 @@ public interface IVoicelineCreationController
     void SetAttributes(List<string> attributes);
     void AddAttribute(string attribute);
     void TestCreation();
-    void SaveToConfig();
-    void ResetToCharacterDefaults();
-    void ResetToDefaults();
+    void SaveToConfigAndRegister(Shoutcast sc);
+    Shoutcast BuildAndResetToCharacterDefaults();
+    Shoutcast BuildAndResetToDefaults();
 }

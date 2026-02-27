@@ -32,7 +32,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         _lastEvents.Clear();
     }
 
-    public void PlayForTesting(Shoutcast shoutcast)
+    public void PlayAndSendBattleTalkForTesting(Shoutcast shoutcast)
     {
         var p = shoutcast.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language,
             PluginServices.Config.WantsAttribute("Feminine Pronouns"));

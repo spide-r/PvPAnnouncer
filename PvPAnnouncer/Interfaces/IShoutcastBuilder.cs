@@ -9,7 +9,9 @@ public interface IShoutcastBuilder
     //instead of Text, we use transcription
     //name is assumed to be how customization for announcer is filtered
     //personalization is for fem/masc pronouns, if certain competitors can be mentioned, etc 
-    Shoutcast Build();
+    Shoutcast BuildAndRefreshProperties();
+    Shoutcast BuildAndPreserveProperties();
+    Shoutcast BuildAndPreserveCharacter();
     public IShoutcastBuilder WithId(string id);
     public IShoutcastBuilder WithIcon(uint icon);
     public IShoutcastBuilder WithTranscription(Dictionary<string, string> transcription);

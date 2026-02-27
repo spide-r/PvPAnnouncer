@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Interfaces;
@@ -11,5 +10,5 @@ public interface IAnnouncer
     void PlaySound(string sound);
     void SendBattleTalk(Shoutcast shoutcast);
     void ClearQueue();
-    void PlayForTesting(Shoutcast shoutcast);
+    void PlayAndSendBattleTalkForTesting(Shoutcast shoutcast);
 }

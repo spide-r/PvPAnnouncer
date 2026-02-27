@@ -17,10 +17,18 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
     private Shoutcast _instance = NewShoutcast();
 
 
-    public Shoutcast Build()
+    public Shoutcast BuildAndRefreshProperties()
+    {
+        var result = BuildAndPreserveProperties();
+        PluginServices.PluginLog.Verbose($"Replacing {result.Id}");
+        _instance = NewShoutcast();
+        return result;
+    }
+
+    public Shoutcast BuildAndPreserveProperties()
     {
         var result = _instance;
-        PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id}");
+        PluginServices.PluginLog.Verbose($"Building shoutcast {result.Id} and preserving properties");
 
 
         /*
@@ -54,10 +62,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
 
                 var t = sheet.SelectMany(row => row)
                     .FirstOrDefault(bt => bt.Unknown1 == result.ContentDirectorBattleTalkVo);
-                if (t.Unknown0 != 0)
-                {
-                    result.Icon = t.Unknown0;
-                }
+                if (t.Unknown0 != 0) result.Icon = t.Unknown0;
 
                 result.Style = t.Unknown4;
                 result.Duration = t.Unknown3;
@@ -102,9 +107,6 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
             }
         }
 
-        _instance = NewShoutcast();
-
-
         //validation order:
         //name, text, soundpath
 
@@ -121,18 +123,22 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
         }
 
         if (result.SoundPath.Equals(""))
-        {
             PluginServices.PluginLog.Error(
                 $"Empty sound path for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
-        }
 
         if (!dataManager.FileExists(result.GetShoutcastSoundPathWithLang("ja")))
-        {
             PluginServices.PluginLog.Error(
                 $"No valid sound path found for shoutcast {result.Id}: {result.GetShoutcastSoundPathWithLang("ja")}");
-        }
 
         return result;
+    }
+
+    public Shoutcast BuildAndPreserveCharacter()
+    {
+        var sc = BuildAndRefreshProperties();
+        _instance.Shoutcaster = sc.Shoutcaster;
+        _instance.Icon = sc.Icon;
+        return sc;
     }
 
     private Dictionary<string, string> GetCutsceneLineAllLang(string tag)
