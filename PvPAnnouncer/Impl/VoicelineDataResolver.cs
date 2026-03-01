@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Dalamud.Plugin.Services;
 using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
@@ -17,20 +18,19 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
     private string[] _orphanedVoLineArr = [];
     private Dictionary<string, List<string>> _cutsceneLines = new();
     private List<ContentDirectorBattleTalk> _ctrList = [];
-    private readonly Dictionary<Language, ExcelSheet<NpcYell>> _npcYellMemo = [];
+    private readonly Dictionary<Language, List<NpcYell>> _npcYellMemo = [];
     private readonly Dictionary<string, string> _cSLineTagDict = []; // me when memoization
     private readonly Dictionary<Language, ExcelSheet<InstanceContentTextData>> _instanceContentTextData = new();
 
-
-    public VoicelineDataResolver()
+    public VoicelineDataResolver(IDataManager dataManager, IJsonLoader jsonLoader)
     {
-        InitCutsceneLines();
-        InitOrphanedLines();
+        InitCutsceneLines(jsonLoader);
+        InitOrphanedLines(dataManager);
     }
 
-    public void InitOrphanedLines()
+    public void InitOrphanedLines(IDataManager dataManager)
     {
-        var sheet = PluginServices.DataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
+        var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
         var allUints = sheet.Flatten().Select(k => k.Unknown1).ToHashSet();
         PluginServices.PluginLog.Verbose("Starting to load all orphaned lines!");
         Task.Run(() =>
@@ -39,7 +39,7 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
             for (uint j = 0; j < 9999999; j++)
             {
                 var voLine = $"sound/voice/vo_line/{j}_en.scd";
-                if (!PluginServices.DataManager.FileExists(voLine)) continue;
+                if (!dataManager.FileExists(voLine)) continue;
 
                 if (!allUints.Contains(j))
                     // if the VO Line does not exist in sheet, its orphaned so we need to add data ourselves
@@ -55,11 +55,11 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
         });
     }
 
-    public void InitCutsceneLines()
+    public void InitCutsceneLines(IJsonLoader jsonLoader)
     {
         PluginServices.PluginLog.Verbose("Started Loading all Cutscene Lines! ");
         //todo make a program that scans through lumina to create this
-        _cutsceneLines = PluginServices.JsonLoader.LoadCutsceneLines();
+        _cutsceneLines = jsonLoader.LoadCutsceneLines();
         PluginServices.PluginLog.Verbose("Finished Loading all Cutscene Lines!");
     }
 
@@ -99,17 +99,15 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
     public string ResolveTextWithNpcYell(uint npcYell)
     {
         var lang = LanguageUtil.LanguageMap.First(p => p.Value.Equals(PluginServices.Config.Language)).Key;
-        var y = PullNpcYellMemo(lang);
-        if (y.TryGetRow(npcYell, out var row)) return row.Text.ToString();
-
-        return InternalConstants.ErrorContactDev;
+        var y = PluginServices.DataManager.Excel.GetSheet<NpcYell>(lang);
+        return y.TryGetRow(npcYell, out var row) ? row.Text.ToString() : InternalConstants.ErrorContactDev;
     }
 
-    private ExcelSheet<NpcYell> PullNpcYellMemo(Language lang)
+    public List<NpcYell> GetNpcYellList(Language lang)
     {
         if (_npcYellMemo.TryGetValue(lang, out var cached)) return cached;
 
-        _npcYellMemo[lang] = PluginServices.DataManager.Excel.GetSheet<NpcYell>(lang);
+        _npcYellMemo[lang] = PluginServices.DataManager.Excel.GetSheet<NpcYell>(lang).ToList();
         return _npcYellMemo[lang];
     }
 
@@ -121,7 +119,7 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
         return InternalConstants.ErrorContactDev;
     }
 
-    private ExcelSheet<InstanceContentTextData> GetInstanceContentTextData(Language lang)
+    public ExcelSheet<InstanceContentTextData> GetInstanceContentTextData(Language lang)
     {
         if (_instanceContentTextData.TryGetValue(lang, out var data)) return data;
 
@@ -137,6 +135,7 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
         _ctrList = PluginServices.DataManager.Excel.GetSubrowSheet<ContentDirectorBattleTalk>().Flatten().ToList();
         return _ctrList;
     }
+
 
     [GeneratedRegex(@"^\(-.*-\)")]
     private static partial Regex CutsceneNameRemovalRegex();

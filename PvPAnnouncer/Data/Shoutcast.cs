@@ -120,4 +120,10 @@ public partial class Shoutcast(
             $"iD: {Id}, icon: {Icon}, Duration: {Duration}, Style: {Style}, Shoutcaster: {Shoutcaster}, attributes: {at}, transcription: {tr}, " +
             $"SoundPath: {SoundPath}, CutsceneLine: {CutsceneLine},  ContentDirectorBattleTalkVo: {ContentDirectorBattleTalkVo}, NPCYell: {NpcYell}, InstanceContentTextDataRow: {InstanceContentTextDataRow}";
     }
+
+    public Shoutcast CopyShoutcast()
+    {
+        return new Shoutcast(Id, Icon, Transcription, Duration, Style, Shoutcaster, Attributes, SoundPath, CutsceneLine,
+            ContentDirectorBattleTalkVo, NpcYell, InstanceContentTextDataRow, IsGendered);
+    }
 }

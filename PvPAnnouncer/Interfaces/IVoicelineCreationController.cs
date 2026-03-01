@@ -16,10 +16,13 @@ public interface IVoicelineCreationController
     void SelectStyle(byte style);
     void SetDuration(byte duration);
     void SetManualTranscription(string lang, string transcription);
+    void ClearManualTranscription();
     void SetAttributes(List<string> attributes);
     void AddAttribute(string attribute);
     void TestCreation();
     void SaveToConfigAndRegister(Shoutcast sc);
     Shoutcast BuildAndResetToCharacterDefaults();
     Shoutcast BuildAndResetToDefaults();
+    Shoutcast GetCurrentShoutcast();
+    void ResetToDefaults();
 }

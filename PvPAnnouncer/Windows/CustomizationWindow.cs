@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Buffers.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Text.Json.Nodes;
-using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.ImGuiNotification;
+using Dalamud.Interface.Windowing;
 using Newtonsoft.Json;
 
 namespace PvPAnnouncer.Windows;
@@ -31,9 +28,7 @@ public class CustomizationWindow : Window, IDisposable
     public override void Draw()
     {
         ImGui.TextWrapped(
-            "Hey Hey! PvPAnnouncer dev here. Thanks for using the testing version! This is a BIG feature. While technically" +
-            " \"finished\", it is very rough around the edges and requires a bit of technical knowledge that I haven't really explained anywhere." +
-            "\nTutorial will be forthcoming. Please feel free to play around with it and ask ANY questions!" +
+            "Hey Hey! PvPAnnouncer dev here. Thanks for using the testing version! This is a BIG feature. Please feel free to play around with it and ask ANY questions!" +
             "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
         ImGui.Separator();
         ImGui.TextWrapped(
@@ -131,6 +126,7 @@ public class CustomizationWindow : Window, IDisposable
 
         if (ImGui.CollapsingHeader("Danger Zone"))
         {
+            //todo confirm box
             if (ImGui.Button("Reset Custom Voicelines"))
             {
                 PluginServices.Config.CustomShoutcasts.Clear();

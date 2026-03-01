@@ -16,6 +16,14 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
 {
     private Shoutcast _instance = NewShoutcast();
 
+    public ShoutcastBuilder FromShoutcast(Shoutcast shoutcast, IDataManager dm)
+    {
+        var b = new ShoutcastBuilder(dm)
+        {
+            _instance = shoutcast.CopyShoutcast()
+        };
+        return b;
+    }
 
     public Shoutcast BuildAndRefreshProperties()
     {
@@ -23,6 +31,11 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
         PluginServices.PluginLog.Verbose($"Replacing {result.Id}");
         _instance = NewShoutcast();
         return result;
+    }
+
+    public void RefreshProperties()
+    {
+        _instance = NewShoutcast();
     }
 
     public Shoutcast BuildAndPreserveProperties()
@@ -112,14 +125,12 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
 
         if (result.Shoutcaster.Equals(""))
         {
-            PluginServices.PluginLog.Error($"No shoutcaster name found for {result.Id}");
-            return NewShoutcast();
+            throw new InvalidOperationException($"No shoutcaster name exists for {result.Id}");
         }
 
         if (result.Transcription.Count == 0)
         {
-            PluginServices.PluginLog.Error($"No text data found for {result.Id}");
-            return NewShoutcast();
+            throw new InvalidOperationException($"No text data exists for {result.Id}");
         }
 
         if (result.SoundPath.Equals(""))
@@ -301,6 +312,13 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
     public IShoutcastBuilder WithAttributes(List<string> attributes)
     {
         _instance.Attributes = attributes;
+        return this;
+    }
+
+    public IShoutcastBuilder AddAttribute(string attribute)
+    {
+        if (!_instance.Attributes.Contains(attribute)) _instance.Attributes.Add(attribute);
+
         return this;
     }
 

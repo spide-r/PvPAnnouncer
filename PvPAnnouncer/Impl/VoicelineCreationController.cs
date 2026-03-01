@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Dalamud.Plugin.Services;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -11,21 +12,27 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
 
     public void SelectBattleTalk(uint voLine)
     {
+        ClearTextData();
+        ClearAudioData();
         _shoutcastBuilder.WithContentDirectorBattleTalkVo(voLine);
     }
 
     public void SelectCutsceneLine(string cutsceneLine)
     {
+        ClearTextData();
+        ClearAudioData();
         _shoutcastBuilder.WithCutsceneLine(cutsceneLine);
     }
 
     public void SelectOrphanedVoLine(uint voLine)
     {
+        ClearAudioData();
         _shoutcastBuilder.WithSoundPath("sound/voice/vo_line/" + voLine);
     }
 
     public void SelectNpcYell(uint row)
     {
+        ClearTextData();
         _shoutcastBuilder.WithNpcYell(row);
     }
 
@@ -61,9 +68,15 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
 
     public void SetManualTranscription(string lang, string transcription)
     {
+        ClearTextData(); //if people are kind enough to transcribe in multiple languages only one will stick. is this worth fixing?
         var t = _shoutcastBuilder.GetShoutcastMidConstruction().Transcription;
         t[lang] = transcription;
         _shoutcastBuilder.WithTranscription(t);
+    }
+
+    public void ClearManualTranscription()
+    {
+        _shoutcastBuilder.WithTranscription([]);
     }
 
     public void SetAttributes(List<string> attributes)
@@ -73,15 +86,35 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
 
     public void AddAttribute(string attribute)
     {
-        var a = _shoutcastBuilder.GetShoutcastMidConstruction().Attributes;
-        a.Add(attribute);
-        _shoutcastBuilder.WithAttributes(a);
+        _shoutcastBuilder.AddAttribute(attribute);
     }
 
     public void TestCreation()
     {
-        var sc = _shoutcastBuilder.BuildAndPreserveProperties();
-        PluginServices.Announcer.PlayAndSendBattleTalkForTesting(sc);
+        try
+        {
+            var sc = _shoutcastBuilder.FromShoutcast(_shoutcastBuilder.GetShoutcastMidConstruction(),
+                PluginServices.DataManager);
+            PluginServices.Announcer.PlayAndSendBattleTalkForTesting(sc.BuildAndPreserveCharacter());
+        }
+        catch (InvalidOperationException e)
+        {
+            PluginServices.ChatGui.PrintError(e.Message, InternalConstants.MessageTag);
+        }
+    }
+
+    public void ClearTextData()
+    {
+        _shoutcastBuilder.WithTranscription([]);
+        _shoutcastBuilder.WithNpcYell(0);
+        _shoutcastBuilder.WithInstanceContentTextDataRow(0);
+    }
+
+    public void ClearAudioData()
+    {
+        _shoutcastBuilder.WithContentDirectorBattleTalkVo(0);
+        _shoutcastBuilder.WithCutsceneLine("");
+        _shoutcastBuilder.WithSoundPath("");
     }
 
     public void SaveToConfigAndRegister(Shoutcast sc)
@@ -107,5 +140,15 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
     {
         var sc = _shoutcastBuilder.BuildAndRefreshProperties();
         return sc;
+    }
+
+    public void ResetToDefaults()
+    {
+        _shoutcastBuilder.RefreshProperties();
+    }
+
+    public Shoutcast GetCurrentShoutcast()
+    {
+        return _shoutcastBuilder.GetShoutcastMidConstruction();
     }
 }

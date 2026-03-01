@@ -1,12 +1,7 @@
-﻿using Dalamud.Configuration;
-using Dalamud.Game;
-using Dalamud.Interface.Windowing;
+﻿using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
-using PvPAnnouncer;
-using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Windows;
@@ -72,10 +67,11 @@ internal class PluginServices
     internal static VoicelineCreationWindow VoicelineCreationWindow { get; private set; }
     internal static VoicelineMappingWindow VoicelineMappingWindow { get; private set; }
     internal static CustomizationWindow CustomizationWindow { get; private set; }
-    internal static ConfigWindow ConfigWindow { get;  private set; }
+    internal static ConfigWindow ConfigWindow { get; private set; }
     internal static MainWindow MainWindow { get; private set; }
     internal static DevWindow DevWindow { get; private set; }
     internal static ConfigManager ConfigManager { get; private set; }
+    internal static IVoicelineDataResolver VoicelineDataResolver { get; private set; }
 
     internal static void Initialize(IDalamudPluginInterface pluginInterface, WindowSystem window)
     {
@@ -91,9 +87,12 @@ internal class PluginServices
         EventShoutcastMapping = new EventShoutcastMapping();
         ShoutcastRepository = new ShoutcastRepository();
         AttributeRepository = new StringRepository();
+
         CasterRepository = new StringRepository();
         JsonLoader = new JsonLoader(DataManager, AttributeRepository, CasterRepository, PvPEventBroker,
             ShoutcastRepository, EventShoutcastMapping);
+        VoicelineDataResolver = new VoicelineDataResolver(DataManager, JsonLoader);
+
         JsonLoader.LoadAllValuesIntoMemory();
         ConfigManager = new ConfigManager(Config, JsonLoader);
         ConfigManager.ApplyCustomValues();

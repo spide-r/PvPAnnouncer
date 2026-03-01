@@ -19,6 +19,7 @@ public interface IShoutcastBuilder
     public IShoutcastBuilder WithStyle(byte style);
     public IShoutcastBuilder WithShoutcaster(string name);
     public IShoutcastBuilder WithAttributes(List<string> attributes);
+    public IShoutcastBuilder AddAttribute(string attribute);
     public IShoutcastBuilder WithSoundPath(string path);
     public IShoutcastBuilder WithCutsceneLine(string path);
     public IShoutcastBuilder WithContentDirectorBattleTalkVo(uint contentDirectorBattleTalkVo);
@@ -26,4 +27,5 @@ public interface IShoutcastBuilder
     public IShoutcastBuilder WithInstanceContentTextDataRow(uint instanceContentTextDataRow);
     public IShoutcastBuilder WithGendered(bool gendered);
     public Shoutcast GetShoutcastMidConstruction();
+    public void RefreshProperties();
 }

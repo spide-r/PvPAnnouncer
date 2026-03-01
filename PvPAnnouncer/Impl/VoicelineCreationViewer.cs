@@ -33,9 +33,12 @@ public class VoicelineCreationViewer(IVoicelineDataResolver dataResolver) : IVoi
 
     public void ShowSelectedAudio(Shoutcast shoutcast) //voLine, ctrBA
     {
-        ImGui.TextWrapped("Chosen Sound Path: " + shoutcast.SoundPath);
+        if (!shoutcast.SoundPath.IsNullOrEmpty())
+            ImGui.TextWrapped("Chosen Sound Path: " + shoutcast.SoundPath);
         if (shoutcast.ContentDirectorBattleTalkVo != 0)
             ImGui.Text("Battle Talk Row: " + shoutcast.ContentDirectorBattleTalkVo);
+        if (!shoutcast.CutsceneLine.IsNullOrEmpty())
+            ImGui.Text("Cutscene Line: " + shoutcast.CutsceneLine);
     }
 
     public void ShowSelectedText(Shoutcast shoutcast) // transcription of the default lang
@@ -78,7 +81,6 @@ public class VoicelineCreationViewer(IVoicelineDataResolver dataResolver) : IVoi
 
     public void ShowObject(Shoutcast shoutcast)
     {
-        ImGui.Text("Raw Data (For Nerds):");
-        ImGui.TextWrapped(shoutcast.ToString());
+        if (ImGui.CollapsingHeader("Raw Data (For Nerds):")) ImGui.TextWrapped(shoutcast.ToString());
     }
 }
