@@ -40,7 +40,7 @@ public class VoicelineMappingWindow : Window, IDisposable
         ImGui.Text("PvP Event Selector:");
         ImGui.Text("Character Filter");
         var shoutcasterSelection = _shoutcasterSelection;
-        var shoutcasters = PluginServices.CasterRepository.GetAttributeList().ToList();
+        var shoutcasters = PluginServices.ShoutcastRepository.GetShoutcasters().ToList();
 
         if (ImGui.Combo("###ShoutcasterFilter", ref shoutcasterSelection, shoutcasters))
             _shoutcasterSelection = shoutcasterSelection;

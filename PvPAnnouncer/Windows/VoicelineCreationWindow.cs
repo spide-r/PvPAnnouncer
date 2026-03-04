@@ -115,11 +115,11 @@ public class VoicelineCreationWindow : Window, IDisposable
 
         if (ImGui.InputText("Unique Internal Announcement ID", ref id))
         {
-            _controller.SelectAnnouncementId(id);
+            _controller.SelectAnnouncementId(id); //todo potential footgun - how to save users from themselves
         }
 
         ImGuiComponents.HelpMarker(
-            "This must be unique across all voicelines. If a duplicate is found, one may overwrite the other.");
+            "This must be unique across all voicelines. If a duplicate is encountered, one may overwrite the other.");
 
         uint duration = _controller.GetCurrentShoutcast().Duration;
         if (ImGui.SliderUInt("Announcement Duration", ref duration, 1, 10, default, ImGuiSliderFlags.AlwaysClamp))

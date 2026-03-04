@@ -14,8 +14,6 @@ namespace PvPAnnouncer.Impl;
 
 public class JsonLoader(
     IDataManager dataManager,
-    IStringRepository attributeRepository,
-    IStringRepository casterRepository,
     IPvPEventBroker pvPEventBroker,
     IShoutcastRepository shoutcastRepository,
     IEventShoutcastMapping eventShoutcastMapping) : IJsonLoader
@@ -55,12 +53,7 @@ public class JsonLoader(
             {
                 var sh = ConstructShoutcast(shout?.ToString() ?? "");
                 PluginServices.PluginLog.Verbose($"Constructed {sh.Id} with {sh.SoundPath}");
-                casterRepository.RegisterAttribute(sh.Shoutcaster);
                 shoutcastRepository.SetShoutcast(sh.Id, sh);
-                foreach (var shAttribute in sh.Attributes)
-                {
-                    attributeRepository.RegisterAttribute(shAttribute);
-                }
             }
         }
     }

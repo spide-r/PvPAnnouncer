@@ -19,6 +19,11 @@ public class ShoutcastRepository : IShoutcastRepository
         return null;
     }
 
+    public void DeleteShoutcast(string shoutcastId)
+    {
+        _shoutcasts.Remove(shoutcastId);
+    }
+
     public List<Shoutcast> GetShoutcasts()
     {
         return _shoutcasts.Values.ToList();
@@ -32,5 +37,15 @@ public class ShoutcastRepository : IShoutcastRepository
     public bool ContainsKey(string shoutcastId)
     {
         return _shoutcasts.ContainsKey(shoutcastId);
+    }
+
+    public List<string> GetShoutcasters()
+    {
+        return _shoutcasts.Values.Select(sc => sc.Shoutcaster).Distinct().ToList();
+    }
+
+    public List<string> GetAttributes()
+    {
+        return _shoutcasts.Values.SelectMany(sc => sc.Attributes).Distinct().ToList();
     }
 }

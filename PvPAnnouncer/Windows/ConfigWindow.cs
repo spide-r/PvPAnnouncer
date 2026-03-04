@@ -19,12 +19,10 @@ public class ConfigWindow : Window, IDisposable
 {
     private readonly Configuration _configuration;
     private readonly IShoutcastRepository _shoutcastRepository;
-    private readonly IStringRepository _casterRepository;
-    private readonly IStringRepository _attributeRepository;
+
 
     public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration,
-        IEventShoutcastMapping eventShoutcastMapping, IStringRepository casterRepository,
-        IStringRepository attributeRepository) : base(
+        IEventShoutcastMapping eventShoutcastMapping) : base(
         "PvPAnnouncer Configuration")
     {
         SizeConstraints = new WindowSizeConstraints
@@ -37,8 +35,6 @@ public class ConfigWindow : Window, IDisposable
 
         _configuration = pluginConfiguration;
         _shoutcastRepository = shoutcastRepository;
-        _casterRepository = casterRepository;
-        _attributeRepository = attributeRepository;
     }
 
     public void Dispose()
@@ -147,7 +143,7 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Button("Show All Possible Voicelines"))
         {
             //todo eventually move this to the customization window
-            PluginServices.VoiceLineTesterWindow.Toggle();
+            PluginServices.LoadedVoicelineWindow.Toggle();
         }
 
         ImGui.SameLine();
@@ -164,7 +160,7 @@ public class ConfigWindow : Window, IDisposable
         ImGui.Text("Announcers: ");
 
         var c = 0;
-        foreach (var caster in _casterRepository.GetAttributeList())
+        foreach (var caster in _shoutcastRepository.GetShoutcasters())
         {
             DoAttribute(caster);
             c++;
@@ -183,7 +179,7 @@ public class ConfigWindow : Window, IDisposable
         ImGuiComponents.HelpMarker(
             "These two values allow announcers to use voice lines usually reserved for specific people. For example, \nMetem may say \"The Honey B. Lovely show has begun!\" if Honey B. Lovely is enabled.");
         var a = 0;
-        foreach (var se in _attributeRepository.GetAttributeList())
+        foreach (var se in _shoutcastRepository.GetAttributes())
         {
             DoAttribute(se);
             a++;

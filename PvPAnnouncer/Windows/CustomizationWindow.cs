@@ -15,7 +15,9 @@ public class CustomizationWindow : Window, IDisposable
     //todo make a way to delete / manage voicelines
     //todo shill/ask players nicely to share their voicelines w/ people
     //todo only export 1 character at a time option pre-checked
-    //todo determine if we need to replace or just add mapping
+    //todo determine if we need to replace or just add mapping, ask the question on import and say which one is best
+    //todo open event management window here
+    //todo open loaded voiceline window here
     public CustomizationWindow() : base(
         "PvPAnnouncer Customization Window")
     {
@@ -32,9 +34,6 @@ public class CustomizationWindow : Window, IDisposable
             "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
         ImGui.Separator();
         ImGui.TextWrapped(
-            "Important gotcha. Currently there is no way to manage and delete certain voicelines. I will be adding a window in the future. For now, if you wish to modify an event, go to the creation window and use its Unique ID to overwrite it.");
-        ImGui.Separator();
-        ImGui.TextWrapped(
             "In order for this plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through some steps to create a proper voiceline.");
         ImGui.TextWrapped("Once a voiceline is created, we must map it to an existing event.");
         if (ImGui.Button("Open Voice Line Creation Window"))
@@ -47,6 +46,9 @@ public class CustomizationWindow : Window, IDisposable
         {
             PluginServices.VoicelineMappingWindow.Toggle();
         }
+
+        ImGui.SameLine();
+        if (ImGui.Button("Open Voice Line Management Window")) PluginServices.VoicelineManagementWindow.Toggle();
 
         ImGui.Separator();
         if (ImGui.Button("Export Custom Voicelines"))

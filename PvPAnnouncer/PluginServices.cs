@@ -60,16 +60,15 @@ internal class PluginServices
     internal static IEventShoutcastMapping EventShoutcastMapping { get; private set; }
     internal static IShoutcastRepository ShoutcastRepository { get; private set; }
     internal static IJsonLoader JsonLoader { get; private set; }
-    internal static IStringRepository AttributeRepository { get; private set; }
-    internal static IStringRepository CasterRepository { get; private set; }
 
-    internal static VoiceLineTesterWindow VoiceLineTesterWindow { get; private set; }
+    internal static LoadedVoicelineWindow LoadedVoicelineWindow { get; private set; }
     internal static VoicelineCreationWindow VoicelineCreationWindow { get; private set; }
     internal static VoicelineMappingWindow VoicelineMappingWindow { get; private set; }
     internal static CustomizationWindow CustomizationWindow { get; private set; }
     internal static ConfigWindow ConfigWindow { get; private set; }
     internal static MainWindow MainWindow { get; private set; }
     internal static DevWindow DevWindow { get; private set; }
+    internal static VoicelineManagementWindow VoicelineManagementWindow { get; private set; }
     internal static ConfigManager ConfigManager { get; private set; }
     internal static IVoicelineDataResolver VoicelineDataResolver { get; private set; }
 
@@ -86,10 +85,8 @@ internal class PluginServices
 
         EventShoutcastMapping = new EventShoutcastMapping();
         ShoutcastRepository = new ShoutcastRepository();
-        AttributeRepository = new StringRepository();
 
-        CasterRepository = new StringRepository();
-        JsonLoader = new JsonLoader(DataManager, AttributeRepository, CasterRepository, PvPEventBroker,
+        JsonLoader = new JsonLoader(DataManager, PvPEventBroker,
             ShoutcastRepository, EventShoutcastMapping);
         VoicelineDataResolver = new VoicelineDataResolver(DataManager, JsonLoader);
 
@@ -97,22 +94,23 @@ internal class PluginServices
         ConfigManager = new ConfigManager(Config, JsonLoader);
         ConfigManager.ApplyCustomValues();
         Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);
-        VoiceLineTesterWindow = new VoiceLineTesterWindow(ShoutcastRepository);
+        LoadedVoicelineWindow = new LoadedVoicelineWindow(ShoutcastRepository);
         VoicelineCreationWindow = new VoicelineCreationWindow();
         VoicelineMappingWindow = new VoicelineMappingWindow();
         CustomizationWindow = new CustomizationWindow();
+        VoicelineManagementWindow = new VoicelineManagementWindow();
         ConfigWindow = new ConfigWindow(ShoutcastRepository, Config,
-            EventShoutcastMapping, CasterRepository,
-            AttributeRepository);
+            EventShoutcastMapping);
         MainWindow = new MainWindow();
         DevWindow = new DevWindow();
         window.AddWindow(ConfigWindow);
         window.AddWindow(MainWindow);
         window.AddWindow(DevWindow);
-        window.AddWindow(VoiceLineTesterWindow);
+        window.AddWindow(LoadedVoicelineWindow);
         window.AddWindow(VoicelineCreationWindow);
         window.AddWindow(VoicelineMappingWindow);
         window.AddWindow(CustomizationWindow);
+        window.AddWindow(VoicelineManagementWindow);
         ListenerLoader = new EventListenerLoader();
         ListenerLoader.LoadEventListeners();
     }

@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Windows;
 
-public class VoiceLineTesterWindow : Window, IDisposable
+public class LoadedVoicelineWindow : Window, IDisposable
 {
+    //todo filter text content, show battle talk id as well
     private readonly List<Shoutcast> _allBattleTalks;
     private List<string> toFilter = ["All"];
 
-    public VoiceLineTesterWindow(IShoutcastRepository shoutcastRepository) : base(
-        "Voice Line Tester window", ImGuiWindowFlags.AlwaysVerticalScrollbar)
+    public LoadedVoicelineWindow(IShoutcastRepository shoutcastRepository) : base(
+        "Loaded Voice Lines", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {
         this.SizeConstraints = new WindowSizeConstraints
         {
             MinimumSize = new Vector2(450, 225),
         };
-        foreach (var s in PluginServices.CasterRepository.GetAttributeList()) toFilter.Add(s);
+        foreach (var s in PluginServices.ShoutcastRepository.GetShoutcasters()) toFilter.Add(s);
 
 
         _allBattleTalks = new List<Shoutcast>(shoutcastRepository.GetShoutcasts());
@@ -35,7 +35,6 @@ public class VoiceLineTesterWindow : Window, IDisposable
 
     public override void Draw()
     {
-
         if (ImGui.BeginCombo("Announcer Filter", toFilter[_filterIndex]))
         {
             for (var i = 0; i < toFilter.Count; i++)

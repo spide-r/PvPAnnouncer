@@ -52,6 +52,11 @@ public class EventShoutcastMapping : IEventShoutcastMapping
         }
     }
 
+    public void RemoveShoutCastForAll(string shoutcast)
+    {
+//todo
+    }
+
     public List<string> GetShoutcastList(string eventId)
     {
         return _map.TryGetValue(eventId, out var shoutList) ? shoutList : [];

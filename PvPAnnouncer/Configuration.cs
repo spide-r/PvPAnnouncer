@@ -46,7 +46,7 @@ namespace PvPAnnouncer
         public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now
         public Dictionary<string, string> MappingOverride { get; set; } = [];
 
-        public HashSet<string> MutedShouts { get; set; } = [];
+        public List<string> MutedShouts { get; set; } = [];
 
 
         //todo Notes for when we're letting people customize things
@@ -68,6 +68,11 @@ namespace PvPAnnouncer
         public void AddCustomShoutCast(string shoutcastId, string shoutcastJson)
         {
             CustomShoutcasts[shoutcastId] = shoutcastJson;
+        }
+
+        public void DeleteCustomShoutCast(string shoutcastId)
+        {
+            CustomShoutcasts.Remove(shoutcastId);
         }
 
         public void AddMappingOverride(string eventId, string mappingJson)

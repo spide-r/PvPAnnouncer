@@ -22,6 +22,10 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
      * 5. Use the appropriate gender for the challenger
      */
 
+    //todo rewrite - divide and conquer
+    // per announcer %
+
+
     private readonly Queue<string> _lastVoiceLines = new();
     private int _lastVoiceLineLength = 0;
     private long _timestamp;
@@ -218,6 +222,8 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
                 PluginServices.PluginLog.Warning($"{shoutcastId} not found.");
                 continue;
             }
+
+            if (PluginServices.Config.MutedShouts.Contains(shoutcastId)) continue;
 
             // == Objective 5 == 
             if (PluginServices.Config.WantsAllAttributes(sound.Attributes) &&

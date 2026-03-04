@@ -18,11 +18,6 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
             var sc = keyValuePair.Value;
             var scObj = PluginServices.JsonLoader.ConstructShoutcast(sc);
             PluginServices.ShoutcastRepository.SetShoutcast(keyValuePair.Key, scObj);
-            PluginServices.CasterRepository.RegisterAttribute(scObj.Shoutcaster);
-            foreach (var scObjAttribute in scObj.Attributes)
-            {
-                PluginServices.AttributeRepository.RegisterAttribute(scObjAttribute);
-            }
         }
 
         foreach (var keyValuePair in pluginConfiguration.MappingOverride)
@@ -36,6 +31,14 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
         {
             //unused - thank goodness
         }
+    }
+
+    public void DeleteAndDeregisterShoutcast(string shoutcastId)
+    {
+        PluginServices.Config.DeleteCustomShoutCast(shoutcastId);
+        //todo mapping needs to be cleaned up
+        PluginServices.Config.Save();
+        PluginServices.ShoutcastRepository.DeleteShoutcast(shoutcastId);
     }
 
     //Notes for when we're letting people customize things

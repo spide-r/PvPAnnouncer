@@ -123,8 +123,6 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
         PluginServices.Config.AddCustomShoutCast(sc.Id, json.ToJsonString());
         PluginServices.Config.Save();
         PluginServices.ShoutcastRepository.SetShoutcast(sc.Id, sc);
-        PluginServices.CasterRepository.RegisterAttribute(sc.Shoutcaster);
-        foreach (var scAttribute in sc.Attributes) PluginServices.AttributeRepository.RegisterAttribute(scAttribute);
 
         PluginServices.PluginLog.Verbose("Saved Json: " + json);
         PluginServices.ChatGui.Print($"Saved Shoutcast from {sc.Shoutcaster} with ID {sc.Id}");
