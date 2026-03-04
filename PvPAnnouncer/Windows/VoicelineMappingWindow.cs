@@ -26,24 +26,48 @@ public class VoicelineMappingWindow : Window, IDisposable
 
     public override void Draw()
     {
-        var events = PluginServices.EventShoutcastMapping.GetAllEvents();
+        //todo option to filter mapping by specific character?
+        var eventsUserFacingName = new List<string>();
+        var eventsInternal = new List<string>();
+        foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())
+        {
+            var eventId = e.Id;
+
+            eventsUserFacingName.Add(e.Name);
+            eventsInternal.Add(eventId);
+        }
+
         ImGui.Text("PvP Event Selector:");
+        ImGui.Text("Character Filter");
+        var shoutcasterSelection = _shoutcasterSelection;
+        var shoutcasters = PluginServices.CasterRepository.GetAttributeList().ToList();
+
+        if (ImGui.Combo("###ShoutcasterFilter", ref shoutcasterSelection, shoutcasters))
+            _shoutcasterSelection = shoutcasterSelection;
+
+        ImGui.Separator();
         var pvpEventSelection = _pvpEventSelection;
 
-        if (ImGui.Combo("###PvPEvents", ref pvpEventSelection, events))
+        if (ImGui.Combo("###PvPEvents", ref pvpEventSelection, eventsUserFacingName))
         {
             _pvpEventSelection = pvpEventSelection;
         }
 
-        ;
 
+        var currentShoutMapping =
+            PluginServices.EventShoutcastMapping.GetShoutcastList(eventsInternal[pvpEventSelection]);
 
-        var currentShouts = PluginServices.EventShoutcastMapping.GetShoutcastList(events[pvpEventSelection]);
+        var currentShoutsForEvent = PluginServices.ShoutcastRepository.GetShoutcasts()
+            .Where(s => currentShoutMapping.Contains(s.Id))
+            .Where(s => s.Shoutcaster.Equals(shoutcasters[shoutcasterSelection])).Select(e => e.Id).ToList();
 
-        var shoutcasters = PluginServices.CasterRepository.GetAttributeList().ToList();
         ImGui.Text("Current Voicelines:");
+        if (currentShoutsForEvent.Count == 0)
+            ImGui.TextWrapped(
+                $"No Voicelines for {shoutcasters[shoutcasterSelection]} are present in this event. Add one?");
+
         var currentShoutSelection = _currentEventShoutSelection;
-        if (ImGui.ListBox("###CurrentShouts", ref currentShoutSelection, currentShouts))
+        if (ImGui.ListBox("###CurrentShouts", ref currentShoutSelection, currentShoutsForEvent))
         {
             _currentEventShoutSelection = currentShoutSelection;
         }
@@ -52,10 +76,10 @@ public class VoicelineMappingWindow : Window, IDisposable
         {
             try
             {
-                var sc = PluginServices.ShoutcastRepository.GetShoutcast(currentShouts[currentShoutSelection]);
+                var sc = PluginServices.ShoutcastRepository.GetShoutcast(currentShoutsForEvent[currentShoutSelection]);
                 if (sc == null)
                 {
-                    PluginServices.PluginLog.Warning($"{currentShouts[currentShoutSelection]} not found");
+                    PluginServices.PluginLog.Warning($"{currentShoutsForEvent[currentShoutSelection]} not found");
                     return;
                 }
 
@@ -71,9 +95,10 @@ public class VoicelineMappingWindow : Window, IDisposable
         {
             try
             {
-                var shoutToRemove = currentShouts[currentShoutSelection];
-                var eventToRemove = events[pvpEventSelection];
+                var shoutToRemove = currentShoutsForEvent[currentShoutSelection];
+                var eventToRemove = eventsInternal[pvpEventSelection];
                 PluginServices.EventShoutcastMapping.RemoveShoutcast(eventToRemove, shoutToRemove);
+                Save(eventToRemove);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -81,15 +106,9 @@ public class VoicelineMappingWindow : Window, IDisposable
         }
 
         ImGui.Text("Available Voicelines:");
-        ImGui.Text("Filter");
-        var shoutcasterSelection = _shoutcasterSelection;
-        if (ImGui.Combo("###ShoutcasterFilter", ref shoutcasterSelection, shoutcasters))
-        {
-            _shoutcasterSelection = shoutcasterSelection;
-        }
 
         var otherShoutsList = PluginServices.ShoutcastRepository.GetShoutcasts()
-            .Where(s => !currentShouts.Contains(s.Id))
+            .Where(s => !currentShoutsForEvent.Contains(s.Id))
             .Where(s => s.Shoutcaster.Equals(shoutcasters[shoutcasterSelection])).Select(e => e.Id).ToList();
         var otherShoutsSelection = _otherShouts;
 
@@ -122,31 +141,23 @@ public class VoicelineMappingWindow : Window, IDisposable
             try
             {
                 var shoutToAdd = otherShoutsList[otherShoutsSelection];
-                var eventToAdd = events[pvpEventSelection];
+                var eventToAdd = eventsInternal[pvpEventSelection];
                 PluginServices.PluginLog.Verbose($"Adding {shoutToAdd}, {eventToAdd}");
                 PluginServices.EventShoutcastMapping.AddShoutcast(eventToAdd, shoutToAdd);
+                Save(eventToAdd);
             }
             catch (ArgumentOutOfRangeException)
             {
             }
         }
+    }
 
-
-        if (ImGui.Button("Save and Write to config"))
-        {
-            try
-            {
-                var eventToAdd = events[pvpEventSelection];
-                var j = BuildJsonMapping(eventToAdd, PluginServices.EventShoutcastMapping.GetShoutcastList(eventToAdd));
-                PluginServices.Config.AddMappingOverride(eventToAdd, j.ToJsonString());
-                PluginServices.Config.Save();
-                PluginServices.PluginLog.Verbose("Saved: " + j);
-                PluginServices.ChatGui.Print($"Saved shoutcast mapping for {eventToAdd}!");
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-            }
-        }
+    private void Save(string eventT)
+    {
+        var j = BuildJsonMapping(eventT, PluginServices.EventShoutcastMapping.GetShoutcastList(eventT));
+        PluginServices.Config.AddMappingOverride(eventT, j.ToJsonString());
+        PluginServices.Config.Save();
+        PluginServices.PluginLog.Verbose("Saved: " + j);
     }
 
     private JsonObject BuildJsonMapping(string eventId, List<string> shouts)

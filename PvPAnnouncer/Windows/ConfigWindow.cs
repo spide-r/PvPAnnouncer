@@ -298,6 +298,7 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.Separator();
+        //todo move to new window ?
 
         List<string> activeEvents = new List<string>();
         List<string> activeEventsInternal = new List<string>();
@@ -351,6 +352,7 @@ public class ConfigWindow : Window, IDisposable
                 _configuration.Save();
             }
         }
+        // todo move to new window?
     }
 
     private void DoLanguageVoiceSelection()

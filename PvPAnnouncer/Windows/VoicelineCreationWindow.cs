@@ -598,7 +598,7 @@ public class VoicelineCreationWindow : Window, IDisposable
 
         var icon = _controller.GetCurrentShoutcast().Icon;
         uint min = 73001;
-        uint max = 73287;
+        uint max = 73287; //todo check max again
         var useIcon = _useIcon;
         if (ImGui.Checkbox("Use Icon", ref useIcon))
         {

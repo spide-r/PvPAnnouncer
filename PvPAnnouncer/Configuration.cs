@@ -46,8 +46,10 @@ namespace PvPAnnouncer
         public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now
         public Dictionary<string, string> MappingOverride { get; set; } = [];
 
+        public HashSet<string> MutedShouts { get; set; } = [];
 
-        //Notes for when we're letting people customize things
+
+        //todo Notes for when we're letting people customize things
         //store overriden voiceline definitions (done)
         //store overriden event=>Voiceline[] mapping (done)
         //store overriden event definitions (done)
