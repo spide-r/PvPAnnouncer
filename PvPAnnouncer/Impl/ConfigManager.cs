@@ -1,4 +1,7 @@
-﻿using PvPAnnouncer.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Nodes;
+using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
@@ -36,9 +39,34 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
     public void DeleteAndDeregisterShoutcast(string shoutcastId)
     {
         PluginServices.Config.DeleteCustomShoutCast(shoutcastId);
-        //todo mapping needs to be cleaned up
-        PluginServices.Config.Save();
         PluginServices.ShoutcastRepository.DeleteShoutcast(shoutcastId);
+        PluginServices.EventShoutcastMapping.PurgeMapping(shoutcastId);
+        RebuildAllJsonMappings();
+        PluginServices.Config.Save();
+    }
+
+    private void RebuildAllJsonMappings()
+    {
+        foreach (var eventT in PluginServices.EventShoutcastMapping.GetAllEvents())
+        {
+            var j = BuildJsonMapping(eventT, PluginServices.EventShoutcastMapping.GetShoutcastList(eventT));
+            PluginServices.Config.AddMappingOverride(eventT, j.ToJsonString());
+        }
+    }
+
+    private JsonObject BuildJsonMapping(string eventId, List<string> shouts)
+    {
+        var j = new JsonObject
+        {
+            ["eventId"] = eventId
+        };
+        var shoutsArray = new JsonArray();
+
+        foreach (var shout in shouts.Where(shout => !shout.Equals(""))) shoutsArray.Add(shout);
+
+        if (shoutsArray.Count > 0) j["shouts"] = shoutsArray;
+
+        return j;
     }
 
     //Notes for when we're letting people customize things

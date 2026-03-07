@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
@@ -76,29 +77,37 @@ public class VoicelineCreationWindow : Window, IDisposable
         if (ImGui.CollapsingHeader("Step 6: Save and Reset"))
         {
             //todo "are you sure" dialogue no matter whats pressed  
-            // reset to defaults for SHOUTCASTER_NAME without saving
             try
             {
-                if (ImGui.Button("Save & Reset To Blank Character"))
+                var n = current.Shoutcaster;
+
+                if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id))
                 {
-                    var sc = _controller.BuildAndResetToDefaults();
-                    _controller.SaveToConfigAndRegister(sc);
+                    ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
+                        "Error! The chosen announcement ID is already in use! Please pick another!");
+                }
+                else
+                {
+                    if (ImGui.Button("Save & Reset To Blank Character"))
+                    {
+                        var sc = _controller.BuildAndResetToDefaults();
+                        _controller.SaveToConfigAndRegister(sc);
+                    }
+
+                    if (ImGui.Button("Save & New Voiceline for " + n))
+                    {
+                        var sc = _controller.BuildAndResetToCharacterDefaults();
+                        _controller.SaveToConfigAndRegister(sc);
+                    }
                 }
 
-                var n = current.Shoutcaster;
-                if (ImGui.Button("Save & New Voiceline for " + n))
-                {
-                    var sc = _controller.BuildAndResetToCharacterDefaults();
-                    _controller.SaveToConfigAndRegister(sc);
-                }
+                if (ImGui.Button("Reset to Blank Voiceline for " + n)) _controller.BuildAndResetToCharacterDefaults();
             }
             catch (InvalidOperationException e)
             {
                 PluginServices.ChatGui.PrintError(e.Message, InternalConstants.MessageTag);
             }
 
-            ImGuiComponents.HelpMarker(
-                "This button saves the voiceline and lets you use it in the mapping window while letting you continue to make new voicelines for the same character.");
             ImGui.Separator();
             if (ImGui.Button("Reset To Defaults Without Saving"))
             {
@@ -112,11 +121,14 @@ public class VoicelineCreationWindow : Window, IDisposable
     private void ShowAnnouncementMetadata()
     {
         var id = _controller.GetCurrentShoutcast().Id;
-
         if (ImGui.InputText("Unique Internal Announcement ID", ref id))
         {
-            _controller.SelectAnnouncementId(id); //todo potential footgun - how to save users from themselves
+            _controller.SelectAnnouncementId(id);
         }
+
+        if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id))
+            ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
+                "Error! This announcement ID is already in use! Please pick another!");
 
         ImGuiComponents.HelpMarker(
             "This must be unique across all voicelines. If a duplicate is encountered, one may overwrite the other.");
@@ -279,7 +291,7 @@ public class VoicelineCreationWindow : Window, IDisposable
                     var text = y.Text.ToString();
                     if (!_npcYellFilter.Equals(""))
                     {
-                        if (!text.Contains(_npcYellFilter))
+                        if (!text.Contains(_npcYellFilter, StringComparison.CurrentCultureIgnoreCase))
                         {
                             continue;
                         }
@@ -332,7 +344,7 @@ public class VoicelineCreationWindow : Window, IDisposable
                     var text = td.Text.ToString();
                     if (!_textDataFilter.Equals(""))
                     {
-                        if (!text.Contains(_textDataFilter))
+                        if (!text.Contains(_textDataFilter, StringComparison.CurrentCultureIgnoreCase))
                         {
                             continue;
                         }
@@ -401,7 +413,7 @@ public class VoicelineCreationWindow : Window, IDisposable
                     var duration = td.Unknown3;
                     if (!_contentDirectorFilter.Equals(""))
                     {
-                        if (!text.Contains(_contentDirectorFilter))
+                        if (!text.Contains(_contentDirectorFilter, StringComparison.CurrentCultureIgnoreCase))
                         {
                             continue;
                         }
@@ -462,8 +474,7 @@ public class VoicelineCreationWindow : Window, IDisposable
         {
             if (ImGui.BeginCombo("Character Picker", _chosenChar))
             {
-                //todo character filter / searcher + explanation why everything is in caps
-                foreach (var character in PluginServices.VoicelineDataResolver.GetCutsceneLineTags().Keys)
+                foreach (var character in PluginServices.VoicelineDataResolver.GetSortedCharacterNames())
                 {
                     bool selected = _chosenChar.Equals(character);
                     if (ImGui.Selectable(character, selected))
@@ -474,6 +485,10 @@ public class VoicelineCreationWindow : Window, IDisposable
 
                 ImGui.EndCombo();
             }
+
+            ImGuiComponents.HelpMarker(
+                "Due to how the game stores voicelines, this character picker is in all caps. This is just cosmetic.");
+
 
             if (_chosenChar.Equals(""))
             {
@@ -501,7 +516,7 @@ public class VoicelineCreationWindow : Window, IDisposable
                         var text = PluginServices.VoicelineDataResolver.ResolveCutsceneLineWithTag(cutsceneLineTag);
                         if (!_cutsceneLineFilter.Equals(""))
                         {
-                            if (!text.Contains(_cutsceneLineFilter))
+                            if (!text.Contains(_cutsceneLineFilter, StringComparison.CurrentCultureIgnoreCase))
                             {
                                 continue;
                             }

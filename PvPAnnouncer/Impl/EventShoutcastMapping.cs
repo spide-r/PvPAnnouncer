@@ -52,9 +52,9 @@ public class EventShoutcastMapping : IEventShoutcastMapping
         }
     }
 
-    public void RemoveShoutCastForAll(string shoutcast)
+    public void PurgeMapping(string shoutcast)
     {
-//todo
+        foreach (var keyValuePair in _map) keyValuePair.Value.Remove(shoutcast);
     }
 
     public List<string> GetShoutcastList(string eventId)

@@ -97,7 +97,7 @@ internal class PluginServices
         LoadedVoicelineWindow = new LoadedVoicelineWindow(ShoutcastRepository);
         VoicelineCreationWindow = new VoicelineCreationWindow();
         VoicelineMappingWindow = new VoicelineMappingWindow();
-        CustomizationWindow = new CustomizationWindow();
+        CustomizationWindow = new CustomizationWindow(Config);
         VoicelineManagementWindow = new VoicelineManagementWindow();
         ConfigWindow = new ConfigWindow(ShoutcastRepository, Config,
             EventShoutcastMapping);

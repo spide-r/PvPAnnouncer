@@ -15,6 +15,7 @@ namespace PvPAnnouncer.Impl;
 public partial class VoicelineDataResolver : IVoicelineDataResolver
 {
     private List<string> _orphanedVoLines = [];
+    private List<string> _sortedCharacterNames = [];
     private string[] _orphanedVoLineArr = [];
     private Dictionary<string, List<string>> _cutsceneLines = new();
     private List<ContentDirectorBattleTalk> _ctrList = [];
@@ -71,6 +72,16 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
     public Dictionary<string, List<string>> GetCutsceneLineTags()
     {
         return _cutsceneLines;
+    }
+
+    public List<string> GetSortedCharacterNames()
+    {
+        if (_sortedCharacterNames.Count > 0) return _sortedCharacterNames;
+
+        var k = new List<string>(_cutsceneLines.Keys);
+        k.Sort();
+        _sortedCharacterNames = k;
+        return k;
     }
 
     public string ResolveCutsceneLineWithTag(string tag)

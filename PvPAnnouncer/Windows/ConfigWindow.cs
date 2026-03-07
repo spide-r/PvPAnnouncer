@@ -59,19 +59,12 @@ public class ConfigWindow : Window, IDisposable
         }
     }
 
-    private int _activeEventsSelectedItem;
-    private int _disabledEventsSelectedItem = 0;
-    private string[] _activeEventsArr = [];
-    private string[] _activeEventsArrInternal = [];
-    private string[] _disabledEventsArr = [];
-    private string[] _disabledEventsArrInternal = [];
 
     public override void Draw()
     {
         var disabled = _configuration.Disabled;
         var muted = _configuration.Muted;
         var hideBattleText = _configuration.HideBattleText;
-        var blEvents = _configuration.BlacklistedEvents;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
@@ -91,7 +84,7 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.TextWrapped("I love your feedback! It helps me make the plugin better! " +
-                          "If you have any issues at all, suggestions/questions etc. I would love to hear them no matter how small! " +
+                          "If you have any issues, suggestions, questions. I would love to hear them no matter how small!\n" +
                           "Use the plugin feedback button or contact .spider in the Dalamud Discord.");
         ImGui.Separator();
 
@@ -139,22 +132,11 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.Separator();
-        ImGui.TextWrapped("Customization:");
-        if (ImGui.Button("Show All Possible Voicelines"))
-        {
-            //todo eventually move this to the customization window
-            PluginServices.LoadedVoicelineWindow.Toggle();
-        }
-
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker("This is mostly for testing/debugging purposes. Enjoy!");
-        if (ImGui.Button("Open the Event Customization & Voiceline creation window!"))
+        ImGui.TextWrapped("If you wish to create new characters or manage existing voicelines and events click here:");
+        if (ImGui.Button("Character, Event, and Voiceline Management###FirstButton"))
         {
             PluginServices.CustomizationWindow.Toggle();
         }
-
-        ImGuiComponents.HelpMarker("Soft-launched feature for real pvp enjoyers. ");
-        ImGui.Separator();
 
 
         ImGui.Text("Announcers: ");
@@ -268,6 +250,16 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.Unindent();
+        if (ImGui.Button("Reset Above Values to Default"))
+        {
+            _configuration.CooldownSeconds = 15;
+            _configuration.Percent = 70;
+            _configuration.RepeatVoiceLineQueue = 3;
+            _configuration.RepeatEventCommentaryQueue = 3;
+            _configuration.AnimationDelayFactor = 250;
+            _configuration.Save();
+        }
+
         ImGui.Separator();
         ImGui.Text("Announcer Spoken Language:");
         DoLanguageVoiceSelection();
@@ -294,61 +286,13 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.Separator();
-        //todo move to new window ?
 
-        List<string> activeEvents = new List<string>();
-        List<string> activeEventsInternal = new List<string>();
-        foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())
+        ImGui.TextWrapped("Looking to enable/disable events? This has been moved to a new window:");
+
+        if (ImGui.Button("Character, Event, and Voiceline Management###SecondButton"))
         {
-            var eventId = e.Id;
-            if (!blEvents.Contains(eventId))
-            {
-                activeEvents.Add(e.Name);
-                activeEventsInternal.Add(eventId);
-            }
+            PluginServices.CustomizationWindow.Toggle();
         }
-
-
-        List<string> listDisabledInternal = [];
-        List<string> listDisabledPublic = [];
-        foreach (string internalName in blEvents)
-        {
-            var e = PluginServices.PvPEventBroker.GetEvent(internalName);
-            if (e == null)
-            {
-                continue;
-            }
-
-            listDisabledInternal.Add(internalName);
-            listDisabledPublic.Add(e.Name);
-        }
-
-        _activeEventsArr = activeEvents.ToArray();
-        _activeEventsArrInternal = activeEventsInternal.ToArray();
-        ImGui.Text("Enabled Events:");
-        ImGui.ListBox("###EnabledEvents", ref _activeEventsSelectedItem, _activeEventsArr);
-        if (ImGui.Button("Disable"))
-        {
-            if (_activeEventsSelectedItem < _activeEventsArrInternal.Length)
-            {
-                _configuration.BlacklistedEvents.Add(_activeEventsArrInternal[_activeEventsSelectedItem]);
-                _configuration.Save();
-            }
-        }
-
-        _disabledEventsArrInternal = listDisabledInternal.ToArray();
-        _disabledEventsArr = listDisabledPublic.ToArray();
-        ImGui.Text("Disabled Events:");
-        ImGui.ListBox("###DisabledEvents", ref _disabledEventsSelectedItem, _disabledEventsArr);
-        if (ImGui.Button("Enable"))
-        {
-            if (_disabledEventsSelectedItem < _disabledEventsArrInternal.Length)
-            {
-                _configuration.BlacklistedEvents.Remove(_disabledEventsArrInternal[_disabledEventsSelectedItem]);
-                _configuration.Save();
-            }
-        }
-        // todo move to new window?
     }
 
     private void DoLanguageVoiceSelection()

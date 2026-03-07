@@ -12,23 +12,34 @@ namespace PvPAnnouncer.Windows;
 
 public class CustomizationWindow : Window, IDisposable
 {
-    //todo make a way to delete / manage voicelines
     //todo shill/ask players nicely to share their voicelines w/ people
     //todo only export 1 character at a time option pre-checked
     //todo determine if we need to replace or just add mapping, ask the question on import and say which one is best
-    //todo open event management window here
-    //todo open loaded voiceline window here
-    public CustomizationWindow() : base(
-        "PvPAnnouncer Customization Window")
+
+    private readonly Configuration _configuration;
+
+    public CustomizationWindow(Configuration pluginConfiguration) : base(
+        "Character, Event, and Voiceline Management")
     {
         this.SizeConstraints = new WindowSizeConstraints
         {
             MinimumSize = new Vector2(450, 225),
         };
+        _configuration = pluginConfiguration;
     }
+
+    private int _activeEventsSelectedItem;
+    private int _disabledEventsSelectedItem;
+    private string[] _activeEventsArr = [];
+    private string[] _activeEventsArrInternal = [];
+    private string[] _disabledEventsArr = [];
+    private string[] _disabledEventsArrInternal = [];
 
     public override void Draw()
     {
+        var blEvents = _configuration.BlacklistedEvents;
+
+        //todo make this intro look nice
         ImGui.TextWrapped(
             "Hey Hey! PvPAnnouncer dev here. Thanks for using the testing version! This is a BIG feature. Please feel free to play around with it and ask ANY questions!" +
             "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
@@ -41,16 +52,15 @@ public class CustomizationWindow : Window, IDisposable
             PluginServices.VoicelineCreationWindow.Toggle();
         }
 
-        ImGui.SameLine();
-        if (ImGui.Button("Open Voice Line Mapping Window"))
+        if (ImGui.Button("Add or Remove voicelines for each event"))
         {
             PluginServices.VoicelineMappingWindow.Toggle();
         }
 
-        ImGui.SameLine();
-        if (ImGui.Button("Open Voice Line Management Window")) PluginServices.VoicelineManagementWindow.Toggle();
+        if (ImGui.Button("Mute & Delete Voicelines")) PluginServices.VoicelineManagementWindow.Toggle();
 
-        ImGui.Separator();
+        if (ImGui.Button("Open Full Voiceline List")) PluginServices.LoadedVoicelineWindow.Toggle();
+
         if (ImGui.Button("Export Custom Voicelines"))
         {
             CopyValues(PluginServices.Config.CustomShoutcasts, [], []);
@@ -126,6 +136,61 @@ public class CustomizationWindow : Window, IDisposable
             }
         }
 
+        ImGui.Separator();
+
+        if (ImGui.CollapsingHeader("Enable & Disable Events"))
+        {
+            var activeEvents = new List<string>();
+            var activeEventsInternal = new List<string>();
+            foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())
+            {
+                var eventId = e.Id;
+                if (!blEvents.Contains(eventId))
+                {
+                    activeEvents.Add(e.Name);
+                    activeEventsInternal.Add(eventId);
+                }
+            }
+
+
+            List<string> listDisabledInternal = [];
+            List<string> listDisabledPublic = [];
+            foreach (var internalName in blEvents)
+            {
+                var e = PluginServices.PvPEventBroker.GetEvent(internalName);
+                if (e == null) continue;
+
+                listDisabledInternal.Add(internalName);
+                listDisabledPublic.Add(e.Name);
+            }
+
+            _activeEventsArr = activeEvents.ToArray();
+            _activeEventsArrInternal = activeEventsInternal.ToArray();
+            ImGui.Text("Enabled Events:");
+            ImGui.ListBox("###EnabledEvents", ref _activeEventsSelectedItem, _activeEventsArr);
+            if (ImGui.Button("Disable"))
+                if (_activeEventsSelectedItem < _activeEventsArrInternal.Length)
+                {
+                    _configuration.BlacklistedEvents.Add(_activeEventsArrInternal[_activeEventsSelectedItem]);
+                    _configuration.Save();
+                }
+
+            _disabledEventsArrInternal = listDisabledInternal.ToArray();
+            _disabledEventsArr = listDisabledPublic.ToArray();
+            ImGui.Text("Disabled Events:");
+            ImGui.ListBox("###DisabledEvents", ref _disabledEventsSelectedItem, _disabledEventsArr);
+            if (ImGui.Button("Enable"))
+                if (_disabledEventsSelectedItem < _disabledEventsArrInternal.Length)
+                {
+                    _configuration.BlacklistedEvents.Remove(_disabledEventsArrInternal[_disabledEventsSelectedItem]);
+                    _configuration.Save();
+                }
+        }
+
+        if (ImGui.CollapsingHeader("Event Tester###Testerheader")) EventTester();
+
+        ImGui.Separator();
+
         if (ImGui.CollapsingHeader("Danger Zone"))
         {
             //todo confirm box
@@ -146,12 +211,6 @@ public class CustomizationWindow : Window, IDisposable
                 ImGui.OpenPopup("ConfirmWipeMapping");
                 PluginServices.ChatGui.Print("Reset Custom Mapping!");
             }
-        }
-
-        ImGui.Separator();
-        if (ImGui.CollapsingHeader("Event Tester###Testerheader"))
-        {
-            EventTester();
         }
     }
 
@@ -191,18 +250,14 @@ public class CustomizationWindow : Window, IDisposable
         ImGui.TextWrapped(
             "This Simulates these events happening in real pvp, using your configuration settings including announcement frequency and delay. If delay is long or frequency is low, you may not hear voice lines when activating these buttons.");
         var i = 1;
-        foreach (var pvPEvent in PluginServices.PvPEventBroker.GetPvPEventIDs())
+        foreach (var ev in PluginServices.PvPEventBroker.GetPvPEvents())
         {
-            if (ImGui.Button(pvPEvent))
+            if (ImGui.Button(ev.Name))
             {
                 try
                 {
-                    var ev = PluginServices.PvPEventBroker.GetEvent(pvPEvent);
-                    if (ev != null)
-                    {
-                        PluginServices.Announcer.ReceivePvPEvent(true, ev);
-                        PluginServices.Announcer.ClearQueue();
-                    }
+                    PluginServices.Announcer.ReceivePvPEvent(true, ev);
+                    PluginServices.Announcer.ClearQueue();
                 }
                 catch (Exception e)
                 {

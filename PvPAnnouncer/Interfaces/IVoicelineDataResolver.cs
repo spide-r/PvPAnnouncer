@@ -9,6 +9,7 @@ public interface IVoicelineDataResolver
 {
     List<string> GetOrphanedLines();
     Dictionary<string, List<string>> GetCutsceneLineTags();
+    List<string> GetSortedCharacterNames();
     string ResolveCutsceneLineWithTag(string tag);
     string ResolveTextWithNpcYell(uint npcYell);
     string? ResolveTextWithIctdRow(uint row);

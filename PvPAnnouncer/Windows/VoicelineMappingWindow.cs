@@ -26,7 +26,6 @@ public class VoicelineMappingWindow : Window, IDisposable
 
     public override void Draw()
     {
-        //todo option to filter mapping by specific character?
         var eventsUserFacingName = new List<string>();
         var eventsInternal = new List<string>();
         foreach (var e in PluginServices.PvPEventBroker.GetPvPEvents())

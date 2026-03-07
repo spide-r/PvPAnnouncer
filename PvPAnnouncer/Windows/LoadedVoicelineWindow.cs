@@ -10,9 +10,9 @@ namespace PvPAnnouncer.Windows;
 
 public class LoadedVoicelineWindow : Window, IDisposable
 {
-    //todo filter text content, show battle talk id as well
     private readonly List<Shoutcast> _allBattleTalks;
     private List<string> toFilter = ["All"];
+    private string _textFilter = "";
 
     public LoadedVoicelineWindow(IShoutcastRepository shoutcastRepository) : base(
         "Loaded Voice Lines", ImGuiWindowFlags.AlwaysVerticalScrollbar)
@@ -35,7 +35,8 @@ public class LoadedVoicelineWindow : Window, IDisposable
 
     public override void Draw()
     {
-        if (ImGui.BeginCombo("Announcer Filter", toFilter[_filterIndex]))
+        ImGui.Text("Announcer Filter");
+        if (ImGui.BeginCombo("###Announcer Filter", toFilter[_filterIndex]))
         {
             for (var i = 0; i < toFilter.Count; i++)
             {
@@ -49,12 +50,16 @@ public class LoadedVoicelineWindow : Window, IDisposable
             ImGui.EndCombo();
         }
 
+        var filter = _textFilter;
+        ImGui.TextWrapped("Text Filter");
+        if (ImGui.InputText("###TextFilter", ref filter)) _textFilter = filter;
+
 
         // id(voLine/path/)- name - text - button
         if (ImGui.BeginTable("Voicelines", 4,
                 ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable | ImGuiTableFlags.Reorderable))
         {
-            ImGui.TableSetupColumn("Voiceline Path");
+            ImGui.TableSetupColumn("Voiceline ID");
             ImGui.TableSetupColumn("Name");
             ImGui.TableSetupColumn("Text");
             ImGui.TableSetupColumn("Button");
@@ -69,18 +74,22 @@ public class LoadedVoicelineWindow : Window, IDisposable
                     }
                 }
 
-                ImGui.TableNextRow();
-                ImGui.TableNextColumn();
-                ImGui.Text(bt.SoundPath);
-                ImGui.TableNextColumn();
-                ImGui.Text(bt.Shoutcaster);
-                ImGui.TableNextColumn();
                 var text = bt.GetTranscriptionWithGender(PluginServices.Config.Language,
                     PluginServices.Config.WantsAttribute("Feminine Pronouns"), PluginServices.SeStringEvaluator);
                 if (text.Equals(""))
-                {
                     text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
-                }
+
+                if (!_textFilter.Equals(""))
+                    if (!text.Contains(_textFilter, StringComparison.CurrentCultureIgnoreCase))
+                        continue;
+
+                ImGui.TableNextRow();
+                ImGui.TableNextColumn();
+                ImGui.Text(bt.Id);
+                ImGui.TableNextColumn();
+                ImGui.Text(bt.Shoutcaster);
+                ImGui.TableNextColumn();
+
 
                 ImGui.Text(text);
                 ImGui.TableNextColumn();
