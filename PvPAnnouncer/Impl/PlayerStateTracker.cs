@@ -1,12 +1,8 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Config;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
-using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
-using PvPAnnouncer.Impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
@@ -150,13 +146,6 @@ public class PlayerStateTracker : IPlayerStateTracker
     public bool CheckCNClient()
     {
         return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_chs.scd");
-    }
-
-    public bool IsDawntrailInstalled()
-    {
-        return CNKRClient
-            ? CheckCNKRClient()
-            : PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_en.scd");
     }
 
     public void EmitToBroker(IMessage pvpEvent)

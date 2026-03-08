@@ -54,19 +54,6 @@ namespace PvPAnnouncer
         public List<string> MutedShouts { get; set; } = [];
 
 
-        //todo Notes for when we're letting people customize things
-
-        //maybe read from resources to get the defaults(press button to reset everything)
-        //encourage sharing - export the new stuff maybe
-        //find ways to incentivise sharing modification w/ dev
-        //maybe only store *modified* shit in this config (done)
-        //make sure config overrides are applied correctly (done)
-        //store overriden voiceline definitions (done)
-        //store overriden event=>Voiceline[] mapping (done)
-        //store overriden event definitions (done)
-        //preserve readonly defaults, read from them on first load (done)
-
-
         public string Language { get; set; } = "en";
         public string TextLanguage { get; set; } = "en";
         public int Version { get; set; } = 7;

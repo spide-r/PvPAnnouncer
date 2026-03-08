@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Numerics;
-using Dalamud.Interface.ImGuiNotification;
-using Dalamud.Interface.Windowing;
-using FFXIVClientStructs.FFXIV.Client.UI;
 using Dalamud.Bindings.ImGui;
-using PvPAnnouncer.Data;
-using PvPAnnouncer.Interfaces;
-using PvPAnnouncer.Interfaces.PvPEvents;
+using Dalamud.Interface.Windowing;
 
 namespace PvPAnnouncer.Windows;
 
@@ -24,14 +19,6 @@ public class MainWindow : Window, IDisposable
 
     public override void Draw()
     {
-        if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
-        {
-            ImGui.Separator();
-            ImGui.TextWrapped(
-                "Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
-            ImGui.Separator();
-        }
-
         if (ImGui.Button("Open Plugin Configuration"))
         {
             PluginServices.ConfigWindow.Toggle();

@@ -5,7 +5,6 @@ using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game;
 using Dalamud.Interface.Components;
-using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using Lumina.Data;
@@ -74,15 +73,6 @@ public class ConfigWindow : Window, IDisposable
         var notify = _configuration.Notify;
         var icon = _configuration.WantsIcon;
 
-
-        if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
-        {
-            ImGui.Separator();
-            ImGui.TextWrapped(
-                "Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
-            ImGui.Separator();
-        }
-
         ImGui.TextWrapped("I love your feedback! It helps me make the plugin better! " +
                           "If you have any issues, suggestions, questions. I would love to hear them no matter how small!\n" +
                           "Use the plugin feedback button or contact .spider in the Dalamud Discord.");
@@ -98,17 +88,6 @@ public class ConfigWindow : Window, IDisposable
                 var e = bt[Random.Shared.Next(bt.Length)];
                 PluginServices.Announcer.PlayAndSendBattleTalkForTesting(e);
                 PluginServices.ChatGui.Print($"Playing Voiceline for {e.Shoutcaster}", InternalConstants.MessageTag);
-
-                if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
-                {
-                    Notification n = new Notification();
-                    n.Title = "Dawntrail Not installed!";
-                    n.Type = NotificationType.Error;
-                    n.Minimized = false;
-                    n.MinimizedText = "Dawntrail is not installed!";
-                    n.Content = "You must install Dawntrail for this plugin to work!";
-                    PluginServices.NotificationManager.AddNotification(n);
-                }
             }
             else
             {
@@ -250,7 +229,7 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.Unindent();
-        if (ImGui.Button("Reset Above Values to Default"))
+        if (InternalConstants.CtrlShiftButton("Reset Above Values to Default"))
         {
             _configuration.CooldownSeconds = 15;
             _configuration.Percent = 70;

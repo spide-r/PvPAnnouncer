@@ -10,13 +10,13 @@ using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using Newtonsoft.Json;
+using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Windows;
 
 public class CustomizationWindow : Window, IDisposable
 {
-    //todo shill/ask players nicely to share their voicelines w/ people
-    //todo only export 1 character at a time option pre-checked
+    //todo shill/ask players nicely to share their voicelines w/ people or w/ the dev
 
     private readonly Configuration _configuration;
 
@@ -44,13 +44,8 @@ public class CustomizationWindow : Window, IDisposable
         var blEvents = _configuration.BlacklistedEvents;
         var single = _configuration.ExportSingleCharacter;
 
-        //todo make this intro look nice
         ImGui.TextWrapped(
-            "Hey Hey! PvPAnnouncer dev here. Thanks for using the testing version! This is a BIG feature. Please feel free to play around with it and ask ANY questions!" +
-            "\nYour questions will be instrumental in making sure that this customization is accessible and easy to use for all.");
-        ImGui.Separator();
-        ImGui.TextWrapped(
-            "In order for this plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through some steps to create a proper voiceline.");
+            "In order for the plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through some steps to create a proper voiceline.");
         ImGui.TextWrapped("Once a voiceline is created, we must map it to an existing event.");
 
         //todo make the button layout look nice
@@ -298,26 +293,21 @@ public class CustomizationWindow : Window, IDisposable
 
         ImGui.Separator();
 
-        if (ImGui.CollapsingHeader("Danger Zone"))
+        if (InternalConstants.CtrlShiftButton("Reset Custom Voicelines"))
         {
-            //todo confirm box
-            if (ImGui.Button("Reset Custom Voicelines"))
-            {
-                PluginServices.Config.CustomShoutcasts.Clear();
-                PluginServices.Config.Save();
-                PluginServices.ConfigManager.ReloadConfig();
-                PluginServices.ChatGui.Print("Reset Custom Voicelines!");
-            }
+            PluginServices.Config.CustomShoutcasts.Clear();
+            PluginServices.Config.Save();
+            PluginServices.ConfigManager.ReloadConfig();
+            PluginServices.ChatGui.Print("Reset Custom Voicelines!");
+        }
 
-            ImGui.SameLine();
-            if (ImGui.Button("Reset Custom Mapping"))
-            {
-                PluginServices.Config.MappingOverride.Clear();
-                PluginServices.Config.Save();
-                PluginServices.ConfigManager.ReloadConfig();
-                ImGui.OpenPopup("ConfirmWipeMapping");
-                PluginServices.ChatGui.Print("Reset Custom Mapping!");
-            }
+        ImGui.SameLine();
+        if (InternalConstants.CtrlShiftButton("Reset Custom Mapping"))
+        {
+            PluginServices.Config.MappingOverride.Clear();
+            PluginServices.Config.Save();
+            PluginServices.ConfigManager.ReloadConfig();
+            PluginServices.ChatGui.Print("Reset Custom Mapping!");
         }
     }
 

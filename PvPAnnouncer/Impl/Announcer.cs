@@ -47,12 +47,6 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
     public void ReceivePvPEvent(bool bypass, PvPEvent pvpEvent)
     {
-        if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
-        {
-            PluginServices.PluginLog.Error("Dawntrail is not installed! Plugin will do nothing until this is fixed!");
-            return;
-        }
-
         PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.Id} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
@@ -220,6 +214,13 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             if (sound == null)
             {
                 PluginServices.PluginLog.Warning($"{shoutcastId} not found.");
+                continue;
+            }
+
+            if (!PluginServices.DataManager.FileExists(
+                    sound.GetShoutcastSoundPathWithLang(PluginServices.Config.Language)))
+            {
+                PluginServices.PluginLog.Error($"Sound file {sound} not found!");
                 continue;
             }
 

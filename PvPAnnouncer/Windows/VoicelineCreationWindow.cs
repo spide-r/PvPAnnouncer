@@ -76,7 +76,6 @@ public class VoicelineCreationWindow : Window, IDisposable
 
         if (ImGui.CollapsingHeader("Step 6: Save and Reset"))
         {
-            //todo "are you sure" dialogue no matter whats pressed  
             try
             {
                 var n = current.Shoutcaster;
@@ -88,20 +87,21 @@ public class VoicelineCreationWindow : Window, IDisposable
                 }
                 else
                 {
-                    if (ImGui.Button("Save & Reset To Blank Character"))
+                    if (InternalConstants.CtrlShiftButton("Save & Reset To Blank Character"))
                     {
                         var sc = _controller.BuildAndResetToDefaults();
                         _controller.SaveToConfigAndRegister(sc);
                     }
 
-                    if (ImGui.Button("Save & New Voiceline for " + n))
+                    if (InternalConstants.CtrlShiftButton("Save & New Voiceline for " + n))
                     {
                         var sc = _controller.BuildAndResetToCharacterDefaults();
                         _controller.SaveToConfigAndRegister(sc);
                     }
                 }
 
-                if (ImGui.Button("Reset to Blank Voiceline for " + n)) _controller.BuildAndResetToCharacterDefaults();
+                if (InternalConstants.CtrlShiftButton("Reset to Blank Voiceline for " + n))
+                    _controller.BuildAndResetToCharacterDefaults();
             }
             catch (InvalidOperationException e)
             {
@@ -109,7 +109,7 @@ public class VoicelineCreationWindow : Window, IDisposable
             }
 
             ImGui.Separator();
-            if (ImGui.Button("Reset To Defaults Without Saving"))
+            if (InternalConstants.CtrlShiftButton("Reset To Defaults Without Saving"))
             {
                 _controller.ResetToDefaults();
             }
@@ -613,7 +613,7 @@ public class VoicelineCreationWindow : Window, IDisposable
 
         var icon = _controller.GetCurrentShoutcast().Icon;
         uint min = 73001;
-        uint max = 73287; //todo check max again
+        uint max = 73287; //todo check max on updates & make an update checklist
         var useIcon = _useIcon;
         if (ImGui.Checkbox("Use Icon", ref useIcon))
         {
@@ -630,6 +630,7 @@ public class VoicelineCreationWindow : Window, IDisposable
             if (ImGui.ArrowButton("###GoDownIcon", ImGuiDir.Left))
             {
                 var newIcon = icon - 1;
+                if (newIcon > max) newIcon = max;
                 if (newIcon < min) newIcon = min;
 
                 _controller.SelectIcon(newIcon);
@@ -641,6 +642,8 @@ public class VoicelineCreationWindow : Window, IDisposable
                 var newIcon = icon + 1;
 
                 if (newIcon > max) newIcon = max;
+                if (newIcon < min) newIcon = min;
+
 
                 _controller.SelectIcon(newIcon);
             }

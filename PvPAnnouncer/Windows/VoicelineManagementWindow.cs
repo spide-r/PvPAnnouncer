@@ -5,6 +5,7 @@ using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
+using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Windows;
 
@@ -115,8 +116,7 @@ public class VoicelineManagementWindow : Window, IDisposable
             }
 
         if (PluginServices.Config.CustomShoutcasts.ContainsKey(selection))
-            if (ImGui.Button("Delete Custom Voiceline"))
-                //todo are you sure
+            if (InternalConstants.CtrlShiftButton("Delete Custom Voiceline"))
                 PluginServices.ConfigManager.DeleteAndDeregisterShoutcast(selection);
 
 

@@ -84,7 +84,7 @@ internal class PluginServices
         PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
 
         EventShoutcastMapping = new EventShoutcastMapping();
-        ShoutcastRepository = new ShoutcastRepository();
+        ShoutcastRepository = new ShoutcastRepository(DataManager);
 
         JsonLoader = new JsonLoader(DataManager, PvPEventBroker,
             ShoutcastRepository, EventShoutcastMapping);

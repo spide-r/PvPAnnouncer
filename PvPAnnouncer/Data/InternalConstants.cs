@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Lumina.Data;
+﻿using System.Collections.Generic;
 
 namespace PvPAnnouncer.Data;
 
-public abstract class InternalConstants
+public abstract class InternalConstants : ImguiTools
 {
     public const string MessageTag = "PvPAnnouncer";
     public const uint PvPAnnouncerDevIcon = 73282;
