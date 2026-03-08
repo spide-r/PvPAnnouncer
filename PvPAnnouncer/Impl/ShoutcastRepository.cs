@@ -52,4 +52,9 @@ public class ShoutcastRepository(IDataManager _dataManager) : IShoutcastReposito
     {
         return _shoutcasts.Values.SelectMany(sc => sc.Attributes).Distinct().ToList();
     }
+
+    public void Clear()
+    {
+        _shoutcasts.Clear();
+    }
 }

@@ -13,4 +13,5 @@ public interface IShoutcastRepository
     public bool ContainsKey(string shoutcastId);
     public List<string> GetShoutcasters();
     public List<string> GetAttributes();
+    public void Clear();
 }

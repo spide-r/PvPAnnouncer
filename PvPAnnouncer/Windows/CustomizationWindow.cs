@@ -72,9 +72,10 @@ public class CustomizationWindow : Window, IDisposable
         if (ImGui.Button("Open Full Shoutcast List")) PluginServices.LoadedVoicelineWindow.Toggle();
 
         ImGui.Separator();
-        ImGui.TextWrapped("Please feel free to share the presets anywhere! I'd love to see what you end up creating! " +
-                          "Who knows, your work may end up finding its way into the plugin. ;D");
-        ImGui.TextWrapped("I can be contacted in the Dalamud discord in the \"PvPAnnouncer\" help forum.");
+        ImGui.TextWrapped(
+            "Please feel free to share these presets anywhere! I'd love to see what you end up creating! " +
+            "Who knows, your work may end up finding its way into the plugin. ;D");
+        ImGui.TextWrapped("I can be contacted in the Dalamud discord in the \"PvPAnnouncer\" help forum ");
 
         ImGui.Separator();
         if (ImGui.CollapsingHeader("Import & Export"))
@@ -136,7 +137,7 @@ public class CustomizationWindow : Window, IDisposable
 
         if (ImGui.CollapsingHeader("Config Reset"))
         {
-            if (InternalConstants.CtrlShiftButton("Reset Custom Voicelines"))
+            if (ImguiTools.CtrlShiftButton("Reset Custom Voicelines"))
             {
                 PluginServices.Config.CustomShoutcasts.Clear();
                 PluginServices.Config.Save();
@@ -145,7 +146,7 @@ public class CustomizationWindow : Window, IDisposable
             }
 
             ImGui.SameLine();
-            if (InternalConstants.CtrlShiftButton("Reset Custom Mapping"))
+            if (ImguiTools.CtrlShiftButton("Reset Custom Mapping"))
             {
                 PluginServices.Config.MappingOverride.Clear();
                 PluginServices.Config.Save();

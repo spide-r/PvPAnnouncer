@@ -20,6 +20,8 @@ public class JsonLoader(
 {
     public void LoadAllValuesIntoMemory()
     {
+        shoutcastRepository.Clear();
+        eventShoutcastMapping.Clear();
         LoadShoutcasts();
         //todo bad design - shoutcasts needs to be loaded w/ the above method before the below methods can complete - divide responsibility?
         LoadAndMapCustomEvents();

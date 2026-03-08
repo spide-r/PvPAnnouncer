@@ -229,7 +229,7 @@ public class ConfigWindow : Window, IDisposable
         }
 
         ImGui.Unindent();
-        if (InternalConstants.CtrlShiftButton("Reset Above Values to Default"))
+        if (ImguiTools.CtrlShiftButton("Reset Above Values to Default"))
         {
             _configuration.CooldownSeconds = 15;
             _configuration.Percent = 70;

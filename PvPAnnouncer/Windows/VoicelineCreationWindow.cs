@@ -87,20 +87,20 @@ public class VoicelineCreationWindow : Window, IDisposable
                 }
                 else
                 {
-                    if (InternalConstants.CtrlShiftButton("Save & Reset To Blank Character"))
+                    if (ImguiTools.CtrlShiftButton("Save & Reset To Blank Character"))
                     {
                         var sc = _controller.BuildAndResetToDefaults();
                         _controller.SaveToConfigAndRegister(sc);
                     }
 
-                    if (InternalConstants.CtrlShiftButton("Save & New Voiceline for " + n))
+                    if (ImguiTools.CtrlShiftButton("Save & New Voiceline for " + n))
                     {
                         var sc = _controller.BuildAndResetToCharacterDefaults();
                         _controller.SaveToConfigAndRegister(sc);
                     }
                 }
 
-                if (InternalConstants.CtrlShiftButton("Reset to Blank Voiceline for " + n))
+                if (ImguiTools.CtrlShiftButton("Reset to Blank Voiceline for " + n))
                     _controller.BuildAndResetToCharacterDefaults();
             }
             catch (InvalidOperationException e)
@@ -109,7 +109,7 @@ public class VoicelineCreationWindow : Window, IDisposable
             }
 
             ImGui.Separator();
-            if (InternalConstants.CtrlShiftButton("Reset To Defaults Without Saving"))
+            if (ImguiTools.CtrlShiftButton("Reset To Defaults Without Saving"))
             {
                 _controller.ResetToDefaults();
             }

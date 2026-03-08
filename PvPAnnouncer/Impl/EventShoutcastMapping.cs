@@ -79,4 +79,9 @@ public class EventShoutcastMapping : IEventShoutcastMapping
     {
         return _map.Keys.ToList();
     }
+
+    public void Clear()
+    {
+        _map.Clear();
+    }
 }

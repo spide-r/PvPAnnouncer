@@ -13,4 +13,5 @@ public interface IEventShoutcastMapping
     public bool ContainsKey(string shoutcast);
     public List<string> GetShoutcastList(string eventId);
     public List<string> GetAllEvents();
+    public void Clear();
 }

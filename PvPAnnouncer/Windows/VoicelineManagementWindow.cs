@@ -116,7 +116,7 @@ public class VoicelineManagementWindow : Window, IDisposable
             }
 
         if (PluginServices.Config.CustomShoutcasts.ContainsKey(selection))
-            if (InternalConstants.CtrlShiftButton("Delete Custom Voiceline"))
+            if (ImguiTools.CtrlShiftButton("Delete Custom Voiceline"))
                 PluginServices.ConfigManager.DeleteAndDeregisterShoutcast(selection);
 
 
