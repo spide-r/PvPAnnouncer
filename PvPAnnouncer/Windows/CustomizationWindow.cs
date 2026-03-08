@@ -16,8 +16,6 @@ namespace PvPAnnouncer.Windows;
 
 public class CustomizationWindow : Window, IDisposable
 {
-    //todo shill/ask players nicely to share their voicelines w/ people or w/ the dev
-
     private readonly Configuration _configuration;
 
     public CustomizationWindow(Configuration pluginConfiguration) : base(
@@ -42,203 +40,47 @@ public class CustomizationWindow : Window, IDisposable
     public override void Draw()
     {
         var blEvents = _configuration.BlacklistedEvents;
-        var single = _configuration.ExportSingleCharacter;
 
         ImGui.TextWrapped(
-            "In order for the plugin to play a voiceline, it needs an audio file from the game, and a text transcription. While some voice line audio is transcribed neatly, most audio is independent from its transcription. Hence we must go through some steps to create a proper voiceline.");
-        ImGui.TextWrapped("Once a voiceline is created, we must map it to an existing event.");
+            "- In order for the plugin to play a voiceline, it needs an audio file and a text transcription.");
+        ImGui.TextWrapped(
+            "- While some voice line audio is transcribed neatly, most audio is independent from its transcription.");
+        ImGui.TextWrapped(
+            "- We must connect the dots ourselves in order to create a full shoutcast that the plugin can use.");
 
-        //todo make the button layout look nice
-        if (ImGui.Button("Open Voice Line Creation Window"))
+
+        ImGui.TextWrapped("Shoutcast creation can be done here:");
+        if (ImGui.Button("Create Shoutcasts"))
         {
             PluginServices.VoicelineCreationWindow.Toggle();
         }
 
+        ImGui.TextWrapped(
+            "Once we have created a few shoutcasts, we must \"map\" the shoutcast to an associated event. This allows the plugin to select it when an event is triggered.\nThis can be done here:");
 
-        if (ImGui.Button("Add or Remove voicelines for each event"))
+        if (ImGui.Button("Add & Remove Shoutcasts for Events"))
         {
             PluginServices.VoicelineMappingWindow.Toggle();
         }
 
-        if (ImGui.Button("Mute & Delete Voicelines")) PluginServices.VoicelineManagementWindow.Toggle();
+        ImGui.TextWrapped(
+            "If you need to delete a custom shoutcast or ensure that a pre-made shoutcast is never shown to you, you can do so here:");
 
-        if (ImGui.Button("Open Full Voiceline List")) PluginServices.LoadedVoicelineWindow.Toggle();
+        if (ImGui.Button("Mute & Delete Shoutcast")) PluginServices.VoicelineManagementWindow.Toggle();
 
-        if (ImGui.Button("Export Custom Voicelines"))
-        {
-            CopyValues(
-                single && !_shoutcaster.IsNullOrEmpty()
-                    ? GetShoutsForShoutcaster(_shoutcaster)
-                    : PluginServices.Config.CustomShoutcasts, [], []);
-        }
-
-        ImGui.SameLine();
-
-        if (ImGui.Button("Export Voiceline Mapping"))
-        {
-            CopyValues([],
-                single && !_shoutcaster.IsNullOrEmpty()
-                    ? GetCustomMappingForShoutcaster(_shoutcaster)
-                    : PluginServices.Config.MappingOverride, []);
-        }
-
-        ImGui.SameLine();
-
-        if (ImGui.Button("Export Both"))
-            CopyValues(
-                single && !_shoutcaster.IsNullOrEmpty()
-                    ? GetShoutsForShoutcaster(_shoutcaster)
-                    : PluginServices.Config.CustomShoutcasts,
-                single && !_shoutcaster.IsNullOrEmpty()
-                    ? GetCustomMappingForShoutcaster(_shoutcaster)
-                    : PluginServices.Config.MappingOverride, []);
-
-        if (ImGui.Checkbox("Export Custom Values for a Single Character", ref single))
-        {
-            _configuration.ExportSingleCharacter = single;
-            _configuration.Save();
-        }
-
-        var selection = _selection;
-        if (single)
-        {
-            var scList = PluginServices.ShoutcastRepository.GetShoutcasters().Where(CasterHasChanges).ToList();
-            ImGui.TextWrapped("Select The Character to Export:");
-            if (ImGui.ListBox("###Chars", ref selection,
-                    scList)) //slow and sloppy, but due to low list count it doesnt matter
-            {
-                _selection = selection;
-                _shoutcaster = scList[selection];
-            }
-        }
+        ImGui.TextWrapped("If you wish to browse existing shoutcasts, you can do so here:");
+        if (ImGui.Button("Open Full Shoutcast List")) PluginServices.LoadedVoicelineWindow.Toggle();
 
         ImGui.Separator();
-        if (ImGui.Button("Import From Clipboard"))
+        ImGui.TextWrapped("Please feel free to share the presets anywhere! I'd love to see what you end up creating! " +
+                          "Who knows, your work may end up finding its way into the plugin. ;D");
+        ImGui.TextWrapped("I can be contacted in the Dalamud discord in the \"PvPAnnouncer\" help forum.");
+
+        ImGui.Separator();
+        if (ImGui.CollapsingHeader("Import & Export"))
         {
-            var b64Clip = ImGui.GetClipboardText();
-            PluginServices.PluginLog.Verbose($"Found {b64Clip}");
-            var impVl = 0;
-            var impMap = 0;
-            try
-            {
-                var decoded = new string(Encoding.UTF8.GetString(Convert.FromBase64String(b64Clip)));
-                PluginServices.PluginLog.Verbose($"Decoded to: {decoded} ");
-                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(decoded)!;
-                if (dict.TryGetValue("shoutcasts", out string? sc))
-                {
-                    var decodedSc = new string(Encoding.UTF8.GetString(Convert.FromBase64String(sc)));
-                    var deserializedSc = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedSc)!;
-                    foreach (var keyValuePair in deserializedSc)
-                    {
-                        if (_configuration.DupeVoicelineChoice == 1 &&
-                            PluginServices.ShoutcastRepository.ContainsKey(keyValuePair.Key)) // skip
-                            continue;
-
-                        PluginServices.Config.CustomShoutcasts[keyValuePair.Key] = keyValuePair.Value;
-                        impVl++;
-                    }
-                }
-
-                if (dict.TryGetValue("mapping", out string? mapping))
-                {
-                    var decodedMap = new string(Encoding.UTF8.GetString(Convert.FromBase64String(mapping)));
-                    var deserializedMapping = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedMap)!;
-                    foreach (var keyValuePair in deserializedMapping)
-                    {
-                        switch (_configuration.DupeMappingChoice)
-                        {
-                            // skip stuff already overriden 
-                            case 1 when PluginServices.Config.MappingOverride.ContainsKey(keyValuePair.Key):
-                                continue;
-                            case 1:
-                                PluginServices.Config.MappingOverride[keyValuePair.Key] =
-                                    keyValuePair.Value; //no overriden values, add freely
-                                impMap++;
-                                break;
-                            // override - we dont care whats in our config
-                            case 2:
-                                PluginServices.Config.MappingOverride[keyValuePair.Key] = keyValuePair.Value;
-                                impMap++;
-                                break;
-                            // either no dupe or we want to merge 
-                            case 0:
-                            {
-                                var current =
-                                    PluginServices.JsonLoader.ConstructMappingFromJson(
-                                        PluginServices.Config.MappingOverride.GetValueOrDefault(keyValuePair.Key,
-                                            "{}"));
-                                var toMerge = PluginServices.JsonLoader.ConstructMappingFromJson(
-                                    keyValuePair.Value);
-                                current.AddRange(toMerge);
-                                current = current.Distinct().ToList();
-                                PluginServices.Config.MappingOverride[keyValuePair.Key] = PluginServices.JsonLoader
-                                    .BuildJsonMapping(keyValuePair.Key, current).ToJsonString();
-                                impMap++;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-
-                PluginServices.Config.Save();
-                PluginServices.ConfigManager.ReloadConfig();
-                PluginServices.ChatGui.Print(
-                    $"Successfully Imported {impVl} voicelines and mapping for {impMap} events!");
-            }
-            catch (Exception e)
-            {
-                PluginServices.PluginLog.Error(e, "Oops!");
-                PluginServices.NotificationManager.AddNotification(new Notification()
-                {
-                    Content = "Error: " + e.Message,
-                    Type = NotificationType.Error,
-                    Title = "Error Importing Clipboard Data!"
-                });
-            }
+            ShowImportExport();
         }
-
-        var overrideVl = _configuration.DupeVoicelineChoice == 0;
-        var skipVl = _configuration.DupeVoicelineChoice == 1;
-        var mergeMap = _configuration.DupeMappingChoice == 0;
-        var skipMap = _configuration.DupeMappingChoice == 1;
-        var overrideMap = _configuration.DupeMappingChoice == 2;
-
-        ImGui.Text("Voiceline Import Options:");
-        if (ImGui.RadioButton("Import and Override Duplicate Voicelines (Default)", overrideVl))
-        {
-            _configuration.DupeVoicelineChoice = 0;
-            _configuration.Save();
-        }
-
-        if (ImGui.RadioButton("Don't import Duplicate Voicelines", skipVl))
-        {
-            _configuration.DupeVoicelineChoice = 1;
-            _configuration.Save();
-        }
-
-        ImGui.Text("Event Mapping Import Options:");
-        if (ImGui.RadioButton("Combine Event Mapping (Default)", mergeMap))
-        {
-            _configuration.DupeMappingChoice = 0;
-            _configuration.Save();
-        }
-
-        if (ImGui.RadioButton("Preserve Existing Event Mapping", skipMap))
-        {
-            _configuration.DupeMappingChoice = 1;
-            _configuration.Save();
-        }
-
-        ImGuiComponents.HelpMarker(
-            "If you have made modifications to an event, this option will ensure that the import does not touch those modifications.");
-
-        if (ImGui.RadioButton("Override Existing Event Mapping", overrideMap))
-        {
-            _configuration.DupeMappingChoice = 2;
-            _configuration.Save();
-        }
-
 
         if (ImGui.CollapsingHeader("Enable & Disable Events"))
         {
@@ -291,23 +133,25 @@ public class CustomizationWindow : Window, IDisposable
 
         if (ImGui.CollapsingHeader("Event Tester###Testerheader")) EventTester();
 
-        ImGui.Separator();
 
-        if (InternalConstants.CtrlShiftButton("Reset Custom Voicelines"))
+        if (ImGui.CollapsingHeader("Config Reset"))
         {
-            PluginServices.Config.CustomShoutcasts.Clear();
-            PluginServices.Config.Save();
-            PluginServices.ConfigManager.ReloadConfig();
-            PluginServices.ChatGui.Print("Reset Custom Voicelines!");
-        }
+            if (InternalConstants.CtrlShiftButton("Reset Custom Voicelines"))
+            {
+                PluginServices.Config.CustomShoutcasts.Clear();
+                PluginServices.Config.Save();
+                PluginServices.ConfigManager.ReloadConfig();
+                PluginServices.ChatGui.Print("Reset Custom Voicelines!");
+            }
 
-        ImGui.SameLine();
-        if (InternalConstants.CtrlShiftButton("Reset Custom Mapping"))
-        {
-            PluginServices.Config.MappingOverride.Clear();
-            PluginServices.Config.Save();
-            PluginServices.ConfigManager.ReloadConfig();
-            PluginServices.ChatGui.Print("Reset Custom Mapping!");
+            ImGui.SameLine();
+            if (InternalConstants.CtrlShiftButton("Reset Custom Mapping"))
+            {
+                PluginServices.Config.MappingOverride.Clear();
+                PluginServices.Config.Save();
+                PluginServices.ConfigManager.ReloadConfig();
+                PluginServices.ChatGui.Print("Reset Custom Mapping!");
+            }
         }
     }
 
@@ -328,6 +172,180 @@ public class CustomizationWindow : Window, IDisposable
             Title = "Copied!",
             Content = "Successfully copied to the clipboard!"
         });
+    }
+
+    private void ShowImportExport()
+    {
+        var single = _configuration.ExportSingleCharacter;
+
+        if (ImGui.Button("Export Custom Shoutcasts"))
+            CopyValues(
+                single && !_shoutcaster.IsNullOrEmpty()
+                    ? GetShoutsForShoutcaster(_shoutcaster)
+                    : PluginServices.Config.CustomShoutcasts, [], []);
+
+        ImGui.SameLine();
+
+        if (ImGui.Button("Export Shoutcast Mapping"))
+            CopyValues([],
+                single && !_shoutcaster.IsNullOrEmpty()
+                    ? GetCustomMappingForShoutcaster(_shoutcaster)
+                    : PluginServices.Config.MappingOverride, []);
+
+        ImGui.SameLine();
+
+        if (ImGui.Button("Export Both"))
+            CopyValues(
+                single && !_shoutcaster.IsNullOrEmpty()
+                    ? GetShoutsForShoutcaster(_shoutcaster)
+                    : PluginServices.Config.CustomShoutcasts,
+                single && !_shoutcaster.IsNullOrEmpty()
+                    ? GetCustomMappingForShoutcaster(_shoutcaster)
+                    : PluginServices.Config.MappingOverride, []);
+
+        if (ImGui.Checkbox("Export Custom Values for a Single Character", ref single))
+        {
+            _configuration.ExportSingleCharacter = single;
+            _configuration.Save();
+        }
+
+        var selection = _selection;
+        if (single)
+        {
+            var scList = PluginServices.ShoutcastRepository.GetShoutcasters().Where(CasterHasChanges).ToList();
+            ImGui.TextWrapped("Select The Character to Export:");
+            if (ImGui.ListBox("###Chars", ref selection,
+                    scList)) //slow and sloppy, but due to low list count it doesnt matter
+            {
+                _selection = selection;
+                _shoutcaster = scList[selection];
+            }
+        }
+
+        ImGui.Separator();
+        if (ImGui.Button("Import From Clipboard"))
+        {
+            var b64Clip = ImGui.GetClipboardText();
+            PluginServices.PluginLog.Verbose($"Found {b64Clip}");
+            var impVl = 0;
+            var impMap = 0;
+            try
+            {
+                var decoded = new string(Encoding.UTF8.GetString(Convert.FromBase64String(b64Clip)));
+                PluginServices.PluginLog.Verbose($"Decoded to: {decoded} ");
+                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(decoded)!;
+                if (dict.TryGetValue("shoutcasts", out var sc))
+                {
+                    var decodedSc = new string(Encoding.UTF8.GetString(Convert.FromBase64String(sc)));
+                    var deserializedSc = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedSc)!;
+                    foreach (var keyValuePair in deserializedSc)
+                    {
+                        if (_configuration.DupeVoicelineChoice == 1 &&
+                            PluginServices.ShoutcastRepository.ContainsKey(keyValuePair.Key)) // skip
+                            continue;
+
+                        PluginServices.Config.CustomShoutcasts[keyValuePair.Key] = keyValuePair.Value;
+                        impVl++;
+                    }
+                }
+
+                if (dict.TryGetValue("mapping", out var mapping))
+                {
+                    var decodedMap = new string(Encoding.UTF8.GetString(Convert.FromBase64String(mapping)));
+                    var deserializedMapping = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedMap)!;
+                    foreach (var keyValuePair in deserializedMapping)
+                        switch (_configuration.DupeMappingChoice)
+                        {
+                            // skip stuff already overriden 
+                            case 1 when PluginServices.Config.MappingOverride.ContainsKey(keyValuePair.Key):
+                                continue;
+                            case 1:
+                                PluginServices.Config.MappingOverride[keyValuePair.Key] =
+                                    keyValuePair.Value; //no overriden values, add freely
+                                impMap++;
+                                break;
+                            // override - we dont care whats in our config
+                            case 2:
+                                PluginServices.Config.MappingOverride[keyValuePair.Key] = keyValuePair.Value;
+                                impMap++;
+                                break;
+                            // either no dupe or we want to merge 
+                            case 0:
+                            {
+                                var current =
+                                    PluginServices.JsonLoader.ConstructMappingFromJson(
+                                        PluginServices.Config.MappingOverride.GetValueOrDefault(keyValuePair.Key,
+                                            "{}"));
+                                var toMerge = PluginServices.JsonLoader.ConstructMappingFromJson(
+                                    keyValuePair.Value);
+                                current.AddRange(toMerge);
+                                current = current.Distinct().ToList();
+                                PluginServices.Config.MappingOverride[keyValuePair.Key] = PluginServices.JsonLoader
+                                    .BuildJsonMapping(keyValuePair.Key, current).ToJsonString();
+                                impMap++;
+                                break;
+                            }
+                        }
+                }
+
+
+                PluginServices.Config.Save();
+                PluginServices.ConfigManager.ReloadConfig();
+                PluginServices.ChatGui.Print(
+                    $"Successfully Imported {impVl} voicelines and mapping for {impMap} events!");
+            }
+            catch (Exception e)
+            {
+                PluginServices.PluginLog.Error(e, "Oops!");
+                PluginServices.NotificationManager.AddNotification(new Notification
+                {
+                    Content = "Error: " + e.Message,
+                    Type = NotificationType.Error,
+                    Title = "Error Importing Clipboard Data!"
+                });
+            }
+        }
+
+        var overrideVl = _configuration.DupeVoicelineChoice == 0;
+        var skipVl = _configuration.DupeVoicelineChoice == 1;
+        var mergeMap = _configuration.DupeMappingChoice == 0;
+        var skipMap = _configuration.DupeMappingChoice == 1;
+        var overrideMap = _configuration.DupeMappingChoice == 2;
+
+        ImGui.Text("Voiceline Import Options:");
+        if (ImGui.RadioButton("Import and Override Duplicate Voicelines (Default)", overrideVl))
+        {
+            _configuration.DupeVoicelineChoice = 0;
+            _configuration.Save();
+        }
+
+        if (ImGui.RadioButton("Don't import Duplicate Voicelines", skipVl))
+        {
+            _configuration.DupeVoicelineChoice = 1;
+            _configuration.Save();
+        }
+
+        ImGui.Text("Event Mapping Import Options:");
+        if (ImGui.RadioButton("Combine Event Mapping (Default)", mergeMap))
+        {
+            _configuration.DupeMappingChoice = 0;
+            _configuration.Save();
+        }
+
+        if (ImGui.RadioButton("Preserve Existing Event Mapping", skipMap))
+        {
+            _configuration.DupeMappingChoice = 1;
+            _configuration.Save();
+        }
+
+        ImGuiComponents.HelpMarker(
+            "If you have made modifications to an event, this option will ensure that the import does not touch those modifications.");
+
+        if (ImGui.RadioButton("Override Existing Event Mapping", overrideMap))
+        {
+            _configuration.DupeMappingChoice = 2;
+            _configuration.Save();
+        }
     }
 
     private string GetB64(object? obj)
