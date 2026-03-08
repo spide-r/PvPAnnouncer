@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Nodes;
-using PvPAnnouncer.Interfaces;
+﻿using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
@@ -27,7 +24,7 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
         {
             var jsonMapping = keyValuePair.Value;
             PluginServices.EventShoutcastMapping.ReplaceMapping(keyValuePair.Key,
-                PluginServices.JsonLoader.ConstructMapping(jsonMapping));
+                PluginServices.JsonLoader.ConstructMappingFromJson(jsonMapping));
         }
 
         foreach (var keyValuePair in pluginConfiguration.CustomEvents)
@@ -41,33 +38,21 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
         PluginServices.Config.DeleteCustomShoutCast(shoutcastId);
         PluginServices.ShoutcastRepository.DeleteShoutcast(shoutcastId);
         PluginServices.EventShoutcastMapping.PurgeMapping(shoutcastId);
-        RebuildAllJsonMappings();
+        PurgeShoutFromCustomMapping(shoutcastId);
         PluginServices.Config.Save();
     }
 
-    private void RebuildAllJsonMappings()
+    private void PurgeShoutFromCustomMapping(string shout)
     {
-        foreach (var eventT in PluginServices.EventShoutcastMapping.GetAllEvents())
+        foreach (var (eventName, value) in PluginServices.Config.MappingOverride)
         {
-            var j = BuildJsonMapping(eventT, PluginServices.EventShoutcastMapping.GetShoutcastList(eventT));
-            PluginServices.Config.AddMappingOverride(eventT, j.ToJsonString());
+            var currentList = PluginServices.JsonLoader.ConstructMappingFromJson(value);
+            currentList.Remove(shout);
+            var currentJson = PluginServices.JsonLoader.BuildJsonMapping(eventName, currentList);
+            PluginServices.Config.MappingOverride[eventName] = currentJson.ToJsonString();
         }
     }
 
-    private JsonObject BuildJsonMapping(string eventId, List<string> shouts)
-    {
-        var j = new JsonObject
-        {
-            ["eventId"] = eventId
-        };
-        var shoutsArray = new JsonArray();
-
-        foreach (var shout in shouts.Where(shout => !shout.Equals(""))) shoutsArray.Add(shout);
-
-        if (shoutsArray.Count > 0) j["shouts"] = shoutsArray;
-
-        return j;
-    }
 
     //Notes for when we're letting people customize things
     //store overriden voiceline definitions (done)

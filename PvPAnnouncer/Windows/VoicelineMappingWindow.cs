@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Text.Json.Nodes;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
 
@@ -141,8 +140,8 @@ public class VoicelineMappingWindow : Window, IDisposable
             {
                 var shoutToAdd = otherShoutsList[otherShoutsSelection];
                 var eventToAdd = eventsInternal[pvpEventSelection];
-                PluginServices.PluginLog.Verbose($"Adding {shoutToAdd}, {eventToAdd}");
-                PluginServices.EventShoutcastMapping.AddShoutcast(eventToAdd, shoutToAdd);
+                PluginServices.PluginLog.Verbose($"Merging {shoutToAdd}, {eventToAdd}");
+                PluginServices.EventShoutcastMapping.MergeShoutcast(eventToAdd, shoutToAdd);
                 Save(eventToAdd);
             }
             catch (ArgumentOutOfRangeException)
@@ -153,32 +152,13 @@ public class VoicelineMappingWindow : Window, IDisposable
 
     private void Save(string eventT)
     {
-        var j = BuildJsonMapping(eventT, PluginServices.EventShoutcastMapping.GetShoutcastList(eventT));
-        PluginServices.Config.AddMappingOverride(eventT, j.ToJsonString());
+        var j = PluginServices.JsonLoader.BuildJsonMapping(eventT,
+            PluginServices.EventShoutcastMapping.GetShoutcastList(eventT));
+        PluginServices.Config.MappingOverride[eventT] = j.ToJsonString();
         PluginServices.Config.Save();
         PluginServices.PluginLog.Verbose("Saved: " + j);
     }
 
-    private JsonObject BuildJsonMapping(string eventId, List<string> shouts)
-    {
-        var j = new JsonObject
-        {
-            ["eventId"] = eventId
-        };
-        var shoutsArray = new JsonArray();
-
-        foreach (var shout in shouts.Where(shout => !shout.Equals("")))
-        {
-            shoutsArray.Add(shout);
-        }
-
-        if (shoutsArray.Count > 0)
-        {
-            j["shouts"] = shoutsArray;
-        }
-
-        return j;
-    }
 
     public void Dispose()
     {

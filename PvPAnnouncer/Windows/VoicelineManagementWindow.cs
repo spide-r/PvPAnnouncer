@@ -29,7 +29,6 @@ public class VoicelineManagementWindow : Window, IDisposable
     {
     }
 
-    private int _filterIndex = 0;
 
     public override void Draw()
     {

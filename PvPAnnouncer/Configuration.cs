@@ -42,6 +42,11 @@ namespace PvPAnnouncer
 
         public bool ShowNotification { get; set; } = false;
 
+        public int DupeVoicelineChoice { get; set; } = 0;
+        public int DupeMappingChoice { get; set; } = 0;
+        public bool ExportSingleCharacter { get; set; } = false;
+
+
         public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
         public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now
         public Dictionary<string, string> MappingOverride { get; set; } = [];
@@ -74,11 +79,6 @@ namespace PvPAnnouncer
         public void DeleteCustomShoutCast(string shoutcastId)
         {
             CustomShoutcasts.Remove(shoutcastId);
-        }
-
-        public void AddMappingOverride(string eventId, string mappingJson)
-        {
-            MappingOverride[eventId] = mappingJson;
         }
 
         public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)

@@ -160,12 +160,26 @@ public class JsonLoader(
         return cutsceneLines;
     }
 
-    public List<string> ConstructMapping(string json)
+    public List<string> ConstructMappingFromJson(string json)
     {
         var r = JsonNode.Parse(json);
-        var id = r?["eventId"]?.GetValue<string>();
         var shouts = r?["shouts"]?.Deserialize<List<string>>();
         return shouts ?? [];
+    }
+
+    public JsonObject BuildJsonMapping(string eventId, List<string> shouts)
+    {
+        var j = new JsonObject
+        {
+            ["eventId"] = eventId
+        };
+        var shoutsArray = new JsonArray();
+
+        foreach (var shout in shouts.Where(shout => !shout.Equals(""))) shoutsArray.Add(shout);
+
+        if (shoutsArray.Count > 0) j["shouts"] = shoutsArray;
+
+        return j;
     }
 
     public Shoutcast ConstructShoutcast(string json)

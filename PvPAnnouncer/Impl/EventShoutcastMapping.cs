@@ -24,7 +24,7 @@ public class EventShoutcastMapping : IEventShoutcastMapping
     }
 
 
-    public void AddShoutcast(string eventId, string shoutcast)
+    public void MergeShoutcast(string eventId, string shoutcast)
     {
         if (_map.TryGetValue(eventId, out var shoutList))
         {
@@ -44,6 +44,14 @@ public class EventShoutcastMapping : IEventShoutcastMapping
         _map[eventId] = shoutcast;
     }
 
+    public void MergeMapping(string eventId, List<string> shoutcast)
+    {
+        var list = _map.GetValueOrDefault(eventId, []);
+        list.AddRange(shoutcast);
+        list = list.Distinct().ToList();
+        _map[eventId] = list;
+    }
+
     public void RemoveShoutcast(string eventId, string shoutcast)
     {
         if (_map.TryGetValue(eventId, out var shoutList))
@@ -55,6 +63,11 @@ public class EventShoutcastMapping : IEventShoutcastMapping
     public void PurgeMapping(string shoutcast)
     {
         foreach (var keyValuePair in _map) keyValuePair.Value.Remove(shoutcast);
+    }
+
+    public bool ContainsKey(string shoutcast)
+    {
+        return _map.ContainsKey(shoutcast);
     }
 
     public List<string> GetShoutcastList(string eventId)

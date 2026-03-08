@@ -13,5 +13,6 @@ public interface IJsonLoader
     public JsonObject BuildJsonShout(Shoutcast s);
     public Dictionary<string, List<string>> LoadCutsceneLines();
     public Shoutcast ConstructShoutcast(string json);
-    public List<string> ConstructMapping(string json);
+    public List<string> ConstructMappingFromJson(string json);
+    public JsonObject BuildJsonMapping(string eventId, List<string> shouts);
 }
