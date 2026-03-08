@@ -2,37 +2,31 @@
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using PvPAnnouncer.Data;
-using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer
 {
+    //use announcer notes.txt for more scion lines
+    //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
+
     //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
-    public sealed class PvPAnnouncerPlugin: IDalamudPlugin
+    //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
+    //todo vuln stack event
+    //todo lb whiff event (?)
+
+    public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");
-        private ConfigWindow ConfigWindow { get; init; }
-        private MainWindow MainWindow { get; init; }
-        private DevWindow DevWindow { get; init; }
-        private VoiceLineTesterWindow VoiceLineTesterWindow { get; init; }
-
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
             PluginServices.Initialize(pluginInterface, WindowSystem);
             LoadCommands();
-            ConfigWindow = new ConfigWindow();
-            MainWindow = new MainWindow();
-            DevWindow = new DevWindow();
-            VoiceLineTesterWindow = new VoiceLineTesterWindow();
-            WindowSystem.AddWindow(ConfigWindow);
-            WindowSystem.AddWindow(MainWindow);
-            WindowSystem.AddWindow(DevWindow);
+
             pluginInterface.UiBuilder.Draw += DrawUi;
             pluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
             pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
             PluginServices.ClientState.Login += PluginUpdateMessage;
             PluginUpdateMessage();
-                
         }
 
         public static void PluginUpdateMessage()
@@ -41,17 +35,16 @@ namespace PvPAnnouncer
             {
                 if (PluginServices.ClientState.IsLoggedIn == false)
                 {
-                    
                     return;
                 }
+
                 PluginServices.ChatGui.Print(
-                    "PvPAnnouncer now has every scion as an announcer! Yes! You read that right! ALL THE SCIONS and MORE!\n" +
-                    "Tell your local scion enjoyer that their fav is now in PvP ;D \n" +
-                    "You can also enable the character portrait when an announcer speaks.", "PvPAnnouncer", 15);
+                    "Important!!!! This Plugin went through a LOT of changes under the hood. " +
+                    "If absolutely anything seems wrong or looks like a bug, please let the developer know! " +
+                    "Use the Plugin Feedback button!", "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }
-           
         }
 
         private void DrawUi()
@@ -72,26 +65,22 @@ namespace PvPAnnouncer
             {
                 un = "un-";
             }
+
             PluginServices.ChatGui.Print("Announcer Has been " + un + "muted!", InternalConstants.MessageTag);
         }
 
         private void ToggleConfigWindow()
         {
-            #if DEBUG
-            DevWindow.Toggle();
-            #endif
-            ConfigWindow.Toggle();
+#if DEBUG
+            PluginServices.DevWindow.Toggle();
+#endif
+            PluginServices.ConfigWindow.Toggle();
         }
-        
+
         private void ToggleMainUI()
         {
             PluginUpdateMessage();
-            MainWindow.Toggle();
-        }
-        
-        private void ToggleTesterWindow()
-        {
-            VoiceLineTesterWindow.Toggle();
+            PluginServices.MainWindow.Toggle();
         }
 
         private void LoadCommands()
@@ -110,8 +99,8 @@ namespace PvPAnnouncer
         {
             PluginServices.CommandManager.RemoveHandler("/pvpannouncer");
             PluginServices.CommandManager.RemoveHandler("/muteannouncer");
-            
         }
+
         public void Dispose()
         {
             PluginServices.ClientState.Login -= PluginUpdateMessage;
@@ -125,4 +114,3 @@ namespace PvPAnnouncer
         }
     }
 }
-

@@ -2,7 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class UserEnteredMechMessage: IMessage
+public class UserEnteredMechMessage : IMessage
 {
-    
 }

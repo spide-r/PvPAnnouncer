@@ -1,22 +1,16 @@
-﻿using System.Collections.Generic;
-using PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyLimitBreakEvent: PvPActionEvent
+namespace PvPAnnouncer.Impl.PvPEvents;
+
+public class AllyLimitBreakEvent : PvPActionEvent
 {
     public AllyLimitBreakEvent()
     {
         Name = "Limit Breaks";
-        InternalName = "AllyLimitBreakEvent";
-    }
-
-    public override List<BattleTalk> SoundPaths()
-    {
-        return InternalConstants.LimitBreakList;
+        Id = "AllyLimitBreakEvent";
     }
 
     public override bool InvokeRule(IMessage message)
@@ -28,7 +22,7 @@ public class AllyLimitBreakEvent: PvPActionEvent
                 return ActionIds.IsLimitBreak(pp.ActionId);
             }
         }
-        return false;    
-    }
 
+        return false;
+    }
 }

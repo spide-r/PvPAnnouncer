@@ -4,26 +4,18 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-namespace PvPAnnouncer.impl.PvPEvents;
+
+namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class EnemyActionEvent : PvPActionEvent
 {
     private static uint[] _actionIds = [];
 
-    public EnemyActionEvent(uint[] actionIds, List<BattleTalk> soundPaths, Dictionary<Personalization, List<BattleTalk>> personalizedSoundPaths, string name = "Enemy Actions", string internalName = "EnemyActions")
+    public EnemyActionEvent(uint[] actionIds, string name = "Enemy Actions", string id = "EnemyActions")
     {
         _actionIds = actionIds;
-        SoundPathsList = soundPaths;
-        PersonalizedSoundPathsList = personalizedSoundPaths;
         Name = name;
-        InternalName = internalName;
-    }
-
-    public List<BattleTalk> SoundPathsList { get; init; }
-    public Dictionary<Personalization, List<BattleTalk>> PersonalizedSoundPathsList { get; init; }
-    public override List<BattleTalk> SoundPaths()
-    {
-        return SoundPathsList;
+        Id = id;
     }
 
     public override bool InvokeRule(IMessage arg)
@@ -34,6 +26,7 @@ public class EnemyActionEvent : PvPActionEvent
             {
                 return false;
             }
+
             foreach (var target in message.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
@@ -42,6 +35,7 @@ public class EnemyActionEvent : PvPActionEvent
                 }
             }
         }
+
         return false;
     }
 }

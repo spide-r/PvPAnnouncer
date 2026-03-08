@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-namespace PvPAnnouncer.impl.PvPEvents;
 
-public class EnteredMechEvent: PvPEvent
+namespace PvPAnnouncer.Impl.PvPEvents;
+
+public class EnteredMechEvent : PvPEvent
 {
     public EnteredMechEvent()
     {
         Name = "Entering a RW Mech";
-        InternalName = "EnteredMechEvent";
-    }
-    public override List<BattleTalk> SoundPaths()
-    {
-        return [ColossalThing];
+        Id = "EnteredMechEvent";
     }
 
     public override bool InvokeRule(IMessage message)

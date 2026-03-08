@@ -5,9 +5,8 @@ using Lumina.Data.Files;
 namespace PvPAnnouncer.Interfaces;
 
 public interface ISoundManager
-{    
+{
     void PlaySound(string path);
     void ToggleMute();
     void SetMute(bool mute);
-    
 }

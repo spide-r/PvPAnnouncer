@@ -2,6 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class UserZoneOutMessage: IMessage
+public class UserZoneOutMessage : IMessage
 {
 }

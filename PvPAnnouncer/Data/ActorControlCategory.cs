@@ -1,12 +1,14 @@
 ﻿namespace PvPAnnouncer.Data;
+
 /*
  * Attributed to Kouzukii/ffxiv-deathrecap
  * https://github.com/Kouzukii/ffxiv-deathrecap/blob/master/Game/ActionEffect.cs
  */
-public enum ActorControlCategory : ushort {
+public enum ActorControlCategory : ushort
+{
     Death = 0x6,
     CancelAbility = 0xF,
-    GainEffect = 0x14,//todo - does this only come from external non-player sources? loseeffect happens as normal
+    GainEffect = 0x14, //does this only come from external non-player sources? loseeffect happens as normal
     LoseEffect = 0x15,
     UpdateEffect = 0x16,
     TargetIcon = 0x22,

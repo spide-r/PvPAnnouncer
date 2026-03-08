@@ -24,12 +24,14 @@ public unsafe class ActionEffectMessage(
     public ActionEffect* EffectArray { get; set; } = effectArray;
     public ulong* EffectTrail { get; set; } = effectTrail;
     public readonly uint Targets = effectHeader->EffectCount;
-    public readonly uint ActionId = effectHeader->EffectDisplayType switch {
+
+    public readonly uint ActionId = effectHeader->EffectDisplayType switch
+    {
         ActionEffectDisplayType.MountName => 0xD000000 + effectHeader->ActionId,
         ActionEffectDisplayType.ShowItemName => 0x2000000 + effectHeader->ActionId,
         _ => effectHeader->ActionAnimationId
     };
-    
+
     public Action? GetAction()
     {
         return PluginServices.DataManager.GetExcelSheet<Action>().GetRowOrDefault(ActionId);
@@ -58,9 +60,10 @@ public unsafe class ActionEffectMessage(
             var actionTargetId = (uint) (EffectTrail[i] & uint.MaxValue);
             targetIds[i] = actionTargetId;
         }
+
         return targetIds;
     }
-    
+
     public List<ActionEffectType> GetEffectTypes(uint actionTargetId)
     {
         List<ActionEffectType> types = new List<ActionEffectType>();
@@ -84,21 +87,19 @@ public unsafe class ActionEffectMessage(
     {
         for (var i = 0; i < Targets; i++)
         {
-                for (var j = 0; j < 8; j++)
+            for (var j = 0; j < 8; j++)
+            {
+                ref var actionEffect = ref EffectArray[i * 8 + j];
+                if ((actionEffect.Param0 & 0x20) == 0x20)
                 {
-                    ref var actionEffect = ref EffectArray[i * 8 + j];
-                    if((actionEffect.Param0 & 0x20) == 0x20)
-                    {
-                        return true;
-                    }
-                    
-                    if((actionEffect.Param0 & 0x40) == 0x40)
-                    {
-                        return true;
-                    }
-                    
-                } 
-            
+                    return true;
+                }
+
+                if ((actionEffect.Param0 & 0x40) == 0x40)
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -109,7 +110,7 @@ public unsafe class ActionEffectMessage(
         List<uint> damage = new List<uint>();
         for (var i = 0; i < Targets; i++)
         {
-            var targetId = (uint) (EffectTrail[i] * uint.MaxValue);
+            var targetId = (uint) (EffectTrail[i] & uint.MaxValue);
             if (actionTargetIds.Contains(targetId))
             {
                 for (var j = 0; j < 8; j++)
@@ -119,14 +120,13 @@ public unsafe class ActionEffectMessage(
                     {
                         uint amount = actionEffect.Value;
                         if ((actionEffect.Flags2 & 0x40) == 0x40)
-                            amount += (uint)actionEffect.Flags1 << 16;
+                            amount += (uint) actionEffect.Flags1 << 16;
                         damage.Add(amount);
                     }
                 }
             }
         }
+
         return damage;
     }
-    
-
 }

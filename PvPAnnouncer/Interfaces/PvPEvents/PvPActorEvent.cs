@@ -2,6 +2,6 @@
 
 namespace PvPAnnouncer.Interfaces.PvPEvents;
 
-public abstract class PvPActorEvent: PvPEvent
+public abstract class PvPActorEvent : PvPEvent
 {
 }

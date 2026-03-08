@@ -1,33 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
-namespace PvPAnnouncer.impl.PvPEvents;
 
+namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class AllyHitEnemyHardEvent : PvPActionEvent
 {
     public AllyHitEnemyHardEvent()
     {
         Name = "Hit an Enemy Hard/Used Burst on an enemy";
-        InternalName = "AllyHitEnemyHardEvent";
+        Id = "AllyHitEnemyHardEvent";
     }
 
-    public override List<BattleTalk> SoundPaths()
-    {
-        return [StruckSquare, WhatAClash, BattleElectrifying, ViciousBlow, RainOfDeath, FeverPitch, 
-            HitThemWhereItHurts, WinThisYet, JustALittleMore, Fall, DefeatIsNotAnOption, TurnaboutsFairPlay,
-            DragoonImpressed, LeaveAMark, AmidstGreatChaos, GiveItEverythingAlisaie, 
-            ShowThemWhatYoureMadeOf, GiveItEverything, FightHardNotHardEnough, GotThemNowWuk, CantPassChanceWuk, 
-            WillStopThemWuk, NoHoldingBackWukMahjong, NoHoldingBackWuk, Impressive, Kill, Rend, More,
-            Hahahahahaha, ATestOfYourReflexes];
-    }
-
-    public override bool InvokeRule(IMessage message) 
+    public override bool InvokeRule(IMessage message)
     {
         if (message is ActionEffectMessage pp)
         {
@@ -35,11 +22,14 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
             {
                 return false;
             }
+
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
-                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreakAttack(pp.ActionId) || ActionIds.IsBurst(pp.ActionId);
+                return pp.CritsOrDirectHits() || ActionIds.IsLimitBreakAttack(pp.ActionId) ||
+                       ActionIds.IsBurst(pp.ActionId);
             }
         }
+
         return false;
     }
 }

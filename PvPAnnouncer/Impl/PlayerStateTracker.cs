@@ -1,28 +1,25 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Config;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Plugin.Services;
-using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
-using PvPAnnouncer.impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class PlayerStateTracker: IPlayerStateTracker
+public class PlayerStateTracker : IPlayerStateTracker
 {
     private float PrevPos { get; set; }
     private float PrevVel { get; set; }
     private float DistJump { get; set; }
     private bool WasFalling { get; set; }
-    public bool CNKRClient  {get; set;}
+    public bool CNKRClient { get; set; }
+
     public PlayerStateTracker()
     {
-     PluginServices.Framework.Update += OnUpdate;   
-     PluginServices.Condition.ConditionChange += OnConditionChange;
-     CNKRClient = CheckCNKRClient();
+        PluginServices.Framework.Update += OnUpdate;
+        PluginServices.Condition.ConditionChange += OnConditionChange;
+        CNKRClient = CheckCNKRClient();
     }
 
     private void OnConditionChange(ConditionFlag flag, bool value)
@@ -61,7 +58,7 @@ public class PlayerStateTracker: IPlayerStateTracker
         {
             return;
         }
-        
+
         // Attributed to Oof Plugin
         if (PluginServices.Condition[ConditionFlag.BetweenAreas] ||
             PluginServices.Condition[ConditionFlag.BetweenAreas51] ||
@@ -75,7 +72,7 @@ public class PlayerStateTracker: IPlayerStateTracker
         {
             return;
         }
-        
+
         var isFalling = PluginServices.Condition[ConditionFlag.Jumping];
         var pos = PluginServices.ObjectTable.LocalPlayer.Position.Y;
         var velocity = PrevPos - pos;
@@ -85,21 +82,20 @@ public class PlayerStateTracker: IPlayerStateTracker
             if (PrevVel < 0.17)
             {
                 DistJump = pos;
-            } 
+            }
         }
         else if (WasFalling && !isFalling)
         {
-            if (DistJump - pos > (9.60 * 3) ) // 9.6 is minimum for fall damage, due to worqor specifically having
-                                                 // some frequent inclines + fall damage becoming more common im increasing the threshold
+            if (DistJump - pos > (9.60 * 3)) // 9.6 is minimum for fall damage, due to worqor specifically having
+                // some frequent inclines + fall damage becoming more common im increasing the threshold
             {
                 EmitToBroker(new UserZoneOutMessage());
             }
         }
+
         PrevPos = pos;
         PrevVel = velocity;
         WasFalling = isFalling;
-        
-
     }
 
     public bool IsPvP()
@@ -108,8 +104,8 @@ public class PlayerStateTracker: IPlayerStateTracker
         {
             return PluginServices.ClientState.IsPvP;
         }
-        return PluginServices.ClientState.IsPvPExcludingDen;
 
+        return PluginServices.ClientState.IsPvPExcludingDen;
     }
 
     public void CheckSoundState()
@@ -118,7 +114,8 @@ public class PlayerStateTracker: IPlayerStateTracker
         {
             return;
         }
-        uint voiceVolume = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.SoundVoice.ToString());   
+
+        uint voiceVolume = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.SoundVoice.ToString());
         uint voiceMuted = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSoundVoiceAlways.ToString());
         uint sndVoice = PluginServices.GameConfig.System.GetUInt(SystemConfigOption.IsSndVoice.ToString());
         PluginServices.PluginLog.Verbose($"VoiceVolume: {voiceVolume}, VoiceMuted: {voiceMuted}, SndVoice {sndVoice}");
@@ -129,15 +126,16 @@ public class PlayerStateTracker: IPlayerStateTracker
             n.Type = NotificationType.Error;
             n.Minimized = false;
             n.MinimizedText = "Voice Volume is muted!";
-            n.Content = "Your voice volume is either muted or set to zero! You will be unable to hear the announcer until this is fixed!";
+            n.Content =
+                "Your voice volume is either muted or set to zero! You will be unable to hear the announcer until this is fixed!";
             PluginServices.NotificationManager.AddNotification(n);
         }
     }
 
     private bool CheckCNKRClient()
     {
-        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_kr.scd") || PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_chs.scd");
-
+        return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_kr.scd") ||
+               PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_chs.scd");
     }
 
     public bool CheckKRClient()
@@ -150,11 +148,6 @@ public class PlayerStateTracker: IPlayerStateTracker
         return PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_chs.scd");
     }
 
-    public bool IsDawntrailInstalled()
-    {
-        return CNKRClient ? CheckCNKRClient() : PluginServices.DataManager.FileExists("sound/voice/vo_line/8205353_en.scd");
-    }
-
     public void EmitToBroker(IMessage pvpEvent)
     {
         PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
@@ -162,8 +155,7 @@ public class PlayerStateTracker: IPlayerStateTracker
 
     public void Dispose()
     {
-        PluginServices.Framework.Update -= OnUpdate;   
+        PluginServices.Framework.Update -= OnUpdate;
         PluginServices.Condition.ConditionChange -= OnConditionChange;
-
     }
 }

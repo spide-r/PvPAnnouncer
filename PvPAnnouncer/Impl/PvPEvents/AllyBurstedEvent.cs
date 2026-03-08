@@ -5,34 +5,18 @@ using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
 
-namespace PvPAnnouncer.impl.PvPEvents;
+namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class AllyBurstedEvent: PvPEvent
+public class AllyBurstedEvent : PvPEvent
 {
     private long _lastHit = 0;
     private readonly HashSet<int> _hitters = [];
-    
+
     public AllyBurstedEvent()
     {
         Name = "Bursted By Enemy Team";
-        InternalName = "AllyBurstedEvent";
-    }
-
-    public override List<BattleTalk> SoundPaths()
-    {
-        return [ViciousBlow, FeltThatOneStillStanding, StruckSquare, Oof, MustHaveHurtNotOut, 
-            CouldntAvoid, BattleElectrifying, BrutalBlow, StillInIt, OofMustHaveHurt, NotFastEnough, 
-            CantBeCareless, DirectHitStillStanding, HoldingTheirOwn, NeitherSideHoldingBack, MjDontStandAChance,
-            MjStillInItGentle, MjStillStandingGentle, NowhereLeft, RainOfDeath, SuchScorn, HardPressed, StayStrong, 
-            FeverPitch, BBDesprate, TreadWarily, ThaliakProtectUs, DoNotLoseHeart, PainfulThrashing, ScramblingToKeepUp, SevenHells,
-            AmidstGreatChaos, DangerousMomentIndeed, MakeReady, BeVigilant, LeaveAMark, TheyHaveUpperHand, WatchYourself, 
-            ThereIsNoEndToThem, HangInThere, Courage, StayStrongEstinien, FightHardNotHardEnough, StandFast, WeveComeTooFar, 
-            FindCoverEnergy, DontLoseNerveWuk, GettingInterestingWuk, StillWinWuk, StayAlert, GodsHelpUs, CarefulPlanning, 
-            RunBeastRun, HaveYouTheStrength, DanceForMe, VauntedFortitude
-        ];
+        Id = "AllyBurstedEvent";
     }
 
     public override bool InvokeRule(IMessage message)
@@ -43,13 +27,12 @@ public class AllyBurstedEvent: PvPEvent
             {
                 return false;
             }
-            
+
             //PluginServices.PluginLog.Verbose($"{_lastHit}, {_hitters.Count}");
             foreach (var target in pp.GetTargetIds())
             {
                 if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
                 {
-
                     var unixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                     if (unixTime - _lastHit > 3)
                     {
@@ -78,5 +61,7 @@ public class AllyBurstedEvent: PvPEvent
                 }
             }
         }
-        return false;    }
+
+        return false;
+    }
 }

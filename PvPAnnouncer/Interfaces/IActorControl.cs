@@ -1,7 +1,7 @@
 ﻿namespace PvPAnnouncer.Interfaces;
 
-public interface IActorControl: IMessage
+public interface IActorControl : IMessage
 {
-    uint EntityId {get; set;}
-    uint Type {get; set;}
+    uint EntityId { get; set; }
+    uint Type { get; set; }
 }

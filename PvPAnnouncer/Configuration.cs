@@ -1,112 +1,119 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Configuration;
+using Dalamud.Game;
 using Dalamud.Game.Config;
-using Dalamud.Game.Text;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using PvPAnnouncer;
+using Dalamud.Utility;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 
-
-namespace PvpAnnouncer
+namespace PvPAnnouncer
 {
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        public int Version { get; set; } = 5;
+        [NonSerialized] private IDalamudPluginInterface? _pluginInterface;
+
+        [Obsolete] public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
+
+        public bool NewConfig { get; set; } = true;
         public int RepeatVoiceLineQueue { get; set; } = 3;
         public int RepeatEventCommentaryQueue { get; set; } = 3;
         public int AnimationDelayFactor { get; set; } = 250;
-        
-        public int CooldownSeconds { get; set; } = 15;
-        public bool WantsFem { get; set; } = false;
-        public bool WantsMasc { get; set; } = false;
-        
-        public int PersonalizedVoicelines {get; set;} = 0;
 
-        public Personalization VoicelineSettings = Personalization.MetemAnnouncer;
-        
+        public int CooldownSeconds { get; set; } = 15;
+
+        public HashSet<string> DesiredAttributes { get; set; } = [];
+
         public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
 
         public List<string> BlacklistedEvents { get; set; } = [];
-        
+
         public bool Disabled { get; set; } = false;
         public bool Muted { get; set; } = false;
 
         public bool HideBattleText { get; set; } = false;
-        public bool WantsIcon { get; set; } = false;
+        public bool WantsIcon { get; set; } = true;
 
-        public int Percent { get; set; } = 70; 
-        
+        public int Percent { get; set; } = 70;
+
         public bool ShowNotification { get; set; } = false;
 
-        public HashSet<string> Dev_VoLineList { get; set; } = [];
-        
- 
+        public int DupeVoicelineChoice { get; set; } = 0;
+        public int DupeMappingChoice { get; set; } = 0;
+        public bool ExportSingleCharacter { get; set; } = false;
+
+
+        public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
+        public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now
+        public Dictionary<string, string> MappingOverride { get; set; } = [];
+
+        public List<string> MutedShouts { get; set; } = [];
+
+
         public string Language { get; set; } = "en";
+        public string TextLanguage { get; set; } = "en";
+        public int Version { get; set; } = 7;
 
-        [NonSerialized]
-        private IDalamudPluginInterface? _pluginInterface;
+        public void AddCustomShoutCast(string shoutcastId, string shoutcastJson)
+        {
+            CustomShoutcasts[shoutcastId] = shoutcastJson;
+        }
 
-        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig, bool newConfig)
+        public void DeleteCustomShoutCast(string shoutcastId)
+        {
+            CustomShoutcasts.Remove(shoutcastId);
+        }
+
+        public void Initialize(IDalamudPluginInterface pluginInterface, IPlayerStateTracker ps, IGameConfig gameConfig)
         {
             _pluginInterface = pluginInterface;
-            if (ps.CheckCNClient()) 
+            MigrateOldPluginConfig();
+
+            if (NewConfig && DesiredAttributes.Count < 1) // confirmed new config w/o anything set
             {
-                Language = "chs";
-            } else if (ps.CheckKRClient())
-            {
-                Language = "kr";
-            } 
-            /*if (newConfig)
-            {
-                if (ps.CheckCNClient()) 
+                if (ps.CheckCNClient())
                 {
                     Language = "chs";
-                } else if (ps.CheckKRClient())
+                    TextLanguage = "chs";
+                }
+                else if (ps.CheckKRClient())
                 {
                     Language = "kr";
-                } else
-                {
-                    gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice,  out uint configuredLang);
-                    gameConfig.TryGet(SystemConfigOption.Language,  out uint clientLang);
-                    PluginServices.PluginLog.Verbose($"Lang: {configuredLang}");
-                    PluginServices.PluginLog.Verbose($"Lang: {clientLang}");
-                    var sw = configuredLang > 99 ? clientLang : configuredLang; // bodge 
-                    Language = sw switch
-                    {
-                        0 => "ja",
-                        1 => "en",
-                        2 => "de",
-                        3 => "fr",
-                        _ => "en"
-                    };
+                    TextLanguage = "kr";
                 }
-                _pluginInterface?.SavePluginConfig(this);
-            }*/
+                else
+                {
+                    // global client
+                    gameConfig.TryGet(SystemConfigOption.CutsceneMovieVoice, out uint configuredLang);
+                    gameConfig.TryGet(SystemConfigOption.Language, out uint clientLang);
+                    PluginServices.PluginLog.Info($"CutsceneMovieVoice: {configuredLang}");
+                    PluginServices.PluginLog.Info($"Client Language: {clientLang}");
+                    var sw = configuredLang > 99 ? clientLang : configuredLang;
+                    try
+                    {
+                        Language = ((ClientLanguage) sw).ToCode();
+                        TextLanguage = ((ClientLanguage) clientLang).ToCode();
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                    }
+                }
 
-            MigrateOldPluginConfig();
+                DesiredAttributes.Add("Metem");
+                NewConfig = false;
+                _pluginInterface?.SavePluginConfig(this);
+            }
         }
 
         private void MigrateOldPluginConfig()
         {
+#pragma warning disable CS0612 // Type or member is obsolete
             if (Version == 0) //porting due to changes in voice line personalization system
             {
-                if (WantsFem)
-                {
-                    SetPersonalization(Personalization.FemPronouns);
-                   // WantsPersonalizedVoiceLines = true;
-                }
-
-                if (WantsMasc)
-                {
-                    SetPersonalization(Personalization.MascPronouns);
-                   // WantsPersonalizedVoiceLines = true;
-                }
                 Version++;
             }
 
@@ -114,8 +121,8 @@ namespace PvpAnnouncer
             {
                 if (BlacklistedEvents.Count > 0)
                 {
-                    List<string> oldBL = [];
-                    oldBL.AddRange(BlacklistedEvents);
+                    List<string> oldBl = [];
+                    oldBl.AddRange(BlacklistedEvents);
                     BlacklistedEvents.Clear();
                     var oldDict = new Dictionary<string, string>
                     {
@@ -147,9 +154,8 @@ namespace PvpAnnouncer
                         {"Entered Rival Wings Mech", "EnteredMechEvent"},
                         {"Stormy Weather", "MatchStormyWeatherEvent"},
                         {"Battle High V / Flying High Gained", "MaxBattleFeverEvent"},
-                        
                     };
-                    foreach (var oldName in oldBL)
+                    foreach (var oldName in oldBl)
                     {
                         if (oldDict.TryGetValue(oldName, out var value))
                         {
@@ -157,43 +163,33 @@ namespace PvpAnnouncer
                         }
                     }
                 }
+
                 Version++;
             }
 
             if (Version == 2) //2 week spoiler embargo had a personalization Spoiler value of 15 - to remove any wonkyness, remake the personalization int without 15
             {
-                for (var i = 1; i < 15; i++)
-                {
-                    if (WantsPersonalization((Personalization) i))
-                    {
-                        SetPersonalization((Personalization) i);
-                    }
-                }
                 Version++;
                 ShowNotification = false;
             }
 
             if (Version == 3)
-            { // Event Changes
+            {
+                // Event Changes
                 if (BlacklistedEvents.Contains("AllyHitHardEvent"))
                 {
                     BlacklistedEvents.Remove("AllyHitHardEvent");
                     BlacklistedEvents.Add("AllyHitByLimitBreakEvent");
                 }
+
                 ShowNotification = true;
                 Version++;
             }
 
             if (Version == 4)
-            { // Personalization rework
-                for (var i = 1; i < 15; i++)
-                {
-                    if (((1 << i) & PersonalizedVoicelines) == (1 << i))
-                    {
-                        SetPersonalization((Personalization) (i - 1));
-                    }
-                }
-                SetPersonalization(Personalization.MetemAnnouncer);
+            {
+                // Personalization rework
+
                 ShowNotification = true;
                 Version++;
             }
@@ -207,47 +203,160 @@ namespace PvpAnnouncer
 
                 Version++;
             }
-            _pluginInterface?.SavePluginConfig(this);
-        }
 
-        public bool WantsPersonalization(Personalization p)
-        {
-            return VoicelineSettings.HasFlag(p);
-        }
-
-        public bool WantsAllPersonalization(List<Personalization> ps)
-        {
-            foreach (var p in ps)
+            if (Version == 6)
             {
-                if (!WantsPersonalization(p))
+                ShowNotification = true;
+                var values = (Personalization[]) Enum.GetValues(typeof(Personalization));
+
+                foreach (var p in values)
                 {
+                    if (!VoicelineSettings.HasFlag(p))
+                    {
+                        continue;
+                    }
+
+                    switch (p)
+                    {
+                        case Personalization.FemPronouns:
+                            DesiredAttributes.Add("Feminine Pronouns");
+                            break;
+                        case Personalization.MascPronouns:
+                            DesiredAttributes.Add("Masculine Pronouns");
+                            break;
+                        case Personalization.BlackCat:
+                            DesiredAttributes.Add("Black Cat");
+                            break;
+                        case Personalization.HoneyBLovely:
+                            DesiredAttributes.Add("Honey B. Lovely");
+                            break;
+                        case Personalization.BruteBomber:
+                            DesiredAttributes.Add("Brute Bomber");
+                            break;
+                        case Personalization.WickedThunder:
+                            DesiredAttributes.Add("Wicked Thunder");
+                            break;
+                        case Personalization.DancingGreen:
+                            DesiredAttributes.Add("Dancing Green");
+                            break;
+                        case Personalization.SugarRiot:
+                            DesiredAttributes.Add("Sugar Riot");
+                            break;
+                        case Personalization.BruteAbominator:
+                            DesiredAttributes.Add("Brute Abominator");
+                            break;
+                        case Personalization.HowlingBlade:
+                            DesiredAttributes.Add("Howling Blade");
+                            break;
+                        case Personalization.VampFatale:
+                            DesiredAttributes.Add("Vamp Fatale");
+                            break;
+                        case Personalization.DeepBlueRedHot:
+                            DesiredAttributes.Add("Deep Blue & Red Hot");
+                            break;
+                        case Personalization.Tyrant:
+                            DesiredAttributes.Add("The Tyrant");
+                            break;
+                        case Personalization.President:
+                            DesiredAttributes.Add("The President");
+                            break;
+                        case Personalization.MetemAnnouncer:
+                            DesiredAttributes.Add("Metem");
+                            break;
+                        case Personalization.AlphinaudAnnouncer:
+                            DesiredAttributes.Add("Alphinaud");
+                            break;
+                        case Personalization.AlisaieAnnouncer:
+                            DesiredAttributes.Add("Alisaie");
+                            break;
+                        case Personalization.ThancredAnnouncer:
+                            DesiredAttributes.Add("Thancred");
+                            break;
+                        case Personalization.UriangerAnnouncer:
+                            DesiredAttributes.Add("Urianger");
+                            break;
+                        case Personalization.YshtolaAnnouncer:
+                            DesiredAttributes.Add("Y'shtola");
+                            break;
+                        case Personalization.EstinienAnnouncer:
+                            DesiredAttributes.Add("Estinien");
+                            break;
+                        case Personalization.GrahaAnnouncer:
+                            DesiredAttributes.Add("G'raha Tia");
+                            break;
+                        case Personalization.KrileAnnouncer:
+                            DesiredAttributes.Add("Krile");
+                            break;
+                        case Personalization.WukLamatAnnouncer:
+                            DesiredAttributes.Add("Wuk Lamat");
+                            break;
+                        case Personalization.KoanaAnnouncer:
+                            DesiredAttributes.Add("Koana");
+                            break;
+                        case Personalization.BakoolJaJaAnnouncer:
+                            DesiredAttributes.Add("Bakool Ja Ja");
+                            break;
+                        case Personalization.ErenvilleAnnouncer:
+                            DesiredAttributes.Add("Erenville");
+                            break;
+                        case Personalization.ZenosAnnouncer:
+                            DesiredAttributes.Add("Zenos");
+                            break;
+                        case Personalization.None:
+                        default:
+                            break;
+                    }
+                }
+
+                Version++;
+            }
+
+            _pluginInterface?.SavePluginConfig(this);
+#pragma warning restore CS0612 // Type or member is obsolete
+        }
+
+        public bool WantsAttribute(string attribute)
+        {
+            return DesiredAttributes.Contains(attribute);
+        }
+
+
+        public bool WantsAllAttributes(List<string> attributes)
+        {
+            foreach (var p in attributes)
+            {
+                if (!DesiredAttributes.Contains(p))
+                {
+                    PluginServices.PluginLog.Verbose($"Attribute {p} not found.");
                     return false;
                 }
             }
+
             return true;
         }
 
-        public void SetPersonalization(Personalization p)
+        public void SetAttribute(string attribute)
         {
-            VoicelineSettings = VoicelineSettings | p;
+            DesiredAttributes.Add(attribute);
         }
 
-        public void RemovePersonalization(Personalization toRemove)
+        public void RemoveAttribute(string attribute)
         {
-            VoicelineSettings &= ~toRemove;
+            DesiredAttributes.Remove(attribute);
         }
 
-        public void TogglePersonalization(Personalization toSet, bool set)
+        public void ToggleAttribute(string attribute, bool set)
         {
             if (set)
             {
-                SetPersonalization(toSet);
+                DesiredAttributes.Add(attribute);
             }
             else
             {
-                RemovePersonalization(toSet);
+                DesiredAttributes.Remove(attribute);
             }
         }
+
         public void Save()
         {
             _pluginInterface?.SavePluginConfig(this);

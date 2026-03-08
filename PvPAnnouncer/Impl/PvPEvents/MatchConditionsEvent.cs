@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-namespace PvPAnnouncer.impl.PvPEvents;
+
+namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class MatchConditionsEvent : PvPEvent
 {
-    public MatchConditionsEvent(List<BattleTalk> soundPathsList, string name = "Match Conditions", string internalName = "MatchConditions")
+    public MatchConditionsEvent(List<Shoutcast> soundPathsList, string name = "Match Conditions",
+        string id = "MatchConditions")
     {
         SoundPathsList = soundPathsList;
         Name = name;
-        InternalName = internalName;
+        Id = id;
     }
     // Weather, Match Obstacles, Conditions Changing
-    
-    
-    private List<BattleTalk> SoundPathsList { get; }
-    public override List<BattleTalk> SoundPaths()
-    {
-        return SoundPathsList;
-    }
+
+
+    private List<Shoutcast> SoundPathsList { get; }
 
     public override bool InvokeRule(IMessage message)
     {

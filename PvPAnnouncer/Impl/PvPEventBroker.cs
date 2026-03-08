@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
@@ -8,10 +9,11 @@ using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPEventBroker: IPvPEventBroker
+public class PvPEventBroker : IPvPEventBroker
 {
-    private readonly List<Tuple<PvPEvent, Func<IMessage, bool>>> _registeredListeners = new();
-    private string LastUsedAction = "";
+    private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
+    private string _lastUsedAction = "";
+
     public void IngestMessage(IMessage message)
     {
         if (PluginServices.Config.Disabled)
@@ -26,15 +28,17 @@ public class PvPEventBroker: IPvPEventBroker
 
         if (message is ActionEffectMessage aaa)
         {
-            string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " + aaa.GetAction()?.Name.ToString();
+            string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " +
+                       aaa.GetAction()?.Name.ToString();
             bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(aaa.SourceId);
             if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
-                LastUsedAction = aaa.ActionId.ToString();
-
+                _lastUsedAction = aaa.ActionId.ToString();
             }
-        } else if (message is ActorControlMessage ac) {
+        }
+        else if (message is ActorControlMessage ac)
+        {
             bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(ac.EntityId);
             if (shouldEmit)
             {
@@ -42,34 +46,31 @@ public class PvPEventBroker: IPvPEventBroker
                 {
                     /*PluginServices.PluginLog.Verbose($"Actor control: {ac.EntityId}, " +
                                                      $"type: {ac.GetCategory()} source: {ac.Source}, statusId: {ac.StatusId}" +
-                                                     $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}");*/ 
-
+                                                     $" amount: {ac.Amount} a5: {ac.A5}, a7: {ac.A7} a8: {ac.A8} a9: {ac.A9} flag: {ac.Flag}");*/
                 }
-                
             }
         }
-        
-        foreach (var keyValuePair in _registeredListeners)
+
+        foreach (var pvpEvent in _pvpEventIdBinding.Values)
         {
-            PvPEvent ee = keyValuePair.Item1;
-            if (IsBlacklistedEvent(ee))
+            if (IsBlacklistedEvent(pvpEvent))
             {
                 continue;
             }
-            Func<IMessage, bool> shouldEmit = keyValuePair.Item2;
-            bool emit = shouldEmit.Invoke(message);
+
+            var emit = pvpEvent.InvokeRule(message);
             if (emit)
             {
-                PluginServices.PluginLog.Verbose("Emitted: " + ee.InternalName);
+                PluginServices.PluginLog.Verbose("Emitted: " + pvpEvent.Id);
 
-                EmitToSubscribers(ee);
+                EmitToSubscribers(pvpEvent);
             }
         }
     }
 
     private bool IsBlacklistedEvent(PvPEvent ee)
     {
-        bool eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.InternalName);
+        var eventIsBlacklisted = PluginServices.Config.BlacklistedEvents.Contains(ee.Id);
         return eventIsBlacklisted;
     }
 
@@ -77,25 +78,37 @@ public class PvPEventBroker: IPvPEventBroker
     private void EmitToSubscribers(PvPEvent ee)
     {
         PluginServices.Announcer.ReceivePvPEvent(ee);
-
     }
 
     public void RegisterListener(PvPEvent e)
     {
-        PluginServices.PluginLog.Verbose("Registered listener: " + e.InternalName);
-        _registeredListeners.Add(new Tuple<PvPEvent, Func<IMessage, bool>>(e, e.InvokeRule));
+        _pvpEventIdBinding[e.Id] = e;
+        PluginServices.PluginLog.Verbose("Registered listener: " + e.Id);
     }
 
     public string GetLastAction()
     {
-        return LastUsedAction;
+        return _lastUsedAction;
+    }
+
+    public PvPEvent? GetEvent(string eventId)
+    {
+        var found = _pvpEventIdBinding.TryGetValue(eventId, out var obj);
+        return !found ? null : obj;
+    }
+
+    public List<PvPEvent> GetPvPEvents()
+    {
+        return _pvpEventIdBinding.Values.ToList();
+    }
+
+    public List<string> GetPvPEventIDs()
+    {
+        return _pvpEventIdBinding.Keys.ToList();
     }
 
     public void DeregisterListener(PvPEvent e)
     {
-        _registeredListeners.RemoveAll(aa =>
-        {
-            return aa.Item1.InternalName.Equals(e.InternalName);
-        });
+        _pvpEventIdBinding.Remove(e.Id);
     }
 }

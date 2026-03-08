@@ -3,7 +3,6 @@ using Lumina.Text.ReadOnly;
 
 namespace PvPAnnouncer.Data;
 
-
 [Sheet("CutsceneText")]
 public readonly struct CutsceneText(RawRow row) : IExcelRow<CutsceneText>
 {
@@ -12,7 +11,7 @@ public readonly struct CutsceneText(RawRow row) : IExcelRow<CutsceneText>
     public ReadOnlySeString MessageTag => row.ReadStringColumn(0);
 
     public ReadOnlySeString Dialogue => row.ReadStringColumn(1);
-    
+
 
     public ExcelPage ExcelPage => row.ExcelPage;
     public uint RowOffset => row.RowOffset;
@@ -22,4 +21,3 @@ public readonly struct CutsceneText(RawRow row) : IExcelRow<CutsceneText>
         return new CutsceneText(new RawRow(page, offset, row));
     }
 }
-

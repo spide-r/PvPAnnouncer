@@ -1,26 +1,18 @@
-﻿using System.Collections.Generic;
-using Lumina.Excel.Sheets;
-using PvPAnnouncer.Data;
+﻿using Lumina.Excel.Sheets;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
 
-namespace PvPAnnouncer.impl.PvPEvents;
+namespace PvPAnnouncer.Impl.PvPEvents;
 
-public class MatchStormyWeatherEvent: PvPEvent
+public class MatchStormyWeatherEvent : PvPEvent
 {
     public MatchStormyWeatherEvent()
     {
         Name = "Stormy Weather";
-        InternalName = "MatchStormyWeatherEvent";
+        Id = "MatchStormyWeatherEvent";
     }
 
-
-    public override List<BattleTalk> SoundPaths()
-    {
-        return [StormParasols, Thunderstorm];
-    }
 
     public override bool InvokeRule(IMessage message)
     {

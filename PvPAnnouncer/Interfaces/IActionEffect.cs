@@ -3,7 +3,7 @@ using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Interfaces;
 
-public unsafe interface IActionEffect: IMessage
+public unsafe interface IActionEffect : IMessage
 {
     int SourceId { get; set; }
     IntPtr SourceCharacter { get; set; }
@@ -11,5 +11,4 @@ public unsafe interface IActionEffect: IMessage
     ActionEffectHeader* EffectHeader { get; set; }
     ActionEffect* EffectArray { get; set; }
     ulong* EffectTrail { get; set; }
-    
 }

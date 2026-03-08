@@ -1,35 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using static PvPAnnouncer.Data.AnnouncerLines;
-using static PvPAnnouncer.Data.ScionLines;
-namespace PvPAnnouncer.impl.PvPEvents;
 
-public class AllyPulledByDrkEvent: PvPActionEvent
+namespace PvPAnnouncer.Impl.PvPEvents;
+
+public class AllyPulledByDrkEvent : PvPActionEvent
 {
     public AllyPulledByDrkEvent()
     {
         Name = "Pulled By Dark Knight";
-        InternalName = "AllyPulledByDrkEvent";
-    }
-
-    public override List<BattleTalk> SoundPaths()
-    {
-        return [SuckedIn, ThrillingBattle, Quicksand, MjRivalVying, WinThisYet, Hahahahahaha, ATestOfYourReflexes];
+        Id = "AllyPulledByDrkEvent";
     }
 
     public override bool InvokeRule(IMessage message)
     {
-        
         if (message is ActionEffectMessage pp)
         {
             if (pp.ActionId != ActionIds.SaltedEarth)
             {
                 return false;
             }
+
             foreach (var target in pp.GetTargetIds())
             {
                 foreach (var actionEffectType in pp.GetEffectTypes(target))
@@ -41,11 +34,12 @@ public class AllyPulledByDrkEvent: PvPActionEvent
                 {
                     if (pp.GetEffectTypes(target).Contains(ActionEffectType.KbAndDrawIn))
                     {
-                        return true; 
+                        return true;
                     }
                 }
             }
         }
+
         return false;
     }
 }

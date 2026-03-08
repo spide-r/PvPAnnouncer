@@ -2,10 +2,11 @@
  * Attributed to Kouzukii/ffxiv-deathrecap
  * https://github.com/Kouzukii/ffxiv-deathrecap/blob/master/Game/ActionEffectType.cs
  */
+
 namespace PvPAnnouncer.Data;
 
-
-public enum ActionEffectType : byte {
+public enum ActionEffectType : byte
+{
     Nothing = 0,
     Miss = 1,
     FullResist = 2,

@@ -1,4 +1,4 @@
-﻿namespace PvPAnnouncer.impl.PvPEvents;
+﻿namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class EnemyHitCc
 {

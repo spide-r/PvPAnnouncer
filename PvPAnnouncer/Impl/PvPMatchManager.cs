@@ -10,7 +10,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
+public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
 {
     private int _leftPoints = 0;
     private int _rightPoints = 0;
@@ -18,6 +18,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private double _ourProgress = 0.0;
     private double _enemyProgress = 0.0;
     private readonly IPlayerStateTracker _playerState;
+
     public PvPMatchManager(IPlayerStateTracker playerState) //todo: victory and loss detection for RW
     {
         _playerState = playerState;
@@ -34,28 +35,34 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         unsafe
         {
-            var addon = (AtkUnitBase*)args.Addon.Address;
-            var astraPercent = addon->GetTextNodeById(51)->NodeText.ToString();
-            astraPercent = astraPercent.Substring(0, astraPercent.Length - 1);
-            var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
-            umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
-
-            var astraColor = addon->GetTextNodeById(49)->EdgeColor.RGBA;
-            var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
-            //4286996785
-            // astra was blue, umbra was red
-            //08:20:48.837 | VRB | [PvPAnnouncer] 0.0 (4286996785) - 0.0 (4281348230)
-            if (astraColor == 4286996785)
+            try
             {
-             _ourProgress = double.Parse(astraPercent);
-             _enemyProgress = double.Parse(umbraPercent);
-            }
-            else
-            {
-                _ourProgress = double.Parse(umbraPercent);
-                _enemyProgress = double.Parse(astraPercent);   
-            }
+                var addon = (AtkUnitBase*) args.Addon.Address;
+                var astraPercent = addon->GetTextNodeById(51)->NodeText.ToString();
+                astraPercent = astraPercent.Substring(0, astraPercent.Length - 1);
+                var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
+                umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
 
+                var astraColor = addon->GetTextNodeById(49)->EdgeColor.RGBA;
+                var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
+                //4286996785
+                // astra was blue, umbra was red
+                //08:20:48.837 | VRB | [PvPAnnouncer] 0.0 (4286996785) - 0.0 (4281348230)
+                if (astraColor == 4286996785)
+                {
+                    _ourProgress = double.Parse(astraPercent);
+                    _enemyProgress = double.Parse(umbraPercent);
+                }
+                else
+                {
+                    _ourProgress = double.Parse(umbraPercent);
+                    _enemyProgress = double.Parse(astraPercent);
+                }
+            }
+            catch (Exception e)
+            {
+                PluginServices.PluginLog.Error(e, "Issue Reading CC Header!");
+            }
         }
     }
 
@@ -63,11 +70,18 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         unsafe
         {
-            var addon = (AtkUnitBase*)args.Addon.Address;
-            
-            _ourPoints = GetScore(9, addon);
-            _rightPoints = GetScore(13, addon);
-            _leftPoints = GetScore(12, addon);
+            try
+            {
+                var addon = (AtkUnitBase*) args.Addon.Address;
+
+                _ourPoints = GetScore(9, addon);
+                _rightPoints = GetScore(13, addon);
+                _leftPoints = GetScore(12, addon);
+            }
+            catch (Exception e)
+            {
+                PluginServices.PluginLog.Error(e, "Issue Reading FL Header!");
+            }
         }
     }
 
@@ -82,7 +96,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     private void EnterPvP()
     {
         PluginServices.PluginLog.Verbose("EnterPvP");
-        _playerState.CheckSoundState(); 
+        _playerState.CheckSoundState();
     }
 
     private void ClientStateOnCfPop(ContentFinderCondition obj)
@@ -95,10 +109,10 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     {
         var t = PluginServices.DataManager.GetExcelSheet<TerritoryType>().GetRow(territory);
         PluginServices.PluginLog.Verbose("OnTerritoryChanged " + territory);
-        if (t.IsPvpZone) 
+        if (t.IsPvpZone)
         {
             if (territory == 250) // entering the wolves den
-            { 
+            {
                 if (PluginServices.PlayerStateTracker.IsPvP()) // Went from pvp area to wolves den 
                 {
                     PluginServices.PluginLog.Verbose("Territory Change: PvP -> WD");
@@ -109,12 +123,12 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
             {
                 PluginServices.PluginLog.Verbose("Territory Change: NoPvP->PvP");
                 MatchEntered(territory); // entered a pvp zone that isnt the wolves den
-                
             }
         }
         else
         {
-            if (PluginServices.PlayerStateTracker.IsPvP()) // was in pvp zone before warp and then warped to a non-pvp zone
+            if (PluginServices.PlayerStateTracker
+                .IsPvP()) // was in pvp zone before warp and then warped to a non-pvp zone
             {
                 PluginServices.PluginLog.Verbose("Territory Change: PvP -> NoPvP");
                 MatchLeft();
@@ -124,7 +138,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
 
     public bool IsMonitoredUser(int userId)
     {
-        return IsMonitoredUser((uint)userId);
+        return IsMonitoredUser((uint) userId);
     }
 
     public bool IsMonitoredUser(uint entityId)
@@ -143,7 +157,7 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
             EmitToBroker(new MatchLossMessage());
         }
     }
-    
+
 
     public void MatchEntered(ushort territory)
     {
@@ -160,14 +174,11 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
             PluginServices.PluginLog.Verbose($"Match Weather: {weatherId}");
             EmitToBroker(new MatchWeatherMessage(weatherId));
         }
-        
     }
 
     public void MatchStarted(object? sender, ushort @ushort)
     {
-        
-        EmitToBroker(new MatchStartedMessage());    
-        
+        EmitToBroker(new MatchStartedMessage());
     }
 
     public void MatchEnded(object? sender, ushort @ushort)
@@ -175,9 +186,9 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         if (_ourPoints > 0 || _rightPoints > 0 || _leftPoints > 0)
         {
             CheckWin(_ourPoints >= _leftPoints && _ourPoints >= _rightPoints);
-        } 
+        }
         else if (_enemyProgress > 0.0 || _ourProgress > 0.0)
-        { 
+        {
             CheckWin(_ourProgress >= _enemyProgress);
         }
         else
@@ -189,12 +200,10 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
     public void MatchLeft()
     {
         EmitToBroker(new MatchLeftMessage());
-
     }
 
     public void MatchQueued()
     {
-
     }
 
     public void EmitToBroker(IMessage pvpEvent)
@@ -211,7 +220,5 @@ public class PvPMatchManager: IPvPMatchManager, IPvPEventPublisher
         PluginServices.DutyState.DutyCompleted -= MatchEnded;
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPMKSHeader", HandleCCHeaderPreDraw);
-
-
     }
 }

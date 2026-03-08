@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Numerics;
-using Dalamud.Interface.ImGuiNotification;
-using Dalamud.Interface.Windowing;
-using FFXIVClientStructs.FFXIV.Client.UI;
 using Dalamud.Bindings.ImGui;
-using PvPAnnouncer.Data;
-using PvPAnnouncer.Interfaces;
-using PvPAnnouncer.Interfaces.PvPEvents;
+using Dalamud.Interface.Windowing;
 
 namespace PvPAnnouncer.Windows;
 
-public class MainWindow: Window, IDisposable
+public class MainWindow : Window, IDisposable
 {
-
     public MainWindow() : base(
         "PvPAnnouncer", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)
     {
@@ -25,15 +19,15 @@ public class MainWindow: Window, IDisposable
 
     public override void Draw()
     {
-        if (!PluginServices.PlayerStateTracker.IsDawntrailInstalled())
+        if (ImGui.Button("Open Plugin Configuration"))
         {
-            ImGui.Separator();
-            ImGui.TextWrapped("Dawntrail is not installed! This plugin needs the expansion installed in order to work!");
-            ImGui.Separator();
+            PluginServices.ConfigWindow.Toggle();
         }
-        ImGui.TextWrapped("Welcome to PvP Announcer! This plugin will take Metem from the Arcadion and put him into your PvP match! " +
-                          "\nPlease contact .spider in the Dalamud Discord for feedback/suggestions!" +
-                          "\nView the config with /pvpannouncer");
+
+        ImGui.TextWrapped(
+            "Welcome to PvP Announcer! This plugin will take many NPC's and put them into your PvP match! " +
+            "\nPlease contact .spider in the Dalamud Discord for feedback/suggestions!" +
+            "\nView the config with /pvpannouncer");
         ImGui.Spacing();
         ImGui.Text("Attributions");
         ImGui.BulletText("DeathRecap, VFXEditor, OofPlugin");
