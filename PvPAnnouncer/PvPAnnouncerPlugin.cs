@@ -13,7 +13,6 @@ namespace PvPAnnouncer
     //todo vuln stack event
     //todo lb whiff event (?)
 
-    //todo - update config and message to let people know they can make their own announcers now
 
     public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
@@ -41,9 +40,8 @@ namespace PvPAnnouncer
                 }
 
                 PluginServices.ChatGui.Print(
-                    "Important!!!! This Plugin went through a LOT of changes under the hood. " +
-                    "If absolutely anything seems wrong or looks like a bug, please let the developer know! " +
-                    "Use the Plugin Feedback button!", "PvPAnnouncer", 15);
+                    "Huge News! You can now create your own custom announcers, add their voicelines to new events, and mute/remove default voicelines! Just check the new button at the top of the config. Submit feedback if anything is unclear or seems like a bug. Your feedback helps make the plugin better!",
+                    "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }
