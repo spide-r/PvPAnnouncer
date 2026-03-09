@@ -27,13 +27,14 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
 
     private readonly Queue<string> _lastVoiceLines = new();
-    private int _lastVoiceLineLength = 0;
+    private int _lastVoiceLineLength;
     private long _timestamp;
 
     public void ClearQueue()
     {
         _lastVoiceLines.Clear();
         _lastEvents.Clear();
+        _timestamp = 0;
     }
 
     public void PlayAndSendBattleTalkForTesting(Shoutcast shoutcast)
@@ -51,6 +52,13 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
 
+        if (bypass)
+        {
+            PluginServices.PluginLog.Verbose("Bypassing randomness & repeat commentary.");
+            PlaySoundAndSendBattleTalk(true, pvpEvent);
+            return;
+        }
+
         // == Objective 4 ==
         if (diff < (PluginServices.Config.CooldownSeconds + _lastVoiceLineLength))
         {
@@ -58,12 +66,6 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return;
         }
 
-        if (bypass)
-        {
-            PluginServices.PluginLog.Verbose("Bypassing randomness & repeat commentary.");
-            PlaySoundAndSendBattleTalk(true, pvpEvent);
-            return;
-        }
 
         if (!PluginServices.DutyState
                 .IsDutyStarted) //fixes kardia and other stuff at start but does not allow for weather events

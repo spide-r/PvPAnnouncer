@@ -581,15 +581,21 @@ public class VoicelineCreationWindow : Window, IDisposable
             ImGui.Separator();
             if (ImGui.Button("Go Back And Play###OrphanedVoLinesBackward"))
             {
-                _voLineSelector = selector - 1;
-                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector - 1));
+                if (selector > 0)
+                {
+                    _voLineSelector = selector - 1;
+                    PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector - 1));
+                }
             }
 
             ImGui.SameLine();
             if (ImGui.Button("Go Forward And Play###OrphanedVoLinesForward"))
             {
-                _voLineSelector = selector + 1;
-                PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector + 1));
+                if (selector < PluginServices.VoicelineDataResolver.GetOrphanedLines().Count - 1)
+                {
+                    _voLineSelector = selector + 1;
+                    PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector + 1));
+                }
             }
 
             var currentVo = PluginServices.VoicelineDataResolver.GetOrphanedLines()[selector];

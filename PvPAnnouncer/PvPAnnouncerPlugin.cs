@@ -13,6 +13,8 @@ namespace PvPAnnouncer
     //todo vuln stack event
     //todo lb whiff event (?)
 
+    //todo - update config and message to let people know they can make their own announcers now
+
     public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
         private WindowSystem WindowSystem = new("PvPAnnouncer");

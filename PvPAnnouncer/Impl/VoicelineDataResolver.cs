@@ -16,7 +16,6 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
 {
     private List<string> _orphanedVoLines = [];
     private List<string> _sortedCharacterNames = [];
-    private string[] _orphanedVoLineArr = [];
     private Dictionary<string, List<string>> _cutsceneLines = new();
     private List<ContentDirectorBattleTalk> _ctrList = [];
     private readonly Dictionary<Language, List<NpcYell>> _npcYellMemo = [];
@@ -50,7 +49,6 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
             PluginServices.Framework.RunOnFrameworkThread(() =>
             {
                 _orphanedVoLines = results;
-                _orphanedVoLineArr = _orphanedVoLines.ToArray();
                 PluginServices.PluginLog.Verbose("Finished loading all orphaned lines!");
             });
         });

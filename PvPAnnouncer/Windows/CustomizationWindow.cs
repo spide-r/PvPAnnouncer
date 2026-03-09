@@ -403,7 +403,7 @@ public class CustomizationWindow : Window, IDisposable
     {
         ImGui.Text("Event Tester");
         ImGui.TextWrapped(
-            "This Simulates these events happening in real pvp, using your configuration settings including announcement frequency and delay. If delay is long or frequency is low, you may not hear voice lines when activating these buttons.");
+            "This Simulates these events happening in real pvp, using your configuration settings (except for cooldown between announcements.");
         var i = 1;
         foreach (var ev in PluginServices.PvPEventBroker.GetPvPEvents())
         {

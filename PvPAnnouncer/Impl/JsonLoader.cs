@@ -376,7 +376,7 @@ public class JsonLoader(
         var outputStream = new MemoryStream();
         var gZipStream = new GZipStream(outputStream, CompressionMode.Compress);
         gZipStream.Write(inputBytes, 0, inputBytes.Length);
-
+        gZipStream.Close();
         var outputBytes = outputStream.ToArray();
 
         var outputStr = Convert.ToBase64String(outputBytes);

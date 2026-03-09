@@ -132,7 +132,7 @@ public class VoicelineManagementWindow : Window, IDisposable
                 var sc = PluginServices.ShoutcastRepository.GetShoutcast(mutedShouts[mutedSelection]);
                 if (sc == null)
                 {
-                    PluginServices.PluginLog.Warning($"{mutedShouts[currentShoutSelection]} not found");
+                    PluginServices.PluginLog.Warning($"{mutedShouts[mutedSelection]} not found");
                     return;
                 }
 
