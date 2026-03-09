@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Numerics;
-using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.ImGuiNotification;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
-using Newtonsoft.Json;
 using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer.Windows;
@@ -134,6 +131,7 @@ public class CustomizationWindow : Window, IDisposable
 
         if (ImGui.CollapsingHeader("Event Tester###Testerheader")) EventTester();
 
+        ImGui.NewLine();
 
         if (ImGui.CollapsingHeader("Config Reset"))
         {
@@ -156,18 +154,19 @@ public class CustomizationWindow : Window, IDisposable
         }
     }
 
-    private void CopyValues(Dictionary<string, string> customVoicelines, Dictionary<string, string> customMappings,
+    private void CopyValues(Dictionary<string, string> customVoicelines,
+        Dictionary<string, string> customMappings,
         Dictionary<string, string> customEvents)
     {
-        var customStuff = new Dictionary<string, string>
+        var customStuff = new Dictionary<string, Dictionary<string, string>>
         {
-            {"shoutcasts", GetB64(customVoicelines)},
-            {"mapping", GetB64(customMappings)},
-            {"events", GetB64(customEvents)}
+            {"shoutcasts", customVoicelines},
+            {"mapping", customMappings},
+            {"events", customEvents}
         };
-        var b64 = GetB64(customStuff);
-        PluginServices.PluginLog.Verbose($"Output: {b64}");
-        ImGui.SetClipboardText(b64);
+        var text = PluginServices.JsonLoader.ProcessObjectForExport(customStuff);
+        PluginServices.PluginLog.Verbose($"Output: {text}");
+        ImGui.SetClipboardText(text);
         PluginServices.NotificationManager.AddNotification(new Notification()
         {
             Title = "Copied!",
@@ -178,6 +177,27 @@ public class CustomizationWindow : Window, IDisposable
     private void ShowImportExport()
     {
         var single = _configuration.ExportSingleCharacter;
+
+        if (ImGui.Checkbox("Export Custom Values for a Single Character", ref single))
+        {
+            _configuration.ExportSingleCharacter = single;
+            _configuration.Save();
+        }
+
+        var selection = _selection;
+        if (single)
+        {
+            var scList = PluginServices.ShoutcastRepository.GetShoutcasters().Where(CasterHasChanges)
+                .ToList(); //todo this doesnt work
+            ImGui.TextWrapped("Select Character to Export:");
+            if (ImGui.ListBox("###Chars", ref selection,
+                    scList)) //slow and sloppy, but due to low list count it doesnt matter
+            {
+                _selection = selection;
+                _shoutcaster = scList[selection];
+            }
+        }
+
 
         if (ImGui.Button("Export Custom Shoutcasts"))
             CopyValues(
@@ -204,41 +224,20 @@ public class CustomizationWindow : Window, IDisposable
                     ? GetCustomMappingForShoutcaster(_shoutcaster)
                     : PluginServices.Config.MappingOverride, []);
 
-        if (ImGui.Checkbox("Export Custom Values for a Single Character", ref single))
-        {
-            _configuration.ExportSingleCharacter = single;
-            _configuration.Save();
-        }
-
-        var selection = _selection;
-        if (single)
-        {
-            var scList = PluginServices.ShoutcastRepository.GetShoutcasters().Where(CasterHasChanges).ToList();
-            ImGui.TextWrapped("Select The Character to Export:");
-            if (ImGui.ListBox("###Chars", ref selection,
-                    scList)) //slow and sloppy, but due to low list count it doesnt matter
-            {
-                _selection = selection;
-                _shoutcaster = scList[selection];
-            }
-        }
-
         ImGui.Separator();
         if (ImGui.Button("Import From Clipboard"))
         {
-            var b64Clip = ImGui.GetClipboardText();
+            var b64Clip = ImGui.GetClipboardText(); //new Dictionary<string, Dictionary<string, string>>
             PluginServices.PluginLog.Verbose($"Found {b64Clip}");
             var impVl = 0;
             var impMap = 0;
+            var dict =
+                PluginServices.JsonLoader
+                    .ProcessStringForImport<Dictionary<string, Dictionary<string, string>>>(b64Clip);
             try
             {
-                var decoded = new string(Encoding.UTF8.GetString(Convert.FromBase64String(b64Clip)));
-                PluginServices.PluginLog.Verbose($"Decoded to: {decoded} ");
-                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(decoded)!;
-                if (dict.TryGetValue("shoutcasts", out var sc))
+                if (dict.TryGetValue("shoutcasts", out var deserializedSc))
                 {
-                    var decodedSc = new string(Encoding.UTF8.GetString(Convert.FromBase64String(sc)));
-                    var deserializedSc = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedSc)!;
                     foreach (var keyValuePair in deserializedSc)
                     {
                         if (_configuration.DupeVoicelineChoice == 1 &&
@@ -250,10 +249,8 @@ public class CustomizationWindow : Window, IDisposable
                     }
                 }
 
-                if (dict.TryGetValue("mapping", out var mapping))
+                if (dict.TryGetValue("mapping", out var deserializedMapping))
                 {
-                    var decodedMap = new string(Encoding.UTF8.GetString(Convert.FromBase64String(mapping)));
-                    var deserializedMapping = JsonConvert.DeserializeObject<Dictionary<string, string>>(decodedMap)!;
                     foreach (var keyValuePair in deserializedMapping)
                         switch (_configuration.DupeMappingChoice)
                         {
@@ -274,15 +271,24 @@ public class CustomizationWindow : Window, IDisposable
                             case 0:
                             {
                                 var current =
-                                    PluginServices.JsonLoader.ConstructMappingFromJson(
+                                    PluginServices.JsonLoader.ConvertJsonToMappingDelta(
                                         PluginServices.Config.MappingOverride.GetValueOrDefault(keyValuePair.Key,
                                             "{}"));
-                                var toMerge = PluginServices.JsonLoader.ConstructMappingFromJson(
+                                var currentToAdd = current["add"];
+                                var currentToRemove = current["remove"];
+                                var toMerge = PluginServices.JsonLoader.ConvertJsonToMappingDelta(
                                     keyValuePair.Value);
-                                current.AddRange(toMerge);
-                                current = current.Distinct().ToList();
+                                var toMergeAdd = toMerge["add"];
+                                var toMergeRemove = toMerge["remove"];
+                                currentToAdd.AddRange(toMergeAdd);
+                                currentToRemove.AddRange(toMergeRemove);
+                                currentToAdd.RemoveAll(currentToRemove
+                                    .Contains); //should clean up any footguns where someone somehow has the same value in both their add and remove areas
+                                currentToAdd = currentToAdd.Distinct().ToList();
+                                currentToRemove = currentToRemove.Distinct().ToList();
                                 PluginServices.Config.MappingOverride[keyValuePair.Key] = PluginServices.JsonLoader
-                                    .BuildJsonMapping(keyValuePair.Key, current).ToJsonString();
+                                    .ConvertMappingDeltaToJson(keyValuePair.Key, currentToAdd, currentToRemove)
+                                    .ToJsonString();
                                 impMap++;
                                 break;
                             }
@@ -349,16 +355,6 @@ public class CustomizationWindow : Window, IDisposable
         }
     }
 
-    private string GetB64(object? obj)
-    {
-        var ser = JsonSerializer.Create();
-        var writer = new StringWriter();
-        ser.Serialize(writer, obj);
-        var str = writer.ToString();
-        var b64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
-
-        return b64;
-    }
 
     private Dictionary<string, string> GetShoutsForShoutcaster(string caster)
     {
@@ -380,14 +376,22 @@ public class CustomizationWindow : Window, IDisposable
         var dict = new Dictionary<string, string>();
         foreach (var (eventId, mapJson) in PluginServices.Config.MappingOverride)
         {
-            var mapList = PluginServices.JsonLoader.ConstructMappingFromJson(mapJson).Where(sh =>
+            var delta = PluginServices.JsonLoader.ConvertJsonToMappingDelta(mapJson);
+            var add = delta["add"].Where(sh =>
             {
                 var sc = PluginServices.ShoutcastRepository.GetShoutcast(sh);
                 return sc != null && sc.Shoutcaster.Equals(caster);
             }).ToList();
-            if (mapList.Count == 0) continue;
 
-            var toExport = PluginServices.JsonLoader.BuildJsonMapping(eventId, mapList).ToJsonString();
+            var remove = delta["remove"].Where(sh =>
+            {
+                var sc = PluginServices.ShoutcastRepository.GetShoutcast(sh);
+                return sc != null && sc.Shoutcaster.Equals(caster);
+            }).ToList();
+
+            if (add.Count == 0 && remove.Count == 0) continue;
+
+            var toExport = PluginServices.JsonLoader.ConvertMappingDeltaToJson(eventId, add, remove).ToJsonString();
             dict.Add(eventId, toExport);
         }
 

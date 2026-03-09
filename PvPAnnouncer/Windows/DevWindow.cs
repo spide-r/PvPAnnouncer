@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Buffers.Text;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Text.Json.Nodes;
 using Dalamud.Interface.Windowing;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface.ImGuiNotification;
-using Newtonsoft.Json;
 
 namespace PvPAnnouncer.Windows;
 
@@ -36,16 +27,6 @@ public class DevWindow : Window, IDisposable
          */
     }
 
-    private string GetB64(object? obj)
-    {
-        var ser = Newtonsoft.Json.JsonSerializer.Create();
-        var writer = new StringWriter();
-        ser.Serialize(writer, obj);
-        var str = writer.ToString();
-        var b64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
-
-        return b64;
-    }
 
     public void Dispose()
     {

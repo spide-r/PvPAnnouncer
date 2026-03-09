@@ -236,12 +236,12 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
                     var fem = PluginServices.Config.WantsAttribute("Feminine Pronouns");
                     if (masc || fem) // voice is gendered and user wants at least 1
                     {
-                        sounds.AddRange(sound);
+                        sounds.Add(sound);
                     }
                 }
                 else
                 {
-                    sounds.AddRange(sound);
+                    sounds.Add(sound);
                 }
             }
         }

@@ -44,12 +44,14 @@ public class EventShoutcastMapping : IEventShoutcastMapping
         _map[eventId] = shoutcast;
     }
 
-    public void MergeMapping(string eventId, List<string> shoutcast)
+    public void ProcessMappingDelta(string eventId, Dictionary<string, List<string>> delta)
     {
-        var list = _map.GetValueOrDefault(eventId, []);
-        list.AddRange(shoutcast);
-        list = list.Distinct().ToList();
-        _map[eventId] = list;
+        var add = delta["add"];
+        var remove = delta["remove"];
+        var current = _map.GetValueOrDefault(eventId, []);
+        current.RemoveAll(remove.Contains);
+        current.AddRange(add);
+        _map[eventId] = current;
     }
 
     public void RemoveShoutcast(string eventId, string shoutcast)

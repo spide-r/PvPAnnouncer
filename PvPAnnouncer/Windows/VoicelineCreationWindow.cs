@@ -189,7 +189,7 @@ public class VoicelineCreationWindow : Window, IDisposable
         }
 
         ImGuiComponents.HelpMarker(
-            "This contains ALL cutscene lines filtered by character. If nothing is shown, check the \"First Step\" section and press the button.");
+            "This contains ALL cutscene lines filtered by character.");
         CutsceneLinePopup();
 
 
@@ -472,6 +472,7 @@ public class VoicelineCreationWindow : Window, IDisposable
         ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("CutscenePop"))
         {
+            ClosePopupButton();
             if (ImGui.BeginCombo("Character Picker", _chosenChar))
             {
                 foreach (var character in PluginServices.VoicelineDataResolver.GetSortedCharacterNames())
@@ -613,7 +614,7 @@ public class VoicelineCreationWindow : Window, IDisposable
 
         var icon = _controller.GetCurrentShoutcast().Icon;
         uint min = 73001;
-        uint max = 73287; //todo check max on updates & make an update checklist
+        uint max = 73287;
         var useIcon = _useIcon;
         if (ImGui.Checkbox("Use Icon", ref useIcon))
         {

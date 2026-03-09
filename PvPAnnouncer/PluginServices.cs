@@ -90,7 +90,7 @@ internal class PluginServices
             ShoutcastRepository, EventShoutcastMapping);
         VoicelineDataResolver = new VoicelineDataResolver(DataManager, JsonLoader);
 
-        JsonLoader.LoadAllValuesIntoMemory();
+        JsonLoader.ClearAndLoadEmbeddedValuesIntoMemory();
         ConfigManager = new ConfigManager(Config, JsonLoader);
         ConfigManager.ApplyCustomValues();
         Announcer = new Announcer(EventShoutcastMapping, ShoutcastRepository);

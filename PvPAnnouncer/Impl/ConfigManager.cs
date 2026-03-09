@@ -6,7 +6,7 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
 {
     public void ReloadConfig()
     {
-        jsonLoader.LoadAllValuesIntoMemory();
+        jsonLoader.ClearAndLoadEmbeddedValuesIntoMemory();
         ApplyCustomValues();
     }
 
@@ -23,8 +23,8 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
         foreach (var keyValuePair in pluginConfiguration.MappingOverride)
         {
             var jsonMapping = keyValuePair.Value;
-            PluginServices.EventShoutcastMapping.ReplaceMapping(keyValuePair.Key,
-                PluginServices.JsonLoader.ConstructMappingFromJson(jsonMapping));
+            PluginServices.EventShoutcastMapping.ProcessMappingDelta(keyValuePair.Key,
+                PluginServices.JsonLoader.ConvertJsonToMappingDelta(jsonMapping));
         }
 
         foreach (var keyValuePair in pluginConfiguration.CustomEvents)
@@ -46,9 +46,12 @@ public class ConfigManager(Configuration pluginConfiguration, IJsonLoader jsonLo
     {
         foreach (var (eventName, value) in PluginServices.Config.MappingOverride)
         {
-            var currentList = PluginServices.JsonLoader.ConstructMappingFromJson(value);
-            currentList.Remove(shout);
-            var currentJson = PluginServices.JsonLoader.BuildJsonMapping(eventName, currentList);
+            var currentList = PluginServices.JsonLoader.ConvertJsonToMappingDelta(value);
+            var add = currentList["add"];
+            var remove = currentList["remove"];
+            add.Remove(shout);
+            remove.Remove(shout);
+            var currentJson = PluginServices.JsonLoader.ConvertMappingDeltaToJson(eventName, add, remove);
             PluginServices.Config.MappingOverride[eventName] = currentJson.ToJsonString();
         }
     }

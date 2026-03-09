@@ -96,7 +96,7 @@ public class VoicelineMappingWindow : Window, IDisposable
                 var shoutToRemove = currentShoutsForEvent[currentShoutSelection];
                 var eventToRemove = eventsInternal[pvpEventSelection];
                 PluginServices.EventShoutcastMapping.RemoveShoutcast(eventToRemove, shoutToRemove);
-                Save(eventToRemove);
+                SaveAndRemove(eventToRemove, shoutToRemove);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -142,7 +142,7 @@ public class VoicelineMappingWindow : Window, IDisposable
                 var eventToAdd = eventsInternal[pvpEventSelection];
                 PluginServices.PluginLog.Verbose($"Merging {shoutToAdd}, {eventToAdd}");
                 PluginServices.EventShoutcastMapping.MergeShoutcast(eventToAdd, shoutToAdd);
-                Save(eventToAdd);
+                SaveAndAdd(eventToAdd, shoutToAdd);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -150,10 +150,30 @@ public class VoicelineMappingWindow : Window, IDisposable
         }
     }
 
-    private void Save(string eventT)
+
+    private void SaveAndAdd(string eventT, string shout)
     {
-        var j = PluginServices.JsonLoader.BuildJsonMapping(eventT,
-            PluginServices.EventShoutcastMapping.GetShoutcastList(eventT));
+        var a = PluginServices.JsonLoader.ConvertJsonToMappingDelta(
+            PluginServices.Config.MappingOverride.GetValueOrDefault(eventT, "{}"));
+        var add = a["add"];
+        var remove = a["remove"];
+        add.Add(shout);
+        remove.Remove(shout);
+        var j = PluginServices.JsonLoader.ConvertMappingDeltaToJson(eventT, add, remove);
+        PluginServices.Config.MappingOverride[eventT] = j.ToJsonString();
+        PluginServices.Config.Save();
+        PluginServices.PluginLog.Verbose("Saved: " + j);
+    }
+
+    private void SaveAndRemove(string eventT, string shout)
+    {
+        var a = PluginServices.JsonLoader.ConvertJsonToMappingDelta(
+            PluginServices.Config.MappingOverride.GetValueOrDefault(eventT, "{}"));
+        var add = a["add"];
+        var remove = a["remove"];
+        add.Remove(shout);
+        remove.Add(shout);
+        var j = PluginServices.JsonLoader.ConvertMappingDeltaToJson(eventT, add, remove);
         PluginServices.Config.MappingOverride[eventT] = j.ToJsonString();
         PluginServices.Config.Save();
         PluginServices.PluginLog.Verbose("Saved: " + j);

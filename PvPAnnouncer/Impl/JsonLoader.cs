@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Plugin.Services;
@@ -18,18 +20,18 @@ public class JsonLoader(
     IShoutcastRepository shoutcastRepository,
     IEventShoutcastMapping eventShoutcastMapping) : IJsonLoader
 {
-    public void LoadAllValuesIntoMemory()
+    public void ClearAndLoadEmbeddedValuesIntoMemory()
     {
         shoutcastRepository.Clear();
         eventShoutcastMapping.Clear();
         LoadShoutcasts();
         //todo bad design - shoutcasts needs to be loaded w/ the above method before the below methods can complete - divide responsibility?
-        LoadAndMapCustomEvents();
+        LoadAndMapActionIdEvents();
         LoadMapping();
     }
 
 
-    private static string ReadFile(string jsonFile)
+    private static string ReadEmbeddedFile(string jsonFile)
     {
         var assembly = Assembly.GetExecutingAssembly();
 
@@ -47,7 +49,7 @@ public class JsonLoader(
 
     public void LoadShoutcasts()
     {
-        var shoutJ = ReadFile("shoutcast.json");
+        var shoutJ = ReadEmbeddedFile("shoutcast.json");
         var r = JsonNode.Parse(shoutJ);
         if (r is JsonArray j)
         {
@@ -60,9 +62,9 @@ public class JsonLoader(
         }
     }
 
-    public void LoadAndMapCustomEvents()
+    public void LoadAndMapActionIdEvents()
     {
-        var eventsJ = ReadFile("event.json");
+        var eventsJ = ReadEmbeddedFile("event.json");
         var r = JsonNode.Parse(eventsJ);
         if (r is JsonArray j)
         {
@@ -122,8 +124,6 @@ public class JsonLoader(
                         PluginServices.PluginLog.Warning($"{se} not found in shoutcast repository!");
                     }
                 }
-
-                newShoutList.AddRange(InternalConstants.LimitBreakListStr);
             }
             else
             {
@@ -137,7 +137,7 @@ public class JsonLoader(
 
     public void LoadMapping()
     {
-        var mappingJ = ReadFile("mapping.json");
+        var mappingJ = ReadEmbeddedFile("mapping.json");
         var r = JsonNode.Parse(mappingJ);
         if (r is JsonArray j)
         {
@@ -157,11 +157,12 @@ public class JsonLoader(
 
     public Dictionary<string, List<string>> LoadCutsceneLines()
     {
-        var cs = ReadFile("csl.json");
+        var cs = ReadEmbeddedFile("csl.json");
         var cutsceneLines = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(cs.Trim()) ?? [];
         return cutsceneLines;
     }
 
+    [Obsolete("Use ConvertJsonToMappingDelta")]
     public List<string> ConstructMappingFromJson(string json)
     {
         var r = JsonNode.Parse(json);
@@ -169,6 +170,30 @@ public class JsonLoader(
         return shouts ?? [];
     }
 
+    public Dictionary<string, List<string>> ConvertJsonToMappingDelta(string json)
+    {
+        var r = JsonNode.Parse(json);
+        var add = r?["add"]?.Deserialize<List<string>>();
+        var remove = r?["remove"]?.Deserialize<List<string>>();
+        var newObj = new Dictionary<string, List<string>>
+        {
+            {"add", add ?? []},
+            {"remove", remove ?? []}
+        };
+        return newObj;
+    }
+
+    public Dictionary<string, List<string>> GetDelta(List<string> add, List<string> remove)
+    {
+        var newObj = new Dictionary<string, List<string>>
+        {
+            {"add", add ?? []},
+            {"remove", remove ?? []}
+        };
+        return newObj;
+    }
+
+    [Obsolete("Use ConvertMappingDeltaToJson")]
     public JsonObject BuildJsonMapping(string eventId, List<string> shouts)
     {
         var j = new JsonObject
@@ -180,6 +205,23 @@ public class JsonLoader(
         foreach (var shout in shouts.Where(shout => !shout.Equals(""))) shoutsArray.Add(shout);
 
         if (shoutsArray.Count > 0) j["shouts"] = shoutsArray;
+
+        return j;
+    }
+
+    public JsonObject ConvertMappingDeltaToJson(string eventId, List<string> add, List<string> remove)
+    {
+        var j = new JsonObject
+        {
+            ["eventId"] = eventId
+        };
+        var addArray = new JsonArray();
+        foreach (var shout in add.Where(shout => !shout.Equals(""))) addArray.Add(shout);
+        if (addArray.Count > 0) j["add"] = addArray;
+
+        var removeArray = new JsonArray();
+        foreach (var shout in remove.Where(shout => !shout.Equals(""))) removeArray.Add(shout);
+        if (removeArray.Count > 0) j["remove"] = removeArray;
 
         return j;
     }
@@ -326,5 +368,53 @@ public class JsonLoader(
         }
 
         return j;
+    }
+
+    public string CompressToGzip(string str)
+    {
+        var inputBytes = Encoding.UTF8.GetBytes(str);
+        var outputStream = new MemoryStream();
+        var gZipStream = new GZipStream(outputStream, CompressionMode.Compress);
+        gZipStream.Write(inputBytes, 0, inputBytes.Length);
+
+        var outputBytes = outputStream.ToArray();
+
+        var outputStr = Convert.ToBase64String(outputBytes);
+        return outputStr;
+    }
+
+
+    public string UncompressToStr(string b64)
+    {
+        var inputBytes = Convert.FromBase64String(b64);
+        var st = new MemoryStream(inputBytes);
+        var outputStream = new MemoryStream();
+        var gZipStream = new GZipStream(st, CompressionMode.Decompress);
+        gZipStream.CopyTo(outputStream);
+        var outputBytes = outputStream.ToArray();
+
+        var outputStr = Encoding.UTF8.GetString(outputBytes);
+        return outputStr;
+    }
+
+    public string GetJsonObj(object? obj)
+    {
+        var str = JsonSerializer.Serialize(obj);
+        return str;
+    }
+
+
+    public string ProcessObjectForExport(object? obj)
+    {
+        var json = GetJsonObj(obj);
+        var compressed = CompressToGzip(json);
+        return compressed;
+    }
+
+    public T ProcessStringForImport<T>(string b64)
+    {
+        var uncompressed = UncompressToStr(b64);
+        var obj = JsonSerializer.Deserialize<T>(uncompressed);
+        return obj;
     }
 }
