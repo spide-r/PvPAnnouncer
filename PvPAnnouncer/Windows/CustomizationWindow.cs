@@ -231,11 +231,10 @@ public class CustomizationWindow : Window, IDisposable
             PluginServices.PluginLog.Verbose($"Found {b64Clip}");
             var impVl = 0;
             var impMap = 0;
-            var dict =
-                PluginServices.JsonLoader
-                    .ProcessStringForImport<Dictionary<string, Dictionary<string, string>>>(b64Clip);
             try
             {
+                var dict = PluginServices.JsonLoader
+                    .ProcessStringForImport<Dictionary<string, Dictionary<string, string>>>(b64Clip);
                 if (dict.TryGetValue("shoutcasts", out var deserializedSc))
                 {
                     foreach (var keyValuePair in deserializedSc)
@@ -304,7 +303,7 @@ public class CustomizationWindow : Window, IDisposable
             }
             catch (Exception e)
             {
-                PluginServices.PluginLog.Error(e, "Oops!");
+                PluginServices.PluginLog.Warning(e, "Oops!");
                 PluginServices.NotificationManager.AddNotification(new Notification
                 {
                     Content = "Error: " + e.Message,
