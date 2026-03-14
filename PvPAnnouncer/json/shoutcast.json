@@ -4,7 +4,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Black Cat"],
+    "attributes": [
+      "Black Cat"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000010_METEM"
   },
   {
@@ -12,7 +14,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Brute Bomber"],
+    "attributes": [
+      "Brute Bomber"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000050_METEM"
   },
   {
@@ -20,7 +24,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Honey B. Lovely"],
+    "attributes": [
+      "Honey B. Lovely"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000040_METEM"
   },
   {
@@ -28,7 +34,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Wicked Thunder"],
+    "attributes": [
+      "Wicked Thunder"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07010_000060_METEM"
   },
   {
@@ -36,7 +44,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Dancing Green"],
+    "attributes": [
+      "Dancing Green"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000010_METEM"
   },
   {
@@ -44,7 +54,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Sugar Riot"],
+    "attributes": [
+      "Sugar Riot"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000020_METEM"
   },
   {
@@ -52,7 +64,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Brute Abominator"],
+    "attributes": [
+      "Brute Abominator"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000030_METEM"
   },
   {
@@ -60,7 +74,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Howling Blade"],
+    "attributes": [
+      "Howling Blade"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07210_000040_METEM"
   },
   {
@@ -68,7 +84,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Vamp Fatale"],
+    "attributes": [
+      "Vamp Fatale"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000010_METEM"
   },
   {
@@ -76,7 +94,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["Deep Blue & Red Hot"],
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000020_METEM"
   },
   {
@@ -84,7 +104,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["The Tyrant"],
+    "attributes": [
+      "The Tyrant"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000050_METEM"
   },
   {
@@ -92,11 +114,11 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "duration": "6",
-    "attributes": ["The President"],
+    "attributes": [
+      "The President"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_07410_000080_METEM"
   },
-
-
   {
     "id": "VictoryWt",
     "icon": "073287",
@@ -137,7 +159,6 @@
     "shoutcaster": "Referee",
     "contentDirectorBattleTalkVo": "8205440"
   },
-
   {
     "id": "ViciousBlow",
     "icon": "073287",
@@ -360,42 +381,50 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206077"
   },
-
-
   {
     "id": "FirstOpponent",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205353",
-    "attributes": ["Black Cat"]
+    "attributes": [
+      "Black Cat"
+    ]
   },
   {
     "id": "FelineFerocity",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205354",
-    "attributes": ["Black Cat"]
+    "attributes": [
+      "Black Cat"
+    ]
   },
   {
     "id": "LitheAndLethal",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205355",
-    "attributes": ["Black Cat"]
+    "attributes": [
+      "Black Cat"
+    ]
   },
   {
     "id": "NineLives",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205358",
-    "attributes": ["Black Cat"]
+    "attributes": [
+      "Black Cat"
+    ]
   },
   {
     "id": "FeralOnslaught",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205360",
-    "attributes": ["Black Cat"]
+    "attributes": [
+      "Black Cat"
+    ]
   },
   {
     "id": "MyRing",
@@ -409,42 +438,50 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205357"
   },
-
-
   {
     "id": "HoneyBShowBegun",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205361",
-    "attributes": ["Honey B. Lovely"]
+    "attributes": [
+      "Honey B. Lovely"
+    ]
   },
   {
     "id": "SavorSting",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205363",
-    "attributes": ["Honey B. Lovely"]
+    "attributes": [
+      "Honey B. Lovely"
+    ]
   },
   {
     "id": "ChangedRoutine",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205367",
-    "attributes": ["Honey B. Lovely"]
+    "attributes": [
+      "Honey B. Lovely"
+    ]
   },
   {
     "id": "VenomStrikeFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205362",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "FeelingLoveFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205364",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "ResistTheIrresistible",
@@ -457,7 +494,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205366",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "WhatAClash",
@@ -465,42 +504,50 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205368"
   },
-
-
   {
     "id": "BBMuscled",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205369",
-    "attributes": ["Brute Bomber"]
+    "attributes": [
+      "Brute Bomber"
+    ]
   },
   {
     "id": "BBEmbiggening",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205371",
-    "attributes": ["Brute Bomber"]
+    "attributes": [
+      "Brute Bomber"
+    ]
   },
   {
     "id": "KaboomBBSpecial",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205375",
-    "attributes": ["Brute Bomber"]
+    "attributes": [
+      "Brute Bomber"
+    ]
   },
   {
     "id": "BBDesprate",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205378",
-    "attributes": ["Brute Bomber"]
+    "attributes": [
+      "Brute Bomber"
+    ]
   },
   {
     "id": "AssaultedRefMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205370",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "FuseField",
@@ -514,63 +561,77 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205377"
   },
-
-
   {
     "id": "WTReturned",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205379",
-    "attributes": ["Wicked Thunder"]
+    "attributes": [
+      "Wicked Thunder"
+    ]
   },
   {
     "id": "SomethingGrowingFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205383",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "GatheringAetherFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205385",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "ConvertAetherFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205386",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "MassiveCannonFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205380",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "GrownWingsFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205381",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "UnleashedANewFeralSoul",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205384",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "DischargeAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205382",
-    "attributes": ["Wicked Thunder"]
+    "attributes": [
+      "Wicked Thunder"
+    ]
   },
   {
     "id": "BattleElectrifying",
@@ -578,14 +639,14 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205387"
   },
-
-
   {
     "id": "DGSteps",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205785",
-    "attributes": ["Dancing Green"]
+    "attributes": [
+      "Dancing Green"
+    ]
   },
   {
     "id": "UpstartBegins",
@@ -604,30 +665,36 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205787",
-    "attributes": ["Dancing Green"]
+    "attributes": [
+      "Dancing Green"
+    ]
   },
   {
     "id": "DGFeverPich",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205788",
-    "attributes": ["Dancing Green"]
+    "attributes": [
+      "Dancing Green"
+    ]
   },
-
-
   {
     "id": "SRGallery",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205789",
-    "attributes": ["Sugar Riot"]
+    "attributes": [
+      "Sugar Riot"
+    ]
   },
   {
     "id": "SRBringsWorkToLife",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205790",
-    "attributes": ["Sugar Riot"]
+    "attributes": [
+      "Sugar Riot"
+    ]
   },
   {
     "id": "Quicksand",
@@ -683,14 +750,14 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205799"
   },
-
-
   {
     "id": "BAMeansBusiness",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205800",
-    "attributes": ["Brute Abominator"]
+    "attributes": [
+      "Brute Abominator"
+    ]
   },
   {
     "id": "ChimericalFoe",
@@ -703,7 +770,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205802",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "FiendishFlora",
@@ -722,14 +791,18 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205806",
-    "attributes": ["Brute Abominator"]
+    "attributes": [
+      "Brute Abominator"
+    ]
   },
   {
     "id": "BBLariat",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205811",
-    "attributes": ["Brute Abominator"]
+    "attributes": [
+      "Brute Abominator"
+    ]
   },
   {
     "id": "PunishingAttackFusion",
@@ -742,14 +815,18 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205805",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "BoundingFromWallToWallMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205807",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "RoofCavedSuchDevastation",
@@ -787,21 +864,23 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205815"
   },
-
-
   {
     "id": "WolfLair",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205816",
-    "attributes": ["Howling Blade"]
+    "attributes": [
+      "Howling Blade"
+    ]
   },
   {
     "id": "SuchSpeedMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205817",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "ColossalThing",
@@ -814,14 +893,18 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205819",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "SomethingsAmissMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205820",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "RingDestroyedFallen",
@@ -840,7 +923,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205823",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "NeitherSideHoldingBack",
@@ -848,14 +933,14 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8205824"
   },
-
-
   {
     "id": "VFFeastEyes",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206078",
-    "attributes": ["Vamp Fatale"]
+    "attributes": [
+      "Vamp Fatale"
+    ]
   },
   {
     "id": "FallPreyCruelMistress",
@@ -868,28 +953,36 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206080",
-    "attributes": ["Vamp Fatale"]
+    "attributes": [
+      "Vamp Fatale"
+    ]
   },
   {
     "id": "NowhereLeft",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206081",
-    "attributes": ["Vamp Fatale"]
+    "attributes": [
+      "Vamp Fatale"
+    ]
   },
   {
     "id": "DrainingAudienceFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206082",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "VFUnleashedAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206083",
-    "attributes": ["Vamp Fatale"]
+    "attributes": [
+      "Vamp Fatale"
+    ]
   },
   {
     "id": "SpectacleResumes",
@@ -908,36 +1001,45 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206086",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "EvenMoreAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206087",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
   {
     "id": "LightheadedFem",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206088",
-    "attributes": ["Vamp Fatale"]
+    "attributes": [
+      "Vamp Fatale"
+    ]
   },
   {
     "id": "SiphonedAether",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206089",
-    "attributes": ["Feminine Pronouns"]
+    "attributes": [
+      "Feminine Pronouns"
+    ]
   },
-
   {
     "id": "TagTeam",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206090",
-    "attributes": ["Deep Blue & Red Hot"]
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ]
   },
   {
     "id": "SuchScorn",
@@ -950,7 +1052,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206092",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "FlamesSpreading",
@@ -963,7 +1067,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206094",
-    "attributes": ["Deep Blue & Red Hot"]
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ]
   },
   {
     "id": "EnormousWave",
@@ -976,31 +1082,37 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206096",
-    "attributes": ["Deep Blue & Red Hot"]
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ]
   },
   {
     "id": "DoubleTrouble",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206097",
-    "attributes": ["Deep Blue & Red Hot"]
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ]
   },
   {
     "id": "Fusion",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206098",
-    "attributes": ["Deep Blue & Red Hot"]
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ]
   },
   {
     "id": "HoldingNothingBack",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206099",
-    "attributes": ["Deep Blue & Red Hot"]
+    "attributes": [
+      "Deep Blue & Red Hot"
+    ]
   },
-
-
   {
     "id": "GrandChampion",
     "icon": "073287",
@@ -1018,7 +1130,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206102",
-    "attributes": ["The Tyrant"]
+    "attributes": [
+      "The Tyrant"
+    ]
   },
   {
     "id": "HoldingTheirOwn",
@@ -1031,7 +1145,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206104",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "AbsoluteBrutality",
@@ -1050,28 +1166,36 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206107",
-    "attributes": ["The Tyrant"]
+    "attributes": [
+      "The Tyrant"
+    ]
   },
   {
     "id": "UnleashedFullMightMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206108",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "SplitRingHalfMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206109",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "ThrownRingMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206110",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "RingRestored",
@@ -1085,7 +1209,6 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206112"
   },
-
   {
     "id": "The PresidentMustPay",
     "icon": "073287",
@@ -1097,21 +1220,27 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206114",
-    "attributes": ["The President"]
+    "attributes": [
+      "The President"
+    ]
   },
   {
     "id": "ArmSlitheringOutDisgustingMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206115",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "LWScatteredGore",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206116",
-    "attributes": ["The President"]
+    "attributes": [
+      "The President"
+    ]
   },
   {
     "id": "CruelCoil",
@@ -1130,7 +1259,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206119",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "RingPieces",
@@ -1149,28 +1280,36 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206122",
-    "attributes": ["The President"]
+    "attributes": [
+      "The President"
+    ]
   },
   {
     "id": "LWOutOfControl",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206123",
-    "attributes": ["The President"]
+    "attributes": [
+      "The President"
+    ]
   },
   {
     "id": "PowerRunAmokMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206124",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "RegenCapacityMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206125",
-    "attributes": ["Masculine Pronouns"]
+    "attributes": [
+      "Masculine Pronouns"
+    ]
   },
   {
     "id": "StruckWithVenon",
@@ -1190,14 +1329,14 @@
     "shoutcaster": "Metem",
     "contentDirectorBattleTalkVo": "8206129"
   },
-
-
   {
     "id": "UnusedNoRespectMasc",
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205372",
-    "attributes": ["Masculine Pronouns"],
+    "attributes": [
+      "Masculine Pronouns"
+    ],
     "duration": "4",
     "transcription": [
       {
@@ -1210,7 +1349,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205373",
-    "attributes": ["Masculine Pronouns"],
+    "attributes": [
+      "Masculine Pronouns"
+    ],
     "duration": "3",
     "transcription": [
       {
@@ -1235,7 +1376,9 @@
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205359",
-    "attributes": ["Feminine Pronouns"],
+    "attributes": [
+      "Feminine Pronouns"
+    ],
     "duration": "4",
     "transcription": [
       {
@@ -1531,8 +1674,6 @@
       }
     ]
   },
-
-
   {
     "id": "LindwurmsHeart",
     "icon": "073287",
@@ -1686,14 +1827,17 @@
     "transcription": [
       {
         "en": "Something’s coming! Stay on your toes!"
-      }]
+      }
+    ]
   },
   {
     "id": "WarpedFabric",
     "icon": "073287",
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206143",
-    "attributes": ["The President"],
+    "attributes": [
+      "The President"
+    ],
     "duration": "6",
     "transcription": [
       {
@@ -1963,7 +2107,9 @@
     "icon": "073002",
     "shoutcaster": "Zenos",
     "duration": "3",
-    "attributes": ["Feminine Pronouns"],
+    "attributes": [
+      "Feminine Pronouns"
+    ],
     "cutsceneLine": "TEXT_VOICEMAN_04000_001800_ZENOS"
   },
   {
@@ -1973,7 +2119,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_04002_003880_ZENOS"
   },
-
   {
     "id": "DidYouFindFulfillment",
     "icon": "073002",
@@ -1981,7 +2126,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_06006_008210_ZENOS"
   },
-
   {
     "id": "DidYouFindFulfillment",
     "icon": "073002",
@@ -1989,7 +2133,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_06006_008210_ZENOS"
   },
-
   {
     "id": "FarewellFirstFriend",
     "icon": "073002",
@@ -1997,7 +2140,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_04006_001340_ZENOS"
   },
-
   {
     "id": "EndingNewBeginning",
     "icon": "073002",
@@ -2005,7 +2147,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_04006_001220_ZENOS"
   },
-
   {
     "id": "ATaste",
     "icon": "073002",
@@ -2013,7 +2154,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_06001_007510_ZENOS"
   },
-
   {
     "id": "RightToSpare",
     "icon": "073002",
@@ -2021,7 +2161,6 @@
     "duration": "3",
     "cutsceneLine": "TEXT_VOICEMAN_04002_003840_ZENOS"
   },
-
   {
     "id": "PoorSport",
     "icon": "073002",
@@ -2029,7 +2168,6 @@
     "duration": "4",
     "cutsceneLine": "TEXT_VOICEMAN_06005_000760_ZENOS"
   },
-
   {
     "id": "HowWeak",
     "icon": "073002",
@@ -2037,7 +2175,6 @@
     "duration": "4",
     "cutsceneLine": "TEXT_VOICEMAN_04002_003760_ZENOS"
   },
-
   {
     "id": "ExpectNoLessBahamut",
     "icon": "073002",
@@ -2045,7 +2182,6 @@
     "duration": "4",
     "cutsceneLine": "TEXT_VOICEMAN_04002_004290_ZENOS"
   },
-
   {
     "id": "HunterBecomeHunted",
     "icon": "073002",
@@ -2053,7 +2189,6 @@
     "duration": "4",
     "cutsceneLine": "TEXT_VOICEMAN_04006_001260_ZENOS"
   },
-
   {
     "id": "EikonSlayer",
     "icon": "073002",
@@ -2061,7 +2196,6 @@
     "duration": "6",
     "cutsceneLine": "TEXT_VOICEMAN_04006_001050_ZENOS"
   },
-
   {
     "id": "VictoryWithinReach",
     "icon": "073008",
@@ -2072,7 +2206,8 @@
       {
         "en": "Victory is within reach. Now to seize it!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ReleaseYourPotential",
     "icon": "073008",
@@ -2083,7 +2218,8 @@
       {
         "en": "We won't be outdone! Focus, then release your potential."
       }
-    ]},
+    ]
+  },
   {
     "id": "TreadWarily",
     "icon": "073008",
@@ -2094,7 +2230,8 @@
       {
         "en": "They're poised to win this round. You must tread warily."
       }
-    ]},
+    ]
+  },
   {
     "id": "DoNotLoseHeart",
     "icon": "073008",
@@ -2105,7 +2242,8 @@
       {
         "en": "So they draw level. But do not lose heart!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ThaliakProtectUs",
     "icon": "073008",
@@ -2116,7 +2254,8 @@
       {
         "en": "Again! Thaliak protect us."
       }
-    ]},
+    ]
+  },
   {
     "id": "YouHaveThem",
     "icon": "073008",
@@ -2127,7 +2266,8 @@
       {
         "en": "You have them!"
       }
-    ]},
+    ]
+  },
   {
     "id": "PraiseTheTwelve",
     "icon": "073008",
@@ -2138,7 +2278,8 @@
       {
         "en": "Yes! Praise the twelve."
       }
-    ]},
+    ]
+  },
   {
     "id": "ConfoundIt",
     "icon": "073008",
@@ -2149,7 +2290,8 @@
       {
         "en": "Confound it. I hadn't anticipated that."
       }
-    ]},
+    ]
+  },
   {
     "id": "OneMoreTurn",
     "icon": "073008",
@@ -2160,7 +2302,8 @@
       {
         "en": "If only we had one more turn."
       }
-    ]},
+    ]
+  },
   {
     "id": "DoNotDwellOnIt",
     "icon": "073008",
@@ -2171,7 +2314,8 @@
       {
         "en": "This hand wasn't to be. Do not dwell on it."
       }
-    ]},
+    ]
+  },
   {
     "id": "PlayedHandToPerfection",
     "icon": "073008",
@@ -2182,7 +2326,8 @@
       {
         "en": "You played your hand to perfection!"
       }
-    ]},
+    ]
+  },
   {
     "id": "TriumphWorthyOfCelebration",
     "icon": "073008",
@@ -2193,7 +2338,8 @@
       {
         "en": "A triumph worthy of celebration, bravo!"
       }
-    ]},
+    ]
+  },
   {
     "id": "VictoryGivesGreaterHope",
     "icon": "073008",
@@ -2204,7 +2350,8 @@
       {
         "en": "This victory gives us greater hope for the morrow."
       }
-    ]},
+    ]
+  },
   {
     "id": "CommendableResult",
     "icon": "073008",
@@ -2215,7 +2362,8 @@
       {
         "en": "A commendable result. Let us stay the course."
       }
-    ]},
+    ]
+  },
   {
     "id": "OutcomeWithHubris",
     "icon": "073008",
@@ -2226,7 +2374,8 @@
       {
         "en": "Good gods. Did we invite this outcome with our hubris?"
       }
-    ]},
+    ]
+  },
   {
     "id": "PainfulThrashing",
     "icon": "073008",
@@ -2237,7 +2386,8 @@
       {
         "en": "A painful thrashing."
       }
-    ]},
+    ]
+  },
   {
     "id": "LearnAndForgeOn",
     "icon": "073008",
@@ -2248,7 +2398,8 @@
       {
         "en": "Let us learn from this and forge on."
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepYourChinUp",
     "icon": "073008",
@@ -2259,7 +2410,8 @@
       {
         "en": "It isn't over yet. Keep your chin up."
       }
-    ]},
+    ]
+  },
   {
     "id": "PerformanceForTheAges",
     "icon": "073008",
@@ -2270,7 +2422,8 @@
       {
         "en": "That was a performance for the ages! You truly are our champion!"
       }
-    ]},
+    ]
+  },
   {
     "id": "HoldYourHeadHigh",
     "icon": "073008",
@@ -2281,7 +2434,8 @@
       {
         "en": "You played well my friend. You may hold your head high."
       }
-    ]},
+    ]
+  },
   {
     "id": "ProudYetIgnorant",
     "icon": "073008",
@@ -2292,7 +2446,8 @@
       {
         "en": "How proud we were, yet ignorant of our own shortcomings."
       }
-    ]},
+    ]
+  },
   {
     "id": "ReplaceIgnoranceWithKnowledge",
     "icon": "073008",
@@ -2303,7 +2458,8 @@
       {
         "en": "You must accept this defeat with grace, and endeavour to replace our ignorance with knowledge."
       }
-    ]},
+    ]
+  },
   {
     "id": "OutplayedClearMinds",
     "icon": "073008",
@@ -2314,7 +2470,8 @@
       {
         "en": "We were outplayed this time. Let us take a moment to clear our minds."
       }
-    ]},
+    ]
+  },
   {
     "id": "PullYourselfTogether",
     "icon": "073008",
@@ -2325,7 +2482,8 @@
       {
         "en": "Pull Yourself together!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FocusRelease",
     "icon": "073008",
@@ -2420,7 +2578,8 @@
       {
         "en": "Yes! Give it everything you've got."
       }
-    ]},
+    ]
+  },
   {
     "id": "ShowThemWhatYoureMadeOf",
     "icon": "073036",
@@ -2431,7 +2590,8 @@
       {
         "en": "That's it. Show them what you're made of!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WontLetThemGetAway",
     "icon": "073036",
@@ -2442,7 +2602,8 @@
       {
         "en": "We won't let them get away with that of course."
       }
-    ]},
+    ]
+  },
   {
     "id": "WhatANuisance",
     "icon": "073036",
@@ -2453,7 +2614,8 @@
       {
         "en": "What a nuisance. Finish them off!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WinThisYet",
     "icon": "073036",
@@ -2464,7 +2626,8 @@
       {
         "en": "It's getting crowded but we'll win this yet."
       }
-    ]},
+    ]
+  },
   {
     "id": "JustWhatWeNeeded",
     "icon": "073036",
@@ -2475,7 +2638,8 @@
       {
         "en": "Ah! Just what we needed!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WontSoonForget",
     "icon": "073036",
@@ -2486,7 +2650,8 @@
       {
         "en": "What?! oh we won't soon forget that."
       }
-    ]},
+    ]
+  },
   {
     "id": "BeatenToThePunch",
     "icon": "073036",
@@ -2497,7 +2662,8 @@
       {
         "en": "Beaten to the punch."
       }
-    ]},
+    ]
+  },
   {
     "id": "WorthyOfGrandfather",
     "icon": "073036",
@@ -2508,7 +2674,8 @@
       {
         "en": "Amazing! A performance worthy of grandfather in his prime!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ExpectedWhenSerious",
     "icon": "073036",
@@ -2519,7 +2686,8 @@
       {
         "en": "Only to be expected when you get serious."
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepUpTheOffensive",
     "icon": "073036",
@@ -2530,7 +2698,8 @@
       {
         "en": "Great work. let's keep up the offensive."
       }
-    ]},
+    ]
+  },
   {
     "id": "OnwardsAndUpwards",
     "icon": "073036",
@@ -2541,7 +2710,8 @@
       {
         "en": "We can work with this. Onwards and upwards."
       }
-    ]},
+    ]
+  },
   {
     "id": "TwelveGiveMeStrength",
     "icon": "073036",
@@ -2552,7 +2722,8 @@
       {
         "en": "Twelve give me strength."
       }
-    ]},
+    ]
+  },
   {
     "id": "JustGettingStarted",
     "icon": "073036",
@@ -2563,7 +2734,8 @@
       {
         "en": "We're just getting started."
       }
-    ]},
+    ]
+  },
   {
     "id": "NothingCantRecoverFrom",
     "icon": "073036",
@@ -2574,7 +2746,8 @@
       {
         "en": "Nothing we can't recover from."
       }
-    ]},
+    ]
+  },
   {
     "id": "LittleSetback",
     "icon": "073036",
@@ -2585,7 +2758,8 @@
       {
         "en": "Don't worry. It's just a little setback."
       }
-    ]},
+    ]
+  },
   {
     "id": "OnlyPossibleOutcome",
     "icon": "073036",
@@ -2596,7 +2770,8 @@
       {
         "en": "I knew you'd win! When I'm with you it's the only possible outcome."
       }
-    ]},
+    ]
+  },
   {
     "id": "TakeFirstPlaceNextTime",
     "icon": "073036",
@@ -2607,7 +2782,8 @@
       {
         "en": "So close. Next time we'll take first place for sure."
       }
-    ]},
+    ]
+  },
   {
     "id": "ScramblingToKeepUp",
     "icon": "073036",
@@ -2618,7 +2794,8 @@
       {
         "en": "I must say I'm not used to seeing you scrambling to keep up."
       }
-    ]},
+    ]
+  },
   {
     "id": "LaughingInTheEnd",
     "icon": "073036",
@@ -2629,8 +2806,8 @@
       {
         "en": "We won't lose next time! keep at it and we'll be the ones laughing in the end."
       }
-    ]},
-
+    ]
+  },
   {
     "id": "ThisIsNotOver",
     "icon": "073036",
@@ -2676,8 +2853,8 @@
       {
         "en": "Defeat is not an option."
       }
-    ]},
-
+    ]
+  },
   {
     "id": "TurnaboutsFairPlay",
     "icon": "073036",
@@ -2686,7 +2863,6 @@
     "duration": "3",
     "instanceContentTextDataRow": "31523"
   },
-
   {
     "id": "WellDone",
     "icon": "073036",
@@ -2712,7 +2888,8 @@
       {
         "en": "To the bold go the spoils."
       }
-    ]},
+    ]
+  },
   {
     "id": "OurTurnThancred",
     "icon": "073024",
@@ -2723,7 +2900,8 @@
       {
         "en": "My turn! I mean, our turn."
       }
-    ]},
+    ]
+  },
   {
     "id": "ChanceWillCome",
     "icon": "073024",
@@ -2734,7 +2912,8 @@
       {
         "en": "Worry not. Your chance will come."
       }
-    ]},
+    ]
+  },
   {
     "id": "GainedOnUsWinInEnd",
     "icon": "073024",
@@ -2745,7 +2924,8 @@
       {
         "en": "They've gained on us but we'll win in the end."
       }
-    ]},
+    ]
+  },
   {
     "id": "SomeCompetitionNow",
     "icon": "073024",
@@ -2756,7 +2936,8 @@
       {
         "en": "Hmm, we've got some competition now."
       }
-    ]},
+    ]
+  },
   {
     "id": "AllAccordingToPlan",
     "icon": "073024",
@@ -2767,7 +2948,8 @@
       {
         "en": "All according to plan."
       }
-    ]},
+    ]
+  },
   {
     "id": "VictoryIsOursThancred",
     "icon": "073024",
@@ -2778,7 +2960,8 @@
       {
         "en": "And there it is. Victory is ours!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ThatIsntGood",
     "icon": "073024",
@@ -2789,7 +2972,8 @@
       {
         "en": "That isn't good."
       }
-    ]},
+    ]
+  },
   {
     "id": "NotMostDisastrous",
     "icon": "073024",
@@ -2800,7 +2984,8 @@
       {
         "en": "Not the most disastrous outcome to be fair."
       }
-    ]},
+    ]
+  },
   {
     "id": "LadyLuckOtherIdeas",
     "icon": "073024",
@@ -2811,7 +2996,8 @@
       {
         "en": "Too bad, lady luck had other ideas,"
       }
-    ]},
+    ]
+  },
   {
     "id": "PraiseOrPity",
     "icon": "073024",
@@ -2822,7 +3008,8 @@
       {
         "en": "I hardly know whether to praise you or pity your opponents."
       }
-    ]},
+    ]
+  },
   {
     "id": "DecisiveVictoryThancred",
     "icon": "073024",
@@ -2833,7 +3020,8 @@
       {
         "en": "A decisive victory from a decisive strategist."
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepThemOnTheirHeels",
     "icon": "073024",
@@ -2844,7 +3032,8 @@
       {
         "en": "That's the way! Keep them on their heels,"
       }
-    ]},
+    ]
+  },
   {
     "id": "SlowAndSteadyThancred",
     "icon": "073024",
@@ -2855,7 +3044,8 @@
       {
         "en": "Slow and steady wins the game is it?"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotEasyRecovering",
     "icon": "073024",
@@ -2866,7 +3056,8 @@
       {
         "en": "It won't be easy recovering from that."
       }
-    ]},
+    ]
+  },
   {
     "id": "CreditWhereDue",
     "icon": "073024",
@@ -2877,7 +3068,8 @@
       {
         "en": "Credit where credit is due I suppose."
       }
-    ]},
+    ]
+  },
   {
     "id": "StillDoThisDontGiveUp",
     "icon": "073024",
@@ -2888,7 +3080,8 @@
       {
         "en": "You can still do this. Don't give up."
       }
-    ]},
+    ]
+  },
   {
     "id": "HowWeStrikeBack",
     "icon": "073024",
@@ -2899,7 +3092,8 @@
       {
         "en": "We can't always win. What's important is how we strike back."
       }
-    ]},
+    ]
+  },
   {
     "id": "RaiseAGlassVictory",
     "icon": "073024",
@@ -2910,7 +3104,8 @@
       {
         "en": "Tonight we raise a glass to your victory!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FellJustShortThancred",
     "icon": "073024",
@@ -2921,7 +3116,8 @@
       {
         "en": "Alas, we fell just short. So it goes sometimes."
       }
-    ]},
+    ]
+  },
   {
     "id": "CouldHaveBeenWorse",
     "icon": "073024",
@@ -2932,7 +3128,8 @@
       {
         "en": "Could have been worse, but it also could have been better."
       }
-    ]},
+    ]
+  },
   {
     "id": "DrinkBestOfUs",
     "icon": "073024",
@@ -2943,7 +3140,8 @@
       {
         "en": "It happens to the best of us. Drink?"
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepChinUpPrettyLeast",
     "icon": "073024",
@@ -2954,7 +3152,8 @@
       {
         "en": "I wont lie, that wasn't pretty in the least. Try to keep your chin up!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ThisIsGoingWell",
     "icon": "073024",
@@ -2965,7 +3164,8 @@
       {
         "en": "This is going well."
       }
-    ]},
+    ]
+  },
   {
     "id": "RightBackToIt",
     "icon": "073024",
@@ -2976,7 +3176,8 @@
       {
         "en": "Right! Back to it."
       }
-    ]},
+    ]
+  },
   {
     "id": "WhereWereWe",
     "icon": "073024",
@@ -2987,7 +3188,8 @@
       {
         "en": "Where were we?"
       }
-    ]},
+    ]
+  },
   {
     "id": "DoYourWorst",
     "icon": "073024",
@@ -2998,7 +3200,8 @@
       {
         "en": "Do your worst!"
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepYourGuardUp",
     "icon": "073024",
@@ -3009,7 +3212,8 @@
       {
         "en": "Keep your guard up!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ComeOn",
     "icon": "073024",
@@ -3020,7 +3224,8 @@
       {
         "en": "Come on!"
       }
-    ]},
+    ]
+  },
   {
     "id": "BestDefenceIsGoodDefence",
     "icon": "073024",
@@ -3031,7 +3236,8 @@
       {
         "en": "The best defence is a good defence!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ExplosivesInPlace",
     "icon": "073024",
@@ -3042,7 +3248,8 @@
       {
         "en": "This is Thancred. The explosives are in place."
       }
-    ]},
+    ]
+  },
   {
     "id": "SevenHells",
     "icon": "073024",
@@ -3053,7 +3260,8 @@
       {
         "en": "Seven hells."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThatWasUnbecoming",
     "icon": "073024",
@@ -3064,7 +3272,8 @@
       {
         "en": "That was unbecoming"
       }
-    ]},
+    ]
+  },
   {
     "id": "HitThemWhereItHurts",
     "icon": "073024",
@@ -3075,7 +3284,8 @@
       {
         "en": "You have to hit them where it hurts!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotSoFast",
     "icon": "073024",
@@ -3086,7 +3296,8 @@
       {
         "en": "Not so fast!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NoMistakes",
     "icon": "073024",
@@ -3097,7 +3308,8 @@
       {
         "en": "No Mistakes!"
       }
-    ]},
+    ]
+  },
   {
     "id": "MakeThisCount",
     "icon": "073024",
@@ -3108,7 +3320,8 @@
       {
         "en": "Make this count!"
       }
-    ]},
+    ]
+  },
   {
     "id": "OvercomeTheOdds",
     "icon": "073026",
@@ -3119,7 +3332,8 @@
       {
         "en": "Together we shall overcome the odds"
       }
-    ]},
+    ]
+  },
   {
     "id": "SoundDecision",
     "icon": "073026",
@@ -3130,7 +3344,8 @@
       {
         "en": "A sound decision."
       }
-    ]},
+    ]
+  },
   {
     "id": "ContendWithThreat",
     "icon": "073026",
@@ -3141,7 +3356,8 @@
       {
         "en": "How best to contend with this threat?"
       }
-    ]},
+    ]
+  },
   {
     "id": "DanceOfTheStars",
     "icon": "073026",
@@ -3152,7 +3368,8 @@
       {
         "en": "Attune thyself to the dance of the stars."
       }
-    ]},
+    ]
+  },
   {
     "id": "AmidstGreatChaos",
     "icon": "073026",
@@ -3163,7 +3380,8 @@
       {
         "en": "Amidst great chaos, victory may yet be grasped."
       }
-    ]},
+    ]
+  },
   {
     "id": "StarsFavorUs",
     "icon": "073026",
@@ -3174,7 +3392,8 @@
       {
         "en": "Look, the stars favor us!"
       }
-    ]},
+    ]
+  },
   {
     "id": "TheHandIsOurs",
     "icon": "073026",
@@ -3185,7 +3404,8 @@
       {
         "en": "The hand is ours! Strike with all thy might!"
       }
-    ]},
+    ]
+  },
   {
     "id": "SuchShouldBeFate",
     "icon": "073026",
@@ -3196,7 +3416,8 @@
       {
         "en": "That such should be our fate."
       }
-    ]},
+    ]
+  },
   {
     "id": "VicissitudesOfFortune",
     "icon": "073026",
@@ -3207,7 +3428,8 @@
       {
         "en": "Let us accept the vicissitudes of fortune"
       }
-    ]},
+    ]
+  },
   {
     "id": "FavoredByTheSpinner",
     "icon": "073026",
@@ -3218,7 +3440,8 @@
       {
         "en": "Favored our we by the Spinner to triumph so handily!"
       }
-    ]},
+    ]
+  },
   {
     "id": "MasterfulStrategy",
     "icon": "073026",
@@ -3229,7 +3452,8 @@
       {
         "en": "A masterful strategy masterfully executed."
       }
-    ]},
+    ]
+  },
   {
     "id": "SureStepForward",
     "icon": "073026",
@@ -3240,7 +3464,8 @@
       {
         "en": "By this triumph we take a sure step forward."
       }
-    ]},
+    ]
+  },
   {
     "id": "VictoriesPaveWayToRenown",
     "icon": "073026",
@@ -3251,7 +3476,8 @@
       {
         "en": "Great or small, our victories pave the way to renown."
       }
-    ]},
+    ]
+  },
   {
     "id": "DestroyerMightyBlow",
     "icon": "073026",
@@ -3262,7 +3488,8 @@
       {
         "en": "Tis as though the destroyer himself hath dealt us a mighty blow."
       }
-    ]},
+    ]
+  },
   {
     "id": "BodethIllTurnTide",
     "icon": "073026",
@@ -3273,7 +3500,8 @@
       {
         "en": "This bodeth ill. We must need turn the tide."
       }
-    ]},
+    ]
+  },
   {
     "id": "ReviewOurStrategy",
     "icon": "073026",
@@ -3284,7 +3512,8 @@
       {
         "en": "We would do well to review our strategy."
       }
-    ]},
+    ]
+  },
   {
     "id": "StarsFavourNextHand",
     "icon": "073026",
@@ -3295,7 +3524,8 @@
       {
         "en": "Mayhap the stars will favour our next hand."
       }
-    ]},
+    ]
+  },
   {
     "id": "UnequivocalVictory",
     "icon": "073026",
@@ -3306,7 +3536,8 @@
       {
         "en": "An unequivocal victory! Thou leavest me in awe my friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "NarrowestOfDefeats",
     "icon": "073026",
@@ -3317,7 +3548,8 @@
       {
         "en": "The narrowest of defeats. Take pride in thine efforts."
       }
-    ]},
+    ]
+  },
   {
     "id": "OpponentsFormidableIndeed",
     "icon": "073026",
@@ -3328,7 +3560,8 @@
       {
         "en": "Thine opponents were formidable indeed."
       }
-    ]},
+    ]
+  },
   {
     "id": "TriflingUntoLosing",
     "icon": "073026",
@@ -3339,7 +3572,8 @@
       {
         "en": "That which a man think is trifling, he mourneth unto losing."
       }
-    ]},
+    ]
+  },
   {
     "id": "ShoulderToLeanUpon",
     "icon": "073026",
@@ -3350,7 +3584,8 @@
       {
         "en": "I offer no excuses, only a shoulder to lean upon shouldst thou require it."
       }
-    ]},
+    ]
+  },
   {
     "id": "HoldFastFriend",
     "icon": "073026",
@@ -3361,7 +3596,8 @@
       {
         "en": "Hold fast friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "BeAtEase",
     "icon": "073026",
@@ -3372,7 +3608,8 @@
       {
         "en": "Be at ease my friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "HaveCare",
     "icon": "073026",
@@ -3383,7 +3620,8 @@
       {
         "en": "Have care my friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThisBodethIll",
     "icon": "073026",
@@ -3394,7 +3632,8 @@
       {
         "en": "This bodeth ill."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThyTimeNotCome",
     "icon": "073026",
@@ -3405,7 +3644,8 @@
       {
         "en": "Thy time hath not yet come."
       }
-    ]},
+    ]
+  },
   {
     "id": "FearsomeFamiliar",
     "icon": "073026",
@@ -3416,7 +3656,8 @@
       {
         "en": "Tis a most fearsome familiar!"
       }
-    ]},
+    ]
+  },
   {
     "id": "LooksPromising",
     "icon": "073025",
@@ -3427,7 +3668,8 @@
       {
         "en": "Well, this looks promising."
       }
-    ]},
+    ]
+  },
   {
     "id": "AchievedWithoutRisk",
     "icon": "073025",
@@ -3438,7 +3680,8 @@
       {
         "en": "Nothing worthwhile was ever achieved without risk."
       }
-    ]},
+    ]
+  },
   {
     "id": "TreadCautiously",
     "icon": "073025",
@@ -3449,7 +3692,8 @@
       {
         "en": "Tread cautiously now."
       }
-    ]},
+    ]
+  },
   {
     "id": "BetterHandYet",
     "icon": "073025",
@@ -3460,7 +3704,8 @@
       {
         "en": "So it goes, but we may yet have better hand."
       }
-    ]},
+    ]
+  },
   {
     "id": "DangerousMomentIndeed",
     "icon": "073025",
@@ -3471,7 +3716,8 @@
       {
         "en": "A dangerous moment indeed."
       }
-    ]},
+    ]
+  },
   {
     "id": "VictoryAtHandIsItNot",
     "icon": "073025",
@@ -3482,7 +3728,8 @@
       {
         "en": "Victory is at hand is it not?"
       }
-    ]},
+    ]
+  },
   {
     "id": "PreciselyWhatNeeded",
     "icon": "073025",
@@ -3493,7 +3740,8 @@
       {
         "en": "Precisely what we needed!"
       }
-    ]},
+    ]
+  },
   {
     "id": "SimplyNoKnowing",
     "icon": "073025",
@@ -3504,7 +3752,8 @@
       {
         "en": "Sometimes there is simply no knowing."
       }
-    ]},
+    ]
+  },
   {
     "id": "SmallMerciesYshtola",
     "icon": "073025",
@@ -3515,7 +3764,8 @@
       {
         "en": "Small mercies I suppose."
       }
-    ]},
+    ]
+  },
   {
     "id": "UnfortunateSuchIsLife",
     "icon": "073025",
@@ -3526,7 +3776,8 @@
       {
         "en": "Unfortunate, but such is life."
       }
-    ]},
+    ]
+  },
   {
     "id": "ImpeccablePerformance",
     "icon": "073025",
@@ -3537,7 +3788,8 @@
       {
         "en": "An impeccable performance! I couldn't be more satisfied."
       }
-    ]},
+    ]
+  },
   {
     "id": "ExcellentRoundImpressed",
     "icon": "073025",
@@ -3548,7 +3800,8 @@
       {
         "en": "An excellent round. I'm impressed."
       }
-    ]},
+    ]
+  },
   {
     "id": "NotRestOnLaurels",
     "icon": "073025",
@@ -3559,7 +3812,8 @@
       {
         "en": "You won't rest on these laurels of course."
       }
-    ]},
+    ]
+  },
   {
     "id": "BestEffortWellDone",
     "icon": "073025",
@@ -3570,7 +3824,8 @@
       {
         "en": "You put forth your best effort, well done."
       }
-    ]},
+    ]
+  },
   {
     "id": "BedWithoutSupper",
     "icon": "073025",
@@ -3581,7 +3836,8 @@
       {
         "en": "Keep that up and I'll send you to bed without supper!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotOverYetYshtola",
     "icon": "073025",
@@ -3592,7 +3848,8 @@
       {
         "en": "Do not be disheartened, it's not over yet"
       }
-    ]},
+    ]
+  },
   {
     "id": "RedoubleEfforts",
     "icon": "073025",
@@ -3603,7 +3860,8 @@
       {
         "en": "We must redouble our efforts!"
       }
-    ]},
+    ]
+  },
   {
     "id": "MakeUpLostGround",
     "icon": "073025",
@@ -3614,7 +3872,8 @@
       {
         "en": "We shall make up for the ground we lost, yes?"
       }
-    ]},
+    ]
+  },
   {
     "id": "RefreshingDiversion",
     "icon": "073025",
@@ -3625,7 +3884,8 @@
       {
         "en": "A refreshing diversion, made all the more enjoyable by your victory!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WeCanDoBetterYshtola",
     "icon": "073025",
@@ -3636,7 +3896,8 @@
       {
         "en": "We can do better, do you not agree?"
       }
-    ]},
+    ]
+  },
   {
     "id": "HoneOurWits",
     "icon": "073025",
@@ -3647,7 +3908,8 @@
       {
         "en": "We shall need to hone our wits if we are to triumph."
       }
-    ]},
+    ]
+  },
   {
     "id": "DisappointingDefeatGrowStronger",
     "icon": "073025",
@@ -3658,7 +3920,8 @@
       {
         "en": "Disappointing defeat, but you'll grow stronger for it won't you?"
       }
-    ]},
+    ]
+  },
   {
     "id": "OffWithYouSleep",
     "icon": "073025",
@@ -3669,7 +3932,8 @@
       {
         "en": "Some sleep will do you a world of good. Go on now off with you."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThereIsNoEscapeYshtola",
     "icon": "073025",
@@ -3680,7 +3944,8 @@
       {
         "en": "There is no escape!"
       }
-    ]},
+    ]
+  },
   {
     "id": "AndNowToReturnTheFavor",
     "icon": "073025",
@@ -3691,7 +3956,8 @@
       {
         "en": "And now to return the favor."
       }
-    ]},
+    ]
+  },
   {
     "id": "MakeReady",
     "icon": "073025",
@@ -3702,7 +3968,8 @@
       {
         "en": "Make Ready!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WereCountingOnYou",
     "icon": "073025",
@@ -3713,7 +3980,8 @@
       {
         "en": "We're counting on you."
       }
-    ]},
+    ]
+  },
   {
     "id": "BeVigilant",
     "icon": "073025",
@@ -3724,7 +3992,8 @@
       {
         "en": "Be Vigilant."
       }
-    ]},
+    ]
+  },
   {
     "id": "BeStrong",
     "icon": "073025",
@@ -3735,7 +4004,8 @@
       {
         "en": "Be Strong."
       }
-    ]},
+    ]
+  },
   {
     "id": "LeaveAMark",
     "icon": "073025",
@@ -3746,7 +4016,8 @@
       {
         "en": "This is going to leave a mark!"
       }
-    ]},
+    ]
+  },
   {
     "id": "BeMoreCareful",
     "icon": "073025",
@@ -3757,7 +4028,8 @@
       {
         "en": "Be more careful."
       }
-    ]},
+    ]
+  },
   {
     "id": "DontBeSoReckless",
     "icon": "073025",
@@ -3768,7 +4040,8 @@
       {
         "en": "Don't be so reckless."
       }
-    ]},
+    ]
+  },
   {
     "id": "HoldNothingBack",
     "icon": "073025",
@@ -3779,7 +4052,8 @@
       {
         "en": "Hold nothing back!"
       }
-    ]},
+    ]
+  },
   {
     "id": "MayTheTwelveGuideYou",
     "icon": "073025",
@@ -3790,7 +4064,8 @@
       {
         "en": "May the twelve guide you."
       }
-    ]},
+    ]
+  },
   {
     "id": "Fall",
     "icon": "073025",
@@ -3801,7 +4076,8 @@
       {
         "en": "Fall!"
       }
-    ]},
+    ]
+  },
   {
     "id": "SomeoneWillPay",
     "icon": "073025",
@@ -3812,7 +4088,8 @@
       {
         "en": "Someone will pay for that!"
       }
-    ]},
+    ]
+  },
   {
     "id": "Embarrassing",
     "icon": "073025",
@@ -3823,7 +4100,8 @@
       {
         "en": "That was embarrassing."
       }
-    ]},
+    ]
+  },
   {
     "id": "HaveThemNowEstinien",
     "icon": "073007",
@@ -3834,7 +4112,8 @@
       {
         "en": "We have them now."
       }
-    ]},
+    ]
+  },
   {
     "id": "UseConfidenceAgainstThem",
     "icon": "073007",
@@ -3845,7 +4124,8 @@
       {
         "en": "Good, use their confidence against them."
       }
-    ]},
+    ]
+  },
   {
     "id": "TheyHaveUpperHand",
     "icon": "073007",
@@ -3856,7 +4136,8 @@
       {
         "en": "They have the upper hand."
       }
-    ]},
+    ]
+  },
   {
     "id": "SettleThisQuickly",
     "icon": "073007",
@@ -3867,7 +4148,8 @@
       {
         "en": "They've gained on us, we must settle this quickly."
       }
-    ]},
+    ]
+  },
   {
     "id": "HaveFaithMyFriend",
     "icon": "073007",
@@ -3878,7 +4160,8 @@
       {
         "en": "Have faith my friend!"
       }
-    ]},
+    ]
+  },
   {
     "id": "EndTheirStruggles",
     "icon": "073007",
@@ -3889,7 +4172,8 @@
       {
         "en": "Let us end their struggles!"
       }
-    ]},
+    ]
+  },
   {
     "id": "LuckOfTheDrawEstinien",
     "icon": "073007",
@@ -3900,7 +4184,8 @@
       {
         "en": "Luck of the draw eh? I'll not complain."
       }
-    ]},
+    ]
+  },
   {
     "id": "LeftOurselvesOpen",
     "icon": "073007",
@@ -3911,7 +4196,8 @@
       {
         "en": "We left ourselves open and paid for it."
       }
-    ]},
+    ]
+  },
   {
     "id": "DidntBearBrunt",
     "icon": "073007",
@@ -3922,7 +4208,8 @@
       {
         "en": "At least we didn't bear the brunt of it."
       }
-    ]},
+    ]
+  },
   {
     "id": "ShouldHaveBeenUs",
     "icon": "073007",
@@ -3933,7 +4220,8 @@
       {
         "en": "That should have been us."
       }
-    ]},
+    ]
+  },
   {
     "id": "DragoonImpressed",
     "icon": "073007",
@@ -3944,7 +4232,8 @@
       {
         "en": "A mightier blow I've seldom seen! Consider this dragoon impressed."
       }
-    ]},
+    ]
+  },
   {
     "id": "NoLessExpectedEstinien",
     "icon": "073007",
@@ -3955,7 +4244,8 @@
       {
         "en": "No less than I expected of you my friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "AimForTheKill",
     "icon": "073007",
@@ -3966,7 +4256,8 @@
       {
         "en": "A solid outing! Next we aim for the kill."
       }
-    ]},
+    ]
+  },
   {
     "id": "DefeatedGreaterFoes",
     "icon": "073007",
@@ -3977,7 +4268,8 @@
       {
         "en": "You've defeated far greater foes."
       }
-    ]},
+    ]
+  },
   {
     "id": "TumultuousDespair",
     "icon": "073007",
@@ -3988,7 +4280,8 @@
       {
         "en": "This tumultuous despair, I know it well."
       }
-    ]},
+    ]
+  },
   {
     "id": "PainStrengthPassion",
     "icon": "073007",
@@ -3999,7 +4292,8 @@
       {
         "en": "Let this pain be your strength and your passion!"
       }
-    ]},
+    ]
+  },
   {
     "id": "HaventLostEdge",
     "icon": "073007",
@@ -4010,7 +4304,8 @@
       {
         "en": "You haven't lost your edge I hope."
       }
-    ]},
+    ]
+  },
   {
     "id": "RepayThisDebt",
     "icon": "073007",
@@ -4021,7 +4316,8 @@
       {
         "en": "We'll repay this debt my friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "HonorToFightBySide",
     "icon": "073007",
@@ -4032,7 +4328,8 @@
       {
         "en": "Impressive has ever my friend! It was an honor to fight by your side."
       }
-    ]},
+    ]
+  },
   {
     "id": "ClaimVictoryNextTime",
     "icon": "073007",
@@ -4043,7 +4340,8 @@
       {
         "en": "So near yet so far. Next time we must claim victory."
       }
-    ]},
+    ]
+  },
   {
     "id": "CapableOfMoreEstinien",
     "icon": "073007",
@@ -4054,7 +4352,8 @@
       {
         "en": "You're capable of more than this, much more."
       }
-    ]},
+    ]
+  },
   {
     "id": "TogetherRiseAgain",
     "icon": "073007",
@@ -4065,7 +4364,8 @@
       {
         "en": "No matter how deep our grief, together we will rise again."
       }
-    ]},
+    ]
+  },
   {
     "id": "DrinkAndDriedSquid",
     "icon": "073007",
@@ -4076,7 +4376,8 @@
       {
         "en": "I for one could do with a drink, and some dried squid. Care to join?"
       }
-    ]},
+    ]
+  },
   {
     "id": "WatchYourself",
     "icon": "073007",
@@ -4087,7 +4388,8 @@
       {
         "en": "Watch yourself!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ThereIsNoEndToThem",
     "icon": "073007",
@@ -4098,7 +4400,8 @@
       {
         "en": "There's no end to them!"
       }
-    ]},
+    ]
+  },
   {
     "id": "TheyllPayForThatEstinien",
     "icon": "073007",
@@ -4109,7 +4412,8 @@
       {
         "en": "They'll pay for that."
       }
-    ]},
+    ]
+  },
   {
     "id": "BackToTheFray",
     "icon": "073007",
@@ -4120,7 +4424,8 @@
       {
         "en": "Back to the fray."
       }
-    ]},
+    ]
+  },
   {
     "id": "WereNotDoneHere",
     "icon": "073007",
@@ -4131,7 +4436,8 @@
       {
         "en": "We're not done here."
       }
-    ]},
+    ]
+  },
   {
     "id": "HangInThere",
     "icon": "073007",
@@ -4142,7 +4448,8 @@
       {
         "en": "Hang in there!"
       }
-    ]},
+    ]
+  },
   {
     "id": "Courage",
     "icon": "073007",
@@ -4153,7 +4460,8 @@
       {
         "en": "Courage!"
       }
-    ]},
+    ]
+  },
   {
     "id": "StayStrongEstinien",
     "icon": "073007",
@@ -4164,7 +4472,8 @@
       {
         "en": "Stay strong!"
       }
-    ]},
+    ]
+  },
   {
     "id": "RoarNidhogg",
     "icon": "073007",
@@ -4175,7 +4484,8 @@
       {
         "en": "Roar Nidhogg, ROAR!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FightHardNotHardEnough",
     "icon": "073007",
@@ -4186,7 +4496,8 @@
       {
         "en": "They fight hard, but not hard enough!"
       }
-    ]},
+    ]
+  },
   {
     "id": "GiveItEverything",
     "icon": "073007",
@@ -4197,7 +4508,8 @@
       {
         "en": "Give it everything you've got!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FocusOnVictoryGraha",
     "icon": "073012",
@@ -4208,7 +4520,8 @@
       {
         "en": "Stay with me. Focus on victory."
       }
-    ]},
+    ]
+  },
   {
     "id": "DeclareIntentions",
     "icon": "073012",
@@ -4219,7 +4532,8 @@
       {
         "en": "The time has come to declare our intentions as well."
       }
-    ]},
+    ]
+  },
   {
     "id": "MakeAStandOurselves",
     "icon": "073012",
@@ -4230,7 +4544,8 @@
       {
         "en": "What say you? Shall we make a stand ourselves?"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotGoingDownWithoutFight",
     "icon": "073012",
@@ -4241,7 +4556,8 @@
       {
         "en": "They're not going down without a fight aren't they?"
       }
-    ]},
+    ]
+  },
   {
     "id": "TestUsButPrevail",
     "icon": "073012",
@@ -4252,7 +4568,8 @@
       {
         "en": "They may test us, but we shall prevail."
       }
-    ]},
+    ]
+  },
   {
     "id": "FinishThemTooMuch",
     "icon": "073012",
@@ -4263,7 +4580,8 @@
       {
         "en": "Finish them! Oh, erm.. too much?"
       }
-    ]},
+    ]
+  },
   {
     "id": "PointsAndAll",
     "icon": "073012",
@@ -4274,7 +4592,8 @@
       {
         "en": "We shall have victory. Points and all!"
       }
-    ]},
+    ]
+  },
   {
     "id": "AreYouAlrightGraha",
     "icon": "073012",
@@ -4285,7 +4604,8 @@
       {
         "en": "Oh dear, are you alright?"
       }
-    ]},
+    ]
+  },
   {
     "id": "AvoidedWorstNotHopedFor",
     "icon": "073012",
@@ -4296,7 +4616,8 @@
       {
         "en": "We avoided the worst but it's not what I'd hoped for."
       }
-    ]},
+    ]
+  },
   {
     "id": "BeatUsToItNextTime",
     "icon": "073012",
@@ -4307,7 +4628,8 @@
       {
         "en": "They beat us to it. The next time will be different."
       }
-    ]},
+    ]
+  },
   {
     "id": "LivingLegends",
     "icon": "073012",
@@ -4318,7 +4640,8 @@
       {
         "en": "Tremendous. The stuff of living legends!"
       }
-    ]},
+    ]
+  },
   {
     "id": "SplendidResultKeepUp",
     "icon": "073012",
@@ -4329,7 +4652,8 @@
       {
         "en": "A splendid result! Keep up the good work my friend."
       }
-    ]},
+    ]
+  },
   {
     "id": "TaskAtHandVictoryOurs",
     "icon": "073012",
@@ -4340,7 +4664,8 @@
       {
         "en": "Focus on the task at hand and victory shall be ours."
       }
-    ]},
+    ]
+  },
   {
     "id": "WillDoEvenBetter",
     "icon": "073012",
@@ -4351,7 +4676,8 @@
       {
         "en": "We can and we will do even better."
       }
-    ]},
+    ]
+  },
   {
     "id": "OhHowEmbarrassing",
     "icon": "073012",
@@ -4362,7 +4688,8 @@
       {
         "en": "Oh, how embarassing."
       }
-    ]},
+    ]
+  },
   {
     "id": "MattersHalfFinished",
     "icon": "073012",
@@ -4373,7 +4700,8 @@
       {
         "en": "We cannot leave matters half finished."
       }
-    ]},
+    ]
+  },
   {
     "id": "DoYouRequireHealing",
     "icon": "073012",
@@ -4384,7 +4712,8 @@
       {
         "en": "Do you require healing?"
       }
-    ]},
+    ]
+  },
   {
     "id": "CowelToStir",
     "icon": "073012",
@@ -4395,7 +4724,8 @@
       {
         "en": "Well that would scarcely cause my cowl to stir."
       }
-    ]},
+    ]
+  },
   {
     "id": "BefittingMyInspiration",
     "icon": "073012",
@@ -4406,7 +4736,8 @@
       {
         "en": "A performance befitting of my inspiration!"
       }
-    ]},
+    ]
+  },
   {
     "id": "CourageAndZeal",
     "icon": "073012",
@@ -4417,7 +4748,8 @@
       {
         "en": "Continue with the same courage and zeal and victory will be yours!"
       }
-    ]},
+    ]
+  },
   {
     "id": "AllaganGameGraha",
     "icon": "073012",
@@ -4428,7 +4760,8 @@
       {
         "en": "Were it an allagan game perhaps I might have been more useful to you?"
       }
-    ]},
+    ]
+  },
   {
     "id": "SomethingToTeachDefeat",
     "icon": "073012",
@@ -4439,7 +4772,8 @@
       {
         "en": "While I'd rather you have triumphed, even in defeat you have something to teach us."
       }
-    ]},
+    ]
+  },
   {
     "id": "TaleWillNotEnd",
     "icon": "073012",
@@ -4450,7 +4784,8 @@
       {
         "en": "Your tale will not end here. Is that not so my friend?"
       }
-    ]},
+    ]
+  },
   {
     "id": "BackToTheFight",
     "icon": "073012",
@@ -4461,7 +4796,8 @@
       {
         "en": "Back to the fight."
       }
-    ]},
+    ]
+  },
   {
     "id": "TimeHasCome",
     "icon": "073012",
@@ -4472,7 +4808,8 @@
       {
         "en": "The time has come!"
       }
-    ]},
+    ]
+  },
   {
     "id": "JustTheBeginning",
     "icon": "073012",
@@ -4483,7 +4820,8 @@
       {
         "en": "Just the beginning."
       }
-    ]},
+    ]
+  },
   {
     "id": "ShowMeWhatYouCanDo",
     "icon": "073012",
@@ -4494,7 +4832,8 @@
       {
         "en": "Show me what you can do."
       }
-    ]},
+    ]
+  },
   {
     "id": "AreYouAlright",
     "icon": "073012",
@@ -4505,7 +4844,8 @@
       {
         "en": "Are you alright?"
       }
-    ]},
+    ]
+  },
   {
     "id": "FindCoverEnergy",
     "icon": "073012",
@@ -4516,7 +4856,8 @@
       {
         "en": "The air crackles with energy. Find cover!"
       }
-    ]},
+    ]
+  },
   {
     "id": "CanvasOfVictory",
     "icon": "073071",
@@ -4527,7 +4868,8 @@
       {
         "en": "We draw upon the canvas of victory."
       }
-    ]},
+    ]
+  },
   {
     "id": "SkillsToTheProof",
     "icon": "073071",
@@ -4538,7 +4880,8 @@
       {
         "en": "Time to put your skills to the proof!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WontFallHereKrile",
     "icon": "073071",
@@ -4549,7 +4892,8 @@
       {
         "en": "We won't fall here!"
       }
-    ]},
+    ]
+  },
   {
     "id": "HaveFaithAllWell",
     "icon": "073071",
@@ -4560,7 +4904,8 @@
       {
         "en": "Have faith and all shall be well."
       }
-    ]},
+    ]
+  },
   {
     "id": "MustStandStrongKrile",
     "icon": "073071",
@@ -4571,7 +4916,8 @@
       {
         "en": "We must stand strong."
       }
-    ]},
+    ]
+  },
   {
     "id": "FinishingTouchKrile",
     "icon": "073071",
@@ -4582,7 +4928,8 @@
       {
         "en": "And now for the finishing touch!"
       }
-    ]},
+    ]
+  },
   {
     "id": "GoodThingsWait",
     "icon": "073071",
@@ -4593,7 +4940,8 @@
       {
         "en": "Good things do come to those who wait!"
       }
-    ]},
+    ]
+  },
   {
     "id": "CantBeRightKrile",
     "icon": "073071",
@@ -4604,7 +4952,8 @@
       {
         "en": "What? That can't be right!"
       }
-    ]},
+    ]
+  },
   {
     "id": "DidntHandItToThem",
     "icon": "073071",
@@ -4615,7 +4964,8 @@
       {
         "en": "At least we didn't hand it to them."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThatsTooBadKrile",
     "icon": "073071",
@@ -4626,7 +4976,8 @@
       {
         "en": "That's too bad!"
       }
-    ]},
+    ]
+  },
   {
     "id": "AdventurerOfTalent",
     "icon": "073071",
@@ -4637,7 +4988,8 @@
       {
         "en": "I should expect nothing less from an adventurer of your talents!"
       }
-    ]},
+    ]
+  },
   {
     "id": "QuiteTheStatement",
     "icon": "073071",
@@ -4648,7 +5000,8 @@
       {
         "en": "You made quite this statement!"
       }
-    ]},
+    ]
+  },
   {
     "id": "GoodProgressKrile",
     "icon": "073071",
@@ -4659,7 +5012,8 @@
       {
         "en": "Good progress! Let us maintain our efforts."
       }
-    ]},
+    ]
+  },
   {
     "id": "HeartRacingKrile",
     "icon": "073071",
@@ -4670,7 +5024,8 @@
       {
         "en": "My heart was positively racing!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ManagedSoPoorly",
     "icon": "073071",
@@ -4681,7 +5036,8 @@
       {
         "en": "Goodness me, How did we manage to do so poorly?"
       }
-    ]},
+    ]
+  },
   {
     "id": "DontLoseHeartKrile",
     "icon": "073071",
@@ -4692,7 +5048,8 @@
       {
         "en": "You're alright yes? Don't lose heart now!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WontGiveUpOntoNext",
     "icon": "073071",
@@ -4703,7 +5060,8 @@
       {
         "en": "We won't give up! Onto the next."
       }
-    ]},
+    ]
+  },
   {
     "id": "ReclaimLostKrile",
     "icon": "073071",
@@ -4714,7 +5072,8 @@
       {
         "en": "No need to fret. We can reclaim what we've lost."
       }
-    ]},
+    ]
+  },
   {
     "id": "DelightVictoryKrile",
     "icon": "073071",
@@ -4725,7 +5084,8 @@
       {
         "en": "Well done my friend! It was a delight to be part of your victory!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ThrillingGameNextTime",
     "icon": "073071",
@@ -4736,7 +5096,8 @@
       {
         "en": "What a thrilling game! You'll win next time I'm sure of it."
       }
-    ]},
+    ]
+  },
   {
     "id": "ExploringIntricacies",
     "icon": "073071",
@@ -4747,7 +5108,8 @@
       {
         "en": "A complicated game to be sure. I hope to keep exploring its intricacies with you."
       }
-    ]},
+    ]
+  },
   {
     "id": "PlayAgainWinOrLose",
     "icon": "073071",
@@ -4758,7 +5120,8 @@
       {
         "en": "it wasn't to be this time. But win or lose let's play again."
       }
-    ]},
+    ]
+  },
   {
     "id": "ToughLossLearnKrile",
     "icon": "073071",
@@ -4769,7 +5132,8 @@
       {
         "en": "That was a tough loss, but we can learn from it and strive for greater heights!"
       }
-    ]},
+    ]
+  },
   {
     "id": "GotThemNowWuk",
     "icon": "073265",
@@ -4780,7 +5144,8 @@
       {
         "en": "We've got them now!"
       }
-    ]},
+    ]
+  },
   {
     "id": "CantPassChanceWuk",
     "icon": "073265",
@@ -4791,7 +5156,8 @@
       {
         "en": "Can't pass up a chance like this!"
       }
-    ]},
+    ]
+  },
   {
     "id": "DontLoseNerveWuk",
     "icon": "073265",
@@ -4802,7 +5168,8 @@
       {
         "en": "They're close, but we can't lose our nerve!"
       }
-    ]},
+    ]
+  },
   {
     "id": "GettingInterestingWuk",
     "icon": "073265",
@@ -4813,7 +5180,8 @@
       {
         "en": "Now things are getting interesting!"
       }
-    ]},
+    ]
+  },
   {
     "id": "StillWinWuk",
     "icon": "073265",
@@ -4824,7 +5192,8 @@
       {
         "en": "Doesn't matter if it's one or all of them, we can still win!"
       }
-    ]},
+    ]
+  },
   {
     "id": "WillStopThemWuk",
     "icon": "073265",
@@ -4835,7 +5204,8 @@
       {
         "en": "It's over! We will stop them!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NoHoldingBackWukMahjong",
     "icon": "073265",
@@ -4846,7 +5216,8 @@
       {
         "en": "No holding back!"
       }
-    ]},
+    ]
+  },
   {
     "id": "HowDidThatHappenWuk",
     "icon": "073265",
@@ -4857,7 +5228,8 @@
       {
         "en": "What? How did that happen?"
       }
-    ]},
+    ]
+  },
   {
     "id": "CloseOneWuk",
     "icon": "073265",
@@ -4868,7 +5240,8 @@
       {
         "en": "Whew! That was a close one."
       }
-    ]},
+    ]
+  },
   {
     "id": "BeatUsToItWuk",
     "icon": "073265",
@@ -4879,7 +5252,8 @@
       {
         "en": "They beat us to it!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FeatOldManWuk",
     "icon": "073265",
@@ -4890,7 +5264,8 @@
       {
         "en": "A feat even my old man couldn't have managed."
       }
-    ]},
+    ]
+  },
   {
     "id": "SmilingBecauseSmiling",
     "icon": "073265",
@@ -4901,7 +5276,8 @@
       {
         "en": "Are you smiling because I'm smiling!"
       }
-    ]},
+    ]
+  },
   {
     "id": "AllRightYouDidGreat",
     "icon": "073265",
@@ -4912,7 +5288,8 @@
       {
         "en": "All right! You did great!"
       }
-    ]},
+    ]
+  },
   {
     "id": "DoingFineKeepItUpWuk",
     "icon": "073265",
@@ -4923,7 +5300,8 @@
       {
         "en": "You're doing fine, keep it up!"
       }
-    ]},
+    ]
+  },
   {
     "id": "GonnaBeSickWuk",
     "icon": "073265",
@@ -4934,7 +5312,8 @@
       {
         "en": "Gods! I think I'm gonna be sick."
       }
-    ]},
+    ]
+  },
   {
     "id": "FeelYourPainWuk",
     "icon": "073265",
@@ -4945,7 +5324,8 @@
       {
         "en": "I feel your pain as if it were my own."
       }
-    ]},
+    ]
+  },
   {
     "id": "DidntHoldBackWuk",
     "icon": "073265",
@@ -4956,7 +5336,8 @@
       {
         "en": "They didn't hold back did they?"
       }
-    ]},
+    ]
+  },
   {
     "id": "NothingToWorryWuk",
     "icon": "073265",
@@ -4967,7 +5348,8 @@
       {
         "en": "Nothing to worry about."
       }
-    ]},
+    ]
+  },
   {
     "id": "TryMyOwnHandWuk",
     "icon": "073265",
@@ -4978,7 +5360,8 @@
       {
         "en": "That was incredible! Makes me want to try my own hand at this game."
       }
-    ]},
+    ]
+  },
   {
     "id": "PapaChallengeMatch",
     "icon": "073265",
@@ -4989,7 +5372,8 @@
       {
         "en": "If papa were here, he'd challenge you to a match I just know it."
       }
-    ]},
+    ]
+  },
   {
     "id": "CanDoBetterWuk",
     "icon": "073265",
@@ -5000,7 +5384,8 @@
       {
         "en": "Come on! I know you can do better than that."
       }
-    ]},
+    ]
+  },
   {
     "id": "WinSomeLoseSomeWuk",
     "icon": "073265",
@@ -5011,7 +5396,8 @@
       {
         "en": "You win some you'll lose some. Next time the game will be yours."
       }
-    ]},
+    ]
+  },
   {
     "id": "LearningExperienceWuk",
     "icon": "073265",
@@ -5022,7 +5408,8 @@
       {
         "en": "On the bright side it can't get any worse. Consider it a learning experience!"
       }
-    ]},
+    ]
+  },
   {
     "id": "YouReallyAreFamous",
     "icon": "073265",
@@ -5033,7 +5420,8 @@
       {
         "en": "You really are famous!"
       }
-    ]},
+    ]
+  },
   {
     "id": "Impressive",
     "icon": "073265",
@@ -5044,7 +5432,8 @@
       {
         "en": "Impressive!"
       }
-    ]},
+    ]
+  },
   {
     "id": "TheyllPayForThatWuk",
     "icon": "073265",
@@ -5055,7 +5444,8 @@
       {
         "en": "They'll pay for that."
       }
-    ]},
+    ]
+  },
   {
     "id": "RightBackToItWuk",
     "icon": "073265",
@@ -5066,7 +5456,8 @@
       {
         "en": "Right, back to it."
       }
-    ]},
+    ]
+  },
   {
     "id": "NoHoldingBackWuk",
     "icon": "073265",
@@ -5077,7 +5468,8 @@
       {
         "en": "No holding back!"
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepItUpWuk",
     "icon": "073265",
@@ -5088,7 +5480,8 @@
       {
         "en": "Keep it up!"
       }
-    ]},
+    ]
+  },
   {
     "id": "LetsGetToIt",
     "icon": "073265",
@@ -5099,7 +5492,8 @@
       {
         "en": "Let's get to it!"
       }
-    ]},
+    ]
+  },
   {
     "id": "DamnItAll",
     "icon": "073265",
@@ -5110,7 +5504,8 @@
       {
         "en": "Damn it all!"
       }
-    ]},
+    ]
+  },
   {
     "id": "KeepYourGuardUpWuk",
     "icon": "073265",
@@ -5121,7 +5516,8 @@
       {
         "en": "Don't like the looks of this. Everyone, keep your guard up!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotHoldingAnythingBack",
     "icon": "073265",
@@ -5132,7 +5528,8 @@
       {
         "en": "Not holding anything back are we?"
       }
-    ]},
+    ]
+  },
   {
     "id": "IntentionsKnown",
     "icon": "073266",
@@ -5143,7 +5540,8 @@
       {
         "en": "Let us make our intentions known."
       }
-    ]},
+    ]
+  },
   {
     "id": "EvenTheOdds",
     "icon": "073266",
@@ -5154,7 +5552,8 @@
       {
         "en": "Perhaps this will even the odds."
       }
-    ]},
+    ]
+  },
   {
     "id": "NothingToFearYet",
     "icon": "073266",
@@ -5165,7 +5564,8 @@
       {
         "en": "We have nothing to fear, yet."
       }
-    ]},
+    ]
+  },
   {
     "id": "MuchToBeExpected",
     "icon": "073266",
@@ -5176,7 +5576,8 @@
       {
         "en": "This much is to be expected."
       }
-    ]},
+    ]
+  },
   {
     "id": "StayAlert",
     "icon": "073266",
@@ -5187,7 +5588,8 @@
       {
         "en": "Stay alert."
       }
-    ]},
+    ]
+  },
   {
     "id": "HaveThemStrike",
     "icon": "073266",
@@ -5198,7 +5600,8 @@
       {
         "en": "We have them! Strike!"
       }
-    ]},
+    ]
+  },
   {
     "id": "StrategyKeyToVictory",
     "icon": "073266",
@@ -5209,7 +5612,8 @@
       {
         "en": "Strategy is the key to victory."
       }
-    ]},
+    ]
+  },
   {
     "id": "CantBe",
     "icon": "073266",
@@ -5220,7 +5624,8 @@
       {
         "en": "No, it can't be!"
       }
-    ]},
+    ]
+  },
   {
     "id": "DammitAll",
     "icon": "073266",
@@ -5231,7 +5636,8 @@
       {
         "en": "Damn it all."
       }
-    ]},
+    ]
+  },
   {
     "id": "StepBehind",
     "icon": "073266",
@@ -5242,7 +5648,8 @@
       {
         "en": "We were a step behind."
       }
-    ]},
+    ]
+  },
   {
     "id": "GloryUponTuliyollal",
     "icon": "073266",
@@ -5253,7 +5660,8 @@
       {
         "en": "Our triumph brings glory upon Tuliyollal!"
       }
-    ]},
+    ]
+  },
   {
     "id": "VowOfReasonGuide",
     "icon": "073266",
@@ -5264,7 +5672,8 @@
       {
         "en": "As vow of reason, it is my duty to guide you to victory."
       }
-    ]},
+    ]
+  },
   {
     "id": "DoneWell",
     "icon": "073266",
@@ -5275,7 +5684,8 @@
       {
         "en": "I would say we have done well."
       }
-    ]},
+    ]
+  },
   {
     "id": "FairPerformanceBetter",
     "icon": "073266",
@@ -5286,7 +5696,8 @@
       {
         "en": "A fair performance, but we can do better."
       }
-    ]},
+    ]
+  },
   {
     "id": "FaceLamatyi",
     "icon": "073266",
@@ -5297,7 +5708,8 @@
       {
         "en": "Disgraceful, how can I ever face Lamaty'i after this."
       }
-    ]},
+    ]
+  },
   {
     "id": "ChangeOfStrategyInOrder",
     "icon": "073266",
@@ -5308,7 +5720,8 @@
       {
         "en": "Hmm, a change of strategy may be in order."
       }
-    ]},
+    ]
+  },
   {
     "id": "ErrorInCalculations",
     "icon": "073266",
@@ -5319,7 +5732,8 @@
       {
         "en": "Did we make an error in our calculations?"
       }
-    ]},
+    ]
+  },
   {
     "id": "OccasionalLossInevitable",
     "icon": "073266",
@@ -5330,7 +5744,8 @@
       {
         "en": "The occasional loss is inevitable."
       }
-    ]},
+    ]
+  },
   {
     "id": "WorthyOfReputation",
     "icon": "073266",
@@ -5341,7 +5756,8 @@
       {
         "en": "You are more than worthy of your reputation. That much is plain!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ProudOfYou",
     "icon": "073266",
@@ -5352,7 +5768,8 @@
       {
         "en": "Unpracticed as I am, this may sound hackneyed but. I'm proud of you."
       }
-    ]},
+    ]
+  },
   {
     "id": "SharlayanApproachResults",
     "icon": "073266",
@@ -5363,7 +5780,8 @@
       {
         "en": "Perhaps a more analytical, Sharlayan approach would achieve better results."
       }
-    ]},
+    ]
+  },
   {
     "id": "ProtectFromFutureDefeat",
     "icon": "073266",
@@ -5374,7 +5792,8 @@
       {
         "en": "Even should it cost me my life, I will protect you from future defeat!"
       }
-    ]},
+    ]
+  },
   {
     "id": "UnworthyVowOfReason",
     "icon": "073266",
@@ -5385,7 +5804,8 @@
       {
         "en": "I feel as though, I am unworthy to serve as vow of reason."
       }
-    ]},
+    ]
+  },
   {
     "id": "VictoryOurs",
     "icon": "073261",
@@ -5396,7 +5816,8 @@
       {
         "en": "Victory will be ours."
       }
-    ]},
+    ]
+  },
   {
     "id": "NoDownWithoutFight",
     "icon": "073261",
@@ -5407,7 +5828,8 @@
       {
         "en": "We won't go down without a fight!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FallingBehind",
     "icon": "073261",
@@ -5418,7 +5840,8 @@
       {
         "en": "We're falling behind!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ChallengeMe",
     "icon": "073261",
@@ -5429,7 +5852,8 @@
       {
         "en": "They think they can challenge me?"
       }
-    ]},
+    ]
+  },
   {
     "id": "GodsHelpUs",
     "icon": "073261",
@@ -5440,7 +5864,8 @@
       {
         "en": "Gods help us."
       }
-    ]},
+    ]
+  },
   {
     "id": "ShowThemTheirPlace",
     "icon": "073261",
@@ -5451,7 +5876,8 @@
       {
         "en": "Hahaha! Show them their place."
       }
-    ]},
+    ]
+  },
   {
     "id": "HahaAllowMe",
     "icon": "073261",
@@ -5462,7 +5888,8 @@
       {
         "en": "Haha, allow me."
       }
-    ]},
+    ]
+  },
   {
     "id": "LuckWontLast",
     "icon": "073261",
@@ -5473,7 +5900,8 @@
       {
         "en": "That luck won't last forever."
       }
-    ]},
+    ]
+  },
   {
     "id": "TearEachOtherApart",
     "icon": "073261",
@@ -5484,7 +5912,8 @@
       {
         "en": "Let them tear each other apart."
       }
-    ]},
+    ]
+  },
   {
     "id": "TooLate",
     "icon": "073261",
@@ -5495,7 +5924,8 @@
       {
         "en": "We were too late!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NeverFailToImpress",
     "icon": "073261",
@@ -5506,7 +5936,8 @@
       {
         "en": "Ohoh! You never fail to impress me!"
       }
-    ]},
+    ]
+  },
   {
     "id": "PieceOfMeNext",
     "icon": "073261",
@@ -5517,7 +5948,8 @@
       {
         "en": "So, who wants a piece of me next?"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotBadAtAll",
     "icon": "073261",
@@ -5528,7 +5960,8 @@
       {
         "en": "Not bad, not bad at all!"
       }
-    ]},
+    ]
+  },
   {
     "id": "HandWell",
     "icon": "073261",
@@ -5539,7 +5972,8 @@
       {
         "en": "You played your hand well."
       }
-    ]},
+    ]
+  },
   {
     "id": "HowCanThisBe",
     "icon": "073261",
@@ -5550,7 +5984,8 @@
       {
         "en": "No! How can this be?"
       }
-    ]},
+    ]
+  },
   {
     "id": "NoNo",
     "icon": "073261",
@@ -5561,7 +5996,8 @@
       {
         "en": "No! No!"
       }
-    ]},
+    ]
+  },
   {
     "id": "ScoreIsntRight",
     "icon": "073261",
@@ -5572,7 +6008,8 @@
       {
         "en": "I know that score isn't right."
       }
-    ]},
+    ]
+  },
   {
     "id": "HaAPittance",
     "icon": "073261",
@@ -5583,7 +6020,8 @@
       {
         "en": "Ha! A pittance."
       }
-    ]},
+    ]
+  },
   {
     "id": "BefittingStature",
     "icon": "073261",
@@ -5594,7 +6032,8 @@
       {
         "en": "Tahaha! Victory befitting our stature."
       }
-    ]},
+    ]
+  },
   {
     "id": "GoodEnoughGuess",
     "icon": "073261",
@@ -5605,7 +6044,8 @@
       {
         "en": "Well, good enough I guess."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThoughtBetter",
     "icon": "073261",
@@ -5616,7 +6056,8 @@
       {
         "en": "I thought you could do better than that."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThreeHeadsStupid",
     "icon": "073261",
@@ -5627,7 +6068,8 @@
       {
         "en": "Thats the best that three heads could manage? Tch. This was stupid anyways."
       }
-    ]},
+    ]
+  },
   {
     "id": "SmashTable",
     "icon": "073261",
@@ -5638,7 +6080,8 @@
       {
         "en": "I'm gonna smash this table to bits! And don't you dare stop me brother."
       }
-    ]},
+    ]
+  },
   {
     "id": "CouldBeChance",
     "icon": "073275",
@@ -5649,7 +6092,8 @@
       {
         "en": "This could be your chance!"
       }
-    ]},
+    ]
+  },
   {
     "id": "EnjoyingYourself",
     "icon": "073275",
@@ -5660,7 +6104,8 @@
       {
         "en": "Enjoying yourself I see."
       }
-    ]},
+    ]
+  },
   {
     "id": "ComeOutOnTop",
     "icon": "073275",
@@ -5671,7 +6116,8 @@
       {
         "en": "You can still come out on top!"
       }
-    ]},
+    ]
+  },
   {
     "id": "Competition",
     "icon": "073275",
@@ -5682,7 +6128,8 @@
       {
         "en": "You have competition."
       }
-    ]},
+    ]
+  },
   {
     "id": "CarefulPlanning",
     "icon": "073275",
@@ -5693,7 +6140,8 @@
       {
         "en": "Careful, they're planning something."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThereYouHaveThem",
     "icon": "073275",
@@ -5704,7 +6152,8 @@
       {
         "en": "There! You have them!"
       }
-    ]},
+    ]
+  },
   {
     "id": "LuckyYou",
     "icon": "073275",
@@ -5715,7 +6164,8 @@
       {
         "en": "Ha! Lucky you."
       }
-    ]},
+    ]
+  },
   {
     "id": "Unfortunate",
     "icon": "073275",
@@ -5726,7 +6176,8 @@
       {
         "en": "That was unfortunate."
       }
-    ]},
+    ]
+  },
   {
     "id": "CouldHaveBeenWorseErenville",
     "icon": "073275",
@@ -5737,7 +6188,8 @@
       {
         "en": "A loss, but it could have been worse!"
       }
-    ]},
+    ]
+  },
   {
     "id": "LifeGoYourWay",
     "icon": "073275",
@@ -5748,7 +6200,8 @@
       {
         "en": "Sometimes life doesn't go your way."
       }
-    ]},
+    ]
+  },
   {
     "id": "ManyTalents",
     "icon": "073275",
@@ -5759,7 +6212,8 @@
       {
         "en": "Impressive! Clearly this is another of your many talents."
       }
-    ]},
+    ]
+  },
   {
     "id": "EnjoyingThisArentYou",
     "icon": "073275",
@@ -5770,7 +6224,8 @@
       {
         "en": "You're enjoying this, arent you?"
       }
-    ]},
+    ]
+  },
   {
     "id": "FairGo",
     "icon": "073275",
@@ -5781,7 +6236,8 @@
       {
         "en": "You made a fair go of it."
       }
-    ]},
+    ]
+  },
   {
     "id": "ThatsTheWay",
     "icon": "073275",
@@ -5792,7 +6248,8 @@
       {
         "en": "That's the way!"
       }
-    ]},
+    ]
+  },
   {
     "id": "DontPlayGames",
     "icon": "073275",
@@ -5803,7 +6260,8 @@
       {
         "en": "There's a reason I don't play games like this."
       }
-    ]},
+    ]
+  },
   {
     "id": "PresenceDistraction",
     "icon": "073275",
@@ -5814,7 +6272,8 @@
       {
         "en": "I can leave if my presence is a distraction."
       }
-    ]},
+    ]
+  },
   {
     "id": "MerelyBadHand",
     "icon": "073275",
@@ -5825,7 +6284,8 @@
       {
         "en": "That was merely a bad hand. You'll do better next time!"
       }
-    ]},
+    ]
+  },
   {
     "id": "MinorSetback",
     "icon": "073275",
@@ -5836,7 +6296,8 @@
       {
         "en": "A minor setback. All is not yet lost!"
       }
-    ]},
+    ]
+  },
   {
     "id": "NotSurprised",
     "icon": "073275",
@@ -5847,7 +6308,8 @@
       {
         "en": "Somehow I'm not surprised!"
       }
-    ]},
+    ]
+  },
   {
     "id": "FunThanExpected",
     "icon": "073275",
@@ -5858,7 +6320,8 @@
       {
         "en": "This game is more fun than I expected."
       }
-    ]},
+    ]
+  },
   {
     "id": "NotWalkAway",
     "icon": "073275",
@@ -5869,7 +6332,8 @@
       {
         "en": "You're not going to walk away now are you?"
       }
-    ]},
+    ]
+  },
   {
     "id": "StudyExperiencedPlayers",
     "icon": "073275",
@@ -5880,7 +6344,8 @@
       {
         "en": "If you want to be competitive, maybe you should try studying experienced players."
       }
-    ]},
+    ]
+  },
   {
     "id": "RideRroneekClearHead",
     "icon": "073275",
@@ -5891,5 +6356,447 @@
       {
         "en": "Take a ride on a Rroneek. Clear your head and put this performance behind you."
       }
-    ]}
+    ]
+  },
+  {
+    "id": "YouFool",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_006580_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_006580_EMETSELCH"
+  },
+  {
+    "id": "GoodLuck",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_000780_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_000780_EMETSELCH"
+  },
+  {
+    "id": "Cooperation",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05001/vo_voiceman_05001_004810_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05001_004810_EMETSELCH"
+  },
+  {
+    "id": "IPityYou",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05004/vo_voiceman_05004_004530_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05004_004530_EMETSELCH"
+  },
+  {
+    "id": "YouAreMistake",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_002950_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_002950_EMETSELCH"
+  },
+  {
+    "id": "OhForTheLove",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_000750_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_000750_EMETSELCH"
+  },
+  {
+    "id": "NoTimeQuickly",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_007530_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_007530_EMETSELCH"
+  },
+  {
+    "id": "DeafEar",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_006480_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_006480_EMETSELCH"
+  },
+  {
+    "id": "Prevailed",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_002830_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_002830_EMETSELCH"
+  },
+  {
+    "id": "Behave",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_001650_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_001650_EMETSELCH"
+  },
+  {
+    "id": "WhatIsTheMeaning",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_006550_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_006550_EMETSELCH"
+  },
+  {
+    "id": "NotEndOurJourney",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06006/vo_voiceman_06006_006380_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06006_006380_EMETSELCH"
+  },
+  {
+    "id": "PartWays",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_001530_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_001530_EMETSELCH"
+  },
+  {
+    "id": "HowHeroic",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_002530_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_002530_EMETSELCH"
+  },
+  {
+    "id": "FightingTheGoodFight",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_003040_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_003040_EMETSELCH",
+    "isGendered": true
+  },
+  {
+    "id": "Preposterous",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_004040_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_004040_EMETSELCH"
+  },
+  {
+    "id": "Secrets",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_001110_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_001110_EMETSELCH"
+  },
+  {
+    "id": "LimitationEphemeral",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05004/vo_voiceman_05004_000160_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05004_000160_EMETSELCH"
+  },
+  {
+    "id": "Satisfied",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_000630_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_000630_EMETSELCH"
+  },
+  {
+    "id": "VentureForth",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06000/vo_voiceman_06000_000330_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06000_000330_EMETSELCH"
+  },
+  {
+    "id": "DoNotSquander",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_007560_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_007560_EMETSELCH"
+  },
+  {
+    "id": "WhatADisappointment",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05004/vo_voiceman_05004_004250_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05004_004250_EMETSELCH"
+  },
+  {
+    "id": "ScoreToSettle",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06006/vo_voiceman_06006_006320_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06006_006320_EMETSELCH"
+  },
+  {
+    "id": "TurnOfEvents",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_003080_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_003080_EMETSELCH"
+  },
+  {
+    "id": "BloodAndAsh",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06003/vo_voiceman_06003_000020_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06003_000020_EMETSELCH"
+  },
+  {
+    "id": "FightingFit",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_003630_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_003630_EMETSELCH"
+  },
+  {
+    "id": "TearToEye",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_003670_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_003670_EMETSELCH"
+  },
+  {
+    "id": "OpenEyes",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06004/vo_voiceman_06004_000790_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06004_000790_EMETSELCH"
+  },
+  {
+    "id": "FutileAsItWas",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_000130_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_000130_EMETSELCH"
+  },
+  {
+    "id": "RefusetoSeeReason",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_002590_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_002590_EMETSELCH"
+  },
+  {
+    "id": "OliveBranchWither",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "6",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05002/vo_voiceman_05002_000120_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05002_000120_EMETSELCH"
+  },
+  {
+    "id": "FoolNoOneNothing",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_003010_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_003010_EMETSELCH"
+  },
+  {
+    "id": "BackToWork",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05004/vo_voiceman_05004_002100_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05004_002100_EMETSELCH"
+  },
+  {
+    "id": "TransformationTakeYou",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_003130_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_003130_EMETSELCH"
+  },
+  {
+    "id": "IncapableOfCrying",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05004/vo_voiceman_05004_001990_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05004_001990_EMETSELCH"
+  },
+  {
+    "id": "MeetAgainSoon",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05001/vo_voiceman_05001_004950_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05001_004950_EMETSELCH"
+  },
+  {
+    "id": "FondOfSleep",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "6",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05003/vo_voiceman_05003_001670_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05003_001670_EMETSELCH"
+  },
+  {
+    "id": "UnacceptableSpecificInstructions",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "6",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_002400_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_002400_EMETSELCH"
+  },
+  {
+    "id": "VictorVanquished",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "6",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05005/vo_voiceman_05005_003350_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05005_003350_EMETSELCH"
+  },
+  {
+    "id": "LuckyWinner",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "6",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05003/vo_voiceman_05003_000800_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05003_000800_EMETSELCH"
+  },
+  {
+    "id": "FondOfHerHim",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05003/vo_voiceman_05003_001750_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05003_001750_EMETSELCH",
+    "isGendered": true
+  },
+  {
+    "id": "FineMess",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203199",
+    "contentDirectorBattleTalkVo": "8203199",
+    "npcYell": "13520"
+  },
+  {
+    "id": "Swimmingly",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203200",
+    "contentDirectorBattleTalkVo": "8203200",
+    "npcYell": "13521"
+  },
+  {
+    "id": "ImageToUphold",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203202",
+    "contentDirectorBattleTalkVo": "8203202",
+    "npcYell": "13523"
+  },
+  {
+    "id": "RepayDebt",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203203",
+    "contentDirectorBattleTalkVo": "8203203",
+    "npcYell": "13524"
+  },
+  {
+    "id": "SlowSoundChoice",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203204",
+    "contentDirectorBattleTalkVo": "8203204",
+    "npcYell": "13525"
+  },
+  {
+    "id": "Begone",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203205",
+    "contentDirectorBattleTalkVo": "8203205",
+    "npcYell": "7616"
+  },
+  {
+    "id": "FallEmet",
+    "icon": "73256",
+    "shoutcaster": "Emet-Selch",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203207",
+    "contentDirectorBattleTalkVo": "8203207",
+    "npcYell": "13486"
+  }
 ]
