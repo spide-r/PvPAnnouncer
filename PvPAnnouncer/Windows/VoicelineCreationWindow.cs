@@ -50,6 +50,8 @@ public class VoicelineCreationWindow : Window, IDisposable
         }
 
         _controller.SetShoutcast(shoutcast);
+        if (shoutcast.Icon != 0) _useIcon = true;
+
         _editing = true;
     }
 
@@ -132,7 +134,7 @@ public class VoicelineCreationWindow : Window, IDisposable
 
                 if (_editing)
                 {
-                    if (ImguiTools.CtrlShiftButton("Close Without Saving"))
+                    if (ImGui.Button("Close Without Saving"))
                     {
                         _controller.ResetToDefaults();
                         _editing = false;

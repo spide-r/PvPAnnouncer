@@ -124,6 +124,7 @@ public class VoicelineManagementWindow : Window, IDisposable
                 {
                     PluginServices.VoicelineCreationWindow.Edit(sc);
                     PluginServices.VoicelineCreationWindow.IsOpen = true;
+                    PluginServices.VoicelineCreationWindow.BringToFront();
                 }
                 else
                 {

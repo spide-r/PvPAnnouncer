@@ -61,9 +61,9 @@ public class CustomizationWindow : Window, IDisposable
         }
 
         ImGui.TextWrapped(
-            "If you need to delete a custom shoutcast or ensure that a pre-made shoutcast is never shown to you, you can do so here:");
+            "If you need to edit or delete a custom shoutcast, or ensure that a pre-made shoutcast is never shown to you, you can do so here:");
 
-        if (ImGui.Button("Mute & Delete Shoutcast")) PluginServices.VoicelineManagementWindow.Toggle();
+        if (ImGui.Button("Mute, Delete & Edit Shoutcast")) PluginServices.VoicelineManagementWindow.Toggle();
 
         ImGui.TextWrapped("If you wish to browse existing shoutcasts, you can do so here:");
         if (ImGui.Button("Open Full Shoutcast List")) PluginServices.LoadedVoicelineWindow.Toggle();
