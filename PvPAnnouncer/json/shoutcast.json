@@ -6798,5 +6798,195 @@
     "soundPath": "sound/voice/vo_line/8203207",
     "contentDirectorBattleTalkVo": "8203207",
     "npcYell": "13486"
+  },
+  {
+    "id": "ReputationTowers",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_300060_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_300060_AYMERIC",
+    "isGendered": true
+  },
+  {
+    "id": "JoiningUs",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_300100_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_300100_AYMERIC"
+  },
+  {
+    "id": "ShallWeBegin",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_300110_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_300110_AYMERIC"
+  },
+  {
+    "id": "DeepestThanks",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_F00010_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_F00010_AYMERIC"
+  },
+  {
+    "id": "ThereAreOthers",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03003/vo_voiceman_03003_L00200_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03003_L00200_AYMERIC"
+  },
+  {
+    "id": "BegPardon",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex3/sound/voicem/voiceman_05505/vo_voiceman_05505_002750_m",
+    "cutsceneLine": "TEXT_VOICEMAN_05505_002750_AYMERIC"
+  },
+  {
+    "id": "SurpriseAttack",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02500/vo_voiceman_02500_M00050_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02500_M00050_AYMERIC"
+  },
+  {
+    "id": "FutureOfEorzea",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03008/vo_voiceman_03008_000050_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03008_000050_AYMERIC"
+  },
+  {
+    "id": "DoNotHeal",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03004/vo_voiceman_03004_800030_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03004_800030_AYMERIC"
+  },
+  {
+    "id": "MomentHasCome",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03003/vo_voiceman_03003_L00020_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03003_L00020_AYMERIC"
+  },
+  {
+    "id": "HonorWasOurs",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03200/vo_voiceman_03200_001680_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03200_001680_AYMERIC"
+  },
+  {
+    "id": "AskPersonalQuestion",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03400/vo_voiceman_03400_000160_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03400_000160_AYMERIC"
+  },
+  {
+    "id": "VictoryOursIshgard",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03200/vo_voiceman_03200_001610_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03200_001610_AYMERIC"
+  },
+  {
+    "id": "HonorAndGloryOfIshgard",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03200/vo_voiceman_03200_001570_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03200_001570_AYMERIC"
+  },
+  {
+    "id": "RayOfHope",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex2/sound/voicem/voiceman_04505/vo_voiceman_04505_003930_m",
+    "cutsceneLine": "TEXT_VOICEMAN_04505_003930_AYMERIC"
+  },
+  {
+    "id": "NotAlone",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex2/sound/voicem/voiceman_04505/vo_voiceman_04505_003990_m",
+    "cutsceneLine": "TEXT_VOICEMAN_04505_003990_AYMERIC"
+  },
+  {
+    "id": "RecievedInvite",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03200/vo_voiceman_03200_000600_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03200_000600_AYMERIC"
+  },
+  {
+    "id": "StandOurGround",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8202540",
+    "npcYell": "13396"
+  },
+  {
+    "id": "DownWithYou",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8202542",
+    "npcYell": "13818"
+  },
+  {
+    "id": "ThereAymeric",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8202544",
+    "npcYell": "7795"
+  },
+  {
+    "id": "ItEndsHere",
+    "icon": "73030",
+    "shoutcaster": "Aymeric",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8202546",
+    "npcYell": "3968"
   }
 ]

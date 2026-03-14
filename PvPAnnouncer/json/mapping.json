@@ -64,7 +64,9 @@
       "FineMess",
       "GoodLuck",
       "NoTimeQuickly",
-      "DeafEar"
+      "DeafEar",
+      "ThereAreOthers",
+      "SurpriseAttack"
     ]
   },
   {
@@ -145,7 +147,8 @@
       "FondOfSleep",
       "UnacceptableSpecificInstructions",
       "FineMess",
-      "Swimmingly"
+      "Swimmingly",
+      "BegPardon"
     ]
   },
   {
@@ -196,7 +199,10 @@
       "FightingTheGoodFight",
       "NotEndOurJourney",
       "Behave",
-      "GoodLuck"
+      "GoodLuck",
+      "SurpriseAttack",
+      "BegPardon",
+      "DoNotHeal"
     ]
   },
   {
@@ -238,7 +244,10 @@
       "Secrets",
       "Begone",
       "FallEmet",
-      "OliveBranchWither"
+      "OliveBranchWither",
+      "DownWithYou",
+      "ThereAymeric",
+      "ItEndsHere"
     ]
   },
   {
@@ -279,7 +288,9 @@
       "Prevailed",
       "Behave",
       "HowHeroic",
-      "BackToWork"
+      "BackToWork",
+      "StandOurGround",
+      "ItEndsHere"
     ]
   },
   {
@@ -295,7 +306,13 @@
       "FightingFit",
       "OliveBranchWither",
       "Begone",
-      "FallEmet"
+      "FallEmet",
+      "HonorAndGloryOfIshgard",
+      "StandOurGround",
+      "DownWithYou",
+      "ThereAymeric",
+      "ItEndsHere",
+      "FutureOfEorzea"
     ]
   },
   {
@@ -319,7 +336,10 @@
       "Begone",
       "SlowSoundChoice",
       "GoodLuck",
-      "NotEndOurJourney"
+      "NotEndOurJourney",
+      "StandOurGround",
+      "MomentHasCome",
+      "HonorAndGloryOfIshgard"
     ]
   },
   {
@@ -338,7 +358,8 @@
       "WhatIsTheMeaning",
       "Preposterous",
       "OpenEyes",
-      "FutileAsItWas"
+      "FutileAsItWas",
+      "SurpriseAttack"
     ]
   },
   {
@@ -473,7 +494,10 @@
       "Satisfied",
       "TearToEye",
       "IncapableOfCrying",
-      "UnacceptableSpecificInstructions"
+      "UnacceptableSpecificInstructions",
+      "BegPardon",
+      "SurpriseAttack",
+      "DoNotHeal"
     ]
   },
   {
@@ -499,7 +523,9 @@
       "DeafEar",
       "Behave",
       "FightingTheGoodFight",
-      "DoNotSquander"
+      "DoNotSquander",
+      "ThereAymeric",
+      "StandOurGround"
     ]
   },
   {
@@ -524,7 +550,9 @@
       "RaiseAGlassVictory",
       "QuiteTheStatement",
       "HeartRacingKrile",
-      "AllRightYouDidGreat"
+      "AllRightYouDidGreat",
+      "DeepestThanks",
+      "FutureOfEorzea"
     ]
   },
   {
@@ -612,7 +640,10 @@
       "IncapableOfCrying",
       "FineMess",
       "FondOfSleep",
-      "UnacceptableSpecificInstructions"
+      "UnacceptableSpecificInstructions",
+      "NotAlone",
+      "DoNotHeal",
+      "AskPersonalQuestion"
     ]
   },
   {
@@ -679,7 +710,12 @@
       "OliveBranchWither",
       "BackToWork",
       "VictorVanquished",
-      "LuckyWinner"
+      "LuckyWinner",
+      "JoiningUs",
+      "ReputationTowers",
+      "ShallWeBegin",
+      "MomentHasCome",
+      "HonorAndGloryOfIshgard"
     ]
   },
   {
@@ -770,7 +806,12 @@
       "OliveBranchWither",
       "FoolNoOneNothing",
       "MeetAgainSoon",
-      "IncapableOfCrying"
+      "IncapableOfCrying",
+      "ReputationTowers",
+      "DeepestThanks",
+      "VictoryOursIshgard",
+      "HonorAndGloryOfIshgard",
+      "RayOfHope"
     ]
   },
   {
@@ -827,7 +868,15 @@
       "ScoreToSettle",
       "BloodAndAsh",
       "FightingFit",
-      "RepayDebt"
+      "RepayDebt",
+      "DeepestThanks",
+      "FutureOfEorzea",
+      "VictoryOursIshgard",
+      "HonorAndGloryOfIshgard",
+      "RayOfHope",
+      "StandOurGround",
+      "ThereAymeric",
+      "ReputationTowers"
     ]
   }
 ]
