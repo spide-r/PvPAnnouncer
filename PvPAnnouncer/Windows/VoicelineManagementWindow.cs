@@ -44,7 +44,7 @@ public class VoicelineManagementWindow : Window, IDisposable
         ImGui.Separator();
 
         ImGui.TextWrapped(
-            "This Page will let you mute voicelines that you simply do not wish to hear at all. If a voiceline custom one, you have the option to delete it as well.");
+            "This Page will let you mute voicelines that you simply do not wish to hear at all. If a voiceline is custom, you have the option to delete or edit it as well.");
 
 
         var currentShouts = new List<string>();
