@@ -66,7 +66,11 @@
       "NoTimeQuickly",
       "DeafEar",
       "ThereAreOthers",
-      "SurpriseAttack"
+      "SurpriseAttack",
+      "Damn",
+      "MustAway",
+      "LookOut",
+      "Reinforcements"
     ]
   },
   {
@@ -148,7 +152,11 @@
       "UnacceptableSpecificInstructions",
       "FineMess",
       "Swimmingly",
-      "BegPardon"
+      "BegPardon",
+      "SmileSuits",
+      "NotWithoutAllies",
+      "PrecautionsForNaught",
+      "WhatIsTheMeaningHaurchefant"
     ]
   },
   {
@@ -202,7 +210,9 @@
       "GoodLuck",
       "SurpriseAttack",
       "BegPardon",
-      "DoNotHeal"
+      "DoNotHeal",
+      "LookOut",
+      "MustAway"
     ]
   },
   {
@@ -247,7 +257,9 @@
       "OliveBranchWither",
       "DownWithYou",
       "ThereAymeric",
-      "ItEndsHere"
+      "ItEndsHere",
+      "Damn",
+      "There"
     ]
   },
   {
@@ -339,7 +351,9 @@
       "NotEndOurJourney",
       "StandOurGround",
       "MomentHasCome",
-      "HonorAndGloryOfIshgard"
+      "HonorAndGloryOfIshgard",
+      "LookOut",
+      "Reinforcements"
     ]
   },
   {
@@ -359,7 +373,10 @@
       "Preposterous",
       "OpenEyes",
       "FutileAsItWas",
-      "SurpriseAttack"
+      "SurpriseAttack",
+      "Damn",
+      "LookOut",
+      "MustAway"
     ]
   },
   {
@@ -466,7 +483,12 @@
       "Behave",
       "IPityYou",
       "ScoreToSettle",
-      "TurnOfEvents"
+      "TurnOfEvents",
+      "NotWithoutAllies",
+      "PrecautionsForNaught",
+      "JoinYourCompanions",
+      "SmileSuits",
+      "Reinforcements"
     ]
   },
   {
@@ -497,7 +519,9 @@
       "UnacceptableSpecificInstructions",
       "BegPardon",
       "SurpriseAttack",
-      "DoNotHeal"
+      "DoNotHeal",
+      "SmileSuits",
+      "PrecautionsForNaught"
     ]
   },
   {
@@ -525,7 +549,10 @@
       "FightingTheGoodFight",
       "DoNotSquander",
       "ThereAymeric",
-      "StandOurGround"
+      "StandOurGround",
+      "Damn",
+      "There",
+      "LookOut"
     ]
   },
   {
@@ -552,7 +579,8 @@
       "HeartRacingKrile",
       "AllRightYouDidGreat",
       "DeepestThanks",
-      "FutureOfEorzea"
+      "FutureOfEorzea",
+      "There"
     ]
   },
   {
@@ -643,7 +671,11 @@
       "UnacceptableSpecificInstructions",
       "NotAlone",
       "DoNotHeal",
-      "AskPersonalQuestion"
+      "AskPersonalQuestion",
+      "DontLookAtMeSo",
+      "NotWithoutAllies",
+      "PrecautionsForNaught",
+      "SmileSuits"
     ]
   },
   {
@@ -715,7 +747,9 @@
       "ReputationTowers",
       "ShallWeBegin",
       "MomentHasCome",
-      "HonorAndGloryOfIshgard"
+      "HonorAndGloryOfIshgard",
+      "JoinYourCompanions",
+      "NotWithoutAllies"
     ]
   },
   {
@@ -811,7 +845,9 @@
       "DeepestThanks",
       "VictoryOursIshgard",
       "HonorAndGloryOfIshgard",
-      "RayOfHope"
+      "RayOfHope",
+      "SmileSuits",
+      "HaveFaith"
     ]
   },
   {
@@ -876,7 +912,9 @@
       "RayOfHope",
       "StandOurGround",
       "ThereAymeric",
-      "ReputationTowers"
+      "ReputationTowers",
+      "There",
+      "HaveFaith"
     ]
   }
 ]

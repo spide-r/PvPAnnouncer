@@ -6988,5 +6988,115 @@
     "style": "6",
     "soundPath": "sound/voice/vo_line/8202546",
     "npcYell": "3968"
+  },
+  {
+    "id": "Damn",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03001/vo_voiceman_03001_700070_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03001_700070_HAURCHEFANT"
+  },
+  {
+    "id": "There",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03004/vo_voiceman_03004_000010_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03004_000010_HAURCHEFANT"
+  },
+  {
+    "id": "LookOut",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03004/vo_voiceman_03004_600080_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03004_600080_HAURCHEFANT"
+  },
+  {
+    "id": "MustAway",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03001/vo_voiceman_03001_700060_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03001_700060_HAURCHEFANT"
+  },
+  {
+    "id": "Reinforcements",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03001/vo_voiceman_03001_700010_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03001_700010_HAURCHEFANT"
+  },
+  {
+    "id": "DontLookAtMeSo",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03004/vo_voiceman_03004_600120_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03004_600120_HAURCHEFANT",
+    "isGendered": true
+  },
+  {
+    "id": "WhatIsTheMeaningHaurchefant",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_300450_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_300450_HAURCHEFANT"
+  },
+  {
+    "id": "SmileSuits",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex1/sound/voicem/voiceman_03004/vo_voiceman_03004_600121_m",
+    "cutsceneLine": "TEXT_VOICEMAN_03004_600121_HAURCHEFANT",
+    "isGendered": true
+  },
+  {
+    "id": "HaveFaith",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_F00500_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_F00500_HAURCHEFANT"
+  },
+  {
+    "id": "NotWithoutAllies",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02500/vo_voiceman_02500_W00060_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02500_W00060_HAURCHEFANT"
+  },
+  {
+    "id": "PrecautionsForNaught",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02400/vo_voiceman_02400_300480_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02400_300480_HAURCHEFANT"
+  },
+  {
+    "id": "JoinYourCompanions",
+    "icon": "73124",
+    "shoutcaster": "Haurchefant ",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ffxiv/sound/voicem/voiceman_02500/vo_voiceman_02500_W00110_m",
+    "cutsceneLine": "TEXT_VOICEMAN_02500_W00110_HAURCHEFANT"
   }
 ]

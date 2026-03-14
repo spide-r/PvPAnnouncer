@@ -665,7 +665,7 @@ public class VoicelineCreationWindow : Window, IDisposable
         ImGui.Text("Name:");
         if (ImGui.InputText("###Announcer Name", ref name, 100))
         {
-            _controller.SelectName(name);
+            _controller.SelectName(name.Trim());
         }
 
         var icon = _controller.GetCurrentShoutcast().Icon;
