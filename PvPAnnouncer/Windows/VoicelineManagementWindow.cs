@@ -116,8 +116,24 @@ public class VoicelineManagementWindow : Window, IDisposable
             }
 
         if (PluginServices.Config.CustomShoutcasts.ContainsKey(selection))
+        {
+            if (ImGui.Button("Edit Voiceline"))
+            {
+                var sc = PluginServices.ShoutcastRepository.GetShoutcast(selection);
+                if (sc != null)
+                {
+                    PluginServices.VoicelineCreationWindow.Edit(sc);
+                    PluginServices.VoicelineCreationWindow.IsOpen = true;
+                }
+                else
+                {
+                    PluginServices.PluginLog.Error("Invalid sc id of " + selection);
+                }
+            }
+
             if (ImguiTools.CtrlShiftButton("Delete Custom Voiceline"))
                 PluginServices.ConfigManager.DeleteAndDeregisterShoutcast(selection);
+        }
 
 
         ImGui.Text("Muted Voicelines:");

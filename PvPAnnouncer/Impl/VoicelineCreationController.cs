@@ -8,7 +8,7 @@ namespace PvPAnnouncer.Impl;
 
 public class VoicelineCreationController(IDataManager dataManager) : IVoicelineCreationController
 {
-    private readonly ShoutcastBuilder _shoutcastBuilder = new(dataManager);
+    private ShoutcastBuilder _shoutcastBuilder = new(dataManager);
 
     public void SelectBattleTalk(uint voLine)
     {
@@ -143,6 +143,11 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
     public void ResetToDefaults()
     {
         _shoutcastBuilder.RefreshProperties();
+    }
+
+    public void SetShoutcast(Shoutcast shoutcast)
+    {
+        _shoutcastBuilder = _shoutcastBuilder.FromShoutcast(shoutcast, dataManager);
     }
 
     public Shoutcast GetCurrentShoutcast()

@@ -21,7 +21,7 @@ public class VoicelineCreationWindow : Window, IDisposable
     private readonly IVoicelineCreationViewer _viewer;
 
     public VoicelineCreationWindow() : base(
-        "PvPAnnouncer Voiceline Creation")
+        "PvPAnnouncer Voiceline Creation & Editing Window")
     {
         SizeConstraints = new WindowSizeConstraints
         {
@@ -39,6 +39,19 @@ public class VoicelineCreationWindow : Window, IDisposable
     // npcyell, cutsceneLine, instancecontenttextdatarow
     private bool _useIcon;
     private bool _useBackup;
+    private bool _editing;
+
+    public void Edit(Shoutcast shoutcast)
+    {
+        if (!PluginServices.Config.CustomShoutcasts.ContainsKey(shoutcast.Id))
+        {
+            PluginServices.PluginLog.Warning("Attempted to edit a shoutcast that isn't custom!");
+            return;
+        }
+
+        _controller.SetShoutcast(shoutcast);
+        _editing = true;
+    }
 
     public override void Draw()
     {
@@ -80,28 +93,56 @@ public class VoicelineCreationWindow : Window, IDisposable
             {
                 var n = current.Shoutcaster;
 
-                if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id))
+                if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id) && !_editing)
                 {
                     ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
                         "Error! The chosen announcement ID is already in use! Please pick another!");
                 }
                 else
                 {
-                    if (ImguiTools.CtrlShiftButton("Save & Reset To Blank Character"))
+                    if (_editing)
                     {
-                        var sc = _controller.BuildAndResetToDefaults();
-                        _controller.SaveToConfigAndRegister(sc);
+                        ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
+                            "Important! This will OVERRIDE the current shoutcast \"" +
+                            _controller.GetCurrentShoutcast().Id + "\" for " + n + ". Be very sure before saving.");
+                        if (ImguiTools.CtrlShiftButton("Save & Close"))
+                        {
+                            var sc = _controller.BuildAndResetToDefaults();
+                            _controller.SaveToConfigAndRegister(sc);
+                            _editing = false;
+                            IsOpen = false;
+                        }
                     }
-
-                    if (ImguiTools.CtrlShiftButton("Save & New Voiceline for " + n))
+                    else
                     {
-                        var sc = _controller.BuildAndResetToCharacterDefaults();
-                        _controller.SaveToConfigAndRegister(sc);
+                        if (ImguiTools.CtrlShiftButton("Save & Reset To Blank Character"))
+                        {
+                            var sc = _controller.BuildAndResetToDefaults();
+                            _controller.SaveToConfigAndRegister(sc);
+                        }
+
+                        if (ImguiTools.CtrlShiftButton("Save & New Voiceline for " + n))
+                        {
+                            var sc = _controller.BuildAndResetToCharacterDefaults();
+                            _controller.SaveToConfigAndRegister(sc);
+                        }
                     }
                 }
 
-                if (ImguiTools.CtrlShiftButton("Reset to Blank Voiceline for " + n))
-                    _controller.BuildAndResetToCharacterDefaults();
+
+                if (_editing)
+                {
+                    if (ImguiTools.CtrlShiftButton("Close Without Saving"))
+                    {
+                        _controller.ResetToDefaults();
+                        _editing = false;
+                    }
+                }
+                else
+                {
+                    if (ImguiTools.CtrlShiftButton("Reset to Blank Voiceline for " + n))
+                        _controller.BuildAndResetToCharacterDefaults();
+                }
             }
             catch (InvalidOperationException e)
             {
@@ -121,14 +162,21 @@ public class VoicelineCreationWindow : Window, IDisposable
     private void ShowAnnouncementMetadata()
     {
         var id = _controller.GetCurrentShoutcast().Id;
-        if (ImGui.InputText("Unique Internal Announcement ID", ref id))
+
+
+        if (_editing)
         {
-            _controller.SelectAnnouncementId(id);
+            ImGui.Text("Unique Internal Announcement ID: " + id);
+        }
+        else
+        {
+            if (ImGui.InputText("Unique Internal Announcement ID", ref id)) _controller.SelectAnnouncementId(id);
+
+            if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id))
+                ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
+                    "Error! This announcement ID is already in use! Please pick another!");
         }
 
-        if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id))
-            ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
-                "Error! This announcement ID is already in use! Please pick another!");
 
         ImGuiComponents.HelpMarker(
             "This must be unique across all voicelines. If a duplicate is encountered, one may overwrite the other.");
@@ -689,5 +737,14 @@ public class VoicelineCreationWindow : Window, IDisposable
 
     public void Dispose()
     {
+    }
+
+    public override void OnClose()
+    {
+        if (_editing)
+        {
+            _editing = false;
+            _controller.ResetToDefaults();
+        }
     }
 }

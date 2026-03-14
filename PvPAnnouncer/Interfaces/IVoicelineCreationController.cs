@@ -25,4 +25,5 @@ public interface IVoicelineCreationController
     Shoutcast BuildAndResetToDefaults();
     Shoutcast GetCurrentShoutcast();
     void ResetToDefaults();
+    void SetShoutcast(Shoutcast shoutcast);
 }
