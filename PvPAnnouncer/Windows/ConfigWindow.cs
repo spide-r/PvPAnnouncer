@@ -119,8 +119,6 @@ public class ConfigWindow : Window, IDisposable
 
 
         ImGui.Text("Announcers: ");
-        ImGuiComponents.HelpMarker(
-            "Don't see the character you're looking for? Try clicking the button above to add it yourself!");
 
         var c = 0;
         foreach (var caster in _shoutcastRepository.GetShoutcasters())
