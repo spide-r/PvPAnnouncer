@@ -251,6 +251,7 @@ public class CustomizationWindow : Window, IDisposable
 
                 if (dict.TryGetValue("mapping", out var deserializedMapping))
                 {
+                    //todo - silent error where shoutcasts that dont exist are either ignored or added - potential room for improvement?
                     foreach (var keyValuePair in deserializedMapping)
                         switch (_configuration.DupeMappingChoice)
                         {
