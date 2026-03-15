@@ -70,8 +70,13 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         if (!PluginServices.DutyState
                 .IsDutyStarted) //fixes kardia and other stuff at start but does not allow for weather events
         {
-            PluginServices.PluginLog.Verbose("Duty not started!");
-            return;
+            var id = pvpEvent.Id;
+            if (!(id.Equals("MatchVictoryEvent") || id.Equals("MatchLossEvent") || id.Equals("MatchEndEvent")))
+            {
+                //not match victory, loss or standard loss - dont want it at the start or at the end
+                PluginServices.PluginLog.Verbose("Duty not started!");
+                return;
+            }
         }
 
 
