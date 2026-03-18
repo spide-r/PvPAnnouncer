@@ -57,7 +57,6 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
     public void InitCutsceneLines(IJsonLoader jsonLoader)
     {
         PluginServices.PluginLog.Verbose("Started Loading all Cutscene Lines! ");
-        //todo make a program that scans through lumina to create this
         _cutsceneLines = jsonLoader.LoadCutsceneLines();
         PluginServices.PluginLog.Verbose("Finished Loading all Cutscene Lines!");
     }

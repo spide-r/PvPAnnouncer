@@ -149,6 +149,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
         var sc = BuildAndRefreshProperties();
         _instance.Shoutcaster = sc.Shoutcaster;
         _instance.Icon = sc.Icon;
+        _instance.Style = sc.Style;
         return sc;
     }
 
