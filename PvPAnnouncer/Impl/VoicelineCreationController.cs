@@ -119,7 +119,7 @@ public class VoicelineCreationController(IDataManager dataManager) : IVoicelineC
 
     public void SaveToConfigAndRegister(Shoutcast sc)
     {
-        var json = PluginServices.JsonLoader.BuildJsonShout(sc);
+        var json = PluginServices.JsonLoader.BuildCustomShoutJson(sc);
         PluginServices.Config.AddCustomShoutCast(sc.Id, json.ToJsonString());
         PluginServices.Config.Save();
         PluginServices.ShoutcastRepository.SetShoutcast(sc.Id, sc);

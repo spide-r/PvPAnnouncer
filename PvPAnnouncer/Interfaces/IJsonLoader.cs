@@ -11,7 +11,7 @@ public interface IJsonLoader
     public void LoadAndMapActionIdEvents();
     public void LoadShoutcasts();
     public void LoadMapping();
-    public JsonObject BuildJsonShout(Shoutcast s);
+    public JsonObject BuildCustomShoutJson(Shoutcast s);
     public Dictionary<string, List<string>> LoadCutsceneLines();
     public Shoutcast ConstructShoutcast(string json);
 

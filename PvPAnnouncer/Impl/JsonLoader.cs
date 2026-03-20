@@ -302,7 +302,7 @@ public class JsonLoader(
         return builder.BuildAndRefreshProperties();
     }
 
-    public JsonObject BuildJsonShout(Shoutcast s)
+    public JsonObject BuildCustomShoutJson(Shoutcast s)
     {
         var j = new JsonObject();
 
@@ -326,12 +326,14 @@ public class JsonLoader(
             j["duration"] = s.Duration.ToString();
         }
 
-        if (s.Style != 0)
+
+        j["style"] = s.Style.ToString();
+
+        if (s.Transcription.Count > 0)
         {
-            j["style"] = s.Style.ToString();
+            j["transcription"] = JsonSerializer.SerializeToNode(s.Transcription);
         }
 
-        //GOTCHA/Reminder for later: Transcription should not be loaded into a json shout since I want that field to only be an in-memory/fallback thing
         if (s.Attributes.Count > 0)
         {
             j["attributes"] = JsonSerializer.SerializeToNode(s.Attributes);
