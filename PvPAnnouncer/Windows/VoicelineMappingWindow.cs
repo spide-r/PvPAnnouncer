@@ -43,6 +43,19 @@ public class VoicelineMappingWindow : Window, IDisposable
         if (ImGui.Combo("###ShoutcasterFilter", ref shoutcasterSelection, shoutcasters))
             _shoutcasterSelection = shoutcasterSelection;
 
+        var selection = "";
+        try
+        {
+            selection = shoutcasters[shoutcasterSelection];
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (shoutcasters.Count > 0)
+                shoutcasterSelection = 0;
+            else
+                ImGui.Text("Error! Something is wrong and you have no shoutcasters available! Contact the developer!");
+        }
+
         ImGui.Separator();
         var pvpEventSelection = _pvpEventSelection;
 
