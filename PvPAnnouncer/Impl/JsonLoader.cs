@@ -329,7 +329,9 @@ public class JsonLoader(
 
         j["style"] = s.Style.ToString();
 
-        if (s.Transcription.Count > 0)
+        var hasSourceRef = s.NpcYell != 0 || s.ContentDirectorBattleTalkVo != 0 ||
+                           !s.CutsceneLine.Equals("") || s.InstanceContentTextDataRow != 0;
+        if (s.Transcription.Count > 0 && !hasSourceRef) //dont bother serializing something we'll re-serialize at load
         {
             j["transcription"] = JsonSerializer.SerializeToNode(s.Transcription);
         }
