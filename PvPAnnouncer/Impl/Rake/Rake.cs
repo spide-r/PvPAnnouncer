@@ -57,8 +57,15 @@ public class Rake
 
     public string Get(string text)
     {
+        //todo this is buggy sometimes and crashes - fix!
         var list = Run(text);
         var best = list.FirstOrDefault().Key;
+        if (best is "") // RAKE didnt find anything - text too small maybe
+        {
+            best = Regex.Replace(text, @"[^\w\d\s]", "");
+            ;
+        }
+
         var ti = new CultureInfo("en-US").TextInfo;
         var title = ti.ToTitleCase(best);
         var compressed = title.Replace(" ", "");

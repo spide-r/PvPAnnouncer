@@ -198,7 +198,7 @@ public class VoicelineCreationWindow : Window, IDisposable
             {
                 var transcription = _viewer.GetText(_controller.GetCurrentShoutcast());
 
-                if (transcription.Length > 0 || transcription.Equals("Shoutcast Transcription"))
+                if (transcription.Length > 0 && !transcription.Equals("Shoutcast Transcription"))
                 {
                     if (ImGui.Button("Pick for me"))
                     {
@@ -310,6 +310,7 @@ public class VoicelineCreationWindow : Window, IDisposable
             }
         }
 
+        //todo dropdown for these
         ImGui.TextWrapped(
             "These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, " +
             "but have a lot of trust voicelines, other battle NPC's, etc. To explore through these easily, " +

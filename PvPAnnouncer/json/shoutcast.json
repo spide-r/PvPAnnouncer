@@ -7098,5 +7098,264 @@
     "style": "6",
     "soundPath": "cut/ffxiv/sound/voicem/voiceman_02500/vo_voiceman_02500_W00110_m",
     "cutsceneLine": "TEXT_VOICEMAN_02500_W00110_HAURCHEFANT"
+  },
+  {
+    "id": "ADragon",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06200/vo_voiceman_06200_001230_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06200_001230_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "SatisfiedZero",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06200/vo_voiceman_06200_001640_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06200_001640_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "SoWhatNow",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06300/vo_voiceman_06300_002350_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06300_002350_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "Finished",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "2",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06200/vo_voiceman_06200_002960_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06200_002960_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "RadiantLight",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06500/vo_voiceman_06500_000450_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06500_000450_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "GetUpDamnYou",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06300/vo_voiceman_06300_001970_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06300_001970_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "HowWellHolds",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06400/vo_voiceman_06400_003040_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06400_003040_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "EarnedNewBeginning",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06500/vo_voiceman_06500_002790_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06500_002790_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "FloodOfLight",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06500/vo_voiceman_06500_000360_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06500_000360_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "Replenish",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06400/vo_voiceman_06400_000390_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06400_000390_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "StrangelyFamiliar",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "cut/ex4/sound/voicem/voiceman_06300/vo_voiceman_06300_001270_m",
+    "cutsceneLine": "TEXT_VOICEMAN_06300_001270_MYSTERIOUSPERSON"
+  },
+  {
+    "id": "Tougher",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "Tougher than I thought..."
+    },
+    "soundPath": "sound/voice/vo_line/8203448"
+  },
+  {
+    "id": "GetItTogether",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "Get it together..."
+    },
+    "soundPath": "sound/voice/vo_line/8203449"
+  },
+  {
+    "id": "NotFinishedYet",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "Not Finished Yet..."
+    },
+    "soundPath": "sound/voice/vo_line/8203450"
+  },
+  {
+    "id": "Back to it.",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "transcription": {
+      "en": "Back to it!"
+    },
+    "soundPath": "sound/voice/vo_line/8203453"
+  },
+  {
+    "id": "WillHurt",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "This will hurt!"
+    },
+    "soundPath": "sound/voice/vo_line/8203455"
+  },
+  {
+    "id": "GotYou",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "2",
+    "style": "6",
+    "transcription": {
+      "en": "Got You!"
+    },
+    "soundPath": "sound/voice/vo_line/8203456"
+  },
+  {
+    "id": "FarEnough",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "That's far enough!"
+    },
+    "soundPath": "sound/voice/vo_line/8203457"
+  },
+  {
+    "id": "DarknessTakeYou",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203459",
+    "npcYell": "14105"
+  },
+  {
+    "id": "StaySharp",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203460",
+    "npcYell": "7565"
+  },
+  {
+    "id": "AreYouAlrightZero",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203461",
+    "npcYell": "16659"
+  },
+  {
+    "id": "HaveCareZero",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203462",
+    "npcYell": "19208"
+  },
+  {
+    "id": "HowAboutThis",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203465",
+    "npcYell": "4855"
+  },
+  {
+    "id": "DefeatedZenos",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203471",
+    "npcYell": "13900"
+  },
+  {
+    "id": "DeathsEmbrace",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "All can know death's embrace."
+    },
+    "soundPath": "sound/voice/vo_line/8203478"
+  },
+  {
+    "id": "MoreOfThem",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203480",
+    "npcYell": "16118"
+  },
+  {
+    "id": "StillMore",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "soundPath": "sound/voice/vo_line/8203481",
+    "npcYell": "15229"
   }
 ]
