@@ -11,6 +11,7 @@ using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl;
+using PvPAnnouncer.Impl.Rake;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Windows;
@@ -19,6 +20,9 @@ public class VoicelineCreationWindow : Window, IDisposable
 {
     private readonly IVoicelineCreationController _controller;
     private readonly IVoicelineCreationViewer _viewer;
+    private readonly Rake _englishRake;
+    private readonly Rake _germanRake;
+    private readonly Rake _frenchRake;
 
     public VoicelineCreationWindow() : base(
         "PvPAnnouncer Voiceline Creation & Editing Window")
@@ -29,6 +33,9 @@ public class VoicelineCreationWindow : Window, IDisposable
         };
         _controller = new VoicelineCreationController(PluginServices.DataManager);
         _viewer = new VoicelineCreationViewer(PluginServices.VoicelineDataResolver);
+        _englishRake = new Rake("en");
+        _germanRake = new Rake("de");
+        _frenchRake = new Rake("fr");
     }
 
     //
@@ -40,6 +47,7 @@ public class VoicelineCreationWindow : Window, IDisposable
     private bool _useIcon;
     private bool _useBackup;
     private bool _editing;
+
 
     public void Edit(Shoutcast shoutcast)
     {
@@ -172,24 +180,70 @@ public class VoicelineCreationWindow : Window, IDisposable
         }
         else
         {
-            if (ImGui.InputText("Unique Internal Announcement ID", ref id)) _controller.SelectAnnouncementId(id);
+            ImGui.TextWrapped("Unique Internal Announcement ID");
+            ImGuiComponents.HelpMarker(
+                "This will be the name of the shoutcast you are creating. This is how you reference the voiceline when adding it to events. " +
+                "This must be unique across all voicelines. If a duplicate is encountered, one may overwrite the other.");
+
+            if (ImGui.InputText("###Unique Internal Announcement ID", ref id)) _controller.SelectAnnouncementId(id);
 
             if (PluginServices.ShoutcastRepository.ContainsKey(_controller.GetCurrentShoutcast().Id))
                 ImGui.TextColoredWrapped(ImGuiColors.DalamudRed,
                     "Error! This announcement ID is already in use! Please pick another!");
+
+
+            var lang = PluginServices.Config.Language;
+            if (lang == "en" || lang == "de" ||
+                lang == "fr") // I do not support JP/cn/kr rake as that would require a bit more work for not a lot of benefit
+            {
+                var transcription = _viewer.GetText(_controller.GetCurrentShoutcast());
+
+                if (transcription.Length > 0 || transcription.Equals("Shoutcast Transcription"))
+                {
+                    if (ImGui.Button("Pick for me"))
+                    {
+                        if (lang == "en")
+                        {
+                            foreach (var keyValuePair in _englishRake.Run(transcription))
+                                PluginServices.PluginLog.Verbose($"RAKE: {keyValuePair.Key}: {keyValuePair.Value}");
+
+                            var result = _englishRake.Get(transcription);
+                            _controller.SelectAnnouncementId(result);
+                        }
+                        else if (lang == "de")
+                        {
+                            var result = _germanRake.Get(transcription);
+                            _controller.SelectAnnouncementId(result);
+                        }
+                        else if (lang == "fr")
+                        {
+                            var result = _frenchRake.Get(transcription);
+                            _controller.SelectAnnouncementId(result);
+                        }
+                    }
+                }
+                else
+                {
+                    ImGuiComponents.DisabledButton("Pick for me");
+                }
+
+                ImGuiComponents.HelpMarker(
+                    "This button makes guess at an accurate Voiceline ID. " +
+                    "It isn't always correct, but helpful when making lots of voicelines. " +
+                    "There must be a voiceline transcription in order to use this feature. " +
+                    "(It uses the RAKE algorithm, not generative AI)");
+            }
         }
 
 
-        ImGuiComponents.HelpMarker(
-            "This must be unique across all voicelines. If a duplicate is encountered, one may overwrite the other.");
-
         uint duration = _controller.GetCurrentShoutcast().Duration;
-        if (ImGui.SliderUInt("Announcement Duration", ref duration, 1, 10, default, ImGuiSliderFlags.AlwaysClamp))
+        ImGui.TextWrapped("Announcement Duration");
+        ImGuiComponents.HelpMarker("This value determines how long text will stay on the screen.");
+
+        if (ImGui.SliderUInt("###Announcement Duration", ref duration, 1, 10, default, ImGuiSliderFlags.AlwaysClamp))
         {
             _controller.SetDuration((byte) duration);
         }
-
-        ImGuiComponents.HelpMarker("This value determines how long text will stay on the screen.");
 
 
         ImGui.TextWrapped("Attributes:");
@@ -243,6 +297,7 @@ public class VoicelineCreationWindow : Window, IDisposable
         CutsceneLinePopup();
 
 
+        ImGui.Separator();
         if (ImGui.Button("Orphaned Voice Lines"))
         {
             if (PluginServices.VoicelineDataResolver.GetOrphanedLines().Count > 1)
@@ -255,8 +310,16 @@ public class VoicelineCreationWindow : Window, IDisposable
             }
         }
 
-        ImGuiComponents.HelpMarker(
-            "These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, but have a lot of trust voicelines, other battle NPC's, etc. I will elaborate more on this soon.");
+        ImGui.TextWrapped(
+            "These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, " +
+            "but have a lot of trust voicelines, other battle NPC's, etc. To explore through these easily, " +
+            "I recommend clicking on the following button to be taken to a list of all sound files in the game. " +
+            "This should link you to the NPC + Cutscene Dialogue, and set you to row 27060. This is where the orphaned voicelines start.");
+        if (ImGui.Button("SCD Master list"))
+            Util.OpenLink(
+                "https://docs.google.com/spreadsheets/d/1IGnaqBeIuyMH-DjgChIH4M5CWdwIVr5RLWigQ-IgNqQ/edit?gid=1596921809#gid=1596921809&range=A27060");
+
+        ImGui.Separator();
         OrphanedVoLinePopup();
     }
 

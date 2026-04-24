@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -19,7 +18,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
     private double _enemyProgress = 0.0;
     private readonly IPlayerStateTracker _playerState;
 
-    public PvPMatchManager(IPlayerStateTracker playerState) //todo: victory and loss detection for RW
+    public PvPMatchManager(IPlayerStateTracker playerState)
     {
         _playerState = playerState;
         PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);

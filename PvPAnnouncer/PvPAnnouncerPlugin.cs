@@ -5,13 +5,10 @@ using PvPAnnouncer.Data;
 
 namespace PvPAnnouncer
 {
-    //use announcer notes.txt for more scion lines
     //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
 
-    //todo option to hide the flag upon victory/loss so that the blorbo can be seen 
     //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
     //todo vuln stack event
-    //todo lb whiff event (?)
 
 
     public sealed class PvPAnnouncerPlugin : IDalamudPlugin

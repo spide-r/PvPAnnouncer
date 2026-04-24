@@ -65,6 +65,22 @@ public class VoicelineCreationViewer(IVoicelineDataResolver dataResolver) : IVoi
         }
     }
 
+    public string GetText(Shoutcast shoutcast)
+    {
+        if (shoutcast.Transcription.TryGetValue(PluginServices.Config.Language, out var value))
+            return value;
+
+        if (shoutcast.NpcYell != 0) return dataResolver.ResolveTextWithNpcYell(shoutcast.NpcYell);
+
+        if (!shoutcast.CutsceneLine.IsNullOrEmpty())
+            return dataResolver.ResolveCutsceneLineWithTag(shoutcast.CutsceneLine);
+
+        if (shoutcast.InstanceContentTextDataRow != 0)
+            return dataResolver.ResolveTextWithIctdRow(shoutcast.InstanceContentTextDataRow) ?? "";
+
+        return "";
+    }
+
     public void ShowMetadata(Shoutcast shoutcast)
     {
         ImGui.Text("Shoutcast ID: " + shoutcast.Id);

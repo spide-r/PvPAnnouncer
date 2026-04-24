@@ -9,4 +9,5 @@ public interface IVoicelineCreationViewer
     void ShowSelectedText(Shoutcast shoutcast);
     void ShowMetadata(Shoutcast shoutcast);
     void ShowObject(Shoutcast shoutcast);
+    public string GetText(Shoutcast shoutcast);
 }

@@ -263,15 +263,6 @@ public class ConfigWindow : Window, IDisposable
             _configuration.HideBattleText = hideBattleText;
             _configuration.Save();
         }
-
-        ImGui.Separator();
-
-        ImGui.TextWrapped("Looking to enable/disable events? This has been moved to a new window:");
-
-        if (ImGui.Button("Character, Event, and Voiceline Management###SecondButton"))
-        {
-            PluginServices.CustomizationWindow.Toggle();
-        }
     }
 
     private void DoLanguageVoiceSelection()
