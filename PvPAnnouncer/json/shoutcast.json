@@ -7357,5 +7357,247 @@
     "style": "6",
     "soundPath": "sound/voice/vo_line/8203481",
     "npcYell": "15229"
+  },
+  {
+    "id": "BoldGambit",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "transcription": {
+      "en": "Ah, a bold gambit. Let's hope it pays off..."
+    },
+    "soundPath": "sound/voice/vo_line/8291299"
+  },
+  {
+    "id": "VictoryIsYours",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "transcription": {
+      "en": "Victory is yours. You need but seize it."
+    },
+    "soundPath": "sound/voice/vo_line/8291300"
+  },
+  {
+    "id": "WhatNow",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "What now?"
+    },
+    "soundPath": "sound/voice/vo_line/8291301"
+  },
+  {
+    "id": "TroublingDevelopment",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "A troubling development..."
+    },
+    "soundPath": "sound/voice/vo_line/8291302"
+  },
+  {
+    "id": "PlanningToLetThemWin",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "You're not planning to let them win are you?"
+    },
+    "soundPath": "sound/voice/vo_line/8291303"
+  },
+  {
+    "id": "KillingBlow",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "Time for the killing blow."
+    },
+    "soundPath": "sound/voice/vo_line/8291304"
+  },
+  {
+    "id": "WaitingFor",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "This is what we've been waiting for."
+    },
+    "soundPath": "sound/voice/vo_line/8291305"
+  },
+  {
+    "id": "Careless",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "That was rather careless of you."
+    },
+    "soundPath": "sound/voice/vo_line/8291306"
+  },
+  {
+    "id": "WorseOutcomes",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "There are worse outcomes to be sure."
+    },
+    "soundPath": "sound/voice/vo_line/8291307"
+  },
+  {
+    "id": "PlentyToConsider",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "Plenty to consider for next time."
+    },
+    "soundPath": "sound/voice/vo_line/8291308"
+  },
+  {
+    "id": "Outstanding",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "transcription": {
+      "en": "Outstanding! The thirteenth shall hear of your triumph."
+    },
+    "soundPath": "sound/voice/vo_line/8291309"
+  },
+  {
+    "id": "ImpressiveTally",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "An impressive tally, judging by your reaction."
+    },
+    "soundPath": "sound/voice/vo_line/8291310"
+  },
+  {
+    "id": "PerfectlyRespectable",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "Perfectly respectable."
+    },
+    "soundPath": "sound/voice/vo_line/8291311"
+  },
+  {
+    "id": "FutureSuccess",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "Consider this a deposit towards future success."
+    },
+    "soundPath": "sound/voice/vo_line/8291312"
+  },
+  {
+    "id": "Despair",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "I too have known such despair."
+    },
+    "soundPath": "sound/voice/vo_line/8291313"
+  },
+  {
+    "id": "NotLost",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "All is not lost."
+    },
+    "soundPath": "sound/voice/vo_line/8291314"
+  },
+  {
+    "id": "OweBetter",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "You owe me a better performance than that..."
+    },
+    "soundPath": "sound/voice/vo_line/8291315"
+  },
+  {
+    "id": "DaresayRecover",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "I daresay you'll soon recover."
+    },
+    "soundPath": "sound/voice/vo_line/8291316"
+  },
+  {
+    "id": "FaithNotMisplaced",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "transcription": {
+      "en": "My faith in you is not misplaced. Well done."
+    },
+    "soundPath": "sound/voice/vo_line/8291317"
+  },
+  {
+    "id": "Diversion",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "3",
+    "style": "6",
+    "transcription": {
+      "en": "That was a welcome diversion."
+    },
+    "soundPath": "sound/voice/vo_line/8291318"
+  },
+  {
+    "id": "Outmatched",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "4",
+    "style": "6",
+    "transcription": {
+      "en": "I'll be frank, you were outmatched."
+    },
+    "soundPath": "sound/voice/vo_line/8291319"
+  },
+  {
+    "id": "PickYourselfUp",
+    "icon": "73077",
+    "shoutcaster": "Zero",
+    "duration": "5",
+    "style": "6",
+    "transcription": {
+      "en": "Pick yourself up and try again. We'll get through this together."
+    },
+    "soundPath": "sound/voice/vo_line/8291320"
   }
 ]

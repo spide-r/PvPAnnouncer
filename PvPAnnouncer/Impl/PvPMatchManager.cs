@@ -1,6 +1,7 @@
 ﻿using System;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Game.DutyState;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
@@ -42,7 +43,9 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
                 var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
                 umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
 
-                var astraColor = addon->GetTextNodeById(49)->EdgeColor.RGBA;
+                var astraColor =
+                    addon->GetTextNodeById(49)->EdgeColor
+                        .RGBA; //obj not set to an instance of an object hmmm - issue reading cc header
                 var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
                 //4286996785
                 // astra was blue, umbra was red
@@ -104,7 +107,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
         MatchQueued();
     }
 
-    private void ClientStateOnTerritoryChanged(ushort territory)
+    private void ClientStateOnTerritoryChanged(uint territory)
     {
         var t = PluginServices.DataManager.GetExcelSheet<TerritoryType>().GetRow(territory);
         PluginServices.PluginLog.Verbose("OnTerritoryChanged " + territory);
@@ -158,29 +161,30 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
     }
 
 
-    public void MatchEntered(ushort territory)
+    public void MatchEntered(uint territory)
     {
+        //todo GOTCHA - this might not work due to territory event being changed from ushort to uint - test!
         _ourPoints = 0;
         _rightPoints = 0;
         _leftPoints = 0;
         _ourProgress = 0.0;
         _enemyProgress = 0.0;
         PluginServices.PluginLog.Verbose($"OnMatchEntered {territory}");
-        EmitToBroker(new MatchEnteredMessage(territory));
+        EmitToBroker(new MatchEnteredMessage((ushort) territory));
         unsafe
         {
-            var weatherId = WeatherManager.Instance()->GetWeatherForDaytime(territory, 0);
+            var weatherId = WeatherManager.Instance()->GetWeatherForDaytime((ushort) territory, 0);
             PluginServices.PluginLog.Verbose($"Match Weather: {weatherId}");
             EmitToBroker(new MatchWeatherMessage(weatherId));
         }
     }
 
-    public void MatchStarted(object? sender, ushort @ushort)
+    public void MatchStarted(IDutyStateEventArgs args)
     {
         EmitToBroker(new MatchStartedMessage());
     }
 
-    public void MatchEnded(object? sender, ushort @ushort)
+    public void MatchEnded(IDutyStateEventArgs args)
     {
         if (_ourPoints > 0 || _rightPoints > 0 || _leftPoints > 0)
         {

@@ -188,7 +188,7 @@ public class CustomizationWindow : Window, IDisposable
         if (single)
         {
             var scList = PluginServices.ShoutcastRepository.GetShoutcasters().Where(CasterHasChanges)
-                .ToList(); //todo this doesnt work
+                .ToList();
             ImGui.TextWrapped("Select Character to Export:");
             if (ImGui.ListBox("###Chars", ref selection,
                     scList)) //slow and sloppy, but due to low list count it doesnt matter

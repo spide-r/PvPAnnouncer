@@ -74,11 +74,11 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
                 var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
 
                 var t = sheet.SelectMany(row => row)
-                    .FirstOrDefault(bt => bt.Unknown1 == result.ContentDirectorBattleTalkVo);
-                if (t.Unknown0 != 0) result.Icon = t.Unknown0;
+                    .FirstOrDefault(bt => bt.VoLine == result.ContentDirectorBattleTalkVo);
+                if (t.Icon != 0) result.Icon = t.Icon;
 
-                result.Style = t.Unknown4;
-                result.Duration = t.Unknown3;
+                result.Style = t.Style;
+                result.Duration = t.Duration;
                 result.Transcription = d;
             }
         }
@@ -226,7 +226,7 @@ public partial class ShoutcastBuilder(IDataManager dataManager) : IShoutcastBuil
                         ContentDirectorBattleTalk>(); //ContentDirectorBattleTalk does NOT have a language assigned 
                 foreach (var row in sheet)
                 {
-                    foreach (var talk in row.Where(talk => talk.Unknown1 == voiceover))
+                    foreach (var talk in row.Where(talk => talk.VoLine == voiceover))
                     {
                         // see https://github.com/NotAdam/Lumina/issues/65 - gotta not use the RowRef and instead pull it manually ourselves
                         var textDataRow = talk.Text.RowId;

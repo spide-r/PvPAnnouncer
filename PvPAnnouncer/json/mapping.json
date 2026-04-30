@@ -70,7 +70,16 @@
       "Damn",
       "MustAway",
       "LookOut",
-      "Reinforcements"
+      "Reinforcements",
+      "GetUpDamnYou",
+      "Tougher",
+      "GetItTogether",
+      "WillHurt",
+      "HaveCareZero",
+      "MoreOfThem",
+      "StillMore",
+      "TroublingDevelopment",
+      "Careless"
     ]
   },
   {
@@ -156,7 +165,20 @@
       "SmileSuits",
       "NotWithoutAllies",
       "PrecautionsForNaught",
-      "WhatIsTheMeaningHaurchefant"
+      "WhatIsTheMeaningHaurchefant",
+      "OweBetter",
+      "DaresayRecover",
+      "Despair",
+      "SoWhatNow",
+      "Finished",
+      "GetUpDamnYou",
+      "GetItTogether",
+      "BoldGambit",
+      "TroublingDevelopment",
+      "PlanningToLetThemWin",
+      "Careless",
+      "WorseOutcomes",
+      "PlentyToConsider"
     ]
   },
   {
@@ -212,7 +234,12 @@
       "BegPardon",
       "DoNotHeal",
       "LookOut",
-      "MustAway"
+      "MustAway",
+      "AreYouAlrightZero",
+      "HaveCareZero",
+      "TroublingDevelopment",
+      "Careless",
+      "DaresayRecover"
     ]
   },
   {
@@ -259,7 +286,14 @@
       "ThereAymeric",
       "ItEndsHere",
       "Damn",
-      "There"
+      "There",
+      "Finished",
+      "WillHurt",
+      "FarEnough",
+      "GotYou",
+      "DarknessTakeYou",
+      "KillingBlow",
+      "WaitingFor"
     ]
   },
   {
@@ -302,7 +336,13 @@
       "HowHeroic",
       "BackToWork",
       "StandOurGround",
-      "ItEndsHere"
+      "ItEndsHere",
+      "HowWellHolds",
+      "StaySharp",
+      "HaveCareZero",
+      "AreYouAlrightZero",
+      "TroublingDevelopment",
+      "PlanningToLetThemWin"
     ]
   },
   {
@@ -324,7 +364,14 @@
       "DownWithYou",
       "ThereAymeric",
       "ItEndsHere",
-      "FutureOfEorzea"
+      "FutureOfEorzea",
+      "KillingBlow",
+      "Finished",
+      "WillHurt",
+      "DarknessTakeYou",
+      "HowAboutThis",
+      "BoldGambit",
+      "WaitingFor"
     ]
   },
   {
@@ -353,7 +400,11 @@
       "MomentHasCome",
       "HonorAndGloryOfIshgard",
       "LookOut",
-      "Reinforcements"
+      "Reinforcements",
+      "HowWellHolds",
+      "Tougher",
+      "StaySharp",
+      "HowAboutThis"
     ]
   },
   {
@@ -376,7 +427,12 @@
       "SurpriseAttack",
       "Damn",
       "LookOut",
-      "MustAway"
+      "MustAway",
+      "StrangelyFamiliar",
+      "GetItTogether",
+      "StaySharp",
+      "AreYouAlrightZero",
+      "HaveCareZero"
     ]
   },
   {
@@ -488,7 +544,24 @@
       "PrecautionsForNaught",
       "JoinYourCompanions",
       "SmileSuits",
-      "Reinforcements"
+      "Reinforcements",
+      "PickYourselfUp",
+      "Diversion",
+      "DaresayRecover",
+      "OweBetter",
+      "Despair",
+      "NotLost",
+      "FutureSuccess",
+      "PerfectlyRespectable",
+      "WorseOutcomes",
+      "Careless",
+      "WhatNow",
+      "DeathsEmbrace",
+      "Back to it.",
+      "NotFinishedYet",
+      "StrangelyFamiliar",
+      "EarnedNewBeginning",
+      "GetUpDamnYou"
     ]
   },
   {
@@ -521,7 +594,11 @@
       "SurpriseAttack",
       "DoNotHeal",
       "SmileSuits",
-      "PrecautionsForNaught"
+      "PrecautionsForNaught",
+      "StrangelyFamiliar",
+      "Tougher",
+      "GetItTogether",
+      "AreYouAlrightZero"
     ]
   },
   {
@@ -552,7 +629,13 @@
       "StandOurGround",
       "Damn",
       "There",
-      "LookOut"
+      "LookOut",
+      "Tougher",
+      "NotFinishedYet",
+      "StaySharp",
+      "BoldGambit",
+      "Careless",
+      "PerfectlyRespectable"
     ]
   },
   {
@@ -580,7 +663,11 @@
       "AllRightYouDidGreat",
       "DeepestThanks",
       "FutureOfEorzea",
-      "There"
+      "There",
+      "SoWhatNow",
+      "SatisfiedZero",
+      "FaithNotMisplaced",
+      "Diversion"
     ]
   },
   {
@@ -675,7 +762,21 @@
       "DontLookAtMeSo",
       "NotWithoutAllies",
       "PrecautionsForNaught",
-      "SmileSuits"
+      "SmileSuits",
+      "SoWhatNow",
+      "Tougher",
+      "WhatNow",
+      "TroublingDevelopment",
+      "WorseOutcomes",
+      "PlentyToConsider",
+      "Despair",
+      "FutureSuccess",
+      "OweBetter",
+      "DaresayRecover",
+      "Outmatched",
+      "PickYourselfUp",
+      "Diversion",
+      "Replenish"
     ]
   },
   {
@@ -749,7 +850,12 @@
       "MomentHasCome",
       "HonorAndGloryOfIshgard",
       "JoinYourCompanions",
-      "NotWithoutAllies"
+      "NotWithoutAllies",
+      "SoWhatNow",
+      "EarnedNewBeginning",
+      "StrangelyFamiliar",
+      "Back to it.",
+      "VictoryIsYours"
     ]
   },
   {
@@ -847,7 +953,18 @@
       "HonorAndGloryOfIshgard",
       "RayOfHope",
       "SmileSuits",
-      "HaveFaith"
+      "HaveFaith",
+      "SatisfiedZero",
+      "SoWhatNow",
+      "EarnedNewBeginning",
+      "WorseOutcomes",
+      "PlentyToConsider",
+      "Outstanding",
+      "FutureSuccess",
+      "DefeatedZenos",
+      "PerfectlyRespectable",
+      "FaithNotMisplaced",
+      "Replenish"
     ]
   },
   {
@@ -914,7 +1031,13 @@
       "ThereAymeric",
       "ReputationTowers",
       "There",
-      "HaveFaith"
+      "HaveFaith",
+      "ImpressiveTally",
+      "FaithNotMisplaced",
+      "PerfectlyRespectable",
+      "Outstanding",
+      "KillingBlow",
+      "DefeatedZenos"
     ]
   }
 ]

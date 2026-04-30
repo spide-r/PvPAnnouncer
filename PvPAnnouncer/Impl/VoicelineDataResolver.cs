@@ -31,7 +31,7 @@ public partial class VoicelineDataResolver : IVoicelineDataResolver
     public void InitOrphanedLines(IDataManager dataManager)
     {
         var sheet = dataManager.GetSubrowExcelSheet<ContentDirectorBattleTalk>();
-        var allUints = sheet.Flatten().Select(k => k.Unknown1).ToHashSet();
+        var allUints = sheet.Flatten().Select(k => k.VoLine).ToHashSet();
         PluginServices.PluginLog.Verbose("Starting to load all orphaned lines!");
         Task.Run(() =>
         {

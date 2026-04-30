@@ -71,11 +71,22 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
                 .IsDutyStarted) //fixes kardia and other stuff at start but does not allow for weather events
         {
             var id = pvpEvent.Id;
-            if (!(id.Equals("MatchVictoryEvent") || id.Equals("MatchLossEvent") || id.Equals("MatchEndEvent")))
+
+            if (!PluginServices.Config.WolvesDen)
             {
-                //not match victory, loss or standard loss - dont want it at the start or at the end
-                PluginServices.PluginLog.Verbose("Duty not started!");
-                return;
+                //duty not started, dont care about wolves den
+                if (!(id.Equals("MatchVictoryEvent") || id.Equals("MatchLossEvent") || id.Equals("MatchEndEvent")))
+                {
+                    //not match victory, loss or standard loss - dont want it at the start or at the end
+                    PluginServices.PluginLog.Verbose("Duty not started!");
+                    return;
+                }
+            }
+            else
+            {
+                if (!PluginServices.ClientState.IsPvP)
+                    //not pending duty not in wolves den
+                    return;
             }
         }
 

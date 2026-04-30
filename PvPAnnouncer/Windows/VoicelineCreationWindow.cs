@@ -204,9 +204,6 @@ public class VoicelineCreationWindow : Window, IDisposable
                     {
                         if (lang == "en")
                         {
-                            foreach (var keyValuePair in _englishRake.Run(transcription))
-                                PluginServices.PluginLog.Verbose($"RAKE: {keyValuePair.Key}: {keyValuePair.Value}");
-
                             var result = _englishRake.Get(transcription);
                             _controller.SelectAnnouncementId(result);
                         }
@@ -310,15 +307,17 @@ public class VoicelineCreationWindow : Window, IDisposable
             }
         }
 
-        //todo dropdown for these
-        ImGui.TextWrapped(
-            "These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, " +
-            "but have a lot of trust voicelines, other battle NPC's, etc. To explore through these easily, " +
-            "I recommend clicking on the following button to be taken to a list of all sound files in the game. " +
-            "This should link you to the NPC + Cutscene Dialogue, and set you to row 27060. This is where the orphaned voicelines start.");
-        if (ImGui.Button("SCD Master list"))
-            Util.OpenLink(
-                "https://docs.google.com/spreadsheets/d/1IGnaqBeIuyMH-DjgChIH4M5CWdwIVr5RLWigQ-IgNqQ/edit?gid=1596921809#gid=1596921809&range=A27060");
+        if (ImGui.CollapsingHeader("What is this?"))
+        {
+            ImGui.TextWrapped(
+                "These voicelines are not connected to any other sheet or transcription. These are the trickiest to use, " +
+                "but have a lot of trust voicelines, other battle NPC's, etc. To explore through these easily, " +
+                "I recommend clicking on the following button to be taken to a list of all sound files in the game. " +
+                "This should link you to the NPC + Cutscene Dialogue, and set you to row 27060. This is where the orphaned voicelines start.");
+            if (ImGui.Button("SCD Master list"))
+                Util.OpenLink(
+                    "https://docs.google.com/spreadsheets/d/1IGnaqBeIuyMH-DjgChIH4M5CWdwIVr5RLWigQ-IgNqQ/edit?gid=1596921809#gid=1596921809&range=A27060");
+        }
 
         ImGui.Separator();
         OrphanedVoLinePopup();
@@ -387,7 +386,8 @@ public class VoicelineCreationWindow : Window, IDisposable
         if (ImGui.BeginPopupModal("NPCPop"))
         {
             ClosePopupButton();
-            if (ImGui.InputText("Filter###NPCYellFilter", ref filter, 300))
+            ImGui.TextWrapped("Filter");
+            if (ImGui.InputText("###NPCYellFilter", ref filter, 300))
             {
                 _npcYellFilter = filter;
             }
@@ -440,7 +440,8 @@ public class VoicelineCreationWindow : Window, IDisposable
         {
             ClosePopupButton();
             var filter = _textDataFilter;
-            if (ImGui.InputText("Filter###TextDataFilter", ref filter, 300))
+            ImGui.TextWrapped("Filter");
+            if (ImGui.InputText("###TextDataFilter", ref filter, 300))
             {
                 _textDataFilter = filter;
             }
@@ -495,7 +496,8 @@ public class VoicelineCreationWindow : Window, IDisposable
         {
             ClosePopupButton();
             var filter = _contentDirectorFilter;
-            if (ImGui.InputText("Filter###CtrFilter", ref filter, 300))
+            ImGui.TextWrapped("Filter");
+            if (ImGui.InputText("###CtrFilter", ref filter, 300))
             {
                 _contentDirectorFilter = filter;
             }
@@ -521,10 +523,10 @@ public class VoicelineCreationWindow : Window, IDisposable
                         text = ctrRow.Text.ToString();
                     }
 
-                    var voLine = td.Unknown1;
-                    var style = td.Unknown4;
-                    var icon = td.Unknown0;
-                    var duration = td.Unknown3;
+                    var voLine = td.VoLine;
+                    var style = td.Style;
+                    var icon = td.Icon;
+                    var duration = td.Duration;
                     if (!_contentDirectorFilter.Equals(""))
                     {
                         if (!text.Contains(_contentDirectorFilter, StringComparison.CurrentCultureIgnoreCase))
@@ -612,7 +614,8 @@ public class VoicelineCreationWindow : Window, IDisposable
             else
             {
                 var filter = _cutsceneLineFilter;
-                if (ImGui.InputText("Filter###CutsceneLineFilter", ref filter, 300))
+                ImGui.TextWrapped("Filter");
+                if (ImGui.InputText("###CutsceneLineFilter", ref filter, 300))
                 {
                     _cutsceneLineFilter = filter;
                 }
@@ -677,6 +680,8 @@ public class VoicelineCreationWindow : Window, IDisposable
     }
 
     private int _voLineSelector;
+    private string _OrphanedLineSearch = "";
+    private bool _jump;
 
     private void OrphanedVoLinePopup()
     {
@@ -684,9 +689,47 @@ public class VoicelineCreationWindow : Window, IDisposable
         ImGui.SetNextWindowSize(new Vector2(300, 300), ImGuiCond.FirstUseEver);
         if (ImGui.BeginPopupModal("OrphanedPop"))
         {
+            var search = _OrphanedLineSearch;
+            ImGui.TextWrapped("Search for a Specific Voiceline ID");
+            if (ImGui.InputText("###OrphanedLineSearch", ref search, 300))
+            {
+                _OrphanedLineSearch = search;
+                if (!search.IsNullOrEmpty())
+                {
+                    var location = PluginServices.VoicelineDataResolver.GetOrphanedLines()
+                        .FindIndex(s => s.Contains(search, StringComparison.CurrentCultureIgnoreCase));
+                    if (location != -1)
+                    {
+                        _voLineSelector = location;
+                        ImGui.SetScrollHereY();
+                    }
+                }
+            }
+
+            ImGui.SameLine();
+            if (ImGui.Button("Jump to Voiceline")) _jump = true;
+
+
             ClosePopupButton();
-            ImGui.ListBox("Voice Lines###OrphanedVoLinesList", ref _voLineSelector,
-                PluginServices.VoicelineDataResolver.GetOrphanedLines());
+
+            var items = PluginServices.VoicelineDataResolver.GetOrphanedLines();
+            if (ImGui.BeginListBox("Voice Lines###OrphanedVoLinesList"))
+            {
+                for (var i = 0; i < items.Count; i++)
+                {
+                    var isSelected = _voLineSelector == i;
+                    if (ImGui.Selectable(items[i], isSelected)) _voLineSelector = i;
+
+                    if (_jump && i == _voLineSelector)
+                    {
+                        ImGui.SetScrollHereY();
+                        _jump = false;
+                    }
+                }
+
+                ImGui.EndListBox();
+            }
+
             if (ImGui.Button("Play###OrphanedVoLinesPlay"))
             {
                 PluginServices.SoundManager.PlaySound(GetVoLineToPlay(selector));

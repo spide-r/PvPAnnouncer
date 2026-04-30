@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Lumina.Extensions;
 
 namespace PvPAnnouncer.Impl.Rake;
 
@@ -40,7 +41,7 @@ public class Rake
         _stopWords = stopWords ?? new HashSet<string>();
     }
 
-    public Dictionary<string, double> Run(string text)
+    private Dictionary<string, double> Run(string text)
     {
         var sentenceList = SplitSentences(text.ToLowerInvariant());
 
@@ -57,17 +58,16 @@ public class Rake
 
     public string Get(string text)
     {
-        //todo this is buggy sometimes and crashes - fix!
         var list = Run(text);
-        var best = list.FirstOrDefault().Key;
-        if (best is "") // RAKE didnt find anything - text too small maybe
+        var found = list.TryGetFirst(out var pair);
+        var s = pair.Key;
+        if (!found) // RAKE didnt find anything - text too small maybe
         {
-            best = Regex.Replace(text, @"[^\w\d\s]", "");
-            ;
+            s = Regex.Replace(text, @"[^\w\d\s]", "");
         }
 
         var ti = new CultureInfo("en-US").TextInfo;
-        var title = ti.ToTitleCase(best);
+        var title = ti.ToTitleCase(s);
         var compressed = title.Replace(" ", "");
         return compressed;
     }

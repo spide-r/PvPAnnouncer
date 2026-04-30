@@ -7,7 +7,8 @@
       29496
     ],
     "shouts": [
-      "RoarNidhogg"
+      "RoarNidhogg",
+      "ADragon"
     ]
   },
   {
@@ -267,7 +268,10 @@
       "BloodAndAsh",
       "Damn",
       "There",
-      "DontLookAtMeSo"
+      "DontLookAtMeSo",
+      "Finished",
+      "WillHurt",
+      "KillingBlow"
     ]
   },
   {
@@ -293,7 +297,10 @@
       29081
     ],
     "shouts": [
-      "ChainDeathmatch"
+      "ChainDeathmatch",
+      "GotYou",
+      "WillHurt",
+      "FarEnough"
     ]
   },
   {
@@ -304,7 +311,9 @@
       29554
     ],
     "shouts": [
-      "PunishingAttackFusion"
+      "PunishingAttackFusion",
+      "DarknessTakeYou",
+      "HowAboutThis"
     ]
   },
   {

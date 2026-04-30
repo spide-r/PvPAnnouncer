@@ -1,12 +1,13 @@
 ﻿using System;
+using Dalamud.Game.DutyState;
 
 namespace PvPAnnouncer.Interfaces;
 
 public interface IPvPMatchManager : IDisposable
 {
-    void MatchEntered(ushort territory);
-    void MatchStarted(object? sender, ushort @ushort);
-    void MatchEnded(object? sender, ushort @ushort);
+    void MatchEntered(uint territory);
+    void MatchStarted(IDutyStateEventArgs args);
+    void MatchEnded(IDutyStateEventArgs args);
     void MatchLeft();
     void MatchQueued();
 
