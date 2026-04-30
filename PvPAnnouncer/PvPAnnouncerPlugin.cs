@@ -37,7 +37,7 @@ namespace PvPAnnouncer
                 }
 
                 PluginServices.ChatGui.Print(
-                    "Huge News! Emet-Selch, Haurchefant and Aymeric have been added as announcers!\nFurthermore, you can now create your own custom announcers, add their voicelines to events, and mute/remove default voicelines! Just check the new button at the top of the config.\nSubmit feedback if anything is unclear or seems like a bug. Your feedback helps make the plugin better!",
+                    "Happy 7.5! Zero's Mahjong voicelines (plus some extras) have been added Enable them in the plugin config!",
                     "PvPAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();

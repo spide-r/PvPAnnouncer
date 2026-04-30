@@ -318,6 +318,12 @@ namespace PvPAnnouncer
                 Version++;
             }
 
+            if (Version == 8)
+            {
+                ShowNotification = true;
+                Version++;
+            }
+
             _pluginInterface?.SavePluginConfig(this);
 #pragma warning restore CS0612 // Type or member is obsolete
         }

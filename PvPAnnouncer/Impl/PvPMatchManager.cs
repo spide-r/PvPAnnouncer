@@ -37,16 +37,18 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
         {
             try
             {
+                //7.5 - nodes were offset by 2
                 var addon = (AtkUnitBase*) args.Addon.Address;
-                var astraPercent = addon->GetTextNodeById(51)->NodeText.ToString();
+                var astraPercent = addon->GetTextNodeById(53)->NodeText.ToString();
                 astraPercent = astraPercent.Substring(0, astraPercent.Length - 1);
-                var umbraPercent = addon->GetTextNodeById(52)->NodeText.ToString();
+                var umbraPercent = addon->GetTextNodeById(54)->NodeText.ToString();
                 umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
 
+                //todo explain what im doing here cause this is unexplainable 
                 var astraColor =
-                    addon->GetTextNodeById(49)->EdgeColor
-                        .RGBA; //obj not set to an instance of an object hmmm - issue reading cc header
-                var umbraColor = addon->GetTextNodeById(50)->EdgeColor.RGBA;
+                    addon->GetTextNodeById(51)->EdgeColor
+                        .RGBA;
+                var umbraColor = addon->GetTextNodeById(52)->EdgeColor.RGBA;
                 //4286996785
                 // astra was blue, umbra was red
                 //08:20:48.837 | VRB | [PvPAnnouncer] 0.0 (4286996785) - 0.0 (4281348230)
@@ -163,7 +165,6 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
 
     public void MatchEntered(uint territory)
     {
-        //todo GOTCHA - this might not work due to territory event being changed from ushort to uint - test!
         _ourPoints = 0;
         _rightPoints = 0;
         _leftPoints = 0;
