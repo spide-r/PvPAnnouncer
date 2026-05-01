@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project Sdk="Dalamud.NET.Sdk/14.0.1">
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
     <PropertyGroup>
         <Authors>Spide-r</Authors>
         <Version>1.6.1.0</Version>
@@ -48,9 +48,4 @@
     <ItemGroup>
         <Folder Include="obj\x64\Debug\" />
     </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Update="DalamudPackager" Version="15.0.0"/>
-    </ItemGroup>
-
 </Project>
