@@ -63,13 +63,16 @@ public class ConfigWindow : Window, IDisposable
     {
         var disabled = _configuration.Disabled;
         var muted = _configuration.Muted;
+        var wolvesDen = _configuration.WolvesDen;
+        var pvp = _configuration.PvP;
+        var pve = _configuration.PvE;
+
         var hideBattleText = _configuration.HideBattleText;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
         var repeatVoiceLine = _configuration.RepeatVoiceLineQueue;
         var repeatEventCommentary = _configuration.RepeatEventCommentaryQueue;
         var animationDelayFactor = _configuration.AnimationDelayFactor;
-        var wolvesDen = _configuration.WolvesDen;
         var notify = _configuration.Notify;
         var icon = _configuration.WantsIcon;
 
@@ -155,6 +158,18 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
         {
             _configuration.WolvesDen = wolvesDen;
+            _configuration.Save();
+        }
+
+        if (ImGui.Checkbox("Use Voice Lines in PvP Instances", ref pvp))
+        {
+            _configuration.PvP = pvp;
+            _configuration.Save();
+        }
+
+        if (ImGui.Checkbox("Use Voice Lines in PvE Instances", ref pve))
+        {
+            _configuration.PvE = pve;
             _configuration.Save();
         }
 

@@ -27,7 +27,6 @@ namespace PvPAnnouncer
 
         public HashSet<string> DesiredAttributes { get; set; } = [];
 
-        public bool WolvesDen { get; set; } = false;
         public bool Notify { get; set; } = true;
 
         public List<string> BlacklistedEvents { get; set; } = [];
@@ -45,6 +44,11 @@ namespace PvPAnnouncer
         public int DupeVoicelineChoice { get; set; } = 0;
         public int DupeMappingChoice { get; set; } = 0;
         public bool ExportSingleCharacter { get; set; } = false;
+
+        public bool Overworld { get; set; } = false;
+        public bool PvE { get; set; } = true;
+        public bool PvP { get; set; } = true;
+        public bool WolvesDen { get; set; } = false;
 
 
         public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
