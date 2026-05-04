@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -35,6 +34,13 @@ public unsafe class ActionEffectMessage(
     public Action? GetAction()
     {
         return PluginServices.DataManager.GetExcelSheet<Action>().GetRowOrDefault(ActionId);
+    }
+
+    public bool IsLimitBreak()
+    {
+        if (!GetAction().HasValue) return false;
+        var cat = GetAction().Value.ActionCategory.Value;
+        return cat.RowId is 9 or 15;
     }
 
     public IGameObject? GetSourceGameObject()

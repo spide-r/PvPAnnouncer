@@ -44,7 +44,7 @@ public class AllyBurstedEvent : PvPEvent
                         return false;
                     }
 
-                    if (!ActionIds.IsBurst(pp.ActionId) && !pp.CritsOrDirectHits())
+                    if (!ActionIds.IsBurst(pp.ActionId) && !pp.CritsOrDirectHits() && !pp.IsLimitBreak())
                     {
                         return false;
                     }

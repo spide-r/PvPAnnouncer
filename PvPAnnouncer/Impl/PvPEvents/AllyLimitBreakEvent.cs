@@ -1,5 +1,4 @@
-﻿using PvPAnnouncer.Data;
-using PvPAnnouncer.Impl.Messages;
+﻿using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -19,7 +18,7 @@ public class AllyLimitBreakEvent : PvPActionEvent
         {
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
-                return ActionIds.IsLimitBreak(pp.ActionId);
+                return pp.IsLimitBreak();
             }
         }
 
