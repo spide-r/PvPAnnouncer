@@ -76,12 +76,12 @@ internal class PluginServices
     {
         pluginInterface.Create<PluginServices>();
         Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
-        PvPEventBroker = new PvPEventBroker();
-        PvPEventHooksPublisher = new PvPEventHooksPublisher();
+        PvPEventBroker = new EventBroker();
+        PvPEventHooksPublisher = new EventHooksPublisher();
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
         Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig);
-        PvPMatchManager = new PvPMatchManager(PlayerStateTracker);
+        PvPMatchManager = new MatchManager(PlayerStateTracker);
 
         EventShoutcastMapping = new EventShoutcastMapping();
         ShoutcastRepository = new ShoutcastRepository(DataManager);

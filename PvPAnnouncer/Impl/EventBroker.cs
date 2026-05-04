@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPEventBroker : IPvPEventBroker
+public class EventBroker : IPvPEventBroker
 {
     private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
     private string _lastUsedAction = "";

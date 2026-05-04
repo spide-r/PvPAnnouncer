@@ -10,7 +10,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
+public class MatchManager : IPvPMatchManager, IPvPEventPublisher
 {
     private int _leftPoints = 0;
     private int _rightPoints = 0;
@@ -19,7 +19,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
     private double _enemyProgress = 0.0;
     private readonly IPlayerStateTracker _playerState;
 
-    public PvPMatchManager(IPlayerStateTracker playerState)
+    public MatchManager(IPlayerStateTracker playerState)
     {
         _playerState = playerState;
         PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);

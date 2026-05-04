@@ -4,11 +4,10 @@ using Dalamud.Utility.Signatures;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
-using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPEventHooksPublisher : IPvPEventPublisher, IDisposable
+public class EventHooksPublisher : IPvPEventPublisher, IDisposable
 {
     private unsafe delegate void ProcessPacketActionEffectDelegate(
         int sourceId, IntPtr sourceCharacter, IntPtr pos, ActionEffectHeader* effectHeader, ActionEffect* effectArray,
@@ -108,7 +107,7 @@ public class PvPEventHooksPublisher : IPvPEventPublisher, IDisposable
         }
     }
 
-    public PvPEventHooksPublisher()
+    public EventHooksPublisher()
     {
         PluginServices.GameInteropProvider.InitializeFromAttributes(this);
         processPacketActionEffectHook.Enable();
