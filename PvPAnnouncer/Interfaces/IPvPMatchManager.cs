@@ -5,10 +5,10 @@ namespace PvPAnnouncer.Interfaces;
 
 public interface IPvPMatchManager : IDisposable
 {
-    void MatchEntered(uint territory);
-    void MatchStarted(IDutyStateEventArgs args);
-    void MatchEnded(IDutyStateEventArgs args);
-    void MatchLeft();
+    void PvPMatchEntered(uint territory);
+    void DutyStarted(IDutyStateEventArgs args);
+    void DutyCompleted(IDutyStateEventArgs args);
+    void PvPMatchLeft();
     void MatchQueued();
 
     bool IsMonitoredUser(int userId);

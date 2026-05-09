@@ -81,7 +81,7 @@ internal class PluginServices
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
         Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig);
-        PvPMatchManager = new MatchManager(PlayerStateTracker);
+        PvPMatchManager = new DutyManager(PlayerStateTracker);
 
         EventShoutcastMapping = new EventShoutcastMapping();
         ShoutcastRepository = new ShoutcastRepository(DataManager);

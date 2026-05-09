@@ -1,5 +1,4 @@
-﻿using System;
-using PvPAnnouncer.Impl.Messages;
+﻿using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -15,6 +14,6 @@ public class MatchEndEvent : PvPMatchEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        return message is MatchEndMessage;
+        return message is DutyEndMessage;
     }
 }
