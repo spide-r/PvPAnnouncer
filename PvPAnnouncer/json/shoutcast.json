@@ -2440,7 +2440,7 @@
     "id": "ProudYetIgnorant",
     "icon": "073008",
     "shoutcaster": "Alphinaud",
-    "soundPath": "sound/voice/vo_line/8291021",
+    "soundPath": "sound/voice/vo_line/8291020",
     "duration": "5",
     "transcription": [
       {
@@ -7227,7 +7227,7 @@
     "duration": "3",
     "style": "6",
     "transcription": {
-      "en": "Not Finished Yet..."
+      "en": "Not finished yet..."
     },
     "soundPath": "sound/voice/vo_line/8203450"
   },
@@ -7260,7 +7260,7 @@
     "duration": "2",
     "style": "6",
     "transcription": {
-      "en": "Got You!"
+      "en": "Got you!"
     },
     "soundPath": "sound/voice/vo_line/8203456"
   },
