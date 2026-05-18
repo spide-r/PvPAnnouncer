@@ -75,7 +75,7 @@ public class EventBroker : IPvPEventBroker
 
     private void EmitToSubscribers(PvPEvent ee)
     {
-        PluginServices.Announcer.ReceivePvPEvent(ee);
+        PluginServices.Announcer.ReceiveEvent(ee);
     }
 
     public void RegisterListener(PvPEvent e)

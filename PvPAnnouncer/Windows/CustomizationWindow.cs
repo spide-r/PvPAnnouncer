@@ -411,7 +411,7 @@ public class CustomizationWindow : Window, IDisposable
             {
                 try
                 {
-                    PluginServices.Announcer.ReceivePvPEvent(true, ev);
+                    PluginServices.Announcer.ReceiveEvent(true, ev);
                     PluginServices.Announcer.ClearQueue();
                 }
                 catch (Exception e)

@@ -98,7 +98,7 @@ public class PlayerStateTracker : IPlayerStateTracker
         WasFalling = isFalling;
     }
 
-    public bool IsPvP()
+    public bool IsPvP() //todo determine if we need to change/remove this 
     {
         if (PluginServices.Config.WolvesDen)
         {

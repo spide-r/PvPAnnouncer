@@ -66,6 +66,7 @@ public class ConfigWindow : Window, IDisposable
         var wolvesDen = _configuration.WolvesDen;
         var pvp = _configuration.PvP;
         var pve = _configuration.PvE;
+        var overworld = _configuration.Overworld;
 
         var hideBattleText = _configuration.HideBattleText;
         var cooldown = _configuration.CooldownSeconds;
@@ -158,6 +159,13 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
         {
             _configuration.WolvesDen = wolvesDen;
+            _configuration.Save();
+        }
+
+
+        if (ImGui.Checkbox("Use Voice Lines in Overworld Areas", ref overworld))
+        {
+            _configuration.Overworld = overworld;
             _configuration.Save();
         }
 
