@@ -19,11 +19,6 @@ public class EventBroker : IPvPEventBroker
             return;
         }
 
-        if (!PluginServices.PlayerStateTracker.IsPvP())
-        {
-            return;
-        }
-
         if (message is ActionEffectMessage aaa)
         {
             string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " +

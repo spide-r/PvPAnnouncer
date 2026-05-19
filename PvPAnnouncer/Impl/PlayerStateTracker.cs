@@ -54,11 +54,6 @@ public class PlayerStateTracker : IPlayerStateTracker
             return;
         }
 
-        if (!PluginServices.ClientState.IsPvP)
-        {
-            return;
-        }
-
         // Attributed to Oof Plugin
         if (PluginServices.Condition[ConditionFlag.BetweenAreas] ||
             PluginServices.Condition[ConditionFlag.BetweenAreas51] ||
@@ -98,7 +93,9 @@ public class PlayerStateTracker : IPlayerStateTracker
         WasFalling = isFalling;
     }
 
-    public bool IsPvP() //todo determine if we need to change/remove this 
+    //todo actor control category 80 might be force kill from the game/arena
+
+    public bool IsPvP()
     {
         if (PluginServices.Config.WolvesDen)
         {

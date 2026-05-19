@@ -25,6 +25,7 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
 
             if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
             {
+                //todo critsOrDirectHits may be too touchy when in a pve duty 
                 return pp.CritsOrDirectHits() || pp.IsLimitBreak() ||
                        ActionIds.IsBurst(pp.ActionId);
             }

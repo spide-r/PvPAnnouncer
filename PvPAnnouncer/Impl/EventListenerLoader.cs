@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Impl.PvEEvents;
 using PvPAnnouncer.Impl.PvPEvents;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -28,7 +25,9 @@ public class EventListenerLoader : IEventListenerLoader
         new MatchEndEvent(),
         new MatchStartEvent(),
         new EnteredMechEvent(),
-        // new MatchStormyWeatherEvent(), hidden b/c it only activated at start of the match and there was a gotcha where events would fire before pvp started - will probably delete 
+        new DutyRecommenceEvent(),
+        new VulnStackEvent(),
+        new EnemyHitCcEvent(),
         new MaxBattleFeverEvent()
     ];
 

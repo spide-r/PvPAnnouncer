@@ -39,7 +39,6 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
     private bool ShouldAnnounce() // this function will determine if the settings let us 
     {
-        //todo
         var overworld = PluginServices.Config.Overworld;
         var pvp = PluginServices.Config.PvP;
         var pve = PluginServices.Config.PvE;
@@ -59,7 +58,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return pve;
 
         //not started and/or in overworld
-        //todo - this doesnt catch the tiny condition where waiting in a duty still allows announcers to talk - this needs to be fixed!!!!!
+        //GOTCHA - this doesnt catch the tiny condition where waiting in a duty still allows announcers to talk - this needs to be fixed!!!!!
         return overworld;
     }
 
@@ -100,7 +99,8 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         {
             var id = pvpEvent.Id;
             //duty not started, dont care about wolves den
-            if (!(id.Equals("MatchVictoryEvent") || id.Equals("MatchLossEvent") || id.Equals("MatchEndEvent")))
+            if (!(id.Equals("MatchVictoryEvent") || id.Equals("DutyRecommenceEvent") || id.Equals("MatchLossEvent") ||
+                  id.Equals("MatchEndEvent")))
             {
                 //not match victory, loss or standard loss - dont want it at the start or at the end of a duty
                 PluginServices.PluginLog.Verbose("Duty not started!");

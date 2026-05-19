@@ -28,7 +28,14 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
         PluginServices.ClientState.EnterPvP += EnterPvP;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
         PluginServices.DutyState.DutyStarted += DutyStarted;
+        PluginServices.DutyState.DutyRecommenced += DutyStateOnDutyRecommenced;
+
         PluginServices.DutyState.DutyCompleted += DutyCompleted;
+    }
+
+    private void DutyStateOnDutyRecommenced(IDutyStateEventArgs args)
+    {
+        EmitToBroker(new DutyRecommenceMessage());
     }
 
     private void HandleCCHeaderPreDraw(AddonEvent type, AddonArgs args)
@@ -44,7 +51,7 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
                 var umbraPercent = addon->GetTextNodeById(54)->NodeText.ToString();
                 umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
 
-                //todo explain what im doing here cause this is unexplainable 
+                //todo explain what im doing here cause this is unacceptable 
                 var astraColor =
                     addon->GetTextNodeById(51)->EdgeColor
                         .RGBA;
@@ -106,7 +113,6 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
     private void ClientStateOnCfPop(ContentFinderCondition obj)
     {
         PluginServices.PluginLog.Verbose("OnCfPop");
-        MatchQueued();
     }
 
     private void ClientStateOnTerritoryChanged(uint territory)
@@ -206,10 +212,6 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
         EmitToBroker(new MatchLeftMessage());
     }
 
-    public void MatchQueued()
-    {
-    }
-
     public void EmitToBroker(IMessage pvpEvent)
     {
         PluginServices.PvPEventBroker.IngestMessage(pvpEvent);
@@ -222,6 +224,7 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
         PluginServices.ClientState.CfPop -= ClientStateOnCfPop;
         PluginServices.DutyState.DutyStarted -= DutyStarted;
         PluginServices.DutyState.DutyCompleted -= DutyCompleted;
+        PluginServices.DutyState.DutyRecommenced -= DutyStateOnDutyRecommenced;
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPMKSHeader", HandleCCHeaderPreDraw);
     }

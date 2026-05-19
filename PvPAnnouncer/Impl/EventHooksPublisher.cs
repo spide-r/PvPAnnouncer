@@ -33,6 +33,25 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
         {
             ActionEffectMessage actionEffect = new ActionEffectMessage(sourceId, sourceCharacter, pos, effectHeader,
                 effectArray, effectTrail);
+            var id = 0;
+            foreach (var targetId in actionEffect.GetTargetIds())
+                //value 1789 for vuln up
+                if (PluginServices.PvPMatchManager.IsMonitoredUser(targetId))
+                    foreach (var actionEffectVar in actionEffect.GetEffects(targetId))
+                        if (actionEffectVar.EffectType ==
+                            ActionEffectType
+                                .ApplyStatusEffectTarget) //someone applied a status effect to our monitored user
+                        {
+                            var effectValue = actionEffectVar.Value;
+                            PluginServices.PluginLog.Verbose($"Enemy Applied Status: {effectValue}");
+                            EmitToBroker(new EnemyAppliedStatusMessage(effectValue));
+                            return;
+                        }
+
+            var s = "S:" + actionEffect.SourceId + " SN: " + actionEffect.GetSource() + "|A: " +
+                    actionEffect.ActionId + "|AN: " +
+                    actionEffect.GetAction()?.Name.ToString() + " |ET: " + "EA: ";
+            PluginServices.PluginLog.Verbose(s);
             EmitToBroker(actionEffect);
         }
         catch (Exception e)
@@ -43,6 +62,7 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
 
     //GOTCHA: some of these are labeled incorrectly but we only care about entityid and type 
     //Actor Control is much much more complicated than previously thought, apparently theres 3 different ways each of these args can be used - yikes!
+    //https://github.com/awgil/ffxiv_bossmod/blob/ccd339625b6d5f561cfccde1f82aeff3693c67ea/BossMod/Network/ServerIPC.cs#L503
     private void ProcessPacketActorControlDetour(uint entityId, uint category, uint arg1, uint arg2, uint arg3,
         uint arg4, uint arg5, uint arg6, uint arg7, uint arg8, ulong targetId, byte isRecorded)
     {
@@ -60,13 +80,10 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
                     $"a2 {arg2}, a3 {arg3}, a4 {arg4}, a5 {arg5}, a6 {arg6}, a7 {arg7}, a8 {arg8}, targetId {targetId}, flag {isRecorded}");
             }
 
+            if (!PluginServices.PvPMatchManager.IsMonitoredUser(entityId)) return;
+
             if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
             {
-                if (!PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
-                {
-                    return;
-                }
-
                 if (arg1 == StatusIds.BH5)
                 {
                     EmitToBroker(new BattleHighMessage(5));
@@ -95,6 +112,10 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
                 {
                     EmitToBroker(new SoaringMessage((int) arg2));
                 }
+            }
+            else if (category == 80) //todo - this might be a gotcha - is effect 80 guaranteed to be a zone out?
+            {
+                EmitToBroker(new UserZoneOutMessage());
             }
             else
             {

@@ -8,7 +8,7 @@ public class AllyZoneOutEvent : PvPActorEvent
 {
     public AllyZoneOutEvent()
     {
-        Name = "Fatal Fall Damage";
+        Name = "Fatal Fall Damage/Hit a Death wall";
         Id = "AllyZoneOutEvent";
     }
 

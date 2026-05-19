@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PvPAnnouncer.Data;
+﻿namespace PvPAnnouncer.Data;
 
 public static class StatusIds
 {
@@ -14,4 +12,5 @@ public static class StatusIds
     public static readonly uint BH5 = 2135;
     public static readonly uint Soaring = 1465;
     public static readonly uint FlyingHigh = 1730;
+    public static readonly uint VulnUp = 999999;
 }
