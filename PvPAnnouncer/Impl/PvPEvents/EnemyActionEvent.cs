@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using PvPAnnouncer.Data;
+﻿using System.Linq;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -29,7 +27,7 @@ public class EnemyActionEvent : PvPActionEvent
 
             foreach (var target in message.GetTargetIds())
             {
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
                     return true;
                 }

@@ -7,7 +7,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class EventHooksPublisher : IPvPEventPublisher, IDisposable
+public class EventHooksPublisher : IEventPublisher, IDisposable
 {
     private unsafe delegate void ProcessPacketActionEffectDelegate(
         int sourceId, IntPtr sourceCharacter, IntPtr pos, ActionEffectHeader* effectHeader, ActionEffect* effectArray,
@@ -33,10 +33,9 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
         {
             ActionEffectMessage actionEffect = new ActionEffectMessage(sourceId, sourceCharacter, pos, effectHeader,
                 effectArray, effectTrail);
-            var id = 0;
             foreach (var targetId in actionEffect.GetTargetIds())
                 //value 1789 for vuln up
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(targetId))
+                if (PluginServices.DutyManager.IsMonitoredUser(targetId))
                     foreach (var actionEffectVar in actionEffect.GetEffects(targetId))
                         if (actionEffectVar.EffectType ==
                             ActionEffectType
@@ -45,7 +44,6 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
                             var effectValue = actionEffectVar.Value;
                             PluginServices.PluginLog.Verbose($"Enemy Applied Status: {effectValue}");
                             EmitToBroker(new EnemyAppliedStatusMessage(effectValue));
-                            return;
                         }
 
             var s = "S:" + actionEffect.SourceId + " SN: " + actionEffect.GetSource() + "|A: " +
@@ -73,14 +71,14 @@ public class EventHooksPublisher : IPvPEventPublisher, IDisposable
             var actorControlMessage =
                 new ActorControlMessage(entityId, category);
 
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(entityId))
+            if (PluginServices.DutyManager.IsMonitoredUser(entityId))
             {
                 PluginServices.PluginLog.Verbose(
                     $"Processing Actor Control entityId {entityId},  category {(ActorControlCategory) category}, arg1 {arg1}, " +
                     $"a2 {arg2}, a3 {arg3}, a4 {arg4}, a5 {arg5}, a6 {arg6}, a7 {arg7}, a8 {arg8}, targetId {targetId}, flag {isRecorded}");
             }
 
-            if (!PluginServices.PvPMatchManager.IsMonitoredUser(entityId)) return;
+            if (!PluginServices.DutyManager.IsMonitoredUser(entityId)) return;
 
             if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
             {

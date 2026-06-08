@@ -20,7 +20,7 @@ public enum ActionEffectType : byte
     MpGain = 11,
     TpLoss = 12,
     TpGain = 13,
-    ApplyStatusEffectTarget = 14, //todo this is what you need in order to determine if a status is applied and how
+    ApplyStatusEffectTarget = 14,
     ApplyStatusEffectSource = 15,
     RecoveredFromStatusEffect = 16,
     LoseStatusEffectTarget = 17,

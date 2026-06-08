@@ -99,8 +99,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         {
             var id = pvpEvent.Id;
             //duty not started, dont care about wolves den
-            if (!(id.Equals("MatchVictoryEvent") || id.Equals("DutyRecommenceEvent") || id.Equals("MatchLossEvent") ||
-                  id.Equals("MatchEndEvent")))
+            if (!(id.Equals("MatchVictoryEvent") || id.Equals("DutyRecommenceEvent") || id.Equals("MatchLossEvent")))
             {
                 //not match victory, loss or standard loss - dont want it at the start or at the end of a duty
                 PluginServices.PluginLog.Verbose("Duty not started!");

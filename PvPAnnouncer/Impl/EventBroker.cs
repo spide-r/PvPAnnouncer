@@ -23,7 +23,7 @@ public class EventBroker : IPvPEventBroker
         {
             string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " +
                        aaa.GetAction()?.Name.ToString();
-            bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(aaa.SourceId);
+            var shouldEmit = PluginServices.DutyManager.IsMonitoredUser(aaa.SourceId);
             if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
@@ -32,7 +32,7 @@ public class EventBroker : IPvPEventBroker
         }
         else if (message is ActorControlMessage ac)
         {
-            bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(ac.EntityId);
+            var shouldEmit = PluginServices.DutyManager.IsMonitoredUser(ac.EntityId);
             if (shouldEmit)
             {
                 if (ac.GetCategory() != ActorControlCategory.DirectorUpdate)

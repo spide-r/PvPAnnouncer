@@ -1,5 +1,4 @@
-﻿using System;
-using PvPAnnouncer.Data;
+﻿using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -30,7 +29,7 @@ public class AllyPulledByDrkEvent : PvPActionEvent
                     PluginServices.PluginLog.Verbose($"ActionEffect Drk Pull on {target}: {actionEffectType}");
                 }
 
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
                     if (pp.GetEffectTypes(target).Contains(ActionEffectType.KbAndDrawIn))
                     {

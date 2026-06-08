@@ -50,9 +50,9 @@ internal class PluginServices
     [PluginService] internal static ITextureProvider TextureProvider { get; private set; }
 
     internal static IPvPEventBroker PvPEventBroker { get; private set; }
-    internal static IPvPMatchManager PvPMatchManager { get; private set; }
+    internal static IDutyManager DutyManager { get; private set; }
     internal static IAnnouncer Announcer { get; private set; }
-    internal static IPvPEventPublisher PvPEventHooksPublisher { get; private set; }
+    internal static IEventPublisher EventHooksPublisher { get; private set; }
     internal static ISoundManager SoundManager { get; private set; }
     internal static Configuration Config { get; private set; }
     internal static IEventListenerLoader ListenerLoader { get; private set; }
@@ -77,11 +77,11 @@ internal class PluginServices
         pluginInterface.Create<PluginServices>();
         Config = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         PvPEventBroker = new EventBroker();
-        PvPEventHooksPublisher = new EventHooksPublisher();
+        EventHooksPublisher = new EventHooksPublisher();
         SoundManager = new SoundManager();
         PlayerStateTracker = new PlayerStateTracker();
         Config.Initialize(pluginInterface, PlayerStateTracker, GameConfig);
-        PvPMatchManager = new DutyManager(PlayerStateTracker);
+        DutyManager = new DutyManager(PlayerStateTracker);
 
         EventShoutcastMapping = new EventShoutcastMapping();
         ShoutcastRepository = new ShoutcastRepository(DataManager);

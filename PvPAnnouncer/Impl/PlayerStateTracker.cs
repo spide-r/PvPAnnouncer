@@ -93,8 +93,6 @@ public class PlayerStateTracker : IPlayerStateTracker
         WasFalling = isFalling;
     }
 
-    //todo actor control category 80 might be force kill from the game/arena
-
     public bool IsPvP()
     {
         if (PluginServices.Config.WolvesDen)

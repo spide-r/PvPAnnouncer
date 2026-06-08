@@ -16,7 +16,7 @@ public class AllyLimitBreakEvent : PvPActionEvent
     {
         if (message is ActionEffectMessage pp)
         {
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(pp.SourceId))
+            if (PluginServices.DutyManager.IsMonitoredUser(pp.SourceId))
             {
                 return pp.IsLimitBreak();
             }

@@ -247,12 +247,7 @@ public class JsonLoader(
 
         if (j["transcription"] != null)
         {
-            //todo BODGE due to transcription errors
-            Dictionary<string, string>? dict;
-            if (j["transcription"] is JsonArray transcriptionArr)
-                dict = transcriptionArr[0]?.Deserialize<Dictionary<string, string>>();
-            else
-                dict = j["transcription"]?.Deserialize<Dictionary<string, string>>();
+            var dict = j["transcription"]?.Deserialize<Dictionary<string, string>>();
             builder.WithTranscription(dict ?? []);
         }
 

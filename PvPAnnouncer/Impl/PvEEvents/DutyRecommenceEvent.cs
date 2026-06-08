@@ -4,7 +4,7 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvEEvents;
 
-public class DutyRecommenceEvent : PvPActorEvent
+public class DutyRecommenceEvent : PvPMatchEvent
 {
     public DutyRecommenceEvent()
     {

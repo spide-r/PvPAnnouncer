@@ -31,7 +31,7 @@ public class AllyBurstedEvent : PvPEvent
             //PluginServices.PluginLog.Verbose($"{_lastHit}, {_hitters.Count}");
             foreach (var target in pp.GetTargetIds())
             {
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
                     var unixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                     if (unixTime - _lastHit > 3)

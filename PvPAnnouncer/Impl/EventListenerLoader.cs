@@ -22,7 +22,6 @@ public class EventListenerLoader : IEventListenerLoader
         new AllyResurrectEvent(),
         new AllyZoneOutEvent(),
         new EnemyMissedCc(),
-        new MatchEndEvent(),
         new MatchStartEvent(),
         new EnteredMechEvent(),
         new DutyRecommenceEvent(),

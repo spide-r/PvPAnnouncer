@@ -50,6 +50,9 @@ namespace PvPAnnouncer
         public bool PvP { get; set; } = true;
         public bool WolvesDen { get; set; } = false;
 
+        public bool PartyMembersPvP { get; set; } = false;
+        public bool PartyMembersPvE { get; set; } = true;
+
 
         public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
         public Dictionary<string, string> CustomEvents { get; set; } = []; //unused for now

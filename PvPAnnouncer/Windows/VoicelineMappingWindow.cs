@@ -10,7 +10,7 @@ namespace PvPAnnouncer.Windows;
 public class VoicelineMappingWindow : Window, IDisposable
 {
     public VoicelineMappingWindow() : base(
-        "PvPAnnouncer Mapping Window")
+        "NPCAnnouncer Mapping Window")
     {
         this.SizeConstraints = new WindowSizeConstraints
         {

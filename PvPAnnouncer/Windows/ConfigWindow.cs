@@ -68,6 +68,9 @@ public class ConfigWindow : Window, IDisposable
         var pve = _configuration.PvE;
         var overworld = _configuration.Overworld;
 
+        var partyPvE = _configuration.PartyMembersPvE;
+        var partyPvP = _configuration.PartyMembersPvP;
+
         var hideBattleText = _configuration.HideBattleText;
         var cooldown = _configuration.CooldownSeconds;
         var percent = _configuration.Percent;
@@ -190,6 +193,20 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Notify when Voice Volume is muted", ref notify))
         {
             _configuration.Notify = notify;
+            _configuration.Save();
+        }
+
+        ImGui.Separator();
+
+        if (ImGui.Checkbox("Announcers should react to your party in PvP", ref partyPvP))
+        {
+            _configuration.PartyMembersPvP = partyPvP;
+            _configuration.Save();
+        }
+
+        if (ImGui.Checkbox("Announcers should react to your party in PvE", ref partyPvE))
+        {
+            _configuration.PartyMembersPvE = partyPvE;
             _configuration.Save();
         }
 

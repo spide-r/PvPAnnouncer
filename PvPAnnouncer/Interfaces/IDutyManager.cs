@@ -3,7 +3,7 @@ using Dalamud.Game.DutyState;
 
 namespace PvPAnnouncer.Interfaces;
 
-public interface IPvPMatchManager : IDisposable
+public interface IDutyManager : IDisposable
 {
     void PvPMatchEntered(uint territory);
     void DutyStarted(IDutyStateEventArgs args);

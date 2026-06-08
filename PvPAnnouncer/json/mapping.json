@@ -650,27 +650,6 @@
     ]
   },
   {
-    "eventId": "MatchEndEvent",
-    "shouts": [
-      "AllOverUntilNextTime",
-      "HoldYourHeadHigh",
-      "OnlyPossibleOutcome",
-      "WellDone",
-      "CouldHaveBeenWorse",
-      "RaiseAGlassVictory",
-      "QuiteTheStatement",
-      "HeartRacingKrile",
-      "AllRightYouDidGreat",
-      "DeepestThanks",
-      "FutureOfEorzea",
-      "There",
-      "SoWhatNow",
-      "SatisfiedZero",
-      "FaithNotMisplaced",
-      "Diversion"
-    ]
-  },
-  {
     "eventId": "MatchLossEvent",
     "shouts": [
       "MjPainfulToWatch",
@@ -868,6 +847,9 @@
   {
     "eventId": "MatchVictoryEvent",
     "shouts": [
+      "AllOverUntilNextTime",
+      "FutureOfEorzea",
+      "There",
       "GenericVictory",
       "NewGcBornVictory",
       "RobotKo",

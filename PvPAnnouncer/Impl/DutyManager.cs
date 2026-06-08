@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.DutyState;
@@ -10,7 +11,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class DutyManager : IPvPMatchManager, IPvPEventPublisher
+public class DutyManager : IDutyManager, IEventPublisher
 {
     private int _leftPoints = 0;
     private int _rightPoints = 0;
@@ -153,7 +154,21 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
 
     public bool IsMonitoredUser(uint entityId)
     {
-        return PluginServices.ObjectTable.LocalPlayer != null && entityId == PluginServices.PlayerState.EntityId;
+        if (PluginServices.ObjectTable.LocalPlayer != null &&
+            entityId == PluginServices.PlayerState.EntityId) return true;
+
+        if (PluginServices.PlayerStateTracker.IsPvP() && PluginServices.Config.PartyMembersPvP)
+            return PlayerInParty(entityId);
+
+        if (!PluginServices.PlayerStateTracker.IsPvP() && PluginServices.Config.PartyMembersPvE)
+            return PlayerInParty(entityId);
+
+        return false;
+    }
+
+    private bool PlayerInParty(uint entityId)
+    {
+        return PluginServices.PartyList.Any(partyMember => partyMember.EntityId == entityId);
     }
 
     private void CheckWin(bool w)
@@ -203,7 +218,7 @@ public class DutyManager : IPvPMatchManager, IPvPEventPublisher
         }
         else
         {
-            EmitToBroker(new DutyEndMessage());
+            EmitToBroker(new MatchVictoryMessage()); // pve - default to victory
         }
     }
 
