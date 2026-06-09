@@ -22,7 +22,7 @@ public class ConfigWindow : Window, IDisposable
 
     public ConfigWindow(IShoutcastRepository shoutcastRepository, Configuration pluginConfiguration,
         IEventShoutcastMapping eventShoutcastMapping) : base(
-        "PvPAnnouncer Configuration")
+        "NPCAnnouncer Configuration")
     {
         SizeConstraints = new WindowSizeConstraints
         {
@@ -198,13 +198,13 @@ public class ConfigWindow : Window, IDisposable
 
         ImGui.Separator();
 
-        if (ImGui.Checkbox("Announcers should react to your party in PvP", ref partyPvP))
+        if (ImGui.Checkbox("Announcers react to your party in PvP", ref partyPvP))
         {
             _configuration.PartyMembersPvP = partyPvP;
             _configuration.Save();
         }
 
-        if (ImGui.Checkbox("Announcers should react to your party in PvE", ref partyPvE))
+        if (ImGui.Checkbox("Announcers react to your party in PvE", ref partyPvE))
         {
             _configuration.PartyMembersPvE = partyPvE;
             _configuration.Save();

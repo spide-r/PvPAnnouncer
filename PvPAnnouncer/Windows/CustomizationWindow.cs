@@ -39,6 +39,15 @@ public class CustomizationWindow : Window, IDisposable
         var blEvents = _configuration.BlacklistedEvents;
 
         ImGui.TextWrapped(
+            "If you need to edit or delete a custom shoutcast, or ensure that a pre-made shoutcast is never shown to you, you can do so here:");
+
+        if (ImGui.Button("Mute, Delete & Edit Shoutcast")) PluginServices.VoicelineManagementWindow.Toggle();
+
+        ImGui.TextWrapped("If you wish to browse existing shoutcasts, you can do so here:");
+        if (ImGui.Button("Open Full Shoutcast List")) PluginServices.LoadedVoicelineWindow.Toggle();
+
+        ImGui.Separator();
+        ImGui.TextWrapped(
             "- In order for the plugin to play a voiceline, it needs an audio file and a text transcription.");
         ImGui.TextWrapped(
             "- While some voice line audio is transcribed neatly, most audio is independent from its transcription.");
@@ -59,14 +68,6 @@ public class CustomizationWindow : Window, IDisposable
         {
             PluginServices.VoicelineMappingWindow.Toggle();
         }
-
-        ImGui.TextWrapped(
-            "If you need to edit or delete a custom shoutcast, or ensure that a pre-made shoutcast is never shown to you, you can do so here:");
-
-        if (ImGui.Button("Mute, Delete & Edit Shoutcast")) PluginServices.VoicelineManagementWindow.Toggle();
-
-        ImGui.TextWrapped("If you wish to browse existing shoutcasts, you can do so here:");
-        if (ImGui.Button("Open Full Shoutcast List")) PluginServices.LoadedVoicelineWindow.Toggle();
 
         ImGui.Separator();
         ImGui.TextWrapped(

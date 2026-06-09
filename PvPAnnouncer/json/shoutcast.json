@@ -2165,7 +2165,7 @@
     "soundPath": "sound/voice/vo_line/8291006",
     "duration": "3",
     "transcription": {
-      "en": "Yes! Praise the twelve."
+      "en": "Yes! Praise the Twelve."
     }
   },
   {
@@ -2295,7 +2295,7 @@
     "soundPath": "sound/voice/vo_line/8291019",
     "duration": "5",
     "transcription": {
-      "en": "You played well my friend. You may hold your head high."
+      "en": "You played well, my friend. You may hold your head high."
     }
   },
   {
@@ -2334,9 +2334,7 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8201085",
     "duration": "2",
-    "transcription": {
-      "en": "Pull Yourself together!"
-    }
+    "npcYell": "3088"
   },
   {
     "id": "FocusRelease",
@@ -2449,7 +2447,7 @@
     "soundPath": "sound/voice/vo_line/8291025",
     "duration": "3",
     "transcription": {
-      "en": "We won't let them get away with that of course."
+      "en": "We won't let them get away with that, of course."
     }
   },
   {
@@ -2469,7 +2467,7 @@
     "soundPath": "sound/voice/vo_line/8291027",
     "duration": "4",
     "transcription": {
-      "en": "It's getting crowded but we'll win this yet."
+      "en": "It's getting crowded, but we'll win this yet."
     }
   },
   {
@@ -2489,7 +2487,7 @@
     "soundPath": "sound/voice/vo_line/8291030",
     "duration": "3",
     "transcription": {
-      "en": "What?! oh we won't soon forget that."
+      "en": "What?! Oh we won't soon forget that."
     }
   },
   {
@@ -2509,7 +2507,7 @@
     "soundPath": "sound/voice/vo_line/8291033",
     "duration": "4",
     "transcription": {
-      "en": "Amazing! A performance worthy of grandfather in his prime!"
+      "en": "Amazing! A performance worthy of Grandfather in his prime!"
     }
   },
   {
@@ -2606,7 +2604,7 @@
     "id": "ScramblingToKeepUp",
     "icon": "073036",
     "shoutcaster": "Alisaie",
-    "soundPath": "sound/voice/vo_line/8291044",
+    "soundPath": "sound/voice/vo_line/8291043",
     "duration": "4",
     "transcription": {
       "en": "I must say I'm not used to seeing you scrambling to keep up."
@@ -2619,7 +2617,7 @@
     "soundPath": "sound/voice/vo_line/8291044",
     "duration": "5",
     "transcription": {
-      "en": "We won't lose next time! keep at it and we'll be the ones laughing in the end."
+      "en": "We won't lose next time! Keep at it and we'll be the ones laughing in the end."
     }
   },
   {
@@ -2727,7 +2725,7 @@
     "soundPath": "sound/voice/vo_line/8291049",
     "duration": "4",
     "transcription": {
-      "en": "They've gained on us but we'll win in the end."
+      "en": "They've gained on us, but we'll win in the end."
     }
   },
   {
@@ -2777,7 +2775,7 @@
     "soundPath": "sound/voice/vo_line/8291054",
     "duration": "4",
     "transcription": {
-      "en": "Not the most disastrous outcome to be fair."
+      "en": "Not the most disastrous outcome, to be fair."
     }
   },
   {
@@ -2787,7 +2785,7 @@
     "soundPath": "sound/voice/vo_line/8291055",
     "duration": "3",
     "transcription": {
-      "en": "Too bad, lady luck had other ideas,"
+      "en": "Too bad; Lady Luck had other ideas,"
     }
   },
   {
@@ -2827,7 +2825,7 @@
     "soundPath": "sound/voice/vo_line/8291059",
     "duration": "4",
     "transcription": {
-      "en": "Slow and steady wins the game is it?"
+      "en": "Slow and steady wins the game, is it?"
     }
   },
   {
@@ -2847,7 +2845,7 @@
     "soundPath": "sound/voice/vo_line/8291061",
     "duration": "3",
     "transcription": {
-      "en": "Credit where credit is due I suppose."
+      "en": "Credit where credit's due, I suppose."
     }
   },
   {
@@ -2917,7 +2915,7 @@
     "soundPath": "sound/voice/vo_line/8291068",
     "duration": "6",
     "transcription": {
-      "en": "I wont lie, that wasn't pretty in the least. Try to keep your chin up!"
+      "en": "I won't lie, that wasn't pretty in the least. Try to keep your chin up!"
     }
   },
   {
@@ -2926,9 +2924,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202040",
     "duration": "2",
-    "transcription": {
-      "en": "This is going well."
-    }
+    "npcYell": "7771"
   },
   {
     "id": "RightBackToIt",
@@ -2936,9 +2932,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202042",
     "duration": "2",
-    "transcription": {
-      "en": "Right! Back to it."
-    }
+    "npcYell": "7773"
   },
   {
     "id": "WhereWereWe",
@@ -2946,9 +2940,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202043",
     "duration": "2",
-    "transcription": {
-      "en": "Where were we?"
-    }
+    "npcYell": "7774"
   },
   {
     "id": "DoYourWorst",
@@ -2956,9 +2948,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202044",
     "duration": "2",
-    "transcription": {
-      "en": "Do your worst!"
-    }
+    "npcYell": "7775"
   },
   {
     "id": "KeepYourGuardUp",
@@ -2966,9 +2956,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202053",
     "duration": "2",
-    "transcription": {
-      "en": "Keep your guard up!"
-    }
+    "npcYell": "4856"
   },
   {
     "id": "ComeOn",
@@ -2986,9 +2974,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202056",
     "duration": "3",
-    "transcription": {
-      "en": "The best defence is a good defence!"
-    }
+    "npcYell": "7787"
   },
   {
     "id": "ExplosivesInPlace",
@@ -3006,9 +2992,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8203023",
     "duration": "2",
-    "transcription": {
-      "en": "Seven hells."
-    }
+    "npcYell": "8441"
   },
   {
     "id": "ThatWasUnbecoming",
@@ -3017,7 +3001,7 @@
     "soundPath": "sound/voice/vo_line/8201649",
     "duration": "2",
     "transcription": {
-      "en": "That was unbecoming"
+      "en": "That was unbecoming."
     }
   },
   {
@@ -3036,9 +3020,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201651",
     "duration": "3",
-    "transcription": {
-      "en": "Not so fast!"
-    }
+    "npcYell": "4238"
   },
   {
     "id": "NoMistakes",
@@ -3046,9 +3028,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201654",
     "duration": "2",
-    "transcription": {
-      "en": "No Mistakes!"
-    }
+    "npcYell": "14146"
   },
   {
     "id": "MakeThisCount",
@@ -3067,7 +3047,7 @@
     "soundPath": "sound/voice/vo_line/8291069",
     "duration": "4",
     "transcription": {
-      "en": "Together we shall overcome the odds"
+      "en": "Together, we shall overcome the odds"
     }
   },
   {
@@ -3147,7 +3127,7 @@
     "soundPath": "sound/voice/vo_line/8291078",
     "duration": "4",
     "transcription": {
-      "en": "Let us accept the vicissitudes of fortune"
+      "en": "Let us accept the vicissitudes of fortune."
     }
   },
   {
@@ -3197,7 +3177,7 @@
     "soundPath": "sound/voice/vo_line/8291083",
     "duration": "5",
     "transcription": {
-      "en": "Tis as though the destroyer himself hath dealt us a mighty blow."
+      "en": "'Tis as though the destroyer himself hath dealt us a mighty blow."
     }
   },
   {
@@ -3237,7 +3217,7 @@
     "soundPath": "sound/voice/vo_line/8291087",
     "duration": "6",
     "transcription": {
-      "en": "An unequivocal victory! Thou leavest me in awe my friend."
+      "en": "An unequivocal victory! Thou leavest me in awe, my friend."
     }
   },
   {
@@ -3286,9 +3266,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8202089",
     "duration": "2",
-    "transcription": {
-      "en": "Hold fast friend."
-    }
+    "npcYell": "7820"
   },
   {
     "id": "BeAtEase",
@@ -3296,9 +3274,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8203035",
     "duration": "2",
-    "transcription": {
-      "en": "Be at ease my friend."
-    }
+    "npcYell": "13475"
   },
   {
     "id": "HaveCare",
@@ -3306,9 +3282,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8203038",
     "duration": "2",
-    "transcription": {
-      "en": "Have care my friend."
-    }
+    "npcYell": "13478"
   },
   {
     "id": "ThisBodethIll",
@@ -3316,9 +3290,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8202076",
     "duration": "2",
-    "transcription": {
-      "en": "This bodeth ill."
-    }
+    "npcYell": "7807"
   },
   {
     "id": "ThyTimeNotCome",
@@ -3326,9 +3298,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8202090",
     "duration": "4",
-    "transcription": {
-      "en": "Thy time hath not yet come."
-    }
+    "npcYell": "7821"
   },
   {
     "id": "FearsomeFamiliar",
@@ -3336,9 +3306,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8203032",
     "duration": "4",
-    "transcription": {
-      "en": "Tis a most fearsome familiar!"
-    }
+    "npcYell": "13472"
   },
   {
     "id": "LooksPromising",
@@ -3576,9 +3544,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201108",
     "duration": "2",
-    "transcription": {
-      "en": "There is no escape!"
-    }
+    "npcYell": "2671"
   },
   {
     "id": "AndNowToReturnTheFavor",
@@ -3596,9 +3562,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201640",
     "duration": "2",
-    "transcription": {
-      "en": "Make Ready!"
-    }
+    "npcYell": "3886"
   },
   {
     "id": "WereCountingOnYou",
@@ -3606,9 +3570,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201642",
     "duration": "2",
-    "transcription": {
-      "en": "We're counting on you."
-    }
+    "npcYell": "4196"
   },
   {
     "id": "BeVigilant",
@@ -3626,9 +3588,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201645",
     "duration": "2",
-    "transcription": {
-      "en": "Be Strong."
-    }
+    "npcYell": "15920"
   },
   {
     "id": "LeaveAMark",
@@ -3636,9 +3596,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202106",
     "duration": "3",
-    "transcription": {
-      "en": "This is going to leave a mark!"
-    }
+    "npcYell": "7837"
   },
   {
     "id": "BeMoreCareful",
@@ -3646,9 +3604,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202107",
     "duration": "2",
-    "transcription": {
-      "en": "Be more careful."
-    }
+    "npcYell": "7838"
   },
   {
     "id": "DontBeSoReckless",
@@ -3656,9 +3612,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202109",
     "duration": "2",
-    "transcription": {
-      "en": "Don't be so reckless."
-    }
+    "npcYell": "7840"
   },
   {
     "id": "HoldNothingBack",
@@ -3666,9 +3620,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202110",
     "duration": "2",
-    "transcription": {
-      "en": "Hold nothing back!"
-    }
+    "npcYell": "4718"
   },
   {
     "id": "MayTheTwelveGuideYou",
@@ -3676,9 +3628,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202111",
     "duration": "2",
-    "transcription": {
-      "en": "May the twelve guide you."
-    }
+    "npcYell": "7842"
   },
   {
     "id": "Fall",
@@ -3696,9 +3646,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202098",
     "duration": "3",
-    "transcription": {
-      "en": "Someone will pay for that!"
-    }
+    "npcYell": "7829"
   },
   {
     "id": "Embarrassing",
@@ -3706,9 +3654,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202099",
     "duration": "3",
-    "transcription": {
-      "en": "That was embarrassing."
-    }
+    "npcYell": "7830"
   },
   {
     "id": "HaveThemNowEstinien",
@@ -3716,9 +3662,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291115",
     "duration": "3",
-    "transcription": {
-      "en": "We have them now."
-    }
+    "npcYell": "13184"
   },
   {
     "id": "UseConfidenceAgainstThem",
@@ -3757,7 +3701,7 @@
     "soundPath": "sound/voice/vo_line/8291119",
     "duration": "3",
     "transcription": {
-      "en": "Have faith my friend!"
+      "en": "Have faith, my friend!"
     }
   },
   {
@@ -3777,7 +3721,7 @@
     "soundPath": "sound/voice/vo_line/8291121",
     "duration": "4",
     "transcription": {
-      "en": "Luck of the draw eh? I'll not complain."
+      "en": "Luck of the draw, eh? I'll not complain."
     }
   },
   {
@@ -3827,7 +3771,7 @@
     "soundPath": "sound/voice/vo_line/8291126",
     "duration": "4",
     "transcription": {
-      "en": "No less than I expected of you my friend."
+      "en": "No less than I expected of you, my friend."
     }
   },
   {
@@ -3887,7 +3831,7 @@
     "soundPath": "sound/voice/vo_line/8291132",
     "duration": "4",
     "transcription": {
-      "en": "We'll repay this debt my friend."
+      "en": "We'll repay this debt, my friend."
     }
   },
   {
@@ -3897,7 +3841,7 @@
     "soundPath": "sound/voice/vo_line/8291133",
     "duration": "6",
     "transcription": {
-      "en": "Impressive has ever my friend! It was an honor to fight by your side."
+      "en": "Impressive as ever, my friend! It was an honor to fight by your side."
     }
   },
   {
@@ -3956,9 +3900,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8202503",
     "duration": "2",
-    "transcription": {
-      "en": "There's no end to them!"
-    }
+    "npcYell": "4967"
   },
   {
     "id": "TheyllPayForThatEstinien",
@@ -3966,9 +3908,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203049",
     "duration": "2",
-    "transcription": {
-      "en": "They'll pay for that."
-    }
+    "npcYell": "13484"
   },
   {
     "id": "BackToTheFray",
@@ -3976,9 +3916,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203050",
     "duration": "2",
-    "transcription": {
-      "en": "Back to the fray."
-    }
+    "npcYell": "13485"
   },
   {
     "id": "WereNotDoneHere",
@@ -3986,9 +3924,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203059",
     "duration": "2",
-    "transcription": {
-      "en": "We're not done here."
-    }
+    "npcYell": "13494"
   },
   {
     "id": "HangInThere",
@@ -3996,9 +3932,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203060",
     "duration": "2",
-    "transcription": {
-      "en": "Hang in there!"
-    }
+    "npcYell": "13495"
   },
   {
     "id": "Courage",
@@ -4016,9 +3950,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203062",
     "duration": "2",
-    "transcription": {
-      "en": "Stay strong!"
-    }
+    "npcYell": "12472"
   },
   {
     "id": "RoarNidhogg",
@@ -4026,9 +3958,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203063",
     "duration": "2",
-    "transcription": {
-      "en": "Roar Nidhogg, ROAR!"
-    }
+    "npcYell": "10315"
   },
   {
     "id": "FightHardNotHardEnough",
@@ -4046,9 +3976,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203402",
     "duration": "3",
-    "transcription": {
-      "en": "Give it everything you've got!"
-    }
+    "npcYell": "13911"
   },
   {
     "id": "FocusOnVictoryGraha",
@@ -4087,7 +4015,7 @@
     "soundPath": "sound/voice/vo_line/8291141",
     "duration": "5",
     "transcription": {
-      "en": "They're not going down without a fight aren't they?"
+      "en": "They're not going down without a fight, are they?"
     }
   },
   {
@@ -4107,7 +4035,7 @@
     "soundPath": "sound/voice/vo_line/8291143",
     "duration": "5",
     "transcription": {
-      "en": "Finish them! Oh, erm.. too much?"
+      "en": "Finish them! Oh, erm... too much?"
     }
   },
   {
@@ -4137,7 +4065,7 @@
     "soundPath": "sound/voice/vo_line/8291146",
     "duration": "5",
     "transcription": {
-      "en": "We avoided the worst but it's not what I'd hoped for."
+      "en": "We avoided the worst, but it's not what I'd hoped for."
     }
   },
   {
@@ -4167,7 +4095,7 @@
     "soundPath": "sound/voice/vo_line/8291149",
     "duration": "5",
     "transcription": {
-      "en": "A splendid result! Keep up the good work my friend."
+      "en": "A splendid result! Keep up the good work, my friend."
     }
   },
   {
@@ -4227,7 +4155,7 @@
     "soundPath": "sound/voice/vo_line/8291155",
     "duration": "4",
     "transcription": {
-      "en": "Well that would scarcely cause my cowl to stir."
+      "en": "Well, that would scarcely cause my cowl to stir."
     }
   },
   {
@@ -4247,7 +4175,7 @@
     "soundPath": "sound/voice/vo_line/8291157",
     "duration": "4",
     "transcription": {
-      "en": "Continue with the same courage and zeal and victory will be yours!"
+      "en": "Continue with the same courage and zeal, and victory will be yours!"
     }
   },
   {
@@ -4277,7 +4205,7 @@
     "soundPath": "sound/voice/vo_line/8291160",
     "duration": "4",
     "transcription": {
-      "en": "Your tale will not end here. Is that not so my friend?"
+      "en": "Your tale will not end here. Is that not so, my friend?"
     }
   },
   {
@@ -4286,9 +4214,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202119",
     "duration": "2",
-    "transcription": {
-      "en": "Back to the fight."
-    }
+    "npcYell": "7850"
   },
   {
     "id": "TimeHasCome",
@@ -4296,9 +4222,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202125",
     "duration": "2",
-    "transcription": {
-      "en": "The time has come!"
-    }
+    "npcYell": "7856"
   },
   {
     "id": "JustTheBeginning",
@@ -4306,9 +4230,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202342",
     "duration": "2",
-    "transcription": {
-      "en": "Just the beginning."
-    }
+    "npcYell": "10303"
   },
   {
     "id": "ShowMeWhatYouCanDo",
@@ -4316,9 +4238,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202341",
     "duration": "2",
-    "transcription": {
-      "en": "Show me what you can do."
-    }
+    "npcYell": "10302"
   },
   {
     "id": "AreYouAlright",
@@ -4326,9 +4246,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202337",
     "duration": "2",
-    "transcription": {
-      "en": "Are you alright?"
-    }
+    "npcYell": "8894"
   },
   {
     "id": "FindCoverEnergy",
@@ -4576,9 +4494,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291184",
     "duration": "3",
-    "transcription": {
-      "en": "We've got them now!"
-    }
+    "npcYell": "5582"
   },
   {
     "id": "CantPassChanceWuk",
@@ -4636,9 +4552,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291190",
     "duration": "3",
-    "transcription": {
-      "en": "No holding back!"
-    }
+    "npcYell": "4299"
   },
   {
     "id": "HowDidThatHappenWuk",
@@ -4816,9 +4730,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8204280",
     "duration": "2",
-    "transcription": {
-      "en": "Impressive!"
-    }
+    "npcYell": "3323"
   },
   {
     "id": "TheyllPayForThatWuk",
@@ -4826,9 +4738,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205035",
     "duration": "2",
-    "transcription": {
-      "en": "They'll pay for that."
-    }
+    "npcYell": "13484"
   },
   {
     "id": "RightBackToItWuk",
@@ -4836,9 +4746,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205036",
     "duration": "2",
-    "transcription": {
-      "en": "Right, back to it."
-    }
+    "npcYell": "7773"
   },
   {
     "id": "NoHoldingBackWuk",
@@ -4846,9 +4754,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205040",
     "duration": "2",
-    "transcription": {
-      "en": "No holding back!"
-    }
+    "npcYell": "4299"
   },
   {
     "id": "KeepItUpWuk",
@@ -4856,9 +4762,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205043",
     "duration": "2",
-    "transcription": {
-      "en": "Keep it up!"
-    }
+    "npcYell": "6472"
   },
   {
     "id": "LetsGetToIt",
@@ -4876,9 +4780,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205068",
     "duration": "2",
-    "transcription": {
-      "en": "Damn it all!"
-    }
+    "npcYell": "10595"
   },
   {
     "id": "KeepYourGuardUpWuk",
@@ -4946,9 +4848,7 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291211",
     "duration": "3",
-    "transcription": {
-      "en": "Stay alert."
-    }
+    "npcYell": "1632"
   },
   {
     "id": "HaveThemStrike",
@@ -4986,9 +4886,7 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291215",
     "duration": "3",
-    "transcription": {
-      "en": "Damn it all."
-    }
+    "npcYell": "10595"
   },
   {
     "id": "StepBehind",
@@ -5136,9 +5034,7 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291230",
     "duration": "4",
-    "transcription": {
-      "en": "Victory will be ours."
-    }
+    "npcYell": "4514"
   },
   {
     "id": "NoDownWithoutFight",
@@ -5377,7 +5273,7 @@
     "soundPath": "sound/voice/vo_line/8291254",
     "duration": "4",
     "transcription": {
-      "en": "Enjoying yourself I see."
+      "en": "Enjoying yourself, I see."
     }
   },
   {
@@ -5426,9 +5322,7 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291259",
     "duration": "3",
-    "transcription": {
-      "en": "Ha! Lucky you."
-    }
+    "npcYell": "16269"
   },
   {
     "id": "Unfortunate",
@@ -5477,7 +5371,7 @@
     "soundPath": "sound/voice/vo_line/8291264",
     "duration": "4",
     "transcription": {
-      "en": "You're enjoying this, arent you?"
+      "en": "You're enjoying this, aren't you?"
     }
   },
   {
@@ -5496,9 +5390,7 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291266",
     "duration": "3",
-    "transcription": {
-      "en": "That's the way!"
-    }
+    "npcYell": "10814"
   },
   {
     "id": "DontPlayGames",
@@ -5567,7 +5459,7 @@
     "soundPath": "sound/voice/vo_line/8291273",
     "duration": "4",
     "transcription": {
-      "en": "You're not going to walk away now are you?"
+      "en": "You're not going to walk away now, are you?"
     }
   },
   {
@@ -5587,7 +5479,7 @@
     "soundPath": "sound/voice/vo_line/8291275",
     "duration": "8",
     "transcription": {
-      "en": "Take a ride on a Rroneek. Clear your head and put this performance behind you."
+      "en": "Take a ride on a rroneek. Clear your head and put this performance behind you."
     }
   },
   {
@@ -6469,10 +6361,8 @@
     "shoutcaster": "Zero",
     "duration": "5",
     "style": "6",
-    "transcription": {
-      "en": "Back to it!"
-    },
-    "soundPath": "sound/voice/vo_line/8203453"
+    "soundPath": "sound/voice/vo_line/8203453",
+    "npcYell": "13961"
   },
   {
     "id": "WillHurt",
@@ -6480,10 +6370,8 @@
     "shoutcaster": "Zero",
     "duration": "3",
     "style": "6",
-    "transcription": {
-      "en": "This will hurt!"
-    },
-    "soundPath": "sound/voice/vo_line/8203455"
+    "soundPath": "sound/voice/vo_line/8203455",
+    "npcYell": "13487"
   },
   {
     "id": "GotYou",
@@ -6502,10 +6390,8 @@
     "shoutcaster": "Zero",
     "duration": "3",
     "style": "6",
-    "transcription": {
-      "en": "That's far enough!"
-    },
-    "soundPath": "sound/voice/vo_line/8203457"
+    "soundPath": "sound/voice/vo_line/8203457",
+    "npcYell": "3473"
   },
   {
     "id": "DarknessTakeYou",
@@ -6618,10 +6504,8 @@
     "shoutcaster": "Zero",
     "duration": "3",
     "style": "6",
-    "transcription": {
-      "en": "What now?"
-    },
-    "soundPath": "sound/voice/vo_line/8291301"
+    "soundPath": "sound/voice/vo_line/8291301",
+    "npcYell": "17092"
   },
   {
     "id": "TroublingDevelopment",
