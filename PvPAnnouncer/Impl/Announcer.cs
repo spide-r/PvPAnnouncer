@@ -58,7 +58,7 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return pve;
 
         //not started and/or in overworld
-        //GOTCHA - this doesnt catch the tiny condition where waiting in a duty still allows announcers to talk - this needs to be fixed!!!!!
+        //todo GOTCHA - this doesnt catch the tiny condition where waiting in a duty still allows announcers to talk - this needs to be fixed!!!!!
         return overworld;
     }
 

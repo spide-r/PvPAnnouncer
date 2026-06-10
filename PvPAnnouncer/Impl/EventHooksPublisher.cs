@@ -111,8 +111,9 @@ public class EventHooksPublisher : IEventPublisher, IDisposable
                     EmitToBroker(new SoaringMessage((int) arg2));
                 }
             }
-            else if (category == 80) //todo - this might be a gotcha - is effect 80 guaranteed to be a zone out?
+            else if (category == 80) //this might be a gotcha - is effect 80 guaranteed to be a zone out?
             {
+                PluginServices.PluginLog.Debug("Category 80!!!! Zone out!");
                 EmitToBroker(new UserZoneOutMessage());
             }
             else

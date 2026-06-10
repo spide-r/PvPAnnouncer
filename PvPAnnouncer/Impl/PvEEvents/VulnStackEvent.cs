@@ -1,4 +1,4 @@
-﻿using PvPAnnouncer.Data;
+﻿using Lumina.Excel.Sheets;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -7,18 +7,27 @@ namespace PvPAnnouncer.Impl.PvEEvents;
 
 public class VulnStackEvent : PvPActorEvent
 {
-    //todo make the announcers respond to this
     public VulnStackEvent()
     {
-        Name = "Gaining a Vuln Stack";
+        Name = "Gaining a Vuln Stack/Damage Down";
         Id = "VulnStackEvent";
     }
 
     public override bool InvokeRule(IMessage message)
     {
         if (message is EnemyAppliedStatusMessage enemyAppliedStatusEvent)
-            if (enemyAppliedStatusEvent.status == StatusIds.VulnUp)
-                return true;
+        {
+            var status = PluginServices.DataManager.Excel.GetSheet<Status>()
+                .GetRow((uint) enemyAppliedStatusEvent.status);
+            if (status.StatusCategory == 2) // detrimental
+            {
+                if (status.Unknown0 == 39) // probably damage down
+                    return true;
+
+                if (status.Unknown0 == 40) // probably Vuln Up
+                    return true;
+            }
+        }
 
         return false;
     }

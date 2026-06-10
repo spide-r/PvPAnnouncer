@@ -7,8 +7,6 @@ namespace PvPAnnouncer
 {
     //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
 
-    //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
-
 
     public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
@@ -35,6 +33,7 @@ namespace PvPAnnouncer
                     return;
                 }
 
+                //todo update this for the big changes
                 PluginServices.ChatGui.Print(
                     "Happy 7.5! Zero's Mahjong voicelines (plus some extras) have been added Enable them in the plugin config!",
                     "NPCAnnouncer", 15);

@@ -1,7 +1,7 @@
 ﻿{
   "name": "NPCAnnouncer",
   "author": "spide-r",
-  "punchline": "Do you want an announcer in your PvP matches and duties? Metem and the Scions have offered their services!",
+  "punchline": "Do you want an announcer in your PvP matches, PvE duties, and fates? Metem and the Scions have offered their services!",
   "description": "This plugin will cause character voice lines to play upon specific conditions being met.",
   "repo_url": "https://github.com/spide-r/PvPAnnouncer",
   "IconURL": "https://github.com/spide-r/PvPAnnouncer/blob/main/images/icon.png",
