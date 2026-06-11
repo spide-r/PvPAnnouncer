@@ -8,7 +8,7 @@ public class MatchLossEvent : PvPMatchEvent
 {
     public MatchLossEvent()
     {
-        Name = "Match Loss";
+        Name = "Duty Loss";
         Id = "MatchLossEvent";
     }
 

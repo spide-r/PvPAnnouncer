@@ -17,7 +17,7 @@ public class AllyDeathEvent : PvPActorControlEvent
     {
         if (m is ActorControlMessage message)
         {
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(message.EntityId))
+            if (PluginServices.DutyManager.IsMonitoredUser(message.EntityId))
             {
                 return message.GetCategory() == ActorControlCategory.Death;
             }

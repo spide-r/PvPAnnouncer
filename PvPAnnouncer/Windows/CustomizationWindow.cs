@@ -39,34 +39,31 @@ public class CustomizationWindow : Window, IDisposable
         var blEvents = _configuration.BlacklistedEvents;
 
         ImGui.TextWrapped(
-            "- In order for the plugin to play a voiceline, it needs an audio file and a text transcription.");
-        ImGui.TextWrapped(
-            "- While some voice line audio is transcribed neatly, most audio is independent from its transcription.");
-        ImGui.TextWrapped(
-            "- We must connect the dots ourselves in order to create a full shoutcast that the plugin can use.");
-
-
-        ImGui.TextWrapped("Shoutcast creation can be done here:");
-        if (ImGui.Button("Create Shoutcasts"))
-        {
-            PluginServices.VoicelineCreationWindow.Toggle();
-        }
-
-        ImGui.TextWrapped(
-            "Once we have created a few shoutcasts, we must \"map\" the shoutcast to an associated event. This allows the plugin to select it when an event is triggered.\nThis can be done here:");
-
-        if (ImGui.Button("Add & Remove Shoutcasts for Events"))
-        {
-            PluginServices.VoicelineMappingWindow.Toggle();
-        }
-
-        ImGui.TextWrapped(
             "If you need to edit or delete a custom shoutcast, or ensure that a pre-made shoutcast is never shown to you, you can do so here:");
 
         if (ImGui.Button("Mute, Delete & Edit Shoutcast")) PluginServices.VoicelineManagementWindow.Toggle();
 
         ImGui.TextWrapped("If you wish to browse existing shoutcasts, you can do so here:");
         if (ImGui.Button("Open Full Shoutcast List")) PluginServices.LoadedVoicelineWindow.Toggle();
+
+        if (ImGui.CollapsingHeader("Voiceline Creation & Event Editing"))
+        {
+            ImGui.TextWrapped(
+                "- In order for the plugin to play a voiceline, it needs an audio file and a text transcription.");
+            ImGui.TextWrapped(
+                "- While some voice line audio is transcribed neatly, most audio is independent from its transcription.");
+            ImGui.TextWrapped(
+                "- We must connect the dots ourselves in order to create a full shoutcast that the plugin can use.");
+
+
+            ImGui.TextWrapped("Shoutcast creation can be done here:");
+            if (ImGui.Button("Create Shoutcasts")) PluginServices.VoicelineCreationWindow.Toggle();
+
+            ImGui.TextWrapped(
+                "Once we have created a few shoutcasts, we must \"map\" the shoutcast to an associated event. This allows the plugin to select it when an event is triggered.\nThis can be done here:");
+
+            if (ImGui.Button("Add & Remove Shoutcasts for Events")) PluginServices.VoicelineMappingWindow.Toggle();
+        }
 
         ImGui.Separator();
         ImGui.TextWrapped(
@@ -411,7 +408,7 @@ public class CustomizationWindow : Window, IDisposable
             {
                 try
                 {
-                    PluginServices.Announcer.ReceivePvPEvent(true, ev);
+                    PluginServices.Announcer.ReceiveEvent(true, ev);
                     PluginServices.Announcer.ClearQueue();
                 }
                 catch (Exception e)

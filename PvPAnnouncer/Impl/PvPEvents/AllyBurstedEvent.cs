@@ -15,7 +15,7 @@ public class AllyBurstedEvent : PvPEvent
 
     public AllyBurstedEvent()
     {
-        Name = "Bursted By Enemy Team";
+        Name = "Bursted By Enemies";
         Id = "AllyBurstedEvent";
     }
 
@@ -31,7 +31,7 @@ public class AllyBurstedEvent : PvPEvent
             //PluginServices.PluginLog.Verbose($"{_lastHit}, {_hitters.Count}");
             foreach (var target in pp.GetTargetIds())
             {
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
                     var unixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                     if (unixTime - _lastHit > 3)
@@ -44,7 +44,7 @@ public class AllyBurstedEvent : PvPEvent
                         return false;
                     }
 
-                    if (!ActionIds.IsBurst(pp.ActionId) && !pp.CritsOrDirectHits())
+                    if (!ActionIds.IsBurst(pp.ActionId) && !pp.CritsOrDirectHits() && !pp.IsLimitBreak())
                     {
                         return false;
                     }

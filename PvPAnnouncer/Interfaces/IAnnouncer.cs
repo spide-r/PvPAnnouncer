@@ -5,8 +5,8 @@ namespace PvPAnnouncer.Interfaces;
 
 public interface IAnnouncer
 {
-    void ReceivePvPEvent(PvPEvent pvpEvent);
-    void ReceivePvPEvent(bool bypass, PvPEvent pvpEvent);
+    void ReceiveEvent(PvPEvent pvpEvent);
+    void ReceiveEvent(bool bypass, PvPEvent pvpEvent);
     void PlaySound(string sound);
     void SendBattleTalk(Shoutcast shoutcast);
     void ClearQueue();

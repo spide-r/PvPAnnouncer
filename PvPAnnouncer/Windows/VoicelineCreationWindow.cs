@@ -25,7 +25,7 @@ public class VoicelineCreationWindow : Window, IDisposable
     private readonly Rake _frenchRake;
 
     public VoicelineCreationWindow() : base(
-        "PvPAnnouncer Voiceline Creation & Editing Window")
+        "NPCAnnouncer Voiceline Creation & Editing Window")
     {
         SizeConstraints = new WindowSizeConstraints
         {
@@ -647,7 +647,7 @@ public class VoicelineCreationWindow : Window, IDisposable
 
                         if (text.Equals(""))
                         {
-                            text = "Untranslated Text! Contact the PvPAnnouncer developer if you wish to contribute!";
+                            text = "Untranslated Text! Contact the NPCAnnouncer developer if you wish to contribute!";
                         }
 
 

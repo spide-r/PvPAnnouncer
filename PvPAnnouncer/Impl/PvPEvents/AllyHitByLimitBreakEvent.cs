@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -10,7 +9,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
 {
     public AllyHitByLimitBreakEvent()
     {
-        Name = "Hit by an Enemy Limit Break";
+        Name = "[PvP Only] Hit by an Enemy Limit Break";
         Id = "AllyHitByLimitBreakEvent";
     }
 
@@ -25,9 +24,9 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
 
             foreach (var target in pp.GetTargetIds())
             {
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
-                    return ActionIds.IsLimitBreakAttack(pp.ActionId);
+                    return pp.IsLimitBreak();
                 }
             }
         }

@@ -4,11 +4,11 @@ namespace PvPAnnouncer.Data;
 
 public abstract class InternalConstants : ImguiTools
 {
-    public const string MessageTag = "PvPAnnouncer";
+    public const string MessageTag = "NPCAnnouncer";
     public const uint PvPAnnouncerDevIcon = 73282;
-    public const string PvPAnnouncerDevName = "PvPAnnouncer Dev";
+    public const string PvPAnnouncerDevName = "NPCAnnouncer Dev";
     public const string DefaultSoundPath = "sound/voice/vo_line/8205794";
-    public const string ErrorContactDev = "Uh oh! You shouldn't see this! Contact the PvPAnnouncer dev!";
+    public const string ErrorContactDev = "Uh oh! You shouldn't see this! Contact the NPCAnnouncer dev!";
 
     public static readonly List<string> LimitBreakListStr =
     [

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using Dalamud.Hooking;
 using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
@@ -17,6 +16,8 @@ public class SoundManager : ISoundManager
     private readonly PlaySoundDelegate _playSoundPath;
 
     private bool _muted;
+    //todo - its about time you had another look at this code - different sounds have different volume levels (varies by source, lang, etc)
+    //- you gotta normalize all of them somehow - check for other functions that play sounds
 
     public SoundManager()
     {

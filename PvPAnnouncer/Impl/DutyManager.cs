@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.DutyState;
@@ -10,7 +11,7 @@ using PvPAnnouncer.Interfaces;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
+public class DutyManager : IDutyManager, IEventPublisher
 {
     private int _leftPoints = 0;
     private int _rightPoints = 0;
@@ -19,7 +20,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
     private double _enemyProgress = 0.0;
     private readonly IPlayerStateTracker _playerState;
 
-    public PvPMatchManager(IPlayerStateTracker playerState)
+    public DutyManager(IPlayerStateTracker playerState)
     {
         _playerState = playerState;
         PluginServices.AddonLifecycle.RegisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
@@ -27,8 +28,15 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
         PluginServices.ClientState.TerritoryChanged += ClientStateOnTerritoryChanged;
         PluginServices.ClientState.EnterPvP += EnterPvP;
         PluginServices.ClientState.CfPop += ClientStateOnCfPop;
-        PluginServices.DutyState.DutyStarted += MatchStarted;
-        PluginServices.DutyState.DutyCompleted += MatchEnded;
+        PluginServices.DutyState.DutyStarted += DutyStarted;
+        PluginServices.DutyState.DutyRecommenced += DutyStateOnDutyRecommenced;
+
+        PluginServices.DutyState.DutyCompleted += DutyCompleted;
+    }
+
+    private void DutyStateOnDutyRecommenced(IDutyStateEventArgs args)
+    {
+        EmitToBroker(new DutyRecommenceMessage());
     }
 
     private void HandleCCHeaderPreDraw(AddonEvent type, AddonArgs args)
@@ -44,7 +52,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
                 var umbraPercent = addon->GetTextNodeById(54)->NodeText.ToString();
                 umbraPercent = umbraPercent.Substring(0, umbraPercent.Length - 1);
 
-                //todo explain what im doing here cause this is unexplainable 
+                //todo explain what im doing here cause this is unacceptable 
                 var astraColor =
                     addon->GetTextNodeById(51)->EdgeColor
                         .RGBA;
@@ -106,7 +114,6 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
     private void ClientStateOnCfPop(ContentFinderCondition obj)
     {
         PluginServices.PluginLog.Verbose("OnCfPop");
-        MatchQueued();
     }
 
     private void ClientStateOnTerritoryChanged(uint territory)
@@ -120,13 +127,13 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
                 if (PluginServices.PlayerStateTracker.IsPvP()) // Went from pvp area to wolves den 
                 {
                     PluginServices.PluginLog.Verbose("Territory Change: PvP -> WD");
-                    MatchLeft();
+                    PvPMatchLeft();
                 }
             }
             else
             {
                 PluginServices.PluginLog.Verbose("Territory Change: NoPvP->PvP");
-                MatchEntered(territory); // entered a pvp zone that isnt the wolves den
+                PvPMatchEntered(territory); // entered a pvp zone that isnt the wolves den
             }
         }
         else
@@ -135,7 +142,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
                 .IsPvP()) // was in pvp zone before warp and then warped to a non-pvp zone
             {
                 PluginServices.PluginLog.Verbose("Territory Change: PvP -> NoPvP");
-                MatchLeft();
+                PvPMatchLeft();
             }
         }
     }
@@ -147,7 +154,21 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
 
     public bool IsMonitoredUser(uint entityId)
     {
-        return PluginServices.ObjectTable.LocalPlayer != null && entityId == PluginServices.PlayerState.EntityId;
+        if (PluginServices.ObjectTable.LocalPlayer != null &&
+            entityId == PluginServices.PlayerState.EntityId) return true;
+
+        if (PluginServices.PlayerStateTracker.IsPvP() && PluginServices.Config.PartyMembersPvP)
+            return PlayerInParty(entityId);
+
+        if (!PluginServices.PlayerStateTracker.IsPvP() && PluginServices.Config.PartyMembersPvE)
+            return PlayerInParty(entityId);
+
+        return false;
+    }
+
+    private bool PlayerInParty(uint entityId)
+    {
+        return PluginServices.PartyList.Any(partyMember => partyMember.EntityId == entityId);
     }
 
     private void CheckWin(bool w)
@@ -163,7 +184,7 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
     }
 
 
-    public void MatchEntered(uint territory)
+    public void PvPMatchEntered(uint territory)
     {
         _ourPoints = 0;
         _rightPoints = 0;
@@ -180,12 +201,12 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
         }
     }
 
-    public void MatchStarted(IDutyStateEventArgs args)
+    public void DutyStarted(IDutyStateEventArgs args)
     {
         EmitToBroker(new MatchStartedMessage());
     }
 
-    public void MatchEnded(IDutyStateEventArgs args)
+    public void DutyCompleted(IDutyStateEventArgs args)
     {
         if (_ourPoints > 0 || _rightPoints > 0 || _leftPoints > 0)
         {
@@ -197,17 +218,13 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
         }
         else
         {
-            EmitToBroker(new MatchEndMessage());
+            EmitToBroker(new MatchVictoryMessage()); // pve - default to victory
         }
     }
 
-    public void MatchLeft()
+    public void PvPMatchLeft()
     {
         EmitToBroker(new MatchLeftMessage());
-    }
-
-    public void MatchQueued()
-    {
     }
 
     public void EmitToBroker(IMessage pvpEvent)
@@ -220,8 +237,9 @@ public class PvPMatchManager : IPvPMatchManager, IPvPEventPublisher
         PluginServices.ClientState.TerritoryChanged -= ClientStateOnTerritoryChanged;
         PluginServices.ClientState.EnterPvP -= EnterPvP;
         PluginServices.ClientState.CfPop -= ClientStateOnCfPop;
-        PluginServices.DutyState.DutyStarted -= MatchStarted;
-        PluginServices.DutyState.DutyCompleted -= MatchEnded;
+        PluginServices.DutyState.DutyStarted -= DutyStarted;
+        PluginServices.DutyState.DutyCompleted -= DutyCompleted;
+        PluginServices.DutyState.DutyRecommenced -= DutyStateOnDutyRecommenced;
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPFrontlineHeader", HandleHeaderPreDraw);
         PluginServices.AddonLifecycle.UnregisterListener(AddonEvent.PreDraw, "PvPMKSHeader", HandleCCHeaderPreDraw);
     }

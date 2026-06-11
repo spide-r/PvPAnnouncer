@@ -25,7 +25,7 @@ public class MainWindow : Window, IDisposable
         }
 
         ImGui.TextWrapped(
-            "Welcome to PvP Announcer! This plugin will take many NPC's and put them into your PvP match! " +
+            "Welcome to NPC Announcer! This plugin will take many NPC's and put them into your PvP match! " +
             "\nPlease contact .spider in the Dalamud Discord for feedback/suggestions!" +
             "\nView the config with /pvpannouncer");
         ImGui.Spacing();

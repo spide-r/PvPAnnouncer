@@ -1338,11 +1338,9 @@
       "Masculine Pronouns"
     ],
     "duration": "4",
-    "transcription": [
-      {
-        "en": "This man has absolutely no respect for the rules!"
-      }
-    ]
+    "transcription": {
+      "en": "This man has absolutely no respect for the rules!"
+    }
   },
   {
     "id": "UnusedUpOnThePost",
@@ -1353,11 +1351,9 @@
       "Masculine Pronouns"
     ],
     "duration": "3",
-    "transcription": [
-      {
-        "en": "He's up on the post! You know what that means."
-      }
-    ]
+    "transcription": {
+      "en": "He's up on the post! You know what that means."
+    }
   },
   {
     "id": "UnusedBombarianPress",
@@ -1365,11 +1361,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8205374",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "It's the Bombarian press!"
-      }
-    ]
+    "transcription": {
+      "en": "It's the Bombarian press!"
+    }
   },
   {
     "id": "UnusedOhMercyFem",
@@ -1380,11 +1374,9 @@
       "Feminine Pronouns"
     ],
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Oh mercy is she doing what I think she's doing?"
-      }
-    ]
+    "transcription": {
+      "en": "Oh mercy is she doing what I think she's doing?"
+    }
   },
   {
     "id": "UnusedBackTail",
@@ -1392,11 +1384,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206126",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Yes! You've got the serpent on the back tail! Press the advantage and finish this!"
-      }
-    ]
+    "transcription": {
+      "en": "Yes! You've got the serpent on the back tail! Press the advantage and finish this!"
+    }
   },
   {
     "id": "MjGameChanger",
@@ -1404,11 +1394,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291277",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "This could be a real game changer."
-      }
-    ]
+    "transcription": {
+      "en": "This could be a real game changer."
+    }
   },
   {
     "id": "MjBoldMove",
@@ -1416,11 +1404,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291276",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A bold move from our challenger, but will it pay off?"
-      }
-    ]
+    "transcription": {
+      "en": "A bold move from our challenger, but will it pay off?"
+    }
   },
   {
     "id": "MjChallengerRecover",
@@ -1428,11 +1414,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291278",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "How will the challenger recover from this I wonder?"
-      }
-    ]
+    "transcription": {
+      "en": "How will the challenger recover from this I wonder?"
+    }
   },
   {
     "id": "MjRivalVying",
@@ -1440,11 +1424,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291279",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Whats this? A rival vying for victory?"
-      }
-    ]
+    "transcription": {
+      "en": "Whats this? A rival vying for victory?"
+    }
   },
   {
     "id": "MjHeatingUp",
@@ -1452,11 +1434,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291280",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Things are really heating up. I can scarcely look away."
-      }
-    ]
+    "transcription": {
+      "en": "Things are really heating up. I can scarcely look away."
+    }
   },
   {
     "id": "MjHandDecided",
@@ -1464,11 +1444,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291281",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "There it is. The hand is decided."
-      }
-    ]
+    "transcription": {
+      "en": "There it is. The hand is decided."
+    }
   },
   {
     "id": "MjKissLadyLuck",
@@ -1476,11 +1454,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291282",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "And with a kiss from lady luck, we have our winner."
-      }
-    ]
+    "transcription": {
+      "en": "And with a kiss from lady luck, we have our winner."
+    }
   },
   {
     "id": "MjGoodnessGracious",
@@ -1488,11 +1464,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291283",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Oh goodness gracious me."
-      }
-    ]
+    "transcription": {
+      "en": "Oh goodness gracious me."
+    }
   },
   {
     "id": "MjOurTile",
@@ -1500,11 +1474,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291284",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "That should have been our tile, the scoundrel."
-      }
-    ]
+    "transcription": {
+      "en": "That should have been our tile, the scoundrel."
+    }
   },
   {
     "id": "MjPainfulToWatch",
@@ -1512,11 +1484,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291285",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Oh the horror! It was too painful to watch."
-      }
-    ]
+    "transcription": {
+      "en": "Oh the horror! It was too painful to watch."
+    }
   },
   {
     "id": "MjClobberedWithTable",
@@ -1524,11 +1494,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291286",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Ha! You all but clobbered them with a table that round."
-      }
-    ]
+    "transcription": {
+      "en": "Ha! You all but clobbered them with a table that round."
+    }
   },
   {
     "id": "MjBeautifullyPlayed",
@@ -1536,11 +1504,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291287",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Beautifully played my friend, beautifully played."
-      }
-    ]
+    "transcription": {
+      "en": "Beautifully played my friend, beautifully played."
+    }
   },
   {
     "id": "MjMadeYourMark",
@@ -1548,11 +1514,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291288",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You certainly made your mark this round. Keep it up!"
-      }
-    ]
+    "transcription": {
+      "en": "You certainly made your mark this round. Keep it up!"
+    }
   },
   {
     "id": "MjDontStandAChance",
@@ -1560,11 +1524,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291289",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Mmm, letting them think they stand a chance. I like it."
-      }
-    ]
+    "transcription": {
+      "en": "Mmm, letting them think they stand a chance. I like it."
+    }
   },
   {
     "id": "MjChallengerDownHardGentle",
@@ -1572,11 +1534,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291290",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Oh my, our challenger went down hard."
-      }
-    ]
+    "transcription": {
+      "en": "Oh my, our challenger went down hard."
+    }
   },
   {
     "id": "MjStillInItGentle",
@@ -1584,11 +1544,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291291",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Our challenger is still in it! But for how long?"
-      }
-    ]
+    "transcription": {
+      "en": "Our challenger is still in it! But for how long?"
+    }
   },
   {
     "id": "MjStillStandingGentle",
@@ -1596,11 +1554,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291292",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Ooh even I felt that one, but our challenger is still standing."
-      }
-    ]
+    "transcription": {
+      "en": "Ooh even I felt that one, but our challenger is still standing."
+    }
   },
   {
     "id": "MjDownNotOut",
@@ -1608,11 +1564,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291293",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Our challenger is down, but not out."
-      }
-    ]
+    "transcription": {
+      "en": "Our challenger is down, but not out."
+    }
   },
   {
     "id": "MjTitanOfTable",
@@ -1620,11 +1574,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291294",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "The titan of the table, tactician of the tiles! Brilliantly Played."
-      }
-    ]
+    "transcription": {
+      "en": "The titan of the table, tactician of the tiles! Brilliantly Played."
+    }
   },
   {
     "id": "MjCommendableEffort",
@@ -1632,11 +1584,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291295",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A commendable effort! You should be proud."
-      }
-    ]
+    "transcription": {
+      "en": "A commendable effort! You should be proud."
+    }
   },
   {
     "id": "MjReportingLive",
@@ -1644,11 +1594,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291296",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "This was metem, reporting live from the Mahjong table. Thank you and good night."
-      }
-    ]
+    "transcription": {
+      "en": "This was metem, reporting live from the Mahjong table. Thank you and good night."
+    }
   },
   {
     "id": "MjCompetitionTooMuch",
@@ -1656,11 +1604,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291297",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Was the competition simply too much for our challenger? I should hope not."
-      }
-    ]
+    "transcription": {
+      "en": "Was the competition simply too much for our challenger? I should hope not."
+    }
   },
   {
     "id": "MjUtterlyHumiliated",
@@ -1668,11 +1614,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8291298",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "Oh dear our challenger has been utterly humiliated! I fear this will haunt them."
-      }
-    ]
+    "transcription": {
+      "en": "Oh dear our challenger has been utterly humiliated! I fear this will haunt them."
+    }
   },
   {
     "id": "LindwurmsHeart",
@@ -1680,11 +1624,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206130",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Huh? Is it? The Lindwurm’s heart!?"
-      }
-    ]
+    "transcription": {
+      "en": "Huh? Is it? The Lindwurm’s heart!?"
+    }
   },
   {
     "id": "BadFeeling",
@@ -1692,11 +1634,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206131",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "It’s pulsating… I’ve got a bad feeling about this!"
-      }
-    ]
+    "transcription": {
+      "en": "It’s pulsating… I’ve got a bad feeling about this!"
+    }
   },
   {
     "id": "Transforming",
@@ -1704,11 +1644,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206132",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "It’s contorted…transforming!"
-      }
-    ]
+    "transcription": {
+      "en": "It’s contorted…transforming!"
+    }
   },
   {
     "id": "ItsAliveLindwurm",
@@ -1716,11 +1654,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206133",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "It’s alive! It’s the birth of a new Lindwurm!"
-      }
-    ]
+    "transcription": {
+      "en": "It’s alive! It’s the birth of a new Lindwurm!"
+    }
   },
   {
     "id": "BattleNotOverDontDespair",
@@ -1728,11 +1664,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206134",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Alas, the battle isn’t over yet, but don’t despair Champion!"
-      }
-    ]
+    "transcription": {
+      "en": "Alas, the battle isn’t over yet, but don’t despair Champion!"
+    }
   },
   {
     "id": "CreatingMore",
@@ -1740,11 +1674,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206135",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "The Lindwurm is creating more of itself!"
-      }
-    ]
+    "transcription": {
+      "en": "The Lindwurm is creating more of itself!"
+    }
   },
   {
     "id": "ContinuesToMultiply",
@@ -1752,11 +1684,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206136",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "The Lindwurm continues to multiply! We’ve gone well beyond mortal limits now!"
-      }
-    ]
+    "transcription": {
+      "en": "The Lindwurm continues to multiply! We’ve gone well beyond mortal limits now!"
+    }
   },
   {
     "id": "CuriousProps",
@@ -1764,11 +1694,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206137",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Some curious props have appeared… What would they possibly be?"
-      }
-    ]
+    "transcription": {
+      "en": "Some curious props have appeared… What would they possibly be?"
+    }
   },
   {
     "id": "TakenOnChampionForm",
@@ -1776,11 +1704,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206138",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Egads! They’ve taken on the Champion’s form! This bodes ill!"
-      }
-    ]
+    "transcription": {
+      "en": "Egads! They’ve taken on the Champion’s form! This bodes ill!"
+    }
   },
   {
     "id": "DejaVu",
@@ -1788,11 +1714,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206139",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Ah-I’ve got a serious case of deja vu here."
-      }
-    ]
+    "transcription": {
+      "en": "Ah-I’ve got a serious case of deja vu here."
+    }
   },
   {
     "id": "RingRendInTwo",
@@ -1800,11 +1724,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206140",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "What destructiveness! The ring has been rend in two!"
-      }
-    ]
+    "transcription": {
+      "en": "What destructiveness! The ring has been rend in two!"
+    }
   },
   {
     "id": "MutationCorrupting",
@@ -1812,11 +1734,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206141",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "The mutation is…corrupting the champion! Let’s hope they keep it together!"
-      }
-    ]
+    "transcription": {
+      "en": "The mutation is…corrupting the champion! Let’s hope they keep it together!"
+    }
   },
   {
     "id": "SomethingsComing",
@@ -1824,11 +1744,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206142",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Something’s coming! Stay on your toes!"
-      }
-    ]
+    "transcription": {
+      "en": "Something’s coming! Stay on your toes!"
+    }
   },
   {
     "id": "WarpedFabric",
@@ -1839,11 +1757,9 @@
       "The President"
     ],
     "duration": "6",
-    "transcription": [
-      {
-        "en": "Woah! What is this place? Did the Lindwurm warp the very fabric of space and time?"
-      }
-    ]
+    "transcription": {
+      "en": "Woah! What is this place? Did the Lindwurm warp the very fabric of space and time?"
+    }
   },
   {
     "id": "AnotherDimension",
@@ -1851,11 +1767,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206144",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Is this another dimension? I must confess, I am utterly bewildered!"
-      }
-    ]
+    "transcription": {
+      "en": "Is this another dimension? I must confess, I am utterly bewildered!"
+    }
   },
   {
     "id": "HardPressed",
@@ -1863,11 +1777,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206145",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A relentless assault! The Champion is hard-pressed!"
-      }
-    ]
+    "transcription": {
+      "en": "A relentless assault! The Champion is hard-pressed!"
+    }
   },
   {
     "id": "FeverPitch",
@@ -1875,11 +1787,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206146",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "The battle has reached a fever pitch, but the Champion still stands!"
-      }
-    ]
+    "transcription": {
+      "en": "The battle has reached a fever pitch, but the Champion still stands!"
+    }
   },
   {
     "id": "StayStrong",
@@ -1887,11 +1797,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206147",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "There’s so many of them! Stay strong, I beg you!"
-      }
-    ]
+    "transcription": {
+      "en": "There’s so many of them! Stay strong, I beg you!"
+    }
   },
   {
     "id": "NotSureIUnderstand",
@@ -1899,11 +1807,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206148",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I’m not sure I understand what’s going on anymore, folks!"
-      }
-    ]
+    "transcription": {
+      "en": "I’m not sure I understand what’s going on anymore, folks!"
+    }
   },
   {
     "id": "LeftRealmOfLogic",
@@ -1911,11 +1817,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206149",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We appear to have completely left the realm of logic behind!"
-      }
-    ]
+    "transcription": {
+      "en": "We appear to have completely left the realm of logic behind!"
+    }
   },
   {
     "id": "DefiesComprehension",
@@ -1923,11 +1827,9 @@
     "shoutcaster": "Metem",
     "soundPath": "sound/voice/vo_line/8206150",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Something that defies all comprehension is unfolding before our very eyes!"
-      }
-    ]
+    "transcription": {
+      "en": "Something that defies all comprehension is unfolding before our very eyes!"
+    }
   },
   {
     "id": "ThisEndsHere",
@@ -2202,11 +2104,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291000",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Victory is within reach. Now to seize it!"
-      }
-    ]
+    "transcription": {
+      "en": "Victory is within reach. Now to seize it!"
+    }
   },
   {
     "id": "ReleaseYourPotential",
@@ -2214,11 +2114,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291001",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We won't be outdone! Focus, then release your potential."
-      }
-    ]
+    "transcription": {
+      "en": "We won't be outdone! Focus, then release your potential."
+    }
   },
   {
     "id": "TreadWarily",
@@ -2226,11 +2124,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291002",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They're poised to win this round. You must tread warily."
-      }
-    ]
+    "transcription": {
+      "en": "They're poised to win this round. You must tread warily."
+    }
   },
   {
     "id": "DoNotLoseHeart",
@@ -2238,11 +2134,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291003",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "So they draw level. But do not lose heart!"
-      }
-    ]
+    "transcription": {
+      "en": "So they draw level. But do not lose heart!"
+    }
   },
   {
     "id": "ThaliakProtectUs",
@@ -2250,11 +2144,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291004",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Again! Thaliak protect us."
-      }
-    ]
+    "transcription": {
+      "en": "Again! Thaliak protect us."
+    }
   },
   {
     "id": "YouHaveThem",
@@ -2262,11 +2154,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291005",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "You have them!"
-      }
-    ]
+    "transcription": {
+      "en": "You have them!"
+    }
   },
   {
     "id": "PraiseTheTwelve",
@@ -2274,11 +2164,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291006",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Yes! Praise the twelve."
-      }
-    ]
+    "transcription": {
+      "en": "Yes! Praise the Twelve."
+    }
   },
   {
     "id": "ConfoundIt",
@@ -2286,11 +2174,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291007",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Confound it. I hadn't anticipated that."
-      }
-    ]
+    "transcription": {
+      "en": "Confound it. I hadn't anticipated that."
+    }
   },
   {
     "id": "OneMoreTurn",
@@ -2298,11 +2184,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291008",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "If only we had one more turn."
-      }
-    ]
+    "transcription": {
+      "en": "If only we had one more turn."
+    }
   },
   {
     "id": "DoNotDwellOnIt",
@@ -2310,11 +2194,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291009",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "This hand wasn't to be. Do not dwell on it."
-      }
-    ]
+    "transcription": {
+      "en": "This hand wasn't to be. Do not dwell on it."
+    }
   },
   {
     "id": "PlayedHandToPerfection",
@@ -2322,11 +2204,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291010",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You played your hand to perfection!"
-      }
-    ]
+    "transcription": {
+      "en": "You played your hand to perfection!"
+    }
   },
   {
     "id": "TriumphWorthyOfCelebration",
@@ -2334,11 +2214,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291011",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A triumph worthy of celebration, bravo!"
-      }
-    ]
+    "transcription": {
+      "en": "A triumph worthy of celebration, bravo!"
+    }
   },
   {
     "id": "VictoryGivesGreaterHope",
@@ -2346,11 +2224,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291012",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "This victory gives us greater hope for the morrow."
-      }
-    ]
+    "transcription": {
+      "en": "This victory gives us greater hope for the morrow."
+    }
   },
   {
     "id": "CommendableResult",
@@ -2358,11 +2234,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291013",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A commendable result. Let us stay the course."
-      }
-    ]
+    "transcription": {
+      "en": "A commendable result. Let us stay the course."
+    }
   },
   {
     "id": "OutcomeWithHubris",
@@ -2370,11 +2244,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291014",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Good gods. Did we invite this outcome with our hubris?"
-      }
-    ]
+    "transcription": {
+      "en": "Good gods. Did we invite this outcome with our hubris?"
+    }
   },
   {
     "id": "PainfulThrashing",
@@ -2382,11 +2254,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291015",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "A painful thrashing."
-      }
-    ]
+    "transcription": {
+      "en": "A painful thrashing."
+    }
   },
   {
     "id": "LearnAndForgeOn",
@@ -2394,11 +2264,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291016",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Let us learn from this and forge on."
-      }
-    ]
+    "transcription": {
+      "en": "Let us learn from this and forge on."
+    }
   },
   {
     "id": "KeepYourChinUp",
@@ -2406,11 +2274,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291017",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "It isn't over yet. Keep your chin up."
-      }
-    ]
+    "transcription": {
+      "en": "It isn't over yet. Keep your chin up."
+    }
   },
   {
     "id": "PerformanceForTheAges",
@@ -2418,11 +2284,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291018",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "That was a performance for the ages! You truly are our champion!"
-      }
-    ]
+    "transcription": {
+      "en": "That was a performance for the ages! You truly are our champion!"
+    }
   },
   {
     "id": "HoldYourHeadHigh",
@@ -2430,11 +2294,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291019",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "You played well my friend. You may hold your head high."
-      }
-    ]
+    "transcription": {
+      "en": "You played well, my friend. You may hold your head high."
+    }
   },
   {
     "id": "ProudYetIgnorant",
@@ -2442,11 +2304,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291020",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "How proud we were, yet ignorant of our own shortcomings."
-      }
-    ]
+    "transcription": {
+      "en": "How proud we were, yet ignorant of our own shortcomings."
+    }
   },
   {
     "id": "ReplaceIgnoranceWithKnowledge",
@@ -2454,11 +2314,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291021",
     "duration": "7",
-    "transcription": [
-      {
-        "en": "You must accept this defeat with grace, and endeavour to replace our ignorance with knowledge."
-      }
-    ]
+    "transcription": {
+      "en": "You must accept this defeat with grace, and endeavour to replace our ignorance with knowledge."
+    }
   },
   {
     "id": "OutplayedClearMinds",
@@ -2466,11 +2324,9 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8291022",
     "duration": "7",
-    "transcription": [
-      {
-        "en": "We were outplayed this time. Let us take a moment to clear our minds."
-      }
-    ]
+    "transcription": {
+      "en": "We were outplayed this time. Let us take a moment to clear our minds."
+    }
   },
   {
     "id": "PullYourselfTogether",
@@ -2478,11 +2334,7 @@
     "shoutcaster": "Alphinaud",
     "soundPath": "sound/voice/vo_line/8201085",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Pull Yourself together!"
-      }
-    ]
+    "npcYell": "3088"
   },
   {
     "id": "FocusRelease",
@@ -2574,11 +2426,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291023",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Yes! Give it everything you've got."
-      }
-    ]
+    "transcription": {
+      "en": "Yes! Give it everything you've got."
+    }
   },
   {
     "id": "ShowThemWhatYoureMadeOf",
@@ -2586,11 +2436,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291024",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That's it. Show them what you're made of!"
-      }
-    ]
+    "transcription": {
+      "en": "That's it. Show them what you're made of!"
+    }
   },
   {
     "id": "WontLetThemGetAway",
@@ -2598,11 +2446,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291025",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We won't let them get away with that of course."
-      }
-    ]
+    "transcription": {
+      "en": "We won't let them get away with that, of course."
+    }
   },
   {
     "id": "WhatANuisance",
@@ -2610,11 +2456,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291026",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "What a nuisance. Finish them off!"
-      }
-    ]
+    "transcription": {
+      "en": "What a nuisance. Finish them off!"
+    }
   },
   {
     "id": "WinThisYet",
@@ -2622,11 +2466,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291027",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "It's getting crowded but we'll win this yet."
-      }
-    ]
+    "transcription": {
+      "en": "It's getting crowded, but we'll win this yet."
+    }
   },
   {
     "id": "JustWhatWeNeeded",
@@ -2634,11 +2476,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291028",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Ah! Just what we needed!"
-      }
-    ]
+    "transcription": {
+      "en": "Ah! Just what we needed!"
+    }
   },
   {
     "id": "WontSoonForget",
@@ -2646,11 +2486,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291030",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "What?! oh we won't soon forget that."
-      }
-    ]
+    "transcription": {
+      "en": "What?! Oh we won't soon forget that."
+    }
   },
   {
     "id": "BeatenToThePunch",
@@ -2658,11 +2496,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291031",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Beaten to the punch."
-      }
-    ]
+    "transcription": {
+      "en": "Beaten to the punch."
+    }
   },
   {
     "id": "WorthyOfGrandfather",
@@ -2670,11 +2506,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291033",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Amazing! A performance worthy of grandfather in his prime!"
-      }
-    ]
+    "transcription": {
+      "en": "Amazing! A performance worthy of Grandfather in his prime!"
+    }
   },
   {
     "id": "ExpectedWhenSerious",
@@ -2682,11 +2516,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291034",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Only to be expected when you get serious."
-      }
-    ]
+    "transcription": {
+      "en": "Only to be expected when you get serious."
+    }
   },
   {
     "id": "KeepUpTheOffensive",
@@ -2694,11 +2526,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291035",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Great work. let's keep up the offensive."
-      }
-    ]
+    "transcription": {
+      "en": "Great work. let's keep up the offensive."
+    }
   },
   {
     "id": "OnwardsAndUpwards",
@@ -2706,11 +2536,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291036",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We can work with this. Onwards and upwards."
-      }
-    ]
+    "transcription": {
+      "en": "We can work with this. Onwards and upwards."
+    }
   },
   {
     "id": "TwelveGiveMeStrength",
@@ -2718,11 +2546,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291037",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Twelve give me strength."
-      }
-    ]
+    "transcription": {
+      "en": "Twelve give me strength."
+    }
   },
   {
     "id": "JustGettingStarted",
@@ -2730,11 +2556,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291038",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We're just getting started."
-      }
-    ]
+    "transcription": {
+      "en": "We're just getting started."
+    }
   },
   {
     "id": "NothingCantRecoverFrom",
@@ -2742,11 +2566,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291039",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Nothing we can't recover from."
-      }
-    ]
+    "transcription": {
+      "en": "Nothing we can't recover from."
+    }
   },
   {
     "id": "LittleSetback",
@@ -2754,11 +2576,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291040",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Don't worry. It's just a little setback."
-      }
-    ]
+    "transcription": {
+      "en": "Don't worry. It's just a little setback."
+    }
   },
   {
     "id": "OnlyPossibleOutcome",
@@ -2766,11 +2586,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291041",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "I knew you'd win! When I'm with you it's the only possible outcome."
-      }
-    ]
+    "transcription": {
+      "en": "I knew you'd win! When I'm with you it's the only possible outcome."
+    }
   },
   {
     "id": "TakeFirstPlaceNextTime",
@@ -2778,23 +2596,19 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291042",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "So close. Next time we'll take first place for sure."
-      }
-    ]
+    "transcription": {
+      "en": "So close. Next time we'll take first place for sure."
+    }
   },
   {
     "id": "ScramblingToKeepUp",
     "icon": "073036",
     "shoutcaster": "Alisaie",
-    "soundPath": "sound/voice/vo_line/8291044",
+    "soundPath": "sound/voice/vo_line/8291043",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I must say I'm not used to seeing you scrambling to keep up."
-      }
-    ]
+    "transcription": {
+      "en": "I must say I'm not used to seeing you scrambling to keep up."
+    }
   },
   {
     "id": "LaughingInTheEnd",
@@ -2802,11 +2616,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8291044",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "We won't lose next time! keep at it and we'll be the ones laughing in the end."
-      }
-    ]
+    "transcription": {
+      "en": "We won't lose next time! Keep at it and we'll be the ones laughing in the end."
+    }
   },
   {
     "id": "ThisIsNotOver",
@@ -2849,11 +2661,9 @@
     "shoutcaster": "Alisaie",
     "soundPath": "sound/voice/vo_line/8202528",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Defeat is not an option."
-      }
-    ]
+    "transcription": {
+      "en": "Defeat is not an option."
+    }
   },
   {
     "id": "TurnaboutsFairPlay",
@@ -2884,11 +2694,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291046",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "To the bold go the spoils."
-      }
-    ]
+    "transcription": {
+      "en": "To the bold go the spoils."
+    }
   },
   {
     "id": "OurTurnThancred",
@@ -2896,11 +2704,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291047",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "My turn! I mean, our turn."
-      }
-    ]
+    "transcription": {
+      "en": "My turn! I mean, our turn."
+    }
   },
   {
     "id": "ChanceWillCome",
@@ -2908,11 +2714,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291048",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Worry not. Your chance will come."
-      }
-    ]
+    "transcription": {
+      "en": "Worry not. Your chance will come."
+    }
   },
   {
     "id": "GainedOnUsWinInEnd",
@@ -2920,11 +2724,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291049",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They've gained on us but we'll win in the end."
-      }
-    ]
+    "transcription": {
+      "en": "They've gained on us, but we'll win in the end."
+    }
   },
   {
     "id": "SomeCompetitionNow",
@@ -2932,11 +2734,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291050",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Hmm, we've got some competition now."
-      }
-    ]
+    "transcription": {
+      "en": "Hmm, we've got some competition now."
+    }
   },
   {
     "id": "AllAccordingToPlan",
@@ -2944,11 +2744,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291051",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "All according to plan."
-      }
-    ]
+    "transcription": {
+      "en": "All according to plan."
+    }
   },
   {
     "id": "VictoryIsOursThancred",
@@ -2956,11 +2754,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291052",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "And there it is. Victory is ours!"
-      }
-    ]
+    "transcription": {
+      "en": "And there it is. Victory is ours!"
+    }
   },
   {
     "id": "ThatIsntGood",
@@ -2968,11 +2764,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291053",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That isn't good."
-      }
-    ]
+    "transcription": {
+      "en": "That isn't good."
+    }
   },
   {
     "id": "NotMostDisastrous",
@@ -2980,11 +2774,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291054",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Not the most disastrous outcome to be fair."
-      }
-    ]
+    "transcription": {
+      "en": "Not the most disastrous outcome, to be fair."
+    }
   },
   {
     "id": "LadyLuckOtherIdeas",
@@ -2992,11 +2784,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291055",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Too bad, lady luck had other ideas,"
-      }
-    ]
+    "transcription": {
+      "en": "Too bad; Lady Luck had other ideas,"
+    }
   },
   {
     "id": "PraiseOrPity",
@@ -3004,11 +2794,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291056",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I hardly know whether to praise you or pity your opponents."
-      }
-    ]
+    "transcription": {
+      "en": "I hardly know whether to praise you or pity your opponents."
+    }
   },
   {
     "id": "DecisiveVictoryThancred",
@@ -3016,11 +2804,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291057",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A decisive victory from a decisive strategist."
-      }
-    ]
+    "transcription": {
+      "en": "A decisive victory from a decisive strategist."
+    }
   },
   {
     "id": "KeepThemOnTheirHeels",
@@ -3028,11 +2814,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291058",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "That's the way! Keep them on their heels,"
-      }
-    ]
+    "transcription": {
+      "en": "That's the way! Keep them on their heels,"
+    }
   },
   {
     "id": "SlowAndSteadyThancred",
@@ -3040,11 +2824,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291059",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Slow and steady wins the game is it?"
-      }
-    ]
+    "transcription": {
+      "en": "Slow and steady wins the game, is it?"
+    }
   },
   {
     "id": "NotEasyRecovering",
@@ -3052,11 +2834,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291060",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "It won't be easy recovering from that."
-      }
-    ]
+    "transcription": {
+      "en": "It won't be easy recovering from that."
+    }
   },
   {
     "id": "CreditWhereDue",
@@ -3064,11 +2844,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291061",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Credit where credit is due I suppose."
-      }
-    ]
+    "transcription": {
+      "en": "Credit where credit's due, I suppose."
+    }
   },
   {
     "id": "StillDoThisDontGiveUp",
@@ -3076,11 +2854,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291062",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You can still do this. Don't give up."
-      }
-    ]
+    "transcription": {
+      "en": "You can still do this. Don't give up."
+    }
   },
   {
     "id": "HowWeStrikeBack",
@@ -3088,11 +2864,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291063",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We can't always win. What's important is how we strike back."
-      }
-    ]
+    "transcription": {
+      "en": "We can't always win. What's important is how we strike back."
+    }
   },
   {
     "id": "RaiseAGlassVictory",
@@ -3100,11 +2874,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291064",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Tonight we raise a glass to your victory!"
-      }
-    ]
+    "transcription": {
+      "en": "Tonight we raise a glass to your victory!"
+    }
   },
   {
     "id": "FellJustShortThancred",
@@ -3112,11 +2884,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291065",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Alas, we fell just short. So it goes sometimes."
-      }
-    ]
+    "transcription": {
+      "en": "Alas, we fell just short. So it goes sometimes."
+    }
   },
   {
     "id": "CouldHaveBeenWorse",
@@ -3124,11 +2894,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291066",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Could have been worse, but it also could have been better."
-      }
-    ]
+    "transcription": {
+      "en": "Could have been worse, but it also could have been better."
+    }
   },
   {
     "id": "DrinkBestOfUs",
@@ -3136,11 +2904,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291067",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "It happens to the best of us. Drink?"
-      }
-    ]
+    "transcription": {
+      "en": "It happens to the best of us. Drink?"
+    }
   },
   {
     "id": "KeepChinUpPrettyLeast",
@@ -3148,11 +2914,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8291068",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "I wont lie, that wasn't pretty in the least. Try to keep your chin up!"
-      }
-    ]
+    "transcription": {
+      "en": "I won't lie, that wasn't pretty in the least. Try to keep your chin up!"
+    }
   },
   {
     "id": "ThisIsGoingWell",
@@ -3160,11 +2924,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202040",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "This is going well."
-      }
-    ]
+    "npcYell": "7771"
   },
   {
     "id": "RightBackToIt",
@@ -3172,11 +2932,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202042",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Right! Back to it."
-      }
-    ]
+    "npcYell": "7773"
   },
   {
     "id": "WhereWereWe",
@@ -3184,11 +2940,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202043",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Where were we?"
-      }
-    ]
+    "npcYell": "7774"
   },
   {
     "id": "DoYourWorst",
@@ -3196,11 +2948,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202044",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Do your worst!"
-      }
-    ]
+    "npcYell": "7775"
   },
   {
     "id": "KeepYourGuardUp",
@@ -3208,11 +2956,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202053",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Keep your guard up!"
-      }
-    ]
+    "npcYell": "4856"
   },
   {
     "id": "ComeOn",
@@ -3220,11 +2964,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202055",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Come on!"
-      }
-    ]
+    "transcription": {
+      "en": "Come on!"
+    }
   },
   {
     "id": "BestDefenceIsGoodDefence",
@@ -3232,11 +2974,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8202056",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "The best defence is a good defence!"
-      }
-    ]
+    "npcYell": "7787"
   },
   {
     "id": "ExplosivesInPlace",
@@ -3244,11 +2982,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8203021",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "This is Thancred. The explosives are in place."
-      }
-    ]
+    "transcription": {
+      "en": "This is Thancred. The explosives are in place."
+    }
   },
   {
     "id": "SevenHells",
@@ -3256,11 +2992,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8203023",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Seven hells."
-      }
-    ]
+    "npcYell": "8441"
   },
   {
     "id": "ThatWasUnbecoming",
@@ -3268,11 +3000,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201649",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "That was unbecoming"
-      }
-    ]
+    "transcription": {
+      "en": "That was unbecoming."
+    }
   },
   {
     "id": "HitThemWhereItHurts",
@@ -3280,11 +3010,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201660",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You have to hit them where it hurts!"
-      }
-    ]
+    "transcription": {
+      "en": "You have to hit them where it hurts!"
+    }
   },
   {
     "id": "NotSoFast",
@@ -3292,11 +3020,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201651",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Not so fast!"
-      }
-    ]
+    "npcYell": "4238"
   },
   {
     "id": "NoMistakes",
@@ -3304,11 +3028,7 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201654",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "No Mistakes!"
-      }
-    ]
+    "npcYell": "14146"
   },
   {
     "id": "MakeThisCount",
@@ -3316,11 +3036,9 @@
     "shoutcaster": "Thancred",
     "soundPath": "sound/voice/vo_line/8201656",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Make this count!"
-      }
-    ]
+    "transcription": {
+      "en": "Make this count!"
+    }
   },
   {
     "id": "OvercomeTheOdds",
@@ -3328,11 +3046,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291069",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Together we shall overcome the odds"
-      }
-    ]
+    "transcription": {
+      "en": "Together, we shall overcome the odds"
+    }
   },
   {
     "id": "SoundDecision",
@@ -3340,11 +3056,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291070",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "A sound decision."
-      }
-    ]
+    "transcription": {
+      "en": "A sound decision."
+    }
   },
   {
     "id": "ContendWithThreat",
@@ -3352,11 +3066,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291071",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "How best to contend with this threat?"
-      }
-    ]
+    "transcription": {
+      "en": "How best to contend with this threat?"
+    }
   },
   {
     "id": "DanceOfTheStars",
@@ -3364,11 +3076,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291072",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Attune thyself to the dance of the stars."
-      }
-    ]
+    "transcription": {
+      "en": "Attune thyself to the dance of the stars."
+    }
   },
   {
     "id": "AmidstGreatChaos",
@@ -3376,11 +3086,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291073",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Amidst great chaos, victory may yet be grasped."
-      }
-    ]
+    "transcription": {
+      "en": "Amidst great chaos, victory may yet be grasped."
+    }
   },
   {
     "id": "StarsFavorUs",
@@ -3388,11 +3096,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291074",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Look, the stars favor us!"
-      }
-    ]
+    "transcription": {
+      "en": "Look, the stars favor us!"
+    }
   },
   {
     "id": "TheHandIsOurs",
@@ -3400,11 +3106,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291075",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "The hand is ours! Strike with all thy might!"
-      }
-    ]
+    "transcription": {
+      "en": "The hand is ours! Strike with all thy might!"
+    }
   },
   {
     "id": "SuchShouldBeFate",
@@ -3412,11 +3116,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291076",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "That such should be our fate."
-      }
-    ]
+    "transcription": {
+      "en": "That such should be our fate."
+    }
   },
   {
     "id": "VicissitudesOfFortune",
@@ -3424,11 +3126,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291078",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Let us accept the vicissitudes of fortune"
-      }
-    ]
+    "transcription": {
+      "en": "Let us accept the vicissitudes of fortune."
+    }
   },
   {
     "id": "FavoredByTheSpinner",
@@ -3436,11 +3136,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291079",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Favored our we by the Spinner to triumph so handily!"
-      }
-    ]
+    "transcription": {
+      "en": "Favored our we by the Spinner to triumph so handily!"
+    }
   },
   {
     "id": "MasterfulStrategy",
@@ -3448,11 +3146,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291080",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A masterful strategy masterfully executed."
-      }
-    ]
+    "transcription": {
+      "en": "A masterful strategy masterfully executed."
+    }
   },
   {
     "id": "SureStepForward",
@@ -3460,11 +3156,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291081",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "By this triumph we take a sure step forward."
-      }
-    ]
+    "transcription": {
+      "en": "By this triumph we take a sure step forward."
+    }
   },
   {
     "id": "VictoriesPaveWayToRenown",
@@ -3472,11 +3166,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291082",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Great or small, our victories pave the way to renown."
-      }
-    ]
+    "transcription": {
+      "en": "Great or small, our victories pave the way to renown."
+    }
   },
   {
     "id": "DestroyerMightyBlow",
@@ -3484,11 +3176,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291083",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Tis as though the destroyer himself hath dealt us a mighty blow."
-      }
-    ]
+    "transcription": {
+      "en": "'Tis as though the destroyer himself hath dealt us a mighty blow."
+    }
   },
   {
     "id": "BodethIllTurnTide",
@@ -3496,11 +3186,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291084",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "This bodeth ill. We must need turn the tide."
-      }
-    ]
+    "transcription": {
+      "en": "This bodeth ill. We must need turn the tide."
+    }
   },
   {
     "id": "ReviewOurStrategy",
@@ -3508,11 +3196,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291085",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We would do well to review our strategy."
-      }
-    ]
+    "transcription": {
+      "en": "We would do well to review our strategy."
+    }
   },
   {
     "id": "StarsFavourNextHand",
@@ -3520,11 +3206,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291086",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Mayhap the stars will favour our next hand."
-      }
-    ]
+    "transcription": {
+      "en": "Mayhap the stars will favour our next hand."
+    }
   },
   {
     "id": "UnequivocalVictory",
@@ -3532,11 +3216,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291087",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "An unequivocal victory! Thou leavest me in awe my friend."
-      }
-    ]
+    "transcription": {
+      "en": "An unequivocal victory! Thou leavest me in awe, my friend."
+    }
   },
   {
     "id": "NarrowestOfDefeats",
@@ -3544,11 +3226,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291088",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "The narrowest of defeats. Take pride in thine efforts."
-      }
-    ]
+    "transcription": {
+      "en": "The narrowest of defeats. Take pride in thine efforts."
+    }
   },
   {
     "id": "OpponentsFormidableIndeed",
@@ -3556,11 +3236,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291089",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Thine opponents were formidable indeed."
-      }
-    ]
+    "transcription": {
+      "en": "Thine opponents were formidable indeed."
+    }
   },
   {
     "id": "TriflingUntoLosing",
@@ -3568,11 +3246,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291090",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "That which a man think is trifling, he mourneth unto losing."
-      }
-    ]
+    "transcription": {
+      "en": "That which a man think is trifling, he mourneth unto losing."
+    }
   },
   {
     "id": "ShoulderToLeanUpon",
@@ -3580,11 +3256,9 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8291091",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "I offer no excuses, only a shoulder to lean upon shouldst thou require it."
-      }
-    ]
+    "transcription": {
+      "en": "I offer no excuses, only a shoulder to lean upon shouldst thou require it."
+    }
   },
   {
     "id": "HoldFastFriend",
@@ -3592,11 +3266,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8202089",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Hold fast friend."
-      }
-    ]
+    "npcYell": "7820"
   },
   {
     "id": "BeAtEase",
@@ -3604,11 +3274,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8203035",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Be at ease my friend."
-      }
-    ]
+    "npcYell": "13475"
   },
   {
     "id": "HaveCare",
@@ -3616,11 +3282,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8203038",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Have care my friend."
-      }
-    ]
+    "npcYell": "13478"
   },
   {
     "id": "ThisBodethIll",
@@ -3628,11 +3290,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8202076",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "This bodeth ill."
-      }
-    ]
+    "npcYell": "7807"
   },
   {
     "id": "ThyTimeNotCome",
@@ -3640,11 +3298,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8202090",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Thy time hath not yet come."
-      }
-    ]
+    "npcYell": "7821"
   },
   {
     "id": "FearsomeFamiliar",
@@ -3652,11 +3306,7 @@
     "shoutcaster": "Urianger",
     "soundPath": "sound/voice/vo_line/8203032",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Tis a most fearsome familiar!"
-      }
-    ]
+    "npcYell": "13472"
   },
   {
     "id": "LooksPromising",
@@ -3664,11 +3314,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291092",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Well, this looks promising."
-      }
-    ]
+    "transcription": {
+      "en": "Well, this looks promising."
+    }
   },
   {
     "id": "AchievedWithoutRisk",
@@ -3676,11 +3324,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291093",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Nothing worthwhile was ever achieved without risk."
-      }
-    ]
+    "transcription": {
+      "en": "Nothing worthwhile was ever achieved without risk."
+    }
   },
   {
     "id": "TreadCautiously",
@@ -3688,11 +3334,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291094",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Tread cautiously now."
-      }
-    ]
+    "transcription": {
+      "en": "Tread cautiously now."
+    }
   },
   {
     "id": "BetterHandYet",
@@ -3700,11 +3344,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291095",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "So it goes, but we may yet have better hand."
-      }
-    ]
+    "transcription": {
+      "en": "So it goes, but we may yet have better hand."
+    }
   },
   {
     "id": "DangerousMomentIndeed",
@@ -3712,11 +3354,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291096",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A dangerous moment indeed."
-      }
-    ]
+    "transcription": {
+      "en": "A dangerous moment indeed."
+    }
   },
   {
     "id": "VictoryAtHandIsItNot",
@@ -3724,11 +3364,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291097",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Victory is at hand is it not?"
-      }
-    ]
+    "transcription": {
+      "en": "Victory is at hand is it not?"
+    }
   },
   {
     "id": "PreciselyWhatNeeded",
@@ -3736,11 +3374,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291098",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Precisely what we needed!"
-      }
-    ]
+    "transcription": {
+      "en": "Precisely what we needed!"
+    }
   },
   {
     "id": "SimplyNoKnowing",
@@ -3748,11 +3384,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291099",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Sometimes there is simply no knowing."
-      }
-    ]
+    "transcription": {
+      "en": "Sometimes there is simply no knowing."
+    }
   },
   {
     "id": "SmallMerciesYshtola",
@@ -3760,11 +3394,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291100",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Small mercies I suppose."
-      }
-    ]
+    "transcription": {
+      "en": "Small mercies I suppose."
+    }
   },
   {
     "id": "UnfortunateSuchIsLife",
@@ -3772,11 +3404,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291101",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Unfortunate, but such is life."
-      }
-    ]
+    "transcription": {
+      "en": "Unfortunate, but such is life."
+    }
   },
   {
     "id": "ImpeccablePerformance",
@@ -3784,11 +3414,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291102",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "An impeccable performance! I couldn't be more satisfied."
-      }
-    ]
+    "transcription": {
+      "en": "An impeccable performance! I couldn't be more satisfied."
+    }
   },
   {
     "id": "ExcellentRoundImpressed",
@@ -3796,11 +3424,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291103",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "An excellent round. I'm impressed."
-      }
-    ]
+    "transcription": {
+      "en": "An excellent round. I'm impressed."
+    }
   },
   {
     "id": "NotRestOnLaurels",
@@ -3808,11 +3434,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291104",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You won't rest on these laurels of course."
-      }
-    ]
+    "transcription": {
+      "en": "You won't rest on these laurels of course."
+    }
   },
   {
     "id": "BestEffortWellDone",
@@ -3820,11 +3444,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291105",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You put forth your best effort, well done."
-      }
-    ]
+    "transcription": {
+      "en": "You put forth your best effort, well done."
+    }
   },
   {
     "id": "BedWithoutSupper",
@@ -3832,11 +3454,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291106",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Keep that up and I'll send you to bed without supper!"
-      }
-    ]
+    "transcription": {
+      "en": "Keep that up and I'll send you to bed without supper!"
+    }
   },
   {
     "id": "NotOverYetYshtola",
@@ -3844,11 +3464,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291107",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Do not be disheartened, it's not over yet"
-      }
-    ]
+    "transcription": {
+      "en": "Do not be disheartened, it's not over yet"
+    }
   },
   {
     "id": "RedoubleEfforts",
@@ -3856,11 +3474,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291108",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We must redouble our efforts!"
-      }
-    ]
+    "transcription": {
+      "en": "We must redouble our efforts!"
+    }
   },
   {
     "id": "MakeUpLostGround",
@@ -3868,11 +3484,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291109",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We shall make up for the ground we lost, yes?"
-      }
-    ]
+    "transcription": {
+      "en": "We shall make up for the ground we lost, yes?"
+    }
   },
   {
     "id": "RefreshingDiversion",
@@ -3880,11 +3494,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291110",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A refreshing diversion, made all the more enjoyable by your victory!"
-      }
-    ]
+    "transcription": {
+      "en": "A refreshing diversion, made all the more enjoyable by your victory!"
+    }
   },
   {
     "id": "WeCanDoBetterYshtola",
@@ -3892,11 +3504,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291111",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We can do better, do you not agree?"
-      }
-    ]
+    "transcription": {
+      "en": "We can do better, do you not agree?"
+    }
   },
   {
     "id": "HoneOurWits",
@@ -3904,11 +3514,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291112",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We shall need to hone our wits if we are to triumph."
-      }
-    ]
+    "transcription": {
+      "en": "We shall need to hone our wits if we are to triumph."
+    }
   },
   {
     "id": "DisappointingDefeatGrowStronger",
@@ -3916,11 +3524,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291113",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Disappointing defeat, but you'll grow stronger for it won't you?"
-      }
-    ]
+    "transcription": {
+      "en": "Disappointing defeat, but you'll grow stronger for it won't you?"
+    }
   },
   {
     "id": "OffWithYouSleep",
@@ -3928,11 +3534,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8291114",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Some sleep will do you a world of good. Go on now off with you."
-      }
-    ]
+    "transcription": {
+      "en": "Some sleep will do you a world of good. Go on now off with you."
+    }
   },
   {
     "id": "ThereIsNoEscapeYshtola",
@@ -3940,11 +3544,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201108",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "There is no escape!"
-      }
-    ]
+    "npcYell": "2671"
   },
   {
     "id": "AndNowToReturnTheFavor",
@@ -3952,11 +3552,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201639",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "And now to return the favor."
-      }
-    ]
+    "transcription": {
+      "en": "And now to return the favor."
+    }
   },
   {
     "id": "MakeReady",
@@ -3964,11 +3562,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201640",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Make Ready!"
-      }
-    ]
+    "npcYell": "3886"
   },
   {
     "id": "WereCountingOnYou",
@@ -3976,11 +3570,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201642",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "We're counting on you."
-      }
-    ]
+    "npcYell": "4196"
   },
   {
     "id": "BeVigilant",
@@ -3988,11 +3578,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201644",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Be Vigilant."
-      }
-    ]
+    "transcription": {
+      "en": "Be Vigilant."
+    }
   },
   {
     "id": "BeStrong",
@@ -4000,11 +3588,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201645",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Be Strong."
-      }
-    ]
+    "npcYell": "15920"
   },
   {
     "id": "LeaveAMark",
@@ -4012,11 +3596,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202106",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "This is going to leave a mark!"
-      }
-    ]
+    "npcYell": "7837"
   },
   {
     "id": "BeMoreCareful",
@@ -4024,11 +3604,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202107",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Be more careful."
-      }
-    ]
+    "npcYell": "7838"
   },
   {
     "id": "DontBeSoReckless",
@@ -4036,11 +3612,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202109",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Don't be so reckless."
-      }
-    ]
+    "npcYell": "7840"
   },
   {
     "id": "HoldNothingBack",
@@ -4048,11 +3620,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202110",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Hold nothing back!"
-      }
-    ]
+    "npcYell": "4718"
   },
   {
     "id": "MayTheTwelveGuideYou",
@@ -4060,11 +3628,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202111",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "May the twelve guide you."
-      }
-    ]
+    "npcYell": "7842"
   },
   {
     "id": "Fall",
@@ -4072,11 +3636,9 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8201098",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Fall!"
-      }
-    ]
+    "transcription": {
+      "en": "Fall!"
+    }
   },
   {
     "id": "SomeoneWillPay",
@@ -4084,11 +3646,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202098",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Someone will pay for that!"
-      }
-    ]
+    "npcYell": "7829"
   },
   {
     "id": "Embarrassing",
@@ -4096,11 +3654,7 @@
     "shoutcaster": "Y'shtola",
     "soundPath": "sound/voice/vo_line/8202099",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That was embarrassing."
-      }
-    ]
+    "npcYell": "7830"
   },
   {
     "id": "HaveThemNowEstinien",
@@ -4108,11 +3662,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291115",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We have them now."
-      }
-    ]
+    "npcYell": "13184"
   },
   {
     "id": "UseConfidenceAgainstThem",
@@ -4120,11 +3670,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291116",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Good, use their confidence against them."
-      }
-    ]
+    "transcription": {
+      "en": "Good, use their confidence against them."
+    }
   },
   {
     "id": "TheyHaveUpperHand",
@@ -4132,11 +3680,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291117",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "They have the upper hand."
-      }
-    ]
+    "transcription": {
+      "en": "They have the upper hand."
+    }
   },
   {
     "id": "SettleThisQuickly",
@@ -4144,11 +3690,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291118",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "They've gained on us, we must settle this quickly."
-      }
-    ]
+    "transcription": {
+      "en": "They've gained on us, we must settle this quickly."
+    }
   },
   {
     "id": "HaveFaithMyFriend",
@@ -4156,11 +3700,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291119",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Have faith my friend!"
-      }
-    ]
+    "transcription": {
+      "en": "Have faith, my friend!"
+    }
   },
   {
     "id": "EndTheirStruggles",
@@ -4168,11 +3710,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291120",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Let us end their struggles!"
-      }
-    ]
+    "transcription": {
+      "en": "Let us end their struggles!"
+    }
   },
   {
     "id": "LuckOfTheDrawEstinien",
@@ -4180,11 +3720,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291121",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Luck of the draw eh? I'll not complain."
-      }
-    ]
+    "transcription": {
+      "en": "Luck of the draw, eh? I'll not complain."
+    }
   },
   {
     "id": "LeftOurselvesOpen",
@@ -4192,11 +3730,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291122",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We left ourselves open and paid for it."
-      }
-    ]
+    "transcription": {
+      "en": "We left ourselves open and paid for it."
+    }
   },
   {
     "id": "DidntBearBrunt",
@@ -4204,11 +3740,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291123",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "At least we didn't bear the brunt of it."
-      }
-    ]
+    "transcription": {
+      "en": "At least we didn't bear the brunt of it."
+    }
   },
   {
     "id": "ShouldHaveBeenUs",
@@ -4216,11 +3750,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291124",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That should have been us."
-      }
-    ]
+    "transcription": {
+      "en": "That should have been us."
+    }
   },
   {
     "id": "DragoonImpressed",
@@ -4228,11 +3760,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291125",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "A mightier blow I've seldom seen! Consider this dragoon impressed."
-      }
-    ]
+    "transcription": {
+      "en": "A mightier blow I've seldom seen! Consider this dragoon impressed."
+    }
   },
   {
     "id": "NoLessExpectedEstinien",
@@ -4240,11 +3770,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291126",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "No less than I expected of you my friend."
-      }
-    ]
+    "transcription": {
+      "en": "No less than I expected of you, my friend."
+    }
   },
   {
     "id": "AimForTheKill",
@@ -4252,11 +3780,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291127",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A solid outing! Next we aim for the kill."
-      }
-    ]
+    "transcription": {
+      "en": "A solid outing! Next we aim for the kill."
+    }
   },
   {
     "id": "DefeatedGreaterFoes",
@@ -4264,11 +3790,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291128",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You've defeated far greater foes."
-      }
-    ]
+    "transcription": {
+      "en": "You've defeated far greater foes."
+    }
   },
   {
     "id": "TumultuousDespair",
@@ -4276,11 +3800,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291129",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "This tumultuous despair, I know it well."
-      }
-    ]
+    "transcription": {
+      "en": "This tumultuous despair, I know it well."
+    }
   },
   {
     "id": "PainStrengthPassion",
@@ -4288,11 +3810,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291130",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Let this pain be your strength and your passion!"
-      }
-    ]
+    "transcription": {
+      "en": "Let this pain be your strength and your passion!"
+    }
   },
   {
     "id": "HaventLostEdge",
@@ -4300,11 +3820,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291131",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You haven't lost your edge I hope."
-      }
-    ]
+    "transcription": {
+      "en": "You haven't lost your edge I hope."
+    }
   },
   {
     "id": "RepayThisDebt",
@@ -4312,11 +3830,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291132",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We'll repay this debt my friend."
-      }
-    ]
+    "transcription": {
+      "en": "We'll repay this debt, my friend."
+    }
   },
   {
     "id": "HonorToFightBySide",
@@ -4324,11 +3840,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291133",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "Impressive has ever my friend! It was an honor to fight by your side."
-      }
-    ]
+    "transcription": {
+      "en": "Impressive as ever, my friend! It was an honor to fight by your side."
+    }
   },
   {
     "id": "ClaimVictoryNextTime",
@@ -4336,11 +3850,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291134",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "So near yet so far. Next time we must claim victory."
-      }
-    ]
+    "transcription": {
+      "en": "So near yet so far. Next time we must claim victory."
+    }
   },
   {
     "id": "CapableOfMoreEstinien",
@@ -4348,11 +3860,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291135",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "You're capable of more than this, much more."
-      }
-    ]
+    "transcription": {
+      "en": "You're capable of more than this, much more."
+    }
   },
   {
     "id": "TogetherRiseAgain",
@@ -4360,11 +3870,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291136",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "No matter how deep our grief, together we will rise again."
-      }
-    ]
+    "transcription": {
+      "en": "No matter how deep our grief, together we will rise again."
+    }
   },
   {
     "id": "DrinkAndDriedSquid",
@@ -4372,11 +3880,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8291137",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "I for one could do with a drink, and some dried squid. Care to join?"
-      }
-    ]
+    "transcription": {
+      "en": "I for one could do with a drink, and some dried squid. Care to join?"
+    }
   },
   {
     "id": "WatchYourself",
@@ -4384,11 +3890,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8202497",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Watch yourself!"
-      }
-    ]
+    "transcription": {
+      "en": "Watch yourself!"
+    }
   },
   {
     "id": "ThereIsNoEndToThem",
@@ -4396,11 +3900,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8202503",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "There's no end to them!"
-      }
-    ]
+    "npcYell": "4967"
   },
   {
     "id": "TheyllPayForThatEstinien",
@@ -4408,11 +3908,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203049",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "They'll pay for that."
-      }
-    ]
+    "npcYell": "13484"
   },
   {
     "id": "BackToTheFray",
@@ -4420,11 +3916,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203050",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Back to the fray."
-      }
-    ]
+    "npcYell": "13485"
   },
   {
     "id": "WereNotDoneHere",
@@ -4432,11 +3924,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203059",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "We're not done here."
-      }
-    ]
+    "npcYell": "13494"
   },
   {
     "id": "HangInThere",
@@ -4444,11 +3932,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203060",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Hang in there!"
-      }
-    ]
+    "npcYell": "13495"
   },
   {
     "id": "Courage",
@@ -4456,11 +3940,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203061",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Courage!"
-      }
-    ]
+    "transcription": {
+      "en": "Courage!"
+    }
   },
   {
     "id": "StayStrongEstinien",
@@ -4468,11 +3950,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203062",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Stay strong!"
-      }
-    ]
+    "npcYell": "12472"
   },
   {
     "id": "RoarNidhogg",
@@ -4480,11 +3958,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203063",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Roar Nidhogg, ROAR!"
-      }
-    ]
+    "npcYell": "10315"
   },
   {
     "id": "FightHardNotHardEnough",
@@ -4492,11 +3966,9 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203066",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "They fight hard, but not hard enough!"
-      }
-    ]
+    "transcription": {
+      "en": "They fight hard, but not hard enough!"
+    }
   },
   {
     "id": "GiveItEverything",
@@ -4504,11 +3976,7 @@
     "shoutcaster": "Estinien",
     "soundPath": "sound/voice/vo_line/8203402",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Give it everything you've got!"
-      }
-    ]
+    "npcYell": "13911"
   },
   {
     "id": "FocusOnVictoryGraha",
@@ -4516,11 +3984,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291138",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Stay with me. Focus on victory."
-      }
-    ]
+    "transcription": {
+      "en": "Stay with me. Focus on victory."
+    }
   },
   {
     "id": "DeclareIntentions",
@@ -4528,11 +3994,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291139",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "The time has come to declare our intentions as well."
-      }
-    ]
+    "transcription": {
+      "en": "The time has come to declare our intentions as well."
+    }
   },
   {
     "id": "MakeAStandOurselves",
@@ -4540,11 +4004,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291140",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "What say you? Shall we make a stand ourselves?"
-      }
-    ]
+    "transcription": {
+      "en": "What say you? Shall we make a stand ourselves?"
+    }
   },
   {
     "id": "NotGoingDownWithoutFight",
@@ -4552,11 +4014,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291141",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "They're not going down without a fight aren't they?"
-      }
-    ]
+    "transcription": {
+      "en": "They're not going down without a fight, are they?"
+    }
   },
   {
     "id": "TestUsButPrevail",
@@ -4564,11 +4024,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291142",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They may test us, but we shall prevail."
-      }
-    ]
+    "transcription": {
+      "en": "They may test us, but we shall prevail."
+    }
   },
   {
     "id": "FinishThemTooMuch",
@@ -4576,11 +4034,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291143",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Finish them! Oh, erm.. too much?"
-      }
-    ]
+    "transcription": {
+      "en": "Finish them! Oh, erm... too much?"
+    }
   },
   {
     "id": "PointsAndAll",
@@ -4588,11 +4044,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291144",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "We shall have victory. Points and all!"
-      }
-    ]
+    "transcription": {
+      "en": "We shall have victory. Points and all!"
+    }
   },
   {
     "id": "AreYouAlrightGraha",
@@ -4600,11 +4054,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291145",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Oh dear, are you alright?"
-      }
-    ]
+    "transcription": {
+      "en": "Oh dear, are you alright?"
+    }
   },
   {
     "id": "AvoidedWorstNotHopedFor",
@@ -4612,11 +4064,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291146",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "We avoided the worst but it's not what I'd hoped for."
-      }
-    ]
+    "transcription": {
+      "en": "We avoided the worst, but it's not what I'd hoped for."
+    }
   },
   {
     "id": "BeatUsToItNextTime",
@@ -4624,11 +4074,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291147",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They beat us to it. The next time will be different."
-      }
-    ]
+    "transcription": {
+      "en": "They beat us to it. The next time will be different."
+    }
   },
   {
     "id": "LivingLegends",
@@ -4636,11 +4084,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291148",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Tremendous. The stuff of living legends!"
-      }
-    ]
+    "transcription": {
+      "en": "Tremendous. The stuff of living legends!"
+    }
   },
   {
     "id": "SplendidResultKeepUp",
@@ -4648,11 +4094,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291149",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "A splendid result! Keep up the good work my friend."
-      }
-    ]
+    "transcription": {
+      "en": "A splendid result! Keep up the good work, my friend."
+    }
   },
   {
     "id": "TaskAtHandVictoryOurs",
@@ -4660,11 +4104,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291150",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Focus on the task at hand and victory shall be ours."
-      }
-    ]
+    "transcription": {
+      "en": "Focus on the task at hand and victory shall be ours."
+    }
   },
   {
     "id": "WillDoEvenBetter",
@@ -4672,11 +4114,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291151",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We can and we will do even better."
-      }
-    ]
+    "transcription": {
+      "en": "We can and we will do even better."
+    }
   },
   {
     "id": "OhHowEmbarrassing",
@@ -4684,11 +4124,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291152",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Oh, how embarassing."
-      }
-    ]
+    "transcription": {
+      "en": "Oh, how embarassing."
+    }
   },
   {
     "id": "MattersHalfFinished",
@@ -4696,11 +4134,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291153",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We cannot leave matters half finished."
-      }
-    ]
+    "transcription": {
+      "en": "We cannot leave matters half finished."
+    }
   },
   {
     "id": "DoYouRequireHealing",
@@ -4708,11 +4144,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291154",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Do you require healing?"
-      }
-    ]
+    "transcription": {
+      "en": "Do you require healing?"
+    }
   },
   {
     "id": "CowelToStir",
@@ -4720,11 +4154,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291155",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Well that would scarcely cause my cowl to stir."
-      }
-    ]
+    "transcription": {
+      "en": "Well, that would scarcely cause my cowl to stir."
+    }
   },
   {
     "id": "BefittingMyInspiration",
@@ -4732,11 +4164,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291156",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A performance befitting of my inspiration!"
-      }
-    ]
+    "transcription": {
+      "en": "A performance befitting of my inspiration!"
+    }
   },
   {
     "id": "CourageAndZeal",
@@ -4744,11 +4174,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291157",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Continue with the same courage and zeal and victory will be yours!"
-      }
-    ]
+    "transcription": {
+      "en": "Continue with the same courage and zeal, and victory will be yours!"
+    }
   },
   {
     "id": "AllaganGameGraha",
@@ -4756,11 +4184,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291158",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Were it an allagan game perhaps I might have been more useful to you?"
-      }
-    ]
+    "transcription": {
+      "en": "Were it an allagan game perhaps I might have been more useful to you?"
+    }
   },
   {
     "id": "SomethingToTeachDefeat",
@@ -4768,11 +4194,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291159",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "While I'd rather you have triumphed, even in defeat you have something to teach us."
-      }
-    ]
+    "transcription": {
+      "en": "While I'd rather you have triumphed, even in defeat you have something to teach us."
+    }
   },
   {
     "id": "TaleWillNotEnd",
@@ -4780,11 +4204,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8291160",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Your tale will not end here. Is that not so my friend?"
-      }
-    ]
+    "transcription": {
+      "en": "Your tale will not end here. Is that not so, my friend?"
+    }
   },
   {
     "id": "BackToTheFight",
@@ -4792,11 +4214,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202119",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Back to the fight."
-      }
-    ]
+    "npcYell": "7850"
   },
   {
     "id": "TimeHasCome",
@@ -4804,11 +4222,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202125",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "The time has come!"
-      }
-    ]
+    "npcYell": "7856"
   },
   {
     "id": "JustTheBeginning",
@@ -4816,11 +4230,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202342",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Just the beginning."
-      }
-    ]
+    "npcYell": "10303"
   },
   {
     "id": "ShowMeWhatYouCanDo",
@@ -4828,11 +4238,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202341",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Show me what you can do."
-      }
-    ]
+    "npcYell": "10302"
   },
   {
     "id": "AreYouAlright",
@@ -4840,11 +4246,7 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8202337",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Are you alright?"
-      }
-    ]
+    "npcYell": "8894"
   },
   {
     "id": "FindCoverEnergy",
@@ -4852,11 +4254,9 @@
     "shoutcaster": "G'raha Tia",
     "soundPath": "sound/voice/vo_line/8203042",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "The air crackles with energy. Find cover!"
-      }
-    ]
+    "transcription": {
+      "en": "The air crackles with energy. Find cover!"
+    }
   },
   {
     "id": "CanvasOfVictory",
@@ -4864,11 +4264,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291161",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We draw upon the canvas of victory."
-      }
-    ]
+    "transcription": {
+      "en": "We draw upon the canvas of victory."
+    }
   },
   {
     "id": "SkillsToTheProof",
@@ -4876,11 +4274,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291162",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Time to put your skills to the proof!"
-      }
-    ]
+    "transcription": {
+      "en": "Time to put your skills to the proof!"
+    }
   },
   {
     "id": "WontFallHereKrile",
@@ -4888,11 +4284,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291163",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We won't fall here!"
-      }
-    ]
+    "transcription": {
+      "en": "We won't fall here!"
+    }
   },
   {
     "id": "HaveFaithAllWell",
@@ -4900,11 +4294,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291164",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Have faith and all shall be well."
-      }
-    ]
+    "transcription": {
+      "en": "Have faith and all shall be well."
+    }
   },
   {
     "id": "MustStandStrongKrile",
@@ -4912,11 +4304,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291165",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We must stand strong."
-      }
-    ]
+    "transcription": {
+      "en": "We must stand strong."
+    }
   },
   {
     "id": "FinishingTouchKrile",
@@ -4924,11 +4314,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291166",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "And now for the finishing touch!"
-      }
-    ]
+    "transcription": {
+      "en": "And now for the finishing touch!"
+    }
   },
   {
     "id": "GoodThingsWait",
@@ -4936,11 +4324,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291167",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Good things do come to those who wait!"
-      }
-    ]
+    "transcription": {
+      "en": "Good things do come to those who wait!"
+    }
   },
   {
     "id": "CantBeRightKrile",
@@ -4948,11 +4334,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291168",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "What? That can't be right!"
-      }
-    ]
+    "transcription": {
+      "en": "What? That can't be right!"
+    }
   },
   {
     "id": "DidntHandItToThem",
@@ -4960,11 +4344,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291169",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "At least we didn't hand it to them."
-      }
-    ]
+    "transcription": {
+      "en": "At least we didn't hand it to them."
+    }
   },
   {
     "id": "ThatsTooBadKrile",
@@ -4972,11 +4354,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291170",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That's too bad!"
-      }
-    ]
+    "transcription": {
+      "en": "That's too bad!"
+    }
   },
   {
     "id": "AdventurerOfTalent",
@@ -4984,11 +4364,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291171",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "I should expect nothing less from an adventurer of your talents!"
-      }
-    ]
+    "transcription": {
+      "en": "I should expect nothing less from an adventurer of your talents!"
+    }
   },
   {
     "id": "QuiteTheStatement",
@@ -4996,11 +4374,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291172",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You made quite this statement!"
-      }
-    ]
+    "transcription": {
+      "en": "You made quite this statement!"
+    }
   },
   {
     "id": "GoodProgressKrile",
@@ -5008,11 +4384,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291173",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Good progress! Let us maintain our efforts."
-      }
-    ]
+    "transcription": {
+      "en": "Good progress! Let us maintain our efforts."
+    }
   },
   {
     "id": "HeartRacingKrile",
@@ -5020,11 +4394,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291174",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "My heart was positively racing!"
-      }
-    ]
+    "transcription": {
+      "en": "My heart was positively racing!"
+    }
   },
   {
     "id": "ManagedSoPoorly",
@@ -5032,11 +4404,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291175",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Goodness me, How did we manage to do so poorly?"
-      }
-    ]
+    "transcription": {
+      "en": "Goodness me, How did we manage to do so poorly?"
+    }
   },
   {
     "id": "DontLoseHeartKrile",
@@ -5044,11 +4414,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291176",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "You're alright yes? Don't lose heart now!"
-      }
-    ]
+    "transcription": {
+      "en": "You're alright yes? Don't lose heart now!"
+    }
   },
   {
     "id": "WontGiveUpOntoNext",
@@ -5056,11 +4424,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291177",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We won't give up! Onto the next."
-      }
-    ]
+    "transcription": {
+      "en": "We won't give up! Onto the next."
+    }
   },
   {
     "id": "ReclaimLostKrile",
@@ -5068,11 +4434,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291178",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "No need to fret. We can reclaim what we've lost."
-      }
-    ]
+    "transcription": {
+      "en": "No need to fret. We can reclaim what we've lost."
+    }
   },
   {
     "id": "DelightVictoryKrile",
@@ -5080,11 +4444,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291179",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Well done my friend! It was a delight to be part of your victory!"
-      }
-    ]
+    "transcription": {
+      "en": "Well done my friend! It was a delight to be part of your victory!"
+    }
   },
   {
     "id": "ThrillingGameNextTime",
@@ -5092,11 +4454,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291180",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "What a thrilling game! You'll win next time I'm sure of it."
-      }
-    ]
+    "transcription": {
+      "en": "What a thrilling game! You'll win next time I'm sure of it."
+    }
   },
   {
     "id": "ExploringIntricacies",
@@ -5104,11 +4464,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291181",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "A complicated game to be sure. I hope to keep exploring its intricacies with you."
-      }
-    ]
+    "transcription": {
+      "en": "A complicated game to be sure. I hope to keep exploring its intricacies with you."
+    }
   },
   {
     "id": "PlayAgainWinOrLose",
@@ -5116,11 +4474,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291182",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "it wasn't to be this time. But win or lose let's play again."
-      }
-    ]
+    "transcription": {
+      "en": "it wasn't to be this time. But win or lose let's play again."
+    }
   },
   {
     "id": "ToughLossLearnKrile",
@@ -5128,11 +4484,9 @@
     "shoutcaster": "Krile",
     "soundPath": "sound/voice/vo_line/8291183",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "That was a tough loss, but we can learn from it and strive for greater heights!"
-      }
-    ]
+    "transcription": {
+      "en": "That was a tough loss, but we can learn from it and strive for greater heights!"
+    }
   },
   {
     "id": "GotThemNowWuk",
@@ -5140,11 +4494,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291184",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We've got them now!"
-      }
-    ]
+    "npcYell": "5582"
   },
   {
     "id": "CantPassChanceWuk",
@@ -5152,11 +4502,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291185",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Can't pass up a chance like this!"
-      }
-    ]
+    "transcription": {
+      "en": "Can't pass up a chance like this!"
+    }
   },
   {
     "id": "DontLoseNerveWuk",
@@ -5164,11 +4512,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291186",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They're close, but we can't lose our nerve!"
-      }
-    ]
+    "transcription": {
+      "en": "They're close, but we can't lose our nerve!"
+    }
   },
   {
     "id": "GettingInterestingWuk",
@@ -5176,11 +4522,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291187",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Now things are getting interesting!"
-      }
-    ]
+    "transcription": {
+      "en": "Now things are getting interesting!"
+    }
   },
   {
     "id": "StillWinWuk",
@@ -5188,11 +4532,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291188",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Doesn't matter if it's one or all of them, we can still win!"
-      }
-    ]
+    "transcription": {
+      "en": "Doesn't matter if it's one or all of them, we can still win!"
+    }
   },
   {
     "id": "WillStopThemWuk",
@@ -5200,11 +4542,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291189",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "It's over! We will stop them!"
-      }
-    ]
+    "transcription": {
+      "en": "It's over! We will stop them!"
+    }
   },
   {
     "id": "NoHoldingBackWukMahjong",
@@ -5212,11 +4552,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291190",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "No holding back!"
-      }
-    ]
+    "npcYell": "4299"
   },
   {
     "id": "HowDidThatHappenWuk",
@@ -5224,11 +4560,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291191",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "What? How did that happen?"
-      }
-    ]
+    "transcription": {
+      "en": "What? How did that happen?"
+    }
   },
   {
     "id": "CloseOneWuk",
@@ -5236,11 +4570,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291192",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Whew! That was a close one."
-      }
-    ]
+    "transcription": {
+      "en": "Whew! That was a close one."
+    }
   },
   {
     "id": "BeatUsToItWuk",
@@ -5248,11 +4580,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291193",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They beat us to it!"
-      }
-    ]
+    "transcription": {
+      "en": "They beat us to it!"
+    }
   },
   {
     "id": "FeatOldManWuk",
@@ -5260,11 +4590,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291194",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "A feat even my old man couldn't have managed."
-      }
-    ]
+    "transcription": {
+      "en": "A feat even my old man couldn't have managed."
+    }
   },
   {
     "id": "SmilingBecauseSmiling",
@@ -5272,11 +4600,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291195",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Are you smiling because I'm smiling!"
-      }
-    ]
+    "transcription": {
+      "en": "Are you smiling because I'm smiling!"
+    }
   },
   {
     "id": "AllRightYouDidGreat",
@@ -5284,11 +4610,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291196",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "All right! You did great!"
-      }
-    ]
+    "transcription": {
+      "en": "All right! You did great!"
+    }
   },
   {
     "id": "DoingFineKeepItUpWuk",
@@ -5296,11 +4620,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291197",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You're doing fine, keep it up!"
-      }
-    ]
+    "transcription": {
+      "en": "You're doing fine, keep it up!"
+    }
   },
   {
     "id": "GonnaBeSickWuk",
@@ -5308,11 +4630,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291198",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Gods! I think I'm gonna be sick."
-      }
-    ]
+    "transcription": {
+      "en": "Gods! I think I'm gonna be sick."
+    }
   },
   {
     "id": "FeelYourPainWuk",
@@ -5320,11 +4640,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291199",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I feel your pain as if it were my own."
-      }
-    ]
+    "transcription": {
+      "en": "I feel your pain as if it were my own."
+    }
   },
   {
     "id": "DidntHoldBackWuk",
@@ -5332,11 +4650,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291200",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "They didn't hold back did they?"
-      }
-    ]
+    "transcription": {
+      "en": "They didn't hold back did they?"
+    }
   },
   {
     "id": "NothingToWorryWuk",
@@ -5344,11 +4660,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291201",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Nothing to worry about."
-      }
-    ]
+    "transcription": {
+      "en": "Nothing to worry about."
+    }
   },
   {
     "id": "TryMyOwnHandWuk",
@@ -5356,11 +4670,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291202",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "That was incredible! Makes me want to try my own hand at this game."
-      }
-    ]
+    "transcription": {
+      "en": "That was incredible! Makes me want to try my own hand at this game."
+    }
   },
   {
     "id": "PapaChallengeMatch",
@@ -5368,11 +4680,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291203",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "If papa were here, he'd challenge you to a match I just know it."
-      }
-    ]
+    "transcription": {
+      "en": "If papa were here, he'd challenge you to a match I just know it."
+    }
   },
   {
     "id": "CanDoBetterWuk",
@@ -5380,11 +4690,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291204",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Come on! I know you can do better than that."
-      }
-    ]
+    "transcription": {
+      "en": "Come on! I know you can do better than that."
+    }
   },
   {
     "id": "WinSomeLoseSomeWuk",
@@ -5392,11 +4700,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291205",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "You win some you'll lose some. Next time the game will be yours."
-      }
-    ]
+    "transcription": {
+      "en": "You win some you'll lose some. Next time the game will be yours."
+    }
   },
   {
     "id": "LearningExperienceWuk",
@@ -5404,11 +4710,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8291206",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "On the bright side it can't get any worse. Consider it a learning experience!"
-      }
-    ]
+    "transcription": {
+      "en": "On the bright side it can't get any worse. Consider it a learning experience!"
+    }
   },
   {
     "id": "YouReallyAreFamous",
@@ -5416,11 +4720,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8204261",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "You really are famous!"
-      }
-    ]
+    "transcription": {
+      "en": "You really are famous!"
+    }
   },
   {
     "id": "Impressive",
@@ -5428,11 +4730,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8204280",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Impressive!"
-      }
-    ]
+    "npcYell": "3323"
   },
   {
     "id": "TheyllPayForThatWuk",
@@ -5440,11 +4738,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205035",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "They'll pay for that."
-      }
-    ]
+    "npcYell": "13484"
   },
   {
     "id": "RightBackToItWuk",
@@ -5452,11 +4746,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205036",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Right, back to it."
-      }
-    ]
+    "npcYell": "7773"
   },
   {
     "id": "NoHoldingBackWuk",
@@ -5464,11 +4754,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205040",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "No holding back!"
-      }
-    ]
+    "npcYell": "4299"
   },
   {
     "id": "KeepItUpWuk",
@@ -5476,11 +4762,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205043",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Keep it up!"
-      }
-    ]
+    "npcYell": "6472"
   },
   {
     "id": "LetsGetToIt",
@@ -5488,11 +4770,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205048",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Let's get to it!"
-      }
-    ]
+    "transcription": {
+      "en": "Let's get to it!"
+    }
   },
   {
     "id": "DamnItAll",
@@ -5500,11 +4780,7 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205068",
     "duration": "2",
-    "transcription": [
-      {
-        "en": "Damn it all!"
-      }
-    ]
+    "npcYell": "10595"
   },
   {
     "id": "KeepYourGuardUpWuk",
@@ -5512,11 +4788,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205071",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Don't like the looks of this. Everyone, keep your guard up!"
-      }
-    ]
+    "transcription": {
+      "en": "Don't like the looks of this. Everyone, keep your guard up!"
+    }
   },
   {
     "id": "NotHoldingAnythingBack",
@@ -5524,11 +4798,9 @@
     "shoutcaster": "Wuk Lamat",
     "soundPath": "sound/voice/vo_line/8205073",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Not holding anything back are we?"
-      }
-    ]
+    "transcription": {
+      "en": "Not holding anything back are we?"
+    }
   },
   {
     "id": "IntentionsKnown",
@@ -5536,11 +4808,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291207",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Let us make our intentions known."
-      }
-    ]
+    "transcription": {
+      "en": "Let us make our intentions known."
+    }
   },
   {
     "id": "EvenTheOdds",
@@ -5548,11 +4818,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291208",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Perhaps this will even the odds."
-      }
-    ]
+    "transcription": {
+      "en": "Perhaps this will even the odds."
+    }
   },
   {
     "id": "NothingToFearYet",
@@ -5560,11 +4828,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291209",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We have nothing to fear, yet."
-      }
-    ]
+    "transcription": {
+      "en": "We have nothing to fear, yet."
+    }
   },
   {
     "id": "MuchToBeExpected",
@@ -5572,11 +4838,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291210",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "This much is to be expected."
-      }
-    ]
+    "transcription": {
+      "en": "This much is to be expected."
+    }
   },
   {
     "id": "StayAlert",
@@ -5584,11 +4848,7 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291211",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Stay alert."
-      }
-    ]
+    "npcYell": "1632"
   },
   {
     "id": "HaveThemStrike",
@@ -5596,11 +4856,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291212",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We have them! Strike!"
-      }
-    ]
+    "transcription": {
+      "en": "We have them! Strike!"
+    }
   },
   {
     "id": "StrategyKeyToVictory",
@@ -5608,11 +4866,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291213",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Strategy is the key to victory."
-      }
-    ]
+    "transcription": {
+      "en": "Strategy is the key to victory."
+    }
   },
   {
     "id": "CantBe",
@@ -5620,11 +4876,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291214",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "No, it can't be!"
-      }
-    ]
+    "transcription": {
+      "en": "No, it can't be!"
+    }
   },
   {
     "id": "DammitAll",
@@ -5632,11 +4886,7 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291215",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Damn it all."
-      }
-    ]
+    "npcYell": "10595"
   },
   {
     "id": "StepBehind",
@@ -5644,11 +4894,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291216",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We were a step behind."
-      }
-    ]
+    "transcription": {
+      "en": "We were a step behind."
+    }
   },
   {
     "id": "GloryUponTuliyollal",
@@ -5656,11 +4904,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291217",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Our triumph brings glory upon Tuliyollal!"
-      }
-    ]
+    "transcription": {
+      "en": "Our triumph brings glory upon Tuliyollal!"
+    }
   },
   {
     "id": "VowOfReasonGuide",
@@ -5668,11 +4914,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291218",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "As vow of reason, it is my duty to guide you to victory."
-      }
-    ]
+    "transcription": {
+      "en": "As vow of reason, it is my duty to guide you to victory."
+    }
   },
   {
     "id": "DoneWell",
@@ -5680,11 +4924,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291219",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I would say we have done well."
-      }
-    ]
+    "transcription": {
+      "en": "I would say we have done well."
+    }
   },
   {
     "id": "FairPerformanceBetter",
@@ -5692,11 +4934,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291220",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "A fair performance, but we can do better."
-      }
-    ]
+    "transcription": {
+      "en": "A fair performance, but we can do better."
+    }
   },
   {
     "id": "FaceLamatyi",
@@ -5704,11 +4944,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291221",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Disgraceful, how can I ever face Lamaty'i after this."
-      }
-    ]
+    "transcription": {
+      "en": "Disgraceful, how can I ever face Lamaty'i after this."
+    }
   },
   {
     "id": "ChangeOfStrategyInOrder",
@@ -5716,11 +4954,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291222",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Hmm, a change of strategy may be in order."
-      }
-    ]
+    "transcription": {
+      "en": "Hmm, a change of strategy may be in order."
+    }
   },
   {
     "id": "ErrorInCalculations",
@@ -5728,11 +4964,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291223",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Did we make an error in our calculations?"
-      }
-    ]
+    "transcription": {
+      "en": "Did we make an error in our calculations?"
+    }
   },
   {
     "id": "OccasionalLossInevitable",
@@ -5740,11 +4974,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291224",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "The occasional loss is inevitable."
-      }
-    ]
+    "transcription": {
+      "en": "The occasional loss is inevitable."
+    }
   },
   {
     "id": "WorthyOfReputation",
@@ -5752,11 +4984,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291225",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "You are more than worthy of your reputation. That much is plain!"
-      }
-    ]
+    "transcription": {
+      "en": "You are more than worthy of your reputation. That much is plain!"
+    }
   },
   {
     "id": "ProudOfYou",
@@ -5764,11 +4994,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291226",
     "duration": "9",
-    "transcription": [
-      {
-        "en": "Unpracticed as I am, this may sound hackneyed but. I'm proud of you."
-      }
-    ]
+    "transcription": {
+      "en": "Unpracticed as I am, this may sound hackneyed but. I'm proud of you."
+    }
   },
   {
     "id": "SharlayanApproachResults",
@@ -5776,11 +5004,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291227",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "Perhaps a more analytical, Sharlayan approach would achieve better results."
-      }
-    ]
+    "transcription": {
+      "en": "Perhaps a more analytical, Sharlayan approach would achieve better results."
+    }
   },
   {
     "id": "ProtectFromFutureDefeat",
@@ -5788,11 +5014,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291228",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "Even should it cost me my life, I will protect you from future defeat!"
-      }
-    ]
+    "transcription": {
+      "en": "Even should it cost me my life, I will protect you from future defeat!"
+    }
   },
   {
     "id": "UnworthyVowOfReason",
@@ -5800,11 +5024,9 @@
     "shoutcaster": "Koana",
     "soundPath": "sound/voice/vo_line/8291229",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I feel as though, I am unworthy to serve as vow of reason."
-      }
-    ]
+    "transcription": {
+      "en": "I feel as though, I am unworthy to serve as vow of reason."
+    }
   },
   {
     "id": "VictoryOurs",
@@ -5812,11 +5034,7 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291230",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Victory will be ours."
-      }
-    ]
+    "npcYell": "4514"
   },
   {
     "id": "NoDownWithoutFight",
@@ -5824,11 +5042,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291231",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "We won't go down without a fight!"
-      }
-    ]
+    "transcription": {
+      "en": "We won't go down without a fight!"
+    }
   },
   {
     "id": "FallingBehind",
@@ -5836,11 +5052,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291232",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We're falling behind!"
-      }
-    ]
+    "transcription": {
+      "en": "We're falling behind!"
+    }
   },
   {
     "id": "ChallengeMe",
@@ -5848,11 +5062,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291233",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "They think they can challenge me?"
-      }
-    ]
+    "transcription": {
+      "en": "They think they can challenge me?"
+    }
   },
   {
     "id": "GodsHelpUs",
@@ -5860,11 +5072,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291234",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Gods help us."
-      }
-    ]
+    "transcription": {
+      "en": "Gods help us."
+    }
   },
   {
     "id": "ShowThemTheirPlace",
@@ -5872,11 +5082,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291235",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Hahaha! Show them their place."
-      }
-    ]
+    "transcription": {
+      "en": "Hahaha! Show them their place."
+    }
   },
   {
     "id": "HahaAllowMe",
@@ -5884,11 +5092,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291236",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Haha, allow me."
-      }
-    ]
+    "transcription": {
+      "en": "Haha, allow me."
+    }
   },
   {
     "id": "LuckWontLast",
@@ -5896,11 +5102,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291237",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That luck won't last forever."
-      }
-    ]
+    "transcription": {
+      "en": "That luck won't last forever."
+    }
   },
   {
     "id": "TearEachOtherApart",
@@ -5908,11 +5112,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291238",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Let them tear each other apart."
-      }
-    ]
+    "transcription": {
+      "en": "Let them tear each other apart."
+    }
   },
   {
     "id": "TooLate",
@@ -5920,11 +5122,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291239",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "We were too late!"
-      }
-    ]
+    "transcription": {
+      "en": "We were too late!"
+    }
   },
   {
     "id": "NeverFailToImpress",
@@ -5932,11 +5132,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291240",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Ohoh! You never fail to impress me!"
-      }
-    ]
+    "transcription": {
+      "en": "Ohoh! You never fail to impress me!"
+    }
   },
   {
     "id": "PieceOfMeNext",
@@ -5944,11 +5142,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291241",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "So, who wants a piece of me next?"
-      }
-    ]
+    "transcription": {
+      "en": "So, who wants a piece of me next?"
+    }
   },
   {
     "id": "NotBadAtAll",
@@ -5956,11 +5152,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291242",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Not bad, not bad at all!"
-      }
-    ]
+    "transcription": {
+      "en": "Not bad, not bad at all!"
+    }
   },
   {
     "id": "HandWell",
@@ -5968,11 +5162,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291243",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You played your hand well."
-      }
-    ]
+    "transcription": {
+      "en": "You played your hand well."
+    }
   },
   {
     "id": "HowCanThisBe",
@@ -5980,11 +5172,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291244",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "No! How can this be?"
-      }
-    ]
+    "transcription": {
+      "en": "No! How can this be?"
+    }
   },
   {
     "id": "NoNo",
@@ -5992,11 +5182,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291245",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "No! No!"
-      }
-    ]
+    "transcription": {
+      "en": "No! No!"
+    }
   },
   {
     "id": "ScoreIsntRight",
@@ -6004,11 +5192,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291246",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I know that score isn't right."
-      }
-    ]
+    "transcription": {
+      "en": "I know that score isn't right."
+    }
   },
   {
     "id": "HaAPittance",
@@ -6016,11 +5202,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291247",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Ha! A pittance."
-      }
-    ]
+    "transcription": {
+      "en": "Ha! A pittance."
+    }
   },
   {
     "id": "BefittingStature",
@@ -6028,11 +5212,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291248",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Tahaha! Victory befitting our stature."
-      }
-    ]
+    "transcription": {
+      "en": "Tahaha! Victory befitting our stature."
+    }
   },
   {
     "id": "GoodEnoughGuess",
@@ -6040,11 +5222,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291249",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Well, good enough I guess."
-      }
-    ]
+    "transcription": {
+      "en": "Well, good enough I guess."
+    }
   },
   {
     "id": "ThoughtBetter",
@@ -6052,11 +5232,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291250",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I thought you could do better than that."
-      }
-    ]
+    "transcription": {
+      "en": "I thought you could do better than that."
+    }
   },
   {
     "id": "ThreeHeadsStupid",
@@ -6064,11 +5242,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291251",
     "duration": "6",
-    "transcription": [
-      {
-        "en": "Thats the best that three heads could manage? Tch. This was stupid anyways."
-      }
-    ]
+    "transcription": {
+      "en": "Thats the best that three heads could manage? Tch. This was stupid anyways."
+    }
   },
   {
     "id": "SmashTable",
@@ -6076,11 +5252,9 @@
     "shoutcaster": "Bakool Ja Ja",
     "soundPath": "sound/voice/vo_line/8291252",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "I'm gonna smash this table to bits! And don't you dare stop me brother."
-      }
-    ]
+    "transcription": {
+      "en": "I'm gonna smash this table to bits! And don't you dare stop me brother."
+    }
   },
   {
     "id": "CouldBeChance",
@@ -6088,11 +5262,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291253",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "This could be your chance!"
-      }
-    ]
+    "transcription": {
+      "en": "This could be your chance!"
+    }
   },
   {
     "id": "EnjoyingYourself",
@@ -6100,11 +5272,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291254",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Enjoying yourself I see."
-      }
-    ]
+    "transcription": {
+      "en": "Enjoying yourself, I see."
+    }
   },
   {
     "id": "ComeOutOnTop",
@@ -6112,11 +5282,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291255",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You can still come out on top!"
-      }
-    ]
+    "transcription": {
+      "en": "You can still come out on top!"
+    }
   },
   {
     "id": "Competition",
@@ -6124,11 +5292,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291256",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You have competition."
-      }
-    ]
+    "transcription": {
+      "en": "You have competition."
+    }
   },
   {
     "id": "CarefulPlanning",
@@ -6136,11 +5302,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291257",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Careful, they're planning something."
-      }
-    ]
+    "transcription": {
+      "en": "Careful, they're planning something."
+    }
   },
   {
     "id": "ThereYouHaveThem",
@@ -6148,11 +5312,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291258",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "There! You have them!"
-      }
-    ]
+    "transcription": {
+      "en": "There! You have them!"
+    }
   },
   {
     "id": "LuckyYou",
@@ -6160,11 +5322,7 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291259",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "Ha! Lucky you."
-      }
-    ]
+    "npcYell": "16269"
   },
   {
     "id": "Unfortunate",
@@ -6172,11 +5330,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291260",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That was unfortunate."
-      }
-    ]
+    "transcription": {
+      "en": "That was unfortunate."
+    }
   },
   {
     "id": "CouldHaveBeenWorseErenville",
@@ -6184,11 +5340,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291261",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "A loss, but it could have been worse!"
-      }
-    ]
+    "transcription": {
+      "en": "A loss, but it could have been worse!"
+    }
   },
   {
     "id": "LifeGoYourWay",
@@ -6196,11 +5350,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291262",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Sometimes life doesn't go your way."
-      }
-    ]
+    "transcription": {
+      "en": "Sometimes life doesn't go your way."
+    }
   },
   {
     "id": "ManyTalents",
@@ -6208,11 +5360,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291263",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Impressive! Clearly this is another of your many talents."
-      }
-    ]
+    "transcription": {
+      "en": "Impressive! Clearly this is another of your many talents."
+    }
   },
   {
     "id": "EnjoyingThisArentYou",
@@ -6220,11 +5370,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291264",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You're enjoying this, arent you?"
-      }
-    ]
+    "transcription": {
+      "en": "You're enjoying this, aren't you?"
+    }
   },
   {
     "id": "FairGo",
@@ -6232,11 +5380,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291265",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "You made a fair go of it."
-      }
-    ]
+    "transcription": {
+      "en": "You made a fair go of it."
+    }
   },
   {
     "id": "ThatsTheWay",
@@ -6244,11 +5390,7 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291266",
     "duration": "3",
-    "transcription": [
-      {
-        "en": "That's the way!"
-      }
-    ]
+    "npcYell": "10814"
   },
   {
     "id": "DontPlayGames",
@@ -6256,11 +5398,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291267",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "There's a reason I don't play games like this."
-      }
-    ]
+    "transcription": {
+      "en": "There's a reason I don't play games like this."
+    }
   },
   {
     "id": "PresenceDistraction",
@@ -6268,11 +5408,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291268",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "I can leave if my presence is a distraction."
-      }
-    ]
+    "transcription": {
+      "en": "I can leave if my presence is a distraction."
+    }
   },
   {
     "id": "MerelyBadHand",
@@ -6280,11 +5418,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291269",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "That was merely a bad hand. You'll do better next time!"
-      }
-    ]
+    "transcription": {
+      "en": "That was merely a bad hand. You'll do better next time!"
+    }
   },
   {
     "id": "MinorSetback",
@@ -6292,11 +5428,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291270",
     "duration": "5",
-    "transcription": [
-      {
-        "en": "A minor setback. All is not yet lost!"
-      }
-    ]
+    "transcription": {
+      "en": "A minor setback. All is not yet lost!"
+    }
   },
   {
     "id": "NotSurprised",
@@ -6304,11 +5438,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291271",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "Somehow I'm not surprised!"
-      }
-    ]
+    "transcription": {
+      "en": "Somehow I'm not surprised!"
+    }
   },
   {
     "id": "FunThanExpected",
@@ -6316,11 +5448,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291272",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "This game is more fun than I expected."
-      }
-    ]
+    "transcription": {
+      "en": "This game is more fun than I expected."
+    }
   },
   {
     "id": "NotWalkAway",
@@ -6328,11 +5458,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291273",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "You're not going to walk away now are you?"
-      }
-    ]
+    "transcription": {
+      "en": "You're not going to walk away now, are you?"
+    }
   },
   {
     "id": "StudyExperiencedPlayers",
@@ -6340,11 +5468,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291274",
     "duration": "4",
-    "transcription": [
-      {
-        "en": "If you want to be competitive, maybe you should try studying experienced players."
-      }
-    ]
+    "transcription": {
+      "en": "If you want to be competitive, maybe you should try studying experienced players."
+    }
   },
   {
     "id": "RideRroneekClearHead",
@@ -6352,11 +5478,9 @@
     "shoutcaster": "Erenville",
     "soundPath": "sound/voice/vo_line/8291275",
     "duration": "8",
-    "transcription": [
-      {
-        "en": "Take a ride on a Rroneek. Clear your head and put this performance behind you."
-      }
-    ]
+    "transcription": {
+      "en": "Take a ride on a rroneek. Clear your head and put this performance behind you."
+    }
   },
   {
     "id": "YouFool",
@@ -7237,10 +6361,8 @@
     "shoutcaster": "Zero",
     "duration": "5",
     "style": "6",
-    "transcription": {
-      "en": "Back to it!"
-    },
-    "soundPath": "sound/voice/vo_line/8203453"
+    "soundPath": "sound/voice/vo_line/8203453",
+    "npcYell": "13961"
   },
   {
     "id": "WillHurt",
@@ -7248,10 +6370,8 @@
     "shoutcaster": "Zero",
     "duration": "3",
     "style": "6",
-    "transcription": {
-      "en": "This will hurt!"
-    },
-    "soundPath": "sound/voice/vo_line/8203455"
+    "soundPath": "sound/voice/vo_line/8203455",
+    "npcYell": "13487"
   },
   {
     "id": "GotYou",
@@ -7270,10 +6390,8 @@
     "shoutcaster": "Zero",
     "duration": "3",
     "style": "6",
-    "transcription": {
-      "en": "That's far enough!"
-    },
-    "soundPath": "sound/voice/vo_line/8203457"
+    "soundPath": "sound/voice/vo_line/8203457",
+    "npcYell": "3473"
   },
   {
     "id": "DarknessTakeYou",
@@ -7386,10 +6504,8 @@
     "shoutcaster": "Zero",
     "duration": "3",
     "style": "6",
-    "transcription": {
-      "en": "What now?"
-    },
-    "soundPath": "sound/voice/vo_line/8291301"
+    "soundPath": "sound/voice/vo_line/8291301",
+    "npcYell": "17092"
   },
   {
     "id": "TroublingDevelopment",

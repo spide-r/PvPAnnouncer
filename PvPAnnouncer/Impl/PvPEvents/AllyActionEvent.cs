@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using PvPAnnouncer.Data;
+﻿using System.Linq;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
@@ -25,7 +23,7 @@ public class AllyActionEvent : PvPActionEvent
         if (p is ActionEffectMessage)
         {
             ActionEffectMessage message = (ActionEffectMessage) p;
-            if (PluginServices.PvPMatchManager.IsMonitoredUser(message.SourceId))
+            if (PluginServices.DutyManager.IsMonitoredUser(message.SourceId))
             {
                 return ActionIds.Contains(message.ActionId);
             }

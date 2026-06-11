@@ -2,6 +2,6 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class MatchEndMessage : IMessage
+public class DutyRecommenceMessage : IMessage
 {
 }

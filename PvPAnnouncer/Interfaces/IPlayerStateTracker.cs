@@ -1,6 +1,6 @@
 ﻿namespace PvPAnnouncer.Interfaces;
 
-public interface IPlayerStateTracker : IPvPEventPublisher
+public interface IPlayerStateTracker : IEventPublisher
 {
     bool IsPvP();
     void CheckSoundState();

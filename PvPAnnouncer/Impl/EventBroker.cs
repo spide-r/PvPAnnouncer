@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
-using PvPAnnouncer.Windows;
 
 namespace PvPAnnouncer.Impl;
 
-public class PvPEventBroker : IPvPEventBroker
+public class EventBroker : IPvPEventBroker
 {
     private readonly Dictionary<string, PvPEvent> _pvpEventIdBinding = new();
     private string _lastUsedAction = "";
@@ -21,16 +19,11 @@ public class PvPEventBroker : IPvPEventBroker
             return;
         }
 
-        if (!PluginServices.PlayerStateTracker.IsPvP())
-        {
-            return;
-        }
-
         if (message is ActionEffectMessage aaa)
         {
             string s = "S:" + aaa.SourceId + " SN: " + aaa.GetSource() + "|A: " + aaa.ActionId + "|AN: " +
                        aaa.GetAction()?.Name.ToString();
-            bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(aaa.SourceId);
+            var shouldEmit = PluginServices.DutyManager.IsMonitoredUser(aaa.SourceId);
             if (shouldEmit)
             {
                 PluginServices.PluginLog.Verbose(s);
@@ -39,7 +32,7 @@ public class PvPEventBroker : IPvPEventBroker
         }
         else if (message is ActorControlMessage ac)
         {
-            bool shouldEmit = PluginServices.PvPMatchManager.IsMonitoredUser(ac.EntityId);
+            var shouldEmit = PluginServices.DutyManager.IsMonitoredUser(ac.EntityId);
             if (shouldEmit)
             {
                 if (ac.GetCategory() != ActorControlCategory.DirectorUpdate)
@@ -77,7 +70,7 @@ public class PvPEventBroker : IPvPEventBroker
 
     private void EmitToSubscribers(PvPEvent ee)
     {
-        PluginServices.Announcer.ReceivePvPEvent(ee);
+        PluginServices.Announcer.ReceiveEvent(ee);
     }
 
     public void RegisterListener(PvPEvent e)

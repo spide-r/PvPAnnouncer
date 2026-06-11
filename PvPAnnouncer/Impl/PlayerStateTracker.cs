@@ -54,11 +54,6 @@ public class PlayerStateTracker : IPlayerStateTracker
             return;
         }
 
-        if (!PluginServices.ClientState.IsPvP)
-        {
-            return;
-        }
-
         // Attributed to Oof Plugin
         if (PluginServices.Condition[ConditionFlag.BetweenAreas] ||
             PluginServices.Condition[ConditionFlag.BetweenAreas51] ||

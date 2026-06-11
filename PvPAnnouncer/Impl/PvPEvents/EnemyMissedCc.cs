@@ -20,7 +20,7 @@ public class EnemyMissedCc : PvPActionEvent
         {
             foreach (var target in pp.GetTargetIds())
             {
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
                     if (PluginServices.Condition.Any(ConditionFlag.Transformed))
                     {

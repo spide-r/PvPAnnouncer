@@ -31,23 +31,17 @@ public static class ActionIds
     public static readonly uint RelentlessRush = 29130;
     public static readonly uint Eventide = 29097;
     public static readonly uint AfflatusPurgation = 29230;
-    public static readonly uint Seraphism = 41502;
     public static readonly uint CelestialRiver = 29255;
     public static readonly uint Mesotes = 29266;
     public static readonly uint Mesotes2 = 29267;
     public static readonly uint Meteodrive = 29485;
-    public static readonly uint SkyHigh = 29497;
     public static readonly uint SeitonTenchu = 29515;
     public static readonly uint SeitonTenchu2 = 29516;
     public static readonly uint Zantetsuken = 29537;
     public static readonly uint TenebraeLemurum = 29553;
     public static readonly uint WorldSwallower = 39190;
-    public static readonly uint FinalFantasia = 29401;
     public static readonly uint MarksmansSpite = 29415;
     public static readonly uint Contradance = 29432;
-    public static readonly uint SoulResonance = 29662;
-    public static readonly uint SummonBahamut = 29673;
-    public static readonly uint SummonPhoenix = 29678;
     public static readonly uint SouthernCross = 41498;
     public static readonly uint AdventOfChocobastion = 39215;
 
@@ -120,17 +114,6 @@ public static class ActionIds
     public static readonly uint HorridRoar = 29496;
 
 
-    private static HashSet<uint> _limitBreaksSet =
-    [
-        Phalanx, PrimalScream, Eventide, RelentlessRush,
-        AfflatusPurgation, Seraphism, CelestialRiver, Mesotes,
-        Mesotes2, Meteodrive, SkyHigh, SeitonTenchu,
-        SeitonTenchu2, Zantetsuken, TenebraeLemurum, WorldSwallower,
-        FinalFantasia, MarksmansSpite, Contradance, SoulResonance,
-        SummonBahamut, SummonPhoenix, SouthernCross,
-        AdventOfChocobastion
-    ];
-
     private static readonly HashSet<uint> MechActionsSet =
     [
         OpticalSight, SpinCrusher, LaserXSword, SteamRelease,
@@ -154,27 +137,18 @@ public static class ActionIds
     ];
 
 
-    public static bool IsLimitBreak(uint id)
-    {
-        return _limitBreaksSet.Contains(id);
-    }
-
-    public static bool IsLimitBreakAttack(uint id)
-    {
-        return LimitBreaksHitSet.Contains(id);
-    }
-
-    private static readonly HashSet<uint> LimitBreaksHitSet =
-    [
-        BladeOfFaith, BladeOfTruth, BladeOfValor, PrimalScream, Eventide, RelentlessRush, TerminalTrigger,
-        TerminalTrigger2,
-        AfflatusPurgation, CelestialRiver, Oracle, Mesotes,
-        Mesotes2, Meteodrive, SkyShatter, SkyShatter2, SeitonTenchu,
-        SeitonTenchu2, Zantetsuken, TenebraeLemurum, Communio, Perfectio, WorldSwallower, Ouroboros,
-        EncoreOfLight, MarksmansSpite, Contradance, FlareStar, FrostStar,
-        Deathflare, BrandOfPurgatory, SouthernCross,
-        AdventOfChocobastion, StarPrism
-    ];
+    private static readonly HashSet<uint>
+        LimitBreaksHitSet = //some limit breaks are casted on self and then other special attacks are used - this catches em
+        [
+            BladeOfFaith, BladeOfTruth, BladeOfValor, PrimalScream, Eventide, RelentlessRush, TerminalTrigger,
+            TerminalTrigger2,
+            AfflatusPurgation, CelestialRiver, Oracle, Mesotes,
+            Mesotes2, Meteodrive, SkyShatter, SkyShatter2, SeitonTenchu,
+            SeitonTenchu2, Zantetsuken, TenebraeLemurum, Communio, Perfectio, WorldSwallower, Ouroboros,
+            EncoreOfLight, MarksmansSpite, Contradance, FlareStar, FrostStar,
+            Deathflare, BrandOfPurgatory, SouthernCross,
+            AdventOfChocobastion, StarPrism
+        ];
 
     public static bool IsBurst(uint id)
     {

@@ -7,13 +7,10 @@ namespace PvPAnnouncer
 {
     //there is so much differing naming for everything, id/internalname/actionid shout/annnounce fix it!!!
 
-    //todo make sure that all voicelines are transcribed w/ npcyell or whatever - the only lines that you should have an english-only thing should be the mahjong stuff + m12 encrypted
-    //todo vuln stack event
-
 
     public sealed class PvPAnnouncerPlugin : IDalamudPlugin
     {
-        private WindowSystem WindowSystem = new("PvPAnnouncer");
+        private readonly WindowSystem WindowSystem = new("NPCAnnouncer");
 
         public PvPAnnouncerPlugin(IDalamudPluginInterface pluginInterface)
         {
@@ -37,8 +34,8 @@ namespace PvPAnnouncer
                 }
 
                 PluginServices.ChatGui.Print(
-                    "Happy 7.5! Zero's Mahjong voicelines (plus some extras) have been added Enable them in the plugin config!",
-                    "PvPAnnouncer", 15);
+                    "PVPAnnouncer is now NPCAnnouncer! Your existing config has been preserved. Your favorite NPC can now comment on ALL. CONTENT. Dungeons, Alliance Raids, Fates, Ultimate raids, you name it. Tell your non-pvp friends to rejoice!!!!",
+                    "NPCAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
             }
@@ -84,7 +81,12 @@ namespace PvPAnnouncer
         {
             PluginServices.CommandManager.AddHandler("/pvpannouncer", new CommandInfo(OnCommand)
             {
-                HelpMessage = "Open the Config Window",
+                HelpMessage = "Open the Config Window - Old Command! Use /npcannouncer"
+            });
+
+            PluginServices.CommandManager.AddHandler("/npcannouncer", new CommandInfo(OnCommand)
+            {
+                HelpMessage = "Open the Config Window"
             });
             PluginServices.CommandManager.AddHandler("/muteannouncer", new CommandInfo(OnToggleMuteCommand)
             {
@@ -95,6 +97,7 @@ namespace PvPAnnouncer
         private void UnloadCommands()
         {
             PluginServices.CommandManager.RemoveHandler("/pvpannouncer");
+            PluginServices.CommandManager.RemoveHandler("/npcannouncer");
             PluginServices.CommandManager.RemoveHandler("/muteannouncer");
         }
 
@@ -104,9 +107,9 @@ namespace PvPAnnouncer
             PluginServices.DalamudPluginInterface.UiBuilder.Draw -= DrawUi;
             PluginServices.DalamudPluginInterface.UiBuilder.OpenMainUi -= ToggleMainUI;
             PluginServices.DalamudPluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigWindow;
-            PluginServices.PvPEventHooksPublisher.Dispose();
+            PluginServices.EventHooksPublisher.Dispose();
             PluginServices.PlayerStateTracker.Dispose();
-            PluginServices.PvPMatchManager.Dispose();
+            PluginServices.DutyManager.Dispose();
             UnloadCommands();
         }
     }

@@ -12,7 +12,7 @@ public class AllyHitUnderGuardEvent : PvPActionEvent
 {
     public AllyHitUnderGuardEvent()
     {
-        Name = "Hit while under Guard";
+        Name = "[PvP Only] Hit while under Guard";
         Id = "AllyHitUnderGuardEvent";
     }
 
@@ -27,7 +27,7 @@ public class AllyHitUnderGuardEvent : PvPActionEvent
 
             foreach (var target in pp.GetTargetIds())
             {
-                if (PluginServices.PvPMatchManager.IsMonitoredUser(target))
+                if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
                     IGameObject? obj = pp.GetGameObject(target);
                     if (obj is IPlayerCharacter)

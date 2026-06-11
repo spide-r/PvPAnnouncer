@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -37,6 +38,31 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         _timestamp = 0;
     }
 
+    private bool ShouldAnnounce() // this function will determine if the settings let us 
+    {
+        var overworld = PluginServices.Config.Overworld;
+        var pvp = PluginServices.Config.PvP;
+        var pve = PluginServices.Config.PvE;
+        var wd = PluginServices.Config.WolvesDen;
+        if (PluginServices.ClientState.IsPvP)
+        {
+            if (PluginServices.ClientState.IsPvPExcludingDen)
+                //in actual pvp zone
+                return pvp;
+
+            //in wolves den
+            return wd;
+        }
+
+        if (PluginServices.DutyState.IsDutyStarted || PluginServices.Condition.Any(ConditionFlag.BoundByDuty,
+                ConditionFlag.BoundByDuty56, ConditionFlag.BoundByDuty95))
+            //in duty
+            return pve;
+
+        //not started and/or in overworld
+        return overworld;
+    }
+
     public void PlayAndSendBattleTalkForTesting(Shoutcast shoutcast)
     {
         var p = shoutcast.GetShoutcastSoundPathWithGenderAndLang(PluginServices.Config.Language,
@@ -46,9 +72,9 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         SendBattleTalk(shoutcast);
     }
 
-    public void ReceivePvPEvent(bool bypass, PvPEvent pvpEvent)
+    public void ReceiveEvent(bool bypass, PvPEvent pvpEvent)
     {
-        PluginServices.PluginLog.Verbose($"PvP Event {pvpEvent.Id} received");
+        PluginServices.PluginLog.Verbose($"Event {pvpEvent.Id} received");
         long newTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
         long diff = newTimestamp - _timestamp;
 
@@ -59,6 +85,8 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return;
         }
 
+        if (!ShouldAnnounce()) return;
+
         // == Objective 4 ==
         if (diff < (PluginServices.Config.CooldownSeconds + _lastVoiceLineLength))
         {
@@ -68,25 +96,15 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
 
 
         if (!PluginServices.DutyState
-                .IsDutyStarted) //fixes kardia and other stuff at start but does not allow for weather events
+                .IsDutyStarted) //fixes bug with kardia and other stuff at start of duty but does not allow for weather events
         {
             var id = pvpEvent.Id;
-
-            if (!PluginServices.Config.WolvesDen)
+            //duty not started, dont care about wolves den
+            if (!(id.Equals("MatchVictoryEvent") || id.Equals("DutyRecommenceEvent") || id.Equals("MatchLossEvent")))
             {
-                //duty not started, dont care about wolves den
-                if (!(id.Equals("MatchVictoryEvent") || id.Equals("MatchLossEvent") || id.Equals("MatchEndEvent")))
-                {
-                    //not match victory, loss or standard loss - dont want it at the start or at the end
-                    PluginServices.PluginLog.Verbose("Duty not started!");
-                    return;
-                }
-            }
-            else
-            {
-                if (!PluginServices.ClientState.IsPvP)
-                    //not pending duty not in wolves den
-                    return;
+                //not match victory, loss or standard loss - dont want it at the start or at the end of a duty
+                PluginServices.PluginLog.Verbose("Duty not started!");
+                return;
             }
         }
 
@@ -113,9 +131,9 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         PlaySoundAndSendBattleTalk(pvpEvent);
     }
 
-    public void ReceivePvPEvent(PvPEvent pvpEvent)
+    public void ReceiveEvent(PvPEvent pvpEvent)
     {
-        ReceivePvPEvent(false, pvpEvent);
+        ReceiveEvent(false, pvpEvent);
     }
 
     public void PlaySound(string sound)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -37,6 +36,13 @@ public unsafe class ActionEffectMessage(
         return PluginServices.DataManager.GetExcelSheet<Action>().GetRowOrDefault(ActionId);
     }
 
+    public bool IsLimitBreak()
+    {
+        if (!GetAction().HasValue) return false;
+        var cat = GetAction().Value.ActionCategory.Value;
+        return cat.RowId is 9 or 15;
+    }
+
     public IGameObject? GetSourceGameObject()
     {
         return PluginServices.ObjectTable.SearchById((uint) SourceId);
@@ -66,7 +72,25 @@ public unsafe class ActionEffectMessage(
 
     public List<ActionEffectType> GetEffectTypes(uint actionTargetId)
     {
-        List<ActionEffectType> types = new List<ActionEffectType>();
+        var types = new List<ActionEffectType>();
+        for (var i = 0; i < Targets; i++)
+        {
+            var targetId = (uint) (EffectTrail[i] & uint.MaxValue);
+            if (actionTargetId == targetId)
+                for (var j = 0; j < 8; j++)
+                {
+                    var actionEffect = EffectArray[i * 8 + j];
+                    types.Add(actionEffect.EffectType);
+                }
+        }
+
+        return types;
+    }
+
+
+    public List<ActionEffect> GetEffects(uint actionTargetId)
+    {
+        var types = new List<ActionEffect>();
         for (var i = 0; i < Targets; i++)
         {
             var targetId = (uint) (EffectTrail[i] & uint.MaxValue);
@@ -75,7 +99,7 @@ public unsafe class ActionEffectMessage(
                 for (var j = 0; j < 8; j++)
                 {
                     var actionEffect = EffectArray[i * 8 + j];
-                    types.Add(actionEffect.EffectType);
+                    types.Add(actionEffect);
                 }
             }
         }

@@ -8,7 +8,7 @@ public class MatchVictoryEvent : PvPMatchEvent
 {
     public MatchVictoryEvent()
     {
-        Name = "Match Victory";
+        Name = "Duty Victory";
         Id = "MatchVictoryEvent";
     }
 
