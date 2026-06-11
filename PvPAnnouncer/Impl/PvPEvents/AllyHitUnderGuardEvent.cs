@@ -12,7 +12,7 @@ public class AllyHitUnderGuardEvent : PvPActionEvent
 {
     public AllyHitUnderGuardEvent()
     {
-        Name = "Hit while under Guard";
+        Name = "[PvP Only] Hit while under Guard";
         Id = "AllyHitUnderGuardEvent";
     }
 

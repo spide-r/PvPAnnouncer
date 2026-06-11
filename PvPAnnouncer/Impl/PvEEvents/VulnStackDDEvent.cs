@@ -5,12 +5,12 @@ using PvPAnnouncer.Interfaces.PvPEvents;
 
 namespace PvPAnnouncer.Impl.PvEEvents;
 
-public class VulnStackEvent : PvPActorEvent
+public class VulnStackDDEvent : PvPActorEvent
 {
-    public VulnStackEvent()
+    public VulnStackDDEvent()
     {
         Name = "Gaining a Vuln Stack/Damage Down";
-        Id = "VulnStackEvent";
+        Id = "VulnStackDDEvent";
     }
 
     public override bool InvokeRule(IMessage message)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using PvPAnnouncer.Data;
 using PvPAnnouncer.Interfaces;
@@ -53,12 +54,12 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
             return wd;
         }
 
-        if (PluginServices.DutyState.IsDutyStarted)
+        if (PluginServices.DutyState.IsDutyStarted || PluginServices.Condition.Any(ConditionFlag.BoundByDuty,
+                ConditionFlag.BoundByDuty56, ConditionFlag.BoundByDuty95))
             //in duty
             return pve;
 
         //not started and/or in overworld
-        //todo GOTCHA - this doesnt catch the tiny condition where waiting in a duty still allows announcers to talk - this needs to be fixed!!!!!
         return overworld;
     }
 

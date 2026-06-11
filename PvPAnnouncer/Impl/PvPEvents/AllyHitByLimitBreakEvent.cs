@@ -9,7 +9,7 @@ public class AllyHitByLimitBreakEvent : PvPActionEvent
 {
     public AllyHitByLimitBreakEvent()
     {
-        Name = "Hit by an Enemy Limit Break";
+        Name = "[PvP Only] Hit by an Enemy Limit Break";
         Id = "AllyHitByLimitBreakEvent";
     }
 

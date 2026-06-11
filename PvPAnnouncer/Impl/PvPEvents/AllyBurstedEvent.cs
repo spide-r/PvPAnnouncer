@@ -15,7 +15,7 @@ public class AllyBurstedEvent : PvPEvent
 
     public AllyBurstedEvent()
     {
-        Name = "Bursted By Enemy Team";
+        Name = "Bursted By Enemies";
         Id = "AllyBurstedEvent";
     }
 

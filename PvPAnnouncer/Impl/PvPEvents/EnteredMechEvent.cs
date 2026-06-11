@@ -1,5 +1,4 @@
-﻿using System;
-using PvPAnnouncer.Impl.Messages;
+﻿using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -9,7 +8,7 @@ public class EnteredMechEvent : PvPEvent
 {
     public EnteredMechEvent()
     {
-        Name = "Entering a RW Mech";
+        Name = "[PvP Only] Entering a RW Mech";
         Id = "EnteredMechEvent";
     }
 

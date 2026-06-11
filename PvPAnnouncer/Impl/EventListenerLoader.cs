@@ -25,7 +25,7 @@ public class EventListenerLoader : IEventListenerLoader
         new MatchStartEvent(),
         new EnteredMechEvent(),
         new DutyRecommenceEvent(),
-        new VulnStackEvent(),
+        new VulnStackDDEvent(),
         new EnemyHitCcEvent(),
         new MaxBattleFeverEvent()
     ];

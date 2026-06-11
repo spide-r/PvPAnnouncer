@@ -7,7 +7,6 @@ namespace PvPAnnouncer.Impl.PvPEvents;
 
 public class EnemyHitCcEvent : PvPActionEvent
 {
-    //todo add announcements
     public EnemyHitCcEvent()
     {
         Name = "Enemy applied CC";

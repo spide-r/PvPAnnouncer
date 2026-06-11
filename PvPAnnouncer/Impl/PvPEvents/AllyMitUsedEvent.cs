@@ -9,7 +9,7 @@ public class AllyMitUsedEvent : PvPActionEvent
 {
     public AllyMitUsedEvent()
     {
-        Name = "Mitigation";
+        Name = "[PvP Only] Mitigation";
         Id = "AllyMitUsedEvent";
     }
 

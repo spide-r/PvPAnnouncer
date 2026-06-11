@@ -33,9 +33,8 @@ namespace PvPAnnouncer
                     return;
                 }
 
-                //todo update this for the big changes
                 PluginServices.ChatGui.Print(
-                    "Happy 7.5! Zero's Mahjong voicelines (plus some extras) have been added Enable them in the plugin config!",
+                    "PVPAnnouncer is now NPCAnnouncer! Your existing config has been preserved. What this means, is that you can now have your favorite NPC to comment on ALL. CONTENT. Tell your non-pvp friends to rejoice!!!!",
                     "NPCAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();

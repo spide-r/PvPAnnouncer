@@ -1,5 +1,4 @@
-﻿using System;
-using PvPAnnouncer.Impl.Messages;
+﻿using PvPAnnouncer.Impl.Messages;
 using PvPAnnouncer.Interfaces;
 using PvPAnnouncer.Interfaces.PvPEvents;
 
@@ -9,7 +8,7 @@ public class MatchStartEvent : PvPMatchEvent
 {
     public MatchStartEvent()
     {
-        Name = "Matches Starting";
+        Name = "Duties Starting";
         Id = "MatchStartEvent";
     }
 

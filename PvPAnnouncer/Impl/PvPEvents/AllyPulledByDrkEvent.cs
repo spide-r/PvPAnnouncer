@@ -9,7 +9,7 @@ public class AllyPulledByDrkEvent : PvPActionEvent
 {
     public AllyPulledByDrkEvent()
     {
-        Name = "Pulled By Dark Knight";
+        Name = "[PvP Only] Pulled By Dark Knight";
         Id = "AllyPulledByDrkEvent";
     }
 
