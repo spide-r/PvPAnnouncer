@@ -150,7 +150,7 @@ public static class ActionIds
             AdventOfChocobastion, StarPrism
         ];
 
-    public static bool IsBurst(uint id)
+    public static bool IsPvPBurst(uint id)
     {
         if (BurstActions.Contains(id))
         {

@@ -95,7 +95,8 @@ public class Announcer(IEventShoutcastMapping eventShoutcastMapping, IShoutcastR
         }
 
 
-        if (!PluginServices.DutyState
+        if (PluginServices.Condition.Any(ConditionFlag.BoundByDuty,
+                ConditionFlag.BoundByDuty56, ConditionFlag.BoundByDuty95) && !PluginServices.DutyState
                 .IsDutyStarted) //fixes bug with kardia and other stuff at start of duty but does not allow for weather events
         {
             var id = pvpEvent.Id;

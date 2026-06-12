@@ -12,7 +12,7 @@ public class AllyHitUnderGuardEvent : PvPActionEvent
 {
     public AllyHitUnderGuardEvent()
     {
-        Name = "[PvP Only] Hit while under Guard";
+        Name = "Hit while under Guard/Blocked/Parried an attack";
         Id = "AllyHitUnderGuardEvent";
     }
 
@@ -29,6 +29,11 @@ public class AllyHitUnderGuardEvent : PvPActionEvent
             {
                 if (PluginServices.DutyManager.IsMonitoredUser(target))
                 {
+                    foreach (var actionEffectVar in pp.GetEffects(target))
+                        if (actionEffectVar.EffectType is ActionEffectType
+                                .BlockedDamage or ActionEffectType.ParriedDamage) //blocked or parried something
+                            return true;
+
                     IGameObject? obj = pp.GetGameObject(target);
                     if (obj is IPlayerCharacter)
                     {

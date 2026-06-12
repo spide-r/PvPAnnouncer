@@ -15,7 +15,7 @@ public class VulnStackDDEvent : PvPActorEvent
 
     public override bool InvokeRule(IMessage message)
     {
-        if (message is EnemyAppliedStatusMessage enemyAppliedStatusEvent)
+        if (message is AppliedStatusMessage enemyAppliedStatusEvent)
         {
             var status = PluginServices.DataManager.Excel.GetSheet<Status>()
                 .GetRow((uint) enemyAppliedStatusEvent.status);

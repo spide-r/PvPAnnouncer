@@ -2,7 +2,7 @@
 
 namespace PvPAnnouncer.Impl.Messages;
 
-public class EnemyAppliedStatusMessage(int status) : IMessage
+public class AppliedStatusMessage(int status) : IMessage
 {
     public int status = status;
 }

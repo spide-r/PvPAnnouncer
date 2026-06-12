@@ -25,8 +25,10 @@ public class AllyHitEnemyHardEvent : PvPActionEvent
 
             if (PluginServices.DutyManager.IsMonitoredUser(pp.SourceId))
             {
-                return (pp.CritsOrDirectHits() && PluginServices.PlayerStateTracker.IsPvP()) || pp.IsLimitBreak() ||
-                       ActionIds.IsBurst(pp.ActionId);
+                return (pp.CritsOrDirectHits() &&
+                        (PluginServices.PlayerStateTracker.IsPvP() || PluginServices.Config.PvECrits)) ||
+                       pp.IsLimitBreak() ||
+                       ActionIds.IsPvPBurst(pp.ActionId);
             }
         }
 

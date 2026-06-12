@@ -66,6 +66,7 @@ public class ConfigWindow : Window, IDisposable
         var wolvesDen = _configuration.WolvesDen;
         var pvp = _configuration.PvP;
         var pve = _configuration.PvE;
+        var pveCrits = _configuration.PvECrits;
         var overworld = _configuration.Overworld;
 
         var partyPvE = _configuration.PartyMembersPvE;
@@ -182,6 +183,14 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Use Voice Lines in PvE Instances", ref pve))
         {
             _configuration.PvE = pve;
+            _configuration.Save();
+        }
+
+        if (ImGui.Checkbox(
+                "Allow comments on critical hits during PvE (Warning, this will make announcers extra chatty)",
+                ref pveCrits))
+        {
+            _configuration.PvECrits = pveCrits;
             _configuration.Save();
         }
 

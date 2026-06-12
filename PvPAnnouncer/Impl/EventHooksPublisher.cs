@@ -37,14 +37,25 @@ public class EventHooksPublisher : IEventPublisher, IDisposable
                 //value 1789 for vuln up
                 if (PluginServices.DutyManager.IsMonitoredUser(targetId))
                     foreach (var actionEffectVar in actionEffect.GetEffects(targetId))
+                    {
+                        PluginServices.PluginLog.Verbose(
+                            $"Applied Status on {targetId}: {actionEffectVar.EffectType}, {actionEffectVar.Flags1}, {actionEffectVar.Flags2} {actionEffectVar.Param0} {actionEffectVar.Param1} {actionEffectVar.Param2} {actionEffectVar.Value}");
+                        //w/ effecttype damage status - value is the amount of damage
+                        // w/ effecttype applystatuseffecttarget - value is status
+                        //applystatuseffectsource - self buff, but only sometimes
+                        //w/ effecttype kbanddrawin - could be sucked in  
+
+                        //todo could do a blocked damage event 
                         if (actionEffectVar.EffectType ==
                             ActionEffectType
                                 .ApplyStatusEffectTarget) //someone applied a status effect to our monitored user
                         {
+                            //todo - 2 bugs here - this isnt filtering by enemy this also isnt triggering when enemies give you cc (in pve) why?
                             var effectValue = actionEffectVar.Value;
-                            PluginServices.PluginLog.Verbose($"Enemy Applied Status: {effectValue}");
-                            EmitToBroker(new EnemyAppliedStatusMessage(effectValue));
+                            EmitToBroker(new AppliedStatusMessage(effectValue));
                         }
+                    }
+
 
             var s = "S:" + actionEffect.SourceId + " SN: " + actionEffect.GetSource() + "|A: " +
                     actionEffect.ActionId + "|AN: " +
@@ -71,14 +82,15 @@ public class EventHooksPublisher : IEventPublisher, IDisposable
             var actorControlMessage =
                 new ActorControlMessage(entityId, category);
 
-            if (PluginServices.DutyManager.IsMonitoredUser(entityId))
+
+            if (!PluginServices.DutyManager.IsMonitoredUser(entityId))
             {
-                PluginServices.PluginLog.Verbose(
-                    $"Processing Actor Control entityId {entityId},  category {(ActorControlCategory) category}, arg1 {arg1}, " +
-                    $"a2 {arg2}, a3 {arg3}, a4 {arg4}, a5 {arg5}, a6 {arg6}, a7 {arg7}, a8 {arg8}, targetId {targetId}, flag {isRecorded}");
+                return;
             }
 
-            if (!PluginServices.DutyManager.IsMonitoredUser(entityId)) return;
+            PluginServices.PluginLog.Verbose(
+                $"Processing Actor Control entityId {entityId},  category {(ActorControlCategory) category}, arg1 {arg1}, " +
+                $"a2 {arg2}, a3 {arg3}, a4 {arg4}, a5 {arg5}, a6 {arg6}, a7 {arg7}, a8 {arg8}, targetId {targetId}, flag {isRecorded}");
 
             if (actorControlMessage.GetCategory() == ActorControlCategory.GainEffect)
             {

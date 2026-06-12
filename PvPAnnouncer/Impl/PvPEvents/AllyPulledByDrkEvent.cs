@@ -13,6 +13,8 @@ public class AllyPulledByDrkEvent : PvPActionEvent
         Id = "AllyPulledByDrkEvent";
     }
 
+    //todo - extend this maybe to all draw-ins if you can find a way to filter out knockbacks 
+
     public override bool InvokeRule(IMessage message)
     {
         if (message is ActionEffectMessage pp)

@@ -47,6 +47,7 @@ namespace PvPAnnouncer
 
         public bool Overworld { get; set; } = false;
         public bool PvE { get; set; } = true;
+        public bool PvECrits { get; set; } = false;
         public bool PvP { get; set; } = true;
         public bool WolvesDen { get; set; } = false;
 

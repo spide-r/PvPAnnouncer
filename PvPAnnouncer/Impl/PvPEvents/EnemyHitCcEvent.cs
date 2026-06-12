@@ -9,13 +9,14 @@ public class EnemyHitCcEvent : PvPActionEvent
 {
     public EnemyHitCcEvent()
     {
-        Name = "Enemy applied CC";
+        Name = "Hit with a Crowd Control Effect (Stun, Sleep, etc)";
         Id = "EnemyHitCcEvent";
     }
 
+    //todo no current way to check/validate detrimental effect was actually from an enemy - no big issue rn since detrimental, but something to think about
     public override bool InvokeRule(IMessage message)
     {
-        if (message is EnemyAppliedStatusMessage enemyAppliedStatusEvent)
+        if (message is AppliedStatusMessage enemyAppliedStatusEvent)
         {
             var status = PluginServices.DataManager.Excel.GetSheet<Status>()
                 .GetRow((uint) enemyAppliedStatusEvent.status);
