@@ -52,7 +52,7 @@ namespace PvPAnnouncer
         public bool WolvesDen { get; set; } = false;
 
         public bool PartyMembersPvP { get; set; } = false;
-        public bool PartyMembersPvE { get; set; } = true;
+        public bool PartyMembersPvE { get; set; } = false;
 
 
         public Dictionary<string, string> CustomShoutcasts { get; set; } = [];
