@@ -119,6 +119,31 @@ public class ConfigWindow : Window, IDisposable
             _configuration.Save();
         }
 
+        if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
+        {
+            _configuration.WolvesDen = wolvesDen;
+            _configuration.Save();
+        }
+
+
+        if (ImGui.Checkbox("Use Voice Lines in Overworld Areas", ref overworld))
+        {
+            _configuration.Overworld = overworld;
+            _configuration.Save();
+        }
+
+        if (ImGui.Checkbox("Use Voice Lines in PvP Instances", ref pvp))
+        {
+            _configuration.PvP = pvp;
+            _configuration.Save();
+        }
+
+        if (ImGui.Checkbox("Use Voice Lines in PvE Instances", ref pve))
+        {
+            _configuration.PvE = pve;
+            _configuration.Save();
+        }
+
         ImGui.Separator();
         ImGui.TextWrapped("If you wish to create new characters or manage existing voicelines and events click here:");
         if (ImGui.Button("Character, Event, and Voiceline Management###FirstButton"))
@@ -161,33 +186,9 @@ public class ConfigWindow : Window, IDisposable
 
         ImGui.NewLine();
         ImGui.Separator();
-        if (ImGui.Checkbox("Use Voice Lines in the Wolves Den", ref wolvesDen))
-        {
-            _configuration.WolvesDen = wolvesDen;
-            _configuration.Save();
-        }
-
-
-        if (ImGui.Checkbox("Use Voice Lines in Overworld Areas", ref overworld))
-        {
-            _configuration.Overworld = overworld;
-            _configuration.Save();
-        }
-
-        if (ImGui.Checkbox("Use Voice Lines in PvP Instances", ref pvp))
-        {
-            _configuration.PvP = pvp;
-            _configuration.Save();
-        }
-
-        if (ImGui.Checkbox("Use Voice Lines in PvE Instances", ref pve))
-        {
-            _configuration.PvE = pve;
-            _configuration.Save();
-        }
 
         if (ImGui.Checkbox(
-                "Allow comments on critical hits during PvE (Warning, this will make announcers extra chatty)",
+                "Allow comments on critical hits during PvE (Warning, this may make announcers extra chatty depending on your settings)",
                 ref pveCrits))
         {
             _configuration.PvECrits = pveCrits;

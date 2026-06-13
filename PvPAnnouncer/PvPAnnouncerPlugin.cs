@@ -34,7 +34,7 @@ namespace PvPAnnouncer
                 }
 
                 PluginServices.ChatGui.Print(
-                    "PVPAnnouncer is now NPCAnnouncer! Your existing config has been preserved. Your favorite NPC can now comment on ALL. CONTENT. Dungeons, Alliance Raids, Fates, Ultimate raids, you name it. Tell your non-pvp friends to rejoice!!!! Please report using the feedback button if you see any issues or bugs!",
+                    "PVPAnnouncer is now NPCAnnouncer! Your existing config has been preserved. (You are also able to toggle this new behavior off in the plugin config.)\nYour favorite NPC can now comment on ALL. CONTENT. Dungeons, Alliance Raids, Fates, Ultimate raids, you name it. Tell your non-pvp friends to rejoice!!!! Please report using the feedback button if you see any issues or bugs!",
                     "NPCAnnouncer", 15);
                 PluginServices.Config.ShowNotification = false;
                 PluginServices.Config.Save();
