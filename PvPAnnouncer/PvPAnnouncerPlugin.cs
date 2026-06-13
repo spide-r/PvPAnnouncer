@@ -51,6 +51,16 @@ namespace PvPAnnouncer
             ToggleConfigWindow();
         }
 
+        private void OnCommandPvP(string command, string args)
+        {
+            PluginServices.ChatGui.Print(
+                "PVPAnnouncer is now NPCAnnouncer! Your existing config has been preserved. (You are also able to toggle this new behavior off in the plugin config.)\nYour favorite NPC can now comment on ALL. CONTENT. Dungeons, Alliance Raids, Fates, Ultimate raids, you name it." +
+                "\nPlease use /npcannouncer, the old command /pvpannouncer will be removed soon.",
+                "NPCAnnouncer", 15);
+            ToggleConfigWindow();
+        }
+
+//
         private void OnToggleMuteCommand(string command, string args)
         {
             PluginServices.SoundManager.ToggleMute();
@@ -79,7 +89,7 @@ namespace PvPAnnouncer
 
         private void LoadCommands()
         {
-            PluginServices.CommandManager.AddHandler("/pvpannouncer", new CommandInfo(OnCommand)
+            PluginServices.CommandManager.AddHandler("/pvpannouncer", new CommandInfo(OnCommandPvP)
             {
                 HelpMessage = "Open the Config Window - Old Command! Use /npcannouncer"
             });
